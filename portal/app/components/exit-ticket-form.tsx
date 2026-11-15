@@ -107,6 +107,16 @@ export default function ExitTicketForm({ lessonNumber, question }: { lessonNumbe
     return () => requestRef.current?.abort();
   }, [lessonNumber, load]);
 
+  // The named form expands after its session loads, moving the feedback anchor below it.
+  useEffect(() => {
+    if (loadState === "loading" || window.location.hash !== "#teaching-feedback") return;
+    if (document.activeElement?.matches("input, textarea, select, button")) return;
+    const feedback = document.getElementById("teaching-feedback");
+    if (feedback && feedback.getBoundingClientRect().top > window.innerHeight / 2) {
+      feedback.scrollIntoView({ block: "start", behavior: "instant" });
+    }
+  }, [loadState]);
+
   function changeField(key: FieldName, value: string) {
     setFields(current => ({ ...current, [key]: value }));
     setFieldErrors(current => ({ ...current, [key]: undefined }));
