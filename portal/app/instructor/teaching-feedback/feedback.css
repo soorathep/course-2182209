@@ -1,0 +1,10 @@
+.feedback-review .teacher-top { margin-top: 1.25rem; }
+.feedback-review table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.feedback-table-scroll { overflow-x: auto; }
+.feedback-review caption { text-align: start; font-size: 1.25rem; font-weight: 700; padding: 1rem 0; }
+.feedback-review th, .feedback-review td { padding: .6rem; text-align: start; border-bottom: 1px solid var(--line); }
+.feedback-review thead th { background: var(--canvas); }
+.feedback-review [aria-current="true"] { font-weight: 800; }
+.feedback-review #comments { margin-block: 2rem; }
+.feedback-review #comments li { white-space: pre-wrap; overflow-wrap: anywhere; margin-block: .8rem; }
+.feedback-review nav { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }

@@ -125,6 +125,7 @@ def lesson_page(lessons, index):
         columns="".join(f'<th scope="col">{escape(str(h))}</th>' for h in table["headers"]),
         caption=escape(table["caption"]), sources="".join(map(source_link, item["source_urls"])),
         question=escape(item["exit_question"]), ticket=f"{PORTAL}/lessons/{number}#exit-ticket",
+        feedback=f"{PORTAL}/lessons/{number}#teaching-feedback",
         previous=adjacent(lessons, index, -1), next=adjacent(lessons, index, 1),
     )
     return layout(page, f'Class {number} · {item["title_en"]}', item["objectives"][0], "../../")
@@ -140,10 +141,11 @@ def build():
         "catalog.js": (TEMPLATES / "catalog.js").read_bytes(),
         ".nojekyll": b"",
     }
-    assets = ["favicon.svg", "downloads/Course_Syllabus.docx", "downloads/Student_Workbook_Classes_01_14.docx"]
+    assets = ["favicon.svg", "downloads/2182209-exit-ticket-slides.pdf", "downloads/2182209-exit-ticket-slides.pptx", "downloads/Course_Syllabus.docx", "downloads/Student_Workbook_Classes_01_14.docx"]
     for index in range(len(lessons)):
         num = lessons[index]["number"]
         outputs[f"lessons/{num}/index.html"] = lesson_page(lessons, index).encode()
+        assets.append(f"qr/exit-ticket-{num:02d}.png")
         assets.extend([f"datasets/class_{num:02d}_teaching_data.csv", f"downloads/worksheet-{num:02d}.pdf"])
     for asset in assets:
         outputs[asset] = (ROOT / "public" / asset).read_bytes()

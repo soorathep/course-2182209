@@ -8,6 +8,16 @@ Edit the public lesson content in `content/course-data.json`. The `public/` dire
 
 The exit-ticket link in each lesson opens that class on the course portal. Students submit their name, student ID and answer there. Editing uses the original portal's browser cookie. The protected instructor guide, answer keys and response review also use the portal. For a change to an exit-ticket question, coordinate the displayed prompt and the hosted form's question together. Leave the existing responses and question snapshots intact.
 
+## End-of-class QR codes
+
+Each slide contains the class question, a clickable link and the same QR code for everyone in that class. Replace or append the matching slide in the last five minutes of each lesson. Download the [editable PowerPoint](public/downloads/2182209-exit-ticket-slides.pptx), [projection PDF](public/downloads/2182209-exit-ticket-slides.pdf) or [14 individual QR images in one ZIP](classroom/2182209-exit-ticket-qr.zip).
+
+The QR code opens the named exit ticket, with a link at the top to a separate anonymous teaching-feedback form. The feedback form accepts pace and/or a comment. Its request omits browser credentials and its table records only the class number, pace and comment. The [instructor feedback page](https://semiconductor-chemistry-2182209.soorathep-k.chatgpt.site/instructor/teaching-feedback) shows class totals and comments in alphabetical order.
+
+The QR assets are generated from the class prompts in `content/course-data.json` using `figures/build_exit_qr.py`. The same generated manifest and PNG files are inputs to `scripts/build_exit_slides.mjs` for the editable deck.
+
+The reviewed portal source changes are in `portal/`, outside the Pages artifact. They apply to the authenticated Sites project at baseline `50873dfea9cf6d33b80884e1238abaaf5a71a242`. The QR images and slide downloads are shared from `public/`. Apply these changes alongside the existing portal migrations, then build and test with the Sites workflow.
+
 ## Build and publish
 
 Use Python 3.10 or newer. The build uses the standard library and no network access. Run from the repository root on a lab Mac:

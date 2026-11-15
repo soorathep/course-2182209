@@ -61,9 +61,9 @@ class Page(HTMLParser):
 
 
 def public_files(root):
-    expected = {".nojekyll", "index.html", "course.css", "catalog.js", "favicon.svg", "demo.html", *DOCS}
+    expected = {".nojekyll", "index.html", "course.css", "catalog.js", "favicon.svg", "demo.html", "downloads/2182209-exit-ticket-slides.pdf", "downloads/2182209-exit-ticket-slides.pptx", *DOCS}
     for n in CLASSES:
-        expected.update((f"lessons/{n}/index.html", workbook(n), dataset(n)))
+        expected.update((f"lessons/{n}/index.html", workbook(n), dataset(n), f"qr/exit-ticket-{n:02d}.png"))
     require(root.is_dir() and not root.is_symlink(), f"Invalid output directory: {root}")
     actual = set()
     for path in root.rglob("*"):
@@ -143,6 +143,8 @@ def check(root):
             ("a", "href", demo),
             ("iframe", "src", demo + "&embed=1"),
             ("a", "href", f"{PORTAL}/lessons/{n}#exit-ticket"),
+            ("a", "href", f"{PORTAL}/lessons/{n}#teaching-feedback"),
+            ("img", "src", BASE + f"qr/exit-ticket-{n:02d}.png"),
             ("a", "href", f"{PORTAL}/instructor"),
         }
         require(required_links <= page.links, f"Class {n}: missing links {sorted(required_links-page.links)}")
