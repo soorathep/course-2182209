@@ -1,6 +1,6 @@
-# Annual archive for Chemistry for Semiconductor Engineering (2182209)
+# Manual archive for Chemistry for Semiconductor Engineering (2182209)
 
-At the end of each academic year, prepare a private review copy of that year's course materials. Record the academic year, edition, preparation date, GitHub Pages URL and exact source commit. Record the deployed Sites version and source commit for the 14 pre-midterm classes. Use the teaching record to identify the edition. A repository or build date alone does not establish the academic year.
+The course owner starts each Zenodo archive manually. When preparing an edition, make a private review copy of the materials taught that academic year. Record the academic year, edition, preparation date, GitHub Pages URL and exact source commit. Record the deployed Sites version and source commit for the 14 pre-midterm classes. Use the teaching record to identify the edition. A repository or build date alone does not establish the academic year.
 
 ## Assemble the snapshot
 
@@ -21,5 +21,3 @@ At the end of each academic year, prepare a private review copy of that year's c
 Present the exact package, archive checksum, metadata, credits, privacy and rights findings, exclusions and test results to the course owner. Obtain approval before uploading or publishing to Zenodo. After publication, resolve the **version-specific DOI**, confirm the academic year and version on its record, download the deposited package and compare its SHA-256 with the approved file. Then add the verified DOI to the course website with its academic year and edition. Keep the receipt with the source commits, checksum and verification date.
 
 Keep earlier materials, pages and media available. Any removal or redirect requires a separate impact check and owner approval.
-
-The annual preparation is scheduled for August 1, Bangkok time. Check the Registrar's [academic calendar](https://www.reg.chula.ac.th/en/information/calendar/) for the actual cutoff each year. The [Academic Year 2026 semester directive](https://www.reg.chula.ac.th/en/wp-content/uploads/sites/8/2026/02/StartEndDates2569_SEM_Eng.pdf) gives July 30, 2027 as that year's last day.

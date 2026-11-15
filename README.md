@@ -20,4 +20,4 @@ Use Python 3.10 or newer. The build uses the standard library and no network acc
 
 Publish course changes to [soorathep/course-2182209](https://github.com/soorathep/course-2182209). GitHub Actions builds and validates pull requests and pushes to `main`. When the repository has Pages enabled with **GitHub Actions** as its source, the workflow deploys the verified `_site/` directory. After enabling Pages, use **Actions → Test and publish course pages → Run workflow** on `main`. The expected project URL is `https://soorathep.github.io/course-2182209/`. Verify the deployment and public URL before sharing that address with students.
 
-See [ARCHIVING.md](ARCHIVING.md) for annual Zenodo preparation, credits, rights, privacy checks, SHA-256 and verified version-specific DOI links.
+See [ARCHIVING.md](ARCHIVING.md) for the owner’s manual Zenodo preparation, credits, rights, privacy checks, SHA-256 and verified version-specific DOI links.
