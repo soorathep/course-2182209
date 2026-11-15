@@ -1,0 +1,33 @@
+<main id="main-content" class="lesson-page shell">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="${root}#lessons">All lessons</a> / <span>Class $padded</span></nav>
+  <header class="lesson-hero">
+    <div><p class="eyebrow">LESSON $padded OF 14 · 90 min</p><h1>$title</h1></div>
+    <div class="lesson-downloads"><a class="button button-primary" download href="$worksheet">Download worksheet <span class="file-type">PDF ↓</span></a><a download href="$dataset">Download CSV data ↓</a></div>
+  </header>
+  <nav class="lesson-section-nav" aria-label="Lesson sections"><a href="#overview">Objectives</a><a href="#concepts">Concepts</a><a href="#demo">Simulation &amp; demo</a><a href="#activities">Activities</a><a href="#exit-ticket">Exit ticket</a></nav>
+  <section id="overview" class="lesson-overview" aria-labelledby="overview-title">
+    <div><h2 id="overview-title">By the end of this class</h2><ul class="objectives">$objectives</ul></div>
+    <aside class="prerequisites"><h3>What you need to know</h3><p>$prerequisites</p><p class="muted">Read the question and predict the result before opening the demo. Then use the data to test your reasoning.</p></aside>
+  </section>
+  <section id="concepts" class="lesson-content-section" aria-labelledby="concepts-title">
+    <div class="section-heading compact"><h2 id="concepts-title">Core concepts</h2></div><ol class="concept-list">$concepts</ol>
+  </section>
+  <section id="demo" class="lesson-content-section" aria-labelledby="demo-title">
+    <div class="section-heading compact"><h2 id="demo-title">Simulation &amp; demo</h2><a class="text-action" href="$demo" target="_blank" rel="noopener">Open in a new window ↗</a></div>
+    <h3 class="demo-name">$demo_title</h3><p class="demo-intro">Change one variable at a time. Record what happens and compare it with your prediction.</p>
+    <iframe class="demo-frame" src="${demo}&amp;embed=1" title="Class $number simulation: $title" loading="lazy" allow="fullscreen"></iframe>
+    <details class="demo-directions"><summary>Exploration steps and model limitations</summary><ol>$steps</ol><p><strong>Model limitations</strong> $limitations</p></details>
+  </section>
+  <section id="activities" class="lesson-content-section" aria-labelledby="activities-title">
+    <div class="section-heading compact"><h2 id="activities-title">Activities and data</h2></div>
+    <p class="activity-intro">Complete the worksheet activities. Show your reasoning, units, and assumptions.</p><ol class="activity-list">$tasks</ol>
+    <div class="data-heading"><h3>Activity data</h3><a download href="$dataset">Download CSV ↓</a></div>
+    <div class="table-scroll" role="region" aria-label="Activity data table. Scroll horizontally to read all columns." tabindex="0"><table><thead><tr>$columns</tr></thead><tbody>$rows</tbody></table></div><p class="data-caption">$caption</p>
+  </section>
+  <section id="exit-ticket" class="exit-section" aria-labelledby="ticket-title">
+    <div><p class="eyebrow">LAST 5 MINUTES</p><h2 id="ticket-title">Class $number exit ticket</h2><p class="exit-question">$question</p></div>
+    <div class="exit-instructions"><p>Enter your name, student ID, and answer on the course submission form. Use the same browser to revisit your response for up to 30 days.</p><a class="button button-primary" href="$ticket">Open exit-ticket form →</a></div>
+  </section>
+  <section class="references-section" aria-labelledby="references-title"><h2 id="references-title">Further reading</h2><ul>$sources</ul></section>
+  <nav class="lesson-pagination" aria-label="Previous and next lessons">$previous$next</nav>
+</main>

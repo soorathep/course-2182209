@@ -1,0 +1,959 @@
+[
+  {
+    "number": 1,
+    "title_th": "Atoms Ions and Chemistry in Semiconductor Engineering",
+    "title_en": "Atoms Ions and Chemistry in Semiconductor Engineering",
+    "objectives": [
+      "Count protons and electrons in atoms and ions using the supplied atomic numbers and charges.",
+      "Distinguish elements from compounds and identify the roles of Si, Cu, and SiO2 in a simple chip."
+    ],
+    "prerequisites": "Only addition, subtraction, and reading superscripts or subscripts are needed. No prior knowledge of electron configurations is required.",
+    "concepts": [
+      "The atomic number Z equals the number of protons and identifies the element. Adding or removing only electrons does not change the element.",
+      "Net charge in units of elementary charge equals the number of protons minus the number of electrons. A neutral atom has equal numbers of both.",
+      "Cu and Si are elements. SiO2 is a compound with a Si:O ratio of 1:2. A subscript is different from a charge label.",
+      "In the example chip cross-section, Si forms the semiconductor region, Cu provides electrical interconnects, and SiO2 electrically insulates different regions."
+    ],
+    "data_table": {
+      "headers": [
+        "Particle",
+        "Atomic number Z",
+        "Net charge"
+      ],
+      "rows": [
+        [
+          "Li",
+          "3",
+          "0"
+        ],
+        [
+          "Li+",
+          "3",
+          "+1"
+        ],
+        [
+          "Na+",
+          "11",
+          "+1"
+        ],
+        [
+          "Cu",
+          "29",
+          "0"
+        ],
+        [
+          "Cu2+",
+          "29",
+          "+2"
+        ],
+        [
+          "Si",
+          "14",
+          "0"
+        ]
+      ],
+      "caption": "Input data for counting particles, not experimental results."
+    },
+    "source_urls": [
+      "https://openstax.org/books/chemistry-2e/pages/2-3-atomic-structure-and-symbolism",
+      "https://phet.colorado.edu/en/simulations/build-an-atom"
+    ],
+    "student_tasks": [
+      "Using Z(Li)=3, Z(Na)=11, and Z(Cu)=29, complete the proton/electron counts for Li, Li+, Na+, Cu, and Cu2+. Show a charge check for one case.",
+      "Classify Si, Cu, and SiO2 as elements or compounds. Explain the difference between the 2 in SiO2 and the 2+ in Cu2+.",
+      "A simple chip cross-section has A as the semiconductor base, B as the electrical pathway, and C as the insulating layer. Assign Si, Cu, and SiO2 to A–C and explain your choices."
+    ],
+    "exit_question": "How do the electron counts of a Cu atom and a Cu2+ ion differ when Z(Cu) = 29?",
+    "demo": {
+      "title": "What changes when one electron is removed?",
+      "steps": [
+        "Ask students to predict the charge of a system with 3 protons and 3 electrons.",
+        "Build Li with 3 protons, 4 neutrons, and 3 electrons, then read its charge.",
+        "Remove one electron without changing the nucleus. Ask students to record what changes and what stays the same.",
+        "Replace the electron and connect the explanation to Cu/Cu2+ in the table.",
+        "Ask each pair to write a one-sentence explanation, then match Si, Cu, and SiO2 to positions in the chip cross-section."
+      ],
+      "limitations": "The electron rings are a counting model, not actual orbital paths. This model does not explain every aspect of electrical conduction in solids."
+    },
+    "worksheet_url": "/downloads/worksheet-01.pdf",
+    "dataset_url": "/datasets/class_01_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=1"
+  },
+  {
+    "number": 2,
+    "title_th": "Bonding Structure and Materials Properties",
+    "title_en": "Bonding Structure and Materials Properties",
+    "objectives": [
+      "Identify metallic, covalent, and ionic bonding from models, and distinguish crystalline from amorphous structures.",
+      "Use structure and property data to select materials for conductors, insulators, and semiconductors."
+    ],
+    "prerequisites": "Review elements, compounds, electrons, and charge from Class 1.",
+    "concepts": [
+      "Metallic bonding involves delocalized electrons that contribute to electrical conduction. Covalent bonding involves shared electrons.",
+      "Ionic solids contain positive and negative ions held together by electrostatic attraction. The presence of ions does not mean that they can move freely through the solid.",
+      "Crystals have a periodic arrangement with long-range order. Amorphous materials do not have the same long-range periodic order.",
+      "The bonding label alone cannot predict every property. Si and SiO2 both have covalent networks but serve different electrical roles, and graphite can conduct electricity."
+    ],
+    "data_table": {
+      "headers": [
+        "Material",
+        "Main bonding and structure",
+        "Qualitative electrical properties"
+      ],
+      "rows": [
+        [
+          "Cu",
+          "Metallic, crystalline",
+          "Good electrical conductor"
+        ],
+        [
+          "Si",
+          "Covalent network, crystalline",
+          "Semiconductor"
+        ],
+        [
+          "SiO2 in this example",
+          "Covalent network, amorphous",
+          "Electrical insulator"
+        ],
+        [
+          "Graphite",
+          "Covalent within layers; weaker interactions between layers",
+          "Conducts electricity; direction-dependent"
+        ],
+        [
+          "Solid NaCl",
+          "Ionic, crystalline",
+          "Ions cannot move freely; the aqueous solution conducts"
+        ]
+      ],
+      "caption": "Property information for the activity, not measurements of specimens. SiO2 can be crystalline or amorphous."
+    },
+    "source_urls": [
+      "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter"
+    ],
+    "student_tasks": [
+      "Use the table to select materials for a chip's electrical interconnect, insulating layer, and semiconductor region. Give one reason for each choice.",
+      "Which arrangement is crystalline: A has regularly repeating units over long distances, or B has no long-range order? Give examples from the table.",
+      "A classmate claims, 'A covalently bonded material can never be used as a conductor.' Use one material from the table to test this claim."
+    ],
+    "exit_question": "Using the supplied property information, why is Cu suitable for an interconnect while SiO2 is suitable for electrical insulation?",
+    "demo": {
+      "title": "An evidence-based materials selection lab",
+      "steps": [
+        "Show crystalline and amorphous models. Ask students to identify repeating patterns.",
+        "Reveal the Cu card and ask students to choose a conductor, insulator, or semiconductor role.",
+        "Reveal Si and SiO2. Ask whether having covalent bonds in both means that they have the same electrical properties.",
+        "Reveal graphite to test the students' proposed rule, then revise the rule using the evidence.",
+        "Ask each pair to select materials for three chip positions and cite at least one supporting property for each position."
+      ],
+      "limitations": "The table gives qualitative information for preliminary selection, not resistance measurements made in class. Actual properties depend on structure, direction, temperature, and impurities."
+    },
+    "worksheet_url": "/downloads/worksheet-02.pdf",
+    "dataset_url": "/datasets/class_02_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=2"
+  },
+  {
+    "number": 3,
+    "title_th": "Moles Units and Chemical Stoichiometry",
+    "title_en": "Moles Units and Chemical Stoichiometry",
+    "objectives": [
+      "Convert mass to moles and use a balanced chemical equation to calculate amounts of substances.",
+      "Explain why the mass of SiO2 formed exceeds the mass of Si consumed because oxygen is incorporated."
+    ],
+    "prerequisites": "Read the formula SiO2, multiply and divide, and convert mg to g using the supplied unit table.",
+    "concepts": [
+      "The mole is a unit of amount of substance. Convert mass using n = m/M, where M is the mass per mole.",
+      "Coefficients in a balanced equation give ratios of particle counts or mole amounts, not mass ratios.",
+      "Si + O2 → SiO2 has a mole ratio of 1:1:1 and conserves the numbers of Si and O atoms.",
+      "When Si becomes SiO2, the product incorporates oxygen from the surroundings. An increase in specimen mass therefore does not violate conservation of mass."
+    ],
+    "data_table": {
+      "headers": [
+        "Calculation case",
+        "Initial Si mass",
+        "Conditions"
+      ],
+      "rows": [
+        [
+          "Instructor example",
+          "0.281 g",
+          "Excess O2; complete Si conversion"
+        ],
+        [
+          "Paired exercise",
+          "562 mg",
+          "Excess O2; complete Si conversion"
+        ],
+        [
+          "Constants",
+          "M(Si)=28.1; M(O)=16.0",
+          "Units: g/mol"
+        ]
+      ],
+      "caption": "Problem data and idealized calculations, not results from an oxidation experiment."
+    },
+    "source_urls": [
+      "https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry"
+    ],
+    "student_tasks": [
+      "Given M(Si)=28.1 g/mol and M(O)=16.0 g/mol, balance Si + O2 → SiO2 and calculate M(SiO2).",
+      "Si 562 mg is completely converted to SiO2 with excess O2. Using the molar mass from Question 1, find the moles of Si, the mass of SiO2, and the mass of O2 consumed.",
+      "A classmate says that a heavier product violates conservation of mass. Which material has been left out of their accounting? Can this model predict the time needed to grow the film?"
+    ],
+    "exit_question": "Why is the mass of SiO2 formed greater than the mass of Si consumed?",
+    "demo": {
+      "title": "A virtual atom counter and balance",
+      "steps": [
+        "Ask students to predict how many SiO2 formula units can form and how much O2 remains.",
+        "Pair one Si card with one O2 card to make one SiO2 formula unit without creating or destroying atoms.",
+        "Count 4 SiO2 formula units and 2 remaining O2 units, then connect counting units to mole ratios.",
+        "Display the Si mass of 0.281 g and work through the product-mass calculation step by step.",
+        "Reveal the O2 mass consumed and check that total reactant mass equals product mass."
+      ],
+      "limitations": "The model assumes complete reaction. It does not describe oxide growth rate, diffusion, or the thickness of an actual SiO2 film. Network SiO2 does not consist of isolated molecules like the card representation."
+    },
+    "worksheet_url": "/downloads/worksheet-03.pdf",
+    "dataset_url": "/datasets/class_03_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=3"
+  },
+  {
+    "number": 4,
+    "title_th": "Solutions Concentration and Electrolytes",
+    "title_en": "Solutions Concentration and Electrolytes",
+    "objectives": [
+      "Calculate molarity and dilution, distinguishing the amount of solute from concentration.",
+      "Use particle diagrams to explain ionic charge transport in solution and distinguish it from electron transport in metals."
+    ],
+    "prerequisites": "Use n = m/M and convert mL to L. Review charge from Class 1.",
+    "concepts": [
+      "Molar concentration is C = n/V, where V is the total solution volume in L, not the volume of water added.",
+      "When water is added for dilution without losing solute, n remains constant, so C1V1 = C2V2 applies.",
+      "The simple model represents CuSO4(aq) as Cu2+ and SO4(2−) in a 1:1 ratio, preserving the solution's electrical neutrality.",
+      "Ions carry current in an electrolyte solution, whereas electrons carry current in a metal wire. Color intensity is not a measurement of conductivity."
+    ],
+    "data_table": {
+      "headers": [
+        "Case",
+        "Total solution volume",
+        "CuSO4 concentration C"
+      ],
+      "rows": [
+        [
+          "A: before adding water",
+          "20.0 mL",
+          "0.100 mol/L"
+        ],
+        [
+          "B: water added to reach",
+          "40.0 mL",
+          "0.0500 mol/L"
+        ],
+        [
+          "C: more water added to reach",
+          "100.0 mL",
+          "0.0200 mol/L"
+        ]
+      ],
+      "caption": "Simulated dilution data with no loss of solute. No actual solutions were measured."
+    },
+    "source_urls": [
+      "https://openstax.org/books/chemistry-2e/pages/3-3-molarity",
+      "https://phet.colorado.edu/en/simulations/concentration"
+    ],
+    "student_tasks": [
+      "Calculate n = CV for cases A, B, and C in the table. Identify what stays constant and what changes.",
+      "Plan to prepare CuSO4 at 0.0250 mol/L with a final volume of 80.0 mL from a 0.100 mol/L stock. How many mL of stock are needed, and how should the final volume be set?",
+      "Represent the solution before dilution with 4 Cu2+ and 4 SO4(2−). Draw it after doubling the volume without losing material. Identify the charge carriers in the solution and in a Cu wire."
+    ],
+    "exit_question": "When water is added for dilution without any solute loss, does the amount of solute, the concentration, or both change? Explain briefly.",
+    "demo": {
+      "title": "Dilution without losing solute",
+      "steps": [
+        "Start with a solution that already contains solute. Read its volume and concentration.",
+        "Ask students to predict the effect of adding water without adding solute.",
+        "Add water in the simulation and record the trends in C and color, without inferring conductivity from color.",
+        "Use cases A–C in the table to calculate n = CV and verify that they give the same value.",
+        "Draw the same numbers of Cu2+ and SO4(2−) in a larger box and explain why the diagram remains electrically neutral."
+      ],
+      "limitations": "The model uses an ideal dilute solution and assumes CuSO4 dissociation as specified. Ion pairing and activity are not included in this class."
+    },
+    "worksheet_url": "/downloads/worksheet-04.pdf",
+    "dataset_url": "/datasets/class_04_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=4"
+  },
+  {
+    "number": 5,
+    "title_th": "Acids Bases pH and Chemical Equilibrium",
+    "title_en": "Acids Bases pH and Chemical Equilibrium",
+    "objectives": [
+      "Use pH = −log10[H+] with the supplied concentration data and compare hydrogen-ion concentration ratios.",
+      "Explain dynamic equilibrium and predict the direction of change after adding one substance under stated conditions."
+    ],
+    "prerequisites": "Read negative powers of 10 and use a calculator's log10 function with worked examples. Review concentration from Class 4.",
+    "concepts": [
+      "For the dilute-solution problems, use pH ≈ −log10[H+] with concentration values in mol/L. H+ is shorthand for hydronium in water.",
+      "A one-unit pH difference corresponds to a factor of 10 in [H+], not a difference of one concentration unit.",
+      "At equilibrium, forward and reverse reactions still occur but have equal rates. The amounts on both sides do not have to be equal.",
+      "Adding A to A ⇌ B at constant temperature and volume produces a net tendency toward B until a new equilibrium is reached. A shift to the right does not mean that all A disappears."
+    ],
+    "data_table": {
+      "headers": [
+        "Sample",
+        "[H+] (mol/L)",
+        "Problem conditions"
+      ],
+      "rows": [
+        [
+          "A",
+          "1.0×10^−2",
+          "Dilute solution; concentration used in place of activity"
+        ],
+        [
+          "B",
+          "1.0×10^−3",
+          "Temperature 25 °C"
+        ],
+        [
+          "C",
+          "1.0×10^−4",
+          "No actual chemical specified"
+        ]
+      ],
+      "caption": "Hypothetical data for pH practice, not measurements of household substances or PhET outputs."
+    },
+    "source_urls": [
+      "https://openstax.org/books/chemistry-2e/pages/14-2-ph-and-poh",
+      "https://openstax.org/books/chemistry-2e/pages/13-3-shifting-equilibria-le-chateliers-principle",
+      "https://phet.colorado.edu/en/simulations/ph-scale-basics"
+    ],
+    "student_tasks": [
+      "Use pH ≈ −log10[H+] to calculate pH for A, B, and C in the table. Rank them from highest to lowest [H+].",
+      "A classmate says, 'The [H+] at pH 2 is 2 times greater than at pH 4.' Correct the statement and show your calculation.",
+      "The model A ⇌ B transfers A/4 from A to B and B/2 from B to A per round. Starting at A=8 and B=4, explain whether the system is at equilibrium. Then add 8 units of A at constant volume and calculate A/B after one round."
+    ],
+    "exit_question": "Under the dilute-solution model, how many times as large is the H+ concentration at pH 2 compared with pH 4?",
+    "demo": {
+      "title": "The pH scale and dynamic equilibrium",
+      "steps": [
+        "Ask students to predict the direction of pH change when water is added to an acidic solution, then test it in PhET.",
+        "Use cases A–C to calculate pH and [H+] ratios. Emphasize that the table is not a set of measurements from the substances in PhET.",
+        "Show A=8 and B=4. Each round transfers 2 units forward and 2 units backward, leaving both amounts unchanged.",
+        "Add 8 more units of A at constant volume. Before the next round, A=16 and B=4, so 4 units move forward and 2 units move backward.",
+        "Record A=14 and B=6 after one round. Ask which direction has the net change and why the reactions should not be described as having stopped."
+      ],
+      "limitations": "The A/B rules are a teaching model for equilibrium, not reaction-rate data for real substances. A tenfold dilution of a weak acid does not necessarily increase pH by one unit."
+    },
+    "worksheet_url": "/downloads/worksheet-05.pdf",
+    "dataset_url": "/datasets/class_05_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=5"
+  },
+  {
+    "number": 6,
+    "title_th": "Electronic Materials Bands and Doping",
+    "title_en": "Electronic Materials Bands and Doping",
+    "objectives": [
+      "Use qualitative band diagrams to distinguish conductors, semiconductors, and insulators",
+      "Explain how B and P change the majority carriers in Si without giving the bulk material a net charge"
+    ],
+    "prerequisites": "Review valence electrons, covalent bonding, and positive/negative charge from Classes 1–2",
+    "concepts": [
+      "Energy bands represent the energies that electrons can occupy, not physical layers stacked inside a material",
+      "In a simple model, a metal has available states near the energies of its electrons; semiconductors and insulators have a gap between the valence and conduction bands",
+      "P has 5 valence electrons compared with 4 for Si, so P acts as a donor in Si; B has 3 and acts as an acceptor associated with hole formation",
+      "n-type and p-type identify the majority carrier. Mobile-carrier charge is balanced by ionized-dopant charge in electrically neutral bulk material"
+    ],
+    "data_table": {
+      "headers": [
+        "Atom replacing Si",
+        "Valence electrons",
+        "Role in the model",
+        "Majority carrier"
+      ],
+      "rows": [
+        [
+          "P",
+          "5",
+          "donor",
+          "electron"
+        ],
+        [
+          "B",
+          "3",
+          "acceptor",
+          "hole"
+        ],
+        [
+          "Si",
+          "4",
+          "Reference lattice",
+          "Intrinsic: equal electron and hole concentrations at equilibrium"
+        ]
+      ],
+      "caption": "Inputs for a qualitative model, not measurements of a sample"
+    },
+    "source_urls": [
+      "https://web.mit.edu/6.012/SPR01/lecture02.pdf",
+      "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-spring-2009/6583f0018f5bb90464ea68b550f73c95_MIT6_012S09_lec02.pdf"
+    ],
+    "student_tasks": [
+      "Si, P, and B have 4, 5, and 3 valence electrons, respectively. When P or B replaces Si, identify donor/acceptor, n-type/p-type, and the majority carrier",
+      "A bulk Si model contains ionized donors with charge +5e and carrier electrons with charge −5e. Find the total charge and explain what n-type describes",
+      "Diagram A has adjacent occupied and empty states in a band; B has a small band gap; C has a large band gap. Match them to conductor, semiconductor, and insulator. Is band gap alone enough to calculate conductivity?"
+    ],
+    "exit_question": "Does n-type silicon mean the whole sample has a net negative charge? Explain briefly",
+    "demo": {
+      "title": "Replace one atom and track the carriers",
+      "steps": [
+        "Minutes 0–1: predict what happens when P replaces Si",
+        "Minutes 1–3: select P and track the additional electron and the fixed positive donor",
+        "Minutes 3–5: select B and show electron acceptance and the hole left in the bonding system",
+        "Minutes 5–6: match each case to n-type/p-type and to a donor level near the conduction band or an acceptor level near the valence band",
+        "Minutes 6–8: reveal the charge balance and ask students to explain neutrality in one sentence"
+      ],
+      "limitations": "The sketch is not to scale and does not calculate carrier concentration or the Fermi level. Intrinsic Si still has thermally generated electron–hole pairs, even when they are omitted from this simple charge balance"
+    },
+    "worksheet_url": "/downloads/worksheet-06.pdf",
+    "dataset_url": "/datasets/class_06_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=6"
+  },
+  {
+    "number": 7,
+    "title_th": "Redox Reactions and Electron Balance",
+    "title_en": "Redox Reactions and Electron Balance",
+    "objectives": [
+      "Identify oxidation/reduction and balance atoms and charge in metal half-reactions",
+      "Connect electron uptake by Cu2+ to Cu formation on a conducting surface"
+    ],
+    "prerequisites": "Atoms, ions, charge, and equation coefficients; the oxidation state of an elemental metal is given as 0",
+    "concepts": [
+      "Oxidation is electron loss; reduction is electron gain",
+      "A half-reaction must balance both atom counts and total charge, not atoms alone",
+      "When two half-reactions are combined, the numbers of electrons released and accepted must match so that electrons cancel from the overall equation",
+      "Cu2+ + 2e− → Cu(s) describes Cu metal formation. This equation alone does not specify deposition rate, smoothness, or film quality"
+    ],
+    "data_table": {
+      "headers": [
+        "Particle",
+        "Charge per particle in units of e"
+      ],
+      "rows": [
+        [
+          "Zn or Cu",
+          "0"
+        ],
+        [
+          "Zn2+ or Cu2+",
+          "+2"
+        ],
+        [
+          "e−",
+          "−1"
+        ]
+      ],
+      "caption": "Charge-counting data for checking equations, not experimental measurements"
+    },
+    "source_urls": [
+      "https://openstax.org/books/chemistry-2e/pages/17-1-review-of-redox-chemistry"
+    ],
+    "student_tasks": [
+      "Add e− to balance: (a) Cu2+ → Cu; (b) Zn → Zn2+. Identify oxidation or reduction",
+      "Combine the half-reactions from the first task. Check Zn and Cu atom counts and total charge on both sides",
+      "If there are 3 Cu2+ ions and 4 e−, with no other reactions, how many Cu atoms form and how many Cu2+ ions remain?"
+    ],
+    "exit_question": "How many electrons must one Cu2+ ion receive to become Cu, and is this oxidation or reduction?",
+    "demo": {
+      "title": "Use an electron counter to balance a half-reaction",
+      "steps": [
+        "Minutes 0–2: predict how many e− are needed and on which side",
+        "Minutes 2–3: select 1 electron to show that atoms balance while charges do not",
+        "Minutes 3–4: select 2 electrons and compare the left- and right-hand charges",
+        "Minutes 4–6: show Zn → Zn2+ + 2e− and bring the electrons from both half-reactions together to cancel them",
+        "Minutes 6–8: identify the electron donor, acceptor, and location of Cu(s) formation; ask one group to explain using the equation"
+      ],
+      "limitations": "The counter checks conservation only. A balanced equation does not guarantee that a reaction is spontaneous or fast under every condition"
+    },
+    "worksheet_url": "/downloads/worksheet-07.pdf",
+    "dataset_url": "/datasets/class_07_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=7"
+  },
+  {
+    "number": 8,
+    "title_th": "Electrochemical Cells and Metal Ion Batteries",
+    "title_en": "Electrochemical Cells and Metal Ion Batteries",
+    "objectives": [
+      "Identify electrodes, electrolyte, separator, and e−/Li+ pathways during discharge and charge",
+      "Explain ion storage in Li-ion host materials, compare Na-ion, and recognize zinc-air chemistry using a supplied equation"
+    ],
+    "prerequisites": "Ionic/electronic conduction from Class 4 and oxidation/reduction from Class 7",
+    "concepts": [
+      "During Li-ion cell discharge, Li+ travels from the negative electrode through the electrolyte to the positive electrode; e− travels through the external circuit and load",
+      "The separator prevents direct electrode contact while allowing ion transport through electrolyte-filled pores. It is not a shortcut for e−",
+      "Charging uses an external energy source to reverse the process. Anode means the site of oxidation and cathode the site of reduction, so these roles switch between charge and discharge",
+      "The Li-ion/Na-ion model uses hosts that reversibly accept and release ions. Zinc-air uses Zn and O2 as reactants. Ion insertion is not the plating of Li or Na metal"
+    ],
+    "data_table": {
+      "headers": [
+        "Li-ion model mode",
+        "Li+ pathway",
+        "External e− pathway"
+      ],
+      "rows": [
+        [
+          "Discharge",
+          "negative → positive",
+          "negative → load → positive"
+        ],
+        [
+          "Charge",
+          "positive → negative",
+          "positive → charger → negative"
+        ]
+      ],
+      "caption": "Conceptual pathway diagram. Negative/positive electrode labels avoid confusion over the changing anode/cathode roles"
+    },
+    "source_urls": [
+      "https://www.energy.gov/science/articles/first-person-science-esther-takeuchi-batteries",
+      "https://www.energy.gov/sites/default/files/Li-ion.pdf",
+      "https://data.energizer.com/pdfs/zincair_appman.pdf"
+    ],
+    "student_tasks": [
+      "Draw a Li-ion cell during discharge with the negative electrode on the left and the positive electrode on the right. Include electrolyte, separator, load, and Li+/e− arrows",
+      "Draw a second diagram for charge. Identify the external energy source and the electrodes where oxidation and reduction occur",
+      "For zinc-air, 2Zn + O2 → 2ZnO, identify the reactant from air and explain one difference from Li+ storage in a host"
+    ],
+    "exit_question": "During Li-ion battery discharge, through which parts do ions and electrons travel?",
+    "demo": {
+      "title": "Switch discharge and charge and check the two pathways",
+      "steps": [
+        "Minutes 0–2: predict the Li+ and e− arrows, then run one discharge cycle",
+        "Minutes 2–3: pause and point out that e− does not cross the electrolyte/separator",
+        "Minutes 3–5: switch to charge with an external charger shown; ask for predictions before revealing reversed arrows",
+        "Minutes 5–6: switch the Li-ion card to Na-ion. Explain that the pathways are similar but the host must be suitable; an actual cell cannot be converted simply by renaming the ion",
+        "Minutes 6–8: show the zinc-air card and locate O2 in the overall equation. Classify it as using a reactant from air, not as an insertion cell"
+      ],
+      "limitations": "This pathway model omits SEI structure, electrolyte side reactions, and detailed anion transport. It does not predict actual voltage or capacity"
+    },
+    "worksheet_url": "/downloads/worksheet-08.pdf",
+    "dataset_url": "/datasets/class_08_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=8"
+  },
+  {
+    "number": 9,
+    "title_th": "Cell Potentials Thermodynamics and the Nernst Equation",
+    "title_en": "Cell Potentials Thermodynamics and the Nernst Equation",
+    "objectives": [
+      "Calculate Ecell and use the sign of ΔG to explain the thermodynamically favorable direction",
+      "Use the supplied Nernst equation to predict concentration effects for Cu2+/Cu at 25 °C"
+    ],
+    "prerequisites": "Electron balancing, log10, and concentration. All equations and constants are supplied; no derivation is required",
+    "concepts": [
+      "Ecell = Ecathode − Eanode when both values are reduction potentials. State the reaction direction being considered",
+      "ΔG = −nFEcell. A positive Ecell therefore corresponds to a negative ΔG for the cell reaction as written",
+      "For Cu2+ + 2e− → Cu(s), E = 0.340 + (0.05916/2)log10(aCu2+) V vs SHE at 25 °C. The worksheet uses aCu2+ ≈ c/(1 mol L−1)",
+      "Equilibrium potential depends on conditions and the reference electrode. A higher E does not specify how much faster a reaction will proceed"
+    ],
+    "data_table": {
+      "headers": [
+        "cCu2+ (mol L−1)",
+        "log10(c/1 M)",
+        "E (V vs SHE)"
+      ],
+      "rows": [
+        [
+          "1.000",
+          "0",
+          "0.34000"
+        ],
+        [
+          "0.100",
+          "−1",
+          "0.31042"
+        ],
+        [
+          "0.010",
+          "−2",
+          "0.28084"
+        ],
+        [
+          "0.001",
+          "−3",
+          "0.25126"
+        ]
+      ],
+      "caption": "Teaching data calculated with Nernst at 25 °C: E° = 0.340 V, n = 2, aCu(s) = 1, aCu2+ ≈ c/(1 M). These are not measured values"
+    },
+    "source_urls": [
+      "https://openstax.org/books/chemistry-2e/pages/17-4-potential-free-energy-and-equilibrium"
+    ],
+    "student_tasks": [
+      "Use E = 0.340 + 0.02958 log10(c/1 M) V vs SHE at 25 °C to find E at c = 0.01 M. Include the unit and reference electrode",
+      "When c changes from 0.001 M to 0.1 M, how many volts does the potential increase according to the equation above, and by what factor does concentration change?",
+      "Given E°Cu = +0.340 V, E°Zn = −0.760 V, F = 96485 C mol−1, and n = 2, find E°cell for Zn + Cu2+ → Zn2+ + Cu and the sign of ΔG°. Can these values predict the reaction rate?"
+    ],
+    "exit_question": "At fixed temperature, does increasing Cu2+ concentration raise or lower the Cu2+/Cu equilibrium reduction potential, and why?",
+    "demo": {
+      "title": "Change concentration and observe the Cu2+/Cu potential",
+      "steps": [
+        "Minutes 0–2: set c = 1 M and predict the direction of change after tenfold dilution",
+        "Minutes 2–4: change c to 0.1 and 0.01 M; record E and check with a calculator",
+        "Minutes 4–6: show the points on a log10(c/1 M) axis and find ΔE per decade",
+        "Minutes 6–7: increase c tenfold again and ask a group to explain why E increases",
+        "Minutes 7–8: separate the equilibrium conclusion from a claim about plating rate"
+      ],
+      "limitations": "The ideal-activity approximation can differ from real behavior at high concentrations. It excludes complexation, junction potentials, and kinetics"
+    },
+    "worksheet_url": "/downloads/worksheet-09.pdf",
+    "dataset_url": "/datasets/class_09_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=9"
+  },
+  {
+    "number": 10,
+    "title_th": "Faraday's Law Copper Deposition and Battery Capacity",
+    "title_en": "Faraday's Law Copper Deposition and Battery Capacity",
+    "objectives": [
+      "Calculate charge, moles of e−, Cu mass, and average thickness at a stated current efficiency",
+      "Convert between C and Ah and distinguish charge capacity from energy in Wh"
+    ],
+    "prerequisites": "Moles and units, Cu2+ + 2e− → Cu, area, and thickness. F, M, density, and conversion factors are supplied",
+    "concepts": [
+      "Current is the rate of charge transfer. For constant I, Q = It, with A = C s−1",
+      "Moles of e− = Q/F. One mole of Cu requires two moles of e−, giving mCu = ηItM/(2F), where η is current efficiency",
+      "Average thickness h = m/(ρA) requires the actual plated area and consistent units. The equation assumes a uniform film",
+      "1 Ah = 3600 C is a unit of charge. Approximate energy W = Vavg × capacity(Ah), so it depends on both capacity and average voltage"
+    ],
+    "data_table": {
+      "headers": [
+        "I (A)",
+        "Q (C)",
+        "mCu at η = 90% (mg)",
+        "h over 10.0 cm2 (μm)"
+      ],
+      "rows": [
+        [
+          "0.050",
+          "30.0",
+          "8.891",
+          "0.992"
+        ],
+        [
+          "0.100",
+          "60.0",
+          "17.782",
+          "1.985"
+        ],
+        [
+          "0.200",
+          "120.0",
+          "35.565",
+          "3.969"
+        ]
+      ],
+      "caption": "Teaching data calculated from Faraday's law: t = 600 s, n = 2, M = 63.546 g mol−1, F = 96485 C mol−1, ρ = 8.96 g cm−3, η = 0.90. These are not measurements of real films"
+    },
+    "source_urls": [
+      "https://openstax.org/books/chemistry-2e/pages/17-7-electrolysis"
+    ],
+    "student_tasks": [
+      "For I = 0.100 A, t = 600 s, η = 90%, MCu = 63.546 g mol−1, F = 96485 C mol−1, and n = 2, find Q and Cu mass with units",
+      "Spread 0.017782 g of Cu uniformly over an actual plated area of 10.0 cm2, with ρ = 8.96 g cm−3. Find h in μm, then predict h for an area of 20.0 cm2 at the same mass. Use 1 cm = 10000 μm",
+      "Hypothetical batteries A and B both have a capacity of 1.00 Ah, but average voltages of 3.2 and 3.7 V, respectively. Find each battery's charge in C and energy in Wh. Use 1 Ah = 3600 C"
+    ],
+    "exit_question": "Two batteries each have a capacity of 1 Ah but different average voltages. Must they store the same energy? Explain",
+    "demo": {
+      "title": "Calculate a Cu film and convert battery capacity",
+      "steps": [
+        "Minutes 0–2: predict the effect of doubling I with other variables fixed, then compare the results",
+        "Minutes 2–3: restore the initial values and lower η from 100% to 90%. Point out that Q is unchanged while mass decreases",
+        "Minutes 3–5: increase area from 10 to 20 cm2 at fixed I. Predict and check that thickness is halved",
+        "Minutes 5–6: check the conversion from cm to μm and record the uniform-film assumption",
+        "Minutes 6–8: switch to the two 1 Ah battery cards. Calculate the same 3600 C for both but energies of 3.2 and 3.7 Wh"
+      ],
+      "limitations": "The model does not simulate nucleation, roughness, side-reaction mechanisms, or current distribution. η is a user-specified input, not a quantity predicted by the model"
+    },
+    "worksheet_url": "/downloads/worksheet-10.pdf",
+    "dataset_url": "/datasets/class_10_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=10"
+  },
+  {
+    "number": 11,
+    "title_th": "Electrical Double Layers and Supercapacitors",
+    "title_en": "Electrical Double Layers and Supercapacitors",
+    "objectives": [
+      "Explain charge accumulation at electrode–electrolyte interfaces and distinguish capacitive current from Faradaic current.",
+      "Read constant-current voltage–time graphs, calculate capacitance, and compare EDLC and battery storage mechanisms."
+    ],
+    "prerequisites": "Charge Q = It and units A, C, and V; electron and ion pathways from Class 8.",
+    "concepts": [
+      "In the ideal EDLC model, electronic charge on an electrode is balanced by the arrangement of charge in the electrolyte near its surface. Electrons do not need to cross the interface and participate in redox reactions.",
+      "C = ΔQ/ΔV; at constant current I, C = IΔt/ΔV. At the same current, the less steep V–t line corresponds to a larger C.",
+      "For constant C, stored energy U = ½CV². Charge, measured in C, and energy, measured in J, are different quantities.",
+      "Batteries store energy through Faradaic processes, whereas EDLCs primarily separate charge at surfaces. Pseudocapacitors and hybrid devices may involve Faradaic processes, so this distinction should not be generalized to every supercapacitor."
+    ],
+    "data_table": {
+      "headers": [
+        "Time (s)",
+        "V_A (V)",
+        "V_B (V)"
+      ],
+      "rows": [
+        [
+          "0",
+          "0.00",
+          "0.00"
+        ],
+        [
+          "5",
+          "0.25",
+          "0.50"
+        ],
+        [
+          "10",
+          "0.50",
+          "1.00"
+        ],
+        [
+          "15",
+          "0.75",
+          "1.50"
+        ],
+        [
+          "20",
+          "1.00",
+          "2.00"
+        ]
+      ],
+      "caption": "Calculated teaching data for ideal EDLCs charged at I = 0.010 A from V0 = 0 V. Use the V–t data to determine capacitance; not experimental results."
+    },
+    "source_urls": [
+      "https://www.gamry.com/application-notes/battery-research/electrochemical-capacitors-cyclic-charge-discharge-and-stacks",
+      "https://www.eaton.com/ca/en-gb/products/electronic-components/topics/supercapacitor-applications-guide.html"
+    ],
+    "student_tasks": [
+      "Using the table and I = 0.010 A, find the V–t slope and capacitance of A and B with C = IΔt/ΔV. Show units at every step.",
+      "Keep I = 0.010 A and the time at 20 s, but increase C_A from 0.200 to 0.400 F. What is the final voltage, and does the charge received change?",
+      "Draw both interfaces of an EDLC during charging. Label the charges and electron directions in the external circuit, then state one difference from a Li-ion battery."
+    ],
+    "exit_question": "Two ideal EDLCs receive the same charge. A has the smaller voltage change. Which device has the larger capacitance, and why?",
+    "demo": {
+      "title": "Vary the Current and Find Capacitance from a Graph",
+      "steps": [
+        "Ask everyone to predict whether A or B will have the steeper line and choose a reason before starting the simulation.",
+        "Show charging for 20 s. Pause at 5, 10, and 20 s so students can read the voltages and record their units.",
+        "Use two points to calculate C, then compare with the configured values.",
+        "Increase I to 0.020 A while keeping C and time unchanged. Predict the new slope before displaying the result.",
+        "Restore the original I and increase C_A to 0.400 F. Ask students to explain the change using ΔQ = CΔV.",
+        "Finish with a diagram of charges at both surfaces. Identify where ions arrange themselves and where electrons flow."
+      ],
+      "limitations": "Real EDLCs have ESR, leakage, and capacitance that may vary with conditions. These straight-line data support conceptual practice and do not specify the performance of a commercial product."
+    },
+    "worksheet_url": "/downloads/worksheet-11.pdf",
+    "dataset_url": "/datasets/class_11_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=11"
+  },
+  {
+    "number": 12,
+    "title_th": "Electrode Kinetics and Mass Transport",
+    "title_en": "Electrode Kinetics and Mass Transport",
+    "objectives": [
+      "Explain overpotential and calculate Butler–Volmer current using the supplied equation and constants.",
+      "Distinguish kinetic limitations from mass-transport limitations and use graphs to choose a reasoned change in conditions."
+    ],
+    "prerequisites": "Equilibrium potential from Class 9; reading graph axes and signs; using a calculator exp function.",
+    "concepts": [
+      "η = E − E_eq is the overpotential for the specified reaction. In this sign convention, anodic current is positive and cathodic current is negative.",
+      "Use the one-electron reaction model j = j₀[exp(Fη/2RT) − exp(−Fη/2RT)] with α = 0.5 and without mass-transport limitation.",
+      "At η = 0, the net current is zero. This does not mean that the exchange currents in both directions have stopped.",
+      "When delivery of reactants to the surface is the bottleneck, the current approaches a limiting current. Increasing |η| further has little effect, whereas increasing mass transport may raise the limiting current."
+    ],
+    "data_table": {
+      "headers": [
+        "η (V)",
+        "|j| modeled unstirred (mA/cm²)",
+        "|j| modeled stirred (mA/cm²)"
+      ],
+      "rows": [
+        [
+          "−0.10",
+          "1.556",
+          "3.231"
+        ],
+        [
+          "−0.15",
+          "1.805",
+          "4.532"
+        ],
+        [
+          "−0.20",
+          "1.922",
+          "5.346"
+        ],
+        [
+          "−0.25",
+          "1.970",
+          "5.735"
+        ]
+      ],
+      "caption": "Calculated cathodic-branch data at high overpotential. Values are magnitudes |j|; the current itself is negative. j_lim = 2 and 6 mA/cm², j₀ = 1 mA/cm², α = 0.5, n = 1, T = 298.15 K; not experimental results."
+    },
+    "source_urls": [
+      "https://doc.comsol.com/6.3/doc/com.comsol.help.edecm/edecm_ug_electrochem.06.100.html",
+      "https://doc.comsol.com/6.3/doc/com.comsol.help.battery/battery_ug_modeling.05.08.html"
+    ],
+    "student_tasks": [
+      "Given j = j₀[exp(Fη/2RT) − exp(−Fη/2RT)], j₀ = 1.00 mA/cm², α = 0.5, n = 1, T = 298.15 K, F = 96485 C/mol, and R = 8.314 J/(mol K), find j at η = −0.050 V and explain its sign. Then state j at η = 0.",
+      "For j_lim = 2 in the table, how much does the current magnitude increase in mA/cm² when η changes from −0.20 to −0.25 V? Express the increase as a percentage of the initial value.",
+      "At η = −0.25 V, compare the modeled unstirred case j_lim = 2 with the modeled stirred case j_lim = 6. What change should be tested to increase current? State one limitation of your conclusion."
+    ],
+    "exit_question": "If current is already transport-limited, must increasing |overpotential| always increase it substantially? Explain.",
+    "demo": {
+      "title": "When to Increase Overpotential and When to Improve Transport",
+      "steps": [
+        "Set η = 0 and ask what zero net current means.",
+        "Ask students to predict the sign and magnitude at η = ±0.050 V before displaying the BV values.",
+        "Double j₀ while holding η constant and examine how the current changes.",
+        "Switch to the cathodic table from η = −0.10 to −0.25 V and compare j_lim = 2 and 6.",
+        "Identify where the curves begin to flatten. Ask pairs to choose between increasing |η| and improving mass transport, using numerical evidence.",
+        "Emphasize that this one-electron model is for conceptual practice and does not use measured kinetic parameters for Cu plating."
+      ],
+      "limitations": "The first BV model neglects transport and ohmic loss. The second model combines kinetics and transport through a single-branch approximation at high overpotential. It cannot replace the full equation near equilibrium and does not include side reactions."
+    },
+    "worksheet_url": "/downloads/worksheet-12.pdf",
+    "dataset_url": "/datasets/class_12_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=12"
+  },
+  {
+    "number": 13,
+    "title_th": "Copper Pourbaix Diagrams and Process Interpretation",
+    "title_en": "Copper Pourbaix Diagrams and Process Interpretation",
+    "objectives": [
+      "Use pH and potential to identify stable species or phases on the supplied Cu diagram under the stated conditions.",
+      "Propose a process interpretation while distinguishing thermodynamic conclusions from rates and actual surface protection."
+    ],
+    "prerequisites": "pH from Class 5; reference potentials and equilibrium from Class 9; the distinction between equilibrium and rate from Class 12.",
+    "concepts": [
+      "A Pourbaix diagram is an equilibrium map on pH and E axes with a specified potential reference. Check T, activity, and the species included before reading it.",
+      "In this teaching diagram, Cu(s) represents stable metal, Cu²⁺(aq) represents dissolved ions, and Cu₂O(s) and CuO(s) are oxide phases.",
+      "Boundary lines indicate equilibrium between species. They do not tell us how many seconds a transformation takes.",
+      "An oxide-stable region does not guarantee a protective film. Continuity, adhesion, defects, and kinetics also matter."
+    ],
+    "data_table": {
+      "headers": [
+        "Point",
+        "pH",
+        "E (V vs SHE)"
+      ],
+      "rows": [
+        [
+          "A",
+          "2.0",
+          "0.00"
+        ],
+        [
+          "B",
+          "2.0",
+          "+0.40"
+        ],
+        [
+          "C",
+          "9.0",
+          "0.00"
+        ],
+        [
+          "D",
+          "9.0",
+          "+0.40"
+        ]
+      ],
+      "caption": "Conditions for the teaching diagram: 25 °C, a(Cu²⁺) = 10⁻⁶, with species restricted to Cu/Cu²⁺/Cu₂O/CuO. Points are hypothetical scenarios, not experimental results."
+    },
+    "source_urls": [
+      "https://openstax.org/books/chemistry-2e/pages/g-standard-thermodynamic-properties-for-selected-substances",
+      "https://knowledge.electrochem.org/estir/hist/hist-97-Pourbaix-1.pdf",
+      "https://janaf.nist.gov/tables/Cu-index.html",
+      "https://onlinelibrary.wiley.com/doi/10.1002/maco.202011977"
+    ],
+    "student_tasks": [
+      "Place A(pH 2.0, E 0.00 V), B(2.0, +0.40 V), C(9.0, 0.00 V), and D(9.0, +0.40 V) on the supplied diagram. Name each species and classify it as a metal, ion, or oxide.",
+      "At pH = 9, change E from 0.00 to +0.40 V. What phase change does the diagram predict, and does it tell you how long the change takes?",
+      "An engineering team claims that D certainly protects Cu because it is in the CuO region. Correct this conclusion and propose two additional kinds of evidence to examine."
+    ],
+    "exit_question": "Does an oxide-stable region on a Pourbaix diagram guarantee a protective film or a low corrosion rate? Explain.",
+    "demo": {
+      "title": "Move a Point on the Cu Stability Map",
+      "steps": [
+        "Temporarily hide region names. Ask students to locate pH = 2, E = 0.00 V before revealing the Cu region label.",
+        "Increase E to +0.40 V at pH = 2. Predict the stable species from the diagram, then reveal the result.",
+        "Move to pH = 9 at E = 0.00 V and +0.40 V to distinguish Cu₂O from CuO.",
+        "Ask pairs to explain the change from C to D using species names rather than simply saying that the color changes.",
+        "Present a case in which a high current is measured in an oxide-stable region. Ask whether this contradicts the diagram.",
+        "Conclude that process recommendations must state their conditions and identify additional evidence needed."
+      ],
+      "limitations": "This is a reduced-species equilibrium model for teaching. Real conditions involving chloride, complexants, oxide metastability, or different activities may shift the boundaries. The model does not predict rates or film quality."
+    },
+    "worksheet_url": "/downloads/worksheet-13.pdf",
+    "dataset_url": "/datasets/class_13_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=13"
+  },
+  {
+    "number": 14,
+    "title_th": "Integrated Review Before the Midterm",
+    "title_en": "Integrated Review Before the Midterm",
+    "objectives": [
+      "Connect materials, basic chemistry, charge quantities, and energy-storage choices through engineering problems with complete supplied data.",
+      "Correct your own errors and explain the evidence, units, and assumptions that support your answer."
+    ],
+    "prerequisites": "Review Classes 1–13. Bring previous worksheets and a list of topics you are still unsure about.",
+    "concepts": [
+      "Material selection connects structure, electrical conduction, and function. A dopant changes the majority carrier type while the sample remains neutral overall.",
+      "Cu plating connects I and t to Q, moles of electrons, mass, and thickness, using the specified current efficiency and surface area.",
+      "An energy-storage choice must satisfy both energy demand and power demand. Ah alone does not determine energy.",
+      "A reasoned answer identifies whether its evidence is measured or modeled and avoids claims beyond what that evidence supports."
+    ],
+    "data_table": {
+      "headers": [
+        "Hypothetical device",
+        "Energy information",
+        "Specified maximum power"
+      ],
+      "rows": [
+        [
+          "Li-ion battery",
+          "Average V = 3.7 V; capacity = 0.100 Ah",
+          "0.50 W"
+        ],
+        [
+          "Ideal EDLC bank",
+          "C = 2.0 F; usable range: 5.0 to 3.0 V",
+          "5.0 W"
+        ]
+      ],
+      "caption": "Hypothetical specifications for Station 3. EDLC bank means an assembly of devices, not a voltage specification for a single cell. Neglect losses and assume a suitable voltage converter."
+    },
+    "source_urls": [
+      "https://www.eaton.com/ca/en-gb/products/electronic-components/topics/supercapacitor-applications-guide.html",
+      "https://www.gamry.com/application-notes/battery-research/electrochemical-capacitors-cyclic-charge-discharge-and-stacks"
+    ],
+    "student_tasks": [
+      "Station 1: Cu conducts electricity well, Si is a semiconductor whose carriers can be adjusted by doping, and SiO₂ is an insulator. Select materials for an interconnect, an active semiconductor, and insulation. Explain the majority carriers produced when P or B replaces Si, and whether the sample has a net charge.",
+      "Station 2: Deposit Cu from Cu²⁺ at I = 0.100 A for 600 s, with 90% current efficiency and a total plated area of 10.0 cm². Given M_Cu = 63.546 g/mol, F = 96485 C/mol, ρ_Cu = 8.96 g/cm³, and 1 cm = 10⁴ µm, calculate Q, mass, and average thickness. Assume a uniform film.",
+      "Station 3: Use the hypothetical table data to choose a device for a 3 W pulse lasting 5 s and a continuous 0.10 W load lasting 1 h. Assume voltage conversion at 100% efficiency and that all the stated energy is usable. Use E_load = Pt, E_battery(Wh) = V_avg × capacity(Ah), E_EDLC = ½C(V_max² − V_min²), and 1 Wh = 3600 J. Show energy demand and power demand separately."
+    ],
+    "exit_question": "Identify one error you corrected today and explain the reasoning or evidence that changed your answer.",
+    "demo": {
+      "title": "Three Problem-Solving Stations Using Simulations and Supplied Data",
+      "steps": [
+        "Minutes 0–5: the instructor explains the required submissions and the expectation to justify answers.",
+        "Minutes 5–25: complete the first station, with 3 minutes for prediction, 12 minutes for problem solving, and 5 minutes for checking and transition.",
+        "Minutes 25–45 and 45–65: rotate through the second and third stations using the same timing.",
+        "Minutes 65–80: the instructor discusses three common errors, asking students to cite worksheet evidence.",
+        "Minutes 80–85: each student records an error they corrected and a topic needing further practice.",
+        "Minutes 85–90: submit an individual online exit ticket, even though the station worksheets were completed collaboratively."
+      ],
+      "limitations": "The stations use simplified models with converter efficiency = 100%. Real device selection also requires losses, ESR, voltage range, degradation, and more detailed load information."
+    },
+    "worksheet_url": "/downloads/worksheet-14.pdf",
+    "dataset_url": "/datasets/class_14_teaching_data.csv",
+    "demo_url": "/demo.html?lesson=14"
+  }
+]

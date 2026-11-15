@@ -1,0 +1,56 @@
+name: Test and publish course pages
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      pages_enabled: ${{ steps.hosting.outputs.enabled }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Build the public material
+        run: /usr/bin/python3 scripts/build_pages.py
+      - name: Check lesson links, forms and downloads
+        run: /usr/bin/python3 tools/check_pages.py _site
+      - name: Check Pages availability on main
+        id: hosting
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          enabled=$(gh api "repos/$GITHUB_REPOSITORY" --jq .has_pages)
+          echo "enabled=$enabled" >> "$GITHUB_OUTPUT"
+          if [ "$enabled" != true ]; then
+            echo 'The build passed. Pages is disabled for this repository.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload the verified site
+        if: steps.hosting.outputs.enabled == 'true'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+  deploy:
+    needs: build
+    if: needs.build.outputs.pages_enabled == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Deploy the public artifact
+        id: deploy
+        uses: actions/deploy-pages@v5
