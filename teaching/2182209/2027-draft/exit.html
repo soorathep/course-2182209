@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>2182209 · 2027 · Exit ticket and feedback</title>
+<style>
+:root { --teal: #0F6E6B; --amber: #E29A2D; --ink: #1C242B; --graphite: #333F4A; --slate: #66727C; --mist: #B9C1C6; --paper: #F3F0EB; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.5 "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
+main { max-width: 640px; margin: 0 auto; padding: 24px 18px 48px; }
+.course { color: var(--slate); font-size: .9rem; margin: 0; }
+h1 { font-family: "Source Serif 4", Georgia, serif; font-size: 1.6rem; line-height: 1.2; margin: .2em 0 .3em; }
+.lede { margin: 0 0 1.2em; color: var(--graphite); }
+.th { display: block; color: var(--slate); font-size: .9em; font-family: "Course Thai", sans-serif; font-weight: 400; }
+form > div, fieldset { background: #fff; border: 1px solid var(--mist); border-radius: 6px; padding: 14px 16px; margin: 0 0 12px; }
+fieldset { min-width: 0; }
+legend, label.q { font-weight: 600; display: block; margin-bottom: 6px; padding: 0; }
+legend { float: left; width: 100%; }
+legend + * { clear: both; }
+.prompt { border-left: 4px solid var(--amber); padding-left: 10px; margin: 0 0 10px; font-family: "Source Serif 4", Georgia, serif; }
+textarea, select { width: 100%; font: inherit; padding: 9px 10px; border: 1px solid var(--mist); border-radius: 4px; background: #fff; color: var(--ink); }
+textarea { min-height: 96px; resize: vertical; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.opts label { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--mist); border-radius: 4px; padding: 7px 11px; cursor: pointer; }
+.opts input { accent-color: var(--teal); }
+.opts label:has(input:checked) { border-color: var(--teal); background: #e7f1f0; }
+.optional { color: var(--slate); font-weight: 400; font-size: .9em; }
+button { width: 100%; font: 600 1.05rem/1 inherit; font-family: inherit; background: var(--teal); color: #fff; border: 0; border-radius: 4px; padding: 14px; cursor: pointer; }
+button:disabled { opacity: .6; cursor: wait; }
+form > .status { margin-top: 12px; min-height: 1.4em; background: none; border: 0; padding: 0; }
+form > .status.ok { background: #e7f1f0; border-left: 4px solid var(--teal); padding: 12px 14px; }
+form > .status.err { background: #fbeee9; border-left: 4px solid #BE654C; padding: 12px 14px; }
+.privacy { color: var(--slate); font-size: .88rem; margin-top: 18px; }
+.hp { position: absolute; left: -5000px; }
+.whole { border: 2px solid var(--teal); border-radius: 6px; padding: 14px 14px 4px; margin: 4px 0 14px; background: #f4f9f8; }
+.whole h2 { font-family: "Source Serif 4", Georgia, serif; font-size: 1.25rem; margin: 0 0 4px; color: var(--teal); }
+.whole .note { color: var(--graphite); margin: 0 0 12px; font-size: .95rem; }
+.whole h3 { font-size: 1rem; margin: 14px 0 8px; color: var(--graphite); }
+.scale { color: var(--slate); font-size: .85rem; margin: 6px 0 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="course">2182209 Chemistry for Semiconductor Engineering · Classes 1 to 14 · 2027</p>
+  <h1>Exit ticket and feedback</h1>
+  <p class="lede">About 2 minutes. Thai or English. No name, student ID or e-mail is asked for or recorded.</p>
+
+  <form id="f" novalidate>
+    <div>
+      <label class="q" for="session">Class</label>
+      <select id="session" name="session"></select>
+    </div>
+    <fieldset>
+      <legend>Where are you answering from?</legend>
+      <div class="opts"><label><input type="radio" name="mode" value="In class" checked> In class</label><label><input type="radio" name="mode" value="On my own"> On my own (self-study)</label></div>
+    </fieldset>
+    <div>
+      <label class="q" for="exit_ticket">Exit ticket</label>
+      <p class="prompt" id="prompt"></p>
+      <textarea id="exit_ticket" name="exit_ticket" maxlength="3000" required></textarea>
+    </div>
+    <fieldset>
+      <legend>How was the pace today?</legend>
+      <div class="opts"><label><input type="radio" name="pace" value="Too slow"> Too slow</label><label><input type="radio" name="pace" value="About right"> About right</label><label><input type="radio" name="pace" value="Too fast"> Too fast</label></div>
+    </fieldset>
+    <fieldset>
+      <legend>Could you now do today's check on your own?</legend>
+      <div class="opts"><label><input type="radio" name="confidence" value="1"> 1</label><label><input type="radio" name="confidence" value="2"> 2</label><label><input type="radio" name="confidence" value="3"> 3</label><label><input type="radio" name="confidence" value="4"> 4</label><label><input type="radio" name="confidence" value="5"> 5</label></div>
+    </fieldset>
+    <fieldset>
+      <legend>Did the lab work on your device?</legend>
+      <div class="opts"><label><input type="radio" name="lab" value="Yes"> Yes</label><label><input type="radio" name="lab" value="Partly"> Partly</label><label><input type="radio" name="lab" value="No, I need help"> No, I need help</label><label><input type="radio" name="lab" value="Not used"> Not used</label></div>
+    </fieldset>
+    <div>
+      <label class="q" for="unclear">What is still unclear? <span class="optional">optional</span></label>
+      <textarea id="unclear" name="unclear" maxlength="3000"></textarea>
+    </div>
+    <div>
+      <label class="q" for="change">One thing you would change about today? <span class="optional">optional</span></label>
+      <textarea id="change" name="change" maxlength="3000"></textarea>
+    </div>
+    <section class="whole" id="whole" hidden>
+      <h2 id="wholeTitle"></h2>
+      <p class="note" id="wholeNote"></p>
+      <fieldset>
+        <legend>Overall, how valuable <span class="span-scope">were these classes</span> for you?</legend>
+        <div class="opts"><label><input type="radio" name="course_overall" value="1"> 1</label><label><input type="radio" name="course_overall" value="2"> 2</label><label><input type="radio" name="course_overall" value="3"> 3</label><label><input type="radio" name="course_overall" value="4"> 4</label><label><input type="radio" name="course_overall" value="5"> 5</label></div>
+        <p class="scale">1 = not valuable, 5 = very valuable</p>
+      </fieldset>
+      <fieldset>
+        <legend>How much has your ability to explain and calculate the chemistry behind semiconductor processes grown?</legend>
+        <div class="opts"><label><input type="radio" name="course_skill" value="1"> 1</label><label><input type="radio" name="course_skill" value="2"> 2</label><label><input type="radio" name="course_skill" value="3"> 3</label><label><input type="radio" name="course_skill" value="4"> 4</label><label><input type="radio" name="course_skill" value="5"> 5</label></div>
+        <p class="scale">1 = not at all, 5 = a great deal</p>
+      </fieldset>
+      <h3>Slides and narration</h3>
+      <fieldset>
+        <legend>Quality of the slides, narration and captions: clear, correct, and usable for studying on your own</legend>
+        <div class="opts"><label><input type="radio" name="course_slides" value="1"> 1</label><label><input type="radio" name="course_slides" value="2"> 2</label><label><input type="radio" name="course_slides" value="3"> 3</label><label><input type="radio" name="course_slides" value="4"> 4</label><label><input type="radio" name="course_slides" value="5"> 5</label></div>
+        <p class="scale">1 = poor, 5 = excellent</p>
+      </fieldset>
+      <div>
+        <label class="q" for="course_slides_comment">What would make the slides, narration or captions better? Name the class if you can <span class="optional">optional</span></label>
+        <textarea id="course_slides_comment" name="course_slides_comment" maxlength="3000"></textarea>
+      </div>
+      <h3>Labs</h3>
+      <fieldset>
+        <legend>Quality of the labs: clear steps and useful practice</legend>
+        <div class="opts"><label><input type="radio" name="course_labs" value="1"> 1</label><label><input type="radio" name="course_labs" value="2"> 2</label><label><input type="radio" name="course_labs" value="3"> 3</label><label><input type="radio" name="course_labs" value="4"> 4</label><label><input type="radio" name="course_labs" value="5"> 5</label></div>
+        <p class="scale">1 = poor, 5 = excellent</p>
+      </fieldset>
+      <fieldset>
+        <legend>Did the labs work on your device?</legend>
+        <div class="opts"><label><input type="radio" name="course_labs_work" value="Always"> Always</label><label><input type="radio" name="course_labs_work" value="Mostly"> Mostly</label><label><input type="radio" name="course_labs_work" value="Often not"> Often not</label></div>
+      </fieldset>
+      <div>
+        <label class="q" for="course_labs_comment">What would make the labs better? Name the lab if you can <span class="optional">optional</span></label>
+        <textarea id="course_labs_comment" name="course_labs_comment" maxlength="3000"></textarea>
+      </div>
+      <h3>Pace and workload</h3>
+      <fieldset>
+        <legend>Pace</legend>
+        <div class="opts"><label><input type="radio" name="course_pace" value="Too slow"> Too slow</label><label><input type="radio" name="course_pace" value="About right"> About right</label><label><input type="radio" name="course_pace" value="Too fast"> Too fast</label></div>
+      </fieldset>
+      <fieldset>
+        <legend>Workload</legend>
+        <div class="opts"><label><input type="radio" name="course_workload" value="Too light"> Too light</label><label><input type="radio" name="course_workload" value="About right"> About right</label><label><input type="radio" name="course_workload" value="Too heavy"> Too heavy</label></div>
+      </fieldset>
+      <h3>In your own words</h3>
+      <div>
+        <label class="q" for="course_best">What helped you learn most: a class, a demo, a lab, or a habit? <span class="optional">optional</span></label>
+        <textarea id="course_best" name="course_best" maxlength="3000"></textarea>
+      </div>
+      <div>
+        <label class="q" for="course_weak">What was weakest so far? <span class="optional">optional</span></label>
+        <textarea id="course_weak" name="course_weak" maxlength="3000"></textarea>
+      </div>
+      <div>
+        <label class="q" for="course_improve">One change you would make for next year <span class="optional">optional</span></label>
+        <textarea id="course_improve" name="course_improve" maxlength="3000"></textarea>
+      </div>
+    </section>
+    <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit" id="send">Send</button>
+    <div class="status" id="status" role="status" aria-live="polite"></div>
+  </form>
+  <p class="privacy">Answers go to a private store that only the instructor can read. They are used to adjust the next class and the next offering, and are never linked to you.</p>
+</main>
+<script>
+// Shared relay: source and guide in the private repo soorathep/course-feedback; responses land in responses/2182209/.
+const RELAY_URL = 'https://course-feedback-relay.ecs-thailand-election.workers.dev/';
+const COURSE = '2182209';
+const EDITION = '2027';
+const MIDTERM = 14;  // Class 14 is the last class of this part; whole-course questions are asked once, at Class 14
+const prompt = (n) => `Paste the answers that the Lab ${n} page copied for you (button "Copy my answers"). If you did not reach the lab, write in two or three sentences the main idea of Class ${n} and one thing you can now calculate.`;
+const TOTAL = 14;   // Classes 1-14 of the 2027 course; must not exceed the Worker's COURSES['2182209']
+const $ = (id) => document.getElementById(id);
+const s = Math.min(TOTAL, Math.max(1, parseInt(new URLSearchParams(location.search).get('s'), 10) || 1));
+for (let i = 1; i <= TOTAL; i++) $('session').add(new Option('Class ' + i, i, i === s, i === s));
+const WHOLE = ['course_overall', 'course_skill', 'course_slides', 'course_slides_comment', 'course_labs', 'course_labs_work', 'course_labs_comment',
+  'course_pace', 'course_workload', 'course_best', 'course_weak', 'course_improve'];
+const scopeOf = (n) => (n === TOTAL ? 'term' : (n === MIDTERM ? 'pre-midterm' : ''));
+const setPrompt = () => {
+  const n = Number($('session').value); $('prompt').textContent = prompt(n);
+  const scope = scopeOf(n);
+  $('whole').hidden = !scope;
+  if (scope === 'term') { $('wholeTitle').textContent = `Classes 1 to ${TOTAL} as a whole`; $('wholeNote').textContent = 'Last class: questions about Classes 1 to 14 as a whole, including the slides and the labs. All optional.'; }
+  if (scope === 'pre-midterm') { $('wholeTitle').textContent = `Classes 1 to ${MIDTERM} so far`; $('wholeNote').textContent = 'Questions about the classes so far. All optional.'; }
+  document.querySelectorAll('.span-scope').forEach((e) => { e.textContent = `were Classes 1 to ${TOTAL}`; });
+};
+$('session').addEventListener('change', setPrompt); setPrompt();
+const status = (msg, kind) => { $('status').textContent = msg; $('status').className = 'status ' + (kind || ''); };
+
+$('f').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const body = Object.fromEntries(fd.entries());
+  body.course = COURSE; body.session = Number(body.session); body.edition = EDITION;
+  if ($('whole').hidden) WHOLE.forEach((k) => delete body[k]);
+  else if (WHOLE.some((k) => String(body[k] || '').trim())) body.course_scope = scopeOf(body.session);
+  if (!body.exit_ticket.trim()) { status('Please answer the exit-ticket question first.', 'err'); $('exit_ticket').focus(); return; }
+  if (!RELAY_URL) { status('This form is not connected yet. Please tell the instructor.', 'err'); return; }
+  $('send').disabled = true; status('Sending…');
+  try {
+    const r = await fetch(RELAY_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || 'Could not send.');
+    e.target.reset(); $('session').value = String(s); setPrompt();
+    status('Response received. Thank you.', 'ok');
+  } catch (err) {
+    status(err.message + ' Please try again.', 'err');
+  } finally { $('send').disabled = false; }
+});
+</script>
+</body>
+</html>

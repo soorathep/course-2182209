@@ -10,6 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 TEMPLATES = ROOT / "pages"
 PORTAL = "https://semiconductor-chemistry-2182209.soorathep-k.chatgpt.site"
 COURSE = "Chemistry for Semiconductor Engineering"
+DRAFT = "teaching/2182209/2027-draft"   # the 2027 classes: the course front page
+CLASSIC = "classic/"                      # the earlier lesson site, kept but not linked from the front page
 MODULES = [
     ("foundations", "Foundations", 1, 5, "Atoms, bonding, chemical quantities, and solutions"),
     ("materials", "Materials and cells", 6, 8, "From charge carriers in Si to energy storage"),
@@ -156,6 +158,14 @@ def build():
     if source_demo.count(template_link) != 1:
         raise ValueError("Review the simulation's exit-ticket link before rebuilding.")
     outputs["demo.html"] = source_demo.replace(template_link, f'href="{PORTAL}/lessons/${{n}}#exit-ticket"').encode()
+
+    # The earlier site moves under classic/ unchanged (all its links are relative). The front page
+    # redirects to the 2027 classes, which are copied byte for byte as built in the course folder.
+    outputs = {(name if name == ".nojekyll" else CLASSIC + name): payload for name, payload in outputs.items()}
+    outputs["index.html"] = (TEMPLATES / "root-redirect.html").read_bytes()
+    for path in sorted((ROOT / DRAFT).rglob("*")):
+        if path.is_file():
+            outputs[path.relative_to(ROOT).as_posix()] = path.read_bytes()
 
     destination = ROOT / "_site"
     if destination.is_symlink():

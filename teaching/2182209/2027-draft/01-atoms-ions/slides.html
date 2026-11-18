@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>2182209 · Class 1 · Atoms, ions and the materials of a chip</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--sky:#5A91BE;--sage:#83A462;--plum:#995A90;--graphite:#333F4A;--sand:#DFC98F;
+--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--mono:Menlo,Consolas,"DejaVu Sans Mono",monospace}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#2b3138;font-family:"Helvetica Neue",Helvetica,Arial,"DejaVu Sans",sans-serif;color:var(--ink)}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#stage{width:1280px;height:720px;flex:0 0 auto;overflow:hidden;background:#fff;position:relative;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.slide{position:absolute;inset:0;padding:40px 64px 58px;display:none;flex-direction:column}
+.slide.on{display:flex}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.14em;font-size:15px;text-transform:uppercase;margin:0}
+h1{color:var(--teal);font-size:42px;line-height:1.12;margin:6px 0 22px;font-weight:800}
+.body{flex:1;display:flex;gap:28px;min-height:0}
+.col{flex:1;min-width:0;display:flex;flex-direction:column}
+.w40{flex:0 0 40%}.w45{flex:0 0 45%}.w55{flex:0 0 55%}.w60{flex:0 0 60%}
+ul.b{list-style:none;margin:0;padding:0;font-size:24px;line-height:1.36}
+ul.b>li{position:relative;padding-left:30px;margin:0 0 16px}
+ul.b>li::before{content:"";position:absolute;left:2px;top:.5em;width:11px;height:11px;background:var(--amber)}
+ul.b.sm{font-size:21px}ul.b.sm>li{margin-bottom:11px}
+ul.b.xs{font-size:19px}ul.b.xs>li{margin-bottom:8px}
+.hl{color:var(--teal);font-weight:700}
+.panel{background:var(--paper);border-radius:14px;padding:16px 18px;min-height:0;display:flex;flex-direction:column}
+.panel.grow{flex:1}
+.math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:25px;line-height:1.75}
+.math .lbl{font-family:"Helvetica Neue",Arial,sans-serif;font-size:16px;color:var(--slate);display:inline-block;width:150px}
+.code{font-family:var(--mono);font-size:17px;line-height:1.5;white-space:pre;color:var(--graphite)}
+.note{font-size:18px;color:var(--slate);margin-top:10px;line-height:1.4}
+.big{font-size:56px;font-weight:800;color:var(--teal)}
+table.t{border-collapse:collapse;font-size:19px;width:100%}
+table.t th{background:var(--paper);text-align:left;padding:7px 10px;border-bottom:2px solid var(--mist);font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid #e3e6e8}
+table.t td.n,table.t th.n{text-align:right;font-variant-numeric:tabular-nums}
+.act{border:3px solid var(--amber);border-radius:16px;padding:22px 28px;background:#fdf6ea}
+.act .tag{display:inline-block;background:var(--amber);color:#fff;font-weight:800;letter-spacing:.1em;font-size:15px;padding:4px 10px;border-radius:6px;margin-bottom:12px}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px;align-items:center;font-size:16px;color:var(--slate)}
+.ctrl button{font:inherit;font-size:15px;padding:5px 11px;border-radius:8px;border:1.5px solid var(--teal);background:#fff;color:var(--teal);cursor:pointer}
+.ctrl button.on{background:var(--teal);color:#fff}
+.ctrl input[type=range]{width:220px;accent-color:var(--teal)}
+.kpi{display:flex;gap:14px;margin-top:8px}
+.kpi div{background:#fff;border-radius:10px;padding:8px 12px;font-size:15px;color:var(--slate);flex:1}
+.kpi b{display:block;font-size:24px;color:var(--ink)}
+.kpi b.a{color:var(--amber)}
+svg.ch{width:100%;height:100%;display:block}
+.chart{flex:1;min-height:0}
+footer{position:absolute;left:64px;right:64px;bottom:20px;border-top:1px solid var(--mist);padding-top:7px;display:flex;justify-content:space-between;font-size:13px;color:var(--slate)}
+.title-slide{justify-content:center}
+.title-slide h1{font-size:64px;margin-bottom:12px}
+.title-slide .sub{font-size:28px;color:var(--graphite);margin-bottom:40px}
+.title-slide .meta{font-size:19px;color:var(--slate);line-height:1.6}
+.pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;letter-spacing:.06em}
+.pill.rec{background:var(--paper);color:var(--slate)}.pill.live{background:var(--amber);color:#fff}
+.dhint{position:absolute;right:64px;top:42px;font-size:13px;color:var(--slate);border:1px solid var(--mist);border-radius:8px;padding:3px 8px}
+/* Python drawer */
+#drawer{position:absolute;top:0;right:0;bottom:0;width:47%;background:#fbfaf7;border-left:3px solid var(--teal);box-shadow:-8px 0 24px rgba(0,0,0,.15);
+ transform:translateX(102%);transition:transform .25s;display:flex;flex-direction:column;padding:22px 24px 18px;z-index:5}
+#drawer.open{transform:none}
+#drawer h2{margin:0 0 4px;color:var(--teal);font-size:22px}
+#drawer .sub{font-size:14px;color:var(--slate);margin-bottom:10px}
+#drawer textarea{width:100%;height:190px;resize:vertical;border:none;margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13px;line-height:1.45;color:var(--ink);white-space:pre-wrap;outline:none}
+#drawer pre{margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13.5px;line-height:1.45;overflow:auto;white-space:pre}
+#drawer .out{margin-top:10px;flex:1;min-height:0;display:flex;flex-direction:column}
+#drawer .out pre{flex:1;background:#1f262d;color:#e8eef2}
+#drawer .bar{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:13px;color:var(--slate)}
+#drawer button{font:inherit;font-size:14px;padding:6px 12px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer}
+#drawer button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+#notes{position:fixed;left:12px;bottom:12px;max-width:520px;background:#fffef8;border:1px solid var(--mist);border-radius:10px;padding:10px 14px;font-size:14px;line-height:1.45;display:none;z-index:9}
+#help{position:fixed;right:12px;bottom:12px;color:#c9d1d6;font-size:12px}
+
+/* narration and captions */
+#dock{position:fixed;left:0;right:0;display:none;flex-direction:column;align-items:center;gap:6px;padding:0 8px;z-index:8}
+#cap{display:none;color:#F3F0EB;line-height:1.45;text-align:center;overflow:hidden;padding:2px 6px;font-family:"Helvetica Neue",Arial,"Sukhumvit Set","Thonburi","Noto Sans Thai","Sarabun",sans-serif}
+#nbar{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;align-items:center;background:rgba(28,36,43,.9);color:#e8eef2;padding:6px 10px;border-radius:12px;font:13px "Helvetica Neue",Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+#nbar button,#nbar select{white-space:nowrap;font:inherit;font-size:14px;background:#2f3a44;color:#fff;border:1px solid #4a5763;border-radius:8px;padding:5px 10px;cursor:pointer}
+#nbar button.on{background:#0F6E6B;border-color:#0F6E6B}
+#nbar .t{min-width:88px;text-align:center;font-variant-numeric:tabular-nums;color:#c9d1d6}
+#nbar .msg{color:#E29A2D;max-width:330px;line-height:1.25}
+#startov{position:absolute;inset:0;background:rgba(243,240,235,.92);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:6;gap:14px}
+#startov button{font:inherit;font-size:24px;padding:14px 28px;border-radius:12px;border:none;background:#0F6E6B;color:#fff;cursor:pointer}
+#startov p{color:#333F4A;font-size:18px;margin:0}
+@media print{#dock,#startov{display:none!important}}
+@media print{#viewport{position:static;display:block}#stage{transform:none!important;box-shadow:none}.slide{display:flex!important;position:relative;page-break-after:always;height:720px}#drawer,#help,#notes,.dhint{display:none}}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<div id="slides"></div>
+<div id="startov"><button id="startBtn">▶ Start the narrated session</button><p>English narration with English captions below the slide. You move to the next slide yourself.</p><p>→ or Next: next slide · P: pause · C: captions on or off</p></div>
+<aside id="drawer" aria-label="Python for this slide">
+  <h2 id="dTitle">Python</h2>
+  <div class="sub" id="dSub"></div>
+  <textarea id="dCode" spellcheck="false"></textarea>
+  <div class="out"><div class="bar" style="margin:0 0 6px"><span>Output</span><span id="dMode" class="pill rec">RECORDED RUN</span></div><pre id="dOut"></pre></div>
+  <div class="bar"><button id="runCode">Run this code</button><button class="ghost" id="runLive">Recompute all slides</button><button class="ghost" id="useRec">Recorded run</button></div>
+  <div class="bar" id="liveMsg" style="min-height:18px"></div>
+</aside>
+</div></div>
+<div id="notes"></div>
+<div id="dock"><div id="cap" aria-live="polite"></div>
+<div id="nbar"><button id="nPrev" title="Previous slide (←)">‹ Back</button><button id="nPlay" title="Play or pause the narration (P)">▶ Play</button><button id="nStop" title="Stop and go back to the start of this slide">■ Stop</button><span class="t" id="nTime">0:00 / 0:00</span><select id="nSpeed" title="Speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select><button id="nCC" title="Captions: off or English (C)">CC off</button><button id="nNext" title="Next slide (→)">Next ›</button><span class="msg" id="nMsg"></span></div></div>
+<audio id="narr" preload="none"></audio>
+<div id="help">← → move · P narration · C captions · D Python · F full screen · N notes</div>
+<script>
+const RECORDED = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"elements":[{"Z":1,"symbol":"H","name":"hydrogen"},{"Z":2,"symbol":"He","name":"helium"},{"Z":3,"symbol":"Li","name":"lithium"},{"Z":4,"symbol":"Be","name":"beryllium"},{"Z":5,"symbol":"B","name":"boron"},{"Z":6,"symbol":"C","name":"carbon"},{"Z":7,"symbol":"N","name":"nitrogen"},{"Z":8,"symbol":"O","name":"oxygen"},{"Z":9,"symbol":"F","name":"fluorine"},{"Z":10,"symbol":"Ne","name":"neon"},{"Z":11,"symbol":"Na","name":"sodium"},{"Z":12,"symbol":"Mg","name":"magnesium"},{"Z":13,"symbol":"Al","name":"aluminum"},{"Z":14,"symbol":"Si","name":"silicon"},{"Z":15,"symbol":"P","name":"phosphorus"},{"Z":16,"symbol":"S","name":"sulfur"},{"Z":17,"symbol":"Cl","name":"chlorine"},{"Z":18,"symbol":"Ar","name":"argon"},{"Z":19,"symbol":"K","name":"potassium"},{"Z":20,"symbol":"Ca","name":"calcium"},{"Z":21,"symbol":"Sc","name":"scandium"},{"Z":22,"symbol":"Ti","name":"titanium"},{"Z":23,"symbol":"V","name":"vanadium"},{"Z":24,"symbol":"Cr","name":"chromium"},{"Z":25,"symbol":"Mn","name":"manganese"},{"Z":26,"symbol":"Fe","name":"iron"},{"Z":27,"symbol":"Co","name":"cobalt"},{"Z":28,"symbol":"Ni","name":"nickel"},{"Z":29,"symbol":"Cu","name":"copper"},{"Z":30,"symbol":"Zn","name":"zinc"}],"ions":[{"symbol":"Li","name":"lithium","Z":3,"charge":0,"protons":3,"electrons":3,"label":"Li"},{"symbol":"Li","name":"lithium","Z":3,"charge":1,"protons":3,"electrons":2,"label":"Li+"},{"symbol":"Na","name":"sodium","Z":11,"charge":1,"protons":11,"electrons":10,"label":"Na+"},{"symbol":"Cu","name":"copper","Z":29,"charge":0,"protons":29,"electrons":29,"label":"Cu"},{"symbol":"Cu","name":"copper","Z":29,"charge":1,"protons":29,"electrons":28,"label":"Cu+"},{"symbol":"Cu","name":"copper","Z":29,"charge":2,"protons":29,"electrons":27,"label":"Cu2+"},{"symbol":"Si","name":"silicon","Z":14,"charge":0,"protons":14,"electrons":14,"label":"Si"},{"symbol":"O","name":"oxygen","Z":8,"charge":-2,"protons":8,"electrons":10,"label":"O2-"},{"symbol":"F","name":"fluorine","Z":9,"charge":-1,"protons":9,"electrons":10,"label":"F-"}],"li_demo":[{"p":3,"n":4,"e":3,"symbol":"Li","name":"lithium","A":7,"charge":0,"kind":"neutral atom"},{"p":3,"n":4,"e":2,"symbol":"Li","name":"lithium","A":7,"charge":1,"kind":"cation"}],"isotopes":{"Li":[{"A":6,"label":"Li-6","protons":3,"neutrons":3,"mass_u":6.0151228874,"abundance":0.0759},{"A":7,"label":"Li-7","protons":3,"neutrons":4,"mass_u":7.0160034366,"abundance":0.9241}],"O":[{"A":16,"label":"O-16","protons":8,"neutrons":8,"mass_u":15.99491461957,"abundance":0.99757},{"A":17,"label":"O-17","protons":8,"neutrons":9,"mass_u":16.9991317565,"abundance":0.00038},{"A":18,"label":"O-18","protons":8,"neutrons":10,"mass_u":17.99915961286,"abundance":0.00205}],"Si":[{"A":28,"label":"Si-28","protons":14,"neutrons":14,"mass_u":27.97692653465,"abundance":0.92223},{"A":29,"label":"Si-29","protons":14,"neutrons":15,"mass_u":28.9764946649,"abundance":0.04685},{"A":30,"label":"Si-30","protons":14,"neutrons":16,"mass_u":29.973770136,"abundance":0.03092}],"Cu":[{"A":63,"label":"Cu-63","protons":29,"neutrons":34,"mass_u":62.92959772,"abundance":0.6915},{"A":65,"label":"Cu-65","protons":29,"neutrons":36,"mass_u":64.9277897,"abundance":0.3085}]},"M":{"Li":6.94003660291572,"O":15.999404924318277,"Si":28.08549870570596,"Cu":63.54603994583},"compounds":[{"formula":"SiO2","atoms":3,"elements":2,"protons":30,"electrons":30},{"formula":"CuSO4","atoms":6,"elements":3,"protons":77,"electrons":77}],"charges":[{"formula":"CuO","anion":"O","anion_charge":-2,"metal":"Cu","n_metal":1,"metal_charge":2,"metal_ion":"Cu2+","metal_electrons":27},{"formula":"Cu2O","anion":"O","anion_charge":-2,"metal":"Cu","n_metal":2,"metal_charge":1,"metal_ion":"Cu+","metal_electrons":28},{"formula":"CuSO4","anion":"SO4","anion_charge":-2,"metal":"Cu","n_metal":1,"metal_charge":2,"metal_ion":"Cu2+","metal_electrons":27},{"formula":"LiPF6","anion":"PF6","anion_charge":-1,"metal":"Li","n_metal":1,"metal_charge":1,"metal_ion":"Li+","metal_electrons":2},{"formula":"NaCl","anion":"Cl","anion_charge":-1,"metal":"Na","n_metal":1,"metal_charge":1,"metal_ion":"Na+","metal_electrons":10}],"chip":[{"layer":"A","material":"Si","kind":"element","role":"semiconductor: the transistors are built in it","class":"semiconductor"},{"layer":"B","material":"SiO2","kind":"compound","role":"insulator: keeps wires and devices apart","class":"insulator"},{"layer":"C","material":"Cu","kind":"element","role":"conductor: the wires (interconnects) that carry current","class":"conductor"}]},"lab":{"counts":{"Cu2+":{"symbol":"Cu","name":"copper","Z":29,"charge":2,"protons":29,"electrons":27},"Na+":{"symbol":"Na","name":"sodium","Z":11,"charge":1,"protons":11,"electrons":10},"Li+":{"symbol":"Li","name":"lithium","Z":3,"charge":1,"protons":3,"electrons":2},"O2-":{"symbol":"O","name":"oxygen","Z":8,"charge":-2,"protons":8,"electrons":10},"Si":{"symbol":"Si","name":"silicon","Z":14,"charge":0,"protons":14,"electrons":14}},"cu_diff":2,"neutrons":{"Cu-65":36,"Si-28":14},"cu_iso":[{"A":63,"label":"Cu-63","protons":29,"neutrons":34,"mass_u":62.92959772,"abundance":0.6915},{"A":65,"label":"Cu-65","protons":29,"neutrons":36,"mass_u":64.9277897,"abundance":0.3085}],"M_Cu":63.54603994583,"M_Cu_f65_035":63.628964913,"sweep":[{"f65":0.0,"M":62.92959772},{"f65":0.01,"M":62.94957963979999},{"f65":0.02,"M":62.969561559599995},{"f65":0.03,"M":62.9895434794},{"f65":0.04,"M":63.009525399199994},{"f65":0.05,"M":63.029507319},{"f65":0.06,"M":63.04948923879999},{"f65":0.07,"M":63.069471158599995},{"f65":0.08,"M":63.0894530784},{"f65":0.09,"M":63.1094349982},{"f65":0.1,"M":63.129416918000004},{"f65":0.11,"M":63.1493988378},{"f65":0.12,"M":63.169380757599995},{"f65":0.13,"M":63.1893626774},{"f65":0.14,"M":63.209344597199994},{"f65":0.15,"M":63.229326517},{"f65":0.16,"M":63.2493084368},{"f65":0.17,"M":63.269290356599996},{"f65":0.18,"M":63.2892722764},{"f65":0.19,"M":63.3092541962},{"f65":0.2,"M":63.329236116},{"f65":0.21,"M":63.3492180358},{"f65":0.22,"M":63.3691999556},{"f65":0.23,"M":63.3891818754},{"f65":0.24,"M":63.4091637952},{"f65":0.25,"M":63.429145715},{"f65":0.26,"M":63.44912763479999},{"f65":0.27,"M":63.4691095546},{"f65":0.28,"M":63.4890914744},{"f65":0.29,"M":63.509073394199994},{"f65":0.3,"M":63.529055314},{"f65":0.31,"M":63.54903723379999},{"f65":0.32,"M":63.569019153599996},{"f65":0.33,"M":63.5890010734},{"f65":0.34,"M":63.608982993199994},{"f65":0.35,"M":63.628964913},{"f65":0.36,"M":63.6489468328},{"f65":0.37,"M":63.668928752599996},{"f65":0.38,"M":63.6889106724},{"f65":0.39,"M":63.7088925922},{"f65":0.4,"M":63.728874512000004},{"f65":0.41,"M":63.74885643180001},{"f65":0.42,"M":63.7688383516},{"f65":0.43,"M":63.7888202714},{"f65":0.44,"M":63.8088021912},{"f65":0.45,"M":63.828784111000004},{"f65":0.46,"M":63.84876603080001},{"f65":0.47,"M":63.8687479506},{"f65":0.48,"M":63.8887298704},{"f65":0.49,"M":63.9087117902},{"f65":0.5,"M":63.928693710000005},{"f65":0.51,"M":63.9486756298},{"f65":0.52,"M":63.9686575496},{"f65":0.53,"M":63.9886394694},{"f65":0.54,"M":64.0086213892},{"f65":0.55,"M":64.028603309},{"f65":0.56,"M":64.04858522880001},{"f65":0.57,"M":64.0685671486},{"f65":0.58,"M":64.0885490684},{"f65":0.59,"M":64.1085309882},{"f65":0.6,"M":64.128512908},{"f65":0.61,"M":64.14849482780001},{"f65":0.62,"M":64.1684767476},{"f65":0.63,"M":64.1884586674},{"f65":0.64,"M":64.2084405872},{"f65":0.65,"M":64.228422507},{"f65":0.66,"M":64.24840442680001},{"f65":0.67,"M":64.2683863466},{"f65":0.68,"M":64.2883682664},{"f65":0.69,"M":64.3083501862},{"f65":0.7,"M":64.328332106},{"f65":0.71,"M":64.34831402580001},{"f65":0.72,"M":64.3682959456},{"f65":0.73,"M":64.3882778654},{"f65":0.74,"M":64.4082597852},{"f65":0.75,"M":64.428241705},{"f65":0.76,"M":64.44822362480001},{"f65":0.77,"M":64.4682055446},{"f65":0.78,"M":64.4881874644},{"f65":0.79,"M":64.5081693842},{"f65":0.8,"M":64.528151304},{"f65":0.81,"M":64.54813322380001},{"f65":0.82,"M":64.56811514360001},{"f65":0.83,"M":64.5880970634},{"f65":0.84,"M":64.6080789832},{"f65":0.85,"M":64.628060903},{"f65":0.86,"M":64.64804282280001},{"f65":0.87,"M":64.66802474260001},{"f65":0.88,"M":64.6880066624},{"f65":0.89,"M":64.7079885822},{"f65":0.9,"M":64.727970502},{"f65":0.91,"M":64.74795242180001},{"f65":0.92,"M":64.76793434160001},{"f65":0.93,"M":64.7879162614},{"f65":0.94,"M":64.8078981812},{"f65":0.95,"M":64.827880101},{"f65":0.96,"M":64.84786202080001},{"f65":0.97,"M":64.86784394060001},{"f65":0.98,"M":64.8878258604},{"f65":0.99,"M":64.9078077802},{"f65":1.0,"M":64.9277897}],"Cu2O":{"formula":"Cu2O","anion":"O","anion_charge":-2,"metal":"Cu","n_metal":2,"metal_charge":1,"metal_ion":"Cu+","metal_electrons":28},"CuO":{"formula":"CuO","anion":"O","anion_charge":-2,"metal":"Cu","n_metal":1,"metal_charge":2,"metal_ion":"Cu2+","metal_electrons":27},"SiO2":{"formula":"SiO2","atoms":3,"elements":2,"protons":30,"electrons":30},"chip":[{"layer":"A","material":"Si","kind":"element","role":"semiconductor: the transistors are built in it","class":"semiconductor"},{"layer":"B","material":"SiO2","kind":"compound","role":"insulator: keeps wires and devices apart","class":"insulator"},{"layer":"C","material":"Cu","kind":"element","role":"conductor: the wires (interconnects) that carry current","class":"conductor"}]}};
+const LAB_FILE = "atoms_lab.py?v=c01-5942b9c6";
+const LAB_SRC = "\"\"\"Class 1 of 2182209 Chemistry for Semiconductor Engineering (2027 draft).\n\nAtoms, ions and the materials of a chip. Every number on the Class 1 slides and\nin Lab 1 comes from this module.\n\nRun `python atoms_lab.py` for a printed summary, or `python atoms_lab.py --json`\nto write atoms-results.json, which the build embeds in the slides and the lab.\n\nData: element symbols and atomic numbers; isotope masses (u) and\nrepresentative isotopic abundances from NIST, \"Atomic Weights and Isotopic\nCompositions with Relative Atomic Masses\" (https://www.nist.gov/pml/atomic-weights-and-isotopic-compositions-relative-atomic-masses).\nEverything else is counting. NumPy only, so it also runs in the browser.\n\"\"\"\nimport json\nimport sys\n\nimport numpy as np\n\n# ---------------------------------------------------------------- elements\n# symbol and name for Z = 1 to 30 (enough for every species in Classes 1 to 14)\nELEMENTS = [\n    (\"H\", \"hydrogen\"), (\"He\", \"helium\"), (\"Li\", \"lithium\"), (\"Be\", \"beryllium\"), (\"B\", \"boron\"),\n    (\"C\", \"carbon\"), (\"N\", \"nitrogen\"), (\"O\", \"oxygen\"), (\"F\", \"fluorine\"), (\"Ne\", \"neon\"),\n    (\"Na\", \"sodium\"), (\"Mg\", \"magnesium\"), (\"Al\", \"aluminum\"), (\"Si\", \"silicon\"), (\"P\", \"phosphorus\"),\n    (\"S\", \"sulfur\"), (\"Cl\", \"chlorine\"), (\"Ar\", \"argon\"), (\"K\", \"potassium\"), (\"Ca\", \"calcium\"),\n    (\"Sc\", \"scandium\"), (\"Ti\", \"titanium\"), (\"V\", \"vanadium\"), (\"Cr\", \"chromium\"), (\"Mn\", \"manganese\"),\n    (\"Fe\", \"iron\"), (\"Co\", \"cobalt\"), (\"Ni\", \"nickel\"), (\"Cu\", \"copper\"), (\"Zn\", \"zinc\"),\n]\nZ_OF = {sym: z + 1 for z, (sym, _) in enumerate(ELEMENTS)}\n\n# isotopes: mass number A -> (isotope mass in u, abundance as a fraction of atoms)\nISOTOPES = {\n    \"Li\": {6: (6.0151228874, 0.0759), 7: (7.0160034366, 0.9241)},\n    \"O\": {16: (15.99491461957, 0.99757), 17: (16.99913175650, 0.00038), 18: (17.99915961286, 0.00205)},\n    \"Si\": {28: (27.97692653465, 0.92223), 29: (28.97649466490, 0.04685), 30: (29.973770136, 0.03092)},\n    \"Cu\": {63: (62.92959772, 0.6915), 65: (64.92778970, 0.3085)},\n}\n\n\ndef r6(x):\n    \"\"\"Round to 6 decimals for printing (lists too), as the slides show it.\"\"\"\n    if isinstance(x, (list, tuple)):\n        return [r6(v) for v in x]\n    v = round(float(x), 6)\n    return 0.0 if v == 0 else v\n\n\n# ---------------------------------------------------------------- counting\ndef particles(symbol, charge=0, A=None):\n    \"\"\"Protons, electrons and (if A is given) neutrons of an atom or a monatomic ion.\n\n    Z identifies the element; net charge (in units of e) = protons - electrons.\n    \"\"\"\n    Z = Z_OF[symbol]\n    out = {\"symbol\": symbol, \"name\": ELEMENTS[Z - 1][1], \"Z\": Z, \"charge\": charge,\n           \"protons\": Z, \"electrons\": Z - charge}\n    if A is not None:\n        out[\"A\"] = A\n        out[\"neutrons\"] = A - Z\n    return out\n\n\ndef build_atom(p, n, e):\n    \"\"\"What the atom builder on slide 10 shows for p protons, n neutrons and e electrons.\"\"\"\n    if p < 1 or p > len(ELEMENTS):\n        return {\"p\": p, \"n\": n, \"e\": e, \"symbol\": None}\n    sym, name = ELEMENTS[p - 1]\n    q = p - e\n    return {\"p\": p, \"n\": n, \"e\": e, \"symbol\": sym, \"name\": name, \"A\": p + n, \"charge\": q,\n            \"kind\": \"neutral atom\" if q == 0 else (\"cation\" if q > 0 else \"anion\")}\n\n\ndef label(symbol, charge):\n    \"\"\"Text label such as Cu2+, O2- or Na+.\"\"\"\n    if charge == 0:\n        return symbol\n    mag = \"\" if abs(charge) == 1 else str(abs(charge))\n    return f\"{symbol}{mag}{'+' if charge > 0 else '-'}\"\n\n\nION_TABLE = [(\"Li\", 0), (\"Li\", 1), (\"Na\", 1), (\"Cu\", 0), (\"Cu\", 1), (\"Cu\", 2), (\"Si\", 0), (\"O\", -2), (\"F\", -1)]\n\n\ndef ion_table():\n    return [dict(particles(s, q), label=label(s, q)) for s, q in ION_TABLE]\n\n\n# ---------------------------------------------------------------- isotopes\ndef isotopes(symbol):\n    Z = Z_OF[symbol]\n    return [{\"A\": A, \"label\": f\"{symbol}-{A}\", \"protons\": Z, \"neutrons\": A - Z, \"mass_u\": m, \"abundance\": f}\n            for A, (m, f) in sorted(ISOTOPES[symbol].items())]\n\n\ndef average_mass(symbol, abundances=None):\n    \"\"\"Abundance-weighted mean isotope mass (u), the atomic weight used in later classes.\n\n    `abundances` (optional) replaces the natural fractions, in the order of mass number;\n    they are normalized so that they sum to 1.\n    \"\"\"\n    iso = sorted(ISOTOPES[symbol].items())\n    m = np.array([v[0] for _, v in iso])\n    f = np.array([v[1] for _, v in iso]) if abundances is None else np.array(abundances, dtype=float)\n    f = f / f.sum()\n    return float(m @ f)\n\n\ndef cu_sweep():\n    \"\"\"Average atomic mass of Cu as the Cu-65 fraction goes from 0 to 1 in steps of 0.01.\"\"\"\n    return [{\"f65\": round(k / 100, 2), \"M\": average_mass(\"Cu\", [1 - k / 100, k / 100])} for k in range(101)]\n\n\n# ---------------------------------------------------------------- compounds\n# formula units: list of (symbol, count); ionic compounds also list the known anion and its charge\nCOMPOUNDS = {\n    \"SiO2\": {\"atoms\": [(\"Si\", 1), (\"O\", 2)], \"bonding\": \"covalent network\", \"role\": \"insulator between devices and wires\"},\n    \"CuO\": {\"atoms\": [(\"Cu\", 1), (\"O\", 1)], \"anion\": (\"O\", -2, 1), \"cation\": (\"Cu\", 1)},\n    \"Cu2O\": {\"atoms\": [(\"Cu\", 2), (\"O\", 1)], \"anion\": (\"O\", -2, 1), \"cation\": (\"Cu\", 2)},\n    \"CuSO4\": {\"atoms\": [(\"Cu\", 1), (\"S\", 1), (\"O\", 4)], \"anion\": (\"SO4\", -2, 1), \"cation\": (\"Cu\", 1)},\n    \"LiPF6\": {\"atoms\": [(\"Li\", 1), (\"P\", 1), (\"F\", 6)], \"anion\": (\"PF6\", -1, 1), \"cation\": (\"Li\", 1)},\n    \"NaCl\": {\"atoms\": [(\"Na\", 1), (\"Cl\", 1)], \"anion\": (\"Cl\", -1, 1), \"cation\": (\"Na\", 1)},\n}\n\n\ndef formula_count(name):\n    \"\"\"Atoms, protons and electrons in one neutral formula unit.\"\"\"\n    c = COMPOUNDS[name]\n    atoms = sum(k for _, k in c[\"atoms\"])\n    protons = sum(Z_OF[s] * k for s, k in c[\"atoms\"])\n    return {\"formula\": name, \"atoms\": atoms, \"elements\": len(c[\"atoms\"]), \"protons\": protons, \"electrons\": protons}\n\n\ndef cation_charge(name):\n    \"\"\"Charge of each metal ion from charge balance: n_cat * q_cat + n_an * q_an = 0.\"\"\"\n    c = COMPOUNDS[name]\n    an, q_an, n_an = c[\"anion\"]\n    sym, n_cat = c[\"cation\"]\n    q = -n_an * q_an / n_cat\n    assert q == int(q)\n    return {\"formula\": name, \"anion\": an, \"anion_charge\": q_an, \"metal\": sym, \"n_metal\": n_cat,\n            \"metal_charge\": int(q), \"metal_ion\": label(sym, int(q)), \"metal_electrons\": Z_OF[sym] - int(q)}\n\n\n# ---------------------------------------------------------------- the chip\nCHIP = [\n    {\"layer\": \"A\", \"material\": \"Si\", \"kind\": \"element\", \"role\": \"semiconductor: the transistors are built in it\", \"class\": \"semiconductor\"},\n    {\"layer\": \"B\", \"material\": \"SiO2\", \"kind\": \"compound\", \"role\": \"insulator: keeps wires and devices apart\", \"class\": \"insulator\"},\n    {\"layer\": \"C\", \"material\": \"Cu\", \"kind\": \"element\", \"role\": \"conductor: the wires (interconnects) that carry current\", \"class\": \"conductor\"},\n]\n\n\n# ---------------------------------------------------------------- results\ndef lab_results():\n    cu, cu2 = particles(\"Cu\", 0), particles(\"Cu\", 2)\n    return {\n        \"counts\": {k: particles(s, q) for k, (s, q) in {\"Cu2+\": (\"Cu\", 2), \"Na+\": (\"Na\", 1), \"Li+\": (\"Li\", 1),\n                                                         \"O2-\": (\"O\", -2), \"Si\": (\"Si\", 0)}.items()},\n        \"cu_diff\": cu[\"electrons\"] - cu2[\"electrons\"],\n        \"neutrons\": {\"Cu-65\": particles(\"Cu\", 0, 65)[\"neutrons\"], \"Si-28\": particles(\"Si\", 0, 28)[\"neutrons\"]},\n        \"cu_iso\": isotopes(\"Cu\"),\n        \"M_Cu\": average_mass(\"Cu\"),\n        \"M_Cu_f65_035\": average_mass(\"Cu\", [0.65, 0.35]),\n        \"sweep\": cu_sweep(),\n        \"Cu2O\": cation_charge(\"Cu2O\"), \"CuO\": cation_charge(\"CuO\"),\n        \"SiO2\": formula_count(\"SiO2\"),\n        \"chip\": CHIP,\n    }\n\n\ndef classroom_results():\n    R = {\"meta\": {\"numpy\": np.__version__, \"scipy\": __import__(\"scipy\").__version__, \"python\": sys.version.split()[0]}}\n    R[\"lecture\"] = {\n        \"elements\": [{\"Z\": z + 1, \"symbol\": s, \"name\": n} for z, (s, n) in enumerate(ELEMENTS)],\n        \"ions\": ion_table(),\n        \"li_demo\": [build_atom(3, 4, 3), build_atom(3, 4, 2)],\n        \"isotopes\": {s: isotopes(s) for s in (\"Li\", \"O\", \"Si\", \"Cu\")},\n        \"M\": {s: average_mass(s) for s in (\"Li\", \"O\", \"Si\", \"Cu\")},\n        \"compounds\": [formula_count(n) for n in (\"SiO2\", \"CuSO4\")],\n        \"charges\": [cation_charge(n) for n in (\"CuO\", \"Cu2O\", \"CuSO4\", \"LiPF6\", \"NaCl\")],\n        \"chip\": CHIP,\n    }\n    R[\"lab\"] = lab_results()\n    return R\n\n\nif __name__ == \"__main__\":\n    R = classroom_results()\n    if \"--json\" in sys.argv:\n        with open(\"atoms-results.json\", \"w\") as fh:\n            json.dump(R, fh, indent=1)\n        print(\"wrote atoms-results.json\"); sys.exit()\n    L = R[\"lecture\"]\n    for q in L[\"ions\"]:\n        print(f\"{q['label']:5s} protons {q['protons']:2d} electrons {q['electrons']:2d}\")\n    for s, m in L[\"M\"].items():\n        print(f\"average atomic mass {s}: {r6(m)} u\")\n    for c in L[\"charges\"]:\n        print(f\"{c['formula']}: {c['metal_ion']} ({c['metal_electrons']} electrons)\")\n    print(\"SiO2:\", L[\"compounds\"][0])\n    print(\"Cu with 35% Cu-65:\", r6(R[\"lab\"][\"M_Cu_f65_035\"]), \"u\")\n";   // embedded copy, so live Python also works when the file is opened locally
+let R = RECORDED, MODE = "recorded";
+const C = {teal:"#0F6E6B",amber:"#E29A2D",rust:"#BE654C",sky:"#5A91BE",sage:"#83A462",plum:"#995A90",graphite:"#333F4A",sand:"#DFC98F",ink:"#1C242B",slate:"#66727C",mist:"#B9C1C6",paper:"#F3F0EB"};
+const fmt = (x,d=0)=>x==null?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+
+/* ---------- tiny SVG chart helpers ---------- */
+function svgEl(w,h){return `<svg class="ch" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">`}
+function niceStep(r,n=5){const raw=r/n,p=Math.pow(10,Math.floor(Math.log10(raw||1)));for(const m of [1,2,2.5,5,10]){if(m*p>=raw-1e-12)return m*p}return 10*p}
+function scale(o,lo,hi){const st=niceStep(hi-lo);o.step=st;o.ymin=Math.floor(lo/st+1e-9)*st;o.ymax=Math.ceil(hi/st-1e-9)*st;o.ticks=Math.round((o.ymax-o.ymin)/st);return o}
+function niceMax(v){const p=Math.pow(10,Math.floor(Math.log10(v||1)));for(const m of [1,1.2,1.5,2,2.5,3,4,5,6,8,10]){if(m*p>=v)return m*p}return 10*p}
+function axes(o){ // o: w,h,l,r,t,b,ymin,ymax,xlabels,ylab,ticks
+  const {w,h,l,r,t,b,ymin,ymax}=o, X=w-l-r, Y=h-t-b, n=o.ticks||5; let s="";
+  for(let k=0;k<=n;k++){const v=ymin+(ymax-ymin)*k/n, y=t+Y-(v-ymin)/(ymax-ymin)*Y;
+    s+=`<line x1="${l}" x2="${w-r}" y1="${y}" y2="${y}" stroke="${C.mist}" stroke-width="0.8" opacity=".7"/><text x="${l-8}" y="${y+5}" font-size="16" text-anchor="end" fill="${C.ink}">${fmt(v, (o.step||1)<1?1:0)}</text>`}
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${t+Y}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  const z=t+Y-(0-ymin)/(ymax-ymin)*Y; s+=`<line x1="${l}" x2="${w-r}" y1="${Math.min(t+Y,Math.max(t,z))}" y2="${Math.min(t+Y,Math.max(t,z))}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  if(o.ylab)s+=`<text transform="translate(${16},${t+Y/2}) rotate(-90)" font-size="17" text-anchor="middle" fill="${C.ink}">${o.ylab}</text>`;
+  return s}
+function ymap(o,v){const Y=o.h-o.t-o.b;return o.t+Y-(v-o.ymin)/(o.ymax-o.ymin)*Y}
+function legend(items,x,y){let s="";items.forEach((it,i)=>{const yy=y+i*22;s+=it.line?`<line x1="${x}" x2="${x+22}" y1="${yy}" y2="${yy}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${x}" y="${yy-8}" width="16" height="16" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${x+28}" y="${yy+5}" font-size="16" fill="${C.ink}">${it.t}</text>`});return s}
+function legendRow(items,x,y){let s="",xx=x;items.forEach(it=>{s+=it.line?`<line x1="${xx}" x2="${xx+20}" y1="${y}" y2="${y}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${xx}" y="${y-7}" width="14" height="14" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${xx+26}" y="${y+5}" font-size="16" fill="${C.ink}">${it.t}</text>`;xx+=38+it.t.length*8.2});return s}
+
+/* Food Manufacture: stacked bars of a [month][oil] matrix, optional line */
+function hbar(items,opt={}){ // items: {t,v,c}
+  const w=opt.w||640,h=opt.h||330,l=opt.l||250,r=90,t=16,rowh=(h-t-20)/items.length;
+  const mx=opt.max||niceMax(Math.max(...items.map(i=>i.v)));let s=svgEl(w,h);
+  items.forEach((it,i)=>{const y=t+i*rowh,bw=(w-l-r)*it.v/mx;
+    s+=`<text x="${l-12}" y="${y+rowh/2+5}" font-size="16" text-anchor="end" fill="${C.ink}">${it.t}</text><rect x="${l}" y="${y+rowh*0.18}" width="${Math.max(bw,1)}" height="${rowh*0.64}" fill="${it.c}" rx="3"/><text x="${l+bw+8}" y="${y+rowh/2+6}" font-size="17" font-weight="700" fill="${C.ink}">${opt.fmt?opt.fmt(it.v):fmt(it.v)}</text>`});
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${h-20}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  return s+"</svg>"}
+
+/* ---------- Class 1 helpers ---------- */
+const foot = "2182209 Chemistry for Semiconductor Engineering · Class 1 · Atoms, ions and the materials of a chip · draft for 2027";
+const LC = () => R.lecture;
+const S = [];
+const ion = (sym, q) => q === 0 ? sym : `${sym}<sup>${Math.abs(q) === 1 ? "" : Math.abs(q)}${q > 0 ? "+" : "−"}</sup>`;
+const sub2 = f => f.replace(/(\d+)/g, "<sub>$1</sub>");                                                 // SiO2 -> SiO<sub>2</sub>
+const py6 = v => {let r = Math.round(v * 1e6) / 1e6; if (Object.is(r, -0) || r === 0) r = 0; const s = String(r); return /[.e]/.test(s) ? s : s + ".0"};
+function reveal(bid, aid){const b = document.getElementById(bid); b.onclick = () => {const p = document.getElementById(aid), on = p.style.visibility === "hidden"; p.style.visibility = on ? "visible" : "hidden"; b.textContent = on ? "Hide answers" : "Show answers"}}
+const CHECK = (n, q, a) => `<div class="body"><div class="col w55"><div class="act"><span class="tag">PAUSE AND ANSWER</span>${q}</div>
+<div class="ctrl" style="margin-top:12px"><button id="k${n}btn">Show answers</button></div></div>
+<div class="col"><div class="panel grow" id="k${n}ans" style="visibility:hidden"><ul class="b xs">${a}</ul></div></div></div>`;
+const OL = `<ol style="font-size:21px;line-height:1.5;margin:0;padding-left:26px">`;
+/* average atomic mass of Cu for a Cu-65 fraction f (same formula as atoms_lab.average_mass) */
+function mCu(f){const I = LC().isotopes.Cu; return I[0].mass_u * (1 - f) + I[1].mass_u * f}
+
+/* ---------- opening ---------- */
+S.push({cls:"title-slide", html:()=>`<p class="kicker">Class 1 · Lab 1</p><h1>Atoms, ions and the materials of a chip</h1>
+<div class="sub">What an atom is made of, how an ion differs from an atom, and why a chip needs Si, SiO<sub>2</sub> and Cu</div>
+<div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p>`,
+notes:"First class. Spend one minute on how the course works (slide 6) before Part 1."});
+
+S.push({kicker:"Plan for today", title:"Ninety minutes, one activity, two checks and a lab", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:19px">
+<tr><th>Part</th><th>Content</th><th class="n">Minutes</th></tr>
+<tr><td></td><td>Activity 1: what you already know about atoms</td><td class="n">5</td></tr>
+<tr><td>1</td><td>Particles, symbols and ions: the chip, protons, neutrons, electrons, the atom builder, counting ions; Check 1</td><td class="n">25</td></tr>
+<tr><td>2</td><td>Isotopes, compounds and materials: atomic mass, formulas, charge balance, Si, SiO<sub>2</sub> and Cu at work; Check 2</td><td class="n">25</td></tr>
+<tr><td>Lab 1</td><td>Counting particles in chip and battery materials</td><td class="n">30</td></tr>
+<tr><td></td><td>Exit Ticket and feedback</td><td class="n">5</td></tr>
+<tr><td></td><td><b>Total</b></td><td class="n"><b>90</b></td></tr></table>
+<p class="note">Studying on your own: the narration takes about 20 minutes. Stop at the activity and at each check, then do Lab 1; the whole class takes about 90 minutes.</p></div></div>`});
+
+S.push({kicker:"Activity 1 · 5 minutes · alone, then in pairs", title:"What do you already know?", html:()=>`<div class="body"><div class="col w55"><div class="act"><span class="tag">WRITE, THEN COMPARE</span>
+${OL}<li>Name the three particles in an atom and give the charge of each.</li>
+<li>What does the atomic number of an element tell you?</li>
+<li>Element or compound: Cu, SiO<sub>2</sub>, O<sub>2</sub>?</li>
+<li>What is the difference between the 2 in O<sub>2</sub> and the 2 in Cu<sup>2+</sup>?</li></ol></div>
+<div class="ctrl" style="margin-top:12px"><button id="a1btn">Show answers</button></div></div>
+<div class="col"><div class="panel grow" id="a1ans" style="visibility:hidden"><ul class="b xs">
+<li>Proton, charge +1; neutron, charge 0; electron, charge −1 (in units of the elementary charge e)</li>
+<li>The number of protons in the nucleus. It identifies the element: every Cu atom has 29</li>
+<li>Cu and O<sub>2</sub> are elements (O<sub>2</sub> is a molecule of one element); SiO<sub>2</sub> is a compound of two elements</li>
+<li>In O<sub>2</sub> the subscript counts atoms: two O atoms. In Cu<sup>2+</sup> the superscript is a charge: two electrons fewer than protons</li></ul></div></div></div>`,
+draw:()=>reveal("a1btn","a1ans"),
+notes:"No marks. The point is to find out who needs the counting rules slowly. Question 4 is the most common confusion in Class 1."});
+
+S.push({kicker:"Learning outcomes", title:"By the end of today you can", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Count the protons, neutrons and electrons of an atom or a monatomic ion from Z, the mass number A and the charge</li>
+<li>Read a symbol such as <sup>65</sup>Cu<sup>2+</sup> and tell a subscript in a formula from a charge</li>
+<li>Explain why removing electrons changes the charge but not the element</li>
+<li>Calculate an average atomic mass from isotope masses and abundances</li>
+<li>Tell elements from compounds, count atoms and electrons in a formula unit, and find an ion's charge by charge balance</li>
+<li>Name the roles of Si, SiO<sub>2</sub> and Cu in a chip, and of Li<sup>+</sup> in a battery</li></ul></div></div>`});
+
+S.push({kicker:"Context", title:"Classes 1 to 14: from atoms to copper in a chip", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:17px">
+<tr><th>Classes</th><th>Block</th><th>The question it answers</th></tr>
+<tr><td>1 to 3</td><td>Atoms, bonding, moles</td><td>What are chip materials made of, and how much of each is there?</td></tr>
+<tr><td>4 and 5</td><td>Solutions, pH, equilibrium</td><td>What is in a plating or etching bath?</td></tr>
+<tr><td>6</td><td>Bands and doping</td><td>Why is Si a semiconductor, and how do B and P change it?</td></tr>
+<tr><td>7 to 10</td><td>Redox, cells, Nernst, Faraday</td><td>How do electrons move in a battery or a plating bath, and how much Cu is deposited?</td></tr>
+<tr><td>11 and 12</td><td>Double layer, kinetics, transport</td><td>What happens at the surface, and what limits the current?</td></tr>
+<tr><td>13</td><td>Pourbaix diagrams</td><td>When is Cu stable, dissolved or oxidized?</td></tr>
+<tr><td>14</td><td>Review</td><td>Putting it together before the midterm</td></tr></table>
+<p class="note">Notation for the course: Z is the atomic number, A the mass number, e the elementary charge (1.602 × 10<sup>−19</sup> C). A charge is written as a superscript, Cu<sup>2+</sup>; a count of atoms as a subscript, SiO<sub>2</sub>.</p></div></div>`});
+
+S.push({kicker:"How each class works", title:"Slides, a lab and an Exit Ticket, in class or on your own", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Each class is 90 minutes: a short activity, two parts with a check each, a 30-minute lab, and a 5-minute Exit Ticket</li>
+<li>The slides have a narrated version with captions. Use it when you miss a class or want to review</li>
+<li>Slides marked “D · Python” open the code behind a number when you press D. You can run it in the browser</li>
+<li>The lab page runs on a laptop or a phone. Predict first, then check; the next step opens when you finish</li>
+<li>Hand in the lab's answer file in myCourseVille. The Exit Ticket and feedback form is anonymous</li></ul></div>
+<div class="col"><div class="panel grow"><table class="t" style="font-size:17px"><tr><th>Key</th><th>What it does</th></tr>
+<tr><td>→ ←</td><td>Next or previous slide</td></tr><tr><td>D</td><td>Python for this slide</td></tr>
+<tr><td>P</td><td>Play or pause the narration</td></tr><tr><td>C</td><td>Captions on or off</td></tr><tr><td>F</td><td>Full screen</td></tr></table>
+<p class="note">No chemicals are used in this course's labs. Every number comes from textbook data or a small model, and synthetic data are labeled.</p></div></div></div>`});
+
+/* ---------- Part 1 ---------- */
+function chipSVG(sel){const w=600,h=380;let s=svgEl(w,h);
+ const col={Si:C.teal,SiO2:C.amber,Cu:C.rust},op=m=>sel&&sel!==m?0.35:1;
+ s+=`<rect x="20" y="250" width="560" height="110" fill="${col.Si}" opacity="${op("Si")}" data-m="Si" style="cursor:pointer"/>`;
+ [[90,250],[300,250],[470,250]].forEach(([x,y])=>s+=`<rect x="${x}" y="${y}" width="60" height="22" fill="#fff" opacity="${sel&&sel!=="Si"?0.3:0.55}" pointer-events="none"/>`);
+ s+=`<rect x="20" y="40" width="560" height="210" fill="${col.SiO2}" opacity="${op("SiO2")}" data-m="SiO2" style="cursor:pointer"/>`;
+ [[60,180,120],[250,180,140],[440,180,110],[110,80,330]].forEach(([x,y,wd])=>s+=`<rect x="${x}" y="${y}" width="${wd}" height="34" fill="${col.Cu}" opacity="${op("Cu")}" data-m="Cu" style="cursor:pointer"/>`);
+ [[112,214,36],[300,214,36],[475,214,36],[150,114,22],[400,114,22]].forEach(([x,y,hh])=>s+=`<rect x="${x}" y="${y}" width="16" height="${hh}" fill="${col.Cu}" opacity="${op("Cu")}" data-m="Cu" style="cursor:pointer"/>`);
+ s+=`<text x="566" y="314" font-size="17" fill="#fff" text-anchor="end" pointer-events="none">A · Si wafer</text>`;
+ s+=`<text x="570" y="66" font-size="17" fill="${C.ink}" text-anchor="end" pointer-events="none">B · SiO₂</text>`;
+ s+=`<text x="115" y="72" font-size="17" fill="${C.ink}" pointer-events="none">C · Cu wires and vias</text>`;
+ s+=`<text x="20" y="376" font-size="13" fill="${C.slate}" pointer-events="none">Schematic, not to scale. White bands: doped regions where transistors sit.</text>`;
+ return s+"</svg>"}
+S.push({kicker:"Part 1 · Start with a chip", title:"Three materials do three different jobs", html:()=>`<div class="body"><div class="col w55"><div class="panel grow"><div class="chart" id="chip"></div></div></div>
+<div class="col"><p class="note" style="margin-top:0">Click a layer.</p><div class="panel" id="chipinfo" style="font-size:20px;line-height:1.45;min-height:200px"></div>
+<ul class="b xs" style="margin-top:14px"><li>Two of these are elements and one is a compound</li><li>Today: what each is made of. Class 2: why each behaves as it does</li></ul></div></div>`,
+draw:()=>{const info={};LC().chip.forEach(c=>info[c.material]=c);
+ const go=m=>{document.getElementById("chip").innerHTML=chipSVG(m);const q=info[m];
+  document.getElementById("chipinfo").innerHTML=q?`<b style="color:${C.teal}">Layer ${q.layer}: ${sub2(q.material)}</b><br>${q.kind[0].toUpperCase()+q.kind.slice(1)}<br>${q.role[0].toUpperCase()+q.role.slice(1)}`:"Layer A is the silicon wafer, B is silicon dioxide and C is copper. Click one to see its job.";
+  document.querySelectorAll("#chip [data-m]").forEach(e=>e.onclick=ev=>{ev.stopPropagation();go(e.dataset.m)})};go(null)},
+notes:"Ask: which layer carries current? Most students answer correctly; the harder question is why SiO2 must be there."});
+
+S.push({kicker:"Part 1 · Inside the atom", title:"Three particles, and only one of them moves in chemistry", html:()=>`<div class="body"><div class="col w55"><table class="t" style="font-size:19px">
+<tr><th>Particle</th><th>Charge, e</th><th class="n">Mass, u</th><th>Where</th></tr>
+<tr><td>Proton, p<sup>+</sup></td><td>+1</td><td class="n">1.0073</td><td>Nucleus</td></tr>
+<tr><td>Neutron, n</td><td>0</td><td class="n">1.0087</td><td>Nucleus</td></tr>
+<tr><td>Electron, e<sup>−</sup></td><td>−1</td><td class="n">0.00055</td><td>Around the nucleus</td></tr></table>
+<p class="note">u is the atomic mass unit, 1.6605 × 10<sup>−27</sup> kg. e = 1.602 × 10<sup>−19</sup> C. An electron has about 1/1836 of the mass of a proton.</p></div>
+<div class="col"><ul class="b sm"><li>Z, the atomic number, is the number of protons. It fixes the element</li>
+<li>Net charge = protons − electrons, in units of e</li>
+<li>In chemical reactions, plating and batteries, only electrons are gained or lost. The nucleus does not change</li>
+<li>So a Cu atom stays copper whether it has 29, 28 or 27 electrons</li></ul></div></div>`,
+notes:"The table masses are the accepted values to four or five figures. Students need only the charges today; the masses return with isotopes in Part 2."});
+
+S.push({kicker:"Part 1 · Reading a symbol", title:"Four numbers can sit around a symbol", html:()=>`<div class="body"><div class="col w45"><div class="panel grow" style="align-items:center;justify-content:center">
+<div style="font-family:'Times New Roman',serif;font-size:150px;line-height:1;position:relative;padding:40px 110px 40px 80px;color:${C.ink}">
+<span style="position:absolute;left:0;top:18px;font-size:54px;color:${C.teal}">65</span><span style="position:absolute;left:0;bottom:22px;font-size:54px;color:${C.sky}">29</span>
+Cu<span style="position:absolute;right:0;top:18px;font-size:54px;color:${C.rust}">2+</span></div></div></div>
+<div class="col"><table class="t" style="font-size:18px"><tr><th>Position</th><th>Meaning</th><th>Here</th></tr>
+<tr><td style="color:${C.teal};font-weight:700">Top left</td><td>Mass number A = protons + neutrons</td><td>65</td></tr>
+<tr><td style="color:${C.sky};font-weight:700">Bottom left</td><td>Atomic number Z = protons (often left out: the symbol already says it)</td><td>29</td></tr>
+<tr><td style="color:${C.rust};font-weight:700">Top right</td><td>Net charge, in units of e</td><td>2+</td></tr>
+<tr><td style="font-weight:700">Bottom right</td><td>Number of atoms in a formula, as in SiO<sub>2</sub></td><td>none</td></tr></table>
+<ul class="b xs" style="margin-top:14px"><li>This ion: 29 protons, 65 − 29 = 36 neutrons, 29 − 2 = 27 electrons</li><li>A superscript changes the electrons; a subscript counts atoms</li></ul></div></div>`});
+
+function atomSVG(p,n,e){const w=520,h=400,cx=260,cy=200;let s=svgEl(w,h);
+ const caps=[2,8,18,32],r0=[58,98,138,176];let left=e;
+ r0.forEach((r,k)=>{if(left<=0&&k>0)return;s+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${C.mist}" stroke-width="1.2"/>`;
+  const m=Math.min(left,caps[k]);for(let i=0;i<m;i++){const a=2*Math.PI*i/m-Math.PI/2;s+=`<circle cx="${(cx+r*Math.cos(a)).toFixed(1)}" cy="${(cy+r*Math.sin(a)).toFixed(1)}" r="6" fill="${C.amber}"/>`}left-=m});
+ s+=`<circle cx="${cx}" cy="${cy}" r="34" fill="${C.teal}"/><text x="${cx}" y="${cy-4}" font-size="15" fill="#fff" text-anchor="middle">${p} p⁺</text><text x="${cx}" y="${cy+15}" font-size="15" fill="#fff" text-anchor="middle">${n} n</text>`;
+ s+=`<text x="10" y="392" font-size="13" fill="${C.slate}">Counting model: the rings are not orbits. Electrons shown in amber.</text>`;return s+"</svg>"}
+/* the atom builder computes the same quantities as atoms_lab.build_atom */
+function buildAtom(p,n,e){const el=LC().elements[p-1],q=p-e;return {symbol:el.symbol,name:el.name,A:p+n,charge:q,kind:q===0?"neutral atom":q>0?"cation":"anion"}}
+S.push({kicker:"Part 1 · Demo", title:"The atom builder: change one number, watch what changes", html:()=>`<div class="body"><div class="col w55"><div class="panel grow"><div class="chart" id="atom"></div></div></div>
+<div class="col"><div class="ctrl">Protons <input type="range" id="ap" min="1" max="30" step="1" value="3"><b id="apv"></b></div>
+<div class="ctrl">Neutrons <input type="range" id="an" min="0" max="40" step="1" value="4"><b id="anv"></b></div>
+<div class="ctrl">Electrons <input type="range" id="ae" min="0" max="32" step="1" value="3"><b id="aev"></b></div>
+<div class="panel" style="margin-top:6px"><div id="alab" style="font-family:'Times New Roman',serif;font-size:54px;color:${C.ink};line-height:1.1"></div><div id="atxt" style="font-size:19px;line-height:1.45"></div></div>
+<div class="ctrl" style="margin-top:10px"><button id="ali">Li</button><button id="alip">Li⁺</button><button id="acu">Cu</button><button id="acu2">Cu²⁺</button><button id="ao2">O²⁻</button></div></div></div>`,
+draw:()=>{const P=document.getElementById("ap"),Nn=document.getElementById("an"),E=document.getElementById("ae");
+ const go=()=>{const p=+P.value,n=+Nn.value,e=+E.value,a=buildAtom(p,n,e);["ap","an","ae"].forEach(id=>document.getElementById(id+"v").textContent=document.getElementById(id).value);
+  document.getElementById("atom").innerHTML=atomSVG(p,n,e);
+  document.getElementById("alab").innerHTML=`<sup style="font-size:28px">${a.A}</sup>${ion(a.symbol,a.charge)}`;
+  document.getElementById("atxt").innerHTML=`<b>${a.name[0].toUpperCase()+a.name.slice(1)}</b> (Z = ${p}), ${a.kind}<br>Charge = ${p} − ${e} = ${a.charge>0?"+":a.charge<0?"−":""}${Math.abs(a.charge)}<br>Mass number A = ${p} + ${n} = ${a.A}`+(Math.abs(a.charge)>3?`<br><span style="color:${C.rust}">Possible to count, but not a real ion: charges beyond ±3 on one atom do not occur in this course</span>`:"")};
+ const set=(p,n,e)=>{P.value=p;Nn.value=n;E.value=e;go()};
+ [P,Nn,E].forEach(x=>x.oninput=go);
+ document.getElementById("ali").onclick=()=>set(3,4,3);document.getElementById("alip").onclick=()=>set(3,4,2);
+ document.getElementById("acu").onclick=()=>set(29,34,29);document.getElementById("acu2").onclick=()=>set(29,34,27);document.getElementById("ao2").onclick=()=>set(8,8,10);go()},
+py:{title:"The atom builder in Python", sub:"atoms_lab.build_atom(p, n, e)", code:
+`from atoms_lab import build_atom
+for p, n, e in [(3, 4, 3), (3, 4, 2)]:
+    a = build_atom(p, n, e)
+    print(a["symbol"], "A", a["A"], "charge", a["charge"], a["kind"])`,
+out:()=>LC().li_demo.map(a=>`${a.symbol} A ${a.A} charge ${a.charge} ${a.kind}`).join("\n")},
+notes:"Predict before each click: remove one electron from Li. What changes, what stays? Then move the proton slider by one and ask the same question."});
+
+S.push({kicker:"Part 1 · Counting ions", title:"An ion is an atom with electrons added or removed", html:()=>`<div class="body"><div class="col w55"><table class="t" style="font-size:18px" id="iontab"></table></div>
+<div class="col"><div class="panel"><b style="color:${C.teal};font-size:19px">Worked example</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
+Z(Cu) = 29. Find protons and electrons in Cu and Cu<sup>2+</sup>.<br>Cu: 29 protons, 29 electrons, charge 0<br>Cu<sup>2+</sup>: 29 protons; charge +2 = 29 − e, so e = 27<br>Cu has lost 2 electrons and is still copper</div></div>
+<ul class="b xs" style="margin-top:14px"><li>Cation: positive, fewer electrons than protons (metals: Li<sup>+</sup>, Na<sup>+</sup>, Cu<sup>2+</sup>)</li><li>Anion: negative, more electrons than protons (O<sup>2−</sup>, F<sup>−</sup>)</li><li>Electrons = Z − charge, for any monatomic ion</li></ul></div></div>`,
+draw:()=>{document.getElementById("iontab").innerHTML=`<tr><th>Species</th><th class="n">Z</th><th class="n">Protons</th><th class="n">Electrons</th><th class="n">Charge</th></tr>`+
+ LC().ions.map(q=>`<tr><td>${ion(q.symbol,q.charge)}</td><td class="n">${q.Z}</td><td class="n">${q.protons}</td><td class="n">${q.electrons}</td><td class="n">${q.charge>0?"+":q.charge<0?"−":""}${Math.abs(q.charge)}</td></tr>`).join("")},
+py:{title:"Protons and electrons of each species", sub:"atoms_lab.ion_table()", code:
+`from atoms_lab import ion_table
+for q in ion_table():
+    print(q["label"], "protons", q["protons"], "electrons", q["electrons"])`,
+out:()=>LC().ions.map(q=>`${q.label} protons ${q.protons} electrons ${q.electrons}`).join("\n")}});
+
+S.push({kicker:"Part 1 · A common mistake", title:"“A positive ion has more electrons”: why this is wrong", html:()=>`<div class="body"><div class="col w55"><div class="act" style="border-color:${C.rust};background:#fbf0ec"><span class="tag" style="background:${C.rust}">THE CLAIM</span>
+<div style="font-size:22px;line-height:1.45">“Cu<sup>2+</sup> has 31 electrons, because it has a charge of +2.”</div></div>
+<div class="panel" style="margin-top:16px"><b style="color:${C.teal};font-size:19px">The correction</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
+Electrons are negative. Removing two of them leaves the 29 protons two charges ahead: 29 − 27 = +2. A positive ion has fewer electrons than its neutral atom. With 31 electrons the charge would be 29 − 31 = −2.</div></div></div>
+<div class="col"><ul class="b sm"><li>Check every count with charge = protons − electrons</li>
+<li>Li → Li<sup>+</sup>: 3 to 2 electrons. O → O<sup>2−</sup>: 8 to 10 electrons</li>
+<li>Where this matters: in Class 7 you will write Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu. The two electrons on the left are the two that Cu<sup>2+</sup> is missing</li></ul></div></div>`});
+
+S.push({kicker:"Check 1 · 5 minutes", title:"Check 1: particles, symbols and ions", html:()=>CHECK(1,`${OL}
+<li>How many protons and electrons does Na<sup>+</sup> have? Z(Na) = 11.</li>
+<li>An ion has 8 protons and 10 electrons. Which ion is it?</li>
+<li>Cu loses two electrons. Is it still copper? Why?</li>
+<li>In <sup>65</sup>Cu<sup>2+</sup>, what does each of the three numbers tell you?</li></ol>`,
+`<li>11 protons and 10 electrons: 11 − 10 = +1</li><li>Z = 8 is oxygen, and 8 − 10 = −2: O<sup>2−</sup></li>
+<li>Yes. The element is fixed by Z = 29 protons, and losing electrons does not change the nucleus. It is now Cu<sup>2+</sup></li>
+<li>65 is the mass number (protons + neutrons), 2+ the net charge; the atom has 29 protons, 36 neutrons and 27 electrons</li>`),
+draw:()=>reveal("k1btn","k1ans")});
+
+/* ---------- Part 2 ---------- */
+S.push({kicker:"Part 2 · Isotopes", title:"Same element, different number of neutrons", html:()=>`<div class="body"><div class="col w55"><table class="t" style="font-size:17px" id="isotab"></table>
+<p class="note">Isotope masses in u and abundances as a fraction of atoms, from NIST (representative values for natural samples).</p></div>
+<div class="col"><ul class="b sm"><li>Isotopes have the same Z, so the same chemistry, but different A</li>
+<li>Neutrons = A − Z. For Cu-63: 63 − 29 = 34; for Cu-65: 36</li>
+<li>Natural Si is about 92% Si-28. Wafers made of almost pure Si-28 are used to study silicon devices for quantum computing</li>
+<li>The atomic mass on the periodic table is the abundance-weighted average of the isotope masses</li></ul></div></div>`,
+draw:()=>{const I=LC().isotopes;document.getElementById("isotab").innerHTML=`<tr><th>Isotope</th><th class="n">Protons</th><th class="n">Neutrons</th><th class="n">Mass, u</th><th class="n">Abundance</th></tr>`+
+ ["Si","Cu"].map(s=>I[s].map(q=>`<tr><td>${q.label}</td><td class="n">${q.protons}</td><td class="n">${q.neutrons}</td><td class="n">${q.mass_u.toFixed(5)}</td><td class="n">${(100*q.abundance).toFixed(2)}%</td></tr>`).join("")).join("")},
+notes:"Keep the quantum-computing remark to one sentence; it shows that isotopes matter in semiconductor work, nothing more."});
+
+function massChart(f){const w=560,h=380,l=74,r=20,t=18,b=56,X=w-l-r,Y=h-t-b,y0=62.9,y1=65.0;
+ const px=x=>l+X*x,py=y=>t+Y*(y1-y)/(y1-y0);let s=svgEl(w,h);
+ for(let y=63;y<=65.001;y+=0.5)s+=`<line x1="${l}" x2="${l+X}" y1="${py(y)}" y2="${py(y)}" stroke="${C.mist}" stroke-width=".8"/><text x="${l-8}" y="${py(y)+5}" font-size="15" text-anchor="end" fill="${C.ink}">${y.toFixed(1)}</text>`;
+ for(let x=0;x<=1.001;x+=0.25)s+=`<text x="${px(x)}" y="${t+Y+22}" font-size="15" text-anchor="middle" fill="${C.ink}">${x.toFixed(2)}</text>`;
+ s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${t+Y}" stroke="${C.graphite}" stroke-width="1.4"/><line x1="${l}" x2="${l+X}" y1="${t+Y}" y2="${t+Y}" stroke="${C.graphite}" stroke-width="1.4"/>`;
+ s+=`<text x="${l+X/2}" y="${h-10}" font-size="16" text-anchor="middle" fill="${C.ink}">fraction of atoms that are Cu-65</text><text transform="translate(18,${t+Y/2}) rotate(-90)" font-size="16" text-anchor="middle" fill="${C.ink}">average atomic mass, u</text>`;
+ s+=`<line x1="${px(0)}" y1="${py(mCu(0))}" x2="${px(1)}" y2="${py(mCu(1))}" stroke="${C.amber}" stroke-width="3"/>`;
+ const fn=LC().isotopes.Cu[1].abundance;s+=`<circle cx="${px(fn)}" cy="${py(mCu(fn))}" r="7" fill="${C.teal}" stroke="#fff" stroke-width="2"/><text x="${px(fn)+10}" y="${py(mCu(fn))+22}" font-size="15" fill="${C.teal}" font-weight="700">natural Cu</text>`;
+ s+=`<circle cx="${px(f)}" cy="${py(mCu(f))}" r="7" fill="${C.amber}" stroke="#fff" stroke-width="2"/>`;return s+"</svg>"}
+S.push({kicker:"Part 2 · Demo", title:"Atomic mass is a weighted average", html:()=>`<div class="body"><div class="col w55"><div class="panel grow"><div class="chart" id="mch"></div></div></div>
+<div class="col"><div class="panel"><div class="math" style="font-size:21px;line-height:1.6">M(Cu) = f<sub>63</sub>·m<sub>63</sub> + f<sub>65</sub>·m<sub>65</sub><br>= 0.6915 × 62.9296 + 0.3085 × 64.9278<br>= <b>${LC().M.Cu.toFixed(3)} u</b></div></div>
+<p class="note">f: fraction of atoms (f<sub>63</sub> + f<sub>65</sub> = 1); m: isotope mass in u.</p>
+<div class="ctrl" style="margin-top:6px">Cu-65 fraction <input type="range" id="mf" min="0" max="100" step="1" value="31"><b id="mfv"></b></div>
+<div class="kpi"><div>Average mass, u<b class="a" id="mM"></b></div><div>Natural Cu, u<b>${LC().M.Cu.toFixed(3)}</b></div></div>
+<p class="note">The average sits closer to 63 because about 69% of Cu atoms are Cu-63. No single Cu atom has a mass of 63.546 u. Si: ${LC().M.Si.toFixed(3)} u.</p></div></div>`,
+draw:()=>{const sl=document.getElementById("mf"),go=()=>{const f=+sl.value/100;document.getElementById("mfv").textContent=f.toFixed(2);document.getElementById("mM").textContent=mCu(f).toFixed(3);document.getElementById("mch").innerHTML=massChart(f)};sl.oninput=go;go()},
+py:{title:"Average atomic masses of Cu and Si", sub:"atoms_lab.isotopes(), atoms_lab.average_mass()", code:
+`from atoms_lab import isotopes, average_mass, r6
+for q in isotopes("Cu"):
+    print(q["label"], q["mass_u"], q["abundance"])
+print("M(Cu) =", r6(average_mass("Cu")), "u")
+print("M(Si) =", r6(average_mass("Si")), "u")`,
+out:()=>LC().isotopes.Cu.map(q=>`${q.label} ${q.mass_u} ${q.abundance}`).concat([`M(Cu) = ${py6(LC().M.Cu)} u`,`M(Si) = ${py6(LC().M.Si)} u`]).join("\n")},
+notes:"63.546 g/mol returns in Class 3 (moles) and in Class 10 (how much Cu a current deposits)."});
+
+S.push({kicker:"Part 2 · Elements and compounds", title:"Reading a formula: count the atoms, then the electrons", html:()=>`<div class="body"><div class="col w55"><table class="t" style="font-size:18px">
+<tr><th>Substance</th><th>Type</th><th>What the formula says</th></tr>
+<tr><td>Cu, Si</td><td>Element</td><td>One kind of atom</td></tr><tr><td>O<sub>2</sub></td><td>Element</td><td>A molecule of two O atoms</td></tr>
+<tr><td>SiO<sub>2</sub></td><td>Compound</td><td>Si and O in a 1 : 2 ratio</td></tr><tr><td>CuSO<sub>4</sub></td><td>Compound</td><td>Cu : S : O = 1 : 1 : 4</td></tr></table>
+<p class="note">SiO<sub>2</sub> is a network solid: the formula gives the ratio of atoms, not a separate molecule.</p></div>
+<div class="col"><div class="panel"><b style="color:${C.teal};font-size:19px">One formula unit, neutral</b><table class="t" style="font-size:17px;margin-top:6px" id="fcount"></table></div>
+<ul class="b xs" style="margin-top:14px"><li>Protons in SiO<sub>2</sub> = 14 + 2 × 8 = 30, and a neutral unit has as many electrons</li><li>Subscripts multiply the atoms that come before them</li></ul></div></div>`,
+draw:()=>{document.getElementById("fcount").innerHTML=`<tr><th>Formula</th><th class="n">Atoms</th><th class="n">Elements</th><th class="n">Protons</th><th class="n">Electrons</th></tr>`+
+ LC().compounds.map(c=>`<tr><td>${sub2(c.formula)}</td><td class="n">${c.atoms}</td><td class="n">${c.elements}</td><td class="n">${c.protons}</td><td class="n">${c.electrons}</td></tr>`).join("")},
+py:{title:"Atoms and electrons in a formula unit", sub:"atoms_lab.formula_count()", code:
+`from atoms_lab import formula_count
+for f in ["SiO2", "CuSO4"]:
+    c = formula_count(f)
+    print(f, "atoms", c["atoms"], "protons", c["protons"], "electrons", c["electrons"])`,
+out:()=>LC().compounds.map(c=>`${c.formula} atoms ${c.atoms} protons ${c.protons} electrons ${c.electrons}`).join("\n")}});
+
+S.push({kicker:"Part 2 · Charge balance", title:"A neutral compound tells you the charge of its metal ion", html:()=>`<div class="body"><div class="col w55"><table class="t" style="font-size:18px" id="qtab"></table>
+<p class="note">Rule: (number of metal ions) × (metal charge) + (number of anions) × (anion charge) = 0. The anion charges are given.</p></div>
+<div class="col"><div class="panel"><b style="color:${C.teal};font-size:19px">Worked example: Cu<sub>2</sub>O</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
+2 × q + 1 × (−2) = 0, so q = +1<br>Each Cu is Cu<sup>+</sup>, with 29 − 1 = 28 electrons</div></div>
+<ul class="b xs" style="margin-top:14px"><li>Cu forms two oxides: Cu<sub>2</sub>O with Cu<sup>+</sup> and CuO with Cu<sup>2+</sup>. Both appear on chip surfaces and in Class 13</li>
+<li>LiPF<sub>6</sub> is the salt in most Li-ion battery electrolytes; it gives Li<sup>+</sup> and PF<sub>6</sub><sup>−</sup></li></ul></div></div>`,
+draw:()=>{document.getElementById("qtab").innerHTML=`<tr><th>Compound</th><th>Anion</th><th class="n">Metal ions</th><th>Metal ion</th><th class="n">Its electrons</th></tr>`+
+ LC().charges.map(c=>`<tr><td>${sub2(c.formula)}</td><td>${ion(sub2(c.anion),c.anion_charge)}</td><td class="n">${c.n_metal}</td><td>${ion(c.metal,c.metal_charge)}</td><td class="n">${c.metal_electrons}</td></tr>`).join("")},
+py:{title:"The metal charge from charge balance", sub:"atoms_lab.cation_charge()", code:
+`from atoms_lab import cation_charge
+for f in ["CuO", "Cu2O", "CuSO4", "LiPF6", "NaCl"]:
+    c = cation_charge(f)
+    print(f, c["metal_ion"], "electrons", c["metal_electrons"])`,
+out:()=>LC().charges.map(c=>`${c.formula} ${c.metal_ion} electrons ${c.metal_electrons}`).join("\n")}});
+
+S.push({kicker:"Part 2 · Materials at work", title:"The same atoms in a chip and in a battery", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
+<tr><th>Species</th><th>Element or ion</th><th>In a chip</th><th>In a Li-ion battery</th></tr>
+<tr><td>Si</td><td>Element</td><td>The wafer: transistors are made in it</td><td>Added to some negative electrodes</td></tr>
+<tr><td>SiO<sub>2</sub></td><td>Compound</td><td>Insulates wires and devices from each other</td><td>Not used</td></tr>
+<tr><td>Cu</td><td>Element</td><td>Wires and vias that carry current between devices</td><td>Foil that collects current at the negative electrode</td></tr>
+<tr><td>Cu<sup>2+</sup></td><td>Ion</td><td>In the CuSO<sub>4</sub> bath that plates the Cu wires</td><td>Not used</td></tr>
+<tr><td>Li<sup>+</sup></td><td>Ion</td><td>Not used</td><td>Carries charge through the electrolyte</td></tr>
+<tr><td>Na<sup>+</sup></td><td>Ion</td><td>A contaminant that must be kept out of SiO<sub>2</sub></td><td>The charge carrier in Na-ion batteries</td></tr></table>
+<p class="note">Atoms carry no current in a wire; electrons do. In a solution or an electrolyte, ions carry it. Class 4 returns to this difference.</p></div></div>`,
+notes:"Na+ in gate oxides was a classic early reliability problem: mobile ions shift transistor behavior. Mention it in one sentence only."});
+
+S.push({kicker:"Check 2 · 5 minutes", title:"Check 2: isotopes, formulas and charge balance", html:()=>CHECK(2,`${OL}
+<li>How many neutrons are in Cu-63 and in Cu-65?</li>
+<li>Why is the atomic mass of Cu 63.546 u, and not 64?</li>
+<li>What is the charge on each Cu in Cu<sub>2</sub>O? How many electrons does that Cu ion have?</li>
+<li>One SiO<sub>2</sub> unit: how many atoms and how many electrons? Element or compound?</li></ol>`,
+`<li>63 − 29 = 34 and 65 − 29 = 36</li><li>It is a weighted average: 69.15% of the atoms have 62.93 u and 30.85% have 64.93 u, so the mean lies nearer 63</li>
+<li>2q − 2 = 0, so q = +1: Cu<sup>+</sup> with 28 electrons</li><li>3 atoms; 14 + 2 × 8 = 30 electrons; a compound of two elements</li>`),
+draw:()=>reveal("k2btn","k2ans")});
+
+/* ---------- closing ---------- */
+S.push({kicker:"Where this goes next", title:"Today's counts come back in every block", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
+<tr><th>Class</th><th>What today gives it</th></tr>
+<tr><td>2 · Bonding</td><td>Why Cu conducts, SiO<sub>2</sub> insulates and Si sits in between</td></tr>
+<tr><td>3 · Moles</td><td>63.546 u becomes 63.546 g/mol: from a mass of Cu to a number of atoms</td></tr>
+<tr><td>6 · Doping</td><td>B has 5 protons and P has 15: why one gives p-type Si and the other n-type</td></tr>
+<tr><td>7 · Redox</td><td>Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu: the two electrons Cu<sup>2+</sup> is missing</td></tr>
+<tr><td>10 · Faraday</td><td>Two electrons per Cu atom set how much Cu a current plates</td></tr>
+<tr><td>13 · Pourbaix</td><td>Cu, Cu<sub>2</sub>O, CuO and Cu<sup>2+</sup>: which one is stable, and where</td></tr></table></div></div>`});
+
+S.push({kicker:"Lab 1 · 30 minutes", title:"Counting particles in chip and battery materials", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Predict, then count the protons and electrons of Cu<sup>2+</sup>, Na<sup>+</sup> and O<sup>2−</sup></li>
+<li>Count the neutrons in Cu-65 and Si-28</li>
+<li>Calculate the atomic mass of Cu from its isotopes, then change the Cu-65 fraction</li>
+<li>Find the charge of Cu in Cu<sub>2</sub>O and CuO</li>
+<li>Assign Si, SiO<sub>2</sub> and Cu to the layers of a chip, and explain</li></ul></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="45mm" height="45mm" version="1.1" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM10,2H11V3H10zM11,2H12V3H11zM17,2H18V3H17zM18,2H19V3H18zM19,2H20V3H19zM20,2H21V3H20zM21,2H22V3H21zM22,2H23V3H22zM23,2H24V3H23zM24,2H25V3H24zM25,2H26V3H25zM26,2H27V3H26zM27,2H28V3H27zM30,2H31V3H30zM31,2H32V3H31zM33,2H34V3H33zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM39,2H40V3H39zM40,2H41V3H40zM41,2H42V3H41zM42,2H43V3H42zM2,3H3V4H2zM8,3H9V4H8zM10,3H11V4H10zM11,3H12V4H11zM12,3H13V4H12zM13,3H14V4H13zM16,3H17V4H16zM18,3H19V4H18zM20,3H21V4H20zM25,3H26V4H25zM27,3H28V4H27zM32,3H33V4H32zM34,3H35V4H34zM36,3H37V4H36zM42,3H43V4H42zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM11,4H12V5H11zM15,4H16V5H15zM17,4H18V5H17zM19,4H20V5H19zM22,4H23V5H22zM29,4H30V5H29zM30,4H31V5H30zM33,4H34V5H33zM36,4H37V5H36zM38,4H39V5H38zM39,4H40V5H39zM40,4H41V5H40zM42,4H43V5H42zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM12,5H13V6H12zM13,5H14V6H13zM15,5H16V6H15zM18,5H19V6H18zM21,5H22V6H21zM23,5H24V6H23zM26,5H27V6H26zM28,5H29V6H28zM29,5H30V6H29zM30,5H31V6H30zM31,5H32V6H31zM34,5H35V6H34zM36,5H37V6H36zM38,5H39V6H38zM39,5H40V6H39zM40,5H41V6H40zM42,5H43V6H42zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM11,6H12V7H11zM13,6H14V7H13zM15,6H16V7H15zM17,6H18V7H17zM19,6H20V7H19zM21,6H22V7H21zM24,6H25V7H24zM26,6H27V7H26zM28,6H29V7H28zM29,6H30V7H29zM31,6H32V7H31zM33,6H34V7H33zM34,6H35V7H34zM36,6H37V7H36zM38,6H39V7H38zM39,6H40V7H39zM40,6H41V7H40zM42,6H43V7H42zM2,7H3V8H2zM8,7H9V8H8zM11,7H12V8H11zM12,7H13V8H12zM14,7H15V8H14zM15,7H16V8H15zM18,7H19V8H18zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM26,7H27V8H26zM27,7H28V8H27zM28,7H29V8H28zM30,7H31V8H30zM31,7H32V8H31zM33,7H34V8H33zM34,7H35V8H34zM36,7H37V8H36zM42,7H43V8H42zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM34,8H35V9H34zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM39,8H40V9H39zM40,8H41V9H40zM41,8H42V9H41zM42,8H43V9H42zM10,9H11V10H10zM12,9H13V10H12zM14,9H15V10H14zM16,9H17V10H16zM17,9H18V10H17zM18,9H19V10H18zM19,9H20V10H19zM21,9H22V10H21zM24,9H25V10H24zM25,9H26V10H25zM26,9H27V10H26zM28,9H29V10H28zM29,9H30V10H29zM31,9H32V10H31zM32,9H33V10H32zM2,10H3V11H2zM4,10H5V11H4zM5,10H6V11H5zM7,10H8V11H7zM8,10H9V11H8zM9,10H10V11H9zM12,10H13V11H12zM13,10H14V11H13zM15,10H16V11H15zM17,10H18V11H17zM19,10H20V11H19zM23,10H24V11H23zM28,10H29V11H28zM31,10H32V11H31zM32,10H33V11H32zM34,10H35V11H34zM36,10H37V11H36zM39,10H40V11H39zM41,10H42V11H41zM42,10H43V11H42zM2,11H3V12H2zM4,11H5V12H4zM5,11H6V12H5zM7,11H8V12H7zM12,11H13V12H12zM15,11H16V12H15zM16,11H17V12H16zM17,11H18V12H17zM20,11H21V12H20zM21,11H22V12H21zM22,11H23V12H22zM23,11H24V12H23zM25,11H26V12H25zM30,11H31V12H30zM32,11H33V12H32zM33,11H34V12H33zM34,11H35V12H34zM36,11H37V12H36zM38,11H39V12H38zM40,11H41V12H40zM41,11H42V12H41zM42,11H43V12H42zM4,12H5V13H4zM5,12H6V13H5zM8,12H9V13H8zM10,12H11V13H10zM11,12H12V13H11zM12,12H13V13H12zM13,12H14V13H13zM14,12H15V13H14zM17,12H18V13H17zM20,12H21V13H20zM25,12H26V13H25zM28,12H29V13H28zM30,12H31V13H30zM35,12H36V13H35zM36,12H37V13H36zM37,12H38V13H37zM40,12H41V13H40zM41,12H42V13H41zM2,13H3V14H2zM4,13H5V14H4zM6,13H7V14H6zM9,13H10V14H9zM10,13H11V14H10zM12,13H13V14H12zM13,13H14V14H13zM15,13H16V14H15zM16,13H17V14H16zM18,13H19V14H18zM20,13H21V14H20zM21,13H22V14H21zM22,13H23V14H22zM25,13H26V14H25zM26,13H27V14H26zM27,13H28V14H27zM30,13H31V14H30zM34,13H35V14H34zM35,13H36V14H35zM41,13H42V14H41zM42,13H43V14H42zM4,14H5V15H4zM5,14H6V15H5zM7,14H8V15H7zM8,14H9V15H8zM10,14H11V15H10zM12,14H13V15H12zM13,14H14V15H13zM15,14H16V15H15zM18,14H19V15H18zM19,14H20V15H19zM20,14H21V15H20zM22,14H23V15H22zM24,14H25V15H24zM25,14H26V15H25zM26,14H27V15H26zM27,14H28V15H27zM29,14H30V15H29zM31,14H32V15H31zM32,14H33V15H32zM33,14H34V15H33zM37,14H38V15H37zM39,14H40V15H39zM40,14H41V15H40zM41,14H42V15H41zM42,14H43V15H42zM7,15H8V16H7zM9,15H10V16H9zM10,15H11V16H10zM12,15H13V16H12zM13,15H14V16H13zM14,15H15V16H14zM15,15H16V16H15zM17,15H18V16H17zM18,15H19V16H18zM22,15H23V16H22zM25,15H26V16H25zM26,15H27V16H26zM31,15H32V16H31zM32,15H33V16H32zM33,15H34V16H33zM34,15H35V16H34zM36,15H37V16H36zM39,15H40V16H39zM41,15H42V16H41zM42,15H43V16H42zM6,16H7V17H6zM7,16H8V17H7zM8,16H9V17H8zM11,16H12V17H11zM12,16H13V17H12zM14,16H15V17H14zM15,16H16V17H15zM20,16H21V17H20zM21,16H22V17H21zM22,16H23V17H22zM24,16H25V17H24zM25,16H26V17H25zM27,16H28V17H27zM30,16H31V17H30zM31,16H32V17H31zM33,16H34V17H33zM36,16H37V17H36zM37,16H38V17H37zM40,16H41V17H40zM42,16H43V17H42zM3,17H4V18H3zM4,17H5V18H4zM5,17H6V18H5zM9,17H10V18H9zM14,17H15V18H14zM15,17H16V18H15zM16,17H17V18H16zM18,17H19V18H18zM23,17H24V18H23zM24,17H25V18H24zM25,17H26V18H25zM28,17H29V18H28zM29,17H30V18H29zM30,17H31V18H30zM32,17H33V18H32zM33,17H34V18H33zM36,17H37V18H36zM37,17H38V18H37zM38,17H39V18H38zM39,17H40V18H39zM2,18H3V19H2zM3,18H4V19H3zM4,18H5V19H4zM6,18H7V19H6zM7,18H8V19H7zM8,18H9V19H8zM11,18H12V19H11zM15,18H16V19H15zM16,18H17V19H16zM17,18H18V19H17zM18,18H19V19H18zM20,18H21V19H20zM22,18H23V19H22zM23,18H24V19H23zM26,18H27V19H26zM27,18H28V19H27zM29,18H30V19H29zM30,18H31V19H30zM38,18H39V19H38zM4,19H5V20H4zM6,19H7V20H6zM10,19H11V20H10zM11,19H12V20H11zM13,19H14V20H13zM14,19H15V20H14zM15,19H16V20H15zM16,19H17V20H16zM18,19H19V20H18zM20,19H21V20H20zM22,19H23V20H22zM23,19H24V20H23zM24,19H25V20H24zM25,19H26V20H25zM27,19H28V20H27zM29,19H30V20H29zM31,19H32V20H31zM32,19H33V20H32zM35,19H36V20H35zM37,19H38V20H37zM39,19H40V20H39zM40,19H41V20H40zM2,20H3V21H2zM3,20H4V21H3zM4,20H5V21H4zM7,20H8V21H7zM8,20H9V21H8zM9,20H10V21H9zM10,20H11V21H10zM11,20H12V21H11zM12,20H13V21H12zM13,20H14V21H13zM14,20H15V21H14zM16,20H17V21H16zM17,20H18V21H17zM20,20H21V21H20zM24,20H25V21H24zM29,20H30V21H29zM32,20H33V21H32zM35,20H36V21H35zM38,20H39V21H38zM41,20H42V21H41zM5,21H6V22H5zM6,21H7V22H6zM9,21H10V22H9zM10,21H11V22H10zM11,21H12V22H11zM13,21H14V22H13zM14,21H15V22H14zM19,21H20V22H19zM20,21H21V22H20zM23,21H24V22H23zM26,21H27V22H26zM30,21H31V22H30zM31,21H32V22H31zM33,21H34V22H33zM34,21H35V22H34zM36,21H37V22H36zM37,21H38V22H37zM40,21H41V22H40zM41,21H42V22H41zM42,21H43V22H42zM5,22H6V23H5zM6,22H7V23H6zM8,22H9V23H8zM11,22H12V23H11zM15,22H16V23H15zM17,22H18V23H17zM18,22H19V23H18zM21,22H22V23H21zM25,22H26V23H25zM27,22H28V23H27zM31,22H32V23H31zM32,22H33V23H32zM33,22H34V23H33zM35,22H36V23H35zM36,22H37V23H36zM38,22H39V23H38zM40,22H41V23H40zM41,22H42V23H41zM5,23H6V24H5zM6,23H7V24H6zM9,23H10V24H9zM10,23H11V24H10zM11,23H12V24H11zM12,23H13V24H12zM13,23H14V24H13zM14,23H15V24H14zM17,23H18V24H17zM19,23H20V24H19zM21,23H22V24H21zM22,23H23V24H22zM25,23H26V24H25zM27,23H28V24H27zM28,23H29V24H28zM31,23H32V24H31zM33,23H34V24H33zM36,23H37V24H36zM38,23H39V24H38zM39,23H40V24H39zM40,23H41V24H40zM41,23H42V24H41zM42,23H43V24H42zM2,24H3V25H2zM3,24H4V25H3zM7,24H8V25H7zM8,24H9V25H8zM11,24H12V25H11zM15,24H16V25H15zM16,24H17V25H16zM17,24H18V25H17zM18,24H19V25H18zM20,24H21V25H20zM25,24H26V25H25zM28,24H29V25H28zM32,24H33V25H32zM36,24H37V25H36zM38,24H39V25H38zM39,24H40V25H39zM41,24H42V25H41zM2,25H3V26H2zM3,25H4V26H3zM6,25H7V26H6zM7,25H8V26H7zM10,25H11V26H10zM12,25H13V26H12zM13,25H14V26H13zM14,25H15V26H14zM15,25H16V26H15zM17,25H18V26H17zM18,25H19V26H18zM21,25H22V26H21zM26,25H27V26H26zM27,25H28V26H27zM29,25H30V26H29zM30,25H31V26H30zM32,25H33V26H32zM33,25H34V26H33zM34,25H35V26H34zM35,25H36V26H35zM36,25H37V26H36zM41,25H42V26H41zM42,25H43V26H42zM2,26H3V27H2zM4,26H5V27H4zM5,26H6V27H5zM7,26H8V27H7zM8,26H9V27H8zM9,26H10V27H9zM15,26H16V27H15zM16,26H17V27H16zM19,26H20V27H19zM21,26H22V27H21zM22,26H23V27H22zM24,26H25V27H24zM26,26H27V27H26zM27,26H28V27H27zM28,26H29V27H28zM29,26H30V27H29zM31,26H32V27H31zM35,26H36V27H35zM37,26H38V27H37zM40,26H41V27H40zM42,26H43V27H42zM3,27H4V28H3zM4,27H5V28H4zM6,27H7V28H6zM7,27H8V28H7zM13,27H14V28H13zM15,27H16V28H15zM21,27H22V28H21zM24,27H25V28H24zM27,27H28V28H27zM28,27H29V28H28zM29,27H30V28H29zM30,27H31V28H30zM31,27H32V28H31zM33,27H34V28H33zM34,27H35V28H34zM36,27H37V28H36zM37,27H38V28H37zM39,27H40V28H39zM40,27H41V28H40zM42,27H43V28H42zM3,28H4V29H3zM4,28H5V29H4zM5,28H6V29H5zM8,28H9V29H8zM9,28H10V29H9zM10,28H11V29H10zM11,28H12V29H11zM13,28H14V29H13zM14,28H15V29H14zM16,28H17V29H16zM17,28H18V29H17zM19,28H20V29H19zM20,28H21V29H20zM21,28H22V29H21zM23,28H24V29H23zM24,28H25V29H24zM27,28H28V29H27zM30,28H31V29H30zM33,28H34V29H33zM34,28H35V29H34zM35,28H36V29H35zM38,28H39V29H38zM39,28H40V29H39zM41,28H42V29H41zM42,28H43V29H42zM2,29H3V30H2zM6,29H7V30H6zM12,29H13V30H12zM13,29H14V30H13zM15,29H16V30H15zM17,29H18V30H17zM23,29H24V30H23zM24,29H25V30H24zM26,29H27V30H26zM28,29H29V30H28zM33,29H34V30H33zM34,29H35V30H34zM35,29H36V30H35zM38,29H39V30H38zM39,29H40V30H39zM5,30H6V31H5zM6,30H7V31H6zM7,30H8V31H7zM8,30H9V31H8zM10,30H11V31H10zM11,30H12V31H11zM12,30H13V31H12zM18,30H19V31H18zM21,30H22V31H21zM22,30H23V31H22zM23,30H24V31H23zM24,30H25V31H24zM25,30H26V31H25zM26,30H27V31H26zM27,30H28V31H27zM28,30H29V31H28zM33,30H34V31H33zM34,30H35V31H34zM35,30H36V31H35zM38,30H39V31H38zM39,30H40V31H39zM41,30H42V31H41zM42,30H43V31H42zM3,31H4V32H3zM5,31H6V32H5zM6,31H7V32H6zM9,31H10V32H9zM10,31H11V32H10zM11,31H12V32H11zM13,31H14V32H13zM14,31H15V32H14zM16,31H17V32H16zM18,31H19V32H18zM20,31H21V32H20zM21,31H22V32H21zM22,31H23V32H22zM23,31H24V32H23zM24,31H25V32H24zM27,31H28V32H27zM29,31H30V32H29zM32,31H33V32H32zM34,31H35V32H34zM37,31H38V32H37zM39,31H40V32H39zM41,31H42V32H41zM2,32H3V33H2zM8,32H9V33H8zM9,32H10V33H9zM10,32H11V33H10zM12,32H13V33H12zM13,32H14V33H13zM14,32H15V33H14zM16,32H17V33H16zM18,32H19V33H18zM19,32H20V33H19zM20,32H21V33H20zM21,32H22V33H21zM23,32H24V33H23zM24,32H25V33H24zM27,32H28V33H27zM28,32H29V33H28zM29,32H30V33H29zM30,32H31V33H30zM31,32H32V33H31zM34,32H35V33H34zM35,32H36V33H35zM36,32H37V33H36zM37,32H38V33H37zM39,32H40V33H39zM40,32H41V33H40zM41,32H42V33H41zM7,33H8V34H7zM14,33H15V34H14zM17,33H18V34H17zM18,33H19V34H18zM19,33H20V34H19zM20,33H21V34H20zM21,33H22V34H21zM24,33H25V34H24zM25,33H26V34H25zM28,33H29V34H28zM30,33H31V34H30zM31,33H32V34H31zM32,33H33V34H32zM34,33H35V34H34zM36,33H37V34H36zM38,33H39V34H38zM39,33H40V34H39zM40,33H41V34H40zM42,33H43V34H42zM3,34H4V35H3zM4,34H5V35H4zM5,34H6V35H5zM8,34H9V35H8zM10,34H11V35H10zM12,34H13V35H12zM13,34H14V35H13zM14,34H15V35H14zM15,34H16V35H15zM16,34H17V35H16zM17,34H18V35H17zM18,34H19V35H18zM19,34H20V35H19zM22,34H23V35H22zM23,34H24V35H23zM28,34H29V35H28zM29,34H30V35H29zM30,34H31V35H30zM31,34H32V35H31zM33,34H34V35H33zM34,34H35V35H34zM35,34H36V35H35zM36,34H37V35H36zM37,34H38V35H37zM38,34H39V35H38zM39,34H40V35H39zM40,34H41V35H40zM42,34H43V35H42zM10,35H11V36H10zM14,35H15V36H14zM19,35H20V36H19zM20,35H21V36H20zM21,35H22V36H21zM22,35H23V36H22zM23,35H24V36H23zM25,35H26V36H25zM26,35H27V36H26zM27,35H28V36H27zM28,35H29V36H28zM30,35H31V36H30zM32,35H33V36H32zM33,35H34V36H33zM34,35H35V36H34zM38,35H39V36H38zM41,35H42V36H41zM42,35H43V36H42zM2,36H3V37H2zM3,36H4V37H3zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM7,36H8V37H7zM8,36H9V37H8zM10,36H11V37H10zM11,36H12V37H11zM12,36H13V37H12zM13,36H14V37H13zM17,36H18V37H17zM20,36H21V37H20zM25,36H26V37H25zM27,36H28V37H27zM30,36H31V37H30zM31,36H32V37H31zM32,36H33V37H32zM33,36H34V37H33zM34,36H35V37H34zM36,36H37V37H36zM38,36H39V37H38zM41,36H42V37H41zM2,37H3V38H2zM8,37H9V38H8zM10,37H11V38H10zM11,37H12V38H11zM12,37H13V38H12zM17,37H18V38H17zM18,37H19V38H18zM19,37H20V38H19zM21,37H22V38H21zM26,37H27V38H26zM33,37H34V38H33zM34,37H35V38H34zM38,37H39V38H38zM39,37H40V38H39zM41,37H42V38H41zM42,37H43V38H42zM2,38H3V39H2zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM8,38H9V39H8zM11,38H12V39H11zM13,38H14V39H13zM15,38H16V39H15zM16,38H17V39H16zM18,38H19V39H18zM23,38H24V39H23zM28,38H29V39H28zM30,38H31V39H30zM31,38H32V39H31zM34,38H35V39H34zM35,38H36V39H35zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38zM39,38H40V39H39zM40,38H41V39H40zM41,38H42V39H41zM42,38H43V39H42zM2,39H3V40H2zM4,39H5V40H4zM5,39H6V40H5zM6,39H7V40H6zM8,39H9V40H8zM10,39H11V40H10zM11,39H12V40H11zM13,39H14V40H13zM15,39H16V40H15zM16,39H17V40H16zM18,39H19V40H18zM19,39H20V40H19zM21,39H22V40H21zM24,39H25V40H24zM26,39H27V40H26zM28,39H29V40H28zM29,39H30V40H29zM33,39H34V40H33zM38,39H39V40H38zM39,39H40V40H39zM41,39H42V40H41zM2,40H3V41H2zM4,40H5V41H4zM5,40H6V41H5zM6,40H7V41H6zM8,40H9V41H8zM10,40H11V41H10zM15,40H16V41H15zM17,40H18V41H17zM19,40H20V41H19zM21,40H22V41H21zM26,40H27V41H26zM27,40H28V41H27zM28,40H29V41H28zM30,40H31V41H30zM31,40H32V41H31zM32,40H33V41H32zM34,40H35V41H34zM37,40H38V41H37zM39,40H40V41H39zM40,40H41V41H40zM41,40H42V41H41zM42,40H43V41H42zM2,41H3V42H2zM8,41H9V42H8zM12,41H13V42H12zM13,41H14V42H13zM15,41H16V42H15zM18,41H19V42H18zM20,41H21V42H20zM23,41H24V42H23zM25,41H26V42H25zM28,41H29V42H28zM29,41H30V42H29zM34,41H35V42H34zM35,41H36V42H35zM38,41H39V42H38zM39,41H40V42H39zM41,41H42V42H41zM2,42H3V43H2zM3,42H4V43H3zM4,42H5V43H4zM5,42H6V43H5zM6,42H7V43H6zM7,42H8V43H7zM8,42H9V43H8zM10,42H11V43H10zM14,42H15V43H14zM15,42H16V43H15zM16,42H17V43H16zM17,42H18V43H17zM19,42H20V43H19zM21,42H22V43H21zM22,42H23V43H22zM23,42H24V43H23zM24,42H25V43H24zM26,42H27V43H26zM27,42H28V43H27zM29,42H30V43H29zM30,42H31V43H30zM32,42H33V43H32zM33,42H34V43H33zM34,42H35V43H34zM35,42H36V43H35zM36,42H37V43H36zM39,42H40V43H39zM41,42H42V43H41z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="lab.html" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the lab page</a></div></div></div>`,
+notes:"Students who finish early: how many electrons does one CuSO4 unit have? (29 + 16 + 4 × 8 = 77)"});
+
+S.push({kicker:"Summary", title:"What to take from today", html:()=>`<div class="body"><div class="col w45"><table class="t" style="font-size:17px">
+<tr><th>Quantity</th><th class="n">Value</th></tr><tr><td>Cu: protons, electrons</td><td class="n">29, 29</td></tr>
+<tr><td>Cu<sup>2+</sup>: electrons</td><td class="n">27</td></tr><tr><td>O<sup>2−</sup>: electrons</td><td class="n">10</td></tr>
+<tr><td>Neutrons in Cu-63, Cu-65</td><td class="n">34, 36</td></tr><tr><td>Atomic mass of Cu</td><td class="n">${LC().M.Cu.toFixed(3)} u</td></tr>
+<tr><td>Atomic mass of Si</td><td class="n">${LC().M.Si.toFixed(3)} u</td></tr><tr><td>SiO<sub>2</sub>: atoms, electrons</td><td class="n">3, 30</td></tr>
+<tr><td>Cu in Cu<sub>2</sub>O, in CuO</td><td class="n">+1, +2</td></tr></table></div>
+<div class="col"><ul class="b xs"><li>Z = protons, and it fixes the element. A = protons + neutrons</li>
+<li>Charge = protons − electrons. Chemistry changes electrons, never the nucleus</li>
+<li>A positive ion has fewer electrons than its atom; a negative ion has more</li>
+<li>Isotopes differ in neutrons. The atomic mass is their abundance-weighted average</li>
+<li>Subscripts count atoms; superscripts give charge. A neutral compound balances its charges</li>
+<li>In a chip: Si is the semiconductor, SiO<sub>2</sub> the insulator, Cu the conductor</li></ul></div></div>`});
+
+S.push({kicker:"Before the next class", title:"Before we meet again", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Finish Lab 1 if you did not finish in class, and upload the answer file to myCourseVille</li>
+<li>Read OpenStax <i>Chemistry 2e</i>, Section 2.3 (Atomic structure and symbolism) and Section 2.4 (Chemical formulas)</li>
+<li>Skim Section 2.6 (Ionic and molecular compounds); Class 2 starts from it</li>
+<li>Optional: try PhET <i>Build an Atom</i> and build Li, Li<sup>+</sup> and an isotope of C</li>
+<li>Class 2: bonding, structure and properties. Why is Cu a conductor and SiO<sub>2</sub> an insulator?</li></ul></div></div>`});
+
+S.push({kicker:"Exit Ticket and feedback · 5 minutes", title:"Exit Ticket and feedback", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Scan the code and choose <b>Class 1</b></li><li>Exit Ticket: paste the answers that the lab page copies for you</li>
+<li>Feedback: pace, confidence, how far you got in the lab, and what is still unclear</li><li>Studying on your own? Choose "On my own"</li></ul>
+<p class="note">One form for both. Anonymous; no name or student ID.</p></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="41mm" height="41mm" version="1.1" viewBox="0 0 41 41" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM10,2H11V3H10zM12,2H13V3H12zM13,2H14V3H13zM14,2H15V3H14zM16,2H17V3H16zM18,2H19V3H18zM20,2H21V3H20zM23,2H24V3H23zM25,2H26V3H25zM27,2H28V3H27zM29,2H30V3H29zM32,2H33V3H32zM33,2H34V3H33zM34,2H35V3H34zM35,2H36V3H35zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM2,3H3V4H2zM8,3H9V4H8zM12,3H13V4H12zM15,3H16V4H15zM16,3H17V4H16zM17,3H18V4H17zM21,3H22V4H21zM22,3H23V4H22zM23,3H24V4H23zM24,3H25V4H24zM26,3H27V4H26zM27,3H28V4H27zM32,3H33V4H32zM38,3H39V4H38zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM12,4H13V5H12zM13,4H14V5H13zM14,4H15V5H14zM15,4H16V5H15zM16,4H17V5H16zM18,4H19V5H18zM19,4H20V5H19zM20,4H21V5H20zM21,4H22V5H21zM22,4H23V5H22zM23,4H24V5H23zM24,4H25V5H24zM28,4H29V5H28zM29,4H30V5H29zM30,4H31V5H30zM32,4H33V5H32zM34,4H35V5H34zM35,4H36V5H35zM36,4H37V5H36zM38,4H39V5H38zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM11,5H12V6H11zM13,5H14V6H13zM15,5H16V6H15zM16,5H17V6H16zM17,5H18V6H17zM18,5H19V6H18zM21,5H22V6H21zM25,5H26V6H25zM27,5H28V6H27zM28,5H29V6H28zM29,5H30V6H29zM30,5H31V6H30zM32,5H33V6H32zM34,5H35V6H34zM35,5H36V6H35zM36,5H37V6H36zM38,5H39V6H38zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM10,6H11V7H10zM13,6H14V7H13zM14,6H15V7H14zM15,6H16V7H15zM17,6H18V7H17zM19,6H20V7H19zM20,6H21V7H20zM25,6H26V7H25zM26,6H27V7H26zM29,6H30V7H29zM30,6H31V7H30zM32,6H33V7H32zM34,6H35V7H34zM35,6H36V7H35zM36,6H37V7H36zM38,6H39V7H38zM2,7H3V8H2zM8,7H9V8H8zM10,7H11V8H10zM14,7H15V8H14zM15,7H16V8H15zM16,7H17V8H16zM17,7H18V8H17zM20,7H21V8H20zM21,7H22V8H21zM26,7H27V8H26zM27,7H28V8H27zM28,7H29V8H28zM32,7H33V8H32zM38,7H39V8H38zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM33,8H34V9H33zM34,8H35V9H34zM35,8H36V9H35zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM10,9H11V10H10zM11,9H12V10H11zM12,9H13V10H12zM13,9H14V10H13zM15,9H16V10H15zM16,9H17V10H16zM19,9H20V10H19zM21,9H22V10H21zM23,9H24V10H23zM28,9H29V10H28zM29,9H30V10H29zM30,9H31V10H30zM2,10H3V11H2zM6,10H7V11H6zM8,10H9V11H8zM9,10H10V11H9zM10,10H11V11H10zM12,10H13V11H12zM14,10H15V11H14zM16,10H17V11H16zM17,10H18V11H17zM19,10H20V11H19zM21,10H22V11H21zM22,10H23V11H22zM23,10H24V11H23zM24,10H25V11H24zM28,10H29V11H28zM29,10H30V11H29zM30,10H31V11H30zM31,10H32V11H31zM32,10H33V11H32zM33,10H34V11H33zM34,10H35V11H34zM35,10H36V11H35zM38,10H39V11H38zM6,11H7V12H6zM7,11H8V12H7zM10,11H11V12H10zM12,11H13V12H12zM13,11H14V12H13zM14,11H15V12H14zM16,11H17V12H16zM19,11H20V12H19zM22,11H23V12H22zM23,11H24V12H23zM25,11H26V12H25zM27,11H28V12H27zM28,11H29V12H28zM29,11H30V12H29zM33,11H34V12H33zM34,11H35V12H34zM35,11H36V12H35zM37,11H38V12H37zM2,12H3V13H2zM5,12H6V13H5zM8,12H9V13H8zM11,12H12V13H11zM17,12H18V13H17zM19,12H20V13H19zM20,12H21V13H20zM23,12H24V13H23zM24,12H25V13H24zM25,12H26V13H25zM29,12H30V13H29zM30,12H31V13H30zM31,12H32V13H31zM33,12H34V13H33zM34,12H35V13H34zM36,12H37V13H36zM5,13H6V14H5zM9,13H10V14H9zM10,13H11V14H10zM11,13H12V14H11zM13,13H14V14H13zM14,13H15V14H14zM15,13H16V14H15zM16,13H17V14H16zM17,13H18V14H17zM18,13H19V14H18zM19,13H20V14H19zM20,13H21V14H20zM22,13H23V14H22zM23,13H24V14H23zM25,13H26V14H25zM26,13H27V14H26zM30,13H31V14H30zM32,13H33V14H32zM33,13H34V14H33zM36,13H37V14H36zM37,13H38V14H37zM6,14H7V15H6zM7,14H8V15H7zM8,14H9V15H8zM9,14H10V15H9zM10,14H11V15H10zM11,14H12V15H11zM13,14H14V15H13zM15,14H16V15H15zM16,14H17V15H16zM18,14H19V15H18zM19,14H20V15H19zM20,14H21V15H20zM21,14H22V15H21zM23,14H24V15H23zM24,14H25V15H24zM26,14H27V15H26zM28,14H29V15H28zM31,14H32V15H31zM32,14H33V15H32zM36,14H37V15H36zM37,14H38V15H37zM38,14H39V15H38zM3,15H4V16H3zM6,15H7V16H6zM7,15H8V16H7zM10,15H11V16H10zM14,15H15V16H14zM16,15H17V16H16zM17,15H18V16H17zM25,15H26V16H25zM28,15H29V16H28zM29,15H30V16H29zM30,15H31V16H30zM34,15H35V16H34zM35,15H36V16H35zM3,16H4V17H3zM4,16H5V17H4zM6,16H7V17H6zM8,16H9V17H8zM9,16H10V17H9zM10,16H11V17H10zM11,16H12V17H11zM14,16H15V17H14zM15,16H16V17H15zM17,16H18V17H17zM18,16H19V17H18zM19,16H20V17H19zM20,16H21V17H20zM25,16H26V17H25zM26,16H27V17H26zM27,16H28V17H27zM28,16H29V17H28zM29,16H30V17H29zM30,16H31V17H30zM32,16H33V17H32zM33,16H34V17H33zM34,16H35V17H34zM35,16H36V17H35zM36,16H37V17H36zM5,17H6V18H5zM10,17H11V18H10zM13,17H14V18H13zM14,17H15V18H14zM15,17H16V18H15zM17,17H18V18H17zM18,17H19V18H18zM19,17H20V18H19zM21,17H22V18H21zM23,17H24V18H23zM24,17H25V18H24zM25,17H26V18H25zM26,17H27V18H26zM28,17H29V18H28zM29,17H30V18H29zM32,17H33V18H32zM33,17H34V18H33zM34,17H35V18H34zM36,17H37V18H36zM37,17H38V18H37zM2,18H3V19H2zM3,18H4V19H3zM4,18H5V19H4zM5,18H6V19H5zM6,18H7V19H6zM8,18H9V19H8zM12,18H13V19H12zM13,18H14V19H13zM18,18H19V19H18zM19,18H20V19H19zM21,18H22V19H21zM23,18H24V19H23zM24,18H25V19H24zM26,18H27V19H26zM28,18H29V19H28zM30,18H31V19H30zM32,18H33V19H32zM33,18H34V19H33zM35,18H36V19H35zM36,18H37V19H36zM37,18H38V19H37zM38,18H39V19H38zM2,19H3V20H2zM4,19H5V20H4zM5,19H6V20H5zM6,19H7V20H6zM12,19H13V20H12zM15,19H16V20H15zM17,19H18V20H17zM20,19H21V20H20zM23,19H24V20H23zM24,19H25V20H24zM25,19H26V20H25zM29,19H30V20H29zM31,19H32V20H31zM34,19H35V20H34zM37,19H38V20H37zM4,20H5V21H4zM6,20H7V21H6zM8,20H9V21H8zM11,20H12V21H11zM12,20H13V21H12zM13,20H14V21H13zM14,20H15V21H14zM16,20H17V21H16zM17,20H18V21H17zM22,20H23V21H22zM25,20H26V21H25zM26,20H27V21H26zM27,20H28V21H27zM28,20H29V21H28zM29,20H30V21H29zM30,20H31V21H30zM32,20H33V21H32zM34,20H35V21H34zM36,20H37V21H36zM2,21H3V22H2zM4,21H5V22H4zM5,21H6V22H5zM13,21H14V22H13zM15,21H16V22H15zM17,21H18V22H17zM19,21H20V22H19zM23,21H24V22H23zM25,21H26V22H25zM26,21H27V22H26zM30,21H31V22H30zM32,21H33V22H32zM33,21H34V22H33zM34,21H35V22H34zM36,21H37V22H36zM37,21H38V22H37zM2,22H3V23H2zM3,22H4V23H3zM4,22H5V23H4zM6,22H7V23H6zM7,22H8V23H7zM8,22H9V23H8zM9,22H10V23H9zM12,22H13V23H12zM17,22H18V23H17zM18,22H19V23H18zM19,22H20V23H19zM20,22H21V23H20zM23,22H24V23H23zM25,22H26V23H25zM30,22H31V23H30zM31,22H32V23H31zM32,22H33V23H32zM33,22H34V23H33zM36,22H37V23H36zM2,23H3V24H2zM6,23H7V24H6zM9,23H10V24H9zM10,23H11V24H10zM13,23H14V24H13zM17,23H18V24H17zM19,23H20V24H19zM25,23H26V24H25zM27,23H28V24H27zM28,23H29V24H28zM29,23H30V24H29zM30,23H31V24H30zM33,23H34V24H33zM34,23H35V24H34zM37,23H38V24H37zM2,24H3V25H2zM8,24H9V25H8zM14,24H15V25H14zM15,24H16V25H15zM17,24H18V25H17zM18,24H19V25H18zM19,24H20V25H19zM20,24H21V25H20zM22,24H23V25H22zM23,24H24V25H23zM25,24H26V25H25zM27,24H28V25H27zM29,24H30V25H29zM31,24H32V25H31zM33,24H34V25H33zM34,24H35V25H34zM35,24H36V25H35zM36,24H37V25H36zM2,25H3V26H2zM3,25H4V26H3zM4,25H5V26H4zM6,25H7V26H6zM7,25H8V26H7zM13,25H14V26H13zM15,25H16V26H15zM16,25H17V26H16zM18,25H19V26H18zM19,25H20V26H19zM20,25H21V26H20zM22,25H23V26H22zM23,25H24V26H23zM24,25H25V26H24zM25,25H26V26H25zM29,25H30V26H29zM30,25H31V26H30zM31,25H32V26H31zM32,25H33V26H32zM33,25H34V26H33zM34,25H35V26H34zM36,25H37V26H36zM38,25H39V26H38zM4,26H5V27H4zM5,26H6V27H5zM8,26H9V27H8zM10,26H11V27H10zM11,26H12V27H11zM12,26H13V27H12zM13,26H14V27H13zM16,26H17V27H16zM18,26H19V27H18zM19,26H20V27H19zM21,26H22V27H21zM22,26H23V27H22zM23,26H24V27H23zM25,26H26V27H25zM26,26H27V27H26zM28,26H29V27H28zM30,26H31V27H30zM32,26H33V27H32zM33,26H34V27H33zM35,26H36V27H35zM36,26H37V27H36zM37,26H38V27H37zM2,27H3V28H2zM3,27H4V28H3zM4,27H5V28H4zM5,27H6V28H5zM9,27H10V28H9zM14,27H15V28H14zM15,27H16V28H15zM16,27H17V28H16zM17,27H18V28H17zM20,27H21V28H20zM23,27H24V28H23zM25,27H26V28H25zM26,27H27V28H26zM27,27H28V28H27zM29,27H30V28H29zM31,27H32V28H31zM34,27H35V28H34zM5,28H6V29H5zM6,28H7V29H6zM8,28H9V29H8zM10,28H11V29H10zM11,28H12V29H11zM13,28H14V29H13zM14,28H15V29H14zM15,28H16V29H15zM17,28H18V29H17zM19,28H20V29H19zM25,28H26V29H25zM26,28H27V29H26zM27,28H28V29H27zM28,28H29V29H28zM29,28H30V29H29zM30,28H31V29H30zM32,28H33V29H32zM33,28H34V29H33zM4,29H5V30H4zM7,29H8V30H7zM9,29H10V30H9zM10,29H11V30H10zM11,29H12V30H11zM14,29H15V30H14zM15,29H16V30H15zM18,29H19V30H18zM19,29H20V30H19zM20,29H21V30H20zM23,29H24V30H23zM26,29H27V30H26zM28,29H29V30H28zM29,29H30V30H29zM30,29H31V30H30zM32,29H33V30H32zM34,29H35V30H34zM36,29H37V30H36zM37,29H38V30H37zM2,30H3V31H2zM3,30H4V31H3zM4,30H5V31H4zM6,30H7V31H6zM7,30H8V31H7zM8,30H9V31H8zM10,30H11V31H10zM14,30H15V31H14zM18,30H19V31H18zM19,30H20V31H19zM20,30H21V31H20zM23,30H24V31H23zM24,30H25V31H24zM26,30H27V31H26zM29,30H30V31H29zM30,30H31V31H30zM31,30H32V31H31zM32,30H33V31H32zM33,30H34V31H33zM34,30H35V31H34zM36,30H37V31H36zM37,30H38V31H37zM38,30H39V31H38zM10,31H11V32H10zM11,31H12V32H11zM15,31H16V32H15zM16,31H17V32H16zM17,31H18V32H17zM19,31H20V32H19zM23,31H24V32H23zM25,31H26V32H25zM27,31H28V32H27zM28,31H29V32H28zM30,31H31V32H30zM34,31H35V32H34zM2,32H3V33H2zM3,32H4V33H3zM4,32H5V33H4zM5,32H6V33H5zM6,32H7V33H6zM7,32H8V33H7zM8,32H9V33H8zM10,32H11V33H10zM12,32H13V33H12zM13,32H14V33H13zM15,32H16V33H15zM17,32H18V33H17zM18,32H19V33H18zM19,32H20V33H19zM20,32H21V33H20zM22,32H23V33H22zM25,32H26V33H25zM30,32H31V33H30zM32,32H33V33H32zM34,32H35V33H34zM37,32H38V33H37zM2,33H3V34H2zM8,33H9V34H8zM11,33H12V34H11zM13,33H14V34H13zM14,33H15V34H14zM15,33H16V34H15zM16,33H17V34H16zM18,33H19V34H18zM19,33H20V34H19zM21,33H22V34H21zM22,33H23V34H22zM23,33H24V34H23zM25,33H26V34H25zM26,33H27V34H26zM30,33H31V34H30zM34,33H35V34H34zM35,33H36V34H35zM36,33H37V34H36zM2,34H3V35H2zM4,34H5V35H4zM5,34H6V35H5zM6,34H7V35H6zM8,34H9V35H8zM10,34H11V35H10zM11,34H12V35H11zM12,34H13V35H12zM13,34H14V35H13zM14,34H15V35H14zM16,34H17V35H16zM18,34H19V35H18zM19,34H20V35H19zM20,34H21V35H20zM23,34H24V35H23zM24,34H25V35H24zM28,34H29V35H28zM30,34H31V35H30zM31,34H32V35H31zM32,34H33V35H32zM33,34H34V35H33zM34,34H35V35H34zM35,34H36V35H35zM36,34H37V35H36zM2,35H3V36H2zM4,35H5V36H4zM5,35H6V36H5zM6,35H7V36H6zM8,35H9V36H8zM12,35H13V36H12zM13,35H14V36H13zM14,35H15V36H14zM15,35H16V36H15zM16,35H17V36H16zM17,35H18V36H17zM18,35H19V36H18zM19,35H20V36H19zM25,35H26V36H25zM26,35H27V36H26zM30,35H31V36H30zM31,35H32V36H31zM32,35H33V36H32zM33,35H34V36H33zM36,35H37V36H36zM37,35H38V36H37zM38,35H39V36H38zM2,36H3V37H2zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM8,36H9V37H8zM12,36H13V37H12zM14,36H15V37H14zM15,36H16V37H15zM16,36H17V37H16zM17,36H18V37H17zM19,36H20V37H19zM22,36H23V37H22zM24,36H25V37H24zM25,36H26V37H25zM29,36H30V37H29zM30,36H31V37H30zM32,36H33V37H32zM35,36H36V37H35zM36,36H37V37H36zM2,37H3V38H2zM8,37H9V38H8zM12,37H13V38H12zM16,37H17V38H16zM19,37H20V38H19zM22,37H23V38H22zM23,37H24V38H23zM28,37H29V38H28zM31,37H32V38H31zM34,37H35V38H34zM36,37H37V38H36zM37,37H38V38H37zM2,38H3V39H2zM3,38H4V39H3zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM7,38H8V39H7zM8,38H9V39H8zM10,38H11V39H10zM11,38H12V39H11zM12,38H13V39H12zM17,38H18V39H17zM18,38H19V39H18zM19,38H20V39H19zM20,38H21V39H20zM21,38H22V39H21zM22,38H23V39H22zM23,38H24V39H23zM24,38H25V39H24zM31,38H32V39H31zM32,38H33V39H32zM33,38H34V39H33zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=1" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the Exit Ticket</a></div></div></div>`,
+notes:"Leave this slide on screen for the last five minutes."});
+
+/* ---------- deck engine ---------- */
+const N=S.length; let cur=0;
+function build(){const host=document.getElementById("slides");host.innerHTML="";
+ S.forEach((s,i)=>{const d=document.createElement("section");d.className="slide"+(s.cls?" "+s.cls:"");d.id="s"+(i+1);
+  d.innerHTML=(s.kicker&&!s.cls?`<p class="kicker">${s.kicker}</p>`:"")+(s.title?`<h1>${s.title}</h1>`:"")+s.html()+(s.py?`<div class="dhint">D · Python</div>`:"")+`<footer><span>${foot}</span><span>${i+1} / ${N}</span></footer>`;host.appendChild(d)})}
+function drawAll(){S.forEach(s=>{if(s.draw)try{s.draw()}catch(e){console.error(e)}})}
+function show(i){cur=Math.max(0,Math.min(N-1,i));document.querySelectorAll(".slide").forEach((el,k)=>el.classList.toggle("on",k===cur));
+ history.replaceState(null,"",location.search+"#"+(cur+1));fillDrawer();if(window.onSlideChange)onSlideChange(cur);const n=document.getElementById("notes");n.textContent=S[cur].notes||"No notes for this slide."}
+let CAP_ON=false;   // set by the narration player; reserves a caption band under the slide
+function fit(){const W=innerWidth,H=innerHeight,vp=document.getElementById("viewport"),dock=document.getElementById("dock"),cap=document.getElementById("cap");
+ const hasDock=dock.style.display==="flex",barH=hasDock?document.getElementById("nbar").offsetHeight:0;
+ let k=Math.min(W/1280,H/720)*0.98,capH=0,fs=0,dockH=0;
+ for(let it=0;it<3;it++){if(hasDock&&CAP_ON){const lines=k<0.6?4:2;fs=Math.max(12,Math.min(22,24*k));capH=Math.ceil(lines*fs*1.45)+4}else capH=0;
+  dockH=hasDock?capH+barH+(capH?6:0)+14:0;k=Math.min(W/1280,Math.max(120,H-dockH)/720)*0.98}
+ const h=720*k,pad=10,top=Math.max(0,(H-h-dockH)/2);
+ vp.style.top=(top-pad)+"px";vp.style.bottom="auto";vp.style.height=(h+2*pad)+"px";
+ document.getElementById("stage").style.transform=`scale(${k})`;
+ if(hasDock){dock.style.top=(top+h+6)+"px";cap.style.display=CAP_ON?"block":"none";cap.style.width=Math.min(1280*k,W-16)+"px";cap.style.height=capH+"px";cap.dataset.fs=fs;if(window.capRefit)capRefit()}}
+function fillDrawer(){const p=S[cur].py,dr=document.getElementById("drawer");
+ if(!p){document.getElementById("dTitle").textContent="No Python on this slide";document.getElementById("dSub").textContent="Slides with a 'D · Python' tag have code and output.";document.getElementById("dCode").value="";document.getElementById("dOut").textContent="";return}
+ document.getElementById("dTitle").textContent=p.title;document.getElementById("dSub").textContent=p.sub||"";document.getElementById("dCode").value=p.code;
+ try{document.getElementById("dOut").textContent=p.out()}catch(e){document.getElementById("dOut").textContent=String(e)}
+ const m=document.getElementById("dMode");m.className="pill "+(MODE==="live"?"live":"rec");m.textContent=MODE==="live"?"LIVE RUN":"RECORDED RUN"}
+document.addEventListener("keydown",e=>{if(["INPUT","TEXTAREA"].includes(e.target.tagName)){if(e.key==="Escape")e.target.blur();return}const k=e.key;
+ if(["ArrowRight","PageDown"," "].includes(k)){e.preventDefault();show(cur+1)}else if(["ArrowLeft","PageUp"].includes(k)){e.preventDefault();show(cur-1)}
+ else if(k==="Home")show(0);else if(k==="End")show(N-1);else if(k==="d"||k==="D")document.getElementById("drawer").classList.toggle("open");
+ else if(k==="f"||k==="F"){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+ else if(k==="p"||k==="P"){if(window.narrToggle)narrToggle()}
+ else if(k==="c"||k==="C"){if(window.ccCycle)ccCycle()}
+ else if(k==="n"||k==="N"){const n=document.getElementById("notes");n.style.display=n.style.display==="block"?"none":"block"}});
+document.getElementById("stage").addEventListener("click",e=>{if(e.target.closest("button,input,select,#drawer,a,#startov"))return;const r=e.currentTarget.getBoundingClientRect();(e.clientX-r.left)>r.width*0.5?show(cur+1):show(cur-1)});
+addEventListener("resize",fit);
+
+/* ---------- live Python (Pyodide) ---------- */
+let py=null;
+async function ensurePy(msg){if(py)return py;msg.textContent="Loading Python in the browser (first time about 5–10 s) ...";
+ if(!window.loadPyodide){await new Promise((ok,bad)=>{const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js";s.onload=ok;s.onerror=()=>bad(new Error("could not load Pyodide"));document.head.appendChild(s)})}
+ const p=await loadPyodide();await p.loadPackage(["numpy","scipy"]);
+ const src=LAB_SRC||await (await fetch(LAB_FILE)).text();p.FS.writeFile("atoms_lab.py",src);
+ await p.runPythonAsync('import sys\nsys.path.insert(0, ".")\nfrom atoms_lab import *');py=p;return p}
+async function runCode(){const msg=document.getElementById("liveMsg"),out=document.getElementById("dOut"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Running ...";const buf=[];p.setStdout({batched:s=>buf.push(s)});p.setStderr({batched:s=>buf.push(s)});
+  try{await p.runPythonAsync(document.getElementById("dCode").value)}catch(e){buf.push(String(e.message||e).split("\n").slice(-4).join("\n"))}
+  out.textContent=buf.join("\n")||"(no output)";const m=document.getElementById("dMode");m.className="pill live";m.textContent="LIVE OUTPUT";
+  msg.textContent=`Ran in ${((performance.now()-t0)/1000).toFixed(1)} s in the browser`}
+ catch(e){msg.textContent="Python could not start: "+e.message+". The recorded output is still available."}}
+async function runLive(){const msg=document.getElementById("liveMsg"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Solving every model ...";
+  const out=await p.runPythonAsync('import importlib, json\nimport atoms_lab as lab\nimportlib.reload(lab)\njson.dumps(lab.classroom_results())');
+  R=JSON.parse(out);MODE="live";drawAll();fillDrawer();msg.textContent=`All slides now show a live run (${((performance.now()-t0)/1000).toFixed(1)} s, SciPy ${R.meta.scipy})`}
+ catch(e){msg.textContent="Live run failed: "+e.message+". The recorded run is still shown."}}
+document.getElementById("runCode").onclick=runCode;
+document.getElementById("runLive").onclick=runLive;
+document.getElementById("useRec").onclick=()=>{R=RECORDED;MODE="recorded";drawAll();fillDrawer();document.getElementById("liveMsg").textContent="Showing the recorded run."};
+
+/* ---------- narration and captions ---------- */
+const NARR = {
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 1093.6,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 41.544,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.671,
+     "en": "Welcome to Chemistry for Semiconductor Engineering. This is Class 1: atoms, ions and the materials of a chip."
+    },
+    {
+     "s": 8.671,
+     "e": 20.697,
+     "en": "A chip is made of a small number of materials, and each one does a different job. Silicon is the semiconductor, silicon dioxide is the insulator, and copper carries the current."
+    },
+    {
+     "s": 20.697,
+     "e": 32.0,
+     "en": "Today we look at what these materials are made of. We count the particles in atoms and ions, we see why atomic masses are not whole numbers, and we read chemical formulas."
+    },
+    {
+     "s": 32.0,
+     "e": 41.487,
+     "en": "If you are studying on your own, the narration takes about twenty minutes. The activity, two checks and the lab fill the rest of the ninety minutes."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 34.272,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.353,
+     "en": "Here is the plan for today's ninety minutes."
+    },
+    {
+     "s": 3.353,
+     "e": 8.197,
+     "en": "We start with a five minute activity on what you already know about atoms."
+    },
+    {
+     "s": 8.197,
+     "e": 15.974,
+     "en": "Part one, about twenty five minutes, covers particles, symbols and ions. It ends with Check 1."
+    },
+    {
+     "s": 15.974,
+     "e": 28.066,
+     "en": "Part two, also about twenty five minutes, covers isotopes, formulas and charge balance, and the jobs that silicon, silicon dioxide and copper do. It ends with Check 2."
+    },
+    {
+     "s": 28.066,
+     "e": 34.211,
+     "en": "Then you do Lab 1 on your own for thirty minutes, and we finish with the Exit Ticket and feedback form."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 32.28,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.539,
+     "en": "Activity 1. Take a piece of paper and answer these four questions without notes. Then compare with the person next to you."
+    },
+    {
+     "s": 9.539,
+     "e": 22.382,
+     "en": "Name the three particles in an atom and their charges. Say what the atomic number tells you. Decide whether copper, silicon dioxide and oxygen gas are elements or compounds."
+    },
+    {
+     "s": 22.382,
+     "e": 27.421,
+     "en": "And explain the difference between the two in O two and the two in copper two plus."
+    },
+    {
+     "s": 27.421,
+     "e": 32.224,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 40.776,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.353,
+     "en": "By the end of today you can do six things."
+    },
+    {
+     "s": 3.353,
+     "e": 10.724,
+     "en": "Count the protons, neutrons and electrons of an atom or an ion, from the atomic number, the mass number and the charge."
+    },
+    {
+     "s": 10.724,
+     "e": 17.211,
+     "en": "Read a symbol such as copper sixty five two plus, and tell a subscript in a formula from a charge."
+    },
+    {
+     "s": 17.211,
+     "e": 22.092,
+     "en": "Explain why removing electrons changes the charge but not the element."
+    },
+    {
+     "s": 22.092,
+     "e": 27.605,
+     "en": "Calculate an average atomic mass from the masses and abundances of the isotopes."
+    },
+    {
+     "s": 27.605,
+     "e": 33.963,
+     "en": "Count the atoms and electrons in a formula, and find the charge of a metal ion by charge balance."
+    },
+    {
+     "s": 33.963,
+     "e": 40.711,
+     "en": "And name the jobs of silicon, silicon dioxide and copper in a chip, and of the lithium ion in a battery."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 52.2,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.326,
+     "en": "This table shows how the first fourteen classes fit together."
+    },
+    {
+     "s": 4.326,
+     "e": 14.382,
+     "en": "Classes 1 to 3 ask what chip materials are made of, and how much of each there is. Classes 4 and 5 look at the solutions used in plating and etching."
+    },
+    {
+     "s": 14.382,
+     "e": 19.296,
+     "en": "Class 6 explains why silicon is a semiconductor and how doping changes it."
+    },
+    {
+     "s": 19.296,
+     "e": 27.092,
+     "en": "Classes 7 to 10 follow electrons through batteries and plating baths, up to the mass of copper that a current deposits."
+    },
+    {
+     "s": 27.092,
+     "e": 39.145,
+     "en": "Classes 11 and 12 look at what happens at an electrode surface, and Class 13 asks when copper is stable, dissolved or oxidized. Class 14 is the review before the midterm."
+    },
+    {
+     "s": 39.145,
+     "e": 52.145,
+     "en": "A note on notation. Z is the atomic number, A is the mass number, and e is the elementary charge. A charge is written as a superscript, and a count of atoms as a subscript."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 44.64,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.629,
+     "en": "Every class follows the same pattern, so you always know where you are."
+    },
+    {
+     "s": 4.629,
+     "e": 11.434,
+     "en": "There is a short activity, two parts that each end with a check, a thirty minute lab, and a five minute Exit Ticket."
+    },
+    {
+     "s": 11.434,
+     "e": 19.053,
+     "en": "The slides have a narrated version like this one, with captions. Use it when you miss a class, or to review."
+    },
+    {
+     "s": 19.053,
+     "e": 27.447,
+     "en": "On slides marked D, Python, press the D key to see the code that produced the numbers. You can run it in your browser."
+    },
+    {
+     "s": 27.447,
+     "e": 36.395,
+     "en": "The lab page works on a laptop or a phone. You predict first and then check, and each step opens when you finish the one before."
+    },
+    {
+     "s": 36.395,
+     "e": 44.579,
+     "en": "At the end you download an answer file and upload it to myCourseVille. The Exit Ticket and feedback form is anonymous."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 48.96,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.355,
+     "en": "Let us start with a chip. This is a simplified cross section, not to scale."
+    },
+    {
+     "s": 6.355,
+     "e": 14.974,
+     "en": "At the bottom is the silicon wafer, layer A. The transistors are built in it, in the doped regions shown as white bands."
+    },
+    {
+     "s": 14.974,
+     "e": 25.447,
+     "en": "Above it is silicon dioxide, layer B. It is an insulator. It keeps the wires apart from each other and from the devices below."
+    },
+    {
+     "s": 25.447,
+     "e": 34.763,
+     "en": "Inside the oxide are the copper wires and the vertical connections called vias, layer C. They carry current between the transistors."
+    },
+    {
+     "s": 34.763,
+     "e": 48.882,
+     "en": "Two of these materials are elements, silicon and copper. Silicon dioxide is a compound. Today we see what that means. In Class 2 we see why each one behaves as it does."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 55.008,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.484,
+     "en": "An atom is made of three kinds of particles."
+    },
+    {
+     "s": 3.484,
+     "e": 15.013,
+     "en": "The proton has a charge of plus one and a mass of about one atomic mass unit. The neutron has no charge and about the same mass. Both sit in the nucleus."
+    },
+    {
+     "s": 15.013,
+     "e": 25.342,
+     "en": "The electron has a charge of minus one and a very small mass, about one eighteen hundred and thirty sixth of a proton. Electrons are found around the nucleus."
+    },
+    {
+     "s": 25.342,
+     "e": 35.079,
+     "en": "The atomic number Z is the number of protons. It fixes the element. Every copper atom has twenty nine protons."
+    },
+    {
+     "s": 35.079,
+     "e": 39.842,
+     "en": "The net charge is the number of protons minus the number of electrons."
+    },
+    {
+     "s": 39.842,
+     "e": 48.061,
+     "en": "In chemical reactions, in plating and in batteries, only electrons are gained or lost. The nucleus does not change."
+    },
+    {
+     "s": 48.061,
+     "e": 54.934,
+     "en": "So a copper atom stays copper whether it has twenty nine, twenty eight or twenty seven electrons."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 51.696,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.289,
+     "en": "Four numbers can sit around a chemical symbol. Here they are for a copper ion."
+    },
+    {
+     "s": 6.289,
+     "e": 13.592,
+     "en": "Top left is the mass number A, the number of protons plus neutrons. Here it is sixty five."
+    },
+    {
+     "s": 13.592,
+     "e": 22.513,
+     "en": "Bottom left is the atomic number Z, twenty nine. It is often left out, because the symbol already tells you the element."
+    },
+    {
+     "s": 22.513,
+     "e": 33.579,
+     "en": "Top right is the net charge, two plus. Bottom right is the number of atoms in a formula, as in silicon dioxide. A single ion has none."
+    },
+    {
+     "s": 33.579,
+     "e": 43.118,
+     "en": "So this ion has twenty nine protons, sixty five minus twenty nine, or thirty six neutrons, and twenty nine minus two, or twenty seven electrons."
+    },
+    {
+     "s": 43.118,
+     "e": 51.618,
+     "en": "Remember the difference. A superscript charge changes the electrons. A subscript counts atoms."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 59.448,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.329,
+     "en": "This is the atom builder. You set the number of protons, neutrons and electrons, and it tells you what you have built."
+    },
+    {
+     "s": 8.329,
+     "e": 20.316,
+     "en": "Start with lithium: three protons, four neutrons and three electrons. The charge is three minus three, zero. It is a neutral atom with a mass number of seven."
+    },
+    {
+     "s": 20.316,
+     "e": 34.513,
+     "en": "Now remove one electron. The charge becomes plus one. It is now a lithium ion, a cation. The name of the element has not changed, because the number of protons has not changed."
+    },
+    {
+     "s": 34.513,
+     "e": 47.355,
+     "en": "Now try the opposite. Keep three electrons and change the protons from three to four. The element is now beryllium. Changing the protons changes the element."
+    },
+    {
+     "s": 47.355,
+     "e": 55.645,
+     "en": "Use the buttons to compare copper with the copper two plus ion, and to build the oxide ion, which has eight protons and ten electrons."
+    },
+    {
+     "s": 55.645,
+     "e": 59.382,
+     "en": "Press D to see the same calculation in Python."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 58.392,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.421,
+     "en": "An ion is an atom with electrons added or removed. The table shows the counts for the species we use in this course."
+    },
+    {
+     "s": 8.421,
+     "e": 20.013,
+     "en": "Here is a worked example. Copper has Z equal to twenty nine. A copper atom has twenty nine protons and twenty nine electrons, so its charge is zero."
+    },
+    {
+     "s": 20.013,
+     "e": 31.855,
+     "en": "The copper two plus ion still has twenty nine protons. Its charge is plus two, so twenty nine minus the number of electrons is two, and the number of electrons is twenty seven."
+    },
+    {
+     "s": 31.855,
+     "e": 36.026,
+     "en": "Copper has lost two electrons, and it is still copper."
+    },
+    {
+     "s": 36.026,
+     "e": 45.257,
+     "en": "A positive ion, a cation, has fewer electrons than protons. Metals form cations, such as lithium, sodium and copper ions."
+    },
+    {
+     "s": 45.257,
+     "e": 52.974,
+     "en": "A negative ion, an anion, has more electrons than protons, such as the oxide ion and the fluoride ion."
+    },
+    {
+     "s": 52.974,
+     "e": 58.329,
+     "en": "For any single-atom ion, the number of electrons is Z minus the charge."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 47.856,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.182,
+     "en": "Here is a mistake that many students make on the first day."
+    },
+    {
+     "s": 4.182,
+     "e": 10.355,
+     "en": "The claim is that the copper two plus ion has thirty one electrons, because its charge is plus two."
+    },
+    {
+     "s": 10.355,
+     "e": 20.967,
+     "en": "Electrons are negative. When copper loses two of them, its twenty nine protons are two charges ahead, so twenty nine minus twenty seven gives plus two."
+    },
+    {
+     "s": 20.967,
+     "e": 24.947,
+     "en": "A positive ion has fewer electrons than its neutral atom."
+    },
+    {
+     "s": 24.947,
+     "e": 31.039,
+     "en": "With thirty one electrons, the charge would be twenty nine minus thirty one, which is minus two."
+    },
+    {
+     "s": 31.039,
+     "e": 36.211,
+     "en": "So check every count with the rule: charge equals protons minus electrons."
+    },
+    {
+     "s": 36.211,
+     "e": 47.789,
+     "en": "This matters later. In Class 7 you will write copper two plus plus two electrons gives copper. The two electrons in that equation are the two that the ion is missing."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 27.672,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 18.373,
+     "en": "Count the protons and electrons in the sodium ion. Identify the ion with eight protons and ten electrons. Decide whether copper is still copper after it loses two electrons."
+    },
+    {
+     "s": 18.373,
+     "e": 23.039,
+     "en": "And say what each number in copper sixty five two plus tells you."
+    },
+    {
+     "s": 23.039,
+     "e": 27.605,
+     "en": "Pause now, write your answers, and then press Show answers to check them."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 50.016,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.958,
+     "en": "Part 2 starts with isotopes."
+    },
+    {
+     "s": 2.958,
+     "e": 13.974,
+     "en": "Isotopes are atoms of the same element with different numbers of neutrons. They have the same Z, so they behave the same way in chemistry, but they have different mass numbers."
+    },
+    {
+     "s": 13.974,
+     "e": 20.895,
+     "en": "The table shows the isotopes of silicon and copper, with their masses and their natural abundances, from NIST."
+    },
+    {
+     "s": 20.895,
+     "e": 29.566,
+     "en": "Copper sixty three has sixty three minus twenty nine, or thirty four neutrons. Copper sixty five has thirty six."
+    },
+    {
+     "s": 29.566,
+     "e": 40.868,
+     "en": "Natural silicon is about ninety two percent silicon twenty eight. Wafers made of almost pure silicon twenty eight are used to study silicon devices for quantum computing."
+    },
+    {
+     "s": 40.868,
+     "e": 49.961,
+     "en": "The atomic mass on the periodic table is the average of the isotope masses, weighted by their abundances. The next slide shows how."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 62.376,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.089,
+     "en": "Atomic mass is a weighted average."
+    },
+    {
+     "s": 3.089,
+     "e": 8.829,
+     "en": "For copper, multiply the mass of each isotope by the fraction of atoms that have it, and add."
+    },
+    {
+     "s": 8.829,
+     "e": 17.133,
+     "en": "Zero point six nine one five times sixty two point nine three, plus zero point three zero eight five times sixty four point nine three,"
+    },
+    {
+     "s": 17.133,
+     "e": 20.553,
+     "en": "gives sixty three point five four six atomic mass units."
+    },
+    {
+     "s": 20.553,
+     "e": 32.474,
+     "en": "The chart shows how the average changes with the fraction of copper sixty five. It is a straight line between the two isotope masses. Natural copper is the teal point."
+    },
+    {
+     "s": 32.474,
+     "e": 39.895,
+     "en": "Move the slider. With more copper sixty five, the average moves toward sixty four point nine three."
+    },
+    {
+     "s": 39.895,
+     "e": 47.718,
+     "en": "The natural average sits nearer to sixty three because about sixty nine percent of copper atoms are copper sixty three."
+    },
+    {
+     "s": 47.718,
+     "e": 52.934,
+     "en": "Notice that no single copper atom has a mass of sixty three point five four six."
+    },
+    {
+     "s": 52.934,
+     "e": 62.303,
+     "en": "This number returns in Class 3, as sixty three point five four six grams per mole, and in Class 10, where it sets how much copper a current deposits."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 54.912,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.576,
+     "en": "Now we read formulas."
+    },
+    {
+     "s": 2.576,
+     "e": 14.974,
+     "en": "An element has one kind of atom. Copper and silicon are elements. Oxygen gas, O two, is also an element: it is a molecule made of two oxygen atoms."
+    },
+    {
+     "s": 14.974,
+     "e": 23.78,
+     "en": "A compound has two or more elements in a fixed ratio. Silicon dioxide has silicon and oxygen in the ratio one to two."
+    },
+    {
+     "s": 23.78,
+     "e": 29.526,
+     "en": "Copper sulfate has copper, sulfur and oxygen in the ratio one to one to four."
+    },
+    {
+     "s": 29.526,
+     "e": 38.053,
+     "en": "Silicon dioxide is a network solid. Its formula gives the ratio of atoms, not a separate small molecule."
+    },
+    {
+     "s": 38.053,
+     "e": 50.559,
+     "en": "To count, multiply each subscript by the atom before it. One silicon dioxide unit has three atoms. Its protons are fourteen plus two times eight, which is thirty."
+    },
+    {
+     "s": 50.559,
+     "e": 54.855,
+     "en": "A neutral unit has the same number of electrons, thirty."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 62.592,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.0,
+     "en": "A neutral compound must have zero total charge. If you know the charge of the anion, this tells you the charge of the metal ion."
+    },
+    {
+     "s": 9.0,
+     "e": 16.303,
+     "en": "The rule is: the number of metal ions times their charge, plus the number of anions times their charge, equals zero."
+    },
+    {
+     "s": 16.303,
+     "e": 31.395,
+     "en": "Take copper(I) oxide, Cu2O. Two times the copper charge, plus one times −2, equals zero. So each copper has a charge of +1, and it has 29 − 1 = 28 electrons."
+    },
+    {
+     "s": 31.395,
+     "e": 46.526,
+     "en": "In copper(II) oxide, CuO, one copper balances one oxide ion, so copper is +2. Copper forms both oxides, and both appear on copper surfaces in chips. We meet them again in Class 13."
+    },
+    {
+     "s": 46.526,
+     "e": 62.526,
+     "en": "The table also shows copper sulfate, sodium chloride, and lithium hexafluorophosphate, LiPF6. This salt is used in most lithium-ion battery electrolytes. It gives Li+ and PF6−."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 56.352,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.655,
+     "en": "The same atoms appear in a chip and in a battery, in different jobs."
+    },
+    {
+     "s": 4.655,
+     "e": 14.829,
+     "en": "Silicon is the wafer of a chip, and it is added to some battery negative electrodes. Silicon dioxide insulates the wires and devices in a chip."
+    },
+    {
+     "s": 14.829,
+     "e": 24.079,
+     "en": "Copper makes the wires and vias of a chip. In a lithium ion battery, a copper foil collects the current at the negative electrode."
+    },
+    {
+     "s": 24.079,
+     "e": 33.645,
+     "en": "The copper two plus ion is in the copper sulfate bath that plates the copper wires. The lithium ion carries charge through a battery electrolyte."
+    },
+    {
+     "s": 33.645,
+     "e": 43.711,
+     "en": "The sodium ion is the charge carrier in sodium ion batteries. In a chip, it is a contaminant that must be kept out of the silicon dioxide."
+    },
+    {
+     "s": 43.711,
+     "e": 56.289,
+     "en": "One more point. In a metal wire, electrons carry the current. In a solution or an electrolyte, ions carry it. Class 4 returns to this difference."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 31.44,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 16.856,
+     "en": "Count the neutrons in copper sixty three and copper sixty five. Explain why the atomic mass of copper is sixty three point five four six and not sixty four."
+    },
+    {
+     "s": 16.856,
+     "e": 26.816,
+     "en": "Find the charge on each copper in copper one oxide, and its number of electrons. And count the atoms and electrons in one silicon dioxide unit."
+    },
+    {
+     "s": 26.816,
+     "e": 31.382,
+     "en": "Pause now, write your answers, and then press Show answers to check them."
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "file": "audio/slide-20.mp3",
+   "duration": 44.808,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.761,
+     "en": "Today's counts come back in every block of the course."
+    },
+    {
+     "s": 3.761,
+     "e": 10.289,
+     "en": "Class 2 explains why copper conducts, silicon dioxide insulates, and silicon sits in between."
+    },
+    {
+     "s": 10.289,
+     "e": 20.75,
+     "en": "In Class 3, sixty three point five four six atomic mass units becomes sixty three point five four six grams per mole, which links a mass of copper to a number of atoms."
+    },
+    {
+     "s": 20.75,
+     "e": 29.671,
+     "en": "In Class 6, boron and phosphorus replace silicon atoms, and their numbers of electrons decide whether silicon becomes p type or n type."
+    },
+    {
+     "s": 29.671,
+     "e": 37.25,
+     "en": "In Class 7 and Class 10, the two electrons that the copper two plus ion is missing set how much copper a current can plate."
+    },
+    {
+     "s": 37.25,
+     "e": 44.75,
+     "en": "And in Class 13, copper, its two oxides and the copper two plus ion appear on one map that shows which one is stable."
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "file": "audio/slide-21.mp3",
+   "duration": 29.328,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.789,
+     "en": "Now it is time for Lab 1. Scan the code or open the lab page."
+    },
+    {
+     "s": 5.789,
+     "e": 15.566,
+     "en": "You will predict and then count the electrons in three ions, count the neutrons in two isotopes, calculate the atomic mass of copper, and change the isotope mix."
+    },
+    {
+     "s": 15.566,
+     "e": 23.316,
+     "en": "Then you find the charge of copper in its two oxides, and assign silicon, silicon dioxide and copper to the layers of a chip."
+    },
+    {
+     "s": 23.316,
+     "e": 29.263,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 22,
+   "file": "audio/slide-22.mp3",
+   "duration": 51.432,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 10.408,
+     "en": "Z is the number of protons, and it fixes the element. The mass number A is protons plus neutrons."
+    },
+    {
+     "s": 10.408,
+     "e": 23.513,
+     "en": "The charge is protons minus electrons. Chemistry changes the electrons, never the nucleus. A positive ion has fewer electrons than its atom, and a negative ion has more."
+    },
+    {
+     "s": 23.513,
+     "e": 33.75,
+     "en": "Isotopes differ in their number of neutrons, and the atomic mass is their weighted average: sixty three point five four six for copper and twenty eight point zero eight five for silicon."
+    },
+    {
+     "s": 33.75,
+     "e": 44.382,
+     "en": "Subscripts count atoms, superscripts give charge, and a neutral compound balances its charges, so copper is plus one in copper one oxide and plus two in copper two oxide."
+    },
+    {
+     "s": 44.382,
+     "e": 51.355,
+     "en": "And in a chip, silicon is the semiconductor, silicon dioxide the insulator, and copper the conductor."
+    }
+   ]
+  },
+  {
+   "n": 23,
+   "file": "audio/slide-23.mp3",
+   "duration": 31.056,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.589,
+     "en": "Before the next class, finish Lab 1 if you did not finish it, and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 6.589,
+     "e": 17.763,
+     "en": "Read OpenStax Chemistry two e, sections two point three and two point four, on atomic structure and chemical formulas, and skim section two point six on ionic and molecular compounds."
+    },
+    {
+     "s": 17.763,
+     "e": 22.237,
+     "en": "If you like, try the PhET simulation Build an Atom."
+    },
+    {
+     "s": 22.237,
+     "e": 31.0,
+     "en": "Class 2 asks why copper is a conductor and silicon dioxide is an insulator. The answer is in how their atoms bond."
+    }
+   ]
+  },
+  {
+   "n": 24,
+   "file": "audio/slide-24.mp3",
+   "duration": 24.552,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.921,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 1."
+    },
+    {
+     "s": 6.921,
+     "e": 15.711,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.711,
+     "e": 24.487,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 2."
+    }
+   ]
+  }
+ ]
+};
+(function(){if(!NARR)return;
+ const au=document.getElementById("narr"),bar=document.getElementById("nbar"),cap=document.getElementById("cap"),play=document.getElementById("nPlay"),tm=document.getElementById("nTime"),msg=document.getElementById("nMsg");
+ document.getElementById("dock").style.display="flex";document.getElementById("help").style.display="none";let on=false,lang="off",slideIdx=-1;
+ const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
+ lang=ls("cc-lang")||"off";if(lang!=="en")lang="off";const sp=ls("narr-speed");if(sp)document.getElementById("nSpeed").value=sp;
+ const fmtT=t=>isFinite(t)?`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,"0")}`:"0:00";
+ const S_=i=>NARR.slides[i];
+ function load(i){slideIdx=i;const s=S_(i);if(!s){au.removeAttribute("src");return}au.src=s.file;au.playbackRate=+document.getElementById("nSpeed").value;tm.textContent=`0:00 / ${fmtT(s.duration)}`;showCap(0)}
+ function setPlayUI(){play.textContent=au.paused?"▶ Play":"❚❚ Pause";play.classList.toggle("on",!au.paused)}
+ // captions sit in their own band under the slide; long lines shrink to fit the band
+ window.capRefit=()=>{let f=parseFloat(cap.dataset.fs)||18;cap.style.fontSize=f+"px";while(cap.scrollHeight>cap.clientHeight+1&&f>11){f-=1;cap.style.fontSize=f+"px"}};
+ function showCap(t){const s=S_(slideIdx);let c=null;if(s&&lang!=="off"){for(const q of s.cues){if(t>=q.s-0.05)c=q;else break}}
+  const txt=(!c||(au.paused&&au.currentTime===0&&!on))?"":c.en;if(cap.textContent!==txt){cap.textContent=txt;capRefit()}}
+ function ccUI(){const b=document.getElementById("nCC");b.textContent=lang==="off"?"CC off":"CC on";b.classList.toggle("on",lang!=="off");CAP_ON=lang!=="off";fit();showCap(au.currentTime||0)}
+ window.ccCycle=()=>{lang=lang==="off"?"en":"off";ls("cc-lang",lang);ccUI()};
+ // "on" means the student is listening: it starts with Play and ends with Pause or Stop.
+ // Slides change only when the student moves; the new slide's narration then starts if "on".
+ window.narrToggle=()=>{if(au.paused){on=true;if(slideIdx!==cur)load(cur);if(au.ended)au.currentTime=0;msg.textContent="";au.play().catch(()=>{msg.textContent="Press Play again to start audio."})}else{on=false;au.pause()}};
+ window.onSlideChange=i=>{au.pause();msg.textContent="";load(i);if(on)au.play().catch(()=>{})};
+ document.getElementById("nPlay").onclick=narrToggle;
+ document.getElementById("nStop").onclick=()=>{au.pause();au.currentTime=0;on=false;setPlayUI();showCap(0);tm.textContent=`0:00 / ${fmtT((S_(cur)||{}).duration)}`};
+ document.getElementById("nCC").onclick=ccCycle;
+ document.getElementById("nPrev").onclick=()=>show(cur-1);document.getElementById("nNext").onclick=()=>show(cur+1);
+ document.getElementById("nSpeed").onchange=e=>{au.playbackRate=+e.target.value;ls("narr-speed",e.target.value)};
+ au.addEventListener("play",setPlayUI);au.addEventListener("pause",setPlayUI);
+ au.addEventListener("timeupdate",()=>{tm.textContent=`${fmtT(au.currentTime)} / ${fmtT((S_(slideIdx)||{}).duration)}`;showCap(au.currentTime)});
+ au.addEventListener("ended",()=>{setPlayUI();const s=S_(slideIdx);msg.textContent=s&&s.hold?"Activity: do it now, then press Next ›":cur<N-1?"Press Next › or → for the next slide":"End of the session"});
+ const q=new URLSearchParams(location.search);
+ if(q.get("narrate")==="1"){const ov=document.getElementById("startov");ov.style.display="flex";document.getElementById("startBtn").onclick=()=>{ov.style.display="none";if(lang==="off"){lang="en";ls("cc-lang",lang)}ccUI();on=true;load(cur);au.play().catch(()=>{})}}
+ ccUI();setTimeout(()=>{if(slideIdx<0)load(cur)},0);
+})();
+
+build();drawAll();fit();show((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>

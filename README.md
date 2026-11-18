@@ -1,5 +1,10 @@
 # 2182209 Chemistry for Semiconductor Engineering
 
+**2027 offering (Classes 1 to 14, January to February 2027).** The front page redirects to `teaching/2182209/2027-draft/`, which holds each class's narrated slides, lab page, Python module and the anonymous Exit Ticket and feedback form (`exit.html?s=N`). These files are built in `2027/sessions/` in the course folder on the instructor's Mac and copied here unchanged; `scripts/build_pages.py` copies them into `_site/` byte for byte. Lab credit is the answer file each student uploads to myCourseVille. Folder names are fixed once their QR codes exist.
+
+**Earlier lesson site.** The material described below is still built, unchanged, under `classic/` and is not linked from the 2027 front page, except for the practice worksheet PDFs. Its portal Exit Tickets are not used for the 2027 classes; existing portal responses are left intact.
+
+
 This repository contains the English public materials for the 14 classes before the midterm. Students can use the [course portal](https://semiconductor-chemistry-2182209.soorathep-k.chatgpt.site/#lessons) for lessons, demos, worksheets and online exit tickets. The [instructor area](https://semiconductor-chemistry-2182209.soorathep-k.chatgpt.site/instructor) requires an authorized login.
 
 ## Public course files

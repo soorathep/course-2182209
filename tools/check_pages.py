@@ -8,7 +8,9 @@ from urllib.parse import unquote, urljoin, urlsplit
 from xml.etree import ElementTree
 from zipfile import ZipFile
 
-BASE = "https://soorathep.github.io/course-2182209/"
+SITE = "https://soorathep.github.io/course-2182209/"
+BASE = SITE + "classic/"          # the earlier lesson site, kept under classic/
+DRAFT = "teaching/2182209/2027-draft"
 PORTAL = "https://semiconductor-chemistry-2182209.soorathep-k.chatgpt.site"
 CLASSES = range(1, 15)
 DOCS = ("downloads/Course_Syllabus.docx", "downloads/Student_Workbook_Classes_01_14.docx")
@@ -61,9 +63,12 @@ class Page(HTMLParser):
 
 
 def public_files(root):
-    expected = {".nojekyll", "index.html", "course.css", "catalog.js", "favicon.svg", "demo.html", "downloads/2182209-exit-ticket-slides.pdf", "downloads/2182209-exit-ticket-slides.pptx", *DOCS}
+    classic = {"index.html", "course.css", "catalog.js", "favicon.svg", "demo.html", "downloads/2182209-exit-ticket-slides.pdf", "downloads/2182209-exit-ticket-slides.pptx", *DOCS}
     for n in CLASSES:
-        expected.update((f"lessons/{n}/index.html", workbook(n), dataset(n), f"qr/exit-ticket-{n:02d}.png"))
+        classic.update((f"lessons/{n}/index.html", workbook(n), dataset(n), f"qr/exit-ticket-{n:02d}.png"))
+    draft = Path(__file__).resolve().parents[1] / DRAFT
+    expected = {".nojekyll", "index.html", *("classic/" + name for name in classic),
+                *(p.relative_to(draft.parents[2]).as_posix() for p in draft.rglob("*") if p.is_file())}
     require(root.is_dir() and not root.is_symlink(), f"Invalid output directory: {root}")
     actual = set()
     for path in root.rglob("*"):
@@ -76,7 +81,7 @@ def public_files(root):
 
 
 def resolve_links(pages, files):
-    origin = urlsplit(BASE)
+    origin = urlsplit(SITE)
     for filename, page in pages.items():
         for tag, _, url in page.links:
             parts = urlsplit(url)
@@ -99,6 +104,7 @@ def resolve_links(pages, files):
 
 
 def check_downloads(root, page, n):
+    root = root / "classic"
     pdf = (root / workbook(n)).read_bytes()
     require(pdf.startswith(b"%PDF-") and pdf.rstrip().endswith(b"%%EOF"), f"Class {n}: damaged PDF")
     with (root / dataset(n)).open(encoding="utf-8-sig", newline="") as stream:
@@ -109,6 +115,7 @@ def check_downloads(root, page, n):
 
 
 def check_docs(root):
+    root = root / "classic"
     for name in DOCS:
         with ZipFile(root / name) as doc:
             require(doc.testzip() is None, f"{name}: corrupt ZIP entry")
@@ -126,16 +133,16 @@ def check(root):
     pages = {}
     for name in sorted(files):
         if name.endswith(".html"):
-            address = BASE + name.removesuffix("index.html")
+            address = SITE + name.removesuffix("index.html")
             pages[name] = Page(root / name, address)
     resolve_links(pages, files)
-    home = pages["index.html"]
+    home = pages["classic/index.html"]
     for name in DOCS:
         require(("a", "href", BASE + name) in home.links, f"Home: missing download {name}")
     for n in CLASSES:
         path = f"lessons/{n}/"
         require(("a", "href", BASE + path) in home.links, f"Class {n}: missing home link")
-        page = pages[path + "index.html"]
+        page = pages["classic/" + path + "index.html"]
         demo = f"{BASE}demo.html?lesson={n}"
         required_links = {
             ("a", "href", BASE + workbook(n)),
@@ -151,10 +158,17 @@ def check(root):
         require("exit-ticket" in page.targets, f"Class {n}: missing exit-ticket section")
         check_downloads(root, page, n)
     require(("a", "href", f"{PORTAL}/instructor") in home.links, "Home: missing protected instructor link")
-    demo_source = (root / "demo.html").read_text(encoding="utf-8")
+    demo_source = (root / "classic/demo.html").read_text(encoding="utf-8")
     require(f'{PORTAL}/lessons/${{n}}#exit-ticket' in demo_source, "Demo: missing live exit-ticket destination")
     check_docs(root)
-    print(f"Passed: {len(files)} approved public files, 14 lessons, demos, downloads, form links and internal anchors.")
+    front = f"{DRAFT}/index.html"
+    require(front in pages and (SITE + DRAFT + "/") in {u.split("#")[0] for _, _, u in pages["index.html"].links}, "Front page must lead to the 2027 classes")
+    drafts = [name for name in pages if name.startswith(DRAFT + "/") or name == "index.html"]
+    for name in drafts:
+        require('<meta name="robots" content="noindex">' in (root / name).read_text(encoding="utf-8"), f"{name}: missing noindex")
+    linked = {u for _, _, u in pages[front].links}
+    require(not any("/classic/lessons/" in u or "/classic/index.html" in u or u.endswith("/classic/") for u in linked), "2027 front page must not link the earlier lesson pages")
+    print(f"Passed: {len(files)} approved public files; earlier site under classic/ with 14 lessons, demos, downloads, form links and anchors; front page leads to the 2027 classes; {len(drafts)} noindex pages.")
 
 
 if __name__ == "__main__":

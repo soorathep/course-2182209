@@ -1,0 +1,978 @@
+{
+ "meta": {
+  "numpy": "2.2.5",
+  "scipy": "1.14.1",
+  "python": "3.13.18"
+ },
+ "lecture": {
+  "elements": [
+   {
+    "Z": 1,
+    "symbol": "H",
+    "name": "hydrogen"
+   },
+   {
+    "Z": 2,
+    "symbol": "He",
+    "name": "helium"
+   },
+   {
+    "Z": 3,
+    "symbol": "Li",
+    "name": "lithium"
+   },
+   {
+    "Z": 4,
+    "symbol": "Be",
+    "name": "beryllium"
+   },
+   {
+    "Z": 5,
+    "symbol": "B",
+    "name": "boron"
+   },
+   {
+    "Z": 6,
+    "symbol": "C",
+    "name": "carbon"
+   },
+   {
+    "Z": 7,
+    "symbol": "N",
+    "name": "nitrogen"
+   },
+   {
+    "Z": 8,
+    "symbol": "O",
+    "name": "oxygen"
+   },
+   {
+    "Z": 9,
+    "symbol": "F",
+    "name": "fluorine"
+   },
+   {
+    "Z": 10,
+    "symbol": "Ne",
+    "name": "neon"
+   },
+   {
+    "Z": 11,
+    "symbol": "Na",
+    "name": "sodium"
+   },
+   {
+    "Z": 12,
+    "symbol": "Mg",
+    "name": "magnesium"
+   },
+   {
+    "Z": 13,
+    "symbol": "Al",
+    "name": "aluminum"
+   },
+   {
+    "Z": 14,
+    "symbol": "Si",
+    "name": "silicon"
+   },
+   {
+    "Z": 15,
+    "symbol": "P",
+    "name": "phosphorus"
+   },
+   {
+    "Z": 16,
+    "symbol": "S",
+    "name": "sulfur"
+   },
+   {
+    "Z": 17,
+    "symbol": "Cl",
+    "name": "chlorine"
+   },
+   {
+    "Z": 18,
+    "symbol": "Ar",
+    "name": "argon"
+   },
+   {
+    "Z": 19,
+    "symbol": "K",
+    "name": "potassium"
+   },
+   {
+    "Z": 20,
+    "symbol": "Ca",
+    "name": "calcium"
+   },
+   {
+    "Z": 21,
+    "symbol": "Sc",
+    "name": "scandium"
+   },
+   {
+    "Z": 22,
+    "symbol": "Ti",
+    "name": "titanium"
+   },
+   {
+    "Z": 23,
+    "symbol": "V",
+    "name": "vanadium"
+   },
+   {
+    "Z": 24,
+    "symbol": "Cr",
+    "name": "chromium"
+   },
+   {
+    "Z": 25,
+    "symbol": "Mn",
+    "name": "manganese"
+   },
+   {
+    "Z": 26,
+    "symbol": "Fe",
+    "name": "iron"
+   },
+   {
+    "Z": 27,
+    "symbol": "Co",
+    "name": "cobalt"
+   },
+   {
+    "Z": 28,
+    "symbol": "Ni",
+    "name": "nickel"
+   },
+   {
+    "Z": 29,
+    "symbol": "Cu",
+    "name": "copper"
+   },
+   {
+    "Z": 30,
+    "symbol": "Zn",
+    "name": "zinc"
+   }
+  ],
+  "ions": [
+   {
+    "symbol": "Li",
+    "name": "lithium",
+    "Z": 3,
+    "charge": 0,
+    "protons": 3,
+    "electrons": 3,
+    "label": "Li"
+   },
+   {
+    "symbol": "Li",
+    "name": "lithium",
+    "Z": 3,
+    "charge": 1,
+    "protons": 3,
+    "electrons": 2,
+    "label": "Li+"
+   },
+   {
+    "symbol": "Na",
+    "name": "sodium",
+    "Z": 11,
+    "charge": 1,
+    "protons": 11,
+    "electrons": 10,
+    "label": "Na+"
+   },
+   {
+    "symbol": "Cu",
+    "name": "copper",
+    "Z": 29,
+    "charge": 0,
+    "protons": 29,
+    "electrons": 29,
+    "label": "Cu"
+   },
+   {
+    "symbol": "Cu",
+    "name": "copper",
+    "Z": 29,
+    "charge": 1,
+    "protons": 29,
+    "electrons": 28,
+    "label": "Cu+"
+   },
+   {
+    "symbol": "Cu",
+    "name": "copper",
+    "Z": 29,
+    "charge": 2,
+    "protons": 29,
+    "electrons": 27,
+    "label": "Cu2+"
+   },
+   {
+    "symbol": "Si",
+    "name": "silicon",
+    "Z": 14,
+    "charge": 0,
+    "protons": 14,
+    "electrons": 14,
+    "label": "Si"
+   },
+   {
+    "symbol": "O",
+    "name": "oxygen",
+    "Z": 8,
+    "charge": -2,
+    "protons": 8,
+    "electrons": 10,
+    "label": "O2-"
+   },
+   {
+    "symbol": "F",
+    "name": "fluorine",
+    "Z": 9,
+    "charge": -1,
+    "protons": 9,
+    "electrons": 10,
+    "label": "F-"
+   }
+  ],
+  "li_demo": [
+   {
+    "p": 3,
+    "n": 4,
+    "e": 3,
+    "symbol": "Li",
+    "name": "lithium",
+    "A": 7,
+    "charge": 0,
+    "kind": "neutral atom"
+   },
+   {
+    "p": 3,
+    "n": 4,
+    "e": 2,
+    "symbol": "Li",
+    "name": "lithium",
+    "A": 7,
+    "charge": 1,
+    "kind": "cation"
+   }
+  ],
+  "isotopes": {
+   "Li": [
+    {
+     "A": 6,
+     "label": "Li-6",
+     "protons": 3,
+     "neutrons": 3,
+     "mass_u": 6.0151228874,
+     "abundance": 0.0759
+    },
+    {
+     "A": 7,
+     "label": "Li-7",
+     "protons": 3,
+     "neutrons": 4,
+     "mass_u": 7.0160034366,
+     "abundance": 0.9241
+    }
+   ],
+   "O": [
+    {
+     "A": 16,
+     "label": "O-16",
+     "protons": 8,
+     "neutrons": 8,
+     "mass_u": 15.99491461957,
+     "abundance": 0.99757
+    },
+    {
+     "A": 17,
+     "label": "O-17",
+     "protons": 8,
+     "neutrons": 9,
+     "mass_u": 16.9991317565,
+     "abundance": 0.00038
+    },
+    {
+     "A": 18,
+     "label": "O-18",
+     "protons": 8,
+     "neutrons": 10,
+     "mass_u": 17.99915961286,
+     "abundance": 0.00205
+    }
+   ],
+   "Si": [
+    {
+     "A": 28,
+     "label": "Si-28",
+     "protons": 14,
+     "neutrons": 14,
+     "mass_u": 27.97692653465,
+     "abundance": 0.92223
+    },
+    {
+     "A": 29,
+     "label": "Si-29",
+     "protons": 14,
+     "neutrons": 15,
+     "mass_u": 28.9764946649,
+     "abundance": 0.04685
+    },
+    {
+     "A": 30,
+     "label": "Si-30",
+     "protons": 14,
+     "neutrons": 16,
+     "mass_u": 29.973770136,
+     "abundance": 0.03092
+    }
+   ],
+   "Cu": [
+    {
+     "A": 63,
+     "label": "Cu-63",
+     "protons": 29,
+     "neutrons": 34,
+     "mass_u": 62.92959772,
+     "abundance": 0.6915
+    },
+    {
+     "A": 65,
+     "label": "Cu-65",
+     "protons": 29,
+     "neutrons": 36,
+     "mass_u": 64.9277897,
+     "abundance": 0.3085
+    }
+   ]
+  },
+  "M": {
+   "Li": 6.94003660291572,
+   "O": 15.999404924318277,
+   "Si": 28.08549870570596,
+   "Cu": 63.54603994583
+  },
+  "compounds": [
+   {
+    "formula": "SiO2",
+    "atoms": 3,
+    "elements": 2,
+    "protons": 30,
+    "electrons": 30
+   },
+   {
+    "formula": "CuSO4",
+    "atoms": 6,
+    "elements": 3,
+    "protons": 77,
+    "electrons": 77
+   }
+  ],
+  "charges": [
+   {
+    "formula": "CuO",
+    "anion": "O",
+    "anion_charge": -2,
+    "metal": "Cu",
+    "n_metal": 1,
+    "metal_charge": 2,
+    "metal_ion": "Cu2+",
+    "metal_electrons": 27
+   },
+   {
+    "formula": "Cu2O",
+    "anion": "O",
+    "anion_charge": -2,
+    "metal": "Cu",
+    "n_metal": 2,
+    "metal_charge": 1,
+    "metal_ion": "Cu+",
+    "metal_electrons": 28
+   },
+   {
+    "formula": "CuSO4",
+    "anion": "SO4",
+    "anion_charge": -2,
+    "metal": "Cu",
+    "n_metal": 1,
+    "metal_charge": 2,
+    "metal_ion": "Cu2+",
+    "metal_electrons": 27
+   },
+   {
+    "formula": "LiPF6",
+    "anion": "PF6",
+    "anion_charge": -1,
+    "metal": "Li",
+    "n_metal": 1,
+    "metal_charge": 1,
+    "metal_ion": "Li+",
+    "metal_electrons": 2
+   },
+   {
+    "formula": "NaCl",
+    "anion": "Cl",
+    "anion_charge": -1,
+    "metal": "Na",
+    "n_metal": 1,
+    "metal_charge": 1,
+    "metal_ion": "Na+",
+    "metal_electrons": 10
+   }
+  ],
+  "chip": [
+   {
+    "layer": "A",
+    "material": "Si",
+    "kind": "element",
+    "role": "semiconductor: the transistors are built in it",
+    "class": "semiconductor"
+   },
+   {
+    "layer": "B",
+    "material": "SiO2",
+    "kind": "compound",
+    "role": "insulator: keeps wires and devices apart",
+    "class": "insulator"
+   },
+   {
+    "layer": "C",
+    "material": "Cu",
+    "kind": "element",
+    "role": "conductor: the wires (interconnects) that carry current",
+    "class": "conductor"
+   }
+  ]
+ },
+ "lab": {
+  "counts": {
+   "Cu2+": {
+    "symbol": "Cu",
+    "name": "copper",
+    "Z": 29,
+    "charge": 2,
+    "protons": 29,
+    "electrons": 27
+   },
+   "Na+": {
+    "symbol": "Na",
+    "name": "sodium",
+    "Z": 11,
+    "charge": 1,
+    "protons": 11,
+    "electrons": 10
+   },
+   "Li+": {
+    "symbol": "Li",
+    "name": "lithium",
+    "Z": 3,
+    "charge": 1,
+    "protons": 3,
+    "electrons": 2
+   },
+   "O2-": {
+    "symbol": "O",
+    "name": "oxygen",
+    "Z": 8,
+    "charge": -2,
+    "protons": 8,
+    "electrons": 10
+   },
+   "Si": {
+    "symbol": "Si",
+    "name": "silicon",
+    "Z": 14,
+    "charge": 0,
+    "protons": 14,
+    "electrons": 14
+   }
+  },
+  "cu_diff": 2,
+  "neutrons": {
+   "Cu-65": 36,
+   "Si-28": 14
+  },
+  "cu_iso": [
+   {
+    "A": 63,
+    "label": "Cu-63",
+    "protons": 29,
+    "neutrons": 34,
+    "mass_u": 62.92959772,
+    "abundance": 0.6915
+   },
+   {
+    "A": 65,
+    "label": "Cu-65",
+    "protons": 29,
+    "neutrons": 36,
+    "mass_u": 64.9277897,
+    "abundance": 0.3085
+   }
+  ],
+  "M_Cu": 63.54603994583,
+  "M_Cu_f65_035": 63.628964913,
+  "sweep": [
+   {
+    "f65": 0.0,
+    "M": 62.92959772
+   },
+   {
+    "f65": 0.01,
+    "M": 62.94957963979999
+   },
+   {
+    "f65": 0.02,
+    "M": 62.969561559599995
+   },
+   {
+    "f65": 0.03,
+    "M": 62.9895434794
+   },
+   {
+    "f65": 0.04,
+    "M": 63.009525399199994
+   },
+   {
+    "f65": 0.05,
+    "M": 63.029507319
+   },
+   {
+    "f65": 0.06,
+    "M": 63.04948923879999
+   },
+   {
+    "f65": 0.07,
+    "M": 63.069471158599995
+   },
+   {
+    "f65": 0.08,
+    "M": 63.0894530784
+   },
+   {
+    "f65": 0.09,
+    "M": 63.1094349982
+   },
+   {
+    "f65": 0.1,
+    "M": 63.129416918000004
+   },
+   {
+    "f65": 0.11,
+    "M": 63.1493988378
+   },
+   {
+    "f65": 0.12,
+    "M": 63.169380757599995
+   },
+   {
+    "f65": 0.13,
+    "M": 63.1893626774
+   },
+   {
+    "f65": 0.14,
+    "M": 63.209344597199994
+   },
+   {
+    "f65": 0.15,
+    "M": 63.229326517
+   },
+   {
+    "f65": 0.16,
+    "M": 63.2493084368
+   },
+   {
+    "f65": 0.17,
+    "M": 63.269290356599996
+   },
+   {
+    "f65": 0.18,
+    "M": 63.2892722764
+   },
+   {
+    "f65": 0.19,
+    "M": 63.3092541962
+   },
+   {
+    "f65": 0.2,
+    "M": 63.329236116
+   },
+   {
+    "f65": 0.21,
+    "M": 63.3492180358
+   },
+   {
+    "f65": 0.22,
+    "M": 63.3691999556
+   },
+   {
+    "f65": 0.23,
+    "M": 63.3891818754
+   },
+   {
+    "f65": 0.24,
+    "M": 63.4091637952
+   },
+   {
+    "f65": 0.25,
+    "M": 63.429145715
+   },
+   {
+    "f65": 0.26,
+    "M": 63.44912763479999
+   },
+   {
+    "f65": 0.27,
+    "M": 63.4691095546
+   },
+   {
+    "f65": 0.28,
+    "M": 63.4890914744
+   },
+   {
+    "f65": 0.29,
+    "M": 63.509073394199994
+   },
+   {
+    "f65": 0.3,
+    "M": 63.529055314
+   },
+   {
+    "f65": 0.31,
+    "M": 63.54903723379999
+   },
+   {
+    "f65": 0.32,
+    "M": 63.569019153599996
+   },
+   {
+    "f65": 0.33,
+    "M": 63.5890010734
+   },
+   {
+    "f65": 0.34,
+    "M": 63.608982993199994
+   },
+   {
+    "f65": 0.35,
+    "M": 63.628964913
+   },
+   {
+    "f65": 0.36,
+    "M": 63.6489468328
+   },
+   {
+    "f65": 0.37,
+    "M": 63.668928752599996
+   },
+   {
+    "f65": 0.38,
+    "M": 63.6889106724
+   },
+   {
+    "f65": 0.39,
+    "M": 63.7088925922
+   },
+   {
+    "f65": 0.4,
+    "M": 63.728874512000004
+   },
+   {
+    "f65": 0.41,
+    "M": 63.74885643180001
+   },
+   {
+    "f65": 0.42,
+    "M": 63.7688383516
+   },
+   {
+    "f65": 0.43,
+    "M": 63.7888202714
+   },
+   {
+    "f65": 0.44,
+    "M": 63.8088021912
+   },
+   {
+    "f65": 0.45,
+    "M": 63.828784111000004
+   },
+   {
+    "f65": 0.46,
+    "M": 63.84876603080001
+   },
+   {
+    "f65": 0.47,
+    "M": 63.8687479506
+   },
+   {
+    "f65": 0.48,
+    "M": 63.8887298704
+   },
+   {
+    "f65": 0.49,
+    "M": 63.9087117902
+   },
+   {
+    "f65": 0.5,
+    "M": 63.928693710000005
+   },
+   {
+    "f65": 0.51,
+    "M": 63.9486756298
+   },
+   {
+    "f65": 0.52,
+    "M": 63.9686575496
+   },
+   {
+    "f65": 0.53,
+    "M": 63.9886394694
+   },
+   {
+    "f65": 0.54,
+    "M": 64.0086213892
+   },
+   {
+    "f65": 0.55,
+    "M": 64.028603309
+   },
+   {
+    "f65": 0.56,
+    "M": 64.04858522880001
+   },
+   {
+    "f65": 0.57,
+    "M": 64.0685671486
+   },
+   {
+    "f65": 0.58,
+    "M": 64.0885490684
+   },
+   {
+    "f65": 0.59,
+    "M": 64.1085309882
+   },
+   {
+    "f65": 0.6,
+    "M": 64.128512908
+   },
+   {
+    "f65": 0.61,
+    "M": 64.14849482780001
+   },
+   {
+    "f65": 0.62,
+    "M": 64.1684767476
+   },
+   {
+    "f65": 0.63,
+    "M": 64.1884586674
+   },
+   {
+    "f65": 0.64,
+    "M": 64.2084405872
+   },
+   {
+    "f65": 0.65,
+    "M": 64.228422507
+   },
+   {
+    "f65": 0.66,
+    "M": 64.24840442680001
+   },
+   {
+    "f65": 0.67,
+    "M": 64.2683863466
+   },
+   {
+    "f65": 0.68,
+    "M": 64.2883682664
+   },
+   {
+    "f65": 0.69,
+    "M": 64.3083501862
+   },
+   {
+    "f65": 0.7,
+    "M": 64.328332106
+   },
+   {
+    "f65": 0.71,
+    "M": 64.34831402580001
+   },
+   {
+    "f65": 0.72,
+    "M": 64.3682959456
+   },
+   {
+    "f65": 0.73,
+    "M": 64.3882778654
+   },
+   {
+    "f65": 0.74,
+    "M": 64.4082597852
+   },
+   {
+    "f65": 0.75,
+    "M": 64.428241705
+   },
+   {
+    "f65": 0.76,
+    "M": 64.44822362480001
+   },
+   {
+    "f65": 0.77,
+    "M": 64.4682055446
+   },
+   {
+    "f65": 0.78,
+    "M": 64.4881874644
+   },
+   {
+    "f65": 0.79,
+    "M": 64.5081693842
+   },
+   {
+    "f65": 0.8,
+    "M": 64.528151304
+   },
+   {
+    "f65": 0.81,
+    "M": 64.54813322380001
+   },
+   {
+    "f65": 0.82,
+    "M": 64.56811514360001
+   },
+   {
+    "f65": 0.83,
+    "M": 64.5880970634
+   },
+   {
+    "f65": 0.84,
+    "M": 64.6080789832
+   },
+   {
+    "f65": 0.85,
+    "M": 64.628060903
+   },
+   {
+    "f65": 0.86,
+    "M": 64.64804282280001
+   },
+   {
+    "f65": 0.87,
+    "M": 64.66802474260001
+   },
+   {
+    "f65": 0.88,
+    "M": 64.6880066624
+   },
+   {
+    "f65": 0.89,
+    "M": 64.7079885822
+   },
+   {
+    "f65": 0.9,
+    "M": 64.727970502
+   },
+   {
+    "f65": 0.91,
+    "M": 64.74795242180001
+   },
+   {
+    "f65": 0.92,
+    "M": 64.76793434160001
+   },
+   {
+    "f65": 0.93,
+    "M": 64.7879162614
+   },
+   {
+    "f65": 0.94,
+    "M": 64.8078981812
+   },
+   {
+    "f65": 0.95,
+    "M": 64.827880101
+   },
+   {
+    "f65": 0.96,
+    "M": 64.84786202080001
+   },
+   {
+    "f65": 0.97,
+    "M": 64.86784394060001
+   },
+   {
+    "f65": 0.98,
+    "M": 64.8878258604
+   },
+   {
+    "f65": 0.99,
+    "M": 64.9078077802
+   },
+   {
+    "f65": 1.0,
+    "M": 64.9277897
+   }
+  ],
+  "Cu2O": {
+   "formula": "Cu2O",
+   "anion": "O",
+   "anion_charge": -2,
+   "metal": "Cu",
+   "n_metal": 2,
+   "metal_charge": 1,
+   "metal_ion": "Cu+",
+   "metal_electrons": 28
+  },
+  "CuO": {
+   "formula": "CuO",
+   "anion": "O",
+   "anion_charge": -2,
+   "metal": "Cu",
+   "n_metal": 1,
+   "metal_charge": 2,
+   "metal_ion": "Cu2+",
+   "metal_electrons": 27
+  },
+  "SiO2": {
+   "formula": "SiO2",
+   "atoms": 3,
+   "elements": 2,
+   "protons": 30,
+   "electrons": 30
+  },
+  "chip": [
+   {
+    "layer": "A",
+    "material": "Si",
+    "kind": "element",
+    "role": "semiconductor: the transistors are built in it",
+    "class": "semiconductor"
+   },
+   {
+    "layer": "B",
+    "material": "SiO2",
+    "kind": "compound",
+    "role": "insulator: keeps wires and devices apart",
+    "class": "insulator"
+   },
+   {
+    "layer": "C",
+    "material": "Cu",
+    "kind": "element",
+    "role": "conductor: the wires (interconnects) that carry current",
+    "class": "conductor"
+   }
+  ]
+ }
+}

@@ -1,0 +1,872 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 1093.6,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 41.544,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.671,
+     "en": "Welcome to Chemistry for Semiconductor Engineering. This is Class 1: atoms, ions and the materials of a chip."
+    },
+    {
+     "s": 8.671,
+     "e": 20.697,
+     "en": "A chip is made of a small number of materials, and each one does a different job. Silicon is the semiconductor, silicon dioxide is the insulator, and copper carries the current."
+    },
+    {
+     "s": 20.697,
+     "e": 32.0,
+     "en": "Today we look at what these materials are made of. We count the particles in atoms and ions, we see why atomic masses are not whole numbers, and we read chemical formulas."
+    },
+    {
+     "s": 32.0,
+     "e": 41.487,
+     "en": "If you are studying on your own, the narration takes about twenty minutes. The activity, two checks and the lab fill the rest of the ninety minutes."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 34.272,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.353,
+     "en": "Here is the plan for today's ninety minutes."
+    },
+    {
+     "s": 3.353,
+     "e": 8.197,
+     "en": "We start with a five minute activity on what you already know about atoms."
+    },
+    {
+     "s": 8.197,
+     "e": 15.974,
+     "en": "Part one, about twenty five minutes, covers particles, symbols and ions. It ends with Check 1."
+    },
+    {
+     "s": 15.974,
+     "e": 28.066,
+     "en": "Part two, also about twenty five minutes, covers isotopes, formulas and charge balance, and the jobs that silicon, silicon dioxide and copper do. It ends with Check 2."
+    },
+    {
+     "s": 28.066,
+     "e": 34.211,
+     "en": "Then you do Lab 1 on your own for thirty minutes, and we finish with the Exit Ticket and feedback form."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 32.28,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.539,
+     "en": "Activity 1. Take a piece of paper and answer these four questions without notes. Then compare with the person next to you."
+    },
+    {
+     "s": 9.539,
+     "e": 22.382,
+     "en": "Name the three particles in an atom and their charges. Say what the atomic number tells you. Decide whether copper, silicon dioxide and oxygen gas are elements or compounds."
+    },
+    {
+     "s": 22.382,
+     "e": 27.421,
+     "en": "And explain the difference between the two in O two and the two in copper two plus."
+    },
+    {
+     "s": 27.421,
+     "e": 32.224,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 40.776,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.353,
+     "en": "By the end of today you can do six things."
+    },
+    {
+     "s": 3.353,
+     "e": 10.724,
+     "en": "Count the protons, neutrons and electrons of an atom or an ion, from the atomic number, the mass number and the charge."
+    },
+    {
+     "s": 10.724,
+     "e": 17.211,
+     "en": "Read a symbol such as copper sixty five two plus, and tell a subscript in a formula from a charge."
+    },
+    {
+     "s": 17.211,
+     "e": 22.092,
+     "en": "Explain why removing electrons changes the charge but not the element."
+    },
+    {
+     "s": 22.092,
+     "e": 27.605,
+     "en": "Calculate an average atomic mass from the masses and abundances of the isotopes."
+    },
+    {
+     "s": 27.605,
+     "e": 33.963,
+     "en": "Count the atoms and electrons in a formula, and find the charge of a metal ion by charge balance."
+    },
+    {
+     "s": 33.963,
+     "e": 40.711,
+     "en": "And name the jobs of silicon, silicon dioxide and copper in a chip, and of the lithium ion in a battery."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 52.2,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.326,
+     "en": "This table shows how the first fourteen classes fit together."
+    },
+    {
+     "s": 4.326,
+     "e": 14.382,
+     "en": "Classes 1 to 3 ask what chip materials are made of, and how much of each there is. Classes 4 and 5 look at the solutions used in plating and etching."
+    },
+    {
+     "s": 14.382,
+     "e": 19.296,
+     "en": "Class 6 explains why silicon is a semiconductor and how doping changes it."
+    },
+    {
+     "s": 19.296,
+     "e": 27.092,
+     "en": "Classes 7 to 10 follow electrons through batteries and plating baths, up to the mass of copper that a current deposits."
+    },
+    {
+     "s": 27.092,
+     "e": 39.145,
+     "en": "Classes 11 and 12 look at what happens at an electrode surface, and Class 13 asks when copper is stable, dissolved or oxidized. Class 14 is the review before the midterm."
+    },
+    {
+     "s": 39.145,
+     "e": 52.145,
+     "en": "A note on notation. Z is the atomic number, A is the mass number, and e is the elementary charge. A charge is written as a superscript, and a count of atoms as a subscript."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 44.64,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.629,
+     "en": "Every class follows the same pattern, so you always know where you are."
+    },
+    {
+     "s": 4.629,
+     "e": 11.434,
+     "en": "There is a short activity, two parts that each end with a check, a thirty minute lab, and a five minute Exit Ticket."
+    },
+    {
+     "s": 11.434,
+     "e": 19.053,
+     "en": "The slides have a narrated version like this one, with captions. Use it when you miss a class, or to review."
+    },
+    {
+     "s": 19.053,
+     "e": 27.447,
+     "en": "On slides marked D, Python, press the D key to see the code that produced the numbers. You can run it in your browser."
+    },
+    {
+     "s": 27.447,
+     "e": 36.395,
+     "en": "The lab page works on a laptop or a phone. You predict first and then check, and each step opens when you finish the one before."
+    },
+    {
+     "s": 36.395,
+     "e": 44.579,
+     "en": "At the end you download an answer file and upload it to myCourseVille. The Exit Ticket and feedback form is anonymous."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 48.96,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.355,
+     "en": "Let us start with a chip. This is a simplified cross section, not to scale."
+    },
+    {
+     "s": 6.355,
+     "e": 14.974,
+     "en": "At the bottom is the silicon wafer, layer A. The transistors are built in it, in the doped regions shown as white bands."
+    },
+    {
+     "s": 14.974,
+     "e": 25.447,
+     "en": "Above it is silicon dioxide, layer B. It is an insulator. It keeps the wires apart from each other and from the devices below."
+    },
+    {
+     "s": 25.447,
+     "e": 34.763,
+     "en": "Inside the oxide are the copper wires and the vertical connections called vias, layer C. They carry current between the transistors."
+    },
+    {
+     "s": 34.763,
+     "e": 48.882,
+     "en": "Two of these materials are elements, silicon and copper. Silicon dioxide is a compound. Today we see what that means. In Class 2 we see why each one behaves as it does."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 55.008,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.484,
+     "en": "An atom is made of three kinds of particles."
+    },
+    {
+     "s": 3.484,
+     "e": 15.013,
+     "en": "The proton has a charge of plus one and a mass of about one atomic mass unit. The neutron has no charge and about the same mass. Both sit in the nucleus."
+    },
+    {
+     "s": 15.013,
+     "e": 25.342,
+     "en": "The electron has a charge of minus one and a very small mass, about one eighteen hundred and thirty sixth of a proton. Electrons are found around the nucleus."
+    },
+    {
+     "s": 25.342,
+     "e": 35.079,
+     "en": "The atomic number Z is the number of protons. It fixes the element. Every copper atom has twenty nine protons."
+    },
+    {
+     "s": 35.079,
+     "e": 39.842,
+     "en": "The net charge is the number of protons minus the number of electrons."
+    },
+    {
+     "s": 39.842,
+     "e": 48.061,
+     "en": "In chemical reactions, in plating and in batteries, only electrons are gained or lost. The nucleus does not change."
+    },
+    {
+     "s": 48.061,
+     "e": 54.934,
+     "en": "So a copper atom stays copper whether it has twenty nine, twenty eight or twenty seven electrons."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 51.696,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.289,
+     "en": "Four numbers can sit around a chemical symbol. Here they are for a copper ion."
+    },
+    {
+     "s": 6.289,
+     "e": 13.592,
+     "en": "Top left is the mass number A, the number of protons plus neutrons. Here it is sixty five."
+    },
+    {
+     "s": 13.592,
+     "e": 22.513,
+     "en": "Bottom left is the atomic number Z, twenty nine. It is often left out, because the symbol already tells you the element."
+    },
+    {
+     "s": 22.513,
+     "e": 33.579,
+     "en": "Top right is the net charge, two plus. Bottom right is the number of atoms in a formula, as in silicon dioxide. A single ion has none."
+    },
+    {
+     "s": 33.579,
+     "e": 43.118,
+     "en": "So this ion has twenty nine protons, sixty five minus twenty nine, or thirty six neutrons, and twenty nine minus two, or twenty seven electrons."
+    },
+    {
+     "s": 43.118,
+     "e": 51.618,
+     "en": "Remember the difference. A superscript charge changes the electrons. A subscript counts atoms."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 59.448,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.329,
+     "en": "This is the atom builder. You set the number of protons, neutrons and electrons, and it tells you what you have built."
+    },
+    {
+     "s": 8.329,
+     "e": 20.316,
+     "en": "Start with lithium: three protons, four neutrons and three electrons. The charge is three minus three, zero. It is a neutral atom with a mass number of seven."
+    },
+    {
+     "s": 20.316,
+     "e": 34.513,
+     "en": "Now remove one electron. The charge becomes plus one. It is now a lithium ion, a cation. The name of the element has not changed, because the number of protons has not changed."
+    },
+    {
+     "s": 34.513,
+     "e": 47.355,
+     "en": "Now try the opposite. Keep three electrons and change the protons from three to four. The element is now beryllium. Changing the protons changes the element."
+    },
+    {
+     "s": 47.355,
+     "e": 55.645,
+     "en": "Use the buttons to compare copper with the copper two plus ion, and to build the oxide ion, which has eight protons and ten electrons."
+    },
+    {
+     "s": 55.645,
+     "e": 59.382,
+     "en": "Press D to see the same calculation in Python."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 58.392,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.421,
+     "en": "An ion is an atom with electrons added or removed. The table shows the counts for the species we use in this course."
+    },
+    {
+     "s": 8.421,
+     "e": 20.013,
+     "en": "Here is a worked example. Copper has Z equal to twenty nine. A copper atom has twenty nine protons and twenty nine electrons, so its charge is zero."
+    },
+    {
+     "s": 20.013,
+     "e": 31.855,
+     "en": "The copper two plus ion still has twenty nine protons. Its charge is plus two, so twenty nine minus the number of electrons is two, and the number of electrons is twenty seven."
+    },
+    {
+     "s": 31.855,
+     "e": 36.026,
+     "en": "Copper has lost two electrons, and it is still copper."
+    },
+    {
+     "s": 36.026,
+     "e": 45.257,
+     "en": "A positive ion, a cation, has fewer electrons than protons. Metals form cations, such as lithium, sodium and copper ions."
+    },
+    {
+     "s": 45.257,
+     "e": 52.974,
+     "en": "A negative ion, an anion, has more electrons than protons, such as the oxide ion and the fluoride ion."
+    },
+    {
+     "s": 52.974,
+     "e": 58.329,
+     "en": "For any single-atom ion, the number of electrons is Z minus the charge."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 47.856,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.182,
+     "en": "Here is a mistake that many students make on the first day."
+    },
+    {
+     "s": 4.182,
+     "e": 10.355,
+     "en": "The claim is that the copper two plus ion has thirty one electrons, because its charge is plus two."
+    },
+    {
+     "s": 10.355,
+     "e": 20.967,
+     "en": "Electrons are negative. When copper loses two of them, its twenty nine protons are two charges ahead, so twenty nine minus twenty seven gives plus two."
+    },
+    {
+     "s": 20.967,
+     "e": 24.947,
+     "en": "A positive ion has fewer electrons than its neutral atom."
+    },
+    {
+     "s": 24.947,
+     "e": 31.039,
+     "en": "With thirty one electrons, the charge would be twenty nine minus thirty one, which is minus two."
+    },
+    {
+     "s": 31.039,
+     "e": 36.211,
+     "en": "So check every count with the rule: charge equals protons minus electrons."
+    },
+    {
+     "s": 36.211,
+     "e": 47.789,
+     "en": "This matters later. In Class 7 you will write copper two plus plus two electrons gives copper. The two electrons in that equation are the two that the ion is missing."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 27.672,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 18.373,
+     "en": "Count the protons and electrons in the sodium ion. Identify the ion with eight protons and ten electrons. Decide whether copper is still copper after it loses two electrons."
+    },
+    {
+     "s": 18.373,
+     "e": 23.039,
+     "en": "And say what each number in copper sixty five two plus tells you."
+    },
+    {
+     "s": 23.039,
+     "e": 27.605,
+     "en": "Pause now, write your answers, and then press Show answers to check them."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 50.016,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.958,
+     "en": "Part 2 starts with isotopes."
+    },
+    {
+     "s": 2.958,
+     "e": 13.974,
+     "en": "Isotopes are atoms of the same element with different numbers of neutrons. They have the same Z, so they behave the same way in chemistry, but they have different mass numbers."
+    },
+    {
+     "s": 13.974,
+     "e": 20.895,
+     "en": "The table shows the isotopes of silicon and copper, with their masses and their natural abundances, from NIST."
+    },
+    {
+     "s": 20.895,
+     "e": 29.566,
+     "en": "Copper sixty three has sixty three minus twenty nine, or thirty four neutrons. Copper sixty five has thirty six."
+    },
+    {
+     "s": 29.566,
+     "e": 40.868,
+     "en": "Natural silicon is about ninety two percent silicon twenty eight. Wafers made of almost pure silicon twenty eight are used to study silicon devices for quantum computing."
+    },
+    {
+     "s": 40.868,
+     "e": 49.961,
+     "en": "The atomic mass on the periodic table is the average of the isotope masses, weighted by their abundances. The next slide shows how."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 62.376,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.089,
+     "en": "Atomic mass is a weighted average."
+    },
+    {
+     "s": 3.089,
+     "e": 8.829,
+     "en": "For copper, multiply the mass of each isotope by the fraction of atoms that have it, and add."
+    },
+    {
+     "s": 8.829,
+     "e": 17.133,
+     "en": "Zero point six nine one five times sixty two point nine three, plus zero point three zero eight five times sixty four point nine three,"
+    },
+    {
+     "s": 17.133,
+     "e": 20.553,
+     "en": "gives sixty three point five four six atomic mass units."
+    },
+    {
+     "s": 20.553,
+     "e": 32.474,
+     "en": "The chart shows how the average changes with the fraction of copper sixty five. It is a straight line between the two isotope masses. Natural copper is the teal point."
+    },
+    {
+     "s": 32.474,
+     "e": 39.895,
+     "en": "Move the slider. With more copper sixty five, the average moves toward sixty four point nine three."
+    },
+    {
+     "s": 39.895,
+     "e": 47.718,
+     "en": "The natural average sits nearer to sixty three because about sixty nine percent of copper atoms are copper sixty three."
+    },
+    {
+     "s": 47.718,
+     "e": 52.934,
+     "en": "Notice that no single copper atom has a mass of sixty three point five four six."
+    },
+    {
+     "s": 52.934,
+     "e": 62.303,
+     "en": "This number returns in Class 3, as sixty three point five four six grams per mole, and in Class 10, where it sets how much copper a current deposits."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 54.912,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.576,
+     "en": "Now we read formulas."
+    },
+    {
+     "s": 2.576,
+     "e": 14.974,
+     "en": "An element has one kind of atom. Copper and silicon are elements. Oxygen gas, O two, is also an element: it is a molecule made of two oxygen atoms."
+    },
+    {
+     "s": 14.974,
+     "e": 23.78,
+     "en": "A compound has two or more elements in a fixed ratio. Silicon dioxide has silicon and oxygen in the ratio one to two."
+    },
+    {
+     "s": 23.78,
+     "e": 29.526,
+     "en": "Copper sulfate has copper, sulfur and oxygen in the ratio one to one to four."
+    },
+    {
+     "s": 29.526,
+     "e": 38.053,
+     "en": "Silicon dioxide is a network solid. Its formula gives the ratio of atoms, not a separate small molecule."
+    },
+    {
+     "s": 38.053,
+     "e": 50.559,
+     "en": "To count, multiply each subscript by the atom before it. One silicon dioxide unit has three atoms. Its protons are fourteen plus two times eight, which is thirty."
+    },
+    {
+     "s": 50.559,
+     "e": 54.855,
+     "en": "A neutral unit has the same number of electrons, thirty."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 62.592,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.0,
+     "en": "A neutral compound must have zero total charge. If you know the charge of the anion, this tells you the charge of the metal ion."
+    },
+    {
+     "s": 9.0,
+     "e": 16.303,
+     "en": "The rule is: the number of metal ions times their charge, plus the number of anions times their charge, equals zero."
+    },
+    {
+     "s": 16.303,
+     "e": 31.395,
+     "en": "Take copper(I) oxide, Cu2O. Two times the copper charge, plus one times −2, equals zero. So each copper has a charge of +1, and it has 29 − 1 = 28 electrons."
+    },
+    {
+     "s": 31.395,
+     "e": 46.526,
+     "en": "In copper(II) oxide, CuO, one copper balances one oxide ion, so copper is +2. Copper forms both oxides, and both appear on copper surfaces in chips. We meet them again in Class 13."
+    },
+    {
+     "s": 46.526,
+     "e": 62.526,
+     "en": "The table also shows copper sulfate, sodium chloride, and lithium hexafluorophosphate, LiPF6. This salt is used in most lithium-ion battery electrolytes. It gives Li+ and PF6−."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 56.352,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.655,
+     "en": "The same atoms appear in a chip and in a battery, in different jobs."
+    },
+    {
+     "s": 4.655,
+     "e": 14.829,
+     "en": "Silicon is the wafer of a chip, and it is added to some battery negative electrodes. Silicon dioxide insulates the wires and devices in a chip."
+    },
+    {
+     "s": 14.829,
+     "e": 24.079,
+     "en": "Copper makes the wires and vias of a chip. In a lithium ion battery, a copper foil collects the current at the negative electrode."
+    },
+    {
+     "s": 24.079,
+     "e": 33.645,
+     "en": "The copper two plus ion is in the copper sulfate bath that plates the copper wires. The lithium ion carries charge through a battery electrolyte."
+    },
+    {
+     "s": 33.645,
+     "e": 43.711,
+     "en": "The sodium ion is the charge carrier in sodium ion batteries. In a chip, it is a contaminant that must be kept out of the silicon dioxide."
+    },
+    {
+     "s": 43.711,
+     "e": 56.289,
+     "en": "One more point. In a metal wire, electrons carry the current. In a solution or an electrolyte, ions carry it. Class 4 returns to this difference."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 31.44,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 16.856,
+     "en": "Count the neutrons in copper sixty three and copper sixty five. Explain why the atomic mass of copper is sixty three point five four six and not sixty four."
+    },
+    {
+     "s": 16.856,
+     "e": 26.816,
+     "en": "Find the charge on each copper in copper one oxide, and its number of electrons. And count the atoms and electrons in one silicon dioxide unit."
+    },
+    {
+     "s": 26.816,
+     "e": 31.382,
+     "en": "Pause now, write your answers, and then press Show answers to check them."
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "file": "audio/slide-20.mp3",
+   "duration": 44.808,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.761,
+     "en": "Today's counts come back in every block of the course."
+    },
+    {
+     "s": 3.761,
+     "e": 10.289,
+     "en": "Class 2 explains why copper conducts, silicon dioxide insulates, and silicon sits in between."
+    },
+    {
+     "s": 10.289,
+     "e": 20.75,
+     "en": "In Class 3, sixty three point five four six atomic mass units becomes sixty three point five four six grams per mole, which links a mass of copper to a number of atoms."
+    },
+    {
+     "s": 20.75,
+     "e": 29.671,
+     "en": "In Class 6, boron and phosphorus replace silicon atoms, and their numbers of electrons decide whether silicon becomes p type or n type."
+    },
+    {
+     "s": 29.671,
+     "e": 37.25,
+     "en": "In Class 7 and Class 10, the two electrons that the copper two plus ion is missing set how much copper a current can plate."
+    },
+    {
+     "s": 37.25,
+     "e": 44.75,
+     "en": "And in Class 13, copper, its two oxides and the copper two plus ion appear on one map that shows which one is stable."
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "file": "audio/slide-21.mp3",
+   "duration": 29.328,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.789,
+     "en": "Now it is time for Lab 1. Scan the code or open the lab page."
+    },
+    {
+     "s": 5.789,
+     "e": 15.566,
+     "en": "You will predict and then count the electrons in three ions, count the neutrons in two isotopes, calculate the atomic mass of copper, and change the isotope mix."
+    },
+    {
+     "s": 15.566,
+     "e": 23.316,
+     "en": "Then you find the charge of copper in its two oxides, and assign silicon, silicon dioxide and copper to the layers of a chip."
+    },
+    {
+     "s": 23.316,
+     "e": 29.263,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 22,
+   "file": "audio/slide-22.mp3",
+   "duration": 51.432,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 10.408,
+     "en": "Z is the number of protons, and it fixes the element. The mass number A is protons plus neutrons."
+    },
+    {
+     "s": 10.408,
+     "e": 23.513,
+     "en": "The charge is protons minus electrons. Chemistry changes the electrons, never the nucleus. A positive ion has fewer electrons than its atom, and a negative ion has more."
+    },
+    {
+     "s": 23.513,
+     "e": 33.75,
+     "en": "Isotopes differ in their number of neutrons, and the atomic mass is their weighted average: sixty three point five four six for copper and twenty eight point zero eight five for silicon."
+    },
+    {
+     "s": 33.75,
+     "e": 44.382,
+     "en": "Subscripts count atoms, superscripts give charge, and a neutral compound balances its charges, so copper is plus one in copper one oxide and plus two in copper two oxide."
+    },
+    {
+     "s": 44.382,
+     "e": 51.355,
+     "en": "And in a chip, silicon is the semiconductor, silicon dioxide the insulator, and copper the conductor."
+    }
+   ]
+  },
+  {
+   "n": 23,
+   "file": "audio/slide-23.mp3",
+   "duration": 31.056,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.589,
+     "en": "Before the next class, finish Lab 1 if you did not finish it, and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 6.589,
+     "e": 17.763,
+     "en": "Read OpenStax Chemistry two e, sections two point three and two point four, on atomic structure and chemical formulas, and skim section two point six on ionic and molecular compounds."
+    },
+    {
+     "s": 17.763,
+     "e": 22.237,
+     "en": "If you like, try the PhET simulation Build an Atom."
+    },
+    {
+     "s": 22.237,
+     "e": 31.0,
+     "en": "Class 2 asks why copper is a conductor and silicon dioxide is an insulator. The answer is in how their atoms bond."
+    }
+   ]
+  },
+  {
+   "n": 24,
+   "file": "audio/slide-24.mp3",
+   "duration": 24.552,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.921,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 1."
+    },
+    {
+     "s": 6.921,
+     "e": 15.711,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.711,
+     "e": 24.487,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 2."
+    }
+   ]
+  }
+ ]
+}
