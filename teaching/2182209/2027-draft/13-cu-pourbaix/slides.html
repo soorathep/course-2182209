@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>2182209 · Class 13 · The Cu Pourbaix diagram</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--sky:#5A91BE;--sage:#83A462;--plum:#995A90;--graphite:#333F4A;--sand:#DFC98F;
+--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--mono:Menlo,Consolas,"DejaVu Sans Mono",monospace}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#2b3138;font-family:"Helvetica Neue",Helvetica,Arial,"DejaVu Sans",sans-serif;color:var(--ink)}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#stage{width:1280px;height:720px;flex:0 0 auto;overflow:hidden;background:#fff;position:relative;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.slide{position:absolute;inset:0;padding:40px 64px 58px;display:none;flex-direction:column}
+.slide.on{display:flex}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.14em;font-size:15px;text-transform:uppercase;margin:0}
+h1{color:var(--teal);font-size:42px;line-height:1.12;margin:6px 0 22px;font-weight:800}
+.body{flex:1;display:flex;gap:28px;min-height:0}
+.col{flex:1;min-width:0;display:flex;flex-direction:column}
+.w40{flex:0 0 40%}.w45{flex:0 0 45%}.w55{flex:0 0 55%}.w60{flex:0 0 60%}
+ul.b{list-style:none;margin:0;padding:0;font-size:24px;line-height:1.36}
+ul.b>li{position:relative;padding-left:30px;margin:0 0 16px}
+ul.b>li::before{content:"";position:absolute;left:2px;top:.5em;width:11px;height:11px;background:var(--amber)}
+ul.b.sm{font-size:21px}ul.b.sm>li{margin-bottom:11px}
+ul.b.xs{font-size:19px}ul.b.xs>li{margin-bottom:8px}
+.hl{color:var(--teal);font-weight:700}
+.panel{background:var(--paper);border-radius:14px;padding:16px 18px;min-height:0;display:flex;flex-direction:column}
+.panel.grow{flex:1}
+.math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:25px;line-height:1.75}
+.math .lbl{font-family:"Helvetica Neue",Arial,sans-serif;font-size:16px;color:var(--slate);display:inline-block;width:150px}
+.code{font-family:var(--mono);font-size:17px;line-height:1.5;white-space:pre;color:var(--graphite)}
+.note{font-size:18px;color:var(--slate);margin-top:10px;line-height:1.4}
+.big{font-size:56px;font-weight:800;color:var(--teal)}
+table.t{border-collapse:collapse;font-size:19px;width:100%}
+table.t th{background:var(--paper);text-align:left;padding:7px 10px;border-bottom:2px solid var(--mist);font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid #e3e6e8}
+table.t td.n,table.t th.n{text-align:right;font-variant-numeric:tabular-nums}
+.act{border:3px solid var(--amber);border-radius:16px;padding:22px 28px;background:#fdf6ea}
+.act .tag{display:inline-block;background:var(--amber);color:#fff;font-weight:800;letter-spacing:.1em;font-size:15px;padding:4px 10px;border-radius:6px;margin-bottom:12px}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px;align-items:center;font-size:16px;color:var(--slate)}
+.ctrl button{font:inherit;font-size:15px;padding:5px 11px;border-radius:8px;border:1.5px solid var(--teal);background:#fff;color:var(--teal);cursor:pointer}
+.ctrl button.on{background:var(--teal);color:#fff}
+.ctrl input[type=range]{width:220px;accent-color:var(--teal)}
+.kpi{display:flex;gap:14px;margin-top:8px}
+.kpi div{background:#fff;border-radius:10px;padding:8px 12px;font-size:15px;color:var(--slate);flex:1}
+.kpi b{display:block;font-size:24px;color:var(--ink)}
+.kpi b.a{color:var(--amber)}
+svg.ch{width:100%;height:100%;display:block}
+.chart{flex:1;min-height:0}
+footer{position:absolute;left:64px;right:64px;bottom:20px;border-top:1px solid var(--mist);padding-top:7px;display:flex;justify-content:space-between;font-size:13px;color:var(--slate)}
+.title-slide{justify-content:center}
+.title-slide h1{font-size:64px;margin-bottom:12px}
+.title-slide .sub{font-size:28px;color:var(--graphite);margin-bottom:40px}
+.title-slide .meta{font-size:19px;color:var(--slate);line-height:1.6}
+.pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;letter-spacing:.06em}
+.pill.rec{background:var(--paper);color:var(--slate)}.pill.live{background:var(--amber);color:#fff}
+.dhint{position:absolute;right:64px;top:42px;font-size:13px;color:var(--slate);border:1px solid var(--mist);border-radius:8px;padding:3px 8px}
+/* Python drawer */
+#drawer{position:absolute;top:0;right:0;bottom:0;width:47%;background:#fbfaf7;border-left:3px solid var(--teal);box-shadow:-8px 0 24px rgba(0,0,0,.15);
+ transform:translateX(102%);transition:transform .25s;display:flex;flex-direction:column;padding:22px 24px 18px;z-index:5}
+#drawer.open{transform:none}
+#drawer h2{margin:0 0 4px;color:var(--teal);font-size:22px}
+#drawer .sub{font-size:14px;color:var(--slate);margin-bottom:10px}
+#drawer textarea{width:100%;height:190px;resize:vertical;border:none;margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13px;line-height:1.45;color:var(--ink);white-space:pre-wrap;outline:none}
+#drawer pre{margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13.5px;line-height:1.45;overflow:auto;white-space:pre}
+#drawer .out{margin-top:10px;flex:1;min-height:0;display:flex;flex-direction:column}
+#drawer .out pre{flex:1;background:#1f262d;color:#e8eef2}
+#drawer .bar{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:13px;color:var(--slate)}
+#drawer button{font:inherit;font-size:14px;padding:6px 12px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer}
+#drawer button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+#notes{position:fixed;left:12px;bottom:12px;max-width:520px;background:#fffef8;border:1px solid var(--mist);border-radius:10px;padding:10px 14px;font-size:14px;line-height:1.45;display:none;z-index:9}
+#help{position:fixed;right:12px;bottom:12px;color:#c9d1d6;font-size:12px}
+
+/* narration and captions */
+#dock{position:fixed;left:0;right:0;display:none;flex-direction:column;align-items:center;gap:6px;padding:0 8px;z-index:8}
+#cap{display:none;color:#F3F0EB;line-height:1.45;text-align:center;overflow:hidden;padding:2px 6px;font-family:"Helvetica Neue",Arial,"Sukhumvit Set","Thonburi","Noto Sans Thai","Sarabun",sans-serif}
+#nbar{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;align-items:center;background:rgba(28,36,43,.9);color:#e8eef2;padding:6px 10px;border-radius:12px;font:13px "Helvetica Neue",Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+#nbar button,#nbar select{white-space:nowrap;font:inherit;font-size:14px;background:#2f3a44;color:#fff;border:1px solid #4a5763;border-radius:8px;padding:5px 10px;cursor:pointer}
+#nbar button.on{background:#0F6E6B;border-color:#0F6E6B}
+#nbar .t{min-width:88px;text-align:center;font-variant-numeric:tabular-nums;color:#c9d1d6}
+#nbar .msg{color:#E29A2D;max-width:330px;line-height:1.25}
+#startov{position:absolute;inset:0;background:rgba(243,240,235,.92);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:6;gap:14px}
+#startov button{font:inherit;font-size:24px;padding:14px 28px;border-radius:12px;border:none;background:#0F6E6B;color:#fff;cursor:pointer}
+#startov p{color:#333F4A;font-size:18px;margin:0}
+@media print{#dock,#startov{display:none!important}}
+@media print{#viewport{position:static;display:block}#stage{transform:none!important;box-shadow:none}.slide{display:flex!important;position:relative;page-break-after:always;height:720px}#drawer,#help,#notes,.dhint{display:none}}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<div id="slides"></div>
+<div id="startov"><button id="startBtn">▶ Start the narrated session</button><p>English narration with English captions below the slide. You move to the next slide yourself.</p><p>→ or Next: next slide · P: pause · C: captions on or off</p></div>
+<aside id="drawer" aria-label="Python for this slide">
+  <h2 id="dTitle">Python</h2>
+  <div class="sub" id="dSub"></div>
+  <textarea id="dCode" spellcheck="false"></textarea>
+  <div class="out"><div class="bar" style="margin:0 0 6px"><span>Output</span><span id="dMode" class="pill rec">RECORDED RUN</span></div><pre id="dOut"></pre></div>
+  <div class="bar"><button id="runCode">Run this code</button><button class="ghost" id="runLive">Recompute all slides</button><button class="ghost" id="useRec">Recorded run</button></div>
+  <div class="bar" id="liveMsg" style="min-height:18px"></div>
+</aside>
+</div></div>
+<div id="notes"></div>
+<div id="dock"><div id="cap" aria-live="polite"></div>
+<div id="nbar"><button id="nPrev" title="Previous slide (←)">‹ Back</button><button id="nPlay" title="Play or pause the narration (P)">▶ Play</button><button id="nStop" title="Stop and go back to the start of this slide">■ Stop</button><span class="t" id="nTime">0:00 / 0:00</span><select id="nSpeed" title="Speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select><button id="nCC" title="Captions: off or English (C)">CC off</button><button id="nNext" title="Next slide (→)">Next ›</button><span class="msg" id="nMsg"></span></div></div>
+<audio id="narr" preload="none"></audio>
+<div id="help">← → move · P narration · C captions · D Python · F full screen · N notes</div>
+<script>
+const RECORDED = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"box":[0.0,14.0,-0.6,1.2],"c":1e-06,"regions":{"Cu":[[0.0,-0.6],[14.0,-0.6],[14.0,-0.3561],[5.2425,0.162],[0.0,0.162]],"Cu2+":[[6.6703,1.2],[0.0,1.2],[0.0,0.162],[5.2425,0.162],[6.6703,0.2464]],"Cu2O":[[14.0,-0.3561],[14.0,-0.1872],[6.6703,0.2464],[5.2425,0.162]],"CuO":[[14.0,-0.1872],[14.0,1.2],[6.6703,1.2],[6.6703,0.2464]]},"lines":{"Cu2+/Cu":{"e0":0.16195178219706605,"m":0.0},"Cu2O/Cu":{"e0":0.47209248285893757,"m":-0.059159349685721514},"CuO/Cu2O":{"e0":0.6410300782618066,"m":-0.059159349685721514},"Cu2+/Cu2O":{"e0":-0.14818891846480542,"m":0.059159349685721514},"CuO/Cu2+":{"pH":6.670281205923186}},"slope":0.059159349685721514,"water":{"H2":{"e0":0.0,"m":-0.059159349685721514},"O2":{"e0":1.229,"m":-0.059159349685721514}},"fab":[{"k":"Acid Cu plating bath","pH":1.0,"E":0.5,"sp":"Cu2+"},{"k":"Neutral rinse water with air","pH":7.0,"E":0.8,"sp":"CuO"},{"k":"Alkaline slurry, mild oxidizer","pH":9.0,"E":0.3,"sp":"CuO"},{"k":"Under a cathodic potential","pH":7.0,"E":-0.4,"sp":"Cu"}]},"lab":{"points":{"A":{"pH":4.0,"E":-0.1,"sp":"Cu"},"B":{"pH":3.0,"E":0.5,"sp":"Cu2+"},"C":{"pH":9.0,"E":0.05,"sp":"Cu2O"},"D":{"pH":9.0,"E":0.4,"sp":"CuO"}},"pH9":{"Cu_to_Cu2O":-0.060341664312556054,"Cu2O_to_CuO":0.10859593109031296},"scan9":[{"E":-0.3,"sp":"Cu"},{"E":-0.25,"sp":"Cu"},{"E":-0.2,"sp":"Cu"},{"E":-0.15,"sp":"Cu"},{"E":-0.1,"sp":"Cu"},{"E":-0.05,"sp":"Cu2O"},{"E":0.0,"sp":"Cu2O"},{"E":0.05,"sp":"Cu2O"},{"E":0.1,"sp":"Cu2O"},{"E":0.15,"sp":"CuO"},{"E":0.2,"sp":"CuO"},{"E":0.25,"sp":"CuO"},{"E":0.3,"sp":"CuO"},{"E":0.35,"sp":"CuO"},{"E":0.4,"sp":"CuO"},{"E":0.45,"sp":"CuO"},{"E":0.5,"sp":"CuO"},{"E":0.55,"sp":"CuO"},{"E":0.6,"sp":"CuO"}],"pH_CuO_Cu2":6.670281205923186,"E_Cu2_Cu":0.16195178219706605}};
+const LAB_FILE = "pourbaix_lab.py?v=c13-1a03cd64";
+const LAB_SRC = "\"\"\"Class 13 of 2182209 Chemistry for Semiconductor Engineering (2027 draft).\n\nA limited-species Pourbaix (potential-pH) diagram for Cu in water at 25 degC. Every number\nand every region on the Class 13 slides and in Lab 13 comes from this module.\n\nRun `python pourbaix_lab.py` for a printed summary, or `python pourbaix_lab.py --json` to\nwrite pourbaix-results.json.\n\nSpecies, stated: Cu(s), Cu2+(aq), Cu2O(s), CuO(s) only. Cu(I) ions and the hydroxo and\ncuprate ions of strongly alkaline water are left out, so the diagram is a teaching\nsimplification, wrong above about pH 12. Dissolved Cu is set at 1e-6 M, the usual corrosion\nconvention. Standard Gibbs energies of formation (kJ/mol), OpenStax Chemistry 2e Appendix G:\nCu2+(aq) 65.5, Cu2O(s) -146.0, CuO(s) -129.7, H2O(l) -237.1. Potentials against the SHE.\n\nMethod: for each species, the Gibbs energy per Cu atom of forming it from Cu(s), water and\nH+, with electrons at potential E, is linear in pH and E. The stable species at a point is\nthe one with the lowest value. Each region is the box clipped by those linear inequalities.\n\"\"\"\nimport json\nimport math\nimport sys\n\nimport numpy as np\nfrom scipy import constants as sc\n\nF = sc.physical_constants[\"Faraday constant\"][0]\nRT = sc.R * 298.15\nLN10 = math.log(10)\nGF = {\"Cu2+\": 65.5e3, \"Cu2O\": -146.0e3, \"CuO\": -129.7e3, \"H2O\": -237.1e3}     # J/mol\nC_ION = 1e-6\nBOX = (0.0, 14.0, -0.6, 1.2)                                                  # pH, E limits\nSPECIES = [\"Cu\", \"Cu2+\", \"Cu2O\", \"CuO\"]\n\n\ndef coeffs(sp, c=C_ION):\n    \"\"\"G per Cu atom (J) = a + b pH + k E for forming sp from Cu(s).\"\"\"\n    if sp == \"Cu\":\n        return (0.0, 0.0, 0.0)\n    if sp == \"Cu2+\":                               # Cu -> Cu2+ + 2e-\n        return (GF[\"Cu2+\"] + RT * math.log(c), 0.0, -2 * F)\n    if sp == \"Cu2O\":                               # 2Cu + H2O -> Cu2O + 2H+ + 2e-, per Cu\n        return ((GF[\"Cu2O\"] - GF[\"H2O\"]) / 2, -LN10 * RT, -F)\n    if sp == \"CuO\":                                # Cu + H2O -> CuO + 2H+ + 2e-\n        return (GF[\"CuO\"] - GF[\"H2O\"], -2 * LN10 * RT, -2 * F)\n\n\ndef g(sp, pH, E):\n    a, b, k = coeffs(sp)\n    return a + b * pH + k * E\n\n\ndef stable(pH, E):\n    return min(SPECIES, key=lambda s: g(s, pH, E))\n\n\ndef clip(poly, a, b, k):\n    \"\"\"Keep the part of poly where a + b pH + k E <= 0 (Sutherland-Hodgman).\"\"\"\n    out = []\n    f = lambda p: a + b * p[0] + k * p[1]\n    for i in range(len(poly)):\n        P, Q = poly[i], poly[(i + 1) % len(poly)]\n        fP, fQ = f(P), f(Q)\n        if fP <= 0:\n            out.append(P)\n        if fP * fQ < 0:\n            t = fP / (fP - fQ)\n            out.append((P[0] + t * (Q[0] - P[0]), P[1] + t * (Q[1] - P[1])))\n    return out\n\n\ndef regions():\n    x0, x1, y0, y1 = BOX\n    res = {}\n    for s in SPECIES:\n        poly = [(x0, y0), (x1, y0), (x1, y1), (x0, y1)]\n        for o in SPECIES:\n            if o != s:\n                a1, b1, k1 = coeffs(s); a2, b2, k2 = coeffs(o)\n                poly = clip(poly, a1 - a2, b1 - b2, k1 - k2)\n        res[s] = [[round(p[0], 4), round(p[1], 4)] for p in poly]\n    return res\n\n\ndef lines():\n    \"\"\"Boundary equations, E = e0 + m pH (V), or a vertical pH line.\"\"\"\n    lc = math.log10(C_ION)\n    return {\n        \"Cu2+/Cu\": {\"e0\": GF[\"Cu2+\"] / (2 * F) + 0.5 * LN10 * RT / F * lc, \"m\": 0.0},\n        \"Cu2O/Cu\": {\"e0\": -(GF[\"H2O\"] - GF[\"Cu2O\"]) / (2 * F), \"m\": -LN10 * RT / F},\n        \"CuO/Cu2O\": {\"e0\": -((GF[\"Cu2O\"] + GF[\"H2O\"]) - 2 * GF[\"CuO\"]) / (2 * F), \"m\": -LN10 * RT / F},\n        \"Cu2+/Cu2O\": {\"e0\": -(GF[\"Cu2O\"] - (2 * GF[\"Cu2+\"] + GF[\"H2O\"])) / (2 * F) + LN10 * RT / F * lc, \"m\": LN10 * RT / F},\n        \"CuO/Cu2+\": {\"pH\": ((GF[\"H2O\"] + GF[\"Cu2+\"] - GF[\"CuO\"]) / (-LN10 * RT) - lc) / 2},\n    }\n\n\nPOINTS = {\"A\": (4.0, -0.10), \"B\": (3.0, 0.50), \"C\": (9.0, 0.05), \"D\": (9.0, 0.40)}\n\n\ndef lab_results():\n    L = lines()\n    return {\"points\": {k: {\"pH\": p[0], \"E\": p[1], \"sp\": stable(*p)} for k, p in POINTS.items()},\n            \"pH9\": {\"Cu_to_Cu2O\": L[\"Cu2O/Cu\"][\"e0\"] + 9 * L[\"Cu2O/Cu\"][\"m\"],\n                    \"Cu2O_to_CuO\": L[\"CuO/Cu2O\"][\"e0\"] + 9 * L[\"CuO/Cu2O\"][\"m\"]},\n            \"scan9\": [{\"E\": round(float(e), 2) + 0.0, \"sp\": stable(9.0, float(e))} for e in np.arange(-0.30, 0.601, 0.05)],\n            \"pH_CuO_Cu2\": L[\"CuO/Cu2+\"][\"pH\"], \"E_Cu2_Cu\": L[\"Cu2+/Cu\"][\"e0\"]}\n\n\ndef classroom_results():\n    R = {\"meta\": {\"numpy\": np.__version__, \"scipy\": __import__(\"scipy\").__version__, \"python\": sys.version.split()[0]}}\n    R[\"lecture\"] = {\"box\": BOX, \"c\": C_ION, \"regions\": regions(), \"lines\": lines(), \"slope\": LN10 * RT / F,\n                    \"water\": {\"H2\": {\"e0\": 0.0, \"m\": -LN10 * RT / F}, \"O2\": {\"e0\": 1.229, \"m\": -LN10 * RT / F}},\n                    \"fab\": [{\"k\": \"Acid Cu plating bath\", \"pH\": 1.0, \"E\": 0.50}, {\"k\": \"Neutral rinse water with air\", \"pH\": 7.0, \"E\": 0.80},\n                            {\"k\": \"Alkaline slurry, mild oxidizer\", \"pH\": 9.0, \"E\": 0.30}, {\"k\": \"Under a cathodic potential\", \"pH\": 7.0, \"E\": -0.40}]}\n    for f_ in R[\"lecture\"][\"fab\"]:\n        f_[\"sp\"] = stable(f_[\"pH\"], f_[\"E\"])\n    R[\"lab\"] = lab_results()\n    return R\n\n\nif __name__ == \"__main__\":\n    R = classroom_results()\n    if \"--json\" in sys.argv:\n        with open(\"pourbaix-results.json\", \"w\") as fh:\n            json.dump(R, fh, indent=1)\n        print(\"wrote pourbaix-results.json\"); sys.exit()\n    for k, v in R[\"lecture\"][\"lines\"].items():\n        print(\"%-10s %s\" % (k, {a: round(b, 4) for a, b in v.items()}))\n    for k, p in R[\"lab\"][\"points\"].items():\n        print(k, p)\n    print(\"pH 9 boundaries:\", {k: round(v, 4) for k, v in R[\"lab\"][\"pH9\"].items()})\n    print(\"scan at pH 9:\", [(s[\"E\"], s[\"sp\"]) for s in R[\"lab\"][\"scan9\"]])\n    for f_ in R[\"lecture\"][\"fab\"]:\n        print(f_)\n    for s, poly in R[\"lecture\"][\"regions\"].items():\n        print(s, len(poly), \"vertices\")\n";   // embedded copy, so live Python also works when the file is opened locally
+let R = RECORDED, MODE = "recorded";
+const C = {teal:"#0F6E6B",amber:"#E29A2D",rust:"#BE654C",sky:"#5A91BE",sage:"#83A462",plum:"#995A90",graphite:"#333F4A",sand:"#DFC98F",ink:"#1C242B",slate:"#66727C",mist:"#B9C1C6",paper:"#F3F0EB"};
+const fmt = (x,d=0)=>x==null?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+
+/* ---------- tiny SVG chart helpers ---------- */
+function svgEl(w,h){return `<svg class="ch" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">`}
+function niceStep(r,n=5){const raw=r/n,p=Math.pow(10,Math.floor(Math.log10(raw||1)));for(const m of [1,2,2.5,5,10]){if(m*p>=raw-1e-12)return m*p}return 10*p}
+function scale(o,lo,hi){const st=niceStep(hi-lo);o.step=st;o.ymin=Math.floor(lo/st+1e-9)*st;o.ymax=Math.ceil(hi/st-1e-9)*st;o.ticks=Math.round((o.ymax-o.ymin)/st);return o}
+function niceMax(v){const p=Math.pow(10,Math.floor(Math.log10(v||1)));for(const m of [1,1.2,1.5,2,2.5,3,4,5,6,8,10]){if(m*p>=v)return m*p}return 10*p}
+function axes(o){ // o: w,h,l,r,t,b,ymin,ymax,xlabels,ylab,ticks
+  const {w,h,l,r,t,b,ymin,ymax}=o, X=w-l-r, Y=h-t-b, n=o.ticks||5; let s="";
+  for(let k=0;k<=n;k++){const v=ymin+(ymax-ymin)*k/n, y=t+Y-(v-ymin)/(ymax-ymin)*Y;
+    s+=`<line x1="${l}" x2="${w-r}" y1="${y}" y2="${y}" stroke="${C.mist}" stroke-width="0.8" opacity=".7"/><text x="${l-8}" y="${y+5}" font-size="16" text-anchor="end" fill="${C.ink}">${fmt(v, (o.step||1)<1?1:0)}</text>`}
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${t+Y}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  const z=t+Y-(0-ymin)/(ymax-ymin)*Y; s+=`<line x1="${l}" x2="${w-r}" y1="${Math.min(t+Y,Math.max(t,z))}" y2="${Math.min(t+Y,Math.max(t,z))}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  if(o.ylab)s+=`<text transform="translate(${16},${t+Y/2}) rotate(-90)" font-size="17" text-anchor="middle" fill="${C.ink}">${o.ylab}</text>`;
+  return s}
+function ymap(o,v){const Y=o.h-o.t-o.b;return o.t+Y-(v-o.ymin)/(o.ymax-o.ymin)*Y}
+function legend(items,x,y){let s="";items.forEach((it,i)=>{const yy=y+i*22;s+=it.line?`<line x1="${x}" x2="${x+22}" y1="${yy}" y2="${yy}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${x}" y="${yy-8}" width="16" height="16" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${x+28}" y="${yy+5}" font-size="16" fill="${C.ink}">${it.t}</text>`});return s}
+function legendRow(items,x,y){let s="",xx=x;items.forEach(it=>{s+=it.line?`<line x1="${xx}" x2="${xx+20}" y1="${y}" y2="${y}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${xx}" y="${y-7}" width="14" height="14" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${xx+26}" y="${y+5}" font-size="16" fill="${C.ink}">${it.t}</text>`;xx+=38+it.t.length*8.2});return s}
+
+/* Food Manufacture: stacked bars of a [month][oil] matrix, optional line */
+function hbar(items,opt={}){ // items: {t,v,c}
+  const w=opt.w||640,h=opt.h||330,l=opt.l||250,r=90,t=16,rowh=(h-t-20)/items.length;
+  const mx=opt.max||niceMax(Math.max(...items.map(i=>i.v)));let s=svgEl(w,h);
+  items.forEach((it,i)=>{const y=t+i*rowh,bw=(w-l-r)*it.v/mx;
+    s+=`<text x="${l-12}" y="${y+rowh/2+5}" font-size="16" text-anchor="end" fill="${C.ink}">${it.t}</text><rect x="${l}" y="${y+rowh*0.18}" width="${Math.max(bw,1)}" height="${rowh*0.64}" fill="${it.c}" rx="3"/><text x="${l+bw+8}" y="${y+rowh/2+6}" font-size="17" font-weight="700" fill="${C.ink}">${opt.fmt?opt.fmt(it.v):fmt(it.v)}</text>`});
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${h-20}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  return s+"</svg>"}
+
+/* ---------- Class 13 helpers ---------- */
+const foot = "2182209 Chemistry for Semiconductor Engineering · Class 13 · The Cu Pourbaix diagram · draft for 2027";
+const LC = () => R.lecture;
+const S = [];
+function reveal(bid, aid){const b = document.getElementById(bid); b.onclick = () => {const p = document.getElementById(aid), on = p.style.visibility === "hidden"; p.style.visibility = on ? "visible" : "hidden"; b.textContent = on ? "Hide answers" : "Show answers"}}
+const CHECK = (n, q, a) => `<div class="body"><div class="col w55"><div class="act"><span class="tag">PAUSE AND ANSWER</span>${q}</div>
+<div class="ctrl" style="margin-top:12px"><button id="k${n}btn">Show answers</button></div></div>
+<div class="col"><div class="panel grow" id="k${n}ans" style="visibility:hidden"><ul class="b xs">${a}</ul></div></div></div>`;
+const OL = `<ol style="font-size:21px;line-height:1.5;margin:0;padding-left:26px">`;
+const T = (x, y, t, c = C.ink, s = 15, a = "middle") => `<text x="${x}" y="${y}" font-size="${s}" text-anchor="${a}" fill="${c}">${t}</text>`;
+const sgn = (v, d = 3) => (v < 0 ? "−" : v > 0 ? "+" : "") + Math.abs(v).toFixed(d);
+const SP = {"Cu": "Cu", "Cu2+": "Cu<sup>2+</sup>", "Cu2O": "Cu<sub>2</sub>O", "CuO": "CuO"};
+const SPU = {"Cu": "Cu", "Cu2+": "Cu²⁺", "Cu2O": "Cu₂O", "CuO": "CuO"};
+const COL = {"Cu": C.teal, "Cu2+": C.rust, "Cu2O": C.amber, "CuO": C.sky};
+/* stable species: same rule as pourbaix_lab.stable, from the region polygons */
+function inPoly(x, y, P){let c = false; for (let i = 0, j = P.length - 1; i < P.length; j = i++){const [xi, yi] = P[i], [xj, yj] = P[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c} return c}
+const stable = (pH, E) => Object.keys(LC().regions).find(s => inPoly(pH, E, LC().regions[s])) || "?";
+
+function pbSVG(o = {}){const w = 520, h = 340, l = 58, r = 14, t = 14, b = 46, X = w - l - r, Y = h - t - b, [x0, x1, y0, y1] = LC().box, px = v => l + X * (v - x0) / (x1 - x0), py = v => t + Y * (y1 - v) / (y1 - y0); let s = svgEl(w, h);
+ s += `<defs><clipPath id="pbc"><rect x="${l}" y="${t}" width="${X}" height="${Y}"/></clipPath></defs>`;
+ for (const [sp, P] of Object.entries(LC().regions)) s += `<polygon points="${P.map(p => `${px(p[0]).toFixed(1)},${py(p[1]).toFixed(1)}`).join(" ")}" fill="${COL[sp]}" opacity="${o.hl && o.hl !== sp ? 0.15 : 0.45}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+ const lab = {"Cu": [10, -0.4], "Cu2+": [2.5, 0.75], "Cu2O": [11, 0.0], "CuO": [10.5, 0.75]};
+ for (const [sp, [a, e]] of Object.entries(lab)) s += T(px(a), py(e), SPU[sp], C.ink, 17);
+ if (o.water !== false){const W = LC().water; s += `<g clip-path="url(#pbc)">` + ["H2", "O2"].map(k => `<line x1="${px(0)}" y1="${py(W[k].e0)}" x2="${px(14)}" y2="${py(W[k].e0 + 14 * W[k].m)}" stroke="${C.graphite}" stroke-width="1.5" stroke-dasharray="6 5"/>`).join("") + `</g>`;
+  s += T(px(13.6), py(W.O2.e0 + 13.6 * W.O2.m) - 6, "O₂/H₂O", C.graphite, 12, "end") + T(px(1.2), py(W.H2.e0 + 1.2 * W.H2.m) + 16, "H⁺/H₂", C.graphite, 12, "start")}
+ for (let v = 0; v <= 14; v += 2) s += T(px(v), t + Y + 18, v, C.ink, 13);
+ for (let e = -0.6; e <= 1.21; e += 0.3) s += `<line x1="${l - 4}" x2="${l}" y1="${py(e)}" y2="${py(e)}" stroke="${C.graphite}"/>` + T(l - 8, py(e) + 5, e.toFixed(1).replace("-", "−"), C.ink, 13, "end");
+ s += T(l + X / 2, h - 6, "pH", C.ink, 14) + `<text transform="translate(16,${t + Y / 2}) rotate(-90)" font-size="14" text-anchor="middle" fill="${C.ink}">E, V vs SHE</text>`;
+ (o.pts || []).forEach(p => {s += `<circle cx="${px(p.pH)}" cy="${py(p.E)}" r="7" fill="#fff" stroke="${C.ink}" stroke-width="2.5"/>` + (p.k ? T(px(p.pH) + 13, py(p.E) - 8, p.k, C.ink, 15, "start") : "")});
+ if (o.vline != null) s += `<line x1="${px(o.vline)}" x2="${px(o.vline)}" y1="${t}" y2="${t + Y}" stroke="${C.ink}" stroke-width="1" stroke-dasharray="3 4"/>`;
+ return s + "</svg>"}
+
+/* ---------- opening ---------- */
+S.push({cls:"title-slide", html:()=>`<p class="kicker">Class 13 · Lab 13</p><h1>The Cu Pourbaix diagram</h1>
+<div class="sub">One map of which form of Cu is stable at each pH and potential: metal, ion or oxide</div>
+<div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p>`,
+notes:"The Nernst equation of Class 9 with pH added, for the metal of every interconnect."});
+
+S.push({kicker:"Plan for today", title:"Ninety minutes, one activity, two checks and a lab", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:19px">
+<tr><th>Part</th><th>Content</th><th class="n">Minutes</th></tr>
+<tr><td></td><td>Activity 1: retrieval check on Classes 5, 7, 9 and 12</td><td class="n">5</td></tr>
+<tr><td>1</td><td>Reading a Pourbaix diagram: the axes, the regions, three kinds of boundary line, finding the stable form; Check 1</td><td class="n">25</td></tr>
+<tr><td>2</td><td>Water and air, immunity, corrosion and passivation, Cu in the fab, what the diagram cannot tell you; Check 2</td><td class="n">25</td></tr>
+<tr><td>Lab 13</td><td>Reading a Pourbaix diagram</td><td class="n">30</td></tr>
+<tr><td></td><td>Exit Ticket and feedback</td><td class="n">5</td></tr>
+<tr><td></td><td><b>Total</b></td><td class="n"><b>90</b></td></tr></table>
+<p class="note">Studying on your own: the narration takes about 9 minutes. Stop at the activity and at each check, then do Lab 13.</p></div></div>`});
+
+S.push({kicker:"Activity 1 · 5 minutes · alone, then in pairs", title:"Retrieval check: Classes 5, 7, 9 and 12", html:()=>`<div class="body"><div class="col w55"><div class="act"><span class="tag">WRITE, THEN COMPARE</span>
+${OL}<li>[H<sup>+</sup>] = 10<sup>−9</sup> M. What is the pH? (Class 5)</li>
+<li>Oxidation number of Cu in Cu<sub>2</sub>O and in CuO? (Class 7)</li>
+<li>E(Cu<sup>2+</sup>/Cu) at [Cu<sup>2+</sup>] = 10<sup>−6</sup> M, with E° = 0.34 V? (Class 9)</li>
+<li>Does a negative ΔG tell you how fast a reaction goes? (Classes 9, 12)</li></ol></div>
+<div class="ctrl" style="margin-top:12px"><button id="a1btn">Show answers</button></div></div>
+<div class="col"><div class="panel grow" id="a1ans" style="visibility:hidden"><ul class="b xs">
+<li>9: alkaline, like a polishing slurry</li><li>+1 and +2</li><li>0.34 + 0.0296 × (−6) ≈ ${LC().lines["Cu2+/Cu"].e0.toFixed(2)} V: today’s horizontal line</li><li>No: ΔG says whether, not how fast. The same holds for today’s diagram</li></ul></div></div></div>`,
+draw:()=>reveal("a1btn","a1ans")});
+
+S.push({kicker:"Learning outcomes", title:"By the end of today you can", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Read the axes and regions of a Pourbaix diagram</li>
+<li>Explain the three kinds of boundary line: horizontal, vertical and sloped</li>
+<li>Find the stable form of Cu at a given pH and potential</li>
+<li>Use the water lines and the terms immunity, corrosion and passivation</li>
+<li>Apply the diagram to Cu in the fab, and say what it cannot tell you</li></ul></div></div>`});
+
+S.push({kicker:"Context", title:"The Nernst equation, with pH added", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
+<tr><th>You have</th><th>From</th><th>Today</th></tr>
+<tr><td>pH = −log<sub>10</sub>[H<sup>+</sup>]</td><td>Class 5</td><td>The horizontal axis</td></tr>
+<tr><td>Cu, Cu<sub>2</sub>O (+1), CuO (+2), Cu<sup>2+</sup> (+2)</td><td>Class 7</td><td>The four forms on the map</td></tr>
+<tr><td>Nernst: E moves 0.0592/n V per tenfold change</td><td>Class 9</td><td>Each boundary is a Nernst line; H<sup>+</sup> in the reaction gives it a slope</td></tr>
+<tr><td>Rate needs kinetics and transport</td><td>Class 12</td><td>Which the diagram leaves out</td></tr></table>
+<p class="note">Model: Cu, Cu<sup>2+</sup>, Cu<sub>2</sub>O and CuO only; dissolved Cu at 10<sup>−6</sup> M; 25 °C; data from OpenStax <i>Chemistry 2e</i>, Appendix G. Reading: OpenStax <i>Chemistry 2e</i>, Section 17.6.</p></div></div>`});
+
+/* ---------- Part 1 ---------- */
+S.push({kicker:"Part 1 · The map", title:"Potential up, pH across: the stable form of Cu", html:()=>`<div class="body"><div class="col w55"><div class="panel grow"><div class="chart">${pbSVG()}</div></div></div>
+<div class="col"><ul class="b sm"><li>Up: more oxidizing (higher E). Right: more alkaline (higher pH)</li><li>Each region: the form of Cu with the lowest Gibbs energy there</li>
+<li>Low E: Cu metal. High E in acid: Cu<sup>2+</sup> dissolves. High E in neutral or alkaline water: oxides</li><li>Dashed lines: where water itself is reduced to H<sub>2</sub> or oxidized to O<sub>2</sub></li></ul></div></div>`,
+notes:"The regions come from pourbaix_lab.regions(): each is the box clipped by the condition that its Gibbs energy is the lowest."});
+
+S.push({kicker:"Part 1 · Three kinds of line", title:"Electrons, H<sup>+</sup>, or both", html:()=>{const L = LC().lines; return `<div class="body"><div class="col w55"><table class="t" style="font-size:16px">
+<tr><th>Boundary</th><th>Reaction</th><th>Line</th></tr>
+<tr><td>Cu<sup>2+</sup> / Cu</td><td>Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu</td><td>E = ${L["Cu2+/Cu"].e0.toFixed(3)} V: horizontal</td></tr>
+<tr><td>CuO / Cu<sup>2+</sup></td><td>CuO + 2H<sup>+</sup> → Cu<sup>2+</sup> + H<sub>2</sub>O</td><td>pH = ${L["CuO/Cu2+"].pH.toFixed(2)}: vertical</td></tr>
+<tr><td>Cu<sub>2</sub>O / Cu</td><td>Cu<sub>2</sub>O + 2H<sup>+</sup> + 2e<sup>−</sup> → 2Cu + H<sub>2</sub>O</td><td>E = ${L["Cu2O/Cu"].e0.toFixed(3)} − ${(-L["Cu2O/Cu"].m).toFixed(4)} pH</td></tr>
+<tr><td>CuO / Cu<sub>2</sub>O</td><td>2CuO + 2H<sup>+</sup> + 2e<sup>−</sup> → Cu<sub>2</sub>O + H<sub>2</sub>O</td><td>E = ${L["CuO/Cu2O"].e0.toFixed(3)} − ${(-L["CuO/Cu2O"].m).toFixed(4)} pH</td></tr>
+<tr><td>Cu<sup>2+</sup> / Cu<sub>2</sub>O</td><td>2Cu<sup>2+</sup> + H<sub>2</sub>O + 2e<sup>−</sup> → Cu<sub>2</sub>O + 2H<sup>+</sup></td><td>E = ${L["Cu2+/Cu2O"].e0.toFixed(3)} + ${L["Cu2+/Cu2O"].m.toFixed(4)} pH</td></tr></table></div>
+<div class="col"><ul class="b sm"><li>Electrons only: the line does not depend on pH, so it is horizontal</li><li>H<sup>+</sup> only: no electrons, so it does not depend on E: vertical</li>
+<li>Both, in equal numbers: E falls 0.0592 V per pH unit, the Nernst slope of Class 9</li></ul></div></div>`},
+py:{title:"Boundary lines of the Cu diagram", sub:"pourbaix_lab.lines()", code:
+`from pourbaix_lab import lines
+for name, ln in lines().items():
+    if "pH" in ln:
+        print("%-10s pH = %.2f" % (name, ln["pH"]))
+    else:
+        print("%-10s E = %.3f %+.4f pH" % (name, ln["e0"], ln["m"]))`,
+out:()=>Object.entries(LC().lines).map(([k, v]) => v.pH != null ? `${k.padEnd(10)} pH = ${v.pH.toFixed(2)}` : `${k.padEnd(10)} E = ${v.e0.toFixed(3)} ${v.m >= 0 ? "+" : "-"}${Math.abs(v.m).toFixed(4)} pH`).join("\n")},
+notes:"Each e0 comes from the Gibbs energies of formation; the 0.162 V includes [Cu2+] = 1e-6 M."});
+
+S.push({kicker:"Part 1 · Demo", title:"Pick a pH and a potential: which form of Cu?", html:()=>`<div class="body"><div class="col w55"><div class="panel grow"><div class="chart" id="pch"></div></div></div>
+<div class="col"><div class="ctrl"><span style="width:60px">pH</span><input type="range" id="qP" min="0" max="14" step="0.5" value="4"><b id="qPv"></b></div>
+<div class="ctrl"><span style="width:60px">E, V</span><input type="range" id="qE" min="-0.5" max="1.1" step="0.05" value="-0.1"><b id="qEv"></b></div>
+<div class="kpi"><div>Stable form<b class="a" id="qS"></b></div></div>
+<div class="ctrl" style="margin-top:10px">${["A", "B", "C", "D"].map(k => `<button id="qk${k}">${k}</button>`).join("")}</div>
+<p class="note">Points A to D are the ones in Lab 13.</p></div></div>`,
+draw:()=>{const P = R.lab.points; const go = () => {const pH = +document.getElementById("qP").value, E = +document.getElementById("qE").value, sp = stable(pH, E);
+ document.getElementById("qPv").textContent = pH.toFixed(1); document.getElementById("qEv").textContent = sgn(E, 2); document.getElementById("qS").innerHTML = SP[sp]; document.getElementById("pch").innerHTML = pbSVG({hl: sp, pts: [{pH, E}]})};
+ ["qP", "qE"].forEach(i => document.getElementById(i).oninput = go);
+ Object.keys(P).forEach(k => document.getElementById("qk" + k).onclick = () => {document.getElementById("qP").value = P[k].pH; document.getElementById("qE").value = P[k].E; go()}); go()},
+py:{title:"Stable form at points A to D", sub:"pourbaix_lab.stable(pH, E)", code:
+`from pourbaix_lab import stable, POINTS
+for k, (pH, E) in POINTS.items():
+    print("%s: pH %.1f, E %+.2f V -> %s" % (k, pH, E, stable(pH, E)))`,
+out:()=>Object.entries(R.lab.points).map(([k, p]) => `${k}: pH ${p.pH.toFixed(1)}, E ${p.E >= 0 ? "+" : "-"}${Math.abs(p.E).toFixed(2)} V -> ${p.sp}`).join("\n")},
+notes:"The JavaScript finds the region by testing which polygon holds the point; the Python compares the Gibbs energies. They agree."});
+
+S.push({kicker:"Check 1 · 5 minutes", title:"Check 1: reading the map", html:()=>CHECK(1,`${OL}
+<li>Why is the Cu<sup>2+</sup>/Cu line horizontal?</li>
+<li>Why does the Cu<sub>2</sub>O/Cu line slope down by 0.0592 V per pH?</li>
+<li>Which form is stable at pH 3, E = +0.50 V? And at pH 9, E = +0.40 V?</li>
+<li>At pH 9, as E rises from −0.30 V, in what order do the forms appear?</li></ol>`,
+`<li>Only electrons take part, no H<sup>+</sup>, so pH does not change it</li><li>2 H<sup>+</sup> and 2 e<sup>−</sup>: equal numbers give the Nernst slope</li>
+<li>${SP[R.lab.points.B.sp]}; ${SP[R.lab.points.D.sp]}</li><li>Cu, then Cu<sub>2</sub>O above ${sgn(R.lab.pH9.Cu_to_Cu2O, 3)} V, then CuO above ${sgn(R.lab.pH9.Cu2O_to_CuO, 3)} V</li>`),
+draw:()=>reveal("k1btn","k1ans")});
+
+/* ---------- Part 2 ---------- */
+S.push({kicker:"Part 2 · Water and air", title:"Why Cu does not dissolve in plain acid", html:()=>`<div class="body"><div class="col w55"><div class="panel grow"><div class="chart">${pbSVG({hl: "Cu"})}</div></div></div>
+<div class="col"><ul class="b sm"><li>Below the H<sup>+</sup>/H<sub>2</sub> line, water or H<sup>+</sup> is reduced to H<sub>2</sub>; above the O<sub>2</sub> line, water is oxidized to O<sub>2</sub></li>
+<li>Part of the Cu region lies above the H<sub>2</sub> line: H<sup>+</sup> cannot oxidize Cu, the same result as Class 7</li>
+<li>Dissolved O<sub>2</sub> pulls the potential up toward the O<sub>2</sub> line, where Cu is not stable: Cu in air and water tarnishes</li></ul></div></div>`});
+
+S.push({kicker:"Part 2 · Three words for regions", title:"Immunity, corrosion, passivation", html:()=>`<div class="body"><div class="col w55"><table class="t" style="font-size:18px">
+<tr><th>Region</th><th>Word</th><th>What happens to a piece of Cu</th></tr>
+<tr><td style="color:${C.teal}"><b>Cu</b></td><td>Immunity</td><td>The metal is stable and does not react</td></tr>
+<tr><td style="color:${C.rust}"><b>Cu<sup>2+</sup></b></td><td>Corrosion</td><td>The metal dissolves as ions</td></tr>
+<tr><td style="color:${C.amber}"><b>Cu<sub>2</sub>O</b>, <b style="color:${C.sky}">CuO</b></td><td>Passivation</td><td>A solid oxide forms on the surface; it may slow further attack</td></tr></table>
+<p class="note">"May": whether the oxide film protects depends on how dense and adherent it is, which the diagram does not show.</p></div>
+<div class="col"><ul class="b sm"><li>To keep Cu bright, hold it in the immunity region: low potential, or no oxidant</li><li>To dissolve it, use acid with an oxidizer: the corrosion region</li>
+<li>To protect it, a stable oxide film: the passivation region</li></ul></div></div>`});
+
+S.push({kicker:"Part 2 · Cu in the fab", title:"Four settings on one map", html:()=>{const F_ = LC().fab, pts = F_.map((f, i) => ({pH: f.pH, E: f.E, k: String(i + 1)})); return `<div class="body"><div class="col w55"><div class="panel grow"><div class="chart">${pbSVG({pts})}</div></div></div>
+<div class="col"><table class="t" style="font-size:16px"><tr><th>#</th><th>Setting</th><th class="n">pH, E</th><th>Stable</th></tr>
+${F_.map((f, i) => `<tr><td>${i + 1}</td><td>${f.k}</td><td class="n">${f.pH.toFixed(0)}, ${sgn(f.E, 2)}</td><td>${SP[f.sp]}</td></tr>`).join("")}</table>
+<p class="note">Illustrative points, not measured values. 1: Cu<sup>2+</sup> stays dissolved, ready to plate. 2: Cu exposed to air and water oxidizes. 3: polishing slurries form a soft oxide that the pad then removes. 4: a negative potential protects the metal.</p></div></div>`},
+notes:"Real slurries contain complexing agents and inhibitors that change the diagram; this is the bare-water version."});
+
+S.push({kicker:"Part 2 · A common mistake", title:"“The diagram says it, so it happens”", html:()=>`<div class="body"><div class="col w55"><div class="act" style="border-color:${C.rust};background:#fbf0ec"><span class="tag" style="background:${C.rust}">THE CLAIM</span>
+<div style="font-size:22px;line-height:1.45">“At pH 9 and +0.40 V the diagram shows CuO, so a protective CuO film forms quickly.”</div></div>
+<div class="panel" style="margin-top:16px;display:block"><b style="color:${C.teal};font-size:19px">The correction</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
+A Pourbaix diagram comes from Gibbs energies: it says which form is stable, not how fast it forms (Class 12) or whether a film protects. It also holds only for the species and the 10<sup>−6</sup> M chosen.</div></div></div>
+<div class="col"><ul class="b sm"><li>This diagram leaves out Cu(I) ions and the cuprate ions of strong base, so above about pH 12 it is wrong</li>
+<li>Other chemicals in a real bath (complexing agents such as NH<sub>3</sub>, inhibitors such as BTA) change the map</li></ul></div></div>`});
+
+S.push({kicker:"Check 2 · 5 minutes", title:"Check 2: using the map", html:()=>CHECK(2,`${OL}
+<li>Why does Cu not dissolve in an acid with no oxidizer?</li>
+<li>Name the regions of immunity, corrosion and passivation for Cu.</li>
+<li>Which form of Cu is stable at pH 9, E = +0.05 V?</li>
+<li>Name two things a Pourbaix diagram cannot tell you.</li></ol>`,
+`<li>Part of the Cu region lies above the H<sup>+</sup>/H<sub>2</sub> line, so H<sup>+</sup> cannot oxidize Cu</li><li>Cu: immunity; Cu<sup>2+</sup>: corrosion; Cu<sub>2</sub>O and CuO: passivation</li>
+<li>${SP[R.lab.points.C.sp]}</li><li>Any two: the rate; whether an oxide film protects; the effect of species left out of the model</li>`),
+draw:()=>reveal("k2btn","k2ans")});
+
+/* ---------- closing ---------- */
+S.push({kicker:"Where this goes next", title:"One more class in this half", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
+<tr><th>Class</th><th>What it brings together</th></tr>
+<tr><td>14 · Review</td><td>Three stations: materials and doping; Cu deposition with Faraday’s law; a supercapacitor or a battery for two loads</td></tr>
+<tr><td>Second half</td><td>Semiconductors in solution and photoelectrochemistry build on today’s diagram and on the band gaps of Class 6</td></tr></table></div></div>`});
+
+S.push({kicker:"Lab 13 · 30 minutes", title:"Reading a Pourbaix diagram", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Predict which form of Cu is stable in acid at a high potential</li><li>Read the stable form at points A to D</li>
+<li>Move E at pH 9 and find the two boundaries</li><li>Explain the slope of a line, and what the diagram leaves out</li></ul></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="45mm" height="45mm" version="1.1" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM12,2H13V3H12zM13,2H14V3H13zM16,2H17V3H16zM17,2H18V3H17zM21,2H22V3H21zM22,2H23V3H22zM24,2H25V3H24zM25,2H26V3H25zM26,2H27V3H26zM27,2H28V3H27zM30,2H31V3H30zM33,2H34V3H33zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM39,2H40V3H39zM40,2H41V3H40zM41,2H42V3H41zM42,2H43V3H42zM2,3H3V4H2zM8,3H9V4H8zM11,3H12V4H11zM13,3H14V4H13zM16,3H17V4H16zM17,3H18V4H17zM20,3H21V4H20zM22,3H23V4H22zM24,3H25V4H24zM28,3H29V4H28zM29,3H30V4H29zM31,3H32V4H31zM32,3H33V4H32zM36,3H37V4H36zM42,3H43V4H42zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM10,4H11V5H10zM11,4H12V5H11zM12,4H13V5H12zM14,4H15V5H14zM15,4H16V5H15zM17,4H18V5H17zM22,4H23V5H22zM26,4H27V5H26zM32,4H33V5H32zM36,4H37V5H36zM38,4H39V5H38zM39,4H40V5H39zM40,4H41V5H40zM42,4H43V5H42zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM11,5H12V6H11zM13,5H14V6H13zM15,5H16V6H15zM16,5H17V6H16zM18,5H19V6H18zM20,5H21V6H20zM21,5H22V6H21zM23,5H24V6H23zM24,5H25V6H24zM26,5H27V6H26zM29,5H30V6H29zM30,5H31V6H30zM31,5H32V6H31zM32,5H33V6H32zM34,5H35V6H34zM36,5H37V6H36zM38,5H39V6H38zM39,5H40V6H39zM40,5H41V6H40zM42,5H43V6H42zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM10,6H11V7H10zM11,6H12V7H11zM14,6H15V7H14zM15,6H16V7H15zM21,6H22V7H21zM22,6H23V7H22zM23,6H24V7H23zM25,6H26V7H25zM32,6H33V7H32zM33,6H34V7H33zM36,6H37V7H36zM38,6H39V7H38zM39,6H40V7H39zM40,6H41V7H40zM42,6H43V7H42zM2,7H3V8H2zM8,7H9V8H8zM10,7H11V8H10zM12,7H13V8H12zM17,7H18V8H17zM19,7H20V8H19zM20,7H21V8H20zM24,7H25V8H24zM28,7H29V8H28zM29,7H30V8H29zM31,7H32V8H31zM32,7H33V8H32zM34,7H35V8H34zM36,7H37V8H36zM42,7H43V8H42zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM34,8H35V9H34zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM39,8H40V9H39zM40,8H41V9H40zM41,8H42V9H41zM42,8H43V9H42zM10,9H11V10H10zM12,9H13V10H12zM13,9H14V10H13zM15,9H16V10H15zM18,9H19V10H18zM20,9H21V10H20zM21,9H22V10H21zM22,9H23V10H22zM23,9H24V10H23zM24,9H25V10H24zM34,9H35V10H34zM2,10H3V11H2zM4,10H5V11H4zM5,10H6V11H5zM6,10H7V11H6zM7,10H8V11H7zM8,10H9V11H8zM12,10H13V11H12zM13,10H14V11H13zM15,10H16V11H15zM16,10H17V11H16zM18,10H19V11H18zM19,10H20V11H19zM20,10H21V11H20zM21,10H22V11H21zM24,10H25V11H24zM26,10H27V11H26zM27,10H28V11H27zM28,10H29V11H28zM29,10H30V11H29zM30,10H31V11H30zM31,10H32V11H31zM33,10H34V11H33zM34,10H35V11H34zM36,10H37V11H36zM37,10H38V11H37zM38,10H39V11H38zM39,10H40V11H39zM40,10H41V11H40zM2,11H3V12H2zM4,11H5V12H4zM5,11H6V12H5zM7,11H8V12H7zM9,11H10V12H9zM10,11H11V12H10zM14,11H15V12H14zM15,11H16V12H15zM16,11H17V12H16zM17,11H18V12H17zM20,11H21V12H20zM21,11H22V12H21zM22,11H23V12H22zM23,11H24V12H23zM25,11H26V12H25zM30,11H31V12H30zM32,11H33V12H32zM33,11H34V12H33zM34,11H35V12H34zM36,11H37V12H36zM38,11H39V12H38zM40,11H41V12H40zM41,11H42V12H41zM42,11H43V12H42zM2,12H3V13H2zM3,12H4V13H3zM4,12H5V13H4zM5,12H6V13H5zM6,12H7V13H6zM8,12H9V13H8zM9,12H10V13H9zM12,12H13V13H12zM13,12H14V13H13zM16,12H17V13H16zM17,12H18V13H17zM19,12H20V13H19zM22,12H23V13H22zM23,12H24V13H23zM26,12H27V13H26zM29,12H30V13H29zM30,12H31V13H30zM31,12H32V13H31zM32,12H33V13H32zM34,12H35V13H34zM35,12H36V13H35zM36,12H37V13H36zM38,12H39V13H38zM3,13H4V14H3zM5,13H6V14H5zM6,13H7V14H6zM10,13H11V14H10zM11,13H12V14H11zM13,13H14V14H13zM14,13H15V14H14zM16,13H17V14H16zM22,13H23V14H22zM23,13H24V14H23zM24,13H25V14H24zM25,13H26V14H25zM29,13H30V14H29zM32,13H33V14H32zM33,13H34V14H33zM34,13H35V14H34zM35,13H36V14H35zM38,13H39V14H38zM39,13H40V14H39zM41,13H42V14H41zM42,13H43V14H42zM2,14H3V15H2zM3,14H4V15H3zM5,14H6V15H5zM6,14H7V15H6zM8,14H9V15H8zM10,14H11V15H10zM12,14H13V15H12zM13,14H14V15H13zM14,14H15V15H14zM15,14H16V15H15zM19,14H20V15H19zM20,14H21V15H20zM24,14H25V15H24zM25,14H26V15H25zM27,14H28V15H27zM29,14H30V15H29zM31,14H32V15H31zM32,14H33V15H32zM33,14H34V15H33zM35,14H36V15H35zM37,14H38V15H37zM39,14H40V15H39zM40,14H41V15H40zM41,14H42V15H41zM3,15H4V16H3zM4,15H5V16H4zM5,15H6V16H5zM6,15H7V16H6zM7,15H8V16H7zM9,15H10V16H9zM12,15H13V16H12zM13,15H14V16H13zM14,15H15V16H14zM15,15H16V16H15zM16,15H17V16H16zM17,15H18V16H17zM18,15H19V16H18zM20,15H21V16H20zM22,15H23V16H22zM23,15H24V16H23zM26,15H27V16H26zM28,15H29V16H28zM30,15H31V16H30zM33,15H34V16H33zM34,15H35V16H34zM35,15H36V16H35zM36,15H37V16H36zM37,15H38V16H37zM38,15H39V16H38zM39,15H40V16H39zM40,15H41V16H40zM42,15H43V16H42zM2,16H3V17H2zM3,16H4V17H3zM5,16H6V17H5zM7,16H8V17H7zM8,16H9V17H8zM9,16H10V17H9zM12,16H13V17H12zM14,16H15V17H14zM15,16H16V17H15zM16,16H17V17H16zM18,16H19V17H18zM20,16H21V17H20zM21,16H22V17H21zM29,16H30V17H29zM30,16H31V17H30zM31,16H32V17H31zM32,16H33V17H32zM34,16H35V17H34zM35,16H36V17H35zM37,16H38V17H37zM38,16H39V17H38zM39,16H40V17H39zM40,16H41V17H40zM41,16H42V17H41zM2,17H3V18H2zM3,17H4V18H3zM4,17H5V18H4zM5,17H6V18H5zM9,17H10V18H9zM11,17H12V18H11zM12,17H13V18H12zM13,17H14V18H13zM15,17H16V18H15zM17,17H18V18H17zM20,17H21V18H20zM21,17H22V18H21zM22,17H23V18H22zM23,17H24V18H23zM24,17H25V18H24zM26,17H27V18H26zM28,17H29V18H28zM29,17H30V18H29zM30,17H31V18H30zM32,17H33V18H32zM36,17H37V18H36zM37,17H38V18H37zM38,17H39V18H38zM39,17H40V18H39zM2,18H3V19H2zM7,18H8V19H7zM8,18H9V19H8zM13,18H14V19H13zM14,18H15V19H14zM16,18H17V19H16zM17,18H18V19H17zM18,18H19V19H18zM19,18H20V19H19zM21,18H22V19H21zM27,18H28V19H27zM28,18H29V19H28zM30,18H31V19H30zM31,18H32V19H31zM32,18H33V19H32zM34,18H35V19H34zM35,18H36V19H35zM37,18H38V19H37zM40,18H41V19H40zM41,18H42V19H41zM2,19H3V20H2zM7,19H8V20H7zM12,19H13V20H12zM14,19H15V20H14zM15,19H16V20H15zM18,19H19V20H18zM19,19H20V20H19zM20,19H21V20H20zM21,19H22V20H21zM23,19H24V20H23zM25,19H26V20H25zM26,19H27V20H26zM27,19H28V20H27zM30,19H31V20H30zM31,19H32V20H31zM33,19H34V20H33zM36,19H37V20H36zM37,19H38V20H37zM38,19H39V20H38zM40,19H41V20H40zM41,19H42V20H41zM42,19H43V20H42zM2,20H3V21H2zM3,20H4V21H3zM5,20H6V21H5zM7,20H8V21H7zM8,20H9V21H8zM9,20H10V21H9zM10,20H11V21H10zM11,20H12V21H11zM13,20H14V21H13zM14,20H15V21H14zM15,20H16V21H15zM16,20H17V21H16zM17,20H18V21H17zM18,20H19V21H18zM19,20H20V21H19zM22,20H23V21H22zM23,20H24V21H23zM27,20H28V21H27zM28,20H29V21H28zM29,20H30V21H29zM31,20H32V21H31zM35,20H36V21H35zM38,20H39V21H38zM41,20H42V21H41zM2,21H3V22H2zM4,21H5V22H4zM5,21H6V22H5zM6,21H7V22H6zM7,21H8V22H7zM13,21H14V22H13zM14,21H15V22H14zM15,21H16V22H15zM17,21H18V22H17zM18,21H19V22H18zM19,21H20V22H19zM20,21H21V22H20zM22,21H23V22H22zM23,21H24V22H23zM24,21H25V22H24zM25,21H26V22H25zM27,21H28V22H27zM29,21H30V22H29zM30,21H31V22H30zM32,21H33V22H32zM33,21H34V22H33zM35,21H36V22H35zM36,21H37V22H36zM38,21H39V22H38zM42,21H43V22H42zM2,22H3V23H2zM3,22H4V23H3zM4,22H5V23H4zM5,22H6V23H5zM8,22H9V23H8zM9,22H10V23H9zM11,22H12V23H11zM12,22H13V23H12zM14,22H15V23H14zM15,22H16V23H15zM16,22H17V23H16zM17,22H18V23H17zM23,22H24V23H23zM25,22H26V23H25zM26,22H27V23H26zM28,22H29V23H28zM29,22H30V23H29zM30,22H31V23H30zM31,22H32V23H31zM37,22H38V23H37zM39,22H40V23H39zM40,22H41V23H40zM42,22H43V23H42zM2,23H3V24H2zM4,23H5V24H4zM6,23H7V24H6zM10,23H11V24H10zM13,23H14V24H13zM14,23H15V24H14zM15,23H16V24H15zM16,23H17V24H16zM17,23H18V24H17zM19,23H20V24H19zM20,23H21V24H20zM21,23H22V24H21zM22,23H23V24H22zM24,23H25V24H24zM25,23H26V24H25zM27,23H28V24H27zM31,23H32V24H31zM32,23H33V24H32zM33,23H34V24H33zM36,23H37V24H36zM37,23H38V24H37zM38,23H39V24H38zM41,23H42V24H41zM42,23H43V24H42zM3,24H4V25H3zM7,24H8V25H7zM8,24H9V25H8zM9,24H10V25H9zM12,24H13V25H12zM13,24H14V25H13zM14,24H15V25H14zM15,24H16V25H15zM16,24H17V25H16zM18,24H19V25H18zM19,24H20V25H19zM22,24H23V25H22zM23,24H24V25H23zM26,24H27V25H26zM29,24H30V25H29zM31,24H32V25H31zM34,24H35V25H34zM35,24H36V25H35zM36,24H37V25H36zM37,24H38V25H37zM38,24H39V25H38zM40,24H41V25H40zM2,25H3V26H2zM4,25H5V26H4zM7,25H8V26H7zM10,25H11V26H10zM12,25H13V26H12zM13,25H14V26H13zM15,25H16V26H15zM16,25H17V26H16zM20,25H21V26H20zM23,25H24V26H23zM24,25H25V26H24zM34,25H35V26H34zM39,25H40V26H39zM41,25H42V26H41zM42,25H43V26H42zM3,26H4V27H3zM7,26H8V27H7zM8,26H9V27H8zM9,26H10V27H9zM14,26H15V27H14zM18,26H19V27H18zM19,26H20V27H19zM21,26H22V27H21zM22,26H23V27H22zM24,26H25V27H24zM26,26H27V27H26zM27,26H28V27H27zM28,26H29V27H28zM29,26H30V27H29zM31,26H32V27H31zM35,26H36V27H35zM37,26H38V27H37zM40,26H41V27H40zM42,26H43V27H42zM3,27H4V28H3zM4,27H5V28H4zM5,27H6V28H5zM6,27H7V28H6zM11,27H12V28H11zM12,27H13V28H12zM13,27H14V28H13zM15,27H16V28H15zM17,27H18V28H17zM18,27H19V28H18zM19,27H20V28H19zM20,27H21V28H20zM21,27H22V28H21zM22,27H23V28H22zM23,27H24V28H23zM24,27H25V28H24zM25,27H26V28H25zM26,27H27V28H26zM27,27H28V28H27zM30,27H31V28H30zM32,27H33V28H32zM33,27H34V28H33zM35,27H36V28H35zM36,27H37V28H36zM38,27H39V28H38zM39,27H40V28H39zM42,27H43V28H42zM2,28H3V29H2zM3,28H4V29H3zM5,28H6V29H5zM6,28H7V29H6zM7,28H8V29H7zM8,28H9V29H8zM10,28H11V29H10zM12,28H13V29H12zM15,28H16V29H15zM16,28H17V29H16zM18,28H19V29H18zM19,28H20V29H19zM26,28H27V29H26zM29,28H30V29H29zM32,28H33V29H32zM34,28H35V29H34zM36,28H37V29H36zM2,29H3V30H2zM5,29H6V30H5zM6,29H7V30H6zM9,29H10V30H9zM10,29H11V30H10zM12,29H13V30H12zM15,29H16V30H15zM17,29H18V30H17zM18,29H19V30H18zM23,29H24V30H23zM24,29H25V30H24zM26,29H27V30H26zM28,29H29V30H28zM33,29H34V30H33zM34,29H35V30H34zM36,29H37V30H36zM38,29H39V30H38zM39,29H40V30H39zM2,30H3V31H2zM3,30H4V31H3zM6,30H7V31H6zM8,30H9V31H8zM9,30H10V31H9zM12,30H13V31H12zM13,30H14V31H13zM16,30H17V31H16zM17,30H18V31H17zM18,30H19V31H18zM19,30H20V31H19zM20,30H21V31H20zM21,30H22V31H21zM22,30H23V31H22zM24,30H25V31H24zM26,30H27V31H26zM27,30H28V31H27zM29,30H30V31H29zM31,30H32V31H31zM32,30H33V31H32zM33,30H34V31H33zM37,30H38V31H37zM39,30H40V31H39zM40,30H41V31H40zM2,31H3V32H2zM3,31H4V32H3zM7,31H8V32H7zM10,31H11V32H10zM11,31H12V32H11zM12,31H13V32H12zM15,31H16V32H15zM16,31H17V32H16zM19,31H20V32H19zM30,31H31V32H30zM33,31H34V32H33zM34,31H35V32H34zM35,31H36V32H35zM36,31H37V32H36zM37,31H38V32H37zM38,31H39V32H38zM42,31H43V32H42zM2,32H3V33H2zM6,32H7V33H6zM8,32H9V33H8zM9,32H10V33H9zM10,32H11V33H10zM13,32H14V33H13zM14,32H15V33H14zM15,32H16V33H15zM18,32H19V33H18zM19,32H20V33H19zM22,32H23V33H22zM23,32H24V33H23zM24,32H25V33H24zM25,32H26V33H25zM26,32H27V33H26zM27,32H28V33H27zM28,32H29V33H28zM29,32H30V33H29zM31,32H32V33H31zM35,32H36V33H35zM36,32H37V33H36zM37,32H38V33H37zM39,32H40V33H39zM40,32H41V33H40zM41,32H42V33H41zM2,33H3V34H2zM4,33H5V34H4zM5,33H6V34H5zM6,33H7V34H6zM7,33H8V34H7zM10,33H11V34H10zM11,33H12V34H11zM13,33H14V34H13zM23,33H24V34H23zM24,33H25V34H24zM25,33H26V34H25zM29,33H30V34H29zM30,33H31V34H30zM34,33H35V34H34zM35,33H36V34H35zM36,33H37V34H36zM37,33H38V34H37zM39,33H40V34H39zM41,33H42V34H41zM42,33H43V34H42zM2,34H3V35H2zM4,34H5V35H4zM5,34H6V35H5zM6,34H7V35H6zM7,34H8V35H7zM8,34H9V35H8zM9,34H10V35H9zM11,34H12V35H11zM16,34H17V35H16zM19,34H20V35H19zM22,34H23V35H22zM24,34H25V35H24zM25,34H26V35H25zM26,34H27V35H26zM27,34H28V35H27zM28,34H29V35H28zM29,34H30V35H29zM31,34H32V35H31zM32,34H33V35H32zM33,34H34V35H33zM34,34H35V35H34zM35,34H36V35H35zM36,34H37V35H36zM37,34H38V35H37zM38,34H39V35H38zM40,34H41V35H40zM41,34H42V35H41zM10,35H11V36H10zM11,35H12V36H11zM12,35H13V36H12zM13,35H14V36H13zM21,35H22V36H21zM22,35H23V36H22zM25,35H26V36H25zM26,35H27V36H26zM28,35H29V36H28zM30,35H31V36H30zM31,35H32V36H31zM32,35H33V36H32zM33,35H34V36H33zM34,35H35V36H34zM38,35H39V36H38zM41,35H42V36H41zM42,35H43V36H42zM2,36H3V37H2zM3,36H4V37H3zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM7,36H8V37H7zM8,36H9V37H8zM12,36H13V37H12zM13,36H14V37H13zM15,36H16V37H15zM16,36H17V37H16zM17,36H18V37H17zM20,36H21V37H20zM22,36H23V37H22zM24,36H25V37H24zM26,36H27V37H26zM29,36H30V37H29zM30,36H31V37H30zM32,36H33V37H32zM33,36H34V37H33zM34,36H35V37H34zM36,36H37V37H36zM38,36H39V37H38zM40,36H41V37H40zM2,37H3V38H2zM8,37H9V38H8zM10,37H11V38H10zM11,37H12V38H11zM12,37H13V38H12zM13,37H14V38H13zM14,37H15V38H14zM21,37H22V38H21zM28,37H29V38H28zM29,37H30V38H29zM30,37H31V38H30zM32,37H33V38H32zM34,37H35V38H34zM38,37H39V38H38zM2,38H3V39H2zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM8,38H9V39H8zM10,38H11V39H10zM12,38H13V39H12zM18,38H19V39H18zM20,38H21V39H20zM23,38H24V39H23zM24,38H25V39H24zM30,38H31V39H30zM31,38H32V39H31zM34,38H35V39H34zM35,38H36V39H35zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38zM39,38H40V39H39zM40,38H41V39H40zM41,38H42V39H41zM42,38H43V39H42zM2,39H3V40H2zM4,39H5V40H4zM5,39H6V40H5zM6,39H7V40H6zM8,39H9V40H8zM10,39H11V40H10zM11,39H12V40H11zM14,39H15V40H14zM15,39H16V40H15zM17,39H18V40H17zM18,39H19V40H18zM19,39H20V40H19zM21,39H22V40H21zM22,39H23V40H22zM23,39H24V40H23zM25,39H26V40H25zM28,39H29V40H28zM31,39H32V40H31zM33,39H34V40H33zM34,39H35V40H34zM35,39H36V40H35zM37,39H38V40H37zM2,40H3V41H2zM4,40H5V41H4zM5,40H6V41H5zM6,40H7V41H6zM8,40H9V41H8zM10,40H11V41H10zM12,40H13V41H12zM14,40H15V41H14zM18,40H19V41H18zM19,40H20V41H19zM23,40H24V41H23zM24,40H25V41H24zM28,40H29V41H28zM29,40H30V41H29zM31,40H32V41H31zM33,40H34V41H33zM34,40H35V41H34zM35,40H36V41H35zM36,40H37V41H36zM37,40H38V41H37zM38,40H39V41H38zM39,40H40V41H39zM2,41H3V42H2zM8,41H9V42H8zM11,41H12V42H11zM13,41H14V42H13zM18,41H19V42H18zM20,41H21V42H20zM23,41H24V42H23zM25,41H26V42H25zM28,41H29V42H28zM29,41H30V42H29zM34,41H35V42H34zM35,41H36V42H35zM38,41H39V42H38zM39,41H40V42H39zM41,41H42V42H41zM2,42H3V43H2zM3,42H4V43H3zM4,42H5V43H4zM5,42H6V43H5zM6,42H7V43H6zM7,42H8V43H7zM8,42H9V43H8zM10,42H11V43H10zM13,42H14V43H13zM14,42H15V43H14zM15,42H16V43H15zM18,42H19V43H18zM19,42H20V43H19zM21,42H22V43H21zM24,42H25V43H24zM25,42H26V43H25zM27,42H28V43H27zM28,42H29V43H28zM30,42H31V43H30zM31,42H32V43H31zM33,42H34V43H33zM36,42H37V43H36zM37,42H38V43H37zM38,42H39V43H38zM40,42H41V43H40z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="lab.html" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the lab page</a></div></div></div>`,
+notes:"Early finishers: at what pH does CuO begin to dissolve as Cu2+, at 1e-6 M? (pH 6.67)"});
+
+S.push({kicker:"Summary", title:"What to take from today", html:()=>`<div class="body"><div class="col w45"><table class="t" style="font-size:17px">
+<tr><th>Point (pH, E)</th><th class="n">Stable form</th></tr>
+${Object.entries(R.lab.points).map(([k, p]) => `<tr><td>${k} (${p.pH.toFixed(0)}, ${sgn(p.E, 2)} V)</td><td class="n">${SP[p.sp]}</td></tr>`).join("")}
+<tr><td>pH 9: Cu → Cu<sub>2</sub>O</td><td class="n">${sgn(R.lab.pH9.Cu_to_Cu2O, 3)} V</td></tr><tr><td>pH 9: Cu<sub>2</sub>O → CuO</td><td class="n">${sgn(R.lab.pH9.Cu2O_to_CuO, 3)} V</td></tr></table></div>
+<div class="col"><ul class="b xs"><li>A Pourbaix diagram maps the stable form against E and pH</li><li>Horizontal: electrons only; vertical: H<sup>+</sup> only; sloped: both, 0.0592 V per pH</li>
+<li>Immunity, corrosion, passivation</li><li>Between the water lines, water itself is stable</li><li>Stability only: no rate, no film quality, only the species chosen</li></ul></div></div>`});
+
+S.push({kicker:"Before the next class", title:"Before we meet again", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Finish Lab 13 if you did not finish in class, and upload the answer file to myCourseVille</li>
+<li>Read OpenStax <i>Chemistry 2e</i>, Section 17.6 (corrosion)</li>
+<li>Class 14: review in three stations. Bring your Lab 6, 10 and 11 answers; you will use those numbers again</li></ul></div></div>`});
+
+S.push({kicker:"Exit Ticket and feedback · 5 minutes", title:"Exit Ticket and feedback", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Scan the code and choose <b>Class 13</b></li><li>Exit Ticket: paste the answers that the lab page copies for you</li>
+<li>Feedback: pace, confidence, how far you got in the lab, and what is still unclear</li><li>Studying on your own? Choose "On my own"</li></ul>
+<p class="note">One form for both. Anonymous; no name or student ID.</p></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="45mm" height="45mm" version="1.1" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM10,2H11V3H10zM11,2H12V3H11zM15,2H16V3H15zM17,2H18V3H17zM18,2H19V3H18zM19,2H20V3H19zM24,2H25V3H24zM25,2H26V3H25zM28,2H29V3H28zM29,2H30V3H29zM30,2H31V3H30zM34,2H35V3H34zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM39,2H40V3H39zM40,2H41V3H40zM41,2H42V3H41zM42,2H43V3H42zM2,3H3V4H2zM8,3H9V4H8zM12,3H13V4H12zM15,3H16V4H15zM19,3H20V4H19zM21,3H22V4H21zM22,3H23V4H22zM32,3H33V4H32zM33,3H34V4H33zM34,3H35V4H34zM36,3H37V4H36zM42,3H43V4H42zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM11,4H12V5H11zM12,4H13V5H12zM13,4H14V5H13zM14,4H15V5H14zM15,4H16V5H15zM16,4H17V5H16zM23,4H24V5H23zM25,4H26V5H25zM26,4H27V5H26zM27,4H28V5H27zM30,4H31V5H30zM31,4H32V5H31zM32,4H33V5H32zM36,4H37V5H36zM38,4H39V5H38zM39,4H40V5H39zM40,4H41V5H40zM42,4H43V5H42zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM11,5H12V6H11zM12,5H13V6H12zM13,5H14V6H13zM14,5H15V6H14zM17,5H18V6H17zM19,5H20V6H19zM20,5H21V6H20zM21,5H22V6H21zM23,5H24V6H23zM24,5H25V6H24zM25,5H26V6H25zM28,5H29V6H28zM29,5H30V6H29zM31,5H32V6H31zM34,5H35V6H34zM36,5H37V6H36zM38,5H39V6H38zM39,5H40V6H39zM40,5H41V6H40zM42,5H43V6H42zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM10,6H11V7H10zM11,6H12V7H11zM12,6H13V7H12zM14,6H15V7H14zM15,6H16V7H15zM17,6H18V7H17zM20,6H21V7H20zM24,6H25V7H24zM25,6H26V7H25zM27,6H28V7H27zM28,6H29V7H28zM29,6H30V7H29zM34,6H35V7H34zM36,6H37V7H36zM38,6H39V7H38zM39,6H40V7H39zM40,6H41V7H40zM42,6H43V7H42zM2,7H3V8H2zM8,7H9V8H8zM10,7H11V8H10zM11,7H12V8H11zM15,7H16V8H15zM19,7H20V8H19zM20,7H21V8H20zM21,7H22V8H21zM22,7H23V8H22zM23,7H24V8H23zM24,7H25V8H24zM27,7H28V8H27zM31,7H32V8H31zM32,7H33V8H32zM33,7H34V8H33zM36,7H37V8H36zM42,7H43V8H42zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM34,8H35V9H34zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM39,8H40V9H39zM40,8H41V9H40zM41,8H42V9H41zM42,8H43V9H42zM10,9H11V10H10zM11,9H12V10H11zM12,9H13V10H12zM14,9H15V10H14zM15,9H16V10H15zM16,9H17V10H16zM19,9H20V10H19zM21,9H22V10H21zM22,9H23V10H22zM23,9H24V10H23zM25,9H26V10H25zM26,9H27V10H26zM30,9H31V10H30zM31,9H32V10H31zM32,9H33V10H32zM34,9H35V10H34zM2,10H3V11H2zM6,10H7V11H6zM8,10H9V11H8zM9,10H10V11H9zM10,10H11V11H10zM11,10H12V11H11zM13,10H14V11H13zM16,10H17V11H16zM17,10H18V11H17zM18,10H19V11H18zM19,10H20V11H19zM20,10H21V11H20zM22,10H23V11H22zM23,10H24V11H23zM24,10H25V11H24zM26,10H27V11H26zM30,10H31V11H30zM31,10H32V11H31zM35,10H36V11H35zM36,10H37V11H36zM37,10H38V11H37zM38,10H39V11H38zM39,10H40V11H39zM42,10H43V11H42zM3,11H4V12H3zM5,11H6V12H5zM7,11H8V12H7zM11,11H12V12H11zM12,11H13V12H12zM13,11H14V12H13zM16,11H17V12H16zM20,11H21V12H20zM25,11H26V12H25zM27,11H28V12H27zM28,11H29V12H28zM29,11H30V12H29zM30,11H31V12H30zM32,11H33V12H32zM35,11H36V12H35zM36,11H37V12H36zM38,11H39V12H38zM39,11H40V12H39zM41,11H42V12H41zM42,11H43V12H42zM2,12H3V13H2zM3,12H4V13H3zM5,12H6V13H5zM6,12H7V13H6zM8,12H9V13H8zM13,12H14V13H13zM16,12H17V13H16zM18,12H19V13H18zM20,12H21V13H20zM22,12H23V13H22zM23,12H24V13H23zM24,12H25V13H24zM25,12H26V13H25zM29,12H30V13H29zM34,12H35V13H34zM35,12H36V13H35zM36,12H37V13H36zM37,12H38V13H37zM42,12H43V13H42zM5,13H6V14H5zM6,13H7V14H6zM9,13H10V14H9zM10,13H11V14H10zM11,13H12V14H11zM12,13H13V14H12zM14,13H15V14H14zM16,13H17V14H16zM17,13H18V14H17zM19,13H20V14H19zM20,13H21V14H20zM22,13H23V14H22zM23,13H24V14H23zM26,13H27V14H26zM29,13H30V14H29zM30,13H31V14H30zM31,13H32V14H31zM33,13H34V14H33zM34,13H35V14H34zM37,13H38V14H37zM39,13H40V14H39zM2,14H3V15H2zM6,14H7V15H6zM7,14H8V15H7zM8,14H9V15H8zM9,14H10V15H9zM11,14H12V15H11zM12,14H13V15H12zM16,14H17V15H16zM19,14H20V15H19zM20,14H21V15H20zM21,14H22V15H21zM23,14H24V15H23zM24,14H25V15H24zM25,14H26V15H25zM26,14H27V15H26zM28,14H29V15H28zM30,14H31V15H30zM31,14H32V15H31zM32,14H33V15H32zM34,14H35V15H34zM37,14H38V15H37zM41,14H42V15H41zM42,14H43V15H42zM2,15H3V16H2zM3,15H4V16H3zM6,15H7V16H6zM7,15H8V16H7zM10,15H11V16H10zM11,15H12V16H11zM12,15H13V16H12zM14,15H15V16H14zM15,15H16V16H15zM17,15H18V16H17zM18,15H19V16H18zM20,15H21V16H20zM21,15H22V16H21zM22,15H23V16H22zM23,15H24V16H23zM27,15H28V16H27zM33,15H34V16H33zM37,15H38V16H37zM38,15H39V16H38zM41,15H42V16H41zM42,15H43V16H42zM3,16H4V17H3zM5,16H6V17H5zM6,16H7V17H6zM7,16H8V17H7zM8,16H9V17H8zM9,16H10V17H9zM11,16H12V17H11zM15,16H16V17H15zM19,16H20V17H19zM20,16H21V17H20zM22,16H23V17H22zM23,16H24V17H23zM24,16H25V17H24zM29,16H30V17H29zM33,16H34V17H33zM35,16H36V17H35zM36,16H37V17H36zM39,16H40V17H39zM40,16H41V17H40zM41,16H42V17H41zM42,16H43V17H42zM2,17H3V18H2zM3,17H4V18H3zM4,17H5V18H4zM5,17H6V18H5zM7,17H8V18H7zM9,17H10V18H9zM12,17H13V18H12zM15,17H16V18H15zM17,17H18V18H17zM19,17H20V18H19zM23,17H24V18H23zM24,17H25V18H24zM26,17H27V18H26zM28,17H29V18H28zM29,17H30V18H29zM30,17H31V18H30zM31,17H32V18H31zM33,17H34V18H33zM34,17H35V18H34zM39,17H40V18H39zM42,17H43V18H42zM3,18H4V19H3zM4,18H5V19H4zM5,18H6V19H5zM7,18H8V19H7zM8,18H9V19H8zM9,18H10V19H9zM11,18H12V19H11zM13,18H14V19H13zM15,18H16V19H15zM16,18H17V19H16zM18,18H19V19H18zM19,18H20V19H19zM21,18H22V19H21zM22,18H23V19H22zM23,18H24V19H23zM24,18H25V19H24zM25,18H26V19H25zM26,18H27V19H26zM30,18H31V19H30zM31,18H32V19H31zM32,18H33V19H32zM37,18H38V19H37zM39,18H40V19H39zM2,19H3V20H2zM7,19H8V20H7zM11,19H12V20H11zM13,19H14V20H13zM14,19H15V20H14zM17,19H18V20H17zM18,19H19V20H18zM20,19H21V20H20zM23,19H24V20H23zM25,19H26V20H25zM27,19H28V20H27zM28,19H29V20H28zM29,19H30V20H29zM30,19H31V20H30zM31,19H32V20H31zM34,19H35V20H34zM35,19H36V20H35zM36,19H37V20H36zM37,19H38V20H37zM38,19H39V20H38zM39,19H40V20H39zM42,19H43V20H42zM3,20H4V21H3zM5,20H6V21H5zM6,20H7V21H6zM8,20H9V21H8zM10,20H11V21H10zM12,20H13V21H12zM16,20H17V21H16zM17,20H18V21H17zM18,20H19V21H18zM19,20H20V21H19zM25,20H26V21H25zM26,20H27V21H26zM29,20H30V21H29zM30,20H31V21H30zM32,20H33V21H32zM35,20H36V21H35zM36,20H37V21H36zM37,20H38V21H37zM41,20H42V21H41zM42,20H43V21H42zM4,21H5V22H4zM10,21H11V22H10zM11,21H12V22H11zM12,21H13V22H12zM19,21H20V22H19zM20,21H21V22H20zM21,21H22V22H21zM22,21H23V22H22zM24,21H25V22H24zM26,21H27V22H26zM28,21H29V22H28zM29,21H30V22H29zM33,21H34V22H33zM35,21H36V22H35zM37,21H38V22H37zM2,22H3V23H2zM5,22H6V23H5zM8,22H9V23H8zM9,22H10V23H9zM14,22H15V23H14zM17,22H18V23H17zM20,22H21V23H20zM22,22H23V23H22zM24,22H25V23H24zM25,22H26V23H25zM26,22H27V23H26zM27,22H28V23H27zM28,22H29V23H28zM30,22H31V23H30zM33,22H34V23H33zM34,22H35V23H34zM35,22H36V23H35zM37,22H38V23H37zM41,22H42V23H41zM42,22H43V23H42zM3,23H4V24H3zM5,23H6V24H5zM6,23H7V24H6zM9,23H10V24H9zM11,23H12V24H11zM13,23H14V24H13zM14,23H15V24H14zM16,23H17V24H16zM19,23H20V24H19zM23,23H24V24H23zM25,23H26V24H25zM29,23H30V24H29zM31,23H32V24H31zM32,23H33V24H32zM34,23H35V24H34zM35,23H36V24H35zM36,23H37V24H36zM38,23H39V24H38zM39,23H40V24H39zM40,23H41V24H40zM42,23H43V24H42zM3,24H4V25H3zM6,24H7V25H6zM8,24H9V25H8zM9,24H10V25H9zM10,24H11V25H10zM12,24H13V25H12zM15,24H16V25H15zM20,24H21V25H20zM22,24H23V25H22zM23,24H24V25H23zM24,24H25V25H24zM25,24H26V25H25zM29,24H30V25H29zM30,24H31V25H30zM32,24H33V25H32zM34,24H35V25H34zM35,24H36V25H35zM39,24H40V25H39zM40,24H41V25H40zM42,24H43V25H42zM3,25H4V26H3zM4,25H5V26H4zM5,25H6V26H5zM6,25H7V26H6zM7,25H8V26H7zM10,25H11V26H10zM12,25H13V26H12zM14,25H15V26H14zM15,25H16V26H15zM16,25H17V26H16zM18,25H19V26H18zM19,25H20V26H19zM23,25H24V26H23zM25,25H26V26H25zM26,25H27V26H26zM30,25H31V26H30zM31,25H32V26H31zM32,25H33V26H32zM34,25H35V26H34zM36,25H37V26H36zM37,25H38V26H37zM42,25H43V26H42zM4,26H5V27H4zM6,26H7V27H6zM8,26H9V27H8zM11,26H12V27H11zM14,26H15V27H14zM17,26H18V27H17zM19,26H20V27H19zM23,26H24V27H23zM24,26H25V27H24zM26,26H27V27H26zM31,26H32V27H31zM33,26H34V27H33zM34,26H35V27H34zM37,26H38V27H37zM41,26H42V27H41zM2,27H3V28H2zM5,27H6V28H5zM6,27H7V28H6zM7,27H8V28H7zM9,27H10V28H9zM10,27H11V28H10zM12,27H13V28H12zM13,27H14V28H13zM14,27H15V28H14zM16,27H17V28H16zM17,27H18V28H17zM18,27H19V28H18zM19,27H20V28H19zM20,27H21V28H20zM24,27H25V28H24zM25,27H26V28H25zM26,27H27V28H26zM28,27H29V28H28zM29,27H30V28H29zM30,27H31V28H30zM32,27H33V28H32zM34,27H35V28H34zM36,27H37V28H36zM38,27H39V28H38zM40,27H41V28H40zM41,27H42V28H41zM42,27H43V28H42zM2,28H3V29H2zM3,28H4V29H3zM4,28H5V29H4zM5,28H6V29H5zM6,28H7V29H6zM8,28H9V29H8zM14,28H15V29H14zM15,28H16V29H15zM16,28H17V29H16zM17,28H18V29H17zM20,28H21V29H20zM24,28H25V29H24zM25,28H26V29H25zM29,28H30V29H29zM30,28H31V29H30zM31,28H32V29H31zM34,28H35V29H34zM37,28H38V29H37zM38,28H39V29H38zM41,28H42V29H41zM42,28H43V29H42zM3,29H4V30H3zM4,29H5V30H4zM6,29H7V30H6zM13,29H14V30H13zM14,29H15V30H14zM15,29H16V30H15zM17,29H18V30H17zM18,29H19V30H18zM19,29H20V30H19zM20,29H21V30H20zM23,29H24V30H23zM25,29H26V30H25zM28,29H29V30H28zM30,29H31V30H30zM31,29H32V30H31zM32,29H33V30H32zM33,29H34V30H33zM34,29H35V30H34zM35,29H36V30H35zM37,29H38V30H37zM39,29H40V30H39zM41,29H42V30H41zM42,29H43V30H42zM3,30H4V31H3zM5,30H6V31H5zM8,30H9V31H8zM9,30H10V31H9zM10,30H11V31H10zM11,30H12V31H11zM12,30H13V31H12zM13,30H14V31H13zM14,30H15V31H14zM15,30H16V31H15zM18,30H19V31H18zM19,30H20V31H19zM20,30H21V31H20zM22,30H23V31H22zM23,30H24V31H23zM24,30H25V31H24zM28,30H29V31H28zM31,30H32V31H31zM32,30H33V31H32zM35,30H36V31H35zM36,30H37V31H36zM37,30H38V31H37zM41,30H42V31H41zM42,30H43V31H42zM2,31H3V32H2zM4,31H5V32H4zM5,31H6V32H5zM7,31H8V32H7zM9,31H10V32H9zM11,31H12V32H11zM12,31H13V32H12zM13,31H14V32H13zM19,31H20V32H19zM21,31H22V32H21zM23,31H24V32H23zM26,31H27V32H26zM27,31H28V32H27zM28,31H29V32H28zM30,31H31V32H30zM33,31H34V32H33zM34,31H35V32H34zM37,31H38V32H37zM38,31H39V32H38zM39,31H40V32H39zM40,31H41V32H40zM41,31H42V32H41zM42,31H43V32H42zM6,32H7V33H6zM8,32H9V33H8zM9,32H10V33H9zM10,32H11V33H10zM11,32H12V33H11zM12,32H13V33H12zM15,32H16V33H15zM17,32H18V33H17zM19,32H20V33H19zM20,32H21V33H20zM21,32H22V33H21zM23,32H24V33H23zM24,32H25V33H24zM25,32H26V33H25zM26,32H27V33H26zM27,32H28V33H27zM28,32H29V33H28zM30,32H31V33H30zM32,32H33V33H32zM34,32H35V33H34zM35,32H36V33H35zM38,32H39V33H38zM39,32H40V33H39zM40,32H41V33H40zM41,32H42V33H41zM42,32H43V33H42zM4,33H5V34H4zM5,33H6V34H5zM6,33H7V34H6zM10,33H11V34H10zM12,33H13V34H12zM14,33H15V34H14zM16,33H17V34H16zM18,33H19V34H18zM19,33H20V34H19zM20,33H21V34H20zM21,33H22V34H21zM22,33H23V34H22zM23,33H24V34H23zM25,33H26V34H25zM31,33H32V34H31zM32,33H33V34H32zM35,33H36V34H35zM38,33H39V34H38zM39,33H40V34H39zM41,33H42V34H41zM2,34H3V35H2zM3,34H4V35H3zM8,34H9V35H8zM10,34H11V35H10zM11,34H12V35H11zM12,34H13V35H12zM13,34H14V35H13zM14,34H15V35H14zM16,34H17V35H16zM17,34H18V35H17zM19,34H20V35H19zM22,34H23V35H22zM23,34H24V35H23zM24,34H25V35H24zM26,34H27V35H26zM29,34H30V35H29zM31,34H32V35H31zM32,34H33V35H32zM33,34H34V35H33zM34,34H35V35H34zM35,34H36V35H35zM36,34H37V35H36zM37,34H38V35H37zM38,34H39V35H38zM39,34H40V35H39zM10,35H11V36H10zM11,35H12V36H11zM13,35H14V36H13zM14,35H15V36H14zM15,35H16V36H15zM17,35H18V36H17zM18,35H19V36H18zM19,35H20V36H19zM20,35H21V36H20zM22,35H23V36H22zM24,35H25V36H24zM25,35H26V36H25zM26,35H27V36H26zM29,35H30V36H29zM30,35H31V36H30zM32,35H33V36H32zM34,35H35V36H34zM38,35H39V36H38zM39,35H40V36H39zM40,35H41V36H40zM42,35H43V36H42zM2,36H3V37H2zM3,36H4V37H3zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM7,36H8V37H7zM8,36H9V37H8zM10,36H11V37H10zM11,36H12V37H11zM12,36H13V37H12zM14,36H15V37H14zM15,36H16V37H15zM17,36H18V37H17zM18,36H19V37H18zM20,36H21V37H20zM23,36H24V37H23zM24,36H25V37H24zM25,36H26V37H25zM27,36H28V37H27zM28,36H29V37H28zM29,36H30V37H29zM31,36H32V37H31zM33,36H34V37H33zM34,36H35V37H34zM36,36H37V37H36zM38,36H39V37H38zM40,36H41V37H40zM42,36H43V37H42zM2,37H3V38H2zM8,37H9V38H8zM13,37H14V38H13zM15,37H16V38H15zM17,37H18V38H17zM18,37H19V38H18zM22,37H23V38H22zM23,37H24V38H23zM25,37H26V38H25zM26,37H27V38H26zM27,37H28V38H27zM29,37H30V38H29zM31,37H32V38H31zM32,37H33V38H32zM34,37H35V38H34zM38,37H39V38H38zM42,37H43V38H42zM2,38H3V39H2zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM8,38H9V39H8zM10,38H11V39H10zM11,38H12V39H11zM15,38H16V39H15zM18,38H19V39H18zM21,38H22V39H21zM22,38H23V39H22zM27,38H28V39H27zM29,38H30V39H29zM30,38H31V39H30zM32,38H33V39H32zM33,38H34V39H33zM34,38H35V39H34zM35,38H36V39H35zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38zM42,38H43V39H42zM2,39H3V40H2zM4,39H5V40H4zM5,39H6V40H5zM6,39H7V40H6zM8,39H9V40H8zM11,39H12V40H11zM12,39H13V40H12zM14,39H15V40H14zM18,39H19V40H18zM19,39H20V40H19zM20,39H21V40H20zM24,39H25V40H24zM25,39H26V40H25zM27,39H28V40H27zM28,39H29V40H28zM29,39H30V40H29zM31,39H32V40H31zM37,39H38V40H37zM41,39H42V40H41zM2,40H3V41H2zM4,40H5V41H4zM5,40H6V41H5zM6,40H7V41H6zM8,40H9V41H8zM12,40H13V41H12zM13,40H14V41H13zM15,40H16V41H15zM20,40H21V41H20zM23,40H24V41H23zM25,40H26V41H25zM26,40H27V41H26zM28,40H29V41H28zM29,40H30V41H29zM30,40H31V41H30zM32,40H33V41H32zM33,40H34V41H33zM34,40H35V41H34zM35,40H36V41H35zM39,40H40V41H39zM42,40H43V41H42zM2,41H3V42H2zM8,41H9V42H8zM11,41H12V42H11zM14,41H15V42H14zM16,41H17V42H16zM20,41H21V42H20zM23,41H24V42H23zM24,41H25V42H24zM26,41H27V42H26zM28,41H29V42H28zM29,41H30V42H29zM30,41H31V42H30zM31,41H32V42H31zM32,41H33V42H32zM34,41H35V42H34zM35,41H36V42H35zM36,41H37V42H36zM37,41H38V42H37zM41,41H42V42H41zM42,41H43V42H42zM2,42H3V43H2zM3,42H4V43H3zM4,42H5V43H4zM5,42H6V43H5zM6,42H7V43H6zM7,42H8V43H7zM8,42H9V43H8zM10,42H11V43H10zM11,42H12V43H11zM12,42H13V43H12zM13,42H14V43H13zM16,42H17V43H16zM17,42H18V43H17zM18,42H19V43H18zM20,42H21V43H20zM22,42H23V43H22zM23,42H24V43H23zM24,42H25V43H24zM25,42H26V43H25zM29,42H30V43H29zM30,42H31V43H30zM31,42H32V43H31zM34,42H35V43H34zM35,42H36V43H35zM36,42H37V43H36zM37,42H38V43H37zM38,42H39V43H38zM41,42H42V43H41z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=13" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the Exit Ticket</a></div></div></div>`,
+notes:"Leave this slide on screen for the last five minutes."});
+
+/* ---------- deck engine ---------- */
+const N=S.length; let cur=0;
+function build(){const host=document.getElementById("slides");host.innerHTML="";
+ S.forEach((s,i)=>{const d=document.createElement("section");d.className="slide"+(s.cls?" "+s.cls:"");d.id="s"+(i+1);
+  d.innerHTML=(s.kicker&&!s.cls?`<p class="kicker">${s.kicker}</p>`:"")+(s.title?`<h1>${s.title}</h1>`:"")+s.html()+(s.py?`<div class="dhint">D · Python</div>`:"")+`<footer><span>${foot}</span><span>${i+1} / ${N}</span></footer>`;host.appendChild(d)})}
+function drawAll(){S.forEach(s=>{if(s.draw)try{s.draw()}catch(e){console.error(e)}})}
+function show(i){cur=Math.max(0,Math.min(N-1,i));document.querySelectorAll(".slide").forEach((el,k)=>el.classList.toggle("on",k===cur));
+ history.replaceState(null,"",location.search+"#"+(cur+1));fillDrawer();if(window.onSlideChange)onSlideChange(cur);const n=document.getElementById("notes");n.textContent=S[cur].notes||"No notes for this slide."}
+let CAP_ON=false;   // set by the narration player; reserves a caption band under the slide
+function fit(){const W=innerWidth,H=innerHeight,vp=document.getElementById("viewport"),dock=document.getElementById("dock"),cap=document.getElementById("cap");
+ const hasDock=dock.style.display==="flex",barH=hasDock?document.getElementById("nbar").offsetHeight:0;
+ let k=Math.min(W/1280,H/720)*0.98,capH=0,fs=0,dockH=0;
+ for(let it=0;it<3;it++){if(hasDock&&CAP_ON){const lines=k<0.6?4:2;fs=Math.max(12,Math.min(22,24*k));capH=Math.ceil(lines*fs*1.45)+4}else capH=0;
+  dockH=hasDock?capH+barH+(capH?6:0)+14:0;k=Math.min(W/1280,Math.max(120,H-dockH)/720)*0.98}
+ const h=720*k,pad=10,top=Math.max(0,(H-h-dockH)/2);
+ vp.style.top=(top-pad)+"px";vp.style.bottom="auto";vp.style.height=(h+2*pad)+"px";
+ document.getElementById("stage").style.transform=`scale(${k})`;
+ if(hasDock){dock.style.top=(top+h+6)+"px";cap.style.display=CAP_ON?"block":"none";cap.style.width=Math.min(1280*k,W-16)+"px";cap.style.height=capH+"px";cap.dataset.fs=fs;if(window.capRefit)capRefit()}}
+function fillDrawer(){const p=S[cur].py,dr=document.getElementById("drawer");
+ if(!p){document.getElementById("dTitle").textContent="No Python on this slide";document.getElementById("dSub").textContent="Slides with a 'D · Python' tag have code and output.";document.getElementById("dCode").value="";document.getElementById("dOut").textContent="";return}
+ document.getElementById("dTitle").textContent=p.title;document.getElementById("dSub").textContent=p.sub||"";document.getElementById("dCode").value=p.code;
+ try{document.getElementById("dOut").textContent=p.out()}catch(e){document.getElementById("dOut").textContent=String(e)}
+ const m=document.getElementById("dMode");m.className="pill "+(MODE==="live"?"live":"rec");m.textContent=MODE==="live"?"LIVE RUN":"RECORDED RUN"}
+document.addEventListener("keydown",e=>{if(["INPUT","TEXTAREA"].includes(e.target.tagName)){if(e.key==="Escape")e.target.blur();return}const k=e.key;
+ if(["ArrowRight","PageDown"," "].includes(k)){e.preventDefault();show(cur+1)}else if(["ArrowLeft","PageUp"].includes(k)){e.preventDefault();show(cur-1)}
+ else if(k==="Home")show(0);else if(k==="End")show(N-1);else if(k==="d"||k==="D")document.getElementById("drawer").classList.toggle("open");
+ else if(k==="f"||k==="F"){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+ else if(k==="p"||k==="P"){if(window.narrToggle)narrToggle()}
+ else if(k==="c"||k==="C"){if(window.ccCycle)ccCycle()}
+ else if(k==="n"||k==="N"){const n=document.getElementById("notes");n.style.display=n.style.display==="block"?"none":"block"}});
+document.getElementById("stage").addEventListener("click",e=>{if(e.target.closest("button,input,select,#drawer,a,#startov"))return;const r=e.currentTarget.getBoundingClientRect();(e.clientX-r.left)>r.width*0.5?show(cur+1):show(cur-1)});
+addEventListener("resize",fit);
+
+/* ---------- live Python (Pyodide) ---------- */
+let py=null;
+async function ensurePy(msg){if(py)return py;msg.textContent="Loading Python in the browser (first time about 5–10 s) ...";
+ if(!window.loadPyodide){await new Promise((ok,bad)=>{const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js";s.onload=ok;s.onerror=()=>bad(new Error("could not load Pyodide"));document.head.appendChild(s)})}
+ const p=await loadPyodide();await p.loadPackage(["numpy","scipy"]);
+ const src=LAB_SRC||await (await fetch(LAB_FILE)).text();p.FS.writeFile("pourbaix_lab.py",src);
+ await p.runPythonAsync('import sys\nsys.path.insert(0, ".")\nfrom pourbaix_lab import *');py=p;return p}
+async function runCode(){const msg=document.getElementById("liveMsg"),out=document.getElementById("dOut"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Running ...";const buf=[];p.setStdout({batched:s=>buf.push(s)});p.setStderr({batched:s=>buf.push(s)});
+  try{await p.runPythonAsync(document.getElementById("dCode").value)}catch(e){buf.push(String(e.message||e).split("\n").slice(-4).join("\n"))}
+  out.textContent=buf.join("\n")||"(no output)";const m=document.getElementById("dMode");m.className="pill live";m.textContent="LIVE OUTPUT";
+  msg.textContent=`Ran in ${((performance.now()-t0)/1000).toFixed(1)} s in the browser`}
+ catch(e){msg.textContent="Python could not start: "+e.message+". The recorded output is still available."}}
+async function runLive(){const msg=document.getElementById("liveMsg"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Solving every model ...";
+  const out=await p.runPythonAsync('import importlib, json\nimport pourbaix_lab as lab\nimportlib.reload(lab)\njson.dumps(lab.classroom_results())');
+  R=JSON.parse(out);MODE="live";drawAll();fillDrawer();msg.textContent=`All slides now show a live run (${((performance.now()-t0)/1000).toFixed(1)} s, SciPy ${R.meta.scipy})`}
+ catch(e){msg.textContent="Live run failed: "+e.message+". The recorded run is still shown."}}
+document.getElementById("runCode").onclick=runCode;
+document.getElementById("runLive").onclick=runLive;
+document.getElementById("useRec").onclick=()=>{R=RECORDED;MODE="recorded";drawAll();fillDrawer();document.getElementById("liveMsg").textContent="Showing the recorded run."};
+
+/* ---------- narration and captions ---------- */
+const NARR = {
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 557.6,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 27.264,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.234,
+     "en": "Welcome to Class 13: the copper Pourbaix diagram."
+    },
+    {
+     "s": 4.234,
+     "e": 11.987,
+     "en": "Today we draw one map of which form of copper is stable at each pH and potential: the metal, the ion, or an oxide."
+    },
+    {
+     "s": 11.987,
+     "e": 17.987,
+     "en": "It is the Nernst equation of Class 9, with pH added, for the metal of every interconnect."
+    },
+    {
+     "s": 17.987,
+     "e": 27.211,
+     "en": "If you are studying on your own, the narration takes about nine minutes. Stop at the activity and at each check, then do Lab 13."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 32.28,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.434,
+     "en": "A five minute activity reviews earlier classes."
+    },
+    {
+     "s": 6.434,
+     "e": 16.579,
+     "en": "Part one is about reading the diagram: the axes, the regions, three kinds of boundary line, and how to find the stable form. It ends with Check 1."
+    },
+    {
+     "s": 16.579,
+     "e": 27.329,
+     "en": "Part two covers water and air, the words immunity, corrosion and passivation, copper in the fab, and what the diagram cannot tell you. It ends with Check 2."
+    },
+    {
+     "s": 27.329,
+     "e": 32.224,
+     "en": "Then you do Lab 13 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 28.8,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.671,
+     "en": "Activity 1. Answer four questions without notes, then compare with a partner."
+    },
+    {
+     "s": 6.671,
+     "e": 18.392,
+     "en": "Find the pH from a hydrogen ion concentration. Give the oxidation number of copper in its two oxides. Find the copper potential at ten to the minus six molar."
+    },
+    {
+     "s": 18.392,
+     "e": 23.921,
+     "en": "And say whether a negative Gibbs energy tells you how fast a reaction goes."
+    },
+    {
+     "s": 23.921,
+     "e": 28.724,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 26.496,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.984,
+     "en": "By the end of today you can read the axes and regions of a Pourbaix diagram."
+    },
+    {
+     "s": 4.984,
+     "e": 10.724,
+     "en": "You can explain the three kinds of boundary line: horizontal, vertical, and sloped."
+    },
+    {
+     "s": 10.724,
+     "e": 15.526,
+     "en": "You can find the stable form of copper at a given pH and potential."
+    },
+    {
+     "s": 15.526,
+     "e": 21.132,
+     "en": "You can use the water lines, and the words immunity, corrosion and passivation."
+    },
+    {
+     "s": 21.132,
+     "e": 26.421,
+     "en": "And you can apply the diagram to copper in the fab, and say what it cannot tell you."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 32.376,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.642,
+     "en": "Today brings four earlier classes together."
+    },
+    {
+     "s": 3.642,
+     "e": 17.933,
+     "en": "The horizontal axis is pH, from Class 5. The four forms of copper, with oxidation numbers zero, plus one and plus two, come from Class 7. Each boundary is a Nernst line from Class 9."
+    },
+    {
+     "s": 17.933,
+     "e": 22.618,
+     "en": "And the rate, from Class 12, is what the diagram leaves out."
+    },
+    {
+     "s": 22.618,
+     "e": 32.303,
+     "en": "The model has four forms only: copper metal, copper two plus, and the two oxides, with dissolved copper at ten to the minus six molar, at twenty five degrees."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 33.024,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.303,
+     "en": "Here is the map. Up means more oxidizing, a higher potential. Right means more alkaline, a higher pH."
+    },
+    {
+     "s": 9.303,
+     "e": 13.987,
+     "en": "Each region shows the form of copper with the lowest Gibbs energy there."
+    },
+    {
+     "s": 13.987,
+     "e": 27.026,
+     "en": "At low potential, copper metal is stable. At high potential in acid, copper dissolves as copper two plus. At high potential in neutral or alkaline water, the oxides are stable."
+    },
+    {
+     "s": 27.026,
+     "e": 32.961,
+     "en": "The dashed lines show where water itself is reduced to hydrogen, or oxidized to oxygen."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 35.712,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.221,
+     "en": "The boundary lines come in three kinds."
+    },
+    {
+     "s": 3.221,
+     "e": 14.079,
+     "en": "When only electrons take part, as in Cu²⁺ + 2e⁻ → Cu, the line does not depend on pH. It is horizontal, at 0.162 V."
+    },
+    {
+     "s": 14.079,
+     "e": 27.013,
+     "en": "When only H⁺ takes part, as when CuO dissolves in acid, no electrons move, so the line does not depend on potential. It is vertical, at pH 6.67."
+    },
+    {
+     "s": 27.013,
+     "e": 35.658,
+     "en": "When both take part in equal numbers, the line slopes down by zero point zero five nine two volts per pH unit: the Nernst slope of Class 9."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 32.112,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.471,
+     "en": "Now pick a pH and a potential, and read the stable form."
+    },
+    {
+     "s": 4.471,
+     "e": 15.934,
+     "en": "Point A, at pH 4 and −0.10 V, is in the Cu region. Point B, at pH 3 and +0.50 V, is in the Cu²⁺ region."
+    },
+    {
+     "s": 15.934,
+     "e": 28.895,
+     "en": "Point C, at pH 9 and +0.05 V, is in the Cu₂O region. And point D, at pH 9 and +0.40 V, is in the CuO region."
+    },
+    {
+     "s": 28.895,
+     "e": 32.053,
+     "en": "These are the four points of Lab 13."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 21.0,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 16.868,
+     "en": "Explain why one line is horizontal and another slopes. Read two points. And give the order of the forms at pH nine as the potential rises."
+    },
+    {
+     "s": 16.868,
+     "e": 20.947,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 35.568,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.195,
+     "en": "In part two, add water and air."
+    },
+    {
+     "s": 3.195,
+     "e": 13.197,
+     "en": "Below the hydrogen line, water or hydrogen ions are reduced to hydrogen gas. Above the oxygen line, water is oxidized to oxygen."
+    },
+    {
+     "s": 13.197,
+     "e": 25.987,
+     "en": "Part of the copper region lies above the hydrogen line. So hydrogen ions cannot oxidize copper. That is the same result as Class 7: copper does not dissolve in a plain acid."
+    },
+    {
+     "s": 25.987,
+     "e": 35.5,
+     "en": "But dissolved oxygen pulls the potential up toward the oxygen line, where copper metal is not stable. So copper in air and water tarnishes."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 30.432,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.747,
+     "en": "Three words name the regions."
+    },
+    {
+     "s": 2.747,
+     "e": 9.355,
+     "en": "In the copper region, the metal is stable and does not react. This is immunity."
+    },
+    {
+     "s": 9.355,
+     "e": 15.789,
+     "en": "In the copper two plus region, the metal dissolves as ions. This is corrosion."
+    },
+    {
+     "s": 15.789,
+     "e": 23.488,
+     "en": "In the oxide regions, a solid oxide forms on the surface, and it may slow further attack. This is passivation."
+    },
+    {
+     "s": 23.488,
+     "e": 30.355,
+     "en": "Whether the film protects depends on how dense and adherent it is, which the diagram does not show."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 35.856,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.75,
+     "en": "Here are four settings on one map. These are illustrative points, not measured values."
+    },
+    {
+     "s": 6.75,
+     "e": 12.5,
+     "en": "In an acid copper plating bath, copper two plus stays dissolved, ready to plate."
+    },
+    {
+     "s": 12.5,
+     "e": 17.039,
+     "en": "In neutral rinse water with air, exposed copper oxidizes."
+    },
+    {
+     "s": 17.039,
+     "e": 23.789,
+     "en": "In an alkaline polishing slurry with a mild oxidizer, a soft oxide forms that the pad then removes."
+    },
+    {
+     "s": 23.789,
+     "e": 35.789,
+     "en": "And under a negative potential, the metal is protected. Real slurries contain complexing agents and inhibitors that change the diagram. This is the bare water version."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 38.256,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.721,
+     "en": "Here is a common mistake: the diagram says it, so it happens."
+    },
+    {
+     "s": 4.721,
+     "e": 13.772,
+     "en": "At pH nine and plus zero point four volts, the diagram shows copper two oxide. But a Pourbaix diagram comes from Gibbs energies."
+    },
+    {
+     "s": 13.772,
+     "e": 20.789,
+     "en": "It says which form is stable, not how fast it forms, which was Class 12, or whether a film protects."
+    },
+    {
+     "s": 20.789,
+     "e": 32.74,
+     "en": "It also holds only for the species and the concentration chosen. This diagram leaves out copper one ions and the cuprate ions of strong base, so above about pH twelve it is wrong."
+    },
+    {
+     "s": 32.74,
+     "e": 38.184,
+     "en": "And other chemicals in a real bath, such as ammonia or inhibitors, change the map."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 22.2,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 18.066,
+     "en": "Explain why copper does not dissolve in plain acid. Name the three kinds of region. Read one more point. And name two things the diagram cannot tell you."
+    },
+    {
+     "s": 18.066,
+     "e": 22.145,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 22.344,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.247,
+     "en": "One more class is left in this half."
+    },
+    {
+     "s": 3.247,
+     "e": 13.368,
+     "en": "Class 14 is a review in three stations: materials and doping, copper deposition with Faraday's law, and the choice of a supercapacitor or a battery for two loads."
+    },
+    {
+     "s": 13.368,
+     "e": 22.289,
+     "en": "In the second half of the course, semiconductors in solution and photoelectrochemistry build on today's diagram and on the band gaps of Class 6."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 25.992,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.132,
+     "en": "Now it is time for Lab 13. Scan the code or open the lab page."
+    },
+    {
+     "s": 6.132,
+     "e": 12.711,
+     "en": "You will predict the stable form in acid at a high potential, then read the stable form at points A to D."
+    },
+    {
+     "s": 12.711,
+     "e": 19.974,
+     "en": "Then you move the potential at pH nine to find the two boundaries, and check what the lines mean and what the diagram leaves out."
+    },
+    {
+     "s": 19.974,
+     "e": 25.921,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 32.232,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 7.539,
+     "en": "A Pourbaix diagram maps the stable form against potential and pH."
+    },
+    {
+     "s": 7.539,
+     "e": 17.605,
+     "en": "Horizontal lines involve electrons only, vertical lines hydrogen ions only, and sloped lines both, at zero point zero five nine two volts per pH unit."
+    },
+    {
+     "s": 17.605,
+     "e": 25.855,
+     "en": "The regions are immunity, corrosion, and passivation. And between the water lines, water itself is stable."
+    },
+    {
+     "s": 25.855,
+     "e": 32.171,
+     "en": "The diagram shows stability only: no rate, no film quality, and only the species chosen."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 20.688,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.616,
+     "en": "Before the next class, finish Lab 13 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.616,
+     "e": 11.224,
+     "en": "Read OpenStax Chemistry two e, section seventeen point six on corrosion."
+    },
+    {
+     "s": 11.224,
+     "e": 20.632,
+     "en": "Class 14 is a review in three stations. Bring your answers from Labs 6, 10 and 11, because you will use those numbers again."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 24.96,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.118,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 13."
+    },
+    {
+     "s": 7.118,
+     "e": 15.908,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.908,
+     "e": 24.895,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 14."
+    }
+   ]
+  }
+ ]
+};
+(function(){if(!NARR)return;
+ const au=document.getElementById("narr"),bar=document.getElementById("nbar"),cap=document.getElementById("cap"),play=document.getElementById("nPlay"),tm=document.getElementById("nTime"),msg=document.getElementById("nMsg");
+ document.getElementById("dock").style.display="flex";document.getElementById("help").style.display="none";let on=false,lang="off",slideIdx=-1;
+ const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
+ lang=ls("cc-lang")||"off";if(lang!=="en")lang="off";const sp=ls("narr-speed");if(sp)document.getElementById("nSpeed").value=sp;
+ const fmtT=t=>isFinite(t)?`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,"0")}`:"0:00";
+ const S_=i=>NARR.slides[i];
+ function load(i){slideIdx=i;const s=S_(i);if(!s){au.removeAttribute("src");return}au.src=s.file;au.playbackRate=+document.getElementById("nSpeed").value;tm.textContent=`0:00 / ${fmtT(s.duration)}`;showCap(0)}
+ function setPlayUI(){play.textContent=au.paused?"▶ Play":"❚❚ Pause";play.classList.toggle("on",!au.paused)}
+ // captions sit in their own band under the slide; long lines shrink to fit the band
+ window.capRefit=()=>{let f=parseFloat(cap.dataset.fs)||18;cap.style.fontSize=f+"px";while(cap.scrollHeight>cap.clientHeight+1&&f>11){f-=1;cap.style.fontSize=f+"px"}};
+ function showCap(t){const s=S_(slideIdx);let c=null;if(s&&lang!=="off"){for(const q of s.cues){if(t>=q.s-0.05)c=q;else break}}
+  const txt=(!c||(au.paused&&au.currentTime===0&&!on))?"":c.en;if(cap.textContent!==txt){cap.textContent=txt;capRefit()}}
+ function ccUI(){const b=document.getElementById("nCC");b.textContent=lang==="off"?"CC off":"CC on";b.classList.toggle("on",lang!=="off");CAP_ON=lang!=="off";fit();showCap(au.currentTime||0)}
+ window.ccCycle=()=>{lang=lang==="off"?"en":"off";ls("cc-lang",lang);ccUI()};
+ // "on" means the student is listening: it starts with Play and ends with Pause or Stop.
+ // Slides change only when the student moves; the new slide's narration then starts if "on".
+ window.narrToggle=()=>{if(au.paused){on=true;if(slideIdx!==cur)load(cur);if(au.ended)au.currentTime=0;msg.textContent="";au.play().catch(()=>{msg.textContent="Press Play again to start audio."})}else{on=false;au.pause()}};
+ window.onSlideChange=i=>{au.pause();msg.textContent="";load(i);if(on)au.play().catch(()=>{})};
+ document.getElementById("nPlay").onclick=narrToggle;
+ document.getElementById("nStop").onclick=()=>{au.pause();au.currentTime=0;on=false;setPlayUI();showCap(0);tm.textContent=`0:00 / ${fmtT((S_(cur)||{}).duration)}`};
+ document.getElementById("nCC").onclick=ccCycle;
+ document.getElementById("nPrev").onclick=()=>show(cur-1);document.getElementById("nNext").onclick=()=>show(cur+1);
+ document.getElementById("nSpeed").onchange=e=>{au.playbackRate=+e.target.value;ls("narr-speed",e.target.value)};
+ au.addEventListener("play",setPlayUI);au.addEventListener("pause",setPlayUI);
+ au.addEventListener("timeupdate",()=>{tm.textContent=`${fmtT(au.currentTime)} / ${fmtT((S_(slideIdx)||{}).duration)}`;showCap(au.currentTime)});
+ au.addEventListener("ended",()=>{setPlayUI();const s=S_(slideIdx);msg.textContent=s&&s.hold?"Activity: do it now, then press Next ›":cur<N-1?"Press Next › or → for the next slide":"End of the session"});
+ const q=new URLSearchParams(location.search);
+ if(q.get("narrate")==="1"){const ov=document.getElementById("startov");ov.style.display="flex";document.getElementById("startBtn").onclick=()=>{ov.style.display="none";if(lang==="off"){lang="en";ls("cc-lang",lang)}ccUI();on=true;load(cur);au.play().catch(()=>{})}}
+ ccUI();setTimeout(()=>{if(slideIdx<0)load(cur)},0);
+})();
+
+build();drawAll();fit();show((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>

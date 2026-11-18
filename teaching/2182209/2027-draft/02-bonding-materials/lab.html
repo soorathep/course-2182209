@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lab 2 · Choosing materials for a chip with numbers · 2182209</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--graphite:#333F4A;--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--sand:#DFC98F;--ok:#0F6E6B;--bad:#BE654C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Helvetica Neue",Helvetica,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:18px 16px 80px}
+header h1{color:var(--teal);font-size:30px;margin:4px 0 2px}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+.sub{color:var(--slate);font-size:15px}
+.prog{position:sticky;top:0;background:var(--paper);padding:10px 0;z-index:3}
+.bar{height:8px;background:#e2ddd4;border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.prog span{font-size:13px;color:var(--slate)}
+.card{background:#fff;border-radius:14px;padding:18px 18px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:21px;margin:0 0 4px;color:var(--teal)}
+.card h3{font-size:17px;margin:16px 0 6px}
+.step{border-left:4px solid var(--mist);padding:2px 0 2px 14px;margin:14px 0}
+.step.done{border-color:var(--teal)}.step.locked{opacity:.45;pointer-events:none}
+.step.locked .chart,.step.locked .kpi,.step.locked .chk,.step.locked input[type=range],.step.locked .row{display:none}
+.step.locked::after{content:"Finish the step above to open this one.";display:block;font-size:13px;color:var(--slate)}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;border-radius:6px;padding:2px 8px;margin-right:6px;color:#fff;background:var(--slate)}
+.tag.p{background:var(--amber)}.tag.r{background:var(--teal)}.tag.c{background:var(--graphite)}.tag.e{background:var(--rust)}
+textarea,input[type=text],select{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--mist);border-radius:8px;padding:8px 10px;background:#fff}
+textarea{min-height:70px}
+button{font:inherit;font-size:15px;padding:8px 14px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer;margin:8px 8px 0 0}
+button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row label{flex:1 1 240px}
+.chk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.chk input{width:150px}
+.fb{font-size:15px}.fb.ok{color:var(--ok);font-weight:700}.fb.bad{color:var(--bad)}
+.choices label{display:block;margin:4px 0}
+.kpi{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}.kpi div{background:var(--paper);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--slate)}.kpi b{display:block;font-size:20px;color:var(--ink)}
+.chart{background:var(--paper);border-radius:12px;padding:6px;margin:8px 0}
+svg{width:100%;height:auto;display:block}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.note{font-size:14px;color:var(--slate)}
+.hidden{display:none}
+pre.sum{white-space:pre-wrap;background:var(--paper);border-radius:10px;padding:12px;font-size:14px}
+a{color:var(--teal)}
+</style>
+<style>
+.step.locked > *:not(.tag){display:none}
+table.tb{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.tb th{background:var(--paper);text-align:left;padding:5px 8px;border-bottom:2px solid var(--mist)}
+table.tb td{padding:5px 8px;border-bottom:1px solid #e6e3dd}
+table.tb td.n,table.tb th.n{text-align:right;font-variant-numeric:tabular-nums}
+ol.rl{margin:4px 0 0;padding-left:22px;font-size:15px}
+.lights{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.light{border-radius:999px;padding:3px 10px;font-size:14px;font-weight:700}
+.light.ok{background:#e3f0ef;color:var(--teal)}.light.bad{background:#f6e3de;color:var(--rust)}
+.code{background:#1f262d;color:#e8eef2;border-radius:10px;padding:10px 8px;font-family:Menlo,Consolas,monospace;font-size:13.5px;overflow-x:auto}
+.ln{display:flex;align-items:center;gap:8px;padding:3px 4px;border-radius:6px;white-space:pre}
+.ln.fixed{background:#24433f}
+.ln .no{color:#8a96a0;width:18px;text-align:right}
+.ln .tx{flex:1}
+.ln .okk{width:38px;color:#9fd6c9;font-size:12px;font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700}
+button.sm{width:38px;font-size:12px;padding:2px 9px;margin:0;background:transparent;color:#9fd6c9;border:1px solid #9fd6c9}
+.ctrlrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0;font-size:15px;color:var(--slate)}
+.ctrlrow input[type=range]{flex:1;min-width:160px;accent-color:var(--teal)}
+.wide{overflow-x:auto}.wide table.tb{font-size:12px}.wide table.tb td,.wide table.tb th{padding:3px 4px}
+@media (max-width:600px){table.tb{display:block;overflow-x:auto;font-size:13px}}
+</style>
+
+</head>
+<body><main>
+<header><div class="kicker">2182209 · Class 2 · Lab</div><h1>Choosing materials for a chip with numbers</h1>
+<div class="sub">About 30 minutes. Works in class or on your own, on a laptop or a phone. Nothing to install; a calculator helps.</div></header>
+<div class="prog"><div class="bar"><i id="pbar"></i></div><span id="ptext"></span></div>
+
+<section class="card"><h2>How this lab works</h2>
+<p>A chip needs a conductor, a semiconductor and an insulator. You classify bonds from electronegativity, read a resistivity table, calculate the resistance of a chip wire and change its metal and width, count atoms in unit cells, and compare two forms of SiO<sub>2</sub>. Write each prediction before you look; the next step stays locked until you do. Numbers are accepted within about 1%; after two tries the expected value is shown.</p>
+<p class="note"><b>What runs where.</b> The tables come from <a href="bonding_lab.py">bonding_lab.py</a>, computed in advance. The slider in Task 3 does one small calculation in JavaScript, R = ρL/A, the same formula as the Python. No Python is installed or run on your device. To run the Python yourself, open the slides and press D on a slide marked “D · Python”, or run bonding_lab.py in desktop Python.</p>
+<p class="note">Studying on your own because class was cancelled? Watch the narrated slides for Class 2 first, then come back here.</p></section>
+
+<section class="card" id="data"><h2>Data</h2>
+<table class="tb"><tr><th>Element</th><th class="n">Electronegativity χ</th></tr>
+<tr><td>Na</td><td class="n">0.9</td></tr><tr><td>Si</td><td class="n">1.8</td></tr><tr><td>Cu</td><td class="n">1.9</td></tr><tr><td>Cl</td><td class="n">3.0</td></tr><tr><td>O</td><td class="n">3.5</td></tr></table>
+<p class="note">Pauling values as printed in OpenStax <i>Chemistry 2e</i>, Figure 7.6. Guide: Δχ below 0.4 nonpolar covalent, 0.4 to 1.8 polar covalent, above 1.8 ionic; two metals bond metallically.</p>
+<div id="rhotab"></div>
+<p class="note">Representative values near room temperature. Graphite and amorphous SiO<sub>2</sub> are order-of-magnitude values.</p></section>
+
+<!-- TASK 1 -->
+<section class="card" id="t1"><h2>Task 1 · Which bond is which?</h2>
+<div class="step" data-step="1a"><span class="tag p">PREDICT</span>The Si–O bonds in SiO<sub>2</sub> are
+ <div class="choices"><label><input type="radio" name="p1" value="ionic"> ionic</label><label><input type="radio" name="p1" value="polar covalent"> polar covalent</label><label><input type="radio" name="p1" value="nonpolar covalent"> nonpolar covalent</label><label><input type="radio" name="p1" value="metallic"> metallic</label></div>
+ <button data-save="1a">Save prediction</button></div>
+<div class="step" data-step="1b"><span class="tag c">CHECK</span>Calculate Δχ and classify each bond.
+ <div class="chk"><span>Δχ for Si–O</span><input type="text" id="c1a" inputmode="decimal"><span class="fb" id="f1a"></span></div>
+ <div class="chk"><span>Δχ for Na–Cl</span><input type="text" id="c1b" inputmode="decimal"><span class="fb" id="f1b"></span></div>
+ <div class="chk"><span>Si–O is</span><select id="c1c"><option value="">choose</option><option value="ionic">ionic</option><option value="polar covalent">polar covalent</option><option value="nonpolar covalent">nonpolar covalent</option></select><span class="fb" id="f1c"></span></div>
+ <div class="chk"><span>Cu–Cu in a copper wire is</span><select id="c1d"><option value="">choose</option><option value="nonpolar covalent">nonpolar covalent, because Δχ = 0</option><option value="metallic">metallic, because both atoms are metals</option><option value="ionic">ionic</option></select><span class="fb" id="f1d"></span></div>
+ <button data-check="1b">Check</button></div>
+</section>
+
+<!-- TASK 2 -->
+<section class="card" id="t2"><h2>Task 2 · How far apart are a conductor and an insulator?</h2>
+<div class="step" data-step="2a"><span class="tag c">CHECK</span>Use the resistivity table.
+ <div class="chk"><span>Orders of magnitude between SiO<sub>2</sub> and Cu, log<sub>10</sub>(ρ<sub>SiO2</sub>/ρ<sub>Cu</sub>)</span><input type="text" id="c2a" inputmode="decimal"><span class="fb" id="f2a"></span></div>
+ <div class="chk"><span>Graphite and Si both have covalent bonds. What does the table show?</span><select id="c2b"><option value="">choose</option><option value="a">Both are insulators, as covalent bonding predicts</option><option value="b">Graphite conducts and Si is a semiconductor: the bonding label alone does not decide conduction</option><option value="c">Si conducts better than graphite</option></select><span class="fb" id="f2b"></span></div>
+ <button data-check="2a">Check</button></div>
+</section>
+
+<!-- TASK 3 -->
+<section class="card" id="t3"><h2>Task 3 · The resistance of a chip wire</h2>
+<div class="step" data-step="3a"><span class="tag p">PREDICT</span>The same wire made of Al instead of Cu will have
+ <div class="choices"><label><input type="radio" name="p3" value="higher R"> a higher resistance</label><label><input type="radio" name="p3" value="lower R"> a lower resistance</label><label><input type="radio" name="p3" value="same R"> the same resistance, because the size is the same</label></div>
+ <button data-save="3a">Save prediction</button></div>
+<div class="step" data-step="3b"><span class="tag r">RECOMPUTE</span>A Cu wire is L = 1.00 mm long, w = 100 nm wide and t = 200 nm thick. Use R = ρL/(w t), with 1 nm = 10<sup>−9</sup> m.
+ <div class="chk"><span>R of the Cu wire, Ω</span><input type="text" id="c3a" inputmode="decimal"><span class="fb" id="f3a"></span></div>
+ <button data-check="3b">Check</button></div>
+<div class="step" data-step="3c"><span class="tag r">CHANGE ONE CONDITION</span>Change the metal, then the width.
+ <div class="ctrlrow"><span>Metal</span><select id="lm" style="width:auto"><option>Cu</option><option>Al</option><option>W</option></select><span>Width</span><input type="range" id="lw" min="50" max="200" step="10" value="100"><b id="lwv"></b></div>
+ <div class="kpi"><div>R, Ω<b id="lR"></b></div><div>× the 100 nm Cu wire<b id="lx"></b></div></div>
+ <div class="chk"><span>R of the same 100 nm wire in Al, Ω</span><input type="text" id="c3b" inputmode="decimal"><span class="fb" id="f3b"></span></div>
+ <div class="chk"><span>R of the Cu wire at 50 nm width, Ω</span><input type="text" id="c3c" inputmode="decimal"><span class="fb" id="f3c"></span></div>
+ <button data-check="3c">Check</button></div>
+</section>
+
+<!-- TASK 4 -->
+<section class="card" id="t4"><h2>Task 4 · Counting atoms in a unit cell</h2>
+<div class="step" data-step="4a"><span class="tag c">CHECK</span>A corner atom counts 1/8, a face atom 1/2, an atom inside 1. Cu is face-centered cubic (8 corners, 6 faces). Si is diamond cubic (8 corners, 6 faces, 4 inside).
+ <div class="chk"><span>Atoms per Cu cell</span><input type="text" id="c4a" inputmode="numeric"><span class="fb" id="f4a"></span></div>
+ <div class="chk"><span>Atoms per Si cell</span><input type="text" id="c4b" inputmode="numeric"><span class="fb" id="f4b"></span></div>
+ <button data-check="4a">Check</button></div>
+</section>
+
+<!-- TASK 5 -->
+<section class="card" id="t5"><h2>Task 5 · Crystalline and amorphous SiO<sub>2</sub></h2>
+<div class="step" data-step="5a"><span class="tag c">CHECK</span>Quartz (crystalline SiO<sub>2</sub>) has a density of 2.65 g/cm³; fused silica (amorphous SiO<sub>2</sub>) 2.20 g/cm³.
+ <div class="chk"><span>How much less dense is fused silica, % of the quartz value?</span><input type="text" id="c5a" inputmode="decimal"><span class="fb" id="f5a"></span></div>
+ <div class="chk"><span>Why?</span><select id="c5b"><option value="">choose</option><option value="a">It contains different atoms</option><option value="b">The same Si–O network without long-range order packs less tightly</option><option value="c">Its bonds are ionic</option></select><span class="fb" id="f5b"></span></div>
+ <button data-check="5a">Check</button></div>
+</section>
+
+<section class="card" id="t6"><h2>Task 6 · Explain</h2>
+<div class="step" data-step="6a"><span class="tag e">EXPLAIN</span>Write to a process engineer: which material you would use for the wires, for the insulation between them, and for the transistors, with one number from this lab for each choice.
+ <textarea id="e6"></textarea><button data-save="6a">Save</button></div>
+</section>
+
+<section class="card" id="fin"><h2>Finish: Exit Ticket and feedback</h2>
+<div class="step" data-step="fin"><p>Copy your answers, open the Exit Ticket, choose <b>Class 2</b>, paste them in the Exit Ticket box, and answer the feedback questions. Choose "On my own" if you did this lab outside class.</p>
+<pre class="sum" id="sum"></pre>
+<button id="copy">Copy my answers</button><a id="exitlink" target="_blank" rel="noopener"><button class="ghost" type="button">Open Exit Ticket and feedback</button></a>
+<p class="note" id="copied"></p>
+<p class="note">Want the code? <a href="bonding_lab.py">bonding_lab.py</a> computes every value on this page; it runs in desktop Python, or open the slides and press D on any slide marked "D · Python".</p></div>
+<button class="ghost" id="reset">Clear my answers on this device</button>
+</section>
+<section class="card" id="handin"><h2>Hand in: your answer file for myCourseVille</h2>
+<p>Download your answers as a file and upload it to this lab's assignment in myCourseVille. You can download at any point, and again after more steps; upload the latest file. The file records the steps you finished, your answers, and the checks where the expected value was shown after two tries. It holds no name or student ID: myCourseVille records who uploaded it.</p>
+<button id="dlJson" type="button">Download my answer file (.json)</button>
+<p class="note" id="dlNote"></p></section>
+</main>
+<script>
+const R = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"EN":{"H":2.1,"C":2.5,"N":3.0,"O":3.5,"F":4.0,"Li":1.0,"Na":0.9,"Al":1.5,"Si":1.8,"Cl":3.0,"Cu":1.9},"metals":["Al","Cu","Li","Na"],"pairs":[{"a":"Cu","b":"Cu","dEN":0.0,"kind":"metallic"},{"a":"Si","b":"Si","dEN":0.0,"kind":"nonpolar covalent"},{"a":"C","b":"C","dEN":0.0,"kind":"nonpolar covalent"},{"a":"Si","b":"O","dEN":1.7,"kind":"polar covalent"},{"a":"Na","b":"Cl","dEN":2.1,"kind":"ionic"},{"a":"Li","b":"F","dEN":3.0,"kind":"ionic"}],"rho":[{"material":"Cu","rho":1.68e-08,"bonding":"metallic","class":"conductor","note":"wires and vias in chips"},{"material":"Al","rho":2.65e-08,"bonding":"metallic","class":"conductor","note":"chip wiring before Cu"},{"material":"W","rho":5.6e-08,"bonding":"metallic","class":"conductor","note":"contacts to the transistors"},{"material":"graphite","rho":1e-05,"bonding":"covalent layers","class":"conductor","note":"order of magnitude; depends on direction"},{"material":"Si (pure)","rho":2300.0,"bonding":"covalent network","class":"semiconductor","note":"intrinsic, 300 K; doping lowers it (Class 6)"},{"material":"SiO2 (amorphous)","rho":1e+16,"bonding":"covalent network","class":"insulator","note":"order of magnitude"}],"orders_SiO2_Cu":23.774690718274137,"line":{"L":0.001,"w":1e-07,"t":2e-07},"lines":[{"material":"Cu","rho":1.68e-08,"R":840.0000000000002,"vs_Cu":1.0},{"material":"Al","rho":2.65e-08,"R":1325.0000000000002,"vs_Cu":1.5773809523809523},{"material":"W","rho":5.6e-08,"R":2800.0000000000005,"vs_Cu":3.333333333333333}],"leak":{"R":1e+21,"I":1e-21,"t":1e-07,"area":1e-12,"V":1.0},"cells":[{"lattice":"face-centered cubic","a_nm":0.3615,"corner":8,"face":6,"inside":0,"name":"Cu","atoms":4.0},{"lattice":"body-centered cubic","a_nm":0.3165,"corner":8,"face":0,"inside":1,"name":"W","atoms":2.0},{"lattice":"diamond cubic","a_nm":0.5431,"corner":8,"face":6,"inside":4,"name":"Si","atoms":8.0}],"silica":{"quartz":2.65,"fused":2.2,"percent_lower":16.981132075471688}},"lab":{"pairs":{"Si-O":{"a":"Si","b":"O","dEN":1.7,"kind":"polar covalent"},"Na-Cl":{"a":"Na","b":"Cl","dEN":2.1,"kind":"ionic"},"Cu-Cu":{"a":"Cu","b":"Cu","dEN":0.0,"kind":"metallic"}},"rho":[{"material":"Cu","rho":1.68e-08,"bonding":"metallic","class":"conductor","note":"wires and vias in chips"},{"material":"Al","rho":2.65e-08,"bonding":"metallic","class":"conductor","note":"chip wiring before Cu"},{"material":"W","rho":5.6e-08,"bonding":"metallic","class":"conductor","note":"contacts to the transistors"},{"material":"graphite","rho":1e-05,"bonding":"covalent layers","class":"conductor","note":"order of magnitude; depends on direction"},{"material":"Si (pure)","rho":2300.0,"bonding":"covalent network","class":"semiconductor","note":"intrinsic, 300 K; doping lowers it (Class 6)"},{"material":"SiO2 (amorphous)","rho":1e+16,"bonding":"covalent network","class":"insulator","note":"order of magnitude"}],"orders_SiO2_Cu":23.774690718274137,"orders_Si_Cu":11.13641855429173,"line":{"L":0.001,"w":1e-07,"t":2e-07},"R_Cu":840.0000000000002,"R_Al":1325.0000000000002,"R_W":2800.0000000000005,"R_Cu_half_width":1680.0000000000005,"cells":{"Cu":4.0,"W":2.0,"Si":8.0},"silica":{"quartz":2.65,"fused":2.2,"percent_lower":16.981132075471688}}};
+const EXIT_URL = "https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=2";
+const C={teal:"#0F6E6B",amber:"#E29A2D",rust:"#BE654C",graphite:"#333F4A",mist:"#B9C1C6",sand:"#DFC98F",ink:"#1C242B",slate:"#66727C"};
+const $=id=>document.getElementById(id);
+const fmt=(x,d=0)=>x==null||!isFinite(x)?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+const KEY="lab2-2027-v1"; let ST={};
+try{ST=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){ST={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}};
+const L=R.lab;
+const sci=x=>{const e=Math.floor(Math.log10(x)),m=x/10**e;return `${m.toFixed(2)} × 10<sup>${e<0?"−"+(-e):e}</sup>`};
+const rho=m=>L.rho.find(r=>r.material===m).rho;
+/* same formula as bonding_lab.line_resistance */
+const lineR=(r,len,w,t)=>r*len/(w*t);
+
+$("rhotab").innerHTML=`<table class="tb"><tr><th>Material</th><th>Bonding</th><th class="n">ρ, Ω·m</th><th>Role</th></tr>`+
+ L.rho.map(q=>`<tr><td>${q.material.replace("SiO2","SiO<sub>2</sub>")}</td><td>${q.bonding}</td><td class="n">${sci(q.rho)}</td><td>${q.class}</td></tr>`).join("")+`</table>`;
+function drawW(){const m=$("lm").value,w=+$("lw").value*1e-9,r=lineR(rho(m),L.line.L,w,L.line.t);$("lwv").textContent=(w*1e9).toFixed(0)+" nm";
+ $("lR").textContent=fmt(r,0);$("lx").textContent=fmt(r/L.R_Cu,2);ST.lm=m;ST.lw=$("lw").value;save()}
+$("lm").onchange=drawW;$("lw").oninput=drawW;
+
+/* steps */
+const ORDER=["1a","1b","2a","3a","3b","3c","4a","5a","6a"];
+function refresh(){let open=true;ORDER.forEach(id=>{const el=document.querySelector(`[data-step="${id}"]`),done=!!ST["done_"+id];el.classList.toggle("done",done);el.classList.toggle("locked",!done&&!open);if(!done&&open)open=false});
+ document.querySelector('[data-step="fin"]').classList.toggle("locked",!ORDER.every(id=>ST["done_"+id]));
+ const n=ORDER.filter(id=>ST["done_"+id]).length;$("pbar").style.width=(100*n/ORDER.length)+"%";$("ptext").textContent=`${n} of ${ORDER.length} steps done`;summary();save()}
+function need(id,msg){const st=document.querySelector(`[data-step="${id}"]`);let f=st.querySelector(".need");if(!f){f=document.createElement("div");f.className="fb bad need";st.appendChild(f)}f.textContent=msg;return false}
+function markDone(id){const nd=document.querySelector(`[data-step="${id}"] .need`);if(nd)nd.textContent="";ST["done_"+id]=true;refresh()}
+const radio=n=>{const r=document.querySelector(`input[name="${n}"]:checked`);return r?r.value:""};
+const num=s=>parseFloat(String(s).replace(/,/g,"").replace("−","-").replace("+","").replace("%",""));
+document.querySelectorAll("[data-save]").forEach(b=>b.onclick=()=>{const id=b.dataset.save;
+ if(id==="1a"){if(!radio("p1"))return need(id,"Choose a prediction first.");ST.p1=radio("p1")}
+ if(id==="3a"){if(!radio("p3"))return need(id,"Choose a prediction first.");ST.p3=radio("p3")}
+ if(id==="6a"){if($("e6").value.trim().length<60)return need(id,"Write at least three sentences.");ST.e6=$("e6").value}
+ markDone(id)});
+function verdict(input,fb,ok,expected){ST["tries_"+input]=(ST["tries_"+input]||0)+(ok?0:1);const f=$(fb);f.className="fb "+(ok?"ok":"bad");
+ f.textContent=ok?"Correct":(ST["tries_"+input]>=2?`Not yet. Expected: ${expected}.`:"Not yet. Look again.");return ok||ST["tries_"+input]>=2}
+function checkNum(input,fb,target,rel,abs,d){const v=num($(input).value);ST[input]=$(input).value;return verdict(input,fb,isFinite(v)&&Math.abs(v-target)<=Math.max(abs,rel*Math.abs(target)),fmt(target,d))}
+function checkInt(input,fb,target){const v=num($(input).value);ST[input]=$(input).value;return verdict(input,fb,v===target,String(target))}
+function checkSel(input,fb,target,label){ST[input]=$(input).value;return verdict(input,fb,$(input).value===target,label||target)}
+document.querySelectorAll("[data-check]").forEach(b=>b.onclick=()=>{const id=b.dataset.check;let ok=false;const P=L.pairs;
+ if(id==="1b")ok=[checkNum("c1a","f1a",P["Si-O"].dEN,0,0.01,1),checkNum("c1b","f1b",P["Na-Cl"].dEN,0,0.01,1),checkSel("c1c","f1c",P["Si-O"].kind),checkSel("c1d","f1d",P["Cu-Cu"].kind,"metallic: both atoms are metals")].every(Boolean);
+ if(id==="2a")ok=[checkNum("c2a","f2a",L.orders_SiO2_Cu,0,0.15,1),checkSel("c2b","f2b","b","the bonding label alone does not decide conduction")].every(Boolean);
+ if(id==="3b")ok=checkNum("c3a","f3a",L.R_Cu,0.01,0,0);
+ if(id==="3c")ok=[checkNum("c3b","f3b",L.R_Al,0.01,0,0),checkNum("c3c","f3c",L.R_Cu_half_width,0.01,0,0)].every(Boolean);
+ if(id==="4a")ok=[checkInt("c4a","f4a",L.cells.Cu),checkInt("c4b","f4b",L.cells.Si)].every(Boolean);
+ if(id==="5a")ok=[checkNum("c5a","f5a",L.silica.percent_lower,0,0.5,1),checkSel("c5b","f5b","b","the same network without long-range order packs less tightly")].every(Boolean);
+ if(ok)markDone(id);else save()});
+
+/* summary */
+function summary(){const sel=(id,map)=>map[ST[id]]||ST[id]||"?";
+ $("sum").textContent=[`Lab 2 answers`,
+ `1. Predicted Si-O: ${ST.p1||"?"}. dEN Si-O ${ST.c1a||"?"}, Na-Cl ${ST.c1b||"?"}; Si-O ${ST.c1c||"?"}; Cu-Cu ${ST.c1d||"?"}`,
+ `2. log10(rho SiO2 / rho Cu) = ${ST.c2a||"?"}; graphite and Si: ${sel("c2b",{b:"label alone does not decide conduction"})}`,
+ `3. Predicted Al wire: ${ST.p3||"?"}. R Cu = ${ST.c3a||"?"} ohm; R Al = ${ST.c3b||"?"} ohm; R Cu at 50 nm = ${ST.c3c||"?"} ohm`,
+ `4. Atoms per cell: Cu ${ST.c4a||"?"}, Si ${ST.c4b||"?"}`,
+ `5. Fused silica less dense by ${ST.c5a||"?"}%; why: ${sel("c5b",{b:"no long-range order, packs less tightly"})}`,`6. ${ST.e6||"?"}`].join("\n")}
+$("copy").onclick=async()=>{try{await navigator.clipboard.writeText($("sum").textContent);$("copied").textContent="Copied. Paste it into the Exit Ticket box."}catch(e){$("copied").textContent="Copy did not work here. Select the text above and copy it."}};
+$("exitlink").href=EXIT_URL;
+$("reset").onclick=()=>{if(confirm("Clear all answers saved on this device?")){ST={};save();location.reload()}};
+
+/* restore */
+["p1","p3"].forEach(n=>{if(ST[n]){const r=document.querySelector(`input[name="${n}"][value="${ST[n]}"]`);if(r)r.checked=true}});
+["e6","c1a","c1b","c1c","c1d","c2a","c2b","c3a","c3b","c3c","c4a","c4b","c5a","c5b"].forEach(id=>{if(ST[id]!=null)$(id).value=ST[id]});
+if(ST.lm)$("lm").value=ST.lm;if(ST.lw)$("lw").value=ST.lw;
+drawW();refresh();
+
+/* hand-in: an answer file for myCourseVille (no name or ID in it) */
+async function handin(){summary();const lab=parseInt((KEY.match(/lab(\d+)/)||[0,0])[1],10);
+ const core={course:"2182209",edition:"2027",lab,lab_key:KEY,saved:new Date().toISOString(),
+  steps_done:ORDER.filter(id=>ST["done_"+id]).length,steps_total:ORDER.length,
+  steps:Object.fromEntries(ORDER.map(id=>[id,!!ST["done_"+id]])),
+  expected_shown:Object.keys(ST).filter(k=>k.startsWith("tries_")&&ST[k]>=2).map(k=>k.slice(6)),
+  summary:$("sum").textContent,state:ST};
+ const data=JSON.stringify(core);let check="";
+ try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("2182209-lab-file-v1|"+data));check=[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){}
+ const file={lab,steps_done:core.steps_done,steps_total:core.steps_total,expected_shown:core.expected_shown.length,saved:core.saved,data,check};
+ const name=`2182209-lab${String(lab).padStart(2,"0")}-answers.json`,a=document.createElement("a");
+ a.href=URL.createObjectURL(new Blob([JSON.stringify(file,null,1)],{type:"application/json"}));a.download=name;document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+ $("dlNote").textContent=`Saved ${name}: ${core.steps_done} of ${core.steps_total} steps done. Upload it to Lab ${lab} in myCourseVille.`}
+$("dlJson").onclick=()=>{handin()};
+</script>
+</body>
+</html>

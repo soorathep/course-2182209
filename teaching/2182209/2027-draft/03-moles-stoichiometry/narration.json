@@ -1,0 +1,648 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 717.2,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 28.248,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.563,
+     "en": "Welcome to Class 3: moles, units and stoichiometry."
+    },
+    {
+     "s": 4.563,
+     "e": 11.237,
+     "en": "In Classes 1 and 2 we counted atoms one at a time. Today we count them by weighing."
+    },
+    {
+     "s": 11.237,
+     "e": 19.079,
+     "en": "We will go from a mass of silicon to a number of atoms, and from a balanced equation to the silicon dioxide grown on a wafer."
+    },
+    {
+     "s": 19.079,
+     "e": 28.184,
+     "en": "If you are studying on your own, the narration takes about twelve minutes. Stop at the activity and at each check, then do Lab 3."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 30.624,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.026,
+     "en": "A five minute activity reviews Class 2."
+    },
+    {
+     "s": 6.026,
+     "e": 13.132,
+     "en": "Part one introduces the mole, molar mass, and balanced equations. It ends with Check 1."
+    },
+    {
+     "s": 13.132,
+     "e": 25.816,
+     "en": "Part two puts stoichiometry to work on a wafer: the oxidation of silicon, conservation of mass, the density of silicon, and how much silicon an oxide uses up. It ends with Check 2."
+    },
+    {
+     "s": 25.816,
+     "e": 30.553,
+     "en": "Then you do Lab 3 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 26.832,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.395,
+     "en": "Activity 1. Answer four questions about Class 2 without notes, then compare with a partner."
+    },
+    {
+     "s": 7.395,
+     "e": 21.974,
+     "en": "Which electrons carry current in copper? What kind of bond is silicon oxygen? How many atoms belong to a silicon unit cell? And what happens to the resistance of a wire made twice as long?"
+    },
+    {
+     "s": 21.974,
+     "e": 26.776,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 30.648,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.353,
+     "en": "By the end of today you can do six things."
+    },
+    {
+     "s": 3.353,
+     "e": 8.066,
+     "en": "Explain the mole as a count of particles, and convert moles to atoms."
+    },
+    {
+     "s": 8.066,
+     "e": 13.447,
+     "en": "Calculate a molar mass from a formula, and convert mass to moles with units."
+    },
+    {
+     "s": 13.447,
+     "e": 17.882,
+     "en": "Read the coefficients of a balanced equation as mole ratios."
+    },
+    {
+     "s": 17.882,
+     "e": 23.605,
+     "en": "Calculate the masses in the oxidation of silicon, and explain why the mass rises."
+    },
+    {
+     "s": 23.605,
+     "e": 30.592,
+     "en": "Calculate the density of silicon from its unit cell, and find how much silicon a grown oxide uses up."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 34.488,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.274,
+     "en": "Today connects the first two classes to masses you can weigh."
+    },
+    {
+     "s": 4.274,
+     "e": 12.092,
+     "en": "The atomic masses from Class 1, such as twenty eight point zero eight five for silicon, become molar masses in grams per mole."
+    },
+    {
+     "s": 12.092,
+     "e": 16.684,
+     "en": "The silicon unit cell from Class 2 gives the density of a wafer."
+    },
+    {
+     "s": 16.684,
+     "e": 27.752,
+     "en": "New symbols: n is the amount in moles, m is mass in grams, M is molar mass in grams per mole, and N is a number of particles. N A is the Avogadro constant."
+    },
+    {
+     "s": 27.752,
+     "e": 34.421,
+     "en": "Rho now means density in grams per cubic centimeter; the context tells you which rho is meant."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 41.64,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.287,
+     "en": "Atoms are too small to count one by one, so chemists count them by weighing."
+    },
+    {
+     "s": 5.287,
+     "e": 13.921,
+     "en": "One mole is exactly six point zero two two times ten to the twenty three particles. Think of it as a much larger dozen."
+    },
+    {
+     "s": 13.921,
+     "e": 20.27,
+     "en": "The useful fact is this: the mass of one mole in grams equals the atomic mass in atomic mass units."
+    },
+    {
+     "s": 20.27,
+     "e": 28.461,
+     "en": "One silicon atom is twenty eight point zero eight five units, so one mole of silicon is twenty eight point zero eight five grams."
+    },
+    {
+     "s": 28.461,
+     "e": 36.765,
+     "en": "So one gram of silicon is zero point zero three five six moles, which is about two point one times ten to the twenty two atoms."
+    },
+    {
+     "s": 36.765,
+     "e": 41.566,
+     "en": "One gram of copper holds fewer atoms, because each copper atom is heavier."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 39.792,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.524,
+     "en": "To find a molar mass, multiply each atomic mass by its subscript and add."
+    },
+    {
+     "s": 5.524,
+     "e": 14.079,
+     "en": "For silicon dioxide, twenty eight point zero eight five plus two times fifteen point nine nine nine gives sixty point zero eight grams per mole."
+    },
+    {
+     "s": 14.079,
+     "e": 25.632,
+     "en": "Copper sulfate, the salt in copper plating baths, is one hundred fifty nine point six. Ammonia, used to deposit silicon nitride, is seventeen point zero three."
+    },
+    {
+     "s": 25.632,
+     "e": 35.938,
+     "en": "Exercises often supply rounded values, such as twenty eight point one for silicon and sixteen point zero for oxygen. Use the values you are given."
+    },
+    {
+     "s": 35.938,
+     "e": 39.724,
+     "en": "The answer changes only in the third or fourth figure."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 29.808,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.642,
+     "en": "This demo shows one sample in three ways: its mass, its amount in moles, and its number of atoms."
+    },
+    {
+     "s": 6.642,
+     "e": 11.961,
+     "en": "Choose silicon or copper, and move the mass from one microgram to ten grams."
+    },
+    {
+     "s": 11.961,
+     "e": 18.013,
+     "en": "Notice that even one microgram of silicon holds about two times ten to the sixteen atoms."
+    },
+    {
+     "s": 18.013,
+     "e": 29.75,
+     "en": "Always convert the mass to grams before dividing by the molar mass in grams per mole. One milligram is ten to the minus three grams, and one microgram is ten to the minus six."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 32.232,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 10.855,
+     "en": "Silicon reacts with oxygen to form silicon dioxide. This is the reaction that grows the insulating oxide on a heated silicon wafer in dry oxygen."
+    },
+    {
+     "s": 10.855,
+     "e": 16.421,
+     "en": "The equation is balanced: one silicon atom and two oxygen atoms on each side."
+    },
+    {
+     "s": 16.421,
+     "e": 24.539,
+     "en": "The coefficients, one to one to one, are ratios of particles, or of moles. They are not ratios of mass."
+    },
+    {
+     "s": 24.539,
+     "e": 32.171,
+     "en": "One mole of silicon, twenty eight point one grams, reacts with one mole of oxygen gas, thirty two point zero grams."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 27.6,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 18.981,
+     "en": "Find the moles in fifty six point two grams of silicon. Calculate the molar mass of silicon dioxide. Find the error in a classmate's answer for fifty six point two milligrams."
+    },
+    {
+     "s": 18.981,
+     "e": 23.447,
+     "en": "And decide whether equal masses of silicon and oxygen react."
+    },
+    {
+     "s": 23.447,
+     "e": 27.526,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 52.728,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.368,
+     "en": "Part 2 starts with a worked example. Five hundred sixty two milligrams of silicon is oxidized completely, with excess oxygen."
+    },
+    {
+     "s": 9.368,
+     "e": 15.279,
+     "en": "First convert units: five hundred sixty two milligrams is zero point five six two grams."
+    },
+    {
+     "s": 15.279,
+     "e": 22.053,
+     "en": "Divide by twenty eight point one grams per mole to get zero point zero two zero zero moles of silicon."
+    },
+    {
+     "s": 22.053,
+     "e": 31.066,
+     "en": "The mole ratio is one to one to one, so zero point zero two zero zero moles of silicon dioxide form, using the same amount of oxygen gas."
+    },
+    {
+     "s": 31.066,
+     "e": 43.671,
+     "en": "The mass of silicon dioxide is zero point zero two zero zero times sixty point one, which is one point two zero two grams. The mass of oxygen used is zero point six four zero grams."
+    },
+    {
+     "s": 43.671,
+     "e": 52.671,
+     "en": "Check: zero point five six two plus zero point six four zero equals one point two zero two grams. The masses balance."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 43.704,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 10.382,
+     "en": "Here is a common objection. Zero point five six two grams of silicon became one point two zero two grams of silicon dioxide, so mass was created."
+    },
+    {
+     "s": 10.382,
+     "e": 23.674,
+     "en": "The oxygen atoms came from the gas around the wafer. Count everything that entered: the silicon plus zero point six four zero grams of oxygen. The total is one point two zero two grams."
+    },
+    {
+     "s": 23.674,
+     "e": 27.461,
+     "en": "Mass is conserved; the accounting left something out."
+    },
+    {
+     "s": 27.461,
+     "e": 39.934,
+     "en": "So a wafer gains mass when it is oxidized. For one hundred nanometers of oxide on one square centimeter, the gain is about eleven point seven micrograms, which a microbalance can measure."
+    },
+    {
+     "s": 39.934,
+     "e": 43.632,
+     "en": "Always ask what crossed the boundary of your system."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 39.912,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.984,
+     "en": "Now connect the mole to the unit cell from Class 2."
+    },
+    {
+     "s": 3.984,
+     "e": 15.25,
+     "en": "A silicon unit cell has eight atoms in a cube of edge zero point five four three one nanometers. That is about five times ten to the twenty two atoms per cubic centimeter."
+    },
+    {
+     "s": 15.25,
+     "e": 23.855,
+     "en": "Multiply by the molar mass and divide by the Avogadro constant, and you get a density of two point three two nine grams per cubic centimeter."
+    },
+    {
+     "s": 23.855,
+     "e": 30.495,
+     "en": "The measured density of silicon is two point three two nine. The atom count predicts it to four figures."
+    },
+    {
+     "s": 30.495,
+     "e": 39.855,
+     "en": "A three hundred millimeter wafer holds about one hundred twenty eight grams of silicon, or about two point seven times ten to the twenty four atoms."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 48.072,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.513,
+     "en": "When an oxide grows, each silicon dioxide unit takes one silicon atom from the wafer. So growing oxide uses up silicon."
+    },
+    {
+     "s": 9.513,
+     "e": 20.368,
+     "en": "How much? Compare the moles of silicon per cubic centimeter in the oxide and in silicon. The ratio of thicknesses is zero point four four."
+    },
+    {
+     "s": 20.368,
+     "e": 33.158,
+     "en": "So one hundred nanometers of oxide consumes about forty four nanometers of silicon. The oxide is thicker than the silicon it used, because it holds fewer silicon atoms per cubic centimeter."
+    },
+    {
+     "s": 33.158,
+     "e": 41.579,
+     "en": "Move the slider. About forty four percent of the oxide lies below the original surface, and fifty six percent above it."
+    },
+    {
+     "s": 41.579,
+     "e": 48.013,
+     "en": "Process engineers use this factor every day, and you have just derived it from Classes 1 to 3."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 36.816,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.221,
+     "en": "Stoichiometry answers the question how much: how much silicon is used, how much oxide forms, and how much oxygen is needed."
+    },
+    {
+     "s": 8.221,
+     "e": 19.632,
+     "en": "It does not answer the question how fast. The same one hundred nanometers can take minutes or hours, depending on temperature and on whether the oxidant is oxygen or water vapor."
+    },
+    {
+     "s": 19.632,
+     "e": 25.803,
+     "en": "Growth slows as the oxide thickens, because oxygen must diffuse through the oxide already there."
+    },
+    {
+     "s": 25.803,
+     "e": 36.75,
+     "en": "Rates need kinetics and transport, which we meet in Class 12. Today's numbers also assume complete conversion, pure silicon, and a flat, uniform oxide."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 28.248,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 18.961,
+     "en": "Find the mass of silicon dioxide from zero point two eight one grams of silicon. Explain why the wafer gets heavier. Estimate the silicon consumed by two hundred nanometers of oxide."
+    },
+    {
+     "s": 18.961,
+     "e": 24.092,
+     "en": "And say whether these numbers can tell you how long the oxidation takes."
+    },
+    {
+     "s": 24.092,
+     "e": 28.171,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 25.056,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.866,
+     "en": "The mole is the unit of every calculation ahead."
+    },
+    {
+     "s": 3.866,
+     "e": 15.026,
+     "en": "In Class 4, concentration is moles per liter of a copper sulfate bath. In Class 5, the hydrogen ion concentration is in moles per liter, on a log scale."
+    },
+    {
+     "s": 15.026,
+     "e": 25.0,
+     "en": "In Class 7, we count moles of electrons. And in Class 10, a current gives moles of electrons, then moles and mass of copper plated."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 28.632,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.961,
+     "en": "Now it is time for Lab 3. Scan the code or open the lab page."
+    },
+    {
+     "s": 5.961,
+     "e": 15.066,
+     "en": "You will predict whether an oxidized wafer gets heavier, follow the masses and moles for five hundred sixty two milligrams of silicon, and count the atoms."
+    },
+    {
+     "s": 15.066,
+     "e": 22.632,
+     "en": "Then you calculate the density of silicon from its unit cell, change the oxide thickness, and find the silicon consumed."
+    },
+    {
+     "s": 22.632,
+     "e": 28.579,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 45.576,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 12.382,
+     "en": "A mole is a count of six point zero two two times ten to the twenty three particles, and the molar mass in grams per mole equals the atomic mass in atomic mass units."
+    },
+    {
+     "s": 12.382,
+     "e": 21.645,
+     "en": "The amount is mass divided by molar mass, with mass in grams. The number of particles is the amount times the Avogadro constant."
+    },
+    {
+     "s": 21.645,
+     "e": 30.829,
+     "en": "Coefficients are mole ratios, not mass ratios. Mass is conserved when you count everything that enters, including the oxygen."
+    },
+    {
+     "s": 30.829,
+     "e": 41.816,
+     "en": "The unit cell predicts the density of silicon, two point three two nine grams per cubic centimeter, and densities predict that an oxide uses zero point four four of its thickness in silicon."
+    },
+    {
+     "s": 41.816,
+     "e": 45.5,
+     "en": "And stoichiometry gives amounts, not times."
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "file": "audio/slide-20.mp3",
+   "duration": 21.84,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.445,
+     "en": "Before the next class, finish Lab 3 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.445,
+     "e": 13.539,
+     "en": "Read OpenStax Chemistry two e, section three point one on the mole concept and section four point three on reaction stoichiometry."
+    },
+    {
+     "s": 13.539,
+     "e": 21.789,
+     "en": "Class 4 is about solutions, concentration and electrolytes: how much copper sulfate is in a plating bath, and why the bath conducts."
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "file": "audio/slide-21.mp3",
+   "duration": 24.744,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.987,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 3."
+    },
+    {
+     "s": 6.987,
+     "e": 15.776,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.776,
+     "e": 24.671,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 4."
+    }
+   ]
+  }
+ ]
+}

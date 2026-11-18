@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lab 3 · The oxide on a silicon wafer · 2182209</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--graphite:#333F4A;--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--sand:#DFC98F;--ok:#0F6E6B;--bad:#BE654C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Helvetica Neue",Helvetica,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:18px 16px 80px}
+header h1{color:var(--teal);font-size:30px;margin:4px 0 2px}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+.sub{color:var(--slate);font-size:15px}
+.prog{position:sticky;top:0;background:var(--paper);padding:10px 0;z-index:3}
+.bar{height:8px;background:#e2ddd4;border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.prog span{font-size:13px;color:var(--slate)}
+.card{background:#fff;border-radius:14px;padding:18px 18px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:21px;margin:0 0 4px;color:var(--teal)}
+.card h3{font-size:17px;margin:16px 0 6px}
+.step{border-left:4px solid var(--mist);padding:2px 0 2px 14px;margin:14px 0}
+.step.done{border-color:var(--teal)}.step.locked{opacity:.45;pointer-events:none}
+.step.locked .chart,.step.locked .kpi,.step.locked .chk,.step.locked input[type=range],.step.locked .row{display:none}
+.step.locked::after{content:"Finish the step above to open this one.";display:block;font-size:13px;color:var(--slate)}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;border-radius:6px;padding:2px 8px;margin-right:6px;color:#fff;background:var(--slate)}
+.tag.p{background:var(--amber)}.tag.r{background:var(--teal)}.tag.c{background:var(--graphite)}.tag.e{background:var(--rust)}
+textarea,input[type=text],select{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--mist);border-radius:8px;padding:8px 10px;background:#fff}
+textarea{min-height:70px}
+button{font:inherit;font-size:15px;padding:8px 14px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer;margin:8px 8px 0 0}
+button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row label{flex:1 1 240px}
+.chk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.chk input{width:150px}
+.fb{font-size:15px}.fb.ok{color:var(--ok);font-weight:700}.fb.bad{color:var(--bad)}
+.choices label{display:block;margin:4px 0}
+.kpi{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}.kpi div{background:var(--paper);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--slate)}.kpi b{display:block;font-size:20px;color:var(--ink)}
+.chart{background:var(--paper);border-radius:12px;padding:6px;margin:8px 0}
+svg{width:100%;height:auto;display:block}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.note{font-size:14px;color:var(--slate)}
+.hidden{display:none}
+pre.sum{white-space:pre-wrap;background:var(--paper);border-radius:10px;padding:12px;font-size:14px}
+a{color:var(--teal)}
+</style>
+<style>
+.step.locked > *:not(.tag){display:none}
+table.tb{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.tb th{background:var(--paper);text-align:left;padding:5px 8px;border-bottom:2px solid var(--mist)}
+table.tb td{padding:5px 8px;border-bottom:1px solid #e6e3dd}
+table.tb td.n,table.tb th.n{text-align:right;font-variant-numeric:tabular-nums}
+ol.rl{margin:4px 0 0;padding-left:22px;font-size:15px}
+.lights{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.light{border-radius:999px;padding:3px 10px;font-size:14px;font-weight:700}
+.light.ok{background:#e3f0ef;color:var(--teal)}.light.bad{background:#f6e3de;color:var(--rust)}
+.code{background:#1f262d;color:#e8eef2;border-radius:10px;padding:10px 8px;font-family:Menlo,Consolas,monospace;font-size:13.5px;overflow-x:auto}
+.ln{display:flex;align-items:center;gap:8px;padding:3px 4px;border-radius:6px;white-space:pre}
+.ln.fixed{background:#24433f}
+.ln .no{color:#8a96a0;width:18px;text-align:right}
+.ln .tx{flex:1}
+.ln .okk{width:38px;color:#9fd6c9;font-size:12px;font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700}
+button.sm{width:38px;font-size:12px;padding:2px 9px;margin:0;background:transparent;color:#9fd6c9;border:1px solid #9fd6c9}
+.ctrlrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0;font-size:15px;color:var(--slate)}
+.ctrlrow input[type=range]{flex:1;min-width:160px;accent-color:var(--teal)}
+.wide{overflow-x:auto}.wide table.tb{font-size:12px}.wide table.tb td,.wide table.tb th{padding:3px 4px}
+@media (max-width:600px){table.tb{display:block;overflow-x:auto;font-size:13px}}
+</style>
+
+</head>
+<body><main>
+<header><div class="kicker">2182209 · Class 3 · Lab</div><h1>The oxide on a silicon wafer</h1>
+<div class="sub">About 30 minutes. Works in class or on your own, on a laptop or a phone. Nothing to install; a calculator helps.</div></header>
+<div class="prog"><div class="bar"><i id="pbar"></i></div><span id="ptext"></span></div>
+
+<section class="card"><h2>How this lab works</h2>
+<p>A Si wafer heated in dry O<sub>2</sub> grows a layer of insulating SiO<sub>2</sub>: Si + O<sub>2</sub> → SiO<sub>2</sub>. You follow the masses and moles of this reaction, count atoms, calculate the density of Si from its unit cell, and find how much Si an oxide layer uses up. Write each prediction before you look; the next step stays locked until you do. After two tries the expected value is shown.</p>
+<p class="note"><b>What runs where.</b> The expected values come from <a href="stoich_lab.py">stoich_lab.py</a>, computed in advance. The slider in Task 4 does one small calculation in JavaScript, the same formula as the Python. No Python is installed or run on your device. To run the Python yourself, open the slides and press D on a slide marked “D · Python”, or run stoich_lab.py in desktop Python.</p>
+<p class="note">Write very large or small numbers as 1.23e22 (meaning 1.23 × 10<sup>22</sup>). Studying on your own? Watch the narrated slides for Class 3 first.</p></section>
+
+<section class="card" id="data"><h2>Data</h2>
+<table class="tb"><tr><th>Quantity</th><th class="n">Value</th></tr>
+<tr><td>M(Si), M(O) for Tasks 1 and 2</td><td class="n">28.1, 16.0 g/mol</td></tr>
+<tr><td>M(Si) for Task 4</td><td class="n">28.0855 g/mol</td></tr>
+<tr><td>Avogadro constant N<sub>A</sub></td><td class="n">6.022 × 10<sup>23</sup> mol<sup>−1</sup></td></tr>
+<tr><td>Si lattice constant a; atoms per diamond-cubic cell</td><td class="n">0.5431 nm; 8</td></tr>
+<tr><td>Density of Si; of thermal SiO<sub>2</sub></td><td class="n">2.329; 2.20 g/cm³</td></tr></table>
+<p class="note">1 mg = 10<sup>−3</sup> g; 1 nm = 10<sup>−7</sup> cm. Values from the CRC Handbook; the exercises use the rounded masses given.</p></section>
+
+<!-- TASK 1 -->
+<section class="card" id="t1"><h2>Task 1 · Moles of Si</h2>
+<div class="step" data-step="1a"><span class="tag p">PREDICT</span>After a Si wafer is oxidized, its mass
+ <div class="choices"><label><input type="radio" name="p1" value="increases"> increases</label><label><input type="radio" name="p1" value="decreases"> decreases, because Si is used up</label><label><input type="radio" name="p1" value="same"> stays the same, because mass is conserved</label></div>
+ <button data-save="1a">Save prediction</button></div>
+<div class="step" data-step="1b"><span class="tag c">CHECK</span>562 mg of Si is oxidized completely in excess O<sub>2</sub>.
+ <div class="chk"><span>M(SiO<sub>2</sub>), g/mol</span><input type="text" id="c1a" inputmode="decimal"><span class="fb" id="f1a"></span></div>
+ <div class="chk"><span>n(Si), mol</span><input type="text" id="c1b" inputmode="decimal"><span class="fb" id="f1b"></span></div>
+ <button data-check="1b">Check</button></div>
+</section>
+
+<!-- TASK 2 -->
+<section class="card" id="t2"><h2>Task 2 · Masses, and where the extra mass comes from</h2>
+<div class="step" data-step="2a"><span class="tag c">CHECK</span>Use the mole ratio Si : O<sub>2</sub> : SiO<sub>2</sub> = 1 : 1 : 1.
+ <div class="chk"><span>Mass of SiO<sub>2</sub> formed, g</span><input type="text" id="c2a" inputmode="decimal"><span class="fb" id="f2a"></span></div>
+ <div class="chk"><span>Mass of O<sub>2</sub> used, g</span><input type="text" id="c2b" inputmode="decimal"><span class="fb" id="f2b"></span></div>
+ <div class="chk"><span>Why is the product heavier than the Si?</span><select id="c2c"><option value="">choose</option><option value="a">Mass is created when bonds form</option><option value="b">O atoms from the gas joined the solid; 0.562 g + the O<sub>2</sub> = the SiO<sub>2</sub></option><option value="c">The balance is inaccurate</option></select><span class="fb" id="f2c"></span></div>
+ <button data-check="2a">Check</button></div>
+</section>
+
+<!-- TASK 3 -->
+<section class="card" id="t3"><h2>Task 3 · Counting atoms by weighing</h2>
+<div class="step" data-step="3a"><span class="tag r">RECOMPUTE</span>How many Si atoms are in the 0.0200 mol of Task 1?
+ <div class="chk"><span>Number of Si atoms</span><input type="text" id="c3a" inputmode="decimal" placeholder="e.g. 1.23e22"><span class="fb" id="f3a"></span></div>
+ <button data-check="3a">Check</button></div>
+</section>
+
+<!-- TASK 4 -->
+<section class="card" id="t4"><h2>Task 4 · From the unit cell to the wafer</h2>
+<div class="step" data-step="4a"><span class="tag r">RECOMPUTE</span>Calculate the density of Si: ρ = 8 M(Si) / (N<sub>A</sub> a³), with a in cm.
+ <div class="chk"><span>ρ(Si), g/cm³</span><input type="text" id="c4a" inputmode="decimal"><span class="fb" id="f4a"></span></div>
+ <button data-check="4a">Check</button></div>
+<div class="step" data-step="4b"><span class="tag r">CHANGE ONE CONDITION</span>Each SiO<sub>2</sub> unit takes one Si atom from the wafer, so the Si consumed is t<sub>Si</sub> = t<sub>ox</sub> × (ρ<sub>ox</sub>/M<sub>ox</sub>) / (ρ<sub>Si</sub>/M<sub>Si</sub>). Move the oxide thickness.
+ <div class="ctrlrow"><span>Oxide thickness</span><input type="range" id="tox" min="0" max="500" step="10" value="50"><b id="toxv"></b></div>
+ <div class="kpi"><div>Si consumed, nm<b id="ktsi"></b></div><div>Ratio t<sub>Si</sub>/t<sub>ox</sub><b id="kr"></b></div></div>
+ <div class="chk"><span>Si consumed when 100 nm of SiO<sub>2</sub> grows, nm</span><input type="text" id="c4b" inputmode="decimal"><span class="fb" id="f4b"></span></div>
+ <div class="chk"><span>Can this calculation tell how long the oxidation takes?</span><select id="c4c"><option value="">choose</option><option value="a">Yes: divide the thickness by the ratio</option><option value="b">No: stoichiometry gives amounts; time needs kinetics and diffusion</option></select><span class="fb" id="f4c"></span></div>
+ <button data-check="4b">Check</button></div>
+</section>
+
+<section class="card" id="t5"><h2>Task 5 · Explain</h2>
+<div class="step" data-step="5a"><span class="tag e">EXPLAIN</span>A technician says the wafer's mass rose after oxidation, so the balance must be faulty. Reply in three or four sentences, with numbers from this lab.
+ <textarea id="e5"></textarea><button data-save="5a">Save</button></div>
+</section>
+
+<section class="card" id="fin"><h2>Finish: Exit Ticket and feedback</h2>
+<div class="step" data-step="fin"><p>Copy your answers, open the Exit Ticket, choose <b>Class 3</b>, paste them in the Exit Ticket box, and answer the feedback questions. Choose "On my own" if you did this lab outside class.</p>
+<pre class="sum" id="sum"></pre>
+<button id="copy">Copy my answers</button><a id="exitlink" target="_blank" rel="noopener"><button class="ghost" type="button">Open Exit Ticket and feedback</button></a>
+<p class="note" id="copied"></p>
+<p class="note">Want the code? <a href="stoich_lab.py">stoich_lab.py</a> computes every value on this page; it runs in desktop Python, or open the slides and press D on any slide marked "D · Python".</p></div>
+<button class="ghost" id="reset">Clear my answers on this device</button>
+</section>
+<section class="card" id="handin"><h2>Hand in: your answer file for myCourseVille</h2>
+<p>Download your answers as a file and upload it to this lab's assignment in myCourseVille. You can download at any point, and again after more steps; upload the latest file. The file records the steps you finished, your answers, and the checks where the expected value was shown after two tries. It holds no name or student ID: myCourseVille records who uploaded it.</p>
+<button id="dlJson" type="button">Download my answer file (.json)</button>
+<p class="note" id="dlNote"></p></section>
+</main>
+<script>
+const R = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"NA":6.02214076e+23,"M":{"Si":28.0855,"O":15.9994,"Cu":63.546,"N":14.007,"H":1.008,"S":32.06,"Cl":35.45,"F":18.998,"C":12.011},"M_given":{"Si":28.1,"O":16.0},"rho_si":2.329,"rho_ox":2.2,"molar":[{"formula":"Si","M":28.0855},{"formula":"SiO2","M":60.0843},{"formula":"CuSO4","M":159.6036},{"formula":"NH3","M":17.031}],"atoms_1g":{"Si":{"m_g":1.0,"M":28.0855,"n_mol":0.03560556158872016,"N":2.14421703726122e+22},"Cu":{"m_g":1.0,"M":63.546,"n_mol":0.015736631731344222,"N":9.47682113744374e+21}},"ox281":{"m_Si":0.281,"n_Si":0.01,"M_SiO2":60.1,"m_SiO2":0.601,"m_O2":0.32,"balance":0.0},"ox562":{"m_Si":0.562,"n_Si":0.02,"M_SiO2":60.1,"m_SiO2":1.202,"m_O2":0.64,"balance":0.0},"si_density":{"a_cm":5.431e-08,"atoms_per_cm3":4.994023465124319e+22,"rho":2.3290662178037342},"ratio":0.4415443646745737,"layer100":{"t_ox_nm":100.0,"t_si_nm":44.15443646745737,"m_SiO2_g":2.2e-05,"m_Si_g":1.028356825327082e-05,"m_O_g":1.171643174672918e-05,"gain_g":1.171643174672918e-05,"n_mol":3.661522227936416e-07}},"lab":{"M_SiO2":60.1,"ox562":{"m_Si":0.562,"n_Si":0.02,"M_SiO2":60.1,"m_SiO2":1.202,"m_O2":0.64,"balance":0.0},"atoms_0p02":1.204428152e+22,"si_density":{"a_cm":5.431e-08,"atoms_per_cm3":4.994023465124319e+22,"rho":2.3290662178037342},"ratio":0.4415443646745737,"layer100":{"t_ox_nm":100.0,"t_si_nm":44.15443646745737,"m_SiO2_g":2.2e-05,"m_Si_g":1.028356825327082e-05,"m_O_g":1.171643174672918e-05,"gain_g":1.171643174672918e-05,"n_mol":3.661522227936416e-07},"sweep":[{"t_ox_nm":0.0,"t_si_nm":0.0,"m_SiO2_g":0.0,"m_Si_g":0.0,"m_O_g":0.0,"gain_g":0.0,"n_mol":0.0},{"t_ox_nm":10.0,"t_si_nm":4.415443646745737,"m_SiO2_g":2.2e-06,"m_Si_g":1.0283568253270821e-06,"m_O_g":1.171643174672918e-06,"gain_g":1.171643174672918e-06,"n_mol":3.6615222279364163e-08},{"t_ox_nm":20.0,"t_si_nm":8.830887293491473,"m_SiO2_g":4.4e-06,"m_Si_g":2.0567136506541643e-06,"m_O_g":2.343286349345836e-06,"gain_g":2.343286349345836e-06,"n_mol":7.323044455872833e-08},{"t_ox_nm":30.0,"t_si_nm":13.246330940237211,"m_SiO2_g":6.6e-06,"m_Si_g":3.0850704759812462e-06,"m_O_g":3.514929524018754e-06,"gain_g":3.514929524018754e-06,"n_mol":1.0984566683809248e-07},{"t_ox_nm":40.0,"t_si_nm":17.661774586982947,"m_SiO2_g":8.8e-06,"m_Si_g":4.113427301308329e-06,"m_O_g":4.686572698691672e-06,"gain_g":4.686572698691672e-06,"n_mol":1.4646088911745665e-07},{"t_ox_nm":50.0,"t_si_nm":22.077218233728686,"m_SiO2_g":1.1e-05,"m_Si_g":5.14178412663541e-06,"m_O_g":5.85821587336459e-06,"gain_g":5.85821587336459e-06,"n_mol":1.830761113968208e-07},{"t_ox_nm":60.0,"t_si_nm":26.492661880474422,"m_SiO2_g":1.32e-05,"m_Si_g":6.1701409519624924e-06,"m_O_g":7.029859048037508e-06,"gain_g":7.029859048037508e-06,"n_mol":2.1969133367618497e-07},{"t_ox_nm":70.0,"t_si_nm":30.908105527220158,"m_SiO2_g":1.54e-05,"m_Si_g":7.198497777289576e-06,"m_O_g":8.201502222710425e-06,"gain_g":8.201502222710425e-06,"n_mol":2.5630655595554914e-07},{"t_ox_nm":80.0,"t_si_nm":35.323549173965894,"m_SiO2_g":1.76e-05,"m_Si_g":8.226854602616657e-06,"m_O_g":9.373145397383344e-06,"gain_g":9.373145397383344e-06,"n_mol":2.929217782349133e-07},{"t_ox_nm":90.0,"t_si_nm":39.73899282071163,"m_SiO2_g":1.9800000000000004e-05,"m_Si_g":9.255211427943741e-06,"m_O_g":1.0544788572056262e-05,"gain_g":1.0544788572056262e-05,"n_mol":3.2953700051427753e-07},{"t_ox_nm":100.0,"t_si_nm":44.15443646745737,"m_SiO2_g":2.2e-05,"m_Si_g":1.028356825327082e-05,"m_O_g":1.171643174672918e-05,"gain_g":1.171643174672918e-05,"n_mol":3.661522227936416e-07},{"t_ox_nm":110.0,"t_si_nm":48.56988011420311,"m_SiO2_g":2.4200000000000002e-05,"m_Si_g":1.1311925078597904e-05,"m_O_g":1.2888074921402098e-05,"gain_g":1.2888074921402098e-05,"n_mol":4.027674450730058e-07},{"t_ox_nm":120.0,"t_si_nm":52.985323760948845,"m_SiO2_g":2.64e-05,"m_Si_g":1.2340281903924985e-05,"m_O_g":1.4059718096075016e-05,"gain_g":1.4059718096075016e-05,"n_mol":4.3938266735236994e-07},{"t_ox_nm":130.0,"t_si_nm":57.40076740769458,"m_SiO2_g":2.86e-05,"m_Si_g":1.3368638729252067e-05,"m_O_g":1.5231361270747933e-05,"gain_g":1.5231361270747933e-05,"n_mol":4.759978896317341e-07},{"t_ox_nm":140.0,"t_si_nm":61.816211054440316,"m_SiO2_g":3.08e-05,"m_Si_g":1.4396995554579151e-05,"m_O_g":1.640300444542085e-05,"gain_g":1.640300444542085e-05,"n_mol":5.126131119110983e-07},{"t_ox_nm":150.0,"t_si_nm":66.23165470118606,"m_SiO2_g":3.3e-05,"m_Si_g":1.5425352379906235e-05,"m_O_g":1.7574647620093767e-05,"gain_g":1.7574647620093767e-05,"n_mol":5.492283341904625e-07},{"t_ox_nm":160.0,"t_si_nm":70.64709834793179,"m_SiO2_g":3.52e-05,"m_Si_g":1.6453709205233314e-05,"m_O_g":1.8746290794766687e-05,"gain_g":1.8746290794766687e-05,"n_mol":5.858435564698266e-07},{"t_ox_nm":170.0,"t_si_nm":75.06254199467753,"m_SiO2_g":3.74e-05,"m_Si_g":1.7482066030560397e-05,"m_O_g":1.9917933969439604e-05,"gain_g":1.9917933969439604e-05,"n_mol":6.224587787491907e-07},{"t_ox_nm":180.0,"t_si_nm":79.47798564142326,"m_SiO2_g":3.960000000000001e-05,"m_Si_g":1.8510422855887482e-05,"m_O_g":2.1089577144112525e-05,"gain_g":2.1089577144112525e-05,"n_mol":6.590740010285551e-07},{"t_ox_nm":190.0,"t_si_nm":83.893429288169,"m_SiO2_g":4.18e-05,"m_Si_g":1.953877968121456e-05,"m_O_g":2.2261220318785438e-05,"gain_g":2.2261220318785438e-05,"n_mol":6.956892233079191e-07},{"t_ox_nm":200.0,"t_si_nm":88.30887293491475,"m_SiO2_g":4.4e-05,"m_Si_g":2.056713650654164e-05,"m_O_g":2.343286349345836e-05,"gain_g":2.343286349345836e-05,"n_mol":7.323044455872832e-07},{"t_ox_nm":210.0,"t_si_nm":92.72431658166047,"m_SiO2_g":4.62e-05,"m_Si_g":2.1595493331868723e-05,"m_O_g":2.4604506668131275e-05,"gain_g":2.4604506668131275e-05,"n_mol":7.689196678666473e-07},{"t_ox_nm":220.0,"t_si_nm":97.13976022840622,"m_SiO2_g":4.8400000000000004e-05,"m_Si_g":2.262385015719581e-05,"m_O_g":2.5776149842804196e-05,"gain_g":2.5776149842804196e-05,"n_mol":8.055348901460116e-07},{"t_ox_nm":230.0,"t_si_nm":101.55520387515195,"m_SiO2_g":5.0600000000000003e-05,"m_Si_g":2.365220698252289e-05,"m_O_g":2.6947793017477113e-05,"gain_g":2.6947793017477113e-05,"n_mol":8.421501124253758e-07},{"t_ox_nm":240.0,"t_si_nm":105.97064752189769,"m_SiO2_g":5.28e-05,"m_Si_g":2.468056380784997e-05,"m_O_g":2.8119436192150033e-05,"gain_g":2.8119436192150033e-05,"n_mol":8.787653347047399e-07},{"t_ox_nm":250.0,"t_si_nm":110.38609116864342,"m_SiO2_g":5.5e-05,"m_Si_g":2.5708920633177056e-05,"m_O_g":2.9291079366822946e-05,"gain_g":2.9291079366822946e-05,"n_mol":9.153805569841041e-07},{"t_ox_nm":260.0,"t_si_nm":114.80153481538916,"m_SiO2_g":5.72e-05,"m_Si_g":2.6737277458504135e-05,"m_O_g":3.0462722541495867e-05,"gain_g":3.0462722541495867e-05,"n_mol":9.519957792634682e-07},{"t_ox_nm":270.0,"t_si_nm":119.2169784621349,"m_SiO2_g":5.94e-05,"m_Si_g":2.776563428383122e-05,"m_O_g":3.163436571616878e-05,"gain_g":3.163436571616878e-05,"n_mol":9.886110015428324e-07},{"t_ox_nm":280.0,"t_si_nm":123.63242210888063,"m_SiO2_g":6.16e-05,"m_Si_g":2.8793991109158303e-05,"m_O_g":3.28060088908417e-05,"gain_g":3.28060088908417e-05,"n_mol":1.0252262238221966e-06},{"t_ox_nm":290.0,"t_si_nm":128.04786575562636,"m_SiO2_g":6.38e-05,"m_Si_g":2.982234793448538e-05,"m_O_g":3.3977652065514624e-05,"gain_g":3.3977652065514624e-05,"n_mol":1.0618414461015607e-06},{"t_ox_nm":300.0,"t_si_nm":132.46330940237212,"m_SiO2_g":6.6e-05,"m_Si_g":3.085070475981247e-05,"m_O_g":3.5149295240187534e-05,"gain_g":3.5149295240187534e-05,"n_mol":1.098456668380925e-06},{"t_ox_nm":310.0,"t_si_nm":136.87875304911785,"m_SiO2_g":6.82e-05,"m_Si_g":3.1879061585139546e-05,"m_O_g":3.632093841486046e-05,"gain_g":3.632093841486046e-05,"n_mol":1.1350718906602891e-06},{"t_ox_nm":320.0,"t_si_nm":141.29419669586358,"m_SiO2_g":7.04e-05,"m_Si_g":3.290741841046663e-05,"m_O_g":3.7492581589533375e-05,"gain_g":3.7492581589533375e-05,"n_mol":1.1716871129396532e-06},{"t_ox_nm":330.0,"t_si_nm":145.70964034260933,"m_SiO2_g":7.26e-05,"m_Si_g":3.393577523579371e-05,"m_O_g":3.866422476420629e-05,"gain_g":3.866422476420629e-05,"n_mol":1.2083023352190173e-06},{"t_ox_nm":340.0,"t_si_nm":150.12508398935506,"m_SiO2_g":7.48e-05,"m_Si_g":3.496413206112079e-05,"m_O_g":3.983586793887921e-05,"gain_g":3.983586793887921e-05,"n_mol":1.2449175574983815e-06},{"t_ox_nm":350.0,"t_si_nm":154.5405276361008,"m_SiO2_g":7.7e-05,"m_Si_g":3.5992488886447876e-05,"m_O_g":4.1007511113552126e-05,"gain_g":4.1007511113552126e-05,"n_mol":1.2815327797777456e-06},{"t_ox_nm":360.0,"t_si_nm":158.95597128284652,"m_SiO2_g":7.920000000000001e-05,"m_Si_g":3.7020845711774965e-05,"m_O_g":4.217915428822505e-05,"gain_g":4.217915428822505e-05,"n_mol":1.3181480020571101e-06},{"t_ox_nm":370.0,"t_si_nm":163.37141492959228,"m_SiO2_g":8.14e-05,"m_Si_g":3.804920253710204e-05,"m_O_g":4.335079746289796e-05,"gain_g":4.335079746289796e-05,"n_mol":1.354763224336474e-06},{"t_ox_nm":380.0,"t_si_nm":167.786858576338,"m_SiO2_g":8.36e-05,"m_Si_g":3.907755936242912e-05,"m_O_g":4.4522440637570876e-05,"gain_g":4.4522440637570876e-05,"n_mol":1.3913784466158381e-06},{"t_ox_nm":390.0,"t_si_nm":172.20230222308373,"m_SiO2_g":8.580000000000001e-05,"m_Si_g":4.010591618775621e-05,"m_O_g":4.56940838122438e-05,"gain_g":4.56940838122438e-05,"n_mol":1.4279936688952025e-06},{"t_ox_nm":400.0,"t_si_nm":176.6177458698295,"m_SiO2_g":8.8e-05,"m_Si_g":4.113427301308328e-05,"m_O_g":4.686572698691672e-05,"gain_g":4.686572698691672e-05,"n_mol":1.4646088911745664e-06},{"t_ox_nm":410.0,"t_si_nm":181.03318951657522,"m_SiO2_g":9.020000000000001e-05,"m_Si_g":4.216262983841037e-05,"m_O_g":4.803737016158964e-05,"gain_g":4.803737016158964e-05,"n_mol":1.5012241134539307e-06},{"t_ox_nm":420.0,"t_si_nm":185.44863316332095,"m_SiO2_g":9.24e-05,"m_Si_g":4.3190986663737445e-05,"m_O_g":4.920901333626255e-05,"gain_g":4.920901333626255e-05,"n_mol":1.5378393357332946e-06},{"t_ox_nm":430.0,"t_si_nm":189.86407681006668,"m_SiO2_g":9.46e-05,"m_Si_g":4.421934348906453e-05,"m_O_g":5.038065651093547e-05,"gain_g":5.038065651093547e-05,"n_mol":1.5744545580126587e-06},{"t_ox_nm":440.0,"t_si_nm":194.27952045681243,"m_SiO2_g":9.680000000000001e-05,"m_Si_g":4.524770031439162e-05,"m_O_g":5.155229968560839e-05,"gain_g":5.155229968560839e-05,"n_mol":1.6110697802920233e-06},{"t_ox_nm":450.0,"t_si_nm":198.69496410355816,"m_SiO2_g":9.9e-05,"m_Si_g":4.627605713971869e-05,"m_O_g":5.27239428602813e-05,"gain_g":5.27239428602813e-05,"n_mol":1.6476850025713872e-06},{"t_ox_nm":460.0,"t_si_nm":203.1104077503039,"m_SiO2_g":0.00010120000000000001,"m_Si_g":4.730441396504578e-05,"m_O_g":5.3895586034954225e-05,"gain_g":5.3895586034954225e-05,"n_mol":1.6843002248507515e-06},{"t_ox_nm":470.0,"t_si_nm":207.52585139704965,"m_SiO2_g":0.0001034,"m_Si_g":4.8332770790372864e-05,"m_O_g":5.506722920962714e-05,"gain_g":5.506722920962714e-05,"n_mol":1.7209154471301156e-06},{"t_ox_nm":480.0,"t_si_nm":211.94129504379538,"m_SiO2_g":0.0001056,"m_Si_g":4.936112761569994e-05,"m_O_g":5.6238872384300066e-05,"gain_g":5.6238872384300066e-05,"n_mol":1.7575306694094797e-06},{"t_ox_nm":490.0,"t_si_nm":216.3567386905411,"m_SiO2_g":0.0001078,"m_Si_g":5.038948444102702e-05,"m_O_g":5.741051555897298e-05,"gain_g":5.741051555897298e-05,"n_mol":1.7941458916888439e-06},{"t_ox_nm":500.0,"t_si_nm":220.77218233728684,"m_SiO2_g":0.00011,"m_Si_g":5.141784126635411e-05,"m_O_g":5.858215873364589e-05,"gain_g":5.858215873364589e-05,"n_mol":1.8307611139682082e-06}]}};
+const EXIT_URL = "https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=3";
+const $=id=>document.getElementById(id);
+const fmt=(x,d=0)=>x==null||!isFinite(x)?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+const KEY="lab3-2027-v1"; let ST={};
+try{ST=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){ST={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}};
+const L=R.lab;
+/* same formula as stoich_lab.oxide_layer: t_Si = ratio x t_ox */
+function drawT(){const t=+$("tox").value;$("toxv").textContent=t+" nm";$("ktsi").textContent=fmt(L.ratio*t,1);$("kr").textContent=fmt(L.ratio,3);ST.tox=t;save()}
+$("tox").oninput=drawT;
+
+const ORDER=["1a","1b","2a","3a","4a","4b","5a"];
+function refresh(){let open=true;ORDER.forEach(id=>{const el=document.querySelector(`[data-step="${id}"]`),done=!!ST["done_"+id];el.classList.toggle("done",done);el.classList.toggle("locked",!done&&!open);if(!done&&open)open=false});
+ document.querySelector('[data-step="fin"]').classList.toggle("locked",!ORDER.every(id=>ST["done_"+id]));
+ const n=ORDER.filter(id=>ST["done_"+id]).length;$("pbar").style.width=(100*n/ORDER.length)+"%";$("ptext").textContent=`${n} of ${ORDER.length} steps done`;summary();save()}
+function need(id,msg){const st=document.querySelector(`[data-step="${id}"]`);let f=st.querySelector(".need");if(!f){f=document.createElement("div");f.className="fb bad need";st.appendChild(f)}f.textContent=msg;return false}
+function markDone(id){const nd=document.querySelector(`[data-step="${id}"] .need`);if(nd)nd.textContent="";ST["done_"+id]=true;refresh()}
+const radio=n=>{const r=document.querySelector(`input[name="${n}"]:checked`);return r?r.value:""};
+/* accepts 1.2e22, 1.2E22, 1.2×10^22, 1.2x10^22, 1.2*10^22 */
+const num=s=>{let t=String(s).trim().replace(/,/g,"").replace(/−/g,"-").replace(/\s/g,"");const m=t.match(/^([-+]?[\d.]+)(?:[x×*]10\^?([-+]?\d+))$/i);if(m)return parseFloat(m[1])*10**parseInt(m[2],10);return parseFloat(t)};
+document.querySelectorAll("[data-save]").forEach(b=>b.onclick=()=>{const id=b.dataset.save;
+ if(id==="1a"){if(!radio("p1"))return need(id,"Choose a prediction first.");ST.p1=radio("p1")}
+ if(id==="5a"){if($("e5").value.trim().length<60)return need(id,"Write at least three sentences.");ST.e5=$("e5").value}
+ markDone(id)});
+function verdict(input,fb,ok,expected){ST["tries_"+input]=(ST["tries_"+input]||0)+(ok?0:1);const f=$(fb);f.className="fb "+(ok?"ok":"bad");
+ f.textContent=ok?"Correct":(ST["tries_"+input]>=2?`Not yet. Expected: ${expected}.`:"Not yet. Look again.");return ok||ST["tries_"+input]>=2}
+function checkNum(input,fb,target,rel,abs,shown){const v=num($(input).value);ST[input]=$(input).value;return verdict(input,fb,isFinite(v)&&Math.abs(v-target)<=Math.max(abs,rel*Math.abs(target)),shown)}
+function checkSel(input,fb,target,label){ST[input]=$(input).value;return verdict(input,fb,$(input).value===target,label||target)}
+document.querySelectorAll("[data-check]").forEach(b=>b.onclick=()=>{const id=b.dataset.check;let ok=false;const o=L.ox562;
+ if(id==="1b")ok=[checkNum("c1a","f1a",L.M_SiO2,0.002,0,fmt(L.M_SiO2,1)),checkNum("c1b","f1b",o.n_Si,0.01,0,fmt(o.n_Si,4))].every(Boolean);
+ if(id==="2a")ok=[checkNum("c2a","f2a",o.m_SiO2,0.01,0,fmt(o.m_SiO2,3)),checkNum("c2b","f2b",o.m_O2,0.01,0,fmt(o.m_O2,3)),checkSel("c2c","f2c","b","O atoms from the gas joined the solid")].every(Boolean);
+ if(id==="3a")ok=checkNum("c3a","f3a",L.atoms_0p02,0.01,0,"1.204e22");
+ if(id==="4a")ok=checkNum("c4a","f4a",L.si_density.rho,0.005,0,fmt(L.si_density.rho,3));
+ if(id==="4b")ok=[checkNum("c4b","f4b",L.layer100.t_si_nm,0.015,0,fmt(L.layer100.t_si_nm,1)),checkSel("c4c","f4c","b","no: stoichiometry gives amounts, not times")].every(Boolean);
+ if(ok)markDone(id);else save()});
+
+function summary(){const sel=(id,map)=>map[ST[id]]||ST[id]||"?";
+ $("sum").textContent=[`Lab 3 answers`,
+ `1. Predicted wafer mass: ${ST.p1||"?"}. M(SiO2) = ${ST.c1a||"?"} g/mol; n(Si) = ${ST.c1b||"?"} mol`,
+ `2. m(SiO2) = ${ST.c2a||"?"} g; m(O2) = ${ST.c2b||"?"} g; why heavier: ${sel("c2c",{b:"O from the gas joined the solid"})}`,
+ `3. Si atoms in 0.0200 mol: ${ST.c3a||"?"}`,
+ `4. rho(Si) from the unit cell = ${ST.c4a||"?"} g/cm3; Si consumed by 100 nm oxide = ${ST.c4b||"?"} nm; time? ${sel("c4c",{b:"no, needs kinetics"})}`,`5. ${ST.e5||"?"}`].join("\n")}
+$("copy").onclick=async()=>{try{await navigator.clipboard.writeText($("sum").textContent);$("copied").textContent="Copied. Paste it into the Exit Ticket box."}catch(e){$("copied").textContent="Copy did not work here. Select the text above and copy it."}};
+$("exitlink").href=EXIT_URL;
+$("reset").onclick=()=>{if(confirm("Clear all answers saved on this device?")){ST={};save();location.reload()}};
+if(ST.p1){const r=document.querySelector(`input[name="p1"][value="${ST.p1}"]`);if(r)r.checked=true}
+["e5","c1a","c1b","c2a","c2b","c2c","c3a","c4a","c4b","c4c"].forEach(id=>{if(ST[id]!=null)$(id).value=ST[id]});
+if(ST.tox!=null)$("tox").value=ST.tox;
+drawT();refresh();
+
+/* hand-in: an answer file for myCourseVille (no name or ID in it) */
+async function handin(){summary();const lab=parseInt((KEY.match(/lab(\d+)/)||[0,0])[1],10);
+ const core={course:"2182209",edition:"2027",lab,lab_key:KEY,saved:new Date().toISOString(),
+  steps_done:ORDER.filter(id=>ST["done_"+id]).length,steps_total:ORDER.length,
+  steps:Object.fromEntries(ORDER.map(id=>[id,!!ST["done_"+id]])),
+  expected_shown:Object.keys(ST).filter(k=>k.startsWith("tries_")&&ST[k]>=2).map(k=>k.slice(6)),
+  summary:$("sum").textContent,state:ST};
+ const data=JSON.stringify(core);let check="";
+ try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("2182209-lab-file-v1|"+data));check=[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){}
+ const file={lab,steps_done:core.steps_done,steps_total:core.steps_total,expected_shown:core.expected_shown.length,saved:core.saved,data,check};
+ const name=`2182209-lab${String(lab).padStart(2,"0")}-answers.json`,a=document.createElement("a");
+ a.href=URL.createObjectURL(new Blob([JSON.stringify(file,null,1)],{type:"application/json"}));a.download=name;document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+ $("dlNote").textContent=`Saved ${name}: ${core.steps_done} of ${core.steps_total} steps done. Upload it to Lab ${lab} in myCourseVille.`}
+$("dlJson").onclick=()=>{handin()};
+</script>
+</body>
+</html>

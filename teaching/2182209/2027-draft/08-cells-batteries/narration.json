@@ -1,0 +1,600 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 649.6,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 32.688,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.537,
+     "en": "Welcome to Class 8: cells and batteries."
+    },
+    {
+     "s": 3.537,
+     "e": 16.053,
+     "en": "In Class 7, Zn gave its electrons to Cu²⁺ in one beaker. Today we run the same reaction with the two halves pulled apart, so the electrons pass through a wire and do work on the way."
+    },
+    {
+     "s": 16.053,
+     "e": 23.632,
+     "en": "We will follow the electrons and the ions in three cells: the Daniell cell, the lithium-ion cell, and the zinc-air cell."
+    },
+    {
+     "s": 23.632,
+     "e": 32.618,
+     "en": "If you are studying on your own, the narration takes about eleven minutes. Stop at the activity and at each check, then do Lab 8."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 29.856,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.132,
+     "en": "A five minute activity reviews Class 7."
+    },
+    {
+     "s": 6.132,
+     "e": 15.513,
+     "en": "Part one is the Daniell cell: anode and cathode, the salt bridge, cell notation, and the charge in each half-cell. It ends with Check 1."
+    },
+    {
+     "s": 15.513,
+     "e": 25.118,
+     "en": "Part two is about batteries: lithium-ion in discharge and in charge, the zinc-air cell, and the two kinds of cell. It ends with Check 2."
+    },
+    {
+     "s": 25.118,
+     "e": 29.789,
+     "en": "Then you do Lab 8 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 28.488,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.671,
+     "en": "Activity 1. Answer four questions without notes, then compare with a partner."
+    },
+    {
+     "s": 6.671,
+     "e": 19.514,
+     "en": "Name the species oxidized when zinc meets copper ions. Count the electrons in the aluminum reaction. Give the oxidation number of oxygen in oxygen gas and in hydroxide."
+    },
+    {
+     "s": 19.514,
+     "e": 23.618,
+     "en": "And decide whether copper metal reacts with zinc ions."
+    },
+    {
+     "s": 23.618,
+     "e": 28.421,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 30.624,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.011,
+     "en": "By the end of today you can name the anode and cathode of a cell from the reaction at each electrode."
+    },
+    {
+     "s": 6.011,
+     "e": 11.526,
+     "en": "You can trace the electrons through the outer circuit, and the ions through the electrolyte."
+    },
+    {
+     "s": 11.526,
+     "e": 17.184,
+     "en": "You can explain why a cell needs a salt bridge or an electrolyte, using charge balance."
+    },
+    {
+     "s": 17.184,
+     "e": 23.671,
+     "en": "You can describe a lithium-ion cell in discharge and in charge, with the oxidation number of cobalt."
+    },
+    {
+     "s": 23.671,
+     "e": 30.566,
+     "en": "And you can balance the zinc-air reaction from its half-reactions, and tell galvanic from electrolytic cells."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 21.624,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.589,
+     "en": "Today builds on Class 7 and Class 4."
+    },
+    {
+     "s": 3.589,
+     "e": 10.724,
+     "en": "The zinc and copper reaction from one beaker now runs in two half-cells, with one half-reaction at each electrode."
+    },
+    {
+     "s": 10.724,
+     "e": 15.421,
+     "en": "Oxidation numbers will show what changes in a lithium-ion cell."
+    },
+    {
+     "s": 15.421,
+     "e": 21.553,
+     "en": "And the Class 4 rule that every solution is neutral explains why ions must move inside a cell."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 36.24,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 10.145,
+     "en": "Put a zinc electrode in zinc sulfate, and a copper electrode in copper sulfate. Join them with a wire, and connect the two solutions with a salt bridge."
+    },
+    {
+     "s": 10.145,
+     "e": 16.105,
+     "en": "Zn is oxidized in the left half-cell, and Cu²⁺ is reduced in the right half-cell."
+    },
+    {
+     "s": 16.105,
+     "e": 22.632,
+     "en": "The electrons can only get from zinc to the copper ions through the wire, so they can light a bulb on the way."
+    },
+    {
+     "s": 22.632,
+     "e": 29.855,
+     "en": "Ions in the salt bridge close the circuit. Press Without salt bridge: the current stops at once."
+    },
+    {
+     "s": 29.855,
+     "e": 36.171,
+     "en": "This cell gives about one point one volts. Class 9 calculates that value."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 39.0,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.447,
+     "en": "Name each electrode by its reaction. The anode is where oxidation happens. The cathode is where reduction happens."
+    },
+    {
+     "s": 9.447,
+     "e": 14.053,
+     "en": "In the Daniell cell, zinc is the anode and copper is the cathode."
+    },
+    {
+     "s": 14.053,
+     "e": 23.724,
+     "en": "In cell notation, the anode goes on the left and the cathode on the right. A single line marks a phase boundary, and a double line the salt bridge."
+    },
+    {
+     "s": 23.724,
+     "e": 33.933,
+     "en": "In the outer circuit, electrons flow from the anode to the cathode. In the electrolyte, cations move toward the cathode and anions toward the anode."
+    },
+    {
+     "s": 33.933,
+     "e": 38.934,
+     "en": "Electrons never cross the electrolyte, and ions never travel in the wire."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 46.464,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.697,
+     "en": "Why must ions move? Suppose zero point zero two moles of electrons pass through the wire, the amount that deposited copper in Class 7."
+    },
+    {
+     "s": 9.697,
+     "e": 21.408,
+     "en": "The Zn side gains 0.0100 mol of Zn²⁺, so it gains 0.0200 mol of positive charge. The Cu side loses the same amount of positive charge."
+    },
+    {
+     "s": 21.408,
+     "e": 31.158,
+     "en": "So zero point zero two moles of charge must cross the salt bridge: nitrate ions into the zinc side, potassium ions into the copper side, or a mix of both."
+    },
+    {
+     "s": 31.158,
+     "e": 41.55,
+     "en": "Without that ion flow, the charge on each side would stop the electrons. A cell needs two paths: a wire for electrons, and an electrolyte for ions."
+    },
+    {
+     "s": 41.55,
+     "e": 46.395,
+     "en": "In a battery, a porous separator soaked in electrolyte does this job."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 22.296,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 18.158,
+     "en": "Name the anode and its reaction. Give the direction of the electrons in the wire, and of nitrate ions in the salt bridge. And explain why the current stops without the bridge."
+    },
+    {
+     "s": 18.158,
+     "e": 22.237,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 46.536,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 11.5,
+     "en": "In part two, we look at batteries. A lithium-ion cell has a graphite electrode and a lithium cobalt oxide electrode, with lithium ions in an organic electrolyte."
+    },
+    {
+     "s": 11.5,
+     "e": 21.658,
+     "en": "In discharge, when the cell powers a phone, lithium leaves the graphite as a lithium ion, and its electron leaves through the wire. Graphite is the anode."
+    },
+    {
+     "s": 21.658,
+     "e": 30.974,
+     "en": "The lithium ion crosses the electrolyte and enters the oxide, where it meets the electron coming through the wire. The oxide is the cathode."
+    },
+    {
+     "s": 30.974,
+     "e": 37.921,
+     "en": "Now press Charge. A power supply pushes the electrons the other way, so both reactions reverse."
+    },
+    {
+     "s": 37.921,
+     "e": 46.461,
+     "en": "Oxidation now happens at the oxide electrode, so the oxide is the anode, and lithium ions move back into the graphite."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 43.872,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.566,
+     "en": "What changes in the oxide? Use rule four from Class 7."
+    },
+    {
+     "s": 5.566,
+     "e": 19.75,
+     "en": "In CoO₂, x + 2(−2) = 0, so Co is +4. In LiCoO₂, (+1) + x + 2(−2) = 0, so Co is +3."
+    },
+    {
+     "s": 19.75,
+     "e": 30.731,
+     "en": "In discharge, each lithium ion that enters the oxide comes with one electron, and one cobalt goes from plus four to plus three. That is reduction."
+    },
+    {
+     "s": 30.731,
+     "e": 36.408,
+     "en": "In charge, cobalt goes back from plus three to plus four. That is oxidation."
+    },
+    {
+     "s": 36.408,
+     "e": 43.803,
+     "en": "Lithium itself stays plus one throughout. The electron moves between the graphite and the cobalt."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 43.152,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.747,
+     "en": "A zinc-air cell takes its oxidant from the air."
+    },
+    {
+     "s": 3.747,
+     "e": 15.882,
+     "en": "At the anode, zinc reacts with hydroxide to give zinc oxide, water, and two electrons. At the cathode, oxygen and water take four electrons and give four hydroxide ions."
+    },
+    {
+     "s": 15.882,
+     "e": 28.579,
+     "en": "To cancel the electrons, use two zinc atoms for each oxygen molecule. Hydroxide and water cancel too, and the overall reaction is two zinc plus oxygen giving two zinc oxide."
+    },
+    {
+     "s": 28.579,
+     "e": 38.197,
+     "en": "1.00 g of Zn uses 0.245 g of O₂ and forms 1.245 g of ZnO. The mass closes."
+    },
+    {
+     "s": 38.197,
+     "e": 43.079,
+     "en": "Because the oxygen comes from the air, the cell does not have to carry it."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 35.28,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.984,
+     "en": "Here is a common mistake: the anode is always the negative electrode."
+    },
+    {
+     "s": 4.984,
+     "e": 18.556,
+     "en": "The anode is where oxidation happens. In discharge, that is the negative electrode. But when a lithium-ion cell charges, oxidation moves to the oxide electrode, the positive one."
+    },
+    {
+     "s": 18.556,
+     "e": 21.513,
+     "en": "So the anode is positive during charge."
+    },
+    {
+     "s": 21.513,
+     "e": 30.842,
+     "en": "Name the electrode by its reaction, not by its sign. Battery makers often call the graphite electrode the anode in both directions."
+    },
+    {
+     "s": 30.842,
+     "e": 35.224,
+     "en": "That is a label for the part, not the chemistry during charge."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 44.4,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.603,
+     "en": "There are two kinds of cell."
+    },
+    {
+     "s": 2.603,
+     "e": 14.816,
+     "en": "In a galvanic cell, the reaction goes on its own and the cell does work. Its anode is negative. The Daniell cell, and a battery in discharge, are galvanic cells."
+    },
+    {
+     "s": 14.816,
+     "e": 25.829,
+     "en": "In an electrolytic cell, a power supply drives the reaction. Its anode is positive. A battery being charged is an electrolytic cell."
+    },
+    {
+     "s": 25.829,
+     "e": 40.007,
+     "en": "So is Cu electroplating in the fab. The wafer is the cathode, joined to the negative terminal of the supply, and Cu²⁺ is reduced on it. A Cu anode dissolves and keeps the bath topped up."
+    },
+    {
+     "s": 40.007,
+     "e": 44.329,
+     "en": "Class 10 calculates how much Cu a given current deposits."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 23.928,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 19.776,
+     "en": "Trace the lithium ions in discharge. Give the oxidation numbers of cobalt. Combine the zinc-air half-reactions. And say whether the anode is positive or negative during charge."
+    },
+    {
+     "s": 19.776,
+     "e": 23.855,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 24.6,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.224,
+     "en": "Today gave the paths. The next classes give the numbers."
+    },
+    {
+     "s": 5.224,
+     "e": 15.947,
+     "en": "Class 9 finds the voltage of a cell and how it changes with concentration. Class 10 finds how much material a given charge converts, and battery capacity."
+    },
+    {
+     "s": 15.947,
+     "e": 24.526,
+     "en": "Class 11 stores charge at a surface without a reaction. And Class 12 explains why a cell gives less voltage at high current."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 25.992,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.803,
+     "en": "Now it is time for Lab 8. Scan the code or open the lab page."
+    },
+    {
+     "s": 5.803,
+     "e": 12.776,
+     "en": "You will predict the electron flow in the Daniell cell, name its electrodes, and follow the ions in the salt bridge."
+    },
+    {
+     "s": 12.776,
+     "e": 19.987,
+     "en": "Then you trace a lithium-ion cell, switch it from discharge to charge, and balance the zinc-air cell and its masses."
+    },
+    {
+     "s": 19.987,
+     "e": 25.934,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 28.488,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 8.658,
+     "en": "The anode is where oxidation happens and the cathode is where reduction happens, in every cell."
+    },
+    {
+     "s": 8.658,
+     "e": 16.803,
+     "en": "Electrons go through the wire, and ions go through the electrolyte. The ions must move to keep each side neutral."
+    },
+    {
+     "s": 16.803,
+     "e": 21.671,
+     "en": "Charging reverses both reactions, and swaps the anode and the cathode."
+    },
+    {
+     "s": 21.671,
+     "e": 28.421,
+     "en": "Galvanic cells do work. Electrolytic cells, such as copper plating, take it."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 21.552,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.445,
+     "en": "Before the next class, finish Lab 8 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.445,
+     "e": 14.289,
+     "en": "Read OpenStax Chemistry two e, section seventeen point two on galvanic cells, and section seventeen point five on batteries and fuel cells."
+    },
+    {
+     "s": 14.289,
+     "e": 21.487,
+     "en": "Class 9 is about cell potentials and the Nernst equation, and where the one point one volts of the Daniell cell comes from."
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "file": "audio/slide-20.mp3",
+   "duration": 24.528,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.921,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 8."
+    },
+    {
+     "s": 6.921,
+     "e": 15.711,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.711,
+     "e": 24.474,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 9."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,731 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 843.8,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 30.216,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.418,
+     "en": "Welcome to Class 2: bonding, structure and properties."
+    },
+    {
+     "s": 4.418,
+     "e": 14.618,
+     "en": "In Class 1 we counted the particles in atoms and ions. Today we ask how atoms hold together, and why that decides whether a material carries current."
+    },
+    {
+     "s": 14.618,
+     "e": 21.053,
+     "en": "By the end, you will be able to choose a material for each job in a chip and support the choice with a number."
+    },
+    {
+     "s": 21.053,
+     "e": 30.158,
+     "en": "If you are studying on your own, the narration takes about fifteen minutes. Stop at the activity and at each check, then do Lab 2."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 31.872,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.053,
+     "en": "A five minute activity reviews Class 1."
+    },
+    {
+     "s": 6.053,
+     "e": 15.908,
+     "en": "Part one is about bonding: how different materials resist current, the three bonding models, and electronegativity. It ends with Check 1."
+    },
+    {
+     "s": 15.908,
+     "e": 27.105,
+     "en": "Part two is about structure and choice: crystalline and amorphous solids, unit cells, the resistance of a copper wire, and choosing materials. It ends with Check 2."
+    },
+    {
+     "s": 27.105,
+     "e": 31.803,
+     "en": "Then you do Lab 2 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 27.84,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.487,
+     "en": "Activity 1. Answer four questions about Class 1 without notes, then compare with a partner."
+    },
+    {
+     "s": 7.487,
+     "e": 18.655,
+     "en": "Count the electrons in the copper two plus ion. Explain the difference between an element and a compound. Find the charge of copper in copper one oxide."
+    },
+    {
+     "s": 18.655,
+     "e": 22.961,
+     "en": "And say which particles carry the current in a copper wire."
+    },
+    {
+     "s": 22.961,
+     "e": 27.763,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 31.584,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.353,
+     "en": "By the end of today you can do six things."
+    },
+    {
+     "s": 3.353,
+     "e": 9.066,
+     "en": "Describe metallic, covalent and ionic bonding, and say which electrons can move in each."
+    },
+    {
+     "s": 9.066,
+     "e": 13.395,
+     "en": "Use electronegativity differences to classify a bond."
+    },
+    {
+     "s": 13.395,
+     "e": 17.803,
+     "en": "Explain why a bonding label alone cannot predict conduction."
+    },
+    {
+     "s": 17.803,
+     "e": 23.368,
+     "en": "Tell crystalline from amorphous structures, and count the atoms in a cubic unit cell."
+    },
+    {
+     "s": 23.368,
+     "e": 31.513,
+     "en": "Calculate the resistance of a wire, and choose silicon, copper and silicon dioxide for their jobs, with a number for each choice."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 38.28,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.195,
+     "en": "Today builds directly on Class 1."
+    },
+    {
+     "s": 3.195,
+     "e": 13.342,
+     "en": "We learned that atoms gain or lose electrons to form ions. Today we see that in an ionic solid the ions are held in place, so they cannot carry current."
+    },
+    {
+     "s": 13.342,
+     "e": 22.987,
+     "en": "We learned that silicon, copper and silicon dioxide do three jobs in a chip. Today we see that their bonding and structure explain those jobs."
+    },
+    {
+     "s": 22.987,
+     "e": 38.211,
+     "en": "A few new symbols. Rho is the electrical resistivity, in ohm meters. R is resistance in ohms, L is length, and A is the cross-sectional area. Delta chi is the electronegativity difference."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 46.752,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.261,
+     "en": "Start with the design question: why does a chip need three different materials?"
+    },
+    {
+     "s": 5.261,
+     "e": 16.434,
+     "en": "Resistivity measures how strongly a material resists current, independent of its shape. The chart uses a log scale, so each grid line is a factor of one thousand."
+    },
+    {
+     "s": 16.434,
+     "e": 28.645,
+     "en": "Copper, aluminum and tungsten are near ten to the minus eight ohm meters. Pure silicon is near two thousand. Amorphous silicon dioxide is near ten to the sixteen."
+    },
+    {
+     "s": 28.645,
+     "e": 39.421,
+     "en": "So silicon dioxide resists current about ten to the power twenty three point eight times more than copper. That is a range of almost twenty four orders of magnitude."
+    },
+    {
+     "s": 39.421,
+     "e": 46.684,
+     "en": "No single material can be the wire, the switch and the insulator. A chip needs all three."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 55.776,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.079,
+     "en": "Why are these materials so different? The answer is where the electrons are."
+    },
+    {
+     "s": 6.079,
+     "e": 17.395,
+     "en": "In metallic bonding, as in copper, each atom gives about one electron to the whole solid. The ion cores sit in a sea of shared electrons, and those electrons can move."
+    },
+    {
+     "s": 17.395,
+     "e": 26.75,
+     "en": "In a covalent network, as in silicon, electrons are shared in pairs between neighboring atoms. Each pair is fixed in its bond."
+    },
+    {
+     "s": 26.75,
+     "e": 37.921,
+     "en": "In ionic bonding, as in sodium chloride, the metal gives electrons to the nonmetal. The ions are held in place by attraction between positive and negative charges."
+    },
+    {
+     "s": 37.921,
+     "e": 50.447,
+     "en": "So metals conduct. Covalent solids usually conduct poorly. Solid ionic compounds do not conduct, but when they melt or dissolve, the ions can move and they do."
+    },
+    {
+     "s": 50.447,
+     "e": 55.697,
+     "en": "These are models. Real bonds lie on a range between them."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 67.608,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 13.882,
+     "en": "Electronegativity, written chi, measures how strongly an atom pulls shared electrons toward itself. Oxygen pulls hard, at three point five. Sodium pulls weakly, at zero point nine."
+    },
+    {
+     "s": 13.882,
+     "e": 23.427,
+     "en": "The difference between two atoms sorts the bond. Below zero point four, the electrons are shared about equally: a nonpolar covalent bond."
+    },
+    {
+     "s": 23.427,
+     "e": 34.355,
+     "en": "From zero point four to one point eight, they are shared unequally: a polar covalent bond. Above one point eight, one atom takes the electrons: an ionic bond."
+    },
+    {
+     "s": 34.355,
+     "e": 45.67,
+     "en": "Try silicon and oxygen. The difference is three point five minus one point eight, which is one point seven. The bond is polar covalent, not ionic."
+    },
+    {
+     "s": 45.67,
+     "e": 50.211,
+     "en": "Silicon dioxide is a covalent network with partial charges."
+    },
+    {
+     "s": 50.211,
+     "e": 60.237,
+     "en": "Sodium and chlorine give two point one: ionic. Copper with copper gives zero, but two metals bond metallically, so this rule does not apply."
+    },
+    {
+     "s": 60.237,
+     "e": 67.539,
+     "en": "This is a guide with exceptions, as your textbook says. Press D to see the same rule in Python."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 51.336,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.037,
+     "en": "Now connect bonding to conduction."
+    },
+    {
+     "s": 3.037,
+     "e": 13.211,
+     "en": "In copper, the shared electrons are not tied to any one atom. When a voltage is applied, they drift together, and that drift is the current in a wire."
+    },
+    {
+     "s": 13.211,
+     "e": 22.895,
+     "en": "In silicon dioxide, every electron is held in a bond or on an atom. Freeing one takes a lot of energy, so almost none can move."
+    },
+    {
+     "s": 22.895,
+     "e": 34.132,
+     "en": "Silicon is in between. A few electrons are freed at room temperature, and doping adds more on purpose. Class 6 explains this with energy bands."
+    },
+    {
+     "s": 34.132,
+     "e": 41.436,
+     "en": "The worked example asks you to choose a material for an interconnect and for the layer between interconnects."
+    },
+    {
+     "s": 41.436,
+     "e": 51.263,
+     "en": "Copper, with a resistivity of one point six eight times ten to the minus eight, is the wire. Silicon dioxide, near ten to the sixteen, is the layer."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 36.408,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.445,
+     "en": "Here is a rule that many students propose: a covalently bonded material can never conduct."
+    },
+    {
+     "s": 6.445,
+     "e": 16.144,
+     "en": "Test it against the evidence. Graphite is covalent within its layers, and it conducts, at about ten to the minus five ohm meters along the layers."
+    },
+    {
+     "s": 16.144,
+     "e": 21.224,
+     "en": "In each layer, one electron per carbon atom is shared across the whole sheet."
+    },
+    {
+     "s": 21.224,
+     "e": 25.355,
+     "en": "Silicon is a covalent network and a semiconductor."
+    },
+    {
+     "s": 25.355,
+     "e": 36.355,
+     "en": "So the bonding label is a start, not the answer. What matters is whether some electrons are free to move. Check a property table before you decide."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 25.056,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 20.908,
+     "en": "Classify the sodium chlorine bond. Explain why solid sodium chloride does not conduct. Say which electrons carry the current in copper. And decide whether the silicon oxygen bond is ionic."
+    },
+    {
+     "s": 20.908,
+     "e": 24.987,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 45.624,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.774,
+     "en": "Part 2 is about structure."
+    },
+    {
+     "s": 2.774,
+     "e": 11.5,
+     "en": "In a crystal, atoms sit in a pattern that repeats in every direction. Copper, silicon wafers and quartz are crystals."
+    },
+    {
+     "s": 11.5,
+     "e": 23.553,
+     "en": "In an amorphous solid, each atom has similar neighbors, but there is no repeat over long distances. The silicon dioxide grown or deposited on a chip is amorphous, like glass."
+    },
+    {
+     "s": 23.553,
+     "e": 30.868,
+     "en": "Move the slider and watch the pattern fade. There is no single point where it stops being a crystal."
+    },
+    {
+     "s": 30.868,
+     "e": 32.889,
+     "en": "Structure changes properties."
+    },
+    {
+     "s": 32.889,
+     "e": 45.553,
+     "en": "Quartz and fused silica are both silicon dioxide, with the same silicon oxygen bonds, but fused silica is about seventeen percent less dense, because its irregular network packs less well."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 41.112,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.458,
+     "en": "A unit cell is the smallest box that, repeated, builds the whole crystal."
+    },
+    {
+     "s": 5.458,
+     "e": 19.803,
+     "en": "Atoms on the corners and faces are shared with neighboring cells. A corner atom is shared by eight cells, so it counts one eighth. A face atom counts one half. An atom inside counts one."
+    },
+    {
+     "s": 19.803,
+     "e": 27.645,
+     "en": "Copper is face centered cubic: eight corners times one eighth, plus six faces times one half, gives four atoms per cell."
+    },
+    {
+     "s": 27.645,
+     "e": 33.697,
+     "en": "Silicon has the diamond structure: the same four, plus four atoms inside, gives eight."
+    },
+    {
+     "s": 33.697,
+     "e": 41.039,
+     "en": "In Class 3, these counts, with the atomic mass from Class 1, link the mass of a wafer to its number of atoms."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 54.576,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.961,
+     "en": "How much does a chip wire resist? Resistance depends on the material and the shape: R equals rho times L divided by A."
+    },
+    {
+     "s": 8.961,
+     "e": 15.279,
+     "en": "Take a copper wire one millimeter long, one hundred nanometers wide and two hundred nanometers thick."
+    },
+    {
+     "s": 15.279,
+     "e": 22.092,
+     "en": "The area is two times ten to the minus fourteen square meters, and the resistance is eight hundred forty ohms."
+    },
+    {
+     "s": 22.092,
+     "e": 34.224,
+     "en": "Switch to aluminum. The same wire resists one thousand three hundred twenty five ohms, about one point six times more. Tungsten gives two thousand eight hundred ohms."
+    },
+    {
+     "s": 34.224,
+     "e": 39.974,
+     "en": "Now halve the width. The area halves, so the resistance doubles."
+    },
+    {
+     "s": 39.974,
+     "e": 45.09,
+     "en": "This is why chip wiring moved from aluminum to copper from the late nineteen nineties."
+    },
+    {
+     "s": 45.09,
+     "e": 54.5,
+     "en": "Tungsten is still used for the short contacts that touch the transistors, because it fills narrow holes well, and because copper must be kept away from silicon."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 39.336,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.395,
+     "en": "Now the insulator. How little current crosses one hundred nanometers of silicon dioxide?"
+    },
+    {
+     "s": 7.395,
+     "e": 15.528,
+     "en": "Under a pad one micrometer by one micrometer, the resistance is rho times thickness over area, about ten to the twenty one ohms."
+    },
+    {
+     "s": 15.528,
+     "e": 20.697,
+     "en": "With one volt across it, the current is about ten to the minus twenty one amperes."
+    },
+    {
+     "s": 20.697,
+     "e": 29.618,
+     "en": "That is roughly one electron every three minutes. Between two wires, silicon dioxide stops the current almost completely."
+    },
+    {
+     "s": 29.618,
+     "e": 39.276,
+     "en": "Very thin oxides, only a few nanometers, behave differently, because electrons can tunnel through them. That belongs to later courses."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 40.104,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.526,
+     "en": "Put it together. Each chip material is chosen for a number."
+    },
+    {
+     "s": 5.526,
+     "e": 11.289,
+     "en": "Copper for the wires and vias, because its resistivity is the lowest of the three metals."
+    },
+    {
+     "s": 11.289,
+     "e": 19.092,
+     "en": "Tungsten for the contacts, even though it resists more, because it fills narrow contact holes and keeps copper away from silicon."
+    },
+    {
+     "s": 19.092,
+     "e": 25.474,
+     "en": "Silicon for the transistors, because its resistivity sits in between and can be tuned by doping."
+    },
+    {
+     "s": 25.474,
+     "e": 30.711,
+     "en": "And silicon dioxide for insulation, near ten to the sixteen ohm meters."
+    },
+    {
+     "s": 30.711,
+     "e": 40.039,
+     "en": "A complete choice also weighs process steps, cost and reliability. The second half of the course returns to copper wiring in detail."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 25.608,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 16.265,
+     "en": "Compare quartz and fused silica. Count the atoms in a copper unit cell. Find the resistance of the copper wire when it is made half as wide."
+    },
+    {
+     "s": 16.265,
+     "e": 21.474,
+     "en": "And give one reason, with a number, to use copper rather than aluminum."
+    },
+    {
+     "s": 21.474,
+     "e": 25.553,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 28.056,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.339,
+     "en": "Bonding and structure come back all term."
+    },
+    {
+     "s": 3.339,
+     "e": 9.803,
+     "en": "Class 3 uses atoms per unit cell and the atomic mass to link a wafer's mass to its number of atoms."
+    },
+    {
+     "s": 9.803,
+     "e": 15.25,
+     "en": "Class 4 explains why dissolved ions conduct when solid sodium chloride does not."
+    },
+    {
+     "s": 15.25,
+     "e": 22.316,
+     "en": "Class 6 returns to the silicon network, and shows how one boron or phosphorus atom changes its conduction."
+    },
+    {
+     "s": 22.316,
+     "e": 27.987,
+     "en": "And Class 10 calculates how much copper must be plated to build the wires you sized today."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 30.024,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.908,
+     "en": "Now it is time for Lab 2. Scan the code or open the lab page."
+    },
+    {
+     "s": 5.908,
+     "e": 15.908,
+     "en": "You will classify three bonds from electronegativity, read the resistivity table, calculate the resistance of a copper wire, and then change its metal and its width."
+    },
+    {
+     "s": 15.908,
+     "e": 24.013,
+     "en": "Then you count the atoms in two unit cells, compare crystalline and amorphous silicon dioxide, and explain your choice of materials."
+    },
+    {
+     "s": 24.013,
+     "e": 29.961,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "file": "audio/slide-20.mp3",
+   "duration": 50.28,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 14.776,
+     "en": "In metallic bonding, electrons are shared by the whole solid, so metals conduct. In covalent and ionic solids, electrons or ions are held in place, so they conduct poorly."
+    },
+    {
+     "s": 14.776,
+     "e": 24.513,
+     "en": "The electronegativity difference sorts bonds: silicon oxygen, at one point seven, is polar covalent; sodium chlorine, at two point one, is ionic."
+    },
+    {
+     "s": 24.513,
+     "e": 30.961,
+     "en": "A bonding label does not settle conduction: graphite conducts, and silicon is a semiconductor."
+    },
+    {
+     "s": 30.961,
+     "e": 37.539,
+     "en": "Crystals repeat and amorphous solids do not, and the same silicon dioxide differs in density."
+    },
+    {
+     "s": 37.539,
+     "e": 50.224,
+     "en": "And R equals rho L over A: choose the material by its resistivity, then size the wire. A one millimeter copper wire, one hundred by two hundred nanometers, has eight hundred forty ohms."
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "file": "audio/slide-21.mp3",
+   "duration": 21.6,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.405,
+     "en": "Before the next class, finish Lab 2 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.405,
+     "e": 13.816,
+     "en": "Read OpenStax Chemistry two e, section seven point two on covalent bonding, and section ten point five on the solid state of matter."
+    },
+    {
+     "s": 13.816,
+     "e": 21.526,
+     "en": "And bring a calculator to Class 3, where we use moles and molar mass to find the mass of silicon dioxide grown on a wafer."
+    }
+   ]
+  },
+  {
+   "n": 22,
+   "file": "audio/slide-22.mp3",
+   "duration": 24.72,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.934,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 2."
+    },
+    {
+     "s": 6.934,
+     "e": 15.724,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.724,
+     "e": 24.645,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 3."
+    }
+   ]
+  }
+ ]
+}

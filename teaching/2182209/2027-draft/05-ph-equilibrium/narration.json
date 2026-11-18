@@ -1,0 +1,600 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 649.1,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 30.336,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.063,
+     "en": "Welcome to Class 5: acids, bases, pH and equilibrium."
+    },
+    {
+     "s": 5.063,
+     "e": 13.461,
+     "en": "Today we read the pH scale, find the factor of ten hidden in each unit, and see what it really means for a reaction to be at equilibrium."
+    },
+    {
+     "s": 13.461,
+     "e": 21.211,
+     "en": "pH becomes the horizontal axis of the copper stability map in Class 13, and equilibrium returns in Class 9."
+    },
+    {
+     "s": 21.211,
+     "e": 30.263,
+     "en": "If you are studying on your own, the narration takes about ten minutes. Stop at the activity and at each check, then do Lab 5."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 32.808,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.105,
+     "en": "A five minute activity reviews Class 4."
+    },
+    {
+     "s": 6.105,
+     "e": 17.882,
+     "en": "Part one is about pH: the hydrogen ion concentration on a log scale, water and its ion product, acids and bases in a chip fab, and dilution. It ends with Check 1."
+    },
+    {
+     "s": 17.882,
+     "e": 27.974,
+     "en": "Part two is about equilibrium: a dynamic balance, the equilibrium ratio, and what happens when a reactant is added. It ends with Check 2."
+    },
+    {
+     "s": 27.974,
+     "e": 32.737,
+     "en": "Then you do Lab 5 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 30.408,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.513,
+     "en": "Activity 1. Answer four questions about Class 4 without notes, then compare with a partner."
+    },
+    {
+     "s": 7.513,
+     "e": 17.103,
+     "en": "Find the amount in twenty milliliters of a zero point one zero zero molar solution, and its concentration after dilution to forty milliliters."
+    },
+    {
+     "s": 17.103,
+     "e": 25.553,
+     "en": "Say which particles carry current in a copper sulfate bath. And write the ions of zero point one zero molar hydrochloric acid."
+    },
+    {
+     "s": 25.553,
+     "e": 30.355,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 29.88,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.984,
+     "en": "By the end of today you can calculate pH from the hydrogen ion concentration and back, and compare two solutions by their ratio."
+    },
+    {
+     "s": 7.984,
+     "e": 15.421,
+     "en": "You can use the ion product of water to find the hydroxide concentration, and explain why pure water has pH seven."
+    },
+    {
+     "s": 15.421,
+     "e": 21.408,
+     "en": "You can predict the pH of a diluted strong acid, and explain why it never passes seven."
+    },
+    {
+     "s": 21.408,
+     "e": 29.816,
+     "en": "And you can describe equilibrium as equal rates, predict the effect of adding a reactant, and find the new equilibrium in a counting model."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 38.808,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.234,
+     "en": "Today uses concentration again, now on a log scale."
+    },
+    {
+     "s": 4.234,
+     "e": 15.197,
+     "en": "In Class 4, strong electrolytes dissociated completely. A strong acid such as hydrochloric acid does the same, giving hydrogen ions and chloride ions."
+    },
+    {
+     "s": 15.197,
+     "e": 25.009,
+     "en": "Square brackets around a species mean its concentration in moles per liter. pH is minus the base ten log of the hydrogen ion concentration."
+    },
+    {
+     "s": 25.009,
+     "e": 28.934,
+     "en": "And a double arrow means a reaction that runs both ways."
+    },
+    {
+     "s": 28.934,
+     "e": 38.75,
+     "en": "In water, H plus is shorthand for the hydronium ion. Today we use concentration in place of activity, which is fine for dilute solutions."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 36.432,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.958,
+     "en": "pH counts powers of ten."
+    },
+    {
+     "s": 2.958,
+     "e": 16.671,
+     "en": "Move the slider to change the hydrogen ion concentration. Sample A, at ten to the minus two moles per liter, has pH two. Sample B has pH three, and sample C has pH four."
+    },
+    {
+     "s": 16.671,
+     "e": 26.263,
+     "en": "pH two is not twice pH four. The hydrogen ion concentration is ten to the power four minus two, or one hundred times larger."
+    },
+    {
+     "s": 26.263,
+     "e": 36.368,
+     "en": "pH has no unit, because the concentration inside the log is divided by one mole per liter. Press D to see the same calculation in Python."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 47.496,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.355,
+     "en": "Even pure water has ions. A tiny fraction of water molecules split into hydrogen and hydroxide ions."
+    },
+    {
+     "s": 8.355,
+     "e": 14.711,
+     "en": "Their product, K w, is one point zero times ten to the minus fourteen at twenty five degrees."
+    },
+    {
+     "s": 14.711,
+     "e": 21.947,
+     "en": "In pure water the two are equal, each one times ten to the minus seven moles per liter, so the pH is seven."
+    },
+    {
+     "s": 21.947,
+     "e": 30.974,
+     "en": "Acidic solutions have more hydrogen ions than hydroxide ions, and a pH below seven. Basic solutions are the reverse."
+    },
+    {
+     "s": 30.974,
+     "e": 41.132,
+     "en": "For sample A, at pH two, the hydroxide concentration is ten to the minus fourteen divided by ten to the minus two, which is ten to the minus twelve moles per liter."
+    },
+    {
+     "s": 41.132,
+     "e": 47.421,
+     "en": "K w changes with temperature, so neutral means pH seven only at twenty five degrees."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 41.952,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.247,
+     "en": "Where does pH matter in making chips?"
+    },
+    {
+     "s": 3.247,
+     "e": 15.118,
+     "en": "The acid copper plating bath is strongly acidic. The acid keeps copper ions dissolved, instead of forming hydroxide or oxide, and the hydrogen ions raise the conductivity."
+    },
+    {
+     "s": 15.118,
+     "e": 28.553,
+     "en": "Wafers are cleaned in two standard solutions. The first, SC one, is basic and lifts particles and organic residue. The second, SC two, is acidic and removes metal ions."
+    },
+    {
+     "s": 28.553,
+     "e": 33.0,
+     "en": "And the rinse water must be neutral and leave no ions behind."
+    },
+    {
+     "s": 33.0,
+     "e": 41.895,
+     "en": "In Class 13, copper's stable forms are drawn on a map whose horizontal axis is pH. Today's scale is that axis."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 42.672,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 13.132,
+     "en": "Now dilute a strong acid. At a concentration c, the hydrogen ion concentration is c, so the pH is minus log c. Each tenfold dilution raises the pH by one."
+    },
+    {
+     "s": 13.132,
+     "e": 25.724,
+     "en": "Start with zero point one zero molar hydrochloric acid, at pH one. Dilute it ten million times, to ten to the minus eight moles per liter. Does the pH become eight?"
+    },
+    {
+     "s": 25.724,
+     "e": 36.842,
+     "en": "No. Water's own hydrogen ions, at about ten to the minus seven, now outweigh the acid's. Including them gives a pH of six point nine eight."
+    },
+    {
+     "s": 36.842,
+     "e": 42.605,
+     "en": "So diluting an acid with water can bring its pH close to seven, but never past it."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 26.304,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 19.443,
+     "en": "Find the pH at ten to the minus three moles per liter. Correct the claim that pH two has twice the hydrogen ions of pH four. Find the hydroxide concentration at pH two."
+    },
+    {
+     "s": 19.443,
+     "e": 22.171,
+     "en": "And find the pH of a diluted acid."
+    },
+    {
+     "s": 22.171,
+     "e": 26.25,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 39.408,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.932,
+     "en": "Part 2 is about equilibrium."
+    },
+    {
+     "s": 2.932,
+     "e": 9.118,
+     "en": "Many reactions run both ways: A turns into B, and B turns back into A, all the time."
+    },
+    {
+     "s": 9.118,
+     "e": 20.105,
+     "en": "Equilibrium is reached when the forward rate equals the reverse rate. The amounts then stop changing. The rates are equal, but the amounts need not be."
+    },
+    {
+     "s": 20.105,
+     "e": 33.368,
+     "en": "Here is a counting model. Each round, one quarter of A becomes B, and one half of B becomes A. Start with eight units of A and four of B. Two units go forward and two come back."
+    },
+    {
+     "s": 33.368,
+     "e": 39.329,
+     "en": "The rates are equal, so the amounts stay at eight and four. That is equilibrium."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 36.336,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.379,
+     "en": "Now add eight units of A, so A is sixteen and B is four."
+    },
+    {
+     "s": 4.379,
+     "e": 14.455,
+     "en": "In the first round, four units go forward and only two come back. So A falls to fourteen and B rises to six. The net change runs toward B."
+    },
+    {
+     "s": 14.455,
+     "e": 20.303,
+     "en": "Move the slider through the rounds. The shift slows as the two rates approach each other."
+    },
+    {
+     "s": 20.303,
+     "e": 30.974,
+     "en": "The new equilibrium is A thirteen point three three and B six point six seven. The ratio of B to A is zero point five again, the same as four over eight before."
+    },
+    {
+     "s": 30.974,
+     "e": 36.263,
+     "en": "Adding a reactant shifts the balance toward products, but A does not disappear."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 33.84,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.15,
+     "en": "One number describes the balance: the equilibrium constant, K."
+    },
+    {
+     "s": 4.15,
+     "e": 12.394,
+     "en": "At equilibrium the forward and reverse rates are equal, so K, the ratio of B to A, equals the ratio of the two rate fractions."
+    },
+    {
+     "s": 12.394,
+     "e": 17.197,
+     "en": "In the model, that is one quarter divided by one half, or zero point five."
+    },
+    {
+     "s": 17.197,
+     "e": 23.632,
+     "en": "K does not change when you add A. The amounts move until their ratio is K again."
+    },
+    {
+     "s": 23.632,
+     "e": 33.776,
+     "en": "K w is the same idea for water. Class 9 links K to the voltage of a cell, and Class 13 uses equilibrium to draw the Pourbaix map."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 29.736,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.787,
+     "en": "Here is a common mistake: at equilibrium nothing happens, and A and B are equal."
+    },
+    {
+     "s": 5.787,
+     "e": 20.408,
+     "en": "In the model at equilibrium, two units go each way every round. Both reactions continue. The amounts stay at eight and four: constant, but not equal. Only the net change is zero."
+    },
+    {
+     "s": 20.408,
+     "e": 29.671,
+     "en": "The same idea returns in Class 12. At equilibrium the net current is zero, but the exchange current in each direction is not."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 24.936,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 18.921,
+     "en": "Decide whether eight and four is an equilibrium. Find A and B after one round when eight units of A are added. Give the new equilibrium amounts. And say what stays the same:"
+    },
+    {
+     "s": 18.921,
+     "e": 20.789,
+     "en": "the amounts or the ratio."
+    },
+    {
+     "s": 20.789,
+     "e": 24.868,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 23.424,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.142,
+     "en": "pH and equilibrium come back."
+    },
+    {
+     "s": 3.142,
+     "e": 13.934,
+     "en": "Class 7 writes half reactions in acid, where hydrogen ions appear in the equation. Class 9 writes equilibrium as a voltage, with a log of concentration."
+    },
+    {
+     "s": 13.934,
+     "e": 23.368,
+     "en": "Class 12 meets zero net current at equilibrium. And Class 13 uses pH as the horizontal axis of copper's stability map."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 28.104,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.0,
+     "en": "Now it is time for Lab 5. Scan the code or open the lab page."
+    },
+    {
+     "s": 6.0,
+     "e": 17.263,
+     "en": "You will compare hydrogen ion concentrations on the pH scale, calculate the pH and hydroxide concentration of a diluted acid, and dilute an acid step by step to see where the pH stops."
+    },
+    {
+     "s": 17.263,
+     "e": 22.092,
+     "en": "Then you shift the counting model of equilibrium and find the new balance."
+    },
+    {
+     "s": 22.092,
+     "e": 28.039,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 32.592,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 8.895,
+     "en": "pH is minus the log of the hydrogen ion concentration, and each unit is a factor of ten."
+    },
+    {
+     "s": 8.895,
+     "e": 16.75,
+     "en": "The product of the hydrogen and hydroxide concentrations is K w, and neutral is pH seven at twenty five degrees."
+    },
+    {
+     "s": 16.75,
+     "e": 21.421,
+     "en": "Diluting an acid raises its pH toward seven, never past it."
+    },
+    {
+     "s": 21.421,
+     "e": 27.711,
+     "en": "Equilibrium means equal rates, not equal amounts, and it does not mean the reaction has stopped."
+    },
+    {
+     "s": 27.711,
+     "e": 32.526,
+     "en": "Adding a reactant shifts the balance until the ratio returns to K."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 18.84,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.497,
+     "en": "Before the next class, finish Lab 5 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.497,
+     "e": 13.662,
+     "en": "Read OpenStax Chemistry two e, section thirteen point one on chemical equilibria and section fourteen point two on pH and p O H."
+    },
+    {
+     "s": 13.662,
+     "e": 18.776,
+     "en": "Class 6 is about electronic materials: energy bands and the doping of silicon."
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "file": "audio/slide-20.mp3",
+   "duration": 24.792,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.013,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 5."
+    },
+    {
+     "s": 7.013,
+     "e": 15.803,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.803,
+     "e": 24.724,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 6."
+    }
+   ]
+  }
+ ]
+}

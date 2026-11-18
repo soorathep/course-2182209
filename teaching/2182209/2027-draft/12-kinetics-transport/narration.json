@@ -1,0 +1,562 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 596.8,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 26.016,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.813,
+     "en": "Welcome to Class 12: electrode kinetics and mass transport."
+    },
+    {
+     "s": 4.813,
+     "e": 16.816,
+     "en": "Class 9 told us whether a reaction can go. Today we ask how fast it goes: why a reaction needs extra voltage to run fast, and why, past a point, more voltage hardly helps."
+    },
+    {
+     "s": 16.816,
+     "e": 25.961,
+     "en": "If you are studying on your own, the narration takes about ten minutes. Stop at the activity and at each check, then do Lab 12."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 33.576,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.434,
+     "en": "A five minute activity reviews earlier classes."
+    },
+    {
+     "s": 6.434,
+     "e": 17.579,
+     "en": "Part one covers current as a rate, overpotential, the exchange current density, the Butler-Volmer equation, and fast and slow electrodes. It ends with Check 1."
+    },
+    {
+     "s": 17.579,
+     "e": 28.684,
+     "en": "Part two covers mass transport, the limiting current, the choice between more overpotential and better transport, and plating and fast charging. It ends with Check 2."
+    },
+    {
+     "s": 28.684,
+     "e": 33.513,
+     "en": "Then you do Lab 12 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 27.504,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.671,
+     "en": "Activity 1. Answer four questions without notes, then compare with a partner."
+    },
+    {
+     "s": 6.671,
+     "e": 17.542,
+     "en": "Say whether reactions stop at equilibrium. Recall the copper potential at zero point zero one molar. Say what sets the thickness of plated copper."
+    },
+    {
+     "s": 17.542,
+     "e": 22.645,
+     "en": "And estimate e to the fourth, if e squared is about seven point four."
+    },
+    {
+     "s": 22.645,
+     "e": 27.447,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 30.456,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.524,
+     "en": "By the end of today you can explain current density as a reaction rate, and overpotential as the extra voltage that drives it."
+    },
+    {
+     "s": 7.524,
+     "e": 13.197,
+     "en": "You can explain the exchange current density, and tell a fast electrode from a slow one."
+    },
+    {
+     "s": 13.197,
+     "e": 18.803,
+     "en": "You can use the Butler-Volmer equation to calculate a current from an overpotential."
+    },
+    {
+     "s": 18.803,
+     "e": 22.842,
+     "en": "You can explain the limiting current, and what raises it."
+    },
+    {
+     "s": 22.842,
+     "e": 30.382,
+     "en": "And you can decide whether more overpotential or better transport raises the current more, and apply this to plating and charging."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 33.624,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.432,
+     "en": "Today builds on three earlier classes."
+    },
+    {
+     "s": 3.432,
+     "e": 13.658,
+     "en": "From Class 5, equilibrium is dynamic: the forward and reverse rates are equal. At an electrode, that rate is the exchange current density."
+    },
+    {
+     "s": 13.658,
+     "e": 24.803,
+     "en": "From Class 9, the Nernst potential says whether a reaction can go. The overpotential, the potential minus the equilibrium potential, says how fast it goes."
+    },
+    {
+     "s": 24.803,
+     "e": 33.553,
+     "en": "And from Class 10, current density sets the plating rate. Today we see what it costs in voltage, and the most you can get."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 39.024,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.289,
+     "en": "Current density is a rate. Divide it by n F, and you get moles reacting per square centimeter per second."
+    },
+    {
+     "s": 8.289,
+     "e": 13.776,
+     "en": "The overpotential is the electrode potential minus the equilibrium potential."
+    },
+    {
+     "s": 13.776,
+     "e": 25.553,
+     "en": "At zero overpotential there is no net current, but the reaction still runs both ways at equal rates. The current that flows each way is the exchange current density, j zero."
+    },
+    {
+     "s": 25.553,
+     "e": 32.908,
+     "en": "Make the overpotential negative, and reduction speeds up while oxidation slows, so a net cathodic current flows."
+    },
+    {
+     "s": 32.908,
+     "e": 38.961,
+     "en": "Like activation energy, the overpotential lowers the barrier one way and raises it the other."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 41.256,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.892,
+     "en": "The Butler-Volmer equation gives the net current: j zero times the difference of two exponentials, one for oxidation and one for reduction."
+    },
+    {
+     "s": 8.892,
+     "e": 20.75,
+     "en": "Move the slider. At η = −0.050 V, with j₀ = 1.00 mA/cm², the current is −2.268 mA/cm²."
+    },
+    {
+     "s": 20.75,
+     "e": 32.632,
+     "en": "Double the overpotential to −0.100 V, and the current is −6.858 mA/cm²: three times more, not two. The current grows exponentially with overpotential."
+    },
+    {
+     "s": 32.632,
+     "e": 41.184,
+     "en": "Now press the other j zero buttons. A larger exchange current gives a steeper curve: more current for the same push."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 38.784,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.208,
+     "en": "The exchange current density decides how much overpotential a current costs."
+    },
+    {
+     "s": 5.208,
+     "e": 18.921,
+     "en": "For the same current, an electrode with j₀ = 1.0 needs −0.050 V. A slow electrode, with j₀ = 0.1, needs −0.160 V, about three times as much."
+    },
+    {
+     "s": 18.921,
+     "e": 28.158,
+     "en": "At large overpotential, each tenfold rise in current costs about one hundred eighteen millivolts more. This is the Tafel slope."
+    },
+    {
+     "s": 28.158,
+     "e": 38.711,
+     "en": "A catalyst raises j zero. And overpotential is wasted voltage: in a battery it lowers the voltage you get, and in plating it raises the voltage you pay."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 26.016,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 18.656,
+     "en": "Say whether anything happens at zero overpotential. Calculate the current at minus zero point zero five volts. Say whether doubling the overpotential doubles the current."
+    },
+    {
+     "s": 18.656,
+     "e": 21.868,
+     "en": "And compare two exchange current densities."
+    },
+    {
+     "s": 21.868,
+     "e": 25.947,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 35.256,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.392,
+     "en": "In part two, the ions have to get there."
+    },
+    {
+     "s": 3.392,
+     "e": 10.579,
+     "en": "Reduction uses up copper ions at the surface, so more must diffuse in across a thin diffusion layer, delta."
+    },
+    {
+     "s": 10.579,
+     "e": 20.092,
+     "en": "When the surface concentration reaches zero, the current cannot rise any further. This is the limiting current: n F D c over delta."
+    },
+    {
+     "s": 20.092,
+     "e": 27.934,
+     "en": "For a Cu plating bath, with typical values, the limiting current is about 27 mA/cm²."
+    },
+    {
+     "s": 27.934,
+     "e": 35.197,
+     "en": "To raise it, stir or spin to thin the diffusion layer, use a more concentrated bath, or warm it to speed diffusion."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 38.304,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.934,
+     "en": "Now put kinetics and transport together. The slower of the two steps controls the current."
+    },
+    {
+     "s": 6.934,
+     "e": 18.434,
+     "en": "At small overpotential, kinetics limits, and the curves follow Butler-Volmer. At large overpotential, transport limits, and the curve flattens at the limiting current."
+    },
+    {
+     "s": 18.434,
+     "e": 29.75,
+     "en": "With j_lim = 2, going from −0.20 to −0.25 V raises |j| from 1.922 to 1.970 mA/cm²: only 2.5%."
+    },
+    {
+     "s": 29.75,
+     "e": 38.237,
+     "en": "But raising j_lim to 6, at −0.25 V, gives 5.735 mA/cm²: almost three times as much."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 41.208,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.024,
+     "en": "Here is a common mistake: to plate faster, just turn up the voltage."
+    },
+    {
+     "s": 5.024,
+     "e": 14.757,
+     "en": "Near the limiting current, copper ions cannot arrive any faster. The extra fifty millivolts adds only two and a half percent more copper current."
+    },
+    {
+     "s": 14.757,
+     "e": 25.289,
+     "en": "The rest of the push goes to side reactions such as hydrogen, which lowers the current efficiency from Class 10. Better transport tripled the current instead."
+    },
+    {
+     "s": 25.289,
+     "e": 35.07,
+     "en": "So find which step limits: kinetics, where you raise the overpotential or use a catalyst, or transport, where you stir, concentrate, or heat."
+    },
+    {
+     "s": 35.07,
+     "e": 41.132,
+     "en": "Deposits made near the limiting current grow rough and powdery. Platers call them burnt."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 42.696,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.458,
+     "en": "The same two limits appear in three settings."
+    },
+    {
+     "s": 3.458,
+     "e": 13.64,
+     "en": "In copper plating of interconnects, the process runs well below the limiting current: ten milliamps per square centimeter, against an estimate of about twenty seven."
+    },
+    {
+     "s": 13.64,
+     "e": 17.382,
+     "en": "The wafer spins to thin the diffusion layer and keep it even."
+    },
+    {
+     "s": 17.382,
+     "e": 28.25,
+     "en": "In narrow trenches, copper ions reach the top more easily than the bottom. Bath additives slow growth at the top so the trench fills from the bottom up, without voids."
+    },
+    {
+     "s": 28.25,
+     "e": 36.191,
+     "en": "And in fast charging a lithium-ion cell, overpotential and lithium ion transport cut the voltage and the charge you can store."
+    },
+    {
+     "s": 36.191,
+     "e": 42.632,
+     "en": "Push too hard, and lithium metal plates on the graphite instead of entering it, which is a safety risk."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 22.464,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 18.329,
+     "en": "Explain the limiting current. Find the rise in current from more overpotential, and from a higher limiting current. And name two ways to raise the limiting current in a plating bath."
+    },
+    {
+     "s": 18.329,
+     "e": 22.408,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 19.224,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.405,
+     "en": "Two classes are left."
+    },
+    {
+     "s": 2.405,
+     "e": 14.162,
+     "en": "Class 13 asks which form of copper is stable at each pH and potential. A Pourbaix diagram is about stability only, and says nothing about rate, which was today's topic."
+    },
+    {
+     "s": 14.162,
+     "e": 19.171,
+     "en": "And Class 14 reviews copper deposition and the choice of storage device."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 25.464,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.066,
+     "en": "Now it is time for Lab 12. Scan the code or open the lab page."
+    },
+    {
+     "s": 6.066,
+     "e": 13.895,
+     "en": "You will predict what doubling the overpotential does, calculate the current, and find the overpotential a slow electrode needs."
+    },
+    {
+     "s": 13.895,
+     "e": 19.447,
+     "en": "Then you add a limiting current, and compare more overpotential with better transport."
+    },
+    {
+     "s": 19.447,
+     "e": 25.395,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 29.232,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 7.026,
+     "en": "Current density is a rate, and overpotential is the push."
+    },
+    {
+     "s": 7.026,
+     "e": 14.987,
+     "en": "The exchange current density is the current each way at equilibrium. A larger one needs less overpotential."
+    },
+    {
+     "s": 14.987,
+     "e": 20.461,
+     "en": "In the Butler-Volmer equation, current grows exponentially with overpotential."
+    },
+    {
+     "s": 20.461,
+     "e": 25.684,
+     "en": "Transport sets a ceiling, the limiting current, n F D c over delta."
+    },
+    {
+     "s": 25.684,
+     "e": 29.171,
+     "en": "And find the slow step before you push harder."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 21.744,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.537,
+     "en": "Before the next class, finish Lab 12 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.537,
+     "e": 14.671,
+     "en": "Read OpenStax Chemistry two e, section twelve point five on collision theory and activation energy, and section twelve point seven on catalysis."
+    },
+    {
+     "s": 14.671,
+     "e": 21.684,
+     "en": "Class 13 is about the copper Pourbaix diagram: which form of copper is stable at each pH and potential."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 24.984,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.105,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 12."
+    },
+    {
+     "s": 7.105,
+     "e": 15.895,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.895,
+     "e": 24.908,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 13."
+    }
+   ]
+  }
+ ]
+}

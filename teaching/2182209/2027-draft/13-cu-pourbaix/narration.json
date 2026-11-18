@@ -1,0 +1,547 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 557.6,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 27.264,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.234,
+     "en": "Welcome to Class 13: the copper Pourbaix diagram."
+    },
+    {
+     "s": 4.234,
+     "e": 11.987,
+     "en": "Today we draw one map of which form of copper is stable at each pH and potential: the metal, the ion, or an oxide."
+    },
+    {
+     "s": 11.987,
+     "e": 17.987,
+     "en": "It is the Nernst equation of Class 9, with pH added, for the metal of every interconnect."
+    },
+    {
+     "s": 17.987,
+     "e": 27.211,
+     "en": "If you are studying on your own, the narration takes about nine minutes. Stop at the activity and at each check, then do Lab 13."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 32.28,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.434,
+     "en": "A five minute activity reviews earlier classes."
+    },
+    {
+     "s": 6.434,
+     "e": 16.579,
+     "en": "Part one is about reading the diagram: the axes, the regions, three kinds of boundary line, and how to find the stable form. It ends with Check 1."
+    },
+    {
+     "s": 16.579,
+     "e": 27.329,
+     "en": "Part two covers water and air, the words immunity, corrosion and passivation, copper in the fab, and what the diagram cannot tell you. It ends with Check 2."
+    },
+    {
+     "s": 27.329,
+     "e": 32.224,
+     "en": "Then you do Lab 13 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 28.8,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.671,
+     "en": "Activity 1. Answer four questions without notes, then compare with a partner."
+    },
+    {
+     "s": 6.671,
+     "e": 18.392,
+     "en": "Find the pH from a hydrogen ion concentration. Give the oxidation number of copper in its two oxides. Find the copper potential at ten to the minus six molar."
+    },
+    {
+     "s": 18.392,
+     "e": 23.921,
+     "en": "And say whether a negative Gibbs energy tells you how fast a reaction goes."
+    },
+    {
+     "s": 23.921,
+     "e": 28.724,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 26.496,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.984,
+     "en": "By the end of today you can read the axes and regions of a Pourbaix diagram."
+    },
+    {
+     "s": 4.984,
+     "e": 10.724,
+     "en": "You can explain the three kinds of boundary line: horizontal, vertical, and sloped."
+    },
+    {
+     "s": 10.724,
+     "e": 15.526,
+     "en": "You can find the stable form of copper at a given pH and potential."
+    },
+    {
+     "s": 15.526,
+     "e": 21.132,
+     "en": "You can use the water lines, and the words immunity, corrosion and passivation."
+    },
+    {
+     "s": 21.132,
+     "e": 26.421,
+     "en": "And you can apply the diagram to copper in the fab, and say what it cannot tell you."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 32.376,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.642,
+     "en": "Today brings four earlier classes together."
+    },
+    {
+     "s": 3.642,
+     "e": 17.933,
+     "en": "The horizontal axis is pH, from Class 5. The four forms of copper, with oxidation numbers zero, plus one and plus two, come from Class 7. Each boundary is a Nernst line from Class 9."
+    },
+    {
+     "s": 17.933,
+     "e": 22.618,
+     "en": "And the rate, from Class 12, is what the diagram leaves out."
+    },
+    {
+     "s": 22.618,
+     "e": 32.303,
+     "en": "The model has four forms only: copper metal, copper two plus, and the two oxides, with dissolved copper at ten to the minus six molar, at twenty five degrees."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 33.024,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.303,
+     "en": "Here is the map. Up means more oxidizing, a higher potential. Right means more alkaline, a higher pH."
+    },
+    {
+     "s": 9.303,
+     "e": 13.987,
+     "en": "Each region shows the form of copper with the lowest Gibbs energy there."
+    },
+    {
+     "s": 13.987,
+     "e": 27.026,
+     "en": "At low potential, copper metal is stable. At high potential in acid, copper dissolves as copper two plus. At high potential in neutral or alkaline water, the oxides are stable."
+    },
+    {
+     "s": 27.026,
+     "e": 32.961,
+     "en": "The dashed lines show where water itself is reduced to hydrogen, or oxidized to oxygen."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 35.712,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.221,
+     "en": "The boundary lines come in three kinds."
+    },
+    {
+     "s": 3.221,
+     "e": 14.079,
+     "en": "When only electrons take part, as in Cu²⁺ + 2e⁻ → Cu, the line does not depend on pH. It is horizontal, at 0.162 V."
+    },
+    {
+     "s": 14.079,
+     "e": 27.013,
+     "en": "When only H⁺ takes part, as when CuO dissolves in acid, no electrons move, so the line does not depend on potential. It is vertical, at pH 6.67."
+    },
+    {
+     "s": 27.013,
+     "e": 35.658,
+     "en": "When both take part in equal numbers, the line slopes down by zero point zero five nine two volts per pH unit: the Nernst slope of Class 9."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 32.112,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.471,
+     "en": "Now pick a pH and a potential, and read the stable form."
+    },
+    {
+     "s": 4.471,
+     "e": 15.934,
+     "en": "Point A, at pH 4 and −0.10 V, is in the Cu region. Point B, at pH 3 and +0.50 V, is in the Cu²⁺ region."
+    },
+    {
+     "s": 15.934,
+     "e": 28.895,
+     "en": "Point C, at pH 9 and +0.05 V, is in the Cu₂O region. And point D, at pH 9 and +0.40 V, is in the CuO region."
+    },
+    {
+     "s": 28.895,
+     "e": 32.053,
+     "en": "These are the four points of Lab 13."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 21.0,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 16.868,
+     "en": "Explain why one line is horizontal and another slopes. Read two points. And give the order of the forms at pH nine as the potential rises."
+    },
+    {
+     "s": 16.868,
+     "e": 20.947,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 35.568,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.195,
+     "en": "In part two, add water and air."
+    },
+    {
+     "s": 3.195,
+     "e": 13.197,
+     "en": "Below the hydrogen line, water or hydrogen ions are reduced to hydrogen gas. Above the oxygen line, water is oxidized to oxygen."
+    },
+    {
+     "s": 13.197,
+     "e": 25.987,
+     "en": "Part of the copper region lies above the hydrogen line. So hydrogen ions cannot oxidize copper. That is the same result as Class 7: copper does not dissolve in a plain acid."
+    },
+    {
+     "s": 25.987,
+     "e": 35.5,
+     "en": "But dissolved oxygen pulls the potential up toward the oxygen line, where copper metal is not stable. So copper in air and water tarnishes."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 30.432,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.747,
+     "en": "Three words name the regions."
+    },
+    {
+     "s": 2.747,
+     "e": 9.355,
+     "en": "In the copper region, the metal is stable and does not react. This is immunity."
+    },
+    {
+     "s": 9.355,
+     "e": 15.789,
+     "en": "In the copper two plus region, the metal dissolves as ions. This is corrosion."
+    },
+    {
+     "s": 15.789,
+     "e": 23.488,
+     "en": "In the oxide regions, a solid oxide forms on the surface, and it may slow further attack. This is passivation."
+    },
+    {
+     "s": 23.488,
+     "e": 30.355,
+     "en": "Whether the film protects depends on how dense and adherent it is, which the diagram does not show."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 35.856,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.75,
+     "en": "Here are four settings on one map. These are illustrative points, not measured values."
+    },
+    {
+     "s": 6.75,
+     "e": 12.5,
+     "en": "In an acid copper plating bath, copper two plus stays dissolved, ready to plate."
+    },
+    {
+     "s": 12.5,
+     "e": 17.039,
+     "en": "In neutral rinse water with air, exposed copper oxidizes."
+    },
+    {
+     "s": 17.039,
+     "e": 23.789,
+     "en": "In an alkaline polishing slurry with a mild oxidizer, a soft oxide forms that the pad then removes."
+    },
+    {
+     "s": 23.789,
+     "e": 35.789,
+     "en": "And under a negative potential, the metal is protected. Real slurries contain complexing agents and inhibitors that change the diagram. This is the bare water version."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 38.256,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.721,
+     "en": "Here is a common mistake: the diagram says it, so it happens."
+    },
+    {
+     "s": 4.721,
+     "e": 13.772,
+     "en": "At pH nine and plus zero point four volts, the diagram shows copper two oxide. But a Pourbaix diagram comes from Gibbs energies."
+    },
+    {
+     "s": 13.772,
+     "e": 20.789,
+     "en": "It says which form is stable, not how fast it forms, which was Class 12, or whether a film protects."
+    },
+    {
+     "s": 20.789,
+     "e": 32.74,
+     "en": "It also holds only for the species and the concentration chosen. This diagram leaves out copper one ions and the cuprate ions of strong base, so above about pH twelve it is wrong."
+    },
+    {
+     "s": 32.74,
+     "e": 38.184,
+     "en": "And other chemicals in a real bath, such as ammonia or inhibitors, change the map."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 22.2,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 18.066,
+     "en": "Explain why copper does not dissolve in plain acid. Name the three kinds of region. Read one more point. And name two things the diagram cannot tell you."
+    },
+    {
+     "s": 18.066,
+     "e": 22.145,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 22.344,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.247,
+     "en": "One more class is left in this half."
+    },
+    {
+     "s": 3.247,
+     "e": 13.368,
+     "en": "Class 14 is a review in three stations: materials and doping, copper deposition with Faraday's law, and the choice of a supercapacitor or a battery for two loads."
+    },
+    {
+     "s": 13.368,
+     "e": 22.289,
+     "en": "In the second half of the course, semiconductors in solution and photoelectrochemistry build on today's diagram and on the band gaps of Class 6."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 25.992,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.132,
+     "en": "Now it is time for Lab 13. Scan the code or open the lab page."
+    },
+    {
+     "s": 6.132,
+     "e": 12.711,
+     "en": "You will predict the stable form in acid at a high potential, then read the stable form at points A to D."
+    },
+    {
+     "s": 12.711,
+     "e": 19.974,
+     "en": "Then you move the potential at pH nine to find the two boundaries, and check what the lines mean and what the diagram leaves out."
+    },
+    {
+     "s": 19.974,
+     "e": 25.921,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 32.232,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 7.539,
+     "en": "A Pourbaix diagram maps the stable form against potential and pH."
+    },
+    {
+     "s": 7.539,
+     "e": 17.605,
+     "en": "Horizontal lines involve electrons only, vertical lines hydrogen ions only, and sloped lines both, at zero point zero five nine two volts per pH unit."
+    },
+    {
+     "s": 17.605,
+     "e": 25.855,
+     "en": "The regions are immunity, corrosion, and passivation. And between the water lines, water itself is stable."
+    },
+    {
+     "s": 25.855,
+     "e": 32.171,
+     "en": "The diagram shows stability only: no rate, no film quality, and only the species chosen."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 20.688,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.616,
+     "en": "Before the next class, finish Lab 13 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.616,
+     "e": 11.224,
+     "en": "Read OpenStax Chemistry two e, section seventeen point six on corrosion."
+    },
+    {
+     "s": 11.224,
+     "e": 20.632,
+     "en": "Class 14 is a review in three stations. Bring your answers from Labs 6, 10 and 11, because you will use those numbers again."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 24.96,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.118,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 13."
+    },
+    {
+     "s": 7.118,
+     "e": 15.908,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.908,
+     "e": 24.895,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 14."
+    }
+   ]
+  }
+ ]
+}

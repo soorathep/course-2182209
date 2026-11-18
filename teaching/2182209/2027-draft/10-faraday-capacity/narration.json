@@ -1,0 +1,552 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 585.1,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 29.736,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.629,
+     "en": "Welcome to Class 10: Faraday's law and battery capacity."
+    },
+    {
+     "s": 4.629,
+     "e": 11.263,
+     "en": "In Class 7 we counted electrons, and in Class 9 we met the Faraday constant. Today the two meet."
+    },
+    {
+     "s": 11.263,
+     "e": 20.632,
+     "en": "We count the electrons as electric charge, to find how much copper a current plates, and what amp hours and watt hours on a battery mean."
+    },
+    {
+     "s": 20.632,
+     "e": 29.671,
+     "en": "If you are studying on your own, the narration takes about ten minutes. Stop at the activity and at each check, then do Lab 10."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 30.864,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.434,
+     "en": "A five minute activity reviews earlier classes."
+    },
+    {
+     "s": 6.434,
+     "e": 15.868,
+     "en": "Part one is Faraday's law: from charge to moles, mass and thickness, with current efficiency and a full wafer. It ends with Check 1."
+    },
+    {
+     "s": 15.868,
+     "e": 26.013,
+     "en": "Part two covers battery capacity and energy, the capacity of electrode materials, and the chip that counts charge in a phone. It ends with Check 2."
+    },
+    {
+     "s": 26.013,
+     "e": 30.789,
+     "en": "Then you do Lab 10 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 26.064,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.671,
+     "en": "Activity 1. Answer four questions without notes, then compare with a partner."
+    },
+    {
+     "s": 6.671,
+     "e": 21.184,
+     "en": "Say what the Faraday constant means. Give the electrons one copper ion takes. Recall the molar mass and density of copper. And find the charge that passes when one amp flows for one second."
+    },
+    {
+     "s": 21.184,
+     "e": 25.987,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 28.872,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.142,
+     "en": "By the end of today you can use Faraday's law to go from current and time to the moles, mass and thickness of metal plated."
+    },
+    {
+     "s": 7.142,
+     "e": 11.934,
+     "en": "You can explain current efficiency, and include it in a calculation."
+    },
+    {
+     "s": 11.934,
+     "e": 17.474,
+     "en": "You can convert between amp hours and coulombs, and calculate energy in watt hours."
+    },
+    {
+     "s": 17.474,
+     "e": 23.053,
+     "en": "You can calculate the theoretical specific capacity of an electrode material."
+    },
+    {
+     "s": 23.053,
+     "e": 28.803,
+     "en": "And you can explain why milliamp hours alone do not tell you which battery stores more energy."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 33.408,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.616,
+     "en": "Today puts together four earlier classes."
+    },
+    {
+     "s": 3.616,
+     "e": 15.931,
+     "en": "From Class 7, two moles of electrons deposit one mole of Cu. From Class 8, Cu plating is an electrolytic cell with the wafer as the cathode."
+    },
+    {
+     "s": 15.931,
+     "e": 24.316,
+     "en": "From Class 9, one mole of electrons carries 96 485 C. And from Class 3, mass, moles and density."
+    },
+    {
+     "s": 24.316,
+     "e": 33.355,
+     "en": "The new symbols are I for current in amps, t for time in seconds, Q for charge in coulombs, and the amp hour, which is three thousand six hundred coulombs."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 42.144,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.921,
+     "en": "Faraday's law takes five steps. Take zero point one amps for six hundred seconds, at ninety percent efficiency, on ten square centimeters."
+    },
+    {
+     "s": 9.921,
+     "e": 14.474,
+     "en": "Step one: charge is current times time, sixty coulombs."
+    },
+    {
+     "s": 14.474,
+     "e": 21.868,
+     "en": "Step two: divide by F to get moles of electrons, 6.22 × 10⁻⁴ mol."
+    },
+    {
+     "s": 21.868,
+     "e": 35.118,
+     "en": "Step three: multiply by the efficiency, and divide by two electrons per Cu²⁺, to get moles of Cu. Step four: multiply by the molar mass, to get 17.78 mg."
+    },
+    {
+     "s": 35.118,
+     "e": 42.079,
+     "en": "Step five: divide by the density and the area, to get a thickness of 1.985 µm."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 22.2,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.155,
+     "en": "Now change one value at a time."
+    },
+    {
+     "s": 3.155,
+     "e": 7.342,
+     "en": "Double the current or the time, and the mass and thickness double."
+    },
+    {
+     "s": 7.342,
+     "e": 12.882,
+     "en": "Double the area at the same current, and the mass stays the same while the thickness halves."
+    },
+    {
+     "s": 12.882,
+     "e": 22.132,
+     "en": "Lower the efficiency, and less copper forms. The rest of the charge does something else, usually making hydrogen gas at the cathode."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 45.216,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.473,
+     "en": "What about a real wafer? A three hundred millimeter wafer has an area of about seven hundred seven square centimeters."
+    },
+    {
+     "s": 8.473,
+     "e": 13.539,
+     "en": "At ten milliamps per square centimeter, the current is about seven amps."
+    },
+    {
+     "s": 13.539,
+     "e": 21.382,
+     "en": "One micrometer of copper then takes about two hundred seventy two seconds, about four and a half minutes, at full efficiency."
+    },
+    {
+     "s": 21.382,
+     "e": 26.208,
+     "en": "The area cancels: thickness depends only on the current density and the time."
+    },
+    {
+     "s": 26.208,
+     "e": 35.737,
+     "en": "So a small coupon and a full wafer at the same current density get the same thickness, and plating recipes are written in milliamps per square centimeter."
+    },
+    {
+     "s": 35.737,
+     "e": 45.145,
+     "en": "Real copper plating fills narrow trenches, and additives in the bath control where the copper grows. The charge balance is still Faraday's law."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 19.392,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 15.237,
+     "en": "Find the charge and the moles of electrons, the mass of copper, and its thickness, for the example. Then say what doubling the area does."
+    },
+    {
+     "s": 15.237,
+     "e": 19.316,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 38.664,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 13.632,
+     "en": "In part two, we turn to batteries. Capacity is a charge, written in amp hours. One amp hour is one amp for three thousand six hundred seconds, which is three thousand six hundred coulombs."
+    },
+    {
+     "s": 13.632,
+     "e": 20.092,
+     "en": "Energy is charge times voltage. In watt hours, it is amp hours times volts."
+    },
+    {
+     "s": 20.092,
+     "e": 32.347,
+     "en": "So two cells of the same capacity store different energy if their voltages differ. One amp hour at three point two volts, typical of lithium iron phosphate, is three point two watt hours."
+    },
+    {
+     "s": 32.347,
+     "e": 38.605,
+     "en": "At three point seven volts, typical of lithium cobalt oxide, it is three point seven watt hours."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 46.584,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 10.263,
+     "en": "How much charge can one gram of electrode material hold? Divide z times F by three point six times the molar mass, to get milliamp hours per gram."
+    },
+    {
+     "s": 10.263,
+     "e": 17.421,
+     "en": "Graphite holds one lithium per six carbons, which gives the well known three hundred seventy two milliamp hours per gram."
+    },
+    {
+     "s": 17.421,
+     "e": 27.461,
+     "en": "Lithium cobalt oxide would give two hundred seventy four, if all the lithium could leave. Real cells use about half, to keep the oxide stable."
+    },
+    {
+     "s": 27.461,
+     "e": 37.461,
+     "en": "Zinc gives two electrons and is fairly light, so it stores eight hundred twenty milliamp hours per gram. That is one reason zinc batteries are studied."
+    },
+    {
+     "s": 37.461,
+     "e": 46.526,
+     "en": "These are for the electrode material alone. A whole cell, with electrolyte, current collectors and case, stores much less."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 36.312,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.747,
+     "en": "Here is a common mistake: more milliamp hours means more energy."
+    },
+    {
+     "s": 4.747,
+     "e": 14.903,
+     "en": "Milliamp hours measure charge, and energy is charge times voltage. Three thousand milliamp hours at three point two volts stores nine point six watt hours."
+    },
+    {
+     "s": 14.903,
+     "e": 24.539,
+     "en": "Two thousand eight hundred milliamp hours at three point seven volts stores ten point three six watt hours. The smaller capacity stores more energy."
+    },
+    {
+     "s": 24.539,
+     "e": 36.237,
+     "en": "So compare batteries in watt hours when their voltages differ. That is why airlines set power bank limits in watt hours: up to one hundred watt hours in the cabin without airline approval."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 36.216,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 11.125,
+     "en": "How does a phone know its battery percentage? A battery gauge chip measures the current through a tiny resistor many times a second, and adds up current times time."
+    },
+    {
+     "s": 11.125,
+     "e": 13.263,
+     "en": "This is called coulomb counting."
+    },
+    {
+     "s": 13.263,
+     "e": 26.461,
+     "en": "Take a three amp hour battery with an average draw of zero point three amps. It lasts ten hours. After four hours, one point two amp hours are used, and sixty percent of the charge is left."
+    },
+    {
+     "s": 26.461,
+     "e": 36.158,
+     "en": "That is Faraday's law and Q equals I t, done by a semiconductor chip. Real gauges also correct the count with the cell voltage and temperature."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 23.52,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 19.382,
+     "en": "Convert one amp hour to coulombs. Find the energy of two cells at different voltages. Find the specific capacity of graphite. And find how long a battery lasts."
+    },
+    {
+     "s": 19.382,
+     "e": 23.461,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 19.992,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.668,
+     "en": "Next, charge without a reaction, and rate."
+    },
+    {
+     "s": 3.668,
+     "e": 16.448,
+     "en": "Class 11 stores charge at a surface with no Faraday reaction at all, in a capacitor. Class 12 explains why plating at a higher current density needs more voltage, and where the limit is."
+    },
+    {
+     "s": 16.448,
+     "e": 19.934,
+     "en": "And the Class 14 review uses today's numbers again."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 27.816,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.947,
+     "en": "Now it is time for Lab 10. Scan the code or open the lab page."
+    },
+    {
+     "s": 5.947,
+     "e": 13.237,
+     "en": "You will predict what lower efficiency does, then calculate the charge, moles, mass and thickness of copper plated."
+    },
+    {
+     "s": 13.237,
+     "e": 21.816,
+     "en": "Then you change the area, current or efficiency, and finish with battery capacity, energy, and the specific capacity of graphite."
+    },
+    {
+     "s": 21.816,
+     "e": 27.763,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 32.544,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 12.316,
+     "en": "Charge is current times time. Divide by F for moles of electrons, then multiply by the efficiency and divide by z for moles of metal."
+    },
+    {
+     "s": 12.316,
+     "e": 16.697,
+     "en": "Thickness depends on current density and time, not on area."
+    },
+    {
+     "s": 16.697,
+     "e": 23.118,
+     "en": "Amp hours measure charge. Watt hours, amp hours times volts, measure energy."
+    },
+    {
+     "s": 23.118,
+     "e": 28.303,
+     "en": "z F over three point six M gives the most charge a gram of material can hold."
+    },
+    {
+     "s": 28.303,
+     "e": 32.487,
+     "en": "And compare batteries in watt hours, not milliamp hours."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 20.736,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.445,
+     "en": "Before the next class, finish Lab 10 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.445,
+     "e": 13.382,
+     "en": "Read OpenStax Chemistry two e, section seventeen point seven on electrolysis, the part on quantitative aspects."
+    },
+    {
+     "s": 13.382,
+     "e": 20.671,
+     "en": "Class 11 is about the electric double layer and supercapacitors: charge stored at a surface, without a reaction."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 24.816,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.026,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 10."
+    },
+    {
+     "s": 7.026,
+     "e": 15.816,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.816,
+     "e": 24.763,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 11."
+    }
+   ]
+  }
+ ]
+}

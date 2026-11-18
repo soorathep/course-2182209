@@ -1,0 +1,605 @@
+{
+ "meta": {
+  "numpy": "2.2.5",
+  "scipy": "1.14.1",
+  "python": "3.13.18"
+ },
+ "lecture": {
+  "grid": {
+   "0.1|1": {
+    "P": 0.1,
+    "t": 1,
+    "E_J": 0.1,
+    "fits": {
+     "EDLC": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     }
+    }
+   },
+   "0.1|5": {
+    "P": 0.1,
+    "t": 5,
+    "E_J": 0.5,
+    "fits": {
+     "EDLC": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     }
+    }
+   },
+   "0.1|60": {
+    "P": 0.1,
+    "t": 60,
+    "E_J": 6.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     }
+    }
+   },
+   "0.1|600": {
+    "P": 0.1,
+    "t": 600,
+    "E_J": 60.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     }
+    }
+   },
+   "0.1|3600": {
+    "P": 0.1,
+    "t": 3600,
+    "E_J": 360.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     }
+    }
+   },
+   "0.5|1": {
+    "P": 0.5,
+    "t": 1,
+    "E_J": 0.5,
+    "fits": {
+     "EDLC": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     }
+    }
+   },
+   "0.5|5": {
+    "P": 0.5,
+    "t": 5,
+    "E_J": 2.5,
+    "fits": {
+     "EDLC": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     }
+    }
+   },
+   "0.5|60": {
+    "P": 0.5,
+    "t": 60,
+    "E_J": 30.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     }
+    }
+   },
+   "0.5|600": {
+    "P": 0.5,
+    "t": 600,
+    "E_J": 300.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     }
+    }
+   },
+   "0.5|3600": {
+    "P": 0.5,
+    "t": 3600,
+    "E_J": 1800.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     }
+    }
+   },
+   "1|1": {
+    "P": 1.0,
+    "t": 1,
+    "E_J": 1.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "1|5": {
+    "P": 1.0,
+    "t": 5,
+    "E_J": 5.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "1|60": {
+    "P": 1.0,
+    "t": 60,
+    "E_J": 60.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "1|600": {
+    "P": 1.0,
+    "t": 600,
+    "E_J": 600.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "1|3600": {
+    "P": 1.0,
+    "t": 3600,
+    "E_J": 3600.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": false,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "2|1": {
+    "P": 2.0,
+    "t": 1,
+    "E_J": 2.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "2|5": {
+    "P": 2.0,
+    "t": 5,
+    "E_J": 10.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "2|60": {
+    "P": 2.0,
+    "t": 60,
+    "E_J": 120.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "2|600": {
+    "P": 2.0,
+    "t": 600,
+    "E_J": 1200.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "2|3600": {
+    "P": 2.0,
+    "t": 3600,
+    "E_J": 7200.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": false,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "3|1": {
+    "P": 3.0,
+    "t": 1,
+    "E_J": 3.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "3|5": {
+    "P": 3.0,
+    "t": 5,
+    "E_J": 15.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "3|60": {
+    "P": 3.0,
+    "t": 60,
+    "E_J": 180.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "3|600": {
+    "P": 3.0,
+    "t": 600,
+    "E_J": 1800.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": false,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "3|3600": {
+    "P": 3.0,
+    "t": 3600,
+    "E_J": 10800.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": false,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "5|1": {
+    "P": 5.0,
+    "t": 1,
+    "E_J": 5.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "5|5": {
+    "P": 5.0,
+    "t": 5,
+    "E_J": 25.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "5|60": {
+    "P": 5.0,
+    "t": 60,
+    "E_J": 300.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "5|600": {
+    "P": 5.0,
+    "t": 600,
+    "E_J": 3000.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": false,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "5|3600": {
+    "P": 5.0,
+    "t": 3600,
+    "E_J": 18000.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": false,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   }
+  },
+  "K": 0.059159349685721514,
+  "F": 96485.33212,
+  "atoms_si": 4.994023465124319e+22,
+  "ni": 14500000000.0
+ },
+ "lab": {
+  "s1": {
+   "cu2_electrons": 27,
+   "p": 21024.9999999558,
+   "rho": 0.4623340055142944,
+   "rho_i": 235217.97906390665,
+   "ratio": 508762.0124378548,
+   "frac": 2.0023934748875001e-07
+  },
+  "s2": {
+   "Q": 60.0,
+   "m_mg": 17.78241274918462,
+   "h_um": 1.9846442800429258,
+   "E_001": 0.2808406503142785,
+   "bath_sp": "Cu2+"
+  },
+  "s3": {
+   "pulse": {
+    "P": 3.0,
+    "t": 5.0,
+    "E_J": 15.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": false,
+      "ok": false
+     }
+    }
+   },
+   "long": {
+    "P": 0.1,
+    "t": 3600.0,
+    "E_J": 360.0,
+    "fits": {
+     "EDLC": {
+      "energy_ok": false,
+      "power_ok": true,
+      "ok": false
+     },
+     "battery": {
+      "energy_ok": true,
+      "power_ok": true,
+      "ok": true
+     }
+    }
+   },
+   "edlc": {
+    "C": 4.4,
+    "V": 2.7,
+    "Pmax": 5.0,
+    "E_J": 16.038000000000004
+   },
+   "bat": {
+    "Ah": 0.1,
+    "V": 3.7,
+    "E_J": 1332.0000000000002,
+    "Pmax": 0.7400000000000001
+   },
+   "table_P": [
+    0.1,
+    0.5,
+    1.0,
+    2.0,
+    3.0,
+    5.0
+   ],
+   "table_t": [
+    1,
+    5,
+    60,
+    600,
+    3600
+   ]
+  }
+ }
+}

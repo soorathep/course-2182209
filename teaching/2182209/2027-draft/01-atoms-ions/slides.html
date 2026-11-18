@@ -228,7 +228,7 @@ function chipSVG(sel){const w=600,h=380;let s=svgEl(w,h);
  s+=`<text x="20" y="376" font-size="13" fill="${C.slate}" pointer-events="none">Schematic, not to scale. White bands: doped regions where transistors sit.</text>`;
  return s+"</svg>"}
 S.push({kicker:"Part 1 · Start with a chip", title:"Three materials do three different jobs", html:()=>`<div class="body"><div class="col w55"><div class="panel grow"><div class="chart" id="chip"></div></div></div>
-<div class="col"><p class="note" style="margin-top:0">Click a layer.</p><div class="panel" id="chipinfo" style="font-size:20px;line-height:1.45;min-height:200px"></div>
+<div class="col"><p class="note" style="margin-top:0">Click a layer.</p><div class="panel" id="chipinfo" style="display:block;font-size:20px;line-height:1.45;min-height:200px"></div>
 <ul class="b xs" style="margin-top:14px"><li>Two of these are elements and one is a compound</li><li>Today: what each is made of. Class 2: why each behaves as it does</li></ul></div></div>`,
 draw:()=>{const info={};LC().chip.forEach(c=>info[c.material]=c);
  const go=m=>{document.getElementById("chip").innerHTML=chipSVG(m);const q=info[m];

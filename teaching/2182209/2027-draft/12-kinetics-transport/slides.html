@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>2182209 · Class 12 · Electrode kinetics and mass transport</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--sky:#5A91BE;--sage:#83A462;--plum:#995A90;--graphite:#333F4A;--sand:#DFC98F;
+--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--mono:Menlo,Consolas,"DejaVu Sans Mono",monospace}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#2b3138;font-family:"Helvetica Neue",Helvetica,Arial,"DejaVu Sans",sans-serif;color:var(--ink)}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#stage{width:1280px;height:720px;flex:0 0 auto;overflow:hidden;background:#fff;position:relative;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.slide{position:absolute;inset:0;padding:40px 64px 58px;display:none;flex-direction:column}
+.slide.on{display:flex}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.14em;font-size:15px;text-transform:uppercase;margin:0}
+h1{color:var(--teal);font-size:42px;line-height:1.12;margin:6px 0 22px;font-weight:800}
+.body{flex:1;display:flex;gap:28px;min-height:0}
+.col{flex:1;min-width:0;display:flex;flex-direction:column}
+.w40{flex:0 0 40%}.w45{flex:0 0 45%}.w55{flex:0 0 55%}.w60{flex:0 0 60%}
+ul.b{list-style:none;margin:0;padding:0;font-size:24px;line-height:1.36}
+ul.b>li{position:relative;padding-left:30px;margin:0 0 16px}
+ul.b>li::before{content:"";position:absolute;left:2px;top:.5em;width:11px;height:11px;background:var(--amber)}
+ul.b.sm{font-size:21px}ul.b.sm>li{margin-bottom:11px}
+ul.b.xs{font-size:19px}ul.b.xs>li{margin-bottom:8px}
+.hl{color:var(--teal);font-weight:700}
+.panel{background:var(--paper);border-radius:14px;padding:16px 18px;min-height:0;display:flex;flex-direction:column}
+.panel.grow{flex:1}
+.math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:25px;line-height:1.75}
+.math .lbl{font-family:"Helvetica Neue",Arial,sans-serif;font-size:16px;color:var(--slate);display:inline-block;width:150px}
+.code{font-family:var(--mono);font-size:17px;line-height:1.5;white-space:pre;color:var(--graphite)}
+.note{font-size:18px;color:var(--slate);margin-top:10px;line-height:1.4}
+.big{font-size:56px;font-weight:800;color:var(--teal)}
+table.t{border-collapse:collapse;font-size:19px;width:100%}
+table.t th{background:var(--paper);text-align:left;padding:7px 10px;border-bottom:2px solid var(--mist);font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid #e3e6e8}
+table.t td.n,table.t th.n{text-align:right;font-variant-numeric:tabular-nums}
+.act{border:3px solid var(--amber);border-radius:16px;padding:22px 28px;background:#fdf6ea}
+.act .tag{display:inline-block;background:var(--amber);color:#fff;font-weight:800;letter-spacing:.1em;font-size:15px;padding:4px 10px;border-radius:6px;margin-bottom:12px}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px;align-items:center;font-size:16px;color:var(--slate)}
+.ctrl button{font:inherit;font-size:15px;padding:5px 11px;border-radius:8px;border:1.5px solid var(--teal);background:#fff;color:var(--teal);cursor:pointer}
+.ctrl button.on{background:var(--teal);color:#fff}
+.ctrl input[type=range]{width:220px;accent-color:var(--teal)}
+.kpi{display:flex;gap:14px;margin-top:8px}
+.kpi div{background:#fff;border-radius:10px;padding:8px 12px;font-size:15px;color:var(--slate);flex:1}
+.kpi b{display:block;font-size:24px;color:var(--ink)}
+.kpi b.a{color:var(--amber)}
+svg.ch{width:100%;height:100%;display:block}
+.chart{flex:1;min-height:0}
+footer{position:absolute;left:64px;right:64px;bottom:20px;border-top:1px solid var(--mist);padding-top:7px;display:flex;justify-content:space-between;font-size:13px;color:var(--slate)}
+.title-slide{justify-content:center}
+.title-slide h1{font-size:64px;margin-bottom:12px}
+.title-slide .sub{font-size:28px;color:var(--graphite);margin-bottom:40px}
+.title-slide .meta{font-size:19px;color:var(--slate);line-height:1.6}
+.pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;letter-spacing:.06em}
+.pill.rec{background:var(--paper);color:var(--slate)}.pill.live{background:var(--amber);color:#fff}
+.dhint{position:absolute;right:64px;top:42px;font-size:13px;color:var(--slate);border:1px solid var(--mist);border-radius:8px;padding:3px 8px}
+/* Python drawer */
+#drawer{position:absolute;top:0;right:0;bottom:0;width:47%;background:#fbfaf7;border-left:3px solid var(--teal);box-shadow:-8px 0 24px rgba(0,0,0,.15);
+ transform:translateX(102%);transition:transform .25s;display:flex;flex-direction:column;padding:22px 24px 18px;z-index:5}
+#drawer.open{transform:none}
+#drawer h2{margin:0 0 4px;color:var(--teal);font-size:22px}
+#drawer .sub{font-size:14px;color:var(--slate);margin-bottom:10px}
+#drawer textarea{width:100%;height:190px;resize:vertical;border:none;margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13px;line-height:1.45;color:var(--ink);white-space:pre-wrap;outline:none}
+#drawer pre{margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13.5px;line-height:1.45;overflow:auto;white-space:pre}
+#drawer .out{margin-top:10px;flex:1;min-height:0;display:flex;flex-direction:column}
+#drawer .out pre{flex:1;background:#1f262d;color:#e8eef2}
+#drawer .bar{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:13px;color:var(--slate)}
+#drawer button{font:inherit;font-size:14px;padding:6px 12px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer}
+#drawer button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+#notes{position:fixed;left:12px;bottom:12px;max-width:520px;background:#fffef8;border:1px solid var(--mist);border-radius:10px;padding:10px 14px;font-size:14px;line-height:1.45;display:none;z-index:9}
+#help{position:fixed;right:12px;bottom:12px;color:#c9d1d6;font-size:12px}
+
+/* narration and captions */
+#dock{position:fixed;left:0;right:0;display:none;flex-direction:column;align-items:center;gap:6px;padding:0 8px;z-index:8}
+#cap{display:none;color:#F3F0EB;line-height:1.45;text-align:center;overflow:hidden;padding:2px 6px;font-family:"Helvetica Neue",Arial,"Sukhumvit Set","Thonburi","Noto Sans Thai","Sarabun",sans-serif}
+#nbar{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;align-items:center;background:rgba(28,36,43,.9);color:#e8eef2;padding:6px 10px;border-radius:12px;font:13px "Helvetica Neue",Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+#nbar button,#nbar select{white-space:nowrap;font:inherit;font-size:14px;background:#2f3a44;color:#fff;border:1px solid #4a5763;border-radius:8px;padding:5px 10px;cursor:pointer}
+#nbar button.on{background:#0F6E6B;border-color:#0F6E6B}
+#nbar .t{min-width:88px;text-align:center;font-variant-numeric:tabular-nums;color:#c9d1d6}
+#nbar .msg{color:#E29A2D;max-width:330px;line-height:1.25}
+#startov{position:absolute;inset:0;background:rgba(243,240,235,.92);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:6;gap:14px}
+#startov button{font:inherit;font-size:24px;padding:14px 28px;border-radius:12px;border:none;background:#0F6E6B;color:#fff;cursor:pointer}
+#startov p{color:#333F4A;font-size:18px;margin:0}
+@media print{#dock,#startov{display:none!important}}
+@media print{#viewport{position:static;display:block}#stage{transform:none!important;box-shadow:none}.slide{display:flex!important;position:relative;page-break-after:always;height:720px}#drawer,#help,#notes,.dhint{display:none}}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<div id="slides"></div>
+<div id="startov"><button id="startBtn">▶ Start the narrated session</button><p>English narration with English captions below the slide. You move to the next slide yourself.</p><p>→ or Next: next slide · P: pause · C: captions on or off</p></div>
+<aside id="drawer" aria-label="Python for this slide">
+  <h2 id="dTitle">Python</h2>
+  <div class="sub" id="dSub"></div>
+  <textarea id="dCode" spellcheck="false"></textarea>
+  <div class="out"><div class="bar" style="margin:0 0 6px"><span>Output</span><span id="dMode" class="pill rec">RECORDED RUN</span></div><pre id="dOut"></pre></div>
+  <div class="bar"><button id="runCode">Run this code</button><button class="ghost" id="runLive">Recompute all slides</button><button class="ghost" id="useRec">Recorded run</button></div>
+  <div class="bar" id="liveMsg" style="min-height:18px"></div>
+</aside>
+</div></div>
+<div id="notes"></div>
+<div id="dock"><div id="cap" aria-live="polite"></div>
+<div id="nbar"><button id="nPrev" title="Previous slide (←)">‹ Back</button><button id="nPlay" title="Play or pause the narration (P)">▶ Play</button><button id="nStop" title="Stop and go back to the start of this slide">■ Stop</button><span class="t" id="nTime">0:00 / 0:00</span><select id="nSpeed" title="Speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select><button id="nCC" title="Captions: off or English (C)">CC off</button><button id="nNext" title="Next slide (→)">Next ›</button><span class="msg" id="nMsg"></span></div></div>
+<audio id="narr" preload="none"></audio>
+<div id="help">← → move · P narration · C captions · D Python · F full screen · N notes</div>
+<script>
+const RECORDED = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"f":38.92174449560911,"alpha":0.5,"tafel_mV":118.31869937144302,"eta":[-0.25,-0.24,-0.23,-0.22,-0.21,-0.2,-0.19,-0.18,-0.17,-0.16,-0.15,-0.14,-0.13,-0.12,-0.11,-0.1,-0.09,-0.08,-0.07,-0.06,-0.05,-0.04,-0.03,-0.02,-0.01,0.0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.15,0.16,0.17,0.18,0.19,0.2,0.21,0.22,0.23,0.24,0.25],"bv":{"0.1":[-12.96915,-10.67534,-8.78711,-7.23272,-5.95312,-4.8997,-4.03242,-3.31834,-2.73034,-2.24606,-1.84712,-1.51835,-1.24728,-1.02358,-0.83878,-0.68584,-0.55896,-0.45332,-0.36489,-0.29033,-0.22681,-0.17189,-0.12351,-0.07982,-0.03917,0.0,0.03917,0.07982,0.12351,0.17189,0.22681,0.29033,0.36489,0.45332,0.55896,0.68584,0.83878,1.02358,1.24728,1.51835,1.84712,2.24606,2.73034,3.31834,4.03242,4.8997,5.95312,7.23272,8.78711,10.67534,12.96915],"1.0":[-129.69151,-106.75341,-87.87111,-72.32724,-59.53123,-48.99696,-40.32418,-33.18341,-27.30335,-22.46061,-18.4712,-15.18355,-12.47275,-10.23583,-8.38778,-6.85841,-5.5896,-4.53315,-3.64893,-2.90334,-2.26805,-1.71894,-1.23513,-0.79824,-0.39168,0.0,0.39168,0.79824,1.23513,1.71894,2.26805,2.90334,3.64893,4.53315,5.5896,6.85841,8.38778,10.23583,12.47275,15.18355,18.4712,22.46061,27.30335,33.18341,40.32418,48.99696,59.53123,72.32724,87.87111,106.75341,129.69151],"10.0":[-1296.91508,-1067.53411,-878.71114,-723.27238,-595.31234,-489.96956,-403.24181,-331.83411,-273.03354,-224.60612,-184.71198,-151.83547,-124.72753,-102.35826,-83.87782,-68.58408,-55.896,-45.33154,-36.48932,-29.03341,-22.68055,-17.18937,-12.35125,-7.98239,-3.91679,0.0,3.91679,7.98239,12.35125,17.18937,22.68055,29.03341,36.48932,45.33154,55.896,68.58408,83.87782,102.35826,124.72753,151.83547,184.71198,224.60612,273.03354,331.83411,403.24181,489.96956,595.31234,723.27238,878.71114,1067.53411,1296.91508]},"pol":{"2":[-1.96963,-1.96322,-1.95549,-1.94618,-1.93499,-1.92156,-1.90549,-1.88631,-1.8635,-1.83647,-1.8046,-1.76722,-1.72362,-1.67309,-1.61493,-1.54845,-1.47296,-1.38774,-1.2919,-1.18423,-1.0628,-0.92442,-0.76357,-0.57053,-0.32753,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"6":[-5.73469,-5.68072,-5.6165,-5.54039,-5.45064,-5.34542,-5.22287,-5.08124,-4.91903,-4.73509,-4.52888,-4.30057,-4.05118,-3.78268,-3.49788,-3.20028,-2.89377,-2.58222,-2.26902,-1.95657,-1.64589,-1.33615,-1.02427,-0.70451,-0.36768,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"kin":[129.69151,106.75341,87.87111,72.32724,59.53123,48.99696,40.32418,33.18341,27.30335,22.46061,18.4712,15.18355,12.47275,10.23583,8.38778,6.85841,5.5896,4.53315,3.64893,2.90334,2.26805,1.71894,1.23513,0.79824,0.39168,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"jlim_cu":27.0158929936},"lab":{"j_m050":-2.268054560276795,"j_m100":-6.85840779126327,"ratio":3.023916580924872,"eta_slow":-0.1604987606170763,"jl2_m020":-1.9215639452142765,"jl2_m025":-1.969625983744738,"jl6_m025":-5.734692313679587,"gain_eta_pct":2.5011938140368395,"gain_jlim_pct":191.15641045598628,"f":38.92174449560911,"alpha":0.5,"j0":1.0}};
+const LAB_FILE = "kinetics_lab.py?v=c12-67629074";
+const LAB_SRC = "\"\"\"Class 12 of 2182209 Chemistry for Semiconductor Engineering (2027 draft).\n\nElectrode kinetics (Butler-Volmer) and mass transport (limiting current). Every number on\nthe Class 12 slides and in Lab 12 comes from this module.\n\nRun `python kinetics_lab.py` for a printed summary, or `python kinetics_lab.py --json` to\nwrite kinetics-results.json.\n\nModel, stated: one-electron step (n = 1), symmetric (alpha = 0.5), 25 degC; cathodic current\nnegative. Kinetic current from Butler-Volmer, j_k = j0 [exp(alpha f eta) - exp(-alpha f eta)],\nf = F/(RT). With a limiting current, the cathodic current is combined as\n1/|j| = 1/|j_k| + 1/j_lim (kinetics and transport in series). Teaching parameters:\nj0 = 1.00 mA/cm2; j_lim = 2 and 6 mA/cm2. Order-of-magnitude example for Cu plating:\nD(Cu2+) = 7e-6 cm2/s, c = 0.10 M, diffusion layer 50 um, n = 2 (values of the usual order).\n\"\"\"\nimport json\nimport math\nimport sys\n\nimport numpy as np\nfrom scipy import constants as sc\n\nF = sc.physical_constants[\"Faraday constant\"][0]\nRGAS, T = sc.R, 298.15\nf = F / (RGAS * T)\nALPHA, J0 = 0.5, 1.00                      # -, mA/cm2\n\n\ndef j_bv(eta, j0=J0, a=ALPHA):\n    \"\"\"Butler-Volmer, mA/cm2; anodic positive.\"\"\"\n    return j0 * (np.exp(a * f * eta) - np.exp(-a * f * eta))\n\n\ndef j_cath(eta, j_lim, j0=J0):\n    \"\"\"Cathodic current with a transport limit, mA/cm2 (negative).\"\"\"\n    jk = -j_bv(eta, j0)                    # positive magnitude for eta < 0\n    return -1.0 / (1.0 / jk + 1.0 / j_lim)\n\n\ndef eta_for(j_target, j0):\n    \"\"\"Cathodic overpotential (V, negative) for a kinetic current magnitude j_target.\"\"\"\n    return -math.asinh(j_target / (2 * j0)) / (ALPHA * f)\n\n\ndef j_lim_est(n=2, D=7e-6, c_M=0.10, delta_cm=50e-4):\n    \"\"\"j_lim = n F D c / delta, mA/cm2 (c in mol/cm3).\"\"\"\n    return n * F * D * (c_M * 1e-3) / delta_cm * 1e3\n\n\ndef lab_results():\n    j05 = float(j_bv(-0.050))\n    return {\"j_m050\": j05, \"j_m100\": float(j_bv(-0.100)), \"ratio\": float(j_bv(-0.100) / j_bv(-0.050)),\n            \"eta_slow\": eta_for(abs(j05), 0.1),\n            \"jl2_m020\": float(j_cath(-0.20, 2)), \"jl2_m025\": float(j_cath(-0.25, 2)),\n            \"jl6_m025\": float(j_cath(-0.25, 6)),\n            \"gain_eta_pct\": float((j_cath(-0.25, 2) / j_cath(-0.20, 2) - 1) * 100),\n            \"gain_jlim_pct\": float((j_cath(-0.25, 6) / j_cath(-0.25, 2) - 1) * 100),\n            \"f\": f, \"alpha\": ALPHA, \"j0\": J0}\n\n\ndef classroom_results():\n    R = {\"meta\": {\"numpy\": np.__version__, \"scipy\": __import__(\"scipy\").__version__, \"python\": sys.version.split()[0]}}\n    eta = np.round(np.arange(-0.25, 0.2501, 0.01), 3)\n    R[\"lecture\"] = {\n        \"f\": f, \"alpha\": ALPHA, \"tafel_mV\": 1000 * math.log(10) / (ALPHA * f),\n        \"eta\": eta.tolist(),\n        \"bv\": {str(j0): [round(float(x), 5) for x in j_bv(eta, j0)] for j0 in (0.1, 1.0, 10.0)},\n        \"pol\": {str(jl): [round(float(j_cath(e, jl)), 5) if e < 0 else None for e in eta] for jl in (2, 6)},\n        \"kin\": [round(float(-j_bv(e)), 5) if e < 0 else None for e in eta],\n        \"jlim_cu\": j_lim_est(),\n    }\n    R[\"lab\"] = lab_results()\n    return R\n\n\nif __name__ == \"__main__\":\n    R = classroom_results()\n    if \"--json\" in sys.argv:\n        with open(\"kinetics-results.json\", \"w\") as fh:\n            json.dump(R, fh, indent=1)\n        print(\"wrote kinetics-results.json\"); sys.exit()\n    L = R[\"lab\"]\n    print(\"f = %.3f 1/V; Tafel slope %.1f mV/decade\" % (L[\"f\"], R[\"lecture\"][\"tafel_mV\"]))\n    print(\"j(-0.050) = %.3f, j(-0.100) = %.3f mA/cm2, ratio %.2f\" % (L[\"j_m050\"], L[\"j_m100\"], L[\"ratio\"]))\n    print(\"eta for the same current at j0 = 0.1: %.4f V\" % L[\"eta_slow\"])\n    print(\"j_lim 2: %.3f (-0.20 V), %.3f (-0.25 V), +%.1f%%\" % (L[\"jl2_m020\"], L[\"jl2_m025\"], L[\"gain_eta_pct\"]))\n    print(\"j_lim 6 at -0.25 V: %.3f (+%.0f%%)\" % (L[\"jl6_m025\"], L[\"gain_jlim_pct\"]))\n    print(\"Cu plating j_lim estimate: %.1f mA/cm2\" % R[\"lecture\"][\"jlim_cu\"])\n";   // embedded copy, so live Python also works when the file is opened locally
+let R = RECORDED, MODE = "recorded";
+const C = {teal:"#0F6E6B",amber:"#E29A2D",rust:"#BE654C",sky:"#5A91BE",sage:"#83A462",plum:"#995A90",graphite:"#333F4A",sand:"#DFC98F",ink:"#1C242B",slate:"#66727C",mist:"#B9C1C6",paper:"#F3F0EB"};
+const fmt = (x,d=0)=>x==null?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+
+/* ---------- tiny SVG chart helpers ---------- */
+function svgEl(w,h){return `<svg class="ch" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">`}
+function niceStep(r,n=5){const raw=r/n,p=Math.pow(10,Math.floor(Math.log10(raw||1)));for(const m of [1,2,2.5,5,10]){if(m*p>=raw-1e-12)return m*p}return 10*p}
+function scale(o,lo,hi){const st=niceStep(hi-lo);o.step=st;o.ymin=Math.floor(lo/st+1e-9)*st;o.ymax=Math.ceil(hi/st-1e-9)*st;o.ticks=Math.round((o.ymax-o.ymin)/st);return o}
+function niceMax(v){const p=Math.pow(10,Math.floor(Math.log10(v||1)));for(const m of [1,1.2,1.5,2,2.5,3,4,5,6,8,10]){if(m*p>=v)return m*p}return 10*p}
+function axes(o){ // o: w,h,l,r,t,b,ymin,ymax,xlabels,ylab,ticks
+  const {w,h,l,r,t,b,ymin,ymax}=o, X=w-l-r, Y=h-t-b, n=o.ticks||5; let s="";
+  for(let k=0;k<=n;k++){const v=ymin+(ymax-ymin)*k/n, y=t+Y-(v-ymin)/(ymax-ymin)*Y;
+    s+=`<line x1="${l}" x2="${w-r}" y1="${y}" y2="${y}" stroke="${C.mist}" stroke-width="0.8" opacity=".7"/><text x="${l-8}" y="${y+5}" font-size="16" text-anchor="end" fill="${C.ink}">${fmt(v, (o.step||1)<1?1:0)}</text>`}
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${t+Y}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  const z=t+Y-(0-ymin)/(ymax-ymin)*Y; s+=`<line x1="${l}" x2="${w-r}" y1="${Math.min(t+Y,Math.max(t,z))}" y2="${Math.min(t+Y,Math.max(t,z))}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  if(o.ylab)s+=`<text transform="translate(${16},${t+Y/2}) rotate(-90)" font-size="17" text-anchor="middle" fill="${C.ink}">${o.ylab}</text>`;
+  return s}
+function ymap(o,v){const Y=o.h-o.t-o.b;return o.t+Y-(v-o.ymin)/(o.ymax-o.ymin)*Y}
+function legend(items,x,y){let s="";items.forEach((it,i)=>{const yy=y+i*22;s+=it.line?`<line x1="${x}" x2="${x+22}" y1="${yy}" y2="${yy}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${x}" y="${yy-8}" width="16" height="16" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${x+28}" y="${yy+5}" font-size="16" fill="${C.ink}">${it.t}</text>`});return s}
+function legendRow(items,x,y){let s="",xx=x;items.forEach(it=>{s+=it.line?`<line x1="${xx}" x2="${xx+20}" y1="${y}" y2="${y}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${xx}" y="${y-7}" width="14" height="14" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${xx+26}" y="${y+5}" font-size="16" fill="${C.ink}">${it.t}</text>`;xx+=38+it.t.length*8.2});return s}
+
+/* Food Manufacture: stacked bars of a [month][oil] matrix, optional line */
+function hbar(items,opt={}){ // items: {t,v,c}
+  const w=opt.w||640,h=opt.h||330,l=opt.l||250,r=90,t=16,rowh=(h-t-20)/items.length;
+  const mx=opt.max||niceMax(Math.max(...items.map(i=>i.v)));let s=svgEl(w,h);
+  items.forEach((it,i)=>{const y=t+i*rowh,bw=(w-l-r)*it.v/mx;
+    s+=`<text x="${l-12}" y="${y+rowh/2+5}" font-size="16" text-anchor="end" fill="${C.ink}">${it.t}</text><rect x="${l}" y="${y+rowh*0.18}" width="${Math.max(bw,1)}" height="${rowh*0.64}" fill="${it.c}" rx="3"/><text x="${l+bw+8}" y="${y+rowh/2+6}" font-size="17" font-weight="700" fill="${C.ink}">${opt.fmt?opt.fmt(it.v):fmt(it.v)}</text>`});
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${h-20}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  return s+"</svg>"}
+
+/* ---------- Class 12 helpers ---------- */
+const foot = "2182209 Chemistry for Semiconductor Engineering · Class 12 · Electrode kinetics and mass transport · draft for 2027";
+const LC = () => R.lecture;
+const S = [];
+function reveal(bid, aid){const b = document.getElementById(bid); b.onclick = () => {const p = document.getElementById(aid), on = p.style.visibility === "hidden"; p.style.visibility = on ? "visible" : "hidden"; b.textContent = on ? "Hide answers" : "Show answers"}}
+const CHECK = (n, q, a) => `<div class="body"><div class="col w55"><div class="act"><span class="tag">PAUSE AND ANSWER</span>${q}</div>
+<div class="ctrl" style="margin-top:12px"><button id="k${n}btn">Show answers</button></div></div>
+<div class="col"><div class="panel grow" id="k${n}ans" style="visibility:hidden"><ul class="b xs">${a}</ul></div></div></div>`;
+const OL = `<ol style="font-size:21px;line-height:1.5;margin:0;padding-left:26px">`;
+const T = (x, y, t, c = C.ink, s = 15, a = "middle") => `<text x="${x}" y="${y}" font-size="${s}" text-anchor="${a}" fill="${c}">${t}</text>`;
+const sgn = (v, d = 3) => (v < 0 ? "−" : v > 0 ? "+" : "") + Math.abs(v).toFixed(d);
+/* same model as kinetics_lab */
+const jbv = (eta, j0) => j0 * (Math.exp(LC().alpha * LC().f * eta) - Math.exp(-LC().alpha * LC().f * eta));
+const jcath = (eta, jl) => {const jk = -jbv(eta, 1.0); return -1 / (1 / jk + 1 / jl)};
+
+function axes(s, l, t, X, Y, px, py, xt, yt, xl, yl){for (const v of yt) s += `<line x1="${l}" x2="${l + X}" y1="${py(v)}" y2="${py(v)}" stroke="${C.mist}" stroke-width=".7"/>` + T(l - 8, py(v) + 5, v, C.ink, 13, "end");
+ for (const v of xt) s += T(px(v), t + Y + 20, v.toFixed(2).replace("-", "−"), C.ink, 13);
+ return s + T(l + X / 2, t + Y + 42, xl, C.ink, 14) + `<text transform="translate(16,${t + Y / 2}) rotate(-90)" font-size="14" text-anchor="middle" fill="${C.ink}">${yl}</text>`}
+const line = (xs, ys, px, py, c, dash = "", w = 3) => {const p = []; xs.forEach((x, i) => {if (ys[i] != null) p.push(`${px(x).toFixed(1)},${py(ys[i]).toFixed(1)}`)}); return `<polyline fill="none" stroke="${c}" stroke-width="${w}" ${dash ? `stroke-dasharray="${dash}"` : ""} points="${p.join(" ")}"/>`};
+
+/* ---------- opening ---------- */
+S.push({cls:"title-slide", html:()=>`<p class="kicker">Class 12 · Lab 12</p><h1>Electrode kinetics and mass transport</h1>
+<div class="sub">Why a reaction needs extra voltage to run fast, and why, past a point, more voltage hardly helps</div>
+<div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p>`,
+notes:"Class 9 said whether a reaction can go; today, how fast it goes, and what limits it."});
+
+S.push({kicker:"Plan for today", title:"Ninety minutes, one activity, two checks and a lab", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:19px">
+<tr><th>Part</th><th>Content</th><th class="n">Minutes</th></tr>
+<tr><td></td><td>Activity 1: retrieval check on Classes 5, 9 and 10</td><td class="n">5</td></tr>
+<tr><td>1</td><td>Current as rate, overpotential, exchange current density, the Butler-Volmer equation, fast and slow electrodes; Check 1</td><td class="n">25</td></tr>
+<tr><td>2</td><td>Mass transport, the limiting current, overpotential or stirring, plating and fast charging; Check 2</td><td class="n">25</td></tr>
+<tr><td>Lab 12</td><td>Overpotential and the limiting current</td><td class="n">30</td></tr>
+<tr><td></td><td>Exit Ticket and feedback</td><td class="n">5</td></tr>
+<tr><td></td><td><b>Total</b></td><td class="n"><b>90</b></td></tr></table>
+<p class="note">Studying on your own: the narration takes about 10 minutes. Stop at the activity and at each check, then do Lab 12.</p></div></div>`});
+
+S.push({kicker:"Activity 1 · 5 minutes · alone, then in pairs", title:"Retrieval check: Classes 5, 9 and 10", html:()=>`<div class="body"><div class="col w55"><div class="act"><span class="tag">WRITE, THEN COMPARE</span>
+${OL}<li>At equilibrium, have the forward and reverse reactions stopped? (Class 5)</li>
+<li>What is E(Cu<sup>2+</sup>/Cu) at 0.010 M, 25 °C? (Class 9)</li>
+<li>What sets the thickness of plated Cu: current, or current density and time? (Class 10)</li>
+<li>e<sup>2</sup> ≈ 7.4. Roughly what is e<sup>4</sup>?</li></ol></div>
+<div class="ctrl" style="margin-top:12px"><button id="a1btn">Show answers</button></div></div>
+<div class="col"><div class="panel grow" id="a1ans" style="visibility:hidden"><ul class="b xs">
+<li>No: both still run, at equal rates. Today: the exchange current</li><li>0.2808 V</li><li>Current density and time</li><li>About 55: exponentials grow fast, and so does current with overpotential</li></ul></div></div></div>`,
+draw:()=>reveal("a1btn","a1ans")});
+
+S.push({kicker:"Learning outcomes", title:"By the end of today you can", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Explain current density as a reaction rate, and overpotential as the extra voltage that drives it</li>
+<li>Explain the exchange current density, and tell a fast electrode from a slow one</li>
+<li>Use the Butler-Volmer equation to calculate a current from an overpotential</li>
+<li>Explain the limiting current, and what raises it</li>
+<li>Decide whether more overpotential or better transport raises the current more, and apply this to plating and charging</li></ul></div></div>`});
+
+S.push({kicker:"Context", title:"From whether to how fast", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
+<tr><th>You have</th><th>From</th><th>Today</th></tr>
+<tr><td>Equilibrium is dynamic: forward and reverse rates are equal</td><td>Class 5</td><td>At an electrode: the exchange current density j<sub>0</sub></td></tr>
+<tr><td>E from the Nernst equation: whether a reaction can go</td><td>Class 9</td><td>Overpotential η = E − E<sub>eq</sub>: how fast it goes</td></tr>
+<tr><td>Current density sets the plating rate</td><td>Class 10</td><td>What current density costs in voltage, and the most you can get</td></tr></table>
+<p class="note">New symbols: j, current density in mA/cm² (cathodic negative); η, overpotential in V; j<sub>0</sub>, exchange current density; α, transfer coefficient (0.5 here); f = F/RT = ${LC().f.toFixed(2)} V<sup>−1</sup>; j<sub>lim</sub>, limiting current density. Reading: OpenStax <i>Chemistry 2e</i>, Sections 12.5 and 12.7.</p></div></div>`});
+
+/* ---------- Part 1 ---------- */
+S.push({kicker:"Part 1 · Current is a rate", title:"Overpotential is the push that sets the rate", html:()=>`<div class="body"><div class="col w55"><div class="panel"><div class="math" style="font-size:20px;line-height:1.8">
+Rate per area = j / (nF), in mol cm<sup>−2</sup> s<sup>−1</sup><br>Overpotential: η = E − E<sub>eq</sub><br>η = 0: no net current, but Cu<sup>2+</sup> ⇌ Cu still runs both ways at j<sub>0</sub></div></div>
+<p class="note">E<sub>eq</sub> is the Nernst potential of Class 9. j<sub>0</sub> is the current that flows each way at equilibrium.</p></div>
+<div class="col"><ul class="b sm"><li>At E<sub>eq</sub>, the forward and reverse currents cancel: a dynamic equilibrium, as in Class 5</li><li>Make η negative: reduction speeds up, oxidation slows, and a net cathodic current flows</li>
+<li>Like activation energy in kinetics: η lowers the barrier one way and raises it the other</li></ul></div></div>`});
+
+function bvSVG(eta, j0){const w = 520, h = 310, l = 60, r = 16, t = 16, b = 52, X = w - l - r, Y = h - t - b, ym = 20, px = v => l + X * (v + 0.25) / 0.5, py = v => t + Y * (ym - Math.max(-ym, Math.min(ym, v))) / (2 * ym); let s = svgEl(w, h);
+ s = axes(s, l, t, X, Y, px, py, [-0.2, -0.1, 0, 0.1, 0.2], [-20, -10, 0, 10, 20], "overpotential η, V", "j, mA/cm²");
+ s += `<line x1="${px(0)}" x2="${px(0)}" y1="${t}" y2="${t + Y}" stroke="${C.graphite}" stroke-width="1"/>`;
+ const E_ = LC().eta, a = E_.map(e => j0 * Math.exp(LC().alpha * LC().f * e)), c = E_.map(e => -j0 * Math.exp(-LC().alpha * LC().f * e)), n = LC().bv[{0.1: "0.1", 1: "1.0", 10: "10.0"}[j0]];
+ const clip = arr => arr.map(v => Math.abs(v) > ym * 1.02 ? null : v);
+ s += line(E_, clip(a), px, py, C.teal, "6 4", 2) + line(E_, clip(c), px, py, C.plum, "6 4", 2) + line(E_, clip(n), px, py, C.amber, "", 3);
+ const j = jbv(eta, j0); if (Math.abs(j) <= ym) s += `<circle cx="${px(eta)}" cy="${py(j)}" r="7" fill="${C.amber}" stroke="#fff" stroke-width="2"/>`;
+ return s + legend([{t: "net j", c: C.amber, line: true}, {t: "oxidation part", c: C.teal, line: true, dash: true}, {t: "reduction part", c: C.plum, line: true, dash: true}], l + 14, t + 16) + "</svg>"}
+S.push({kicker:"Part 1 · Demo", title:"Butler-Volmer: current grows exponentially with η", html:()=>`<div class="body"><div class="col w55"><div class="ctrl"><span>η, V</span><input type="range" id="bE" min="-0.25" max="0.25" step="0.01" value="-0.05"><b id="bEv"></b>
+<span style="margin-left:10px">j<sub>0</sub></span><button id="bj0">0.1</button><button id="bj1" class="on">1.0</button><button id="bj2">10</button></div>
+<div class="panel grow"><div class="chart" id="bch"></div></div></div>
+<div class="col"><div class="panel" style="display:block"><div class="math" style="font-size:18px">j = j<sub>0</sub> [e<sup>αfη</sup> − e<sup>−αfη</sup>]</div></div>
+<div class="kpi"><div>j, mA/cm²<b class="a" id="bj"></b></div></div>
+<ul class="b xs" style="margin-top:10px"><li>At η = −0.050 V with j<sub>0</sub> = 1.00 mA/cm²: j = ${R.lab.j_m050.toFixed(3)} mA/cm²</li><li>Double η to −0.100 V: j = ${R.lab.j_m100.toFixed(3)}, ${R.lab.ratio.toFixed(1)} times more, not 2</li><li>Model: n = 1, α = 0.5, 25 °C</li></ul></div></div>`,
+draw:()=>{const J = [0.1, 1, 10]; let k = 1; const go = () => {const e = +document.getElementById("bE").value; J.forEach((_, i) => document.getElementById("bj" + i).classList.toggle("on", i === k));
+ document.getElementById("bEv").textContent = sgn(e, 2); const j = jbv(e, J[k]); document.getElementById("bj").textContent = sgn(j, 3); document.getElementById("bch").innerHTML = bvSVG(e, J[k])};
+ document.getElementById("bE").oninput = go; J.forEach((_, i) => document.getElementById("bj" + i).onclick = () => {k = i; go()}); go()},
+py:{title:"Butler-Volmer at j0 = 1.00 mA/cm2", sub:"kinetics_lab.j_bv(eta)", code:
+`from kinetics_lab import j_bv, f
+print("f = F/RT = %.3f 1/V" % f)
+for eta in (-0.050, -0.100):
+    print("eta = %+.3f V: j = %.3f mA/cm2" % (eta, j_bv(eta)))
+print("ratio: %.2f" % (j_bv(-0.100) / j_bv(-0.050)))`,
+out:()=>`f = F/RT = ${LC().f.toFixed(3)} 1/V\neta = -0.050 V: j = ${R.lab.j_m050.toFixed(3)} mA/cm2\neta = -0.100 V: j = ${R.lab.j_m100.toFixed(3)} mA/cm2\nratio: ${R.lab.ratio.toFixed(2)}`},
+notes:"The curve is clipped at ±20 mA/cm² so the three j0 values share one scale."});
+
+S.push({kicker:"Part 1 · Fast and slow electrodes", title:"j<sub>0</sub> decides how much η a current costs", html:()=>`<div class="body"><div class="col w55"><table class="t" style="font-size:18px">
+<tr><th>Electrode</th><th class="n">j<sub>0</sub>, mA/cm²</th><th class="n">η for |j| = ${Math.abs(R.lab.j_m050).toFixed(3)} mA/cm²</th></tr>
+<tr><td>Fast</td><td class="n">1.0</td><td class="n">−0.050 V</td></tr><tr><td>Slow</td><td class="n">0.1</td><td class="n"><b style="color:${C.amber}">${sgn(R.lab.eta_slow, 3)} V</b></td></tr></table>
+<p class="note">At large η one exponential wins: each tenfold rise in current costs about ${LC().tafel_mV.toFixed(0)} mV more (the Tafel slope, for α = 0.5 and n = 1).</p></div>
+<div class="col"><ul class="b sm"><li>A slow electrode needs about three times the overpotential for the same current here</li><li>A catalyst raises j<sub>0</sub>: it lowers the barrier both ways, as in Class 5 kinetics</li>
+<li>Overpotential is wasted voltage: in a battery it lowers the voltage you get; in plating it raises the voltage you pay</li></ul></div></div>`});
+
+S.push({kicker:"Check 1 · 5 minutes", title:"Check 1: kinetics", html:()=>CHECK(1,`${OL}
+<li>At η = 0, is there any reaction at the electrode? What is j<sub>0</sub>?</li>
+<li>Calculate j at η = −0.050 V with j<sub>0</sub> = 1.00 mA/cm², α = 0.5, f = 38.92 V<sup>−1</sup>.</li>
+<li>η doubles to −0.100 V. Does j double?</li>
+<li>Which needs more overpotential for the same current: j<sub>0</sub> = 1.0 or 0.1 mA/cm²?</li></ol>`,
+`<li>Yes, both ways at equal rates: j<sub>0</sub> each way, no net current</li><li>1.00 × (e<sup>−0.973</sup> − e<sup>0.973</sup>) = ${R.lab.j_m050.toFixed(3)} mA/cm²</li>
+<li>No: ${R.lab.j_m100.toFixed(3)} mA/cm², ${R.lab.ratio.toFixed(1)} times more</li><li>0.1: about ${sgn(R.lab.eta_slow, 2)} V instead of −0.05 V</li>`),
+draw:()=>reveal("k1btn","k1ans")});
+
+/* ---------- Part 2 ---------- */
+function layerSVG(){const w = 500, h = 300; let s = svgEl(w, h);
+ s += `<rect x="20" y="30" width="80" height="230" fill="${C.rust}" opacity=".85"/>` + T(60, 280, "electrode", C.ink, 13);
+ s += `<rect x="100" y="30" width="120" height="230" fill="${C.sand}" opacity=".45"/>` + T(160, 280, "diffusion layer δ", C.ink, 13) + T(360, 280, "bulk solution, stirred", C.ink, 13);
+ s += `<polyline fill="none" stroke="${C.teal}" stroke-width="3" points="100,240 220,70 480,70"/>`;
+ s += T(470, 60, "c (bulk)", C.teal, 13, "end") + T(110, 255, "c at surface", C.teal, 12, "start");
+ for (let k = 0; k < 4; k++){const y = 100 + k * 40; s += `<line x1="200" x2="118" y1="${y}" y2="${y}" stroke="${C.plum}" stroke-width="2.5"/><polygon points="108,${y} 120,${y - 6} 120,${y + 6}" fill="${C.plum}"/>`}
+ s += T(160, 22, "Cu²⁺ diffuses in", C.plum, 13);
+ return s + "</svg>"}
+S.push({kicker:"Part 2 · Mass transport", title:"The ions have to get there", html:()=>`<div class="body"><div class="col w55"><div class="panel grow"><div class="chart">${layerSVG()}</div></div></div>
+<div class="col"><div class="panel" style="display:block"><div class="math" style="font-size:19px;line-height:1.7">j<sub>lim</sub> = n F D c / δ</div></div>
+<ul class="b xs" style="margin-top:10px"><li>Reduction uses up Cu<sup>2+</sup> at the surface; more must diffuse in across a thin layer δ</li>
+<li>When the surface concentration reaches zero, the current cannot rise further: the limiting current</li>
+<li>Cu plating, order of magnitude: n = 2, D = 7 × 10<sup>−6</sup> cm²/s, c = 0.10 M, δ = 50 µm gives j<sub>lim</sub> ≈ ${LC().jlim_cu.toFixed(0)} mA/cm²</li>
+<li>Raise j<sub>lim</sub>: stir or spin (thinner δ), a more concentrated bath (larger c), warmer (larger D)</li></ul></div></div>`,
+notes:"Values for the estimate are of the usual order, not a specific bath."});
+
+function polSVG(eta){const w = 520, h = 310, l = 60, r = 16, t = 16, b = 52, X = w - l - r, Y = h - t - b, px = v => l + X * (v + 0.25) / 0.25, py = v => t + Y * (8 - v) / 8; let s = svgEl(w, h);
+ s = axes(s, l, t, X, Y, px, py, [-0.25, -0.2, -0.15, -0.1, -0.05, 0], [0, 2, 4, 6, 8], "overpotential η, V", "|j|, mA/cm² (cathodic)");
+ const E_ = LC().eta.filter(e => e < 0), idx = E_.map(e => LC().eta.indexOf(e)), kin = idx.map(i => LC().kin[i] > 8.2 ? null : LC().kin[i]);
+ s += line(E_, kin, px, py, C.slate, "6 4", 2);
+ [["2", C.teal], ["6", C.amber]].forEach(([k, c]) => {s += line(E_, idx.map(i => -LC().pol[k][i]), px, py, c) + `<line x1="${l}" x2="${l + X}" y1="${py(+k)}" y2="${py(+k)}" stroke="${c}" stroke-width="1" stroke-dasharray="3 4"/>`});
+ [2, 6].forEach((jl, i) => {const v = -jcath(eta, jl); s += `<circle cx="${px(eta)}" cy="${py(v)}" r="6" fill="${i ? C.amber : C.teal}" stroke="#fff" stroke-width="2"/>`});
+ return s + legend([{t: "kinetics only", c: C.slate, line: true, dash: true}, {t: "j_lim = 2", c: C.teal, line: true}, {t: "j_lim = 6", c: C.amber, line: true}], l + X - 150, t + 16) + "</svg>"}
+S.push({kicker:"Part 2 · Demo", title:"Past a point, more voltage hardly helps", html:()=>`<div class="body"><div class="col w55"><div class="ctrl"><span>η, V</span><input type="range" id="pE" min="-0.25" max="-0.01" step="0.01" value="-0.20"><b id="pEv"></b></div>
+<div class="panel grow"><div class="chart" id="pch"></div></div></div>
+<div class="col"><div class="kpi"><div>|j|, j<sub>lim</sub> = 2<b id="p2"></b></div><div>|j|, j<sub>lim</sub> = 6<b class="a" id="p6"></b></div></div>
+<ul class="b xs" style="margin-top:10px"><li>At small η, kinetics limits: the curves follow Butler-Volmer</li><li>At large η, transport limits: the curve flattens at j<sub>lim</sub></li>
+<li>With j<sub>lim</sub> = 2: −0.20 → −0.25 V raises |j| from ${Math.abs(R.lab.jl2_m020).toFixed(3)} to ${Math.abs(R.lab.jl2_m025).toFixed(3)}, +${R.lab.gain_eta_pct.toFixed(1)}%</li>
+<li>Raising j<sub>lim</sub> to 6 at −0.25 V: ${Math.abs(R.lab.jl6_m025).toFixed(3)} mA/cm², +${R.lab.gain_jlim_pct.toFixed(0)}%</li></ul></div></div>`,
+draw:()=>{const go = () => {const e = +document.getElementById("pE").value; document.getElementById("pEv").textContent = sgn(e, 2); document.getElementById("p2").textContent = Math.abs(jcath(e, 2)).toFixed(3); document.getElementById("p6").textContent = Math.abs(jcath(e, 6)).toFixed(3); document.getElementById("pch").innerHTML = polSVG(e)};
+ document.getElementById("pE").oninput = go; go()},
+py:{title:"Kinetics and transport in series", sub:"kinetics_lab.j_cath(eta, j_lim)", code:
+`from kinetics_lab import j_cath
+for jl in (2, 6):
+    for eta in (-0.20, -0.25):
+        print("j_lim = %d, eta = %.2f V: j = %.3f mA/cm2" % (jl, eta, j_cath(eta, jl)))`,
+out:()=>[2, 6].map(jl => [-0.20, -0.25].map(e => `j_lim = ${jl}, eta = ${e.toFixed(2)} V: j = ${jcath(e, jl).toFixed(3)} mA/cm2`).join("\n")).join("\n")},
+notes:"1/|j| = 1/|j_k| + 1/j_lim: the slower of the two steps controls the current."});
+
+S.push({kicker:"Part 2 · A common mistake", title:"“More voltage always gives more current”", html:()=>`<div class="body"><div class="col w55"><div class="act" style="border-color:${C.rust};background:#fbf0ec"><span class="tag" style="background:${C.rust}">THE CLAIM</span>
+<div style="font-size:22px;line-height:1.45">“To plate faster, just turn up the voltage.”</div></div>
+<div class="panel" style="margin-top:16px;display:block"><b style="color:${C.teal};font-size:19px">The correction</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
+Near the limiting current, Cu<sup>2+</sup> cannot arrive any faster. The extra 0.05 V adds only ${R.lab.gain_eta_pct.toFixed(1)}% more Cu current; the rest of the push goes to side reactions such as H<sub>2</sub>, which lowers the current efficiency of Class 10. Better transport tripled the current instead.</div></div></div>
+<div class="col"><ul class="b sm"><li>Find which step limits: kinetics (raise η, or use a catalyst) or transport (stir, concentrate, heat)</li><li>Deposits made near j<sub>lim</sub> grow rough and powdery; platers call them burnt</li></ul></div></div>`});
+
+S.push({kicker:"Part 2 · In the fab and in your phone", title:"Rate limits in plating and in fast charging", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:17px">
+<tr><th>Where</th><th>What limits it, and what is done</th></tr>
+<tr><td>Cu plating of interconnects</td><td>Run well below j<sub>lim</sub>: the 10 mA/cm² of Class 10 against an estimated ${LC().jlim_cu.toFixed(0)} mA/cm². The wafer spins to thin the diffusion layer and keep it even across the wafer</td></tr>
+<tr><td>Filling narrow trenches</td><td>Cu<sup>2+</sup> reaches the top of a trench more easily than the bottom. Bath additives slow growth at the top so the trench fills from the bottom up, without voids</td></tr>
+<tr><td>Fast charging a Li-ion cell</td><td>At high current, overpotential and Li<sup>+</sup> transport limits cut the voltage you get and the charge you can store. Push too hard and Li metal plates on the graphite instead of entering it, a safety risk</td></tr></table></div></div>`,
+notes:"The same two limits, kinetics and transport, in three settings."});
+
+S.push({kicker:"Check 2 · 5 minutes", title:"Check 2: transport", html:()=>CHECK(2,`${OL}
+<li>What is the limiting current, and what causes it?</li>
+<li>With j<sub>lim</sub> = 2 mA/cm², η goes from −0.20 to −0.25 V. By how much does |j| rise?</li>
+<li>At −0.25 V, j<sub>lim</sub> is raised from 2 to 6 mA/cm². What is |j| now?</li>
+<li>Name two ways to raise j<sub>lim</sub> in a plating bath.</li></ol>`,
+`<li>The highest current transport allows: the surface concentration of the ion has fallen to zero</li><li>From ${Math.abs(R.lab.jl2_m020).toFixed(3)} to ${Math.abs(R.lab.jl2_m025).toFixed(3)} mA/cm²: about +${R.lab.gain_eta_pct.toFixed(1)}%</li>
+<li>${Math.abs(R.lab.jl6_m025).toFixed(3)} mA/cm²</li><li>Stir or spin (thinner δ); raise the concentration; warm the bath (larger D)</li>`),
+draw:()=>reveal("k2btn","k2ans")});
+
+/* ---------- closing ---------- */
+S.push({kicker:"Where this goes next", title:"Stability, then the whole picture", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
+<tr><th>Class</th><th>What today gives it</th></tr>
+<tr><td>13 · Cu Pourbaix</td><td>Which form of Cu is stable at each pH and potential. A Pourbaix diagram is about stability only, and says nothing about rate: today’s topic</td></tr>
+<tr><td>14 · Review</td><td>Cu deposition and the choice of storage device, with the numbers from Classes 10 and 11</td></tr></table></div></div>`});
+
+S.push({kicker:"Lab 12 · 30 minutes", title:"Overpotential and the limiting current", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Predict what doubling η does to the current</li><li>Calculate j at −0.050 V, then change η</li>
+<li>Find the η a slow electrode needs for the same current</li><li>Add a limiting current, and compare more η with better transport</li></ul></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="45mm" height="45mm" version="1.1" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM10,2H11V3H10zM13,2H14V3H13zM14,2H15V3H14zM15,2H16V3H15zM18,2H19V3H18zM19,2H20V3H19zM20,2H21V3H20zM21,2H22V3H21zM22,2H23V3H22zM23,2H24V3H23zM24,2H25V3H24zM25,2H26V3H25zM26,2H27V3H26zM27,2H28V3H27zM30,2H31V3H30zM33,2H34V3H33zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM39,2H40V3H39zM40,2H41V3H40zM41,2H42V3H41zM42,2H43V3H42zM2,3H3V4H2zM8,3H9V4H8zM10,3H11V4H10zM12,3H13V4H12zM13,3H14V4H13zM14,3H15V4H14zM15,3H16V4H15zM17,3H18V4H17zM20,3H21V4H20zM22,3H23V4H22zM24,3H25V4H24zM25,3H26V4H25zM26,3H27V4H26zM31,3H32V4H31zM34,3H35V4H34zM36,3H37V4H36zM42,3H43V4H42zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM12,4H13V5H12zM13,4H14V5H13zM18,4H19V5H18zM19,4H20V5H19zM22,4H23V5H22zM24,4H25V5H24zM27,4H28V5H27zM29,4H30V5H29zM30,4H31V5H30zM33,4H34V5H33zM36,4H37V5H36zM38,4H39V5H38zM39,4H40V5H39zM40,4H41V5H40zM42,4H43V5H42zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM11,5H12V6H11zM12,5H13V6H12zM13,5H14V6H13zM15,5H16V6H15zM18,5H19V6H18zM21,5H22V6H21zM24,5H25V6H24zM26,5H27V6H26zM27,5H28V6H27zM28,5H29V6H28zM29,5H30V6H29zM30,5H31V6H30zM31,5H32V6H31zM34,5H35V6H34zM36,5H37V6H36zM38,5H39V6H38zM39,5H40V6H39zM40,5H41V6H40zM42,5H43V6H42zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM12,6H13V7H12zM13,6H14V7H13zM15,6H16V7H15zM17,6H18V7H17zM19,6H20V7H19zM21,6H22V7H21zM26,6H27V7H26zM28,6H29V7H28zM29,6H30V7H29zM31,6H32V7H31zM33,6H34V7H33zM34,6H35V7H34zM36,6H37V7H36zM38,6H39V7H38zM39,6H40V7H39zM40,6H41V7H40zM42,6H43V7H42zM2,7H3V8H2zM8,7H9V8H8zM14,7H15V8H14zM16,7H17V8H16zM18,7H19V8H18zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM26,7H27V8H26zM27,7H28V8H27zM28,7H29V8H28zM30,7H31V8H30zM31,7H32V8H31zM33,7H34V8H33zM34,7H35V8H34zM36,7H37V8H36zM42,7H43V8H42zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM34,8H35V9H34zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM39,8H40V9H39zM40,8H41V9H40zM41,8H42V9H41zM42,8H43V9H42zM10,9H11V10H10zM11,9H12V10H11zM12,9H13V10H12zM14,9H15V10H14zM16,9H17V10H16zM17,9H18V10H17zM18,9H19V10H18zM19,9H20V10H19zM21,9H22V10H21zM24,9H25V10H24zM25,9H26V10H25zM26,9H27V10H26zM28,9H29V10H28zM29,9H30V10H29zM31,9H32V10H31zM32,9H33V10H32zM2,10H3V11H2zM4,10H5V11H4zM5,10H6V11H5zM7,10H8V11H7zM8,10H9V11H8zM9,10H10V11H9zM11,10H12V11H11zM13,10H14V11H13zM17,10H18V11H17zM18,10H19V11H18zM19,10H20V11H19zM23,10H24V11H23zM28,10H29V11H28zM31,10H32V11H31zM32,10H33V11H32zM34,10H35V11H34zM36,10H37V11H36zM39,10H40V11H39zM41,10H42V11H41zM42,10H43V11H42zM2,11H3V12H2zM4,11H5V12H4zM9,11H10V12H9zM10,11H11V12H10zM12,11H13V12H12zM13,11H14V12H13zM14,11H15V12H14zM15,11H16V12H15zM17,11H18V12H17zM20,11H21V12H20zM21,11H22V12H21zM22,11H23V12H22zM23,11H24V12H23zM25,11H26V12H25zM30,11H31V12H30zM32,11H33V12H32zM33,11H34V12H33zM34,11H35V12H34zM36,11H37V12H36zM38,11H39V12H38zM40,11H41V12H40zM42,11H43V12H42zM4,12H5V13H4zM6,12H7V13H6zM8,12H9V13H8zM11,12H12V13H11zM12,12H13V13H12zM14,12H15V13H14zM17,12H18V13H17zM20,12H21V13H20zM25,12H26V13H25zM28,12H29V13H28zM30,12H31V13H30zM37,12H38V13H37zM40,12H41V13H40zM41,12H42V13H41zM2,13H3V14H2zM3,13H4V14H3zM4,13H5V14H4zM5,13H6V14H5zM6,13H7V14H6zM7,13H8V14H7zM9,13H10V14H9zM12,13H13V14H12zM13,13H14V14H13zM15,13H16V14H15zM16,13H17V14H16zM17,13H18V14H17zM20,13H21V14H20zM21,13H22V14H21zM22,13H23V14H22zM25,13H26V14H25zM26,13H27V14H26zM27,13H28V14H27zM30,13H31V14H30zM34,13H35V14H34zM41,13H42V14H41zM2,14H3V15H2zM3,14H4V15H3zM5,14H6V15H5zM7,14H8V15H7zM8,14H9V15H8zM9,14H10V15H9zM10,14H11V15H10zM12,14H13V15H12zM14,14H15V15H14zM15,14H16V15H15zM17,14H18V15H17zM19,14H20V15H19zM20,14H21V15H20zM22,14H23V15H22zM24,14H25V15H24zM25,14H26V15H25zM27,14H28V15H27zM29,14H30V15H29zM31,14H32V15H31zM32,14H33V15H32zM33,14H34V15H33zM34,14H35V15H34zM37,14H38V15H37zM39,14H40V15H39zM40,14H41V15H40zM41,14H42V15H41zM2,15H3V16H2zM3,15H4V16H3zM9,15H10V16H9zM10,15H11V16H10zM11,15H12V16H11zM12,15H13V16H12zM14,15H15V16H14zM15,15H16V16H15zM18,15H19V16H18zM19,15H20V16H19zM22,15H23V16H22zM26,15H27V16H26zM29,15H30V16H29zM30,15H31V16H30zM31,15H32V16H31zM32,15H33V16H32zM33,15H34V16H33zM36,15H37V16H36zM39,15H40V16H39zM41,15H42V16H41zM42,15H43V16H42zM2,16H3V17H2zM3,16H4V17H3zM6,16H7V17H6zM7,16H8V17H7zM8,16H9V17H8zM11,16H12V17H11zM13,16H14V17H13zM15,16H16V17H15zM17,16H18V17H17zM18,16H19V17H18zM20,16H21V17H20zM21,16H22V17H21zM22,16H23V17H22zM23,16H24V17H23zM24,16H25V17H24zM27,16H28V17H27zM31,16H32V17H31zM33,16H34V17H33zM34,16H35V17H34zM36,16H37V17H36zM37,16H38V17H37zM40,16H41V17H40zM42,16H43V17H42zM2,17H3V18H2zM4,17H5V18H4zM5,17H6V18H5zM6,17H7V18H6zM9,17H10V18H9zM11,17H12V18H11zM13,17H14V18H13zM18,17H19V18H18zM23,17H24V18H23zM26,17H27V18H26zM28,17H29V18H28zM30,17H31V18H30zM32,17H33V18H32zM33,17H34V18H33zM36,17H37V18H36zM37,17H38V18H37zM38,17H39V18H38zM39,17H40V18H39zM4,18H5V19H4zM6,18H7V19H6zM7,18H8V19H7zM8,18H9V19H8zM11,18H12V19H11zM12,18H13V19H12zM17,18H18V19H17zM18,18H19V19H18zM20,18H21V19H20zM22,18H23V19H22zM23,18H24V19H23zM26,18H27V19H26zM27,18H28V19H27zM29,18H30V19H29zM30,18H31V19H30zM38,18H39V19H38zM3,19H4V20H3zM5,19H6V20H5zM6,19H7V20H6zM7,19H8V20H7zM9,19H10V20H9zM10,19H11V20H10zM12,19H13V20H12zM13,19H14V20H13zM16,19H17V20H16zM17,19H18V20H17zM18,19H19V20H18zM20,19H21V20H20zM22,19H23V20H22zM23,19H24V20H23zM24,19H25V20H24zM25,19H26V20H25zM27,19H28V20H27zM29,19H30V20H29zM31,19H32V20H31zM32,19H33V20H32zM35,19H36V20H35zM37,19H38V20H37zM39,19H40V20H39zM40,19H41V20H40zM2,20H3V21H2zM3,20H4V21H3zM4,20H5V21H4zM7,20H8V21H7zM8,20H9V21H8zM10,20H11V21H10zM12,20H13V21H12zM17,20H18V21H17zM18,20H19V21H18zM20,20H21V21H20zM22,20H23V21H22zM23,20H24V21H23zM24,20H25V21H24zM29,20H30V21H29zM31,20H32V21H31zM35,20H36V21H35zM38,20H39V21H38zM41,20H42V21H41zM6,21H7V22H6zM9,21H10V22H9zM12,21H13V22H12zM19,21H20V22H19zM20,21H21V22H20zM22,21H23V22H22zM24,21H25V22H24zM26,21H27V22H26zM30,21H31V22H30zM31,21H32V22H31zM32,21H33V22H32zM33,21H34V22H33zM34,21H35V22H34zM36,21H37V22H36zM37,21H38V22H37zM40,21H41V22H40zM41,21H42V22H41zM42,21H43V22H42zM5,22H6V23H5zM6,22H7V23H6zM8,22H9V23H8zM9,22H10V23H9zM17,22H18V23H17zM18,22H19V23H18zM23,22H24V23H23zM25,22H26V23H25zM28,22H29V23H28zM31,22H32V23H31zM32,22H33V23H32zM33,22H34V23H33zM35,22H36V23H35zM36,22H37V23H36zM37,22H38V23H37zM38,22H39V23H38zM40,22H41V23H40zM41,22H42V23H41zM4,23H5V24H4zM6,23H7V24H6zM11,23H12V24H11zM12,23H13V24H12zM13,23H14V24H13zM14,23H15V24H14zM16,23H17V24H16zM17,23H18V24H17zM19,23H20V24H19zM21,23H22V24H21zM22,23H23V24H22zM25,23H26V24H25zM27,23H28V24H27zM31,23H32V24H31zM33,23H34V24H33zM36,23H37V24H36zM37,23H38V24H37zM38,23H39V24H38zM41,23H42V24H41zM42,23H43V24H42zM2,24H3V25H2zM3,24H4V25H3zM6,24H7V25H6zM7,24H8V25H7zM8,24H9V25H8zM9,24H10V25H9zM10,24H11V25H10zM12,24H13V25H12zM15,24H16V25H15zM16,24H17V25H16zM17,24H18V25H17zM18,24H19V25H18zM20,24H21V25H20zM25,24H26V25H25zM28,24H29V25H28zM32,24H33V25H32zM36,24H37V25H36zM37,24H38V25H37zM39,24H40V25H39zM41,24H42V25H41zM2,25H3V26H2zM4,25H5V26H4zM6,25H7V26H6zM11,25H12V26H11zM13,25H14V26H13zM14,25H15V26H14zM17,25H18V26H17zM18,25H19V26H18zM21,25H22V26H21zM26,25H27V26H26zM27,25H28V26H27zM29,25H30V26H29zM30,25H31V26H30zM32,25H33V26H32zM33,25H34V26H33zM34,25H35V26H34zM35,25H36V26H35zM36,25H37V26H36zM37,25H38V26H37zM39,25H40V26H39zM41,25H42V26H41zM42,25H43V26H42zM2,26H3V27H2zM5,26H6V27H5zM8,26H9V27H8zM9,26H10V27H9zM12,26H13V27H12zM15,26H16V27H15zM18,26H19V27H18zM19,26H20V27H19zM21,26H22V27H21zM22,26H23V27H22zM24,26H25V27H24zM26,26H27V27H26zM27,26H28V27H27zM28,26H29V27H28zM29,26H30V27H29zM31,26H32V27H31zM35,26H36V27H35zM37,26H38V27H37zM40,26H41V27H40zM3,27H4V28H3zM4,27H5V28H4zM6,27H7V28H6zM9,27H10V28H9zM13,27H14V28H13zM14,27H15V28H14zM15,27H16V28H15zM21,27H22V28H21zM24,27H25V28H24zM27,27H28V28H27zM28,27H29V28H28zM29,27H30V28H29zM30,27H31V28H30zM31,27H32V28H31zM33,27H34V28H33zM34,27H35V28H34zM36,27H37V28H36zM37,27H38V28H37zM39,27H40V28H39zM40,27H41V28H40zM42,27H43V28H42zM2,28H3V29H2zM4,28H5V29H4zM8,28H9V29H8zM11,28H12V29H11zM16,28H17V29H16zM19,28H20V29H19zM20,28H21V29H20zM21,28H22V29H21zM23,28H24V29H23zM24,28H25V29H24zM27,28H28V29H27zM30,28H31V29H30zM33,28H34V29H33zM34,28H35V29H34zM36,28H37V29H36zM38,28H39V29H38zM39,28H40V29H39zM41,28H42V29H41zM42,28H43V29H42zM4,29H5V30H4zM5,29H6V30H5zM6,29H7V30H6zM10,29H11V30H10zM12,29H13V30H12zM13,29H14V30H13zM15,29H16V30H15zM23,29H24V30H23zM24,29H25V30H24zM26,29H27V30H26zM28,29H29V30H28zM33,29H34V30H33zM34,29H35V30H34zM38,29H39V30H38zM39,29H40V30H39zM2,30H3V31H2zM5,30H6V31H5zM6,30H7V31H6zM7,30H8V31H7zM8,30H9V31H8zM9,30H10V31H9zM10,30H11V31H10zM11,30H12V31H11zM12,30H13V31H12zM13,30H14V31H13zM17,30H18V31H17zM18,30H19V31H18zM21,30H22V31H21zM22,30H23V31H22zM23,30H24V31H23zM24,30H25V31H24zM25,30H26V31H25zM27,30H28V31H27zM28,30H29V31H28zM33,30H34V31H33zM35,30H36V31H35zM38,30H39V31H38zM39,30H40V31H39zM42,30H43V31H42zM3,31H4V32H3zM5,31H6V32H5zM7,31H8V32H7zM9,31H10V32H9zM10,31H11V32H10zM13,31H14V32H13zM14,31H15V32H14zM16,31H17V32H16zM18,31H19V32H18zM20,31H21V32H20zM21,31H22V32H21zM22,31H23V32H22zM23,31H24V32H23zM24,31H25V32H24zM25,31H26V32H25zM26,31H27V32H26zM27,31H28V32H27zM29,31H30V32H29zM30,31H31V32H30zM32,31H33V32H32zM34,31H35V32H34zM37,31H38V32H37zM39,31H40V32H39zM41,31H42V32H41zM2,32H3V33H2zM7,32H8V33H7zM8,32H9V33H8zM9,32H10V33H9zM10,32H11V33H10zM13,32H14V33H13zM17,32H18V33H17zM21,32H22V33H21zM23,32H24V33H23zM24,32H25V33H24zM26,32H27V33H26zM27,32H28V33H27zM28,32H29V33H28zM29,32H30V33H29zM31,32H32V33H31zM35,32H36V33H35zM36,32H37V33H36zM37,32H38V33H37zM39,32H40V33H39zM40,32H41V33H40zM41,32H42V33H41zM6,33H7V34H6zM7,33H8V34H7zM13,33H14V34H13zM14,33H15V34H14zM15,33H16V34H15zM16,33H17V34H16zM18,33H19V34H18zM19,33H20V34H19zM21,33H22V34H21zM24,33H25V34H24zM26,33H27V34H26zM28,33H29V34H28zM30,33H31V34H30zM31,33H32V34H31zM32,33H33V34H32zM33,33H34V34H33zM36,33H37V34H36zM38,33H39V34H38zM39,33H40V34H39zM40,33H41V34H40zM42,33H43V34H42zM3,34H4V35H3zM4,34H5V35H4zM5,34H6V35H5zM6,34H7V35H6zM8,34H9V35H8zM11,34H12V35H11zM13,34H14V35H13zM16,34H17V35H16zM17,34H18V35H17zM18,34H19V35H18zM19,34H20V35H19zM20,34H21V35H20zM23,34H24V35H23zM25,34H26V35H25zM28,34H29V35H28zM30,34H31V35H30zM31,34H32V35H31zM34,34H35V35H34zM35,34H36V35H35zM36,34H37V35H36zM37,34H38V35H37zM38,34H39V35H38zM39,34H40V35H39zM40,34H41V35H40zM42,34H43V35H42zM10,35H11V36H10zM13,35H14V36H13zM14,35H15V36H14zM15,35H16V36H15zM16,35H17V36H16zM17,35H18V36H17zM18,35H19V36H18zM19,35H20V36H19zM20,35H21V36H20zM21,35H22V36H21zM22,35H23V36H22zM25,35H26V36H25zM26,35H27V36H26zM28,35H29V36H28zM30,35H31V36H30zM32,35H33V36H32zM33,35H34V36H33zM34,35H35V36H34zM38,35H39V36H38zM41,35H42V36H41zM42,35H43V36H42zM2,36H3V37H2zM3,36H4V37H3zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM7,36H8V37H7zM8,36H9V37H8zM10,36H11V37H10zM11,36H12V37H11zM12,36H13V37H12zM15,36H16V37H15zM16,36H17V37H16zM18,36H19V37H18zM20,36H21V37H20zM24,36H25V37H24zM25,36H26V37H25zM27,36H28V37H27zM28,36H29V37H28zM30,36H31V37H30zM33,36H34V37H33zM34,36H35V37H34zM36,36H37V37H36zM38,36H39V37H38zM41,36H42V37H41zM2,37H3V38H2zM8,37H9V38H8zM10,37H11V38H10zM11,37H12V38H11zM16,37H17V38H16zM17,37H18V38H17zM19,37H20V38H19zM24,37H25V38H24zM26,37H27V38H26zM27,37H28V38H27zM33,37H34V38H33zM34,37H35V38H34zM38,37H39V38H38zM39,37H40V38H39zM41,37H42V38H41zM42,37H43V38H42zM2,38H3V39H2zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM8,38H9V39H8zM15,38H16V39H15zM16,38H17V39H16zM17,38H18V39H17zM18,38H19V39H18zM21,38H22V39H21zM23,38H24V39H23zM27,38H28V39H27zM30,38H31V39H30zM31,38H32V39H31zM34,38H35V39H34zM35,38H36V39H35zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38zM39,38H40V39H39zM40,38H41V39H40zM41,38H42V39H41zM42,38H43V39H42zM2,39H3V40H2zM4,39H5V40H4zM5,39H6V40H5zM6,39H7V40H6zM8,39H9V40H8zM10,39H11V40H10zM11,39H12V40H11zM13,39H14V40H13zM15,39H16V40H15zM18,39H19V40H18zM21,39H22V40H21zM26,39H27V40H26zM28,39H29V40H28zM29,39H30V40H29zM32,39H33V40H32zM33,39H34V40H33zM38,39H39V40H38zM39,39H40V40H39zM42,39H43V40H42zM2,40H3V41H2zM4,40H5V41H4zM5,40H6V41H5zM6,40H7V41H6zM8,40H9V41H8zM10,40H11V41H10zM17,40H18V41H17zM21,40H22V41H21zM26,40H27V41H26zM27,40H28V41H27zM28,40H29V41H28zM30,40H31V41H30zM31,40H32V41H31zM32,40H33V41H32zM34,40H35V41H34zM37,40H38V41H37zM41,40H42V41H41zM42,40H43V41H42zM2,41H3V42H2zM8,41H9V42H8zM11,41H12V42H11zM13,41H14V42H13zM15,41H16V42H15zM16,41H17V42H16zM18,41H19V42H18zM19,41H20V42H19zM23,41H24V42H23zM25,41H26V42H25zM28,41H29V42H28zM29,41H30V42H29zM34,41H35V42H34zM35,41H36V42H35zM38,41H39V42H38zM39,41H40V42H39zM41,41H42V42H41zM2,42H3V43H2zM3,42H4V43H3zM4,42H5V43H4zM5,42H6V43H5zM6,42H7V43H6zM7,42H8V43H7zM8,42H9V43H8zM10,42H11V43H10zM11,42H12V43H11zM12,42H13V43H12zM14,42H15V43H14zM16,42H17V43H16zM17,42H18V43H17zM18,42H19V43H18zM19,42H20V43H19zM21,42H22V43H21zM22,42H23V43H22zM23,42H24V43H23zM24,42H25V43H24zM26,42H27V43H26zM27,42H28V43H27zM29,42H30V43H29zM30,42H31V43H30zM32,42H33V43H32zM33,42H34V43H33zM34,42H35V43H34zM35,42H36V43H35zM36,42H37V43H36zM39,42H40V43H39zM41,42H42V43H41z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="lab.html" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the lab page</a></div></div></div>`,
+notes:"Early finishers: with j_lim = 6, what η gives |j| = 3 mA/cm²? (about −0.093 V)"});
+
+S.push({kicker:"Summary", title:"What to take from today", html:()=>`<div class="body"><div class="col w45"><table class="t" style="font-size:17px">
+<tr><th>Result (j<sub>0</sub> = 1.00 mA/cm²)</th><th class="n">Value</th></tr>
+<tr><td>j at −0.050 V</td><td class="n">${R.lab.j_m050.toFixed(3)} mA/cm²</td></tr><tr><td>j at −0.100 V</td><td class="n">${R.lab.j_m100.toFixed(3)} mA/cm²</td></tr>
+<tr><td>η at j<sub>0</sub> = 0.1, same |j|</td><td class="n">${sgn(R.lab.eta_slow, 3)} V</td></tr><tr><td>j<sub>lim</sub> 2: −0.20 → −0.25 V</td><td class="n">+${R.lab.gain_eta_pct.toFixed(1)}%</td></tr>
+<tr><td>j<sub>lim</sub> 2 → 6 at −0.25 V</td><td class="n">${Math.abs(R.lab.jl2_m025).toFixed(3)} → ${Math.abs(R.lab.jl6_m025).toFixed(3)}</td></tr></table></div>
+<div class="col"><ul class="b xs"><li>Current density is a rate; overpotential is the push</li><li>j<sub>0</sub>: the current each way at equilibrium; a larger j<sub>0</sub> needs less η</li>
+<li>Butler-Volmer: j grows exponentially with η</li><li>Transport sets a ceiling, j<sub>lim</sub> = nFDc/δ</li><li>Find the slow step before you push harder</li></ul></div></div>`});
+
+S.push({kicker:"Before the next class", title:"Before we meet again", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Finish Lab 12 if you did not finish in class, and upload the answer file to myCourseVille</li>
+<li>Read OpenStax <i>Chemistry 2e</i>, Section 12.5 (collision theory and activation energy) and Section 12.7 (catalysis)</li>
+<li>Class 13: the Cu Pourbaix diagram. Which form of Cu is stable at each pH and potential</li></ul></div></div>`});
+
+S.push({kicker:"Exit Ticket and feedback · 5 minutes", title:"Exit Ticket and feedback", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Scan the code and choose <b>Class 12</b></li><li>Exit Ticket: paste the answers that the lab page copies for you</li>
+<li>Feedback: pace, confidence, how far you got in the lab, and what is still unclear</li><li>Studying on your own? Choose "On my own"</li></ul>
+<p class="note">One form for both. Anonymous; no name or student ID.</p></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="45mm" height="45mm" version="1.1" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM10,2H11V3H10zM11,2H12V3H11zM15,2H16V3H15zM16,2H17V3H16zM18,2H19V3H18zM19,2H20V3H19zM21,2H22V3H21zM22,2H23V3H22zM23,2H24V3H23zM24,2H25V3H24zM25,2H26V3H25zM27,2H28V3H27zM30,2H31V3H30zM33,2H34V3H33zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM39,2H40V3H39zM40,2H41V3H40zM41,2H42V3H41zM42,2H43V3H42zM2,3H3V4H2zM8,3H9V4H8zM10,3H11V4H10zM12,3H13V4H12zM13,3H14V4H13zM14,3H15V4H14zM15,3H16V4H15zM16,3H17V4H16zM20,3H21V4H20zM22,3H23V4H22zM25,3H26V4H25zM26,3H27V4H26zM27,3H28V4H27zM31,3H32V4H31zM34,3H35V4H34zM36,3H37V4H36zM42,3H43V4H42zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM11,4H12V5H11zM14,4H15V5H14zM15,4H16V5H15zM16,4H17V5H16zM17,4H18V5H17zM19,4H20V5H19zM21,4H22V5H21zM26,4H27V5H26zM29,4H30V5H29zM30,4H31V5H30zM32,4H33V5H32zM33,4H34V5H33zM36,4H37V5H36zM38,4H39V5H38zM39,4H40V5H39zM40,4H41V5H40zM42,4H43V5H42zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM11,5H12V6H11zM16,5H17V6H16zM17,5H18V6H17zM18,5H19V6H18zM21,5H22V6H21zM23,5H24V6H23zM26,5H27V6H26zM28,5H29V6H28zM29,5H30V6H29zM30,5H31V6H30zM32,5H33V6H32zM34,5H35V6H34zM36,5H37V6H36zM38,5H39V6H38zM39,5H40V6H39zM40,5H41V6H40zM42,5H43V6H42zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM11,6H12V7H11zM13,6H14V7H13zM17,6H18V7H17zM19,6H20V7H19zM21,6H22V7H21zM24,6H25V7H24zM26,6H27V7H26zM28,6H29V7H28zM29,6H30V7H29zM31,6H32V7H31zM32,6H33V7H32zM33,6H34V7H33zM34,6H35V7H34zM36,6H37V7H36zM38,6H39V7H38zM39,6H40V7H39zM40,6H41V7H40zM42,6H43V7H42zM2,7H3V8H2zM8,7H9V8H8zM11,7H12V8H11zM12,7H13V8H12zM14,7H15V8H14zM15,7H16V8H15zM16,7H17V8H16zM18,7H19V8H18zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM26,7H27V8H26zM27,7H28V8H27zM28,7H29V8H28zM30,7H31V8H30zM31,7H32V8H31zM33,7H34V8H33zM34,7H35V8H34zM36,7H37V8H36zM42,7H43V8H42zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM34,8H35V9H34zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM39,8H40V9H39zM40,8H41V9H40zM41,8H42V9H41zM42,8H43V9H42zM10,9H11V10H10zM14,9H15V10H14zM15,9H16V10H15zM17,9H18V10H17zM18,9H19V10H18zM19,9H20V10H19zM21,9H22V10H21zM24,9H25V10H24zM25,9H26V10H25zM26,9H27V10H26zM28,9H29V10H28zM29,9H30V10H29zM31,9H32V10H31zM32,9H33V10H32zM2,10H3V11H2zM4,10H5V11H4zM5,10H6V11H5zM7,10H8V11H7zM8,10H9V11H8zM9,10H10V11H9zM11,10H12V11H11zM12,10H13V11H12zM13,10H14V11H13zM14,10H15V11H14zM17,10H18V11H17zM19,10H20V11H19zM23,10H24V11H23zM28,10H29V11H28zM31,10H32V11H31zM32,10H33V11H32zM34,10H35V11H34zM36,10H37V11H36zM39,10H40V11H39zM41,10H42V11H41zM42,10H43V11H42zM2,11H3V12H2zM4,11H5V12H4zM7,11H8V12H7zM9,11H10V12H9zM10,11H11V12H10zM12,11H13V12H12zM13,11H14V12H13zM15,11H16V12H15zM17,11H18V12H17zM20,11H21V12H20zM21,11H22V12H21zM22,11H23V12H22zM23,11H24V12H23zM25,11H26V12H25zM30,11H31V12H30zM32,11H33V12H32zM33,11H34V12H33zM34,11H35V12H34zM36,11H37V12H36zM38,11H39V12H38zM40,11H41V12H40zM42,11H43V12H42zM4,12H5V13H4zM6,12H7V13H6zM7,12H8V13H7zM8,12H9V13H8zM10,12H11V13H10zM11,12H12V13H11zM12,12H13V13H12zM13,12H14V13H13zM17,12H18V13H17zM20,12H21V13H20zM25,12H26V13H25zM28,12H29V13H28zM30,12H31V13H30zM37,12H38V13H37zM40,12H41V13H40zM41,12H42V13H41zM6,13H7V14H6zM7,13H8V14H7zM10,13H11V14H10zM12,13H13V14H12zM13,13H14V14H13zM14,13H15V14H14zM15,13H16V14H15zM16,13H17V14H16zM20,13H21V14H20zM21,13H22V14H21zM22,13H23V14H22zM25,13H26V14H25zM26,13H27V14H26zM27,13H28V14H27zM30,13H31V14H30zM34,13H35V14H34zM41,13H42V14H41zM2,14H3V15H2zM3,14H4V15H3zM4,14H5V15H4zM5,14H6V15H5zM6,14H7V15H6zM8,14H9V15H8zM10,14H11V15H10zM12,14H13V15H12zM15,14H16V15H15zM17,14H18V15H17zM19,14H20V15H19zM20,14H21V15H20zM22,14H23V15H22zM24,14H25V15H24zM25,14H26V15H25zM26,14H27V15H26zM27,14H28V15H27zM29,14H30V15H29zM30,14H31V15H30zM31,14H32V15H31zM32,14H33V15H32zM33,14H34V15H33zM35,14H36V15H35zM37,14H38V15H37zM39,14H40V15H39zM40,14H41V15H40zM42,14H43V15H42zM6,15H7V16H6zM7,15H8V16H7zM9,15H10V16H9zM10,15H11V16H10zM11,15H12V16H11zM12,15H13V16H12zM13,15H14V16H13zM14,15H15V16H14zM17,15H18V16H17zM18,15H19V16H18zM19,15H20V16H19zM22,15H23V16H22zM23,15H24V16H23zM25,15H26V16H25zM26,15H27V16H26zM31,15H32V16H31zM32,15H33V16H32zM39,15H40V16H39zM41,15H42V16H41zM42,15H43V16H42zM6,16H7V17H6zM8,16H9V17H8zM13,16H14V17H13zM14,16H15V17H14zM17,16H18V17H17zM18,16H19V17H18zM20,16H21V17H20zM21,16H22V17H21zM22,16H23V17H22zM24,16H25V17H24zM25,16H26V17H25zM27,16H28V17H27zM31,16H32V17H31zM36,16H37V17H36zM37,16H38V17H37zM40,16H41V17H40zM42,16H43V17H42zM3,17H4V18H3zM4,17H5V18H4zM5,17H6V18H5zM6,17H7V18H6zM9,17H10V18H9zM13,17H14V18H13zM15,17H16V18H15zM17,17H18V18H17zM18,17H19V18H18zM20,17H21V18H20zM23,17H24V18H23zM25,17H26V18H25zM28,17H29V18H28zM29,17H30V18H29zM32,17H33V18H32zM33,17H34V18H33zM34,17H35V18H34zM36,17H37V18H36zM37,17H38V18H37zM38,17H39V18H38zM39,17H40V18H39zM2,18H3V19H2zM4,18H5V19H4zM5,18H6V19H5zM8,18H9V19H8zM11,18H12V19H11zM13,18H14V19H13zM14,18H15V19H14zM16,18H17V19H16zM18,18H19V19H18zM20,18H21V19H20zM22,18H23V19H22zM23,18H24V19H23zM24,18H25V19H24zM27,18H28V19H27zM30,18H31V19H30zM33,18H34V19H33zM38,18H39V19H38zM4,19H5V20H4zM6,19H7V20H6zM7,19H8V20H7zM10,19H11V20H10zM11,19H12V20H11zM12,19H13V20H12zM13,19H14V20H13zM15,19H16V20H15zM16,19H17V20H16zM17,19H18V20H17zM22,19H23V20H22zM23,19H24V20H23zM24,19H25V20H24zM25,19H26V20H25zM26,19H27V20H26zM27,19H28V20H27zM29,19H30V20H29zM31,19H32V20H31zM32,19H33V20H32zM35,19H36V20H35zM37,19H38V20H37zM39,19H40V20H39zM40,19H41V20H40zM2,20H3V21H2zM3,20H4V21H3zM5,20H6V21H5zM7,20H8V21H7zM8,20H9V21H8zM10,20H11V21H10zM12,20H13V21H12zM13,20H14V21H13zM14,20H15V21H14zM16,20H17V21H16zM17,20H18V21H17zM20,20H21V21H20zM24,20H25V21H24zM29,20H30V21H29zM31,20H32V21H31zM35,20H36V21H35zM38,20H39V21H38zM41,20H42V21H41zM5,21H6V22H5zM6,21H7V22H6zM15,21H16V22H15zM16,21H17V22H16zM17,21H18V22H17zM18,21H19V22H18zM19,21H20V22H19zM20,21H21V22H20zM21,21H22V22H21zM23,21H24V22H23zM26,21H27V22H26zM30,21H31V22H30zM33,21H34V22H33zM34,21H35V22H34zM36,21H37V22H36zM37,21H38V22H37zM40,21H41V22H40zM41,21H42V22H41zM42,21H43V22H42zM4,22H5V23H4zM6,22H7V23H6zM8,22H9V23H8zM9,22H10V23H9zM10,22H11V23H10zM12,22H13V23H12zM15,22H16V23H15zM17,22H18V23H17zM18,22H19V23H18zM25,22H26V23H25zM27,22H28V23H27zM32,22H33V23H32zM33,22H34V23H33zM35,22H36V23H35zM36,22H37V23H36zM37,22H38V23H37zM38,22H39V23H38zM40,22H41V23H40zM41,22H42V23H41zM6,23H7V24H6zM9,23H10V24H9zM10,23H11V24H10zM12,23H13V24H12zM13,23H14V24H13zM14,23H15V24H14zM15,23H16V24H15zM17,23H18V24H17zM19,23H20V24H19zM21,23H22V24H21zM22,23H23V24H22zM25,23H26V24H25zM27,23H28V24H27zM28,23H29V24H28zM31,23H32V24H31zM32,23H33V24H32zM33,23H34V24H33zM36,23H37V24H36zM38,23H39V24H38zM41,23H42V24H41zM42,23H43V24H42zM3,24H4V25H3zM8,24H9V25H8zM9,24H10V25H9zM10,24H11V25H10zM11,24H12V25H11zM15,24H16V25H15zM16,24H17V25H16zM17,24H18V25H17zM18,24H19V25H18zM20,24H21V25H20zM25,24H26V25H25zM28,24H29V25H28zM32,24H33V25H32zM36,24H37V25H36zM39,24H40V25H39zM41,24H42V25H41zM4,25H5V26H4zM5,25H6V26H5zM6,25H7V26H6zM9,25H10V26H9zM11,25H12V26H11zM12,25H13V26H12zM13,25H14V26H13zM14,25H15V26H14zM16,25H17V26H16zM17,25H18V26H17zM18,25H19V26H18zM21,25H22V26H21zM26,25H27V26H26zM27,25H28V26H27zM29,25H30V26H29zM30,25H31V26H30zM32,25H33V26H32zM33,25H34V26H33zM34,25H35V26H34zM35,25H36V26H35zM36,25H37V26H36zM39,25H40V26H39zM41,25H42V26H41zM42,25H43V26H42zM3,26H4V27H3zM4,26H5V27H4zM5,26H6V27H5zM6,26H7V27H6zM8,26H9V27H8zM9,26H10V27H9zM10,26H11V27H10zM14,26H15V27H14zM15,26H16V27H15zM16,26H17V27H16zM19,26H20V27H19zM21,26H22V27H21zM22,26H23V27H22zM24,26H25V27H24zM26,26H27V27H26zM27,26H28V27H27zM28,26H29V27H28zM29,26H30V27H29zM31,26H32V27H31zM35,26H36V27H35zM37,26H38V27H37zM39,26H40V27H39zM40,26H41V27H40zM2,27H3V28H2zM3,27H4V28H3zM5,27H6V28H5zM6,27H7V28H6zM10,27H11V28H10zM12,27H13V28H12zM15,27H16V28H15zM16,27H17V28H16zM17,27H18V28H17zM18,27H19V28H18zM21,27H22V28H21zM24,27H25V28H24zM27,27H28V28H27zM28,27H29V28H28zM29,27H30V28H29zM30,27H31V28H30zM31,27H32V28H31zM33,27H34V28H33zM34,27H35V28H34zM36,27H37V28H36zM37,27H38V28H37zM39,27H40V28H39zM40,27H41V28H40zM41,27H42V28H41zM42,27H43V28H42zM4,28H5V29H4zM6,28H7V29H6zM8,28H9V29H8zM9,28H10V29H9zM11,28H12V29H11zM13,28H14V29H13zM14,28H15V29H14zM16,28H17V29H16zM19,28H20V29H19zM20,28H21V29H20zM21,28H22V29H21zM23,28H24V29H23zM24,28H25V29H24zM27,28H28V29H27zM30,28H31V29H30zM33,28H34V29H33zM34,28H35V29H34zM35,28H36V29H35zM38,28H39V29H38zM39,28H40V29H39zM42,28H43V29H42zM4,29H5V30H4zM7,29H8V30H7zM12,29H13V30H12zM15,29H16V30H15zM17,29H18V30H17zM23,29H24V30H23zM24,29H25V30H24zM26,29H27V30H26zM28,29H29V30H28zM33,29H34V30H33zM34,29H35V30H34zM35,29H36V30H35zM36,29H37V30H36zM38,29H39V30H38zM39,29H40V30H39zM41,29H42V30H41zM2,30H3V31H2zM5,30H6V31H5zM7,30H8V31H7zM8,30H9V31H8zM10,30H11V31H10zM11,30H12V31H11zM12,30H13V31H12zM14,30H15V31H14zM18,30H19V31H18zM21,30H22V31H21zM22,30H23V31H22zM23,30H24V31H23zM24,30H25V31H24zM25,30H26V31H25zM26,30H27V31H26zM27,30H28V31H27zM28,30H29V31H28zM33,30H34V31H33zM35,30H36V31H35zM36,30H37V31H36zM38,30H39V31H38zM39,30H40V31H39zM41,30H42V31H41zM42,30H43V31H42zM5,31H6V32H5zM6,31H7V32H6zM9,31H10V32H9zM10,31H11V32H10zM11,31H12V32H11zM13,31H14V32H13zM16,31H17V32H16zM17,31H18V32H17zM18,31H19V32H18zM19,31H20V32H19zM20,31H21V32H20zM21,31H22V32H21zM22,31H23V32H22zM23,31H24V32H23zM24,31H25V32H24zM27,31H28V32H27zM32,31H33V32H32zM33,31H34V32H33zM36,31H37V32H36zM37,31H38V32H37zM39,31H40V32H39zM41,31H42V32H41zM2,32H3V33H2zM7,32H8V33H7zM8,32H9V33H8zM9,32H10V33H9zM10,32H11V33H10zM11,32H12V33H11zM13,32H14V33H13zM15,32H16V33H15zM17,32H18V33H17zM21,32H22V33H21zM23,32H24V33H23zM27,32H28V33H27zM28,32H29V33H28zM31,32H32V33H31zM34,32H35V33H34zM35,32H36V33H35zM36,32H37V33H36zM37,32H38V33H37zM39,32H40V33H39zM40,32H41V33H40zM41,32H42V33H41zM11,33H12V34H11zM13,33H14V34H13zM14,33H15V34H14zM19,33H20V34H19zM20,33H21V34H20zM21,33H22V34H21zM24,33H25V34H24zM25,33H26V34H25zM28,33H29V34H28zM29,33H30V34H29zM30,33H31V34H30zM31,33H32V34H31zM32,33H33V34H32zM34,33H35V34H34zM36,33H37V34H36zM38,33H39V34H38zM39,33H40V34H39zM40,33H41V34H40zM42,33H43V34H42zM3,34H4V35H3zM4,34H5V35H4zM6,34H7V35H6zM8,34H9V35H8zM11,34H12V35H11zM13,34H14V35H13zM18,34H19V35H18zM19,34H20V35H19zM20,34H21V35H20zM23,34H24V35H23zM28,34H29V35H28zM29,34H30V35H29zM30,34H31V35H30zM31,34H32V35H31zM33,34H34V35H33zM34,34H35V35H34zM35,34H36V35H35zM36,34H37V35H36zM37,34H38V35H37zM38,34H39V35H38zM39,34H40V35H39zM40,34H41V35H40zM42,34H43V35H42zM10,35H11V36H10zM11,35H12V36H11zM13,35H14V36H13zM14,35H15V36H14zM15,35H16V36H15zM16,35H17V36H16zM18,35H19V36H18zM19,35H20V36H19zM20,35H21V36H20zM21,35H22V36H21zM23,35H24V36H23zM24,35H25V36H24zM25,35H26V36H25zM26,35H27V36H26zM27,35H28V36H27zM28,35H29V36H28zM30,35H31V36H30zM32,35H33V36H32zM33,35H34V36H33zM34,35H35V36H34zM38,35H39V36H38zM41,35H42V36H41zM42,35H43V36H42zM2,36H3V37H2zM3,36H4V37H3zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM7,36H8V37H7zM8,36H9V37H8zM10,36H11V37H10zM11,36H12V37H11zM12,36H13V37H12zM14,36H15V37H14zM20,36H21V37H20zM22,36H23V37H22zM25,36H26V37H25zM27,36H28V37H27zM30,36H31V37H30zM31,36H32V37H31zM33,36H34V37H33zM34,36H35V37H34zM36,36H37V37H36zM38,36H39V37H38zM41,36H42V37H41zM2,37H3V38H2zM8,37H9V38H8zM10,37H11V38H10zM11,37H12V38H11zM12,37H13V38H12zM15,37H16V38H15zM16,37H17V38H16zM18,37H19V38H18zM19,37H20V38H19zM21,37H22V38H21zM22,37H23V38H22zM26,37H27V38H26zM32,37H33V38H32zM33,37H34V38H33zM34,37H35V38H34zM38,37H39V38H38zM39,37H40V38H39zM41,37H42V38H41zM42,37H43V38H42zM2,38H3V39H2zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM8,38H9V39H8zM11,38H12V39H11zM15,38H16V39H15zM17,38H18V39H17zM18,38H19V39H18zM23,38H24V39H23zM28,38H29V39H28zM30,38H31V39H30zM32,38H33V39H32zM34,38H35V39H34zM35,38H36V39H35zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38zM39,38H40V39H39zM40,38H41V39H40zM41,38H42V39H41zM42,38H43V39H42zM2,39H3V40H2zM4,39H5V40H4zM5,39H6V40H5zM6,39H7V40H6zM8,39H9V40H8zM10,39H11V40H10zM11,39H12V40H11zM12,39H13V40H12zM13,39H14V40H13zM15,39H16V40H15zM18,39H19V40H18zM21,39H22V40H21zM24,39H25V40H24zM26,39H27V40H26zM28,39H29V40H28zM29,39H30V40H29zM32,39H33V40H32zM33,39H34V40H33zM38,39H39V40H38zM39,39H40V40H39zM41,39H42V40H41zM2,40H3V41H2zM4,40H5V41H4zM5,40H6V41H5zM6,40H7V41H6zM8,40H9V41H8zM10,40H11V41H10zM11,40H12V41H11zM12,40H13V41H12zM17,40H18V41H17zM19,40H20V41H19zM20,40H21V41H20zM21,40H22V41H21zM26,40H27V41H26zM27,40H28V41H27zM28,40H29V41H28zM30,40H31V41H30zM31,40H32V41H31zM32,40H33V41H32zM34,40H35V41H34zM37,40H38V41H37zM41,40H42V41H41zM42,40H43V41H42zM2,41H3V42H2zM8,41H9V42H8zM11,41H12V42H11zM12,41H13V42H12zM13,41H14V42H13zM16,41H17V42H16zM18,41H19V42H18zM19,41H20V42H19zM23,41H24V42H23zM25,41H26V42H25zM28,41H29V42H28zM29,41H30V42H29zM34,41H35V42H34zM35,41H36V42H35zM38,41H39V42H38zM41,41H42V42H41zM2,42H3V43H2zM3,42H4V43H3zM4,42H5V43H4zM5,42H6V43H5zM6,42H7V43H6zM7,42H8V43H7zM8,42H9V43H8zM10,42H11V43H10zM11,42H12V43H11zM12,42H13V43H12zM14,42H15V43H14zM15,42H16V43H15zM16,42H17V43H16zM17,42H18V43H17zM18,42H19V43H18zM19,42H20V43H19zM21,42H22V43H21zM22,42H23V43H22zM23,42H24V43H23zM24,42H25V43H24zM26,42H27V43H26zM27,42H28V43H27zM29,42H30V43H29zM30,42H31V43H30zM32,42H33V43H32zM33,42H34V43H33zM34,42H35V43H34zM35,42H36V43H35zM36,42H37V43H36zM39,42H40V43H39zM41,42H42V43H41z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=12" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the Exit Ticket</a></div></div></div>`,
+notes:"Leave this slide on screen for the last five minutes."});
+
+/* ---------- deck engine ---------- */
+const N=S.length; let cur=0;
+function build(){const host=document.getElementById("slides");host.innerHTML="";
+ S.forEach((s,i)=>{const d=document.createElement("section");d.className="slide"+(s.cls?" "+s.cls:"");d.id="s"+(i+1);
+  d.innerHTML=(s.kicker&&!s.cls?`<p class="kicker">${s.kicker}</p>`:"")+(s.title?`<h1>${s.title}</h1>`:"")+s.html()+(s.py?`<div class="dhint">D · Python</div>`:"")+`<footer><span>${foot}</span><span>${i+1} / ${N}</span></footer>`;host.appendChild(d)})}
+function drawAll(){S.forEach(s=>{if(s.draw)try{s.draw()}catch(e){console.error(e)}})}
+function show(i){cur=Math.max(0,Math.min(N-1,i));document.querySelectorAll(".slide").forEach((el,k)=>el.classList.toggle("on",k===cur));
+ history.replaceState(null,"",location.search+"#"+(cur+1));fillDrawer();if(window.onSlideChange)onSlideChange(cur);const n=document.getElementById("notes");n.textContent=S[cur].notes||"No notes for this slide."}
+let CAP_ON=false;   // set by the narration player; reserves a caption band under the slide
+function fit(){const W=innerWidth,H=innerHeight,vp=document.getElementById("viewport"),dock=document.getElementById("dock"),cap=document.getElementById("cap");
+ const hasDock=dock.style.display==="flex",barH=hasDock?document.getElementById("nbar").offsetHeight:0;
+ let k=Math.min(W/1280,H/720)*0.98,capH=0,fs=0,dockH=0;
+ for(let it=0;it<3;it++){if(hasDock&&CAP_ON){const lines=k<0.6?4:2;fs=Math.max(12,Math.min(22,24*k));capH=Math.ceil(lines*fs*1.45)+4}else capH=0;
+  dockH=hasDock?capH+barH+(capH?6:0)+14:0;k=Math.min(W/1280,Math.max(120,H-dockH)/720)*0.98}
+ const h=720*k,pad=10,top=Math.max(0,(H-h-dockH)/2);
+ vp.style.top=(top-pad)+"px";vp.style.bottom="auto";vp.style.height=(h+2*pad)+"px";
+ document.getElementById("stage").style.transform=`scale(${k})`;
+ if(hasDock){dock.style.top=(top+h+6)+"px";cap.style.display=CAP_ON?"block":"none";cap.style.width=Math.min(1280*k,W-16)+"px";cap.style.height=capH+"px";cap.dataset.fs=fs;if(window.capRefit)capRefit()}}
+function fillDrawer(){const p=S[cur].py,dr=document.getElementById("drawer");
+ if(!p){document.getElementById("dTitle").textContent="No Python on this slide";document.getElementById("dSub").textContent="Slides with a 'D · Python' tag have code and output.";document.getElementById("dCode").value="";document.getElementById("dOut").textContent="";return}
+ document.getElementById("dTitle").textContent=p.title;document.getElementById("dSub").textContent=p.sub||"";document.getElementById("dCode").value=p.code;
+ try{document.getElementById("dOut").textContent=p.out()}catch(e){document.getElementById("dOut").textContent=String(e)}
+ const m=document.getElementById("dMode");m.className="pill "+(MODE==="live"?"live":"rec");m.textContent=MODE==="live"?"LIVE RUN":"RECORDED RUN"}
+document.addEventListener("keydown",e=>{if(["INPUT","TEXTAREA"].includes(e.target.tagName)){if(e.key==="Escape")e.target.blur();return}const k=e.key;
+ if(["ArrowRight","PageDown"," "].includes(k)){e.preventDefault();show(cur+1)}else if(["ArrowLeft","PageUp"].includes(k)){e.preventDefault();show(cur-1)}
+ else if(k==="Home")show(0);else if(k==="End")show(N-1);else if(k==="d"||k==="D")document.getElementById("drawer").classList.toggle("open");
+ else if(k==="f"||k==="F"){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+ else if(k==="p"||k==="P"){if(window.narrToggle)narrToggle()}
+ else if(k==="c"||k==="C"){if(window.ccCycle)ccCycle()}
+ else if(k==="n"||k==="N"){const n=document.getElementById("notes");n.style.display=n.style.display==="block"?"none":"block"}});
+document.getElementById("stage").addEventListener("click",e=>{if(e.target.closest("button,input,select,#drawer,a,#startov"))return;const r=e.currentTarget.getBoundingClientRect();(e.clientX-r.left)>r.width*0.5?show(cur+1):show(cur-1)});
+addEventListener("resize",fit);
+
+/* ---------- live Python (Pyodide) ---------- */
+let py=null;
+async function ensurePy(msg){if(py)return py;msg.textContent="Loading Python in the browser (first time about 5–10 s) ...";
+ if(!window.loadPyodide){await new Promise((ok,bad)=>{const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js";s.onload=ok;s.onerror=()=>bad(new Error("could not load Pyodide"));document.head.appendChild(s)})}
+ const p=await loadPyodide();await p.loadPackage(["numpy","scipy"]);
+ const src=LAB_SRC||await (await fetch(LAB_FILE)).text();p.FS.writeFile("kinetics_lab.py",src);
+ await p.runPythonAsync('import sys\nsys.path.insert(0, ".")\nfrom kinetics_lab import *');py=p;return p}
+async function runCode(){const msg=document.getElementById("liveMsg"),out=document.getElementById("dOut"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Running ...";const buf=[];p.setStdout({batched:s=>buf.push(s)});p.setStderr({batched:s=>buf.push(s)});
+  try{await p.runPythonAsync(document.getElementById("dCode").value)}catch(e){buf.push(String(e.message||e).split("\n").slice(-4).join("\n"))}
+  out.textContent=buf.join("\n")||"(no output)";const m=document.getElementById("dMode");m.className="pill live";m.textContent="LIVE OUTPUT";
+  msg.textContent=`Ran in ${((performance.now()-t0)/1000).toFixed(1)} s in the browser`}
+ catch(e){msg.textContent="Python could not start: "+e.message+". The recorded output is still available."}}
+async function runLive(){const msg=document.getElementById("liveMsg"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Solving every model ...";
+  const out=await p.runPythonAsync('import importlib, json\nimport kinetics_lab as lab\nimportlib.reload(lab)\njson.dumps(lab.classroom_results())');
+  R=JSON.parse(out);MODE="live";drawAll();fillDrawer();msg.textContent=`All slides now show a live run (${((performance.now()-t0)/1000).toFixed(1)} s, SciPy ${R.meta.scipy})`}
+ catch(e){msg.textContent="Live run failed: "+e.message+". The recorded run is still shown."}}
+document.getElementById("runCode").onclick=runCode;
+document.getElementById("runLive").onclick=runLive;
+document.getElementById("useRec").onclick=()=>{R=RECORDED;MODE="recorded";drawAll();fillDrawer();document.getElementById("liveMsg").textContent="Showing the recorded run."};
+
+/* ---------- narration and captions ---------- */
+const NARR = {
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 596.8,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 26.016,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.813,
+     "en": "Welcome to Class 12: electrode kinetics and mass transport."
+    },
+    {
+     "s": 4.813,
+     "e": 16.816,
+     "en": "Class 9 told us whether a reaction can go. Today we ask how fast it goes: why a reaction needs extra voltage to run fast, and why, past a point, more voltage hardly helps."
+    },
+    {
+     "s": 16.816,
+     "e": 25.961,
+     "en": "If you are studying on your own, the narration takes about ten minutes. Stop at the activity and at each check, then do Lab 12."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 33.576,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.434,
+     "en": "A five minute activity reviews earlier classes."
+    },
+    {
+     "s": 6.434,
+     "e": 17.579,
+     "en": "Part one covers current as a rate, overpotential, the exchange current density, the Butler-Volmer equation, and fast and slow electrodes. It ends with Check 1."
+    },
+    {
+     "s": 17.579,
+     "e": 28.684,
+     "en": "Part two covers mass transport, the limiting current, the choice between more overpotential and better transport, and plating and fast charging. It ends with Check 2."
+    },
+    {
+     "s": 28.684,
+     "e": 33.513,
+     "en": "Then you do Lab 12 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 27.504,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.671,
+     "en": "Activity 1. Answer four questions without notes, then compare with a partner."
+    },
+    {
+     "s": 6.671,
+     "e": 17.542,
+     "en": "Say whether reactions stop at equilibrium. Recall the copper potential at zero point zero one molar. Say what sets the thickness of plated copper."
+    },
+    {
+     "s": 17.542,
+     "e": 22.645,
+     "en": "And estimate e to the fourth, if e squared is about seven point four."
+    },
+    {
+     "s": 22.645,
+     "e": 27.447,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 30.456,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.524,
+     "en": "By the end of today you can explain current density as a reaction rate, and overpotential as the extra voltage that drives it."
+    },
+    {
+     "s": 7.524,
+     "e": 13.197,
+     "en": "You can explain the exchange current density, and tell a fast electrode from a slow one."
+    },
+    {
+     "s": 13.197,
+     "e": 18.803,
+     "en": "You can use the Butler-Volmer equation to calculate a current from an overpotential."
+    },
+    {
+     "s": 18.803,
+     "e": 22.842,
+     "en": "You can explain the limiting current, and what raises it."
+    },
+    {
+     "s": 22.842,
+     "e": 30.382,
+     "en": "And you can decide whether more overpotential or better transport raises the current more, and apply this to plating and charging."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 33.624,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.432,
+     "en": "Today builds on three earlier classes."
+    },
+    {
+     "s": 3.432,
+     "e": 13.658,
+     "en": "From Class 5, equilibrium is dynamic: the forward and reverse rates are equal. At an electrode, that rate is the exchange current density."
+    },
+    {
+     "s": 13.658,
+     "e": 24.803,
+     "en": "From Class 9, the Nernst potential says whether a reaction can go. The overpotential, the potential minus the equilibrium potential, says how fast it goes."
+    },
+    {
+     "s": 24.803,
+     "e": 33.553,
+     "en": "And from Class 10, current density sets the plating rate. Today we see what it costs in voltage, and the most you can get."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 39.024,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.289,
+     "en": "Current density is a rate. Divide it by n F, and you get moles reacting per square centimeter per second."
+    },
+    {
+     "s": 8.289,
+     "e": 13.776,
+     "en": "The overpotential is the electrode potential minus the equilibrium potential."
+    },
+    {
+     "s": 13.776,
+     "e": 25.553,
+     "en": "At zero overpotential there is no net current, but the reaction still runs both ways at equal rates. The current that flows each way is the exchange current density, j zero."
+    },
+    {
+     "s": 25.553,
+     "e": 32.908,
+     "en": "Make the overpotential negative, and reduction speeds up while oxidation slows, so a net cathodic current flows."
+    },
+    {
+     "s": 32.908,
+     "e": 38.961,
+     "en": "Like activation energy, the overpotential lowers the barrier one way and raises it the other."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 41.256,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.892,
+     "en": "The Butler-Volmer equation gives the net current: j zero times the difference of two exponentials, one for oxidation and one for reduction."
+    },
+    {
+     "s": 8.892,
+     "e": 20.75,
+     "en": "Move the slider. At η = −0.050 V, with j₀ = 1.00 mA/cm², the current is −2.268 mA/cm²."
+    },
+    {
+     "s": 20.75,
+     "e": 32.632,
+     "en": "Double the overpotential to −0.100 V, and the current is −6.858 mA/cm²: three times more, not two. The current grows exponentially with overpotential."
+    },
+    {
+     "s": 32.632,
+     "e": 41.184,
+     "en": "Now press the other j zero buttons. A larger exchange current gives a steeper curve: more current for the same push."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 38.784,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.208,
+     "en": "The exchange current density decides how much overpotential a current costs."
+    },
+    {
+     "s": 5.208,
+     "e": 18.921,
+     "en": "For the same current, an electrode with j₀ = 1.0 needs −0.050 V. A slow electrode, with j₀ = 0.1, needs −0.160 V, about three times as much."
+    },
+    {
+     "s": 18.921,
+     "e": 28.158,
+     "en": "At large overpotential, each tenfold rise in current costs about one hundred eighteen millivolts more. This is the Tafel slope."
+    },
+    {
+     "s": 28.158,
+     "e": 38.711,
+     "en": "A catalyst raises j zero. And overpotential is wasted voltage: in a battery it lowers the voltage you get, and in plating it raises the voltage you pay."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 26.016,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 18.656,
+     "en": "Say whether anything happens at zero overpotential. Calculate the current at minus zero point zero five volts. Say whether doubling the overpotential doubles the current."
+    },
+    {
+     "s": 18.656,
+     "e": 21.868,
+     "en": "And compare two exchange current densities."
+    },
+    {
+     "s": 21.868,
+     "e": 25.947,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 35.256,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.392,
+     "en": "In part two, the ions have to get there."
+    },
+    {
+     "s": 3.392,
+     "e": 10.579,
+     "en": "Reduction uses up copper ions at the surface, so more must diffuse in across a thin diffusion layer, delta."
+    },
+    {
+     "s": 10.579,
+     "e": 20.092,
+     "en": "When the surface concentration reaches zero, the current cannot rise any further. This is the limiting current: n F D c over delta."
+    },
+    {
+     "s": 20.092,
+     "e": 27.934,
+     "en": "For a Cu plating bath, with typical values, the limiting current is about 27 mA/cm²."
+    },
+    {
+     "s": 27.934,
+     "e": 35.197,
+     "en": "To raise it, stir or spin to thin the diffusion layer, use a more concentrated bath, or warm it to speed diffusion."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 38.304,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.934,
+     "en": "Now put kinetics and transport together. The slower of the two steps controls the current."
+    },
+    {
+     "s": 6.934,
+     "e": 18.434,
+     "en": "At small overpotential, kinetics limits, and the curves follow Butler-Volmer. At large overpotential, transport limits, and the curve flattens at the limiting current."
+    },
+    {
+     "s": 18.434,
+     "e": 29.75,
+     "en": "With j_lim = 2, going from −0.20 to −0.25 V raises |j| from 1.922 to 1.970 mA/cm²: only 2.5%."
+    },
+    {
+     "s": 29.75,
+     "e": 38.237,
+     "en": "But raising j_lim to 6, at −0.25 V, gives 5.735 mA/cm²: almost three times as much."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 41.208,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.024,
+     "en": "Here is a common mistake: to plate faster, just turn up the voltage."
+    },
+    {
+     "s": 5.024,
+     "e": 14.757,
+     "en": "Near the limiting current, copper ions cannot arrive any faster. The extra fifty millivolts adds only two and a half percent more copper current."
+    },
+    {
+     "s": 14.757,
+     "e": 25.289,
+     "en": "The rest of the push goes to side reactions such as hydrogen, which lowers the current efficiency from Class 10. Better transport tripled the current instead."
+    },
+    {
+     "s": 25.289,
+     "e": 35.07,
+     "en": "So find which step limits: kinetics, where you raise the overpotential or use a catalyst, or transport, where you stir, concentrate, or heat."
+    },
+    {
+     "s": 35.07,
+     "e": 41.132,
+     "en": "Deposits made near the limiting current grow rough and powdery. Platers call them burnt."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 42.696,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.458,
+     "en": "The same two limits appear in three settings."
+    },
+    {
+     "s": 3.458,
+     "e": 13.64,
+     "en": "In copper plating of interconnects, the process runs well below the limiting current: ten milliamps per square centimeter, against an estimate of about twenty seven."
+    },
+    {
+     "s": 13.64,
+     "e": 17.382,
+     "en": "The wafer spins to thin the diffusion layer and keep it even."
+    },
+    {
+     "s": 17.382,
+     "e": 28.25,
+     "en": "In narrow trenches, copper ions reach the top more easily than the bottom. Bath additives slow growth at the top so the trench fills from the bottom up, without voids."
+    },
+    {
+     "s": 28.25,
+     "e": 36.191,
+     "en": "And in fast charging a lithium-ion cell, overpotential and lithium ion transport cut the voltage and the charge you can store."
+    },
+    {
+     "s": 36.191,
+     "e": 42.632,
+     "en": "Push too hard, and lithium metal plates on the graphite instead of entering it, which is a safety risk."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 22.464,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 18.329,
+     "en": "Explain the limiting current. Find the rise in current from more overpotential, and from a higher limiting current. And name two ways to raise the limiting current in a plating bath."
+    },
+    {
+     "s": 18.329,
+     "e": 22.408,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 19.224,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.405,
+     "en": "Two classes are left."
+    },
+    {
+     "s": 2.405,
+     "e": 14.162,
+     "en": "Class 13 asks which form of copper is stable at each pH and potential. A Pourbaix diagram is about stability only, and says nothing about rate, which was today's topic."
+    },
+    {
+     "s": 14.162,
+     "e": 19.171,
+     "en": "And Class 14 reviews copper deposition and the choice of storage device."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 25.464,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.066,
+     "en": "Now it is time for Lab 12. Scan the code or open the lab page."
+    },
+    {
+     "s": 6.066,
+     "e": 13.895,
+     "en": "You will predict what doubling the overpotential does, calculate the current, and find the overpotential a slow electrode needs."
+    },
+    {
+     "s": 13.895,
+     "e": 19.447,
+     "en": "Then you add a limiting current, and compare more overpotential with better transport."
+    },
+    {
+     "s": 19.447,
+     "e": 25.395,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 29.232,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 7.026,
+     "en": "Current density is a rate, and overpotential is the push."
+    },
+    {
+     "s": 7.026,
+     "e": 14.987,
+     "en": "The exchange current density is the current each way at equilibrium. A larger one needs less overpotential."
+    },
+    {
+     "s": 14.987,
+     "e": 20.461,
+     "en": "In the Butler-Volmer equation, current grows exponentially with overpotential."
+    },
+    {
+     "s": 20.461,
+     "e": 25.684,
+     "en": "Transport sets a ceiling, the limiting current, n F D c over delta."
+    },
+    {
+     "s": 25.684,
+     "e": 29.171,
+     "en": "And find the slow step before you push harder."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 21.744,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.537,
+     "en": "Before the next class, finish Lab 12 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.537,
+     "e": 14.671,
+     "en": "Read OpenStax Chemistry two e, section twelve point five on collision theory and activation energy, and section twelve point seven on catalysis."
+    },
+    {
+     "s": 14.671,
+     "e": 21.684,
+     "en": "Class 13 is about the copper Pourbaix diagram: which form of copper is stable at each pH and potential."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 24.984,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.105,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 12."
+    },
+    {
+     "s": 7.105,
+     "e": 15.895,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.895,
+     "e": 24.908,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 13."
+    }
+   ]
+  }
+ ]
+};
+(function(){if(!NARR)return;
+ const au=document.getElementById("narr"),bar=document.getElementById("nbar"),cap=document.getElementById("cap"),play=document.getElementById("nPlay"),tm=document.getElementById("nTime"),msg=document.getElementById("nMsg");
+ document.getElementById("dock").style.display="flex";document.getElementById("help").style.display="none";let on=false,lang="off",slideIdx=-1;
+ const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
+ lang=ls("cc-lang")||"off";if(lang!=="en")lang="off";const sp=ls("narr-speed");if(sp)document.getElementById("nSpeed").value=sp;
+ const fmtT=t=>isFinite(t)?`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,"0")}`:"0:00";
+ const S_=i=>NARR.slides[i];
+ function load(i){slideIdx=i;const s=S_(i);if(!s){au.removeAttribute("src");return}au.src=s.file;au.playbackRate=+document.getElementById("nSpeed").value;tm.textContent=`0:00 / ${fmtT(s.duration)}`;showCap(0)}
+ function setPlayUI(){play.textContent=au.paused?"▶ Play":"❚❚ Pause";play.classList.toggle("on",!au.paused)}
+ // captions sit in their own band under the slide; long lines shrink to fit the band
+ window.capRefit=()=>{let f=parseFloat(cap.dataset.fs)||18;cap.style.fontSize=f+"px";while(cap.scrollHeight>cap.clientHeight+1&&f>11){f-=1;cap.style.fontSize=f+"px"}};
+ function showCap(t){const s=S_(slideIdx);let c=null;if(s&&lang!=="off"){for(const q of s.cues){if(t>=q.s-0.05)c=q;else break}}
+  const txt=(!c||(au.paused&&au.currentTime===0&&!on))?"":c.en;if(cap.textContent!==txt){cap.textContent=txt;capRefit()}}
+ function ccUI(){const b=document.getElementById("nCC");b.textContent=lang==="off"?"CC off":"CC on";b.classList.toggle("on",lang!=="off");CAP_ON=lang!=="off";fit();showCap(au.currentTime||0)}
+ window.ccCycle=()=>{lang=lang==="off"?"en":"off";ls("cc-lang",lang);ccUI()};
+ // "on" means the student is listening: it starts with Play and ends with Pause or Stop.
+ // Slides change only when the student moves; the new slide's narration then starts if "on".
+ window.narrToggle=()=>{if(au.paused){on=true;if(slideIdx!==cur)load(cur);if(au.ended)au.currentTime=0;msg.textContent="";au.play().catch(()=>{msg.textContent="Press Play again to start audio."})}else{on=false;au.pause()}};
+ window.onSlideChange=i=>{au.pause();msg.textContent="";load(i);if(on)au.play().catch(()=>{})};
+ document.getElementById("nPlay").onclick=narrToggle;
+ document.getElementById("nStop").onclick=()=>{au.pause();au.currentTime=0;on=false;setPlayUI();showCap(0);tm.textContent=`0:00 / ${fmtT((S_(cur)||{}).duration)}`};
+ document.getElementById("nCC").onclick=ccCycle;
+ document.getElementById("nPrev").onclick=()=>show(cur-1);document.getElementById("nNext").onclick=()=>show(cur+1);
+ document.getElementById("nSpeed").onchange=e=>{au.playbackRate=+e.target.value;ls("narr-speed",e.target.value)};
+ au.addEventListener("play",setPlayUI);au.addEventListener("pause",setPlayUI);
+ au.addEventListener("timeupdate",()=>{tm.textContent=`${fmtT(au.currentTime)} / ${fmtT((S_(slideIdx)||{}).duration)}`;showCap(au.currentTime)});
+ au.addEventListener("ended",()=>{setPlayUI();const s=S_(slideIdx);msg.textContent=s&&s.hold?"Activity: do it now, then press Next ›":cur<N-1?"Press Next › or → for the next slide":"End of the session"});
+ const q=new URLSearchParams(location.search);
+ if(q.get("narrate")==="1"){const ov=document.getElementById("startov");ov.style.display="flex";document.getElementById("startBtn").onclick=()=>{ov.style.display="none";if(lang==="off"){lang="en";ls("cc-lang",lang)}ccUI();on=true;load(cur);au.play().catch(()=>{})}}
+ ccUI();setTimeout(()=>{if(slideIdx<0)load(cur)},0);
+})();
+
+build();drawAll();fit();show((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>

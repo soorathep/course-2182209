@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lab 10 · Counting charge: plating and capacity · 2182209</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--graphite:#333F4A;--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--sand:#DFC98F;--ok:#0F6E6B;--bad:#BE654C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Helvetica Neue",Helvetica,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:18px 16px 80px}
+header h1{color:var(--teal);font-size:30px;margin:4px 0 2px}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+.sub{color:var(--slate);font-size:15px}
+.prog{position:sticky;top:0;background:var(--paper);padding:10px 0;z-index:3}
+.bar{height:8px;background:#e2ddd4;border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.prog span{font-size:13px;color:var(--slate)}
+.card{background:#fff;border-radius:14px;padding:18px 18px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:21px;margin:0 0 4px;color:var(--teal)}
+.card h3{font-size:17px;margin:16px 0 6px}
+.step{border-left:4px solid var(--mist);padding:2px 0 2px 14px;margin:14px 0}
+.step.done{border-color:var(--teal)}.step.locked{opacity:.45;pointer-events:none}
+.step.locked .chart,.step.locked .kpi,.step.locked .chk,.step.locked input[type=range],.step.locked .row{display:none}
+.step.locked::after{content:"Finish the step above to open this one.";display:block;font-size:13px;color:var(--slate)}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;border-radius:6px;padding:2px 8px;margin-right:6px;color:#fff;background:var(--slate)}
+.tag.p{background:var(--amber)}.tag.r{background:var(--teal)}.tag.c{background:var(--graphite)}.tag.e{background:var(--rust)}
+textarea,input[type=text],select{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--mist);border-radius:8px;padding:8px 10px;background:#fff}
+textarea{min-height:70px}
+button{font:inherit;font-size:15px;padding:8px 14px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer;margin:8px 8px 0 0}
+button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row label{flex:1 1 240px}
+.chk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.chk input{width:150px}
+.fb{font-size:15px}.fb.ok{color:var(--ok);font-weight:700}.fb.bad{color:var(--bad)}
+.choices label{display:block;margin:4px 0}
+.kpi{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}.kpi div{background:var(--paper);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--slate)}.kpi b{display:block;font-size:20px;color:var(--ink)}
+.chart{background:var(--paper);border-radius:12px;padding:6px;margin:8px 0}
+svg{width:100%;height:auto;display:block}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.note{font-size:14px;color:var(--slate)}
+.hidden{display:none}
+pre.sum{white-space:pre-wrap;background:var(--paper);border-radius:10px;padding:12px;font-size:14px}
+a{color:var(--teal)}
+</style>
+<style>
+.step.locked > *:not(.tag){display:none}
+table.tb{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.tb th{background:var(--paper);text-align:left;padding:5px 8px;border-bottom:2px solid var(--mist)}
+table.tb td{padding:5px 8px;border-bottom:1px solid #e6e3dd}
+table.tb td.n,table.tb th.n{text-align:right;font-variant-numeric:tabular-nums}
+ol.rl{margin:4px 0 0;padding-left:22px;font-size:15px}
+.lights{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.light{border-radius:999px;padding:3px 10px;font-size:14px;font-weight:700}
+.light.ok{background:#e3f0ef;color:var(--teal)}.light.bad{background:#f6e3de;color:var(--rust)}
+.code{background:#1f262d;color:#e8eef2;border-radius:10px;padding:10px 8px;font-family:Menlo,Consolas,monospace;font-size:13.5px;overflow-x:auto}
+.ln{display:flex;align-items:center;gap:8px;padding:3px 4px;border-radius:6px;white-space:pre}
+.ln.fixed{background:#24433f}
+.ln .no{color:#8a96a0;width:18px;text-align:right}
+.ln .tx{flex:1}
+.ln .okk{width:38px;color:#9fd6c9;font-size:12px;font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700}
+button.sm{width:38px;font-size:12px;padding:2px 9px;margin:0;background:transparent;color:#9fd6c9;border:1px solid #9fd6c9}
+.ctrlrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0;font-size:15px;color:var(--slate)}
+.ctrlrow input[type=range]{flex:1;min-width:160px;accent-color:var(--teal)}
+.wide{overflow-x:auto}.wide table.tb{font-size:12px}.wide table.tb td,.wide table.tb th{padding:3px 4px}
+@media (max-width:600px){table.tb{display:block;overflow-x:auto;font-size:13px}}
+button.ghost.on{background:var(--teal);color:#fff}
+</style>
+
+</head>
+<body><main>
+<header><div class="kicker">2182209 · Class 10 · Lab</div><h1>Counting charge: plating and capacity</h1>
+<div class="sub">About 30 minutes. Works in class or on your own, on a laptop or a phone. Nothing to install; a calculator helps.</div></header>
+<div class="prog"><div class="bar"><i id="pbar"></i></div><span id="ptext"></span></div>
+<section class="card"><h2>How this lab works</h2>
+<p>You plate Cu on paper: from current and time to charge, moles, mass and thickness. Then you change one condition at a time, and finish with battery capacity and energy. Write each prediction before you look; the next step stays locked until you do. After two tries the expected value is shown.</p>
+<p class="note"><b>What runs where.</b> The expected values come from <a href="faraday_lab.py">faraday_lab.py</a>, computed in advance. The sliders use the same formulas in JavaScript. No Python is installed or run on your device. To run the Python yourself, open the slides and press D, or run faraday_lab.py in desktop Python.</p>
+<p class="note">Write small numbers as 6.22e-4. Studying on your own? Watch the narrated slides for Class 10 first.</p></section>
+<section class="card" id="data"><h2>Data</h2>
+<table class="tb"><tr><th>Quantity</th><th class="n">Value</th></tr>
+<tr><td>Faraday constant F</td><td class="n">96 485 C/mol</td></tr><tr><td>Cu: molar mass, density</td><td class="n">63.546 g/mol, 8.96 g/cm³</td></tr>
+<tr><td>Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu</td><td class="n">z = 2</td></tr><tr><td>Graphite LiC<sub>6</sub>: z, M</td><td class="n">1, 72.07 g/mol</td></tr>
+<tr><td>1 Ah</td><td class="n">3600 C</td></tr></table>
+<p class="note">Q = It; n(e<sup>−</sup>) = Q/F; n(Cu) = ε n(e<sup>−</sup>)/2; m = nM; h = m/(ρA); Wh = Ah × V; q = zF/(3.6M) mAh/g.</p></section>
+<section class="card" id="t1"><h2>Task 1 · Plate Cu on 10.0 cm²</h2>
+<div class="step" data-step="1a"><span class="tag p">PREDICT</span>The current efficiency drops from 100% to 90%, with the same current and time. The mass of Cu plated
+ <div class="choices"><label><input type="radio" name="p1" value="down10"> falls by 10%</label><label><input type="radio" name="p1" value="same"> stays the same</label><label><input type="radio" name="p1" value="up"> rises</label></div>
+ <button data-save="1a">Save prediction</button></div>
+<div class="step" data-step="1b"><span class="tag r">RECOMPUTE</span>0.100 A flows for 600 s.
+ <div class="chk"><span>Charge Q, C</span><input type="text" id="c1a" inputmode="decimal"><span class="fb" id="f1a"></span></div>
+ <div class="chk"><span>Moles of electrons</span><input type="text" id="c1b" inputmode="decimal" placeholder="e.g. 5.0e-4"><span class="fb" id="f1b"></span></div>
+ <button data-check="1b">Check</button></div>
+<div class="step" data-step="1c"><span class="tag r">RECOMPUTE</span>Efficiency 90%, area 10.0 cm².
+ <div class="chk"><span>Mass of Cu, mg</span><input type="text" id="c1c" inputmode="decimal"><span class="fb" id="f1c"></span></div>
+ <div class="chk"><span>Thickness, µm</span><input type="text" id="c1d" inputmode="decimal"><span class="fb" id="f1d"></span></div>
+ <button data-check="1c">Check</button></div>
+</section>
+<section class="card" id="t2"><h2>Task 2 · Change one condition</h2>
+<div class="step" data-step="2a"><span class="tag r">CHANGE ONE CONDITION</span>Start from 0.100 A, 600 s, 90%, 10.0 cm², and change one slider at a time.
+ <div class="ctrlrow"><span>Current, A</span><input type="range" id="sI" min="0.05" max="0.40" step="0.05" value="0.10"><b id="sIv"></b></div>
+ <div class="ctrlrow"><span>Efficiency</span><input type="range" id="sE" min="0.70" max="1.00" step="0.05" value="0.90"><b id="sEv"></b></div>
+ <div class="ctrlrow"><span>Area, cm²</span><input type="range" id="sA" min="5" max="40" step="5" value="10"><b id="sAv"></b></div>
+ <div class="kpi"><div>Cu, mg<b id="kM"></b></div><div>Thickness, µm<b id="kH"></b></div></div>
+ <div class="chk"><span>Thickness on 20.0 cm² (other values as at the start), µm</span><input type="text" id="c2a" inputmode="decimal"><span class="fb" id="f2a"></span></div>
+ <div class="chk"><span>Mass at 0.200 A (other values as at the start), mg</span><input type="text" id="c2b" inputmode="decimal"><span class="fb" id="f2b"></span></div>
+ <div class="chk"><span>Mass at 100% efficiency, mg</span><input type="text" id="c2c" inputmode="decimal"><span class="fb" id="f2c"></span></div>
+ <button data-check="2a">Check</button></div>
+</section>
+<section class="card" id="t3"><h2>Task 3 · Battery capacity and energy</h2>
+<div class="step" data-step="3a"><span class="tag r">RECOMPUTE</span>Two cells are each rated 1.00 Ah. One works at 3.2 V (LiFePO<sub>4</sub>), the other at 3.7 V (LiCoO<sub>2</sub>).
+ <div class="chk"><span>1.00 Ah in coulombs</span><input type="text" id="c3a" inputmode="decimal"><span class="fb" id="f3a"></span></div>
+ <div class="chk"><span>Energy of the 3.2 V cell, Wh</span><input type="text" id="c3b" inputmode="decimal"><span class="fb" id="f3b"></span></div>
+ <div class="chk"><span>Energy of the 3.7 V cell, Wh</span><input type="text" id="c3c" inputmode="decimal"><span class="fb" id="f3c"></span></div>
+ <button data-check="3a">Check</button></div>
+<div class="step" data-step="3b"><span class="tag c">CHECK</span>Theoretical specific capacity of graphite, LiC<sub>6</sub>.
+ <div class="chk"><span>q = zF/(3.6M), mAh/g</span><input type="text" id="c3d" inputmode="decimal"><span class="fb" id="f3d"></span></div>
+ <button data-check="3b">Check</button></div>
+</section>
+<section class="card" id="t4"><h2>Task 4 · Explain</h2>
+<div class="step" data-step="4a"><span class="tag e">EXPLAIN</span>Explain to a classmate why doubling the area halves the thickness but not the mass, and why two 1.00 Ah cells can store different energy. Use numbers from this lab.
+ <textarea id="e5"></textarea><button data-save="4a">Save</button></div>
+</section>
+<section class="card" id="fin"><h2>Finish: Exit Ticket and feedback</h2>
+<div class="step" data-step="fin"><p>Copy your answers, open the Exit Ticket, choose <b>Class 10</b>, paste them in the Exit Ticket box, and answer the feedback questions. Choose "On my own" if you did this lab outside class.</p>
+<pre class="sum" id="sum"></pre>
+<button id="copy">Copy my answers</button><a id="exitlink" target="_blank" rel="noopener"><button class="ghost" type="button">Open Exit Ticket and feedback</button></a>
+<p class="note" id="copied"></p>
+<p class="note">Want the code? <a href="faraday_lab.py">faraday_lab.py</a> computes every value on this page; it runs in desktop Python, or open the slides and press D on any slide marked "D · Python".</p></div>
+<button class="ghost" id="reset">Clear my answers on this device</button>
+</section>
+<section class="card" id="handin"><h2>Hand in: your answer file for myCourseVille</h2>
+<p>Download your answers as a file and upload it to this lab's assignment in myCourseVille. You can download at any point, and again after more steps; upload the latest file. The file records the steps you finished, your answers, and the checks where the expected value was shown after two tries. It holds no name or student ID: myCourseVille records who uploaded it.</p>
+<button id="dlJson" type="button">Download my answer file (.json)</button>
+<p class="note" id="dlNote"></p></section>
+</main>
+<script>
+const R = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"F":96485.33212,"M":{"Cu":63.546,"Zn":65.38,"C6":72.066,"LiCoO2":97.87100000000001},"rho":8.96,"wafer_area":706.8583470577034,"t_1um_10mA":272.089061717559,"I_wafer_10mA":7.0685834705770345,"caps":[{"m":"graphite (LiC6)","z":1,"M":72.066,"q":371.901883612861},{"m":"LiCoO2","z":1,"M":97.87100000000001,"q":273.84497087435955},{"m":"Zn","z":2,"M":65.38,"q":819.8678845042657}],"phones":[{"name":"A","mAh":3000,"V":3.2,"Wh":9.600000000000001},{"name":"B","mAh":2800,"V":3.7,"Wh":10.36}],"pb_limit_Wh":100.0,"gauge":{"cap_Ah":3.0,"I_A":0.3,"hours":10.0,"used_Ah_after_4h":1.2,"soc_after_4h":0.6000000000000001}},"lab":{"base":{"I":0.1,"t":600,"eff":0.9,"area":10.0,"Q":60.0,"n_e":0.0006218561793970638,"n_m":0.0002798352807286787,"m_mg":17.78241274918462,"h_um":1.9846442800429258},"area20":{"I":0.1,"t":600,"eff":0.9,"area":20.0,"Q":60.0,"n_e":0.0006218561793970638,"n_m":0.0002798352807286787,"m_mg":17.78241274918462,"h_um":0.9923221400214629},"I200":{"I":0.2,"t":600,"eff":0.9,"area":10.0,"Q":120.0,"n_e":0.0012437123587941276,"n_m":0.0005596705614573575,"m_mg":35.56482549836924,"h_um":3.9692885600858516},"eff100":{"I":0.1,"t":600,"eff":1.0,"area":10.0,"Q":60.0,"n_e":0.0006218561793970638,"n_m":0.0003109280896985319,"m_mg":19.758236387982908,"h_um":2.2051603111588065},"C_1Ah":3600.0,"Wh32":3.2,"Wh37":3.7,"q_graphite":371.901883612861,"F":96485.33212}};
+const EXIT_URL = "https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=10";
+const KEY="lab10-2027-v1";
+const ORDER=["1a", "1b", "1c", "2a", "3a", "3b", "4a"];
+const SAVES={"1a": {"radio": "p1"}, "4a": {"text": "e5"}};
+const RESTORE=["e5", "c1a", "c1b", "c1c", "c1d", "c2a", "c2b", "c2c", "c3a", "c3b", "c3c", "c3d"];
+
+const $=id=>document.getElementById(id);
+const fmt=(x,d=0)=>x==null||!isFinite(x)?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+let ST={};
+try{ST=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){ST={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}};
+const L=R.lab;
+function refresh(){let open=true;ORDER.forEach(id=>{const el=document.querySelector(`[data-step="${id}"]`),done=!!ST["done_"+id];el.classList.toggle("done",done);el.classList.toggle("locked",!done&&!open);if(!done&&open)open=false});
+ document.querySelector('[data-step="fin"]').classList.toggle("locked",!ORDER.every(id=>ST["done_"+id]));
+ const n=ORDER.filter(id=>ST["done_"+id]).length;$("pbar").style.width=(100*n/ORDER.length)+"%";$("ptext").textContent=`${n} of ${ORDER.length} steps done`;summary();save()}
+function need(id,msg){const st=document.querySelector(`[data-step="${id}"]`);let f=st.querySelector(".need");if(!f){f=document.createElement("div");f.className="fb bad need";st.appendChild(f)}f.textContent=msg;return false}
+function markDone(id){const nd=document.querySelector(`[data-step="${id}"] .need`);if(nd)nd.textContent="";ST["done_"+id]=true;refresh()}
+const radio=n=>{const r=document.querySelector(`input[name="${n}"]:checked`);return r?r.value:""};
+/* accepts 1.2e22, 1.2E22, 1.2×10^22, 1.2x10^22, 1.2*10^22, a leading + and a trailing % */
+const num=s=>{let t=String(s).trim().replace(/,/g,"").replace(/−/g,"-").replace(/\s/g,"").replace(/%$/,"");const m=t.match(/^([-+]?[\d.]+)(?:[x×*]10\^?([-+]?\d+))$/i);if(m)return parseFloat(m[1])*10**parseInt(m[2],10);return parseFloat(t)};
+function verdict(input,fb,ok,expected){ST["tries_"+input]=(ST["tries_"+input]||0)+(ok?0:1);const f=$(fb);f.className="fb "+(ok?"ok":"bad");
+ f.textContent=ok?"Correct":(ST["tries_"+input]>=2?`Not yet. Expected: ${expected}.`:"Not yet. Look again.");return ok||ST["tries_"+input]>=2}
+function checkNum(input,fb,target,rel,abs,shown){const v=num($(input).value);ST[input]=$(input).value;return verdict(input,fb,isFinite(v)&&Math.abs(v-target)<=Math.max(abs,rel*Math.abs(target)),shown)}
+function checkSel(input,fb,target,label){ST[input]=$(input).value;return verdict(input,fb,$(input).value===target,label||target)}
+
+function plateJ(I,t,e,A){const ne=I*t/L.F,m=e*ne/2*63.546;return {m_mg:m*1e3,h_um:m/8.96/A*1e4}}
+function drawS(){const I=+$("sI").value,e=+$("sE").value,A=+$("sA").value,p=plateJ(I,600,e,A);$("sIv").textContent=I.toFixed(2);$("sEv").textContent=Math.round(e*100)+"%";$("sAv").textContent=A;$("kM").textContent=p.m_mg.toFixed(2);$("kH").textContent=p.h_um.toFixed(3);ST.sI=$("sI").value;ST.sE=$("sE").value;ST.sA=$("sA").value;save()}
+["sI","sE","sA"].forEach(i=>$(i).oninput=drawS);
+function INIT(){["sI","sE","sA"].forEach(i=>{if(ST[i]!=null)$(i).value=ST[i]});drawS()}
+const CHECKS={
+ "1b":()=>[checkNum("c1a","f1a",L.base.Q,0.01,0,"60.0"),checkNum("c1b","f1b",L.base.n_e,0.01,0,"6.22e-4")].every(Boolean),
+ "1c":()=>[checkNum("c1c","f1c",L.base.m_mg,0.01,0,L.base.m_mg.toFixed(2)),checkNum("c1d","f1d",L.base.h_um,0.01,0,L.base.h_um.toFixed(3))].every(Boolean),
+ "2a":()=>[checkNum("c2a","f2a",L.area20.h_um,0.01,0,L.area20.h_um.toFixed(3)),checkNum("c2b","f2b",L.I200.m_mg,0.01,0,L.I200.m_mg.toFixed(2)),checkNum("c2c","f2c",L.eff100.m_mg,0.01,0,L.eff100.m_mg.toFixed(2))].every(Boolean),
+ "3a":()=>[checkNum("c3a","f3a",L.C_1Ah,0.01,0,"3600"),checkNum("c3b","f3b",L.Wh32,0.01,0,"3.2"),checkNum("c3c","f3c",L.Wh37,0.01,0,"3.7")].every(Boolean),
+ "3b":()=>[checkNum("c3d","f3d",L.q_graphite,0.01,0,L.q_graphite.toFixed(0))].every(Boolean)};
+const SUMMARY=(v,sel)=>[`Lab 10 answers`,
+ `1. Predicted at 90%: mass ${sel("p1",{down10:"falls 10%",same:"same",up:"rises"})}. Q ${v("c1a")} C; n(e-) ${v("c1b")} mol; m ${v("c1c")} mg; h ${v("c1d")} um`,
+ `2. 20.0 cm2: h ${v("c2a")} um; 0.200 A: m ${v("c2b")} mg; 100%: m ${v("c2c")} mg`,
+ `3. 1.00 Ah = ${v("c3a")} C; ${v("c3b")} Wh at 3.2 V; ${v("c3c")} Wh at 3.7 V; graphite ${v("c3d")} mAh/g`,`4. ${v("e5")}`];
+
+document.querySelectorAll("[data-save]").forEach(b=>b.onclick=()=>{const id=b.dataset.save,sv=SAVES[id];
+ if(sv.radio){if(!radio(sv.radio))return need(id,"Choose a prediction first.");ST[sv.radio]=radio(sv.radio)}
+ if(sv.text){if($(sv.text).value.trim().length<60)return need(id,"Write at least three sentences.");ST[sv.text]=$(sv.text).value}
+ markDone(id)});
+document.querySelectorAll("[data-check]").forEach(b=>b.onclick=()=>{const id=b.dataset.check;const ok=CHECKS[id]();if(ok)markDone(id);else save()});
+function summary(){const sel=(id,map)=>map[ST[id]]||ST[id]||"?",v=id=>ST[id]||"?";$("sum").textContent=SUMMARY(v,sel).join("\n")}
+$("copy").onclick=async()=>{try{await navigator.clipboard.writeText($("sum").textContent);$("copied").textContent="Copied. Paste it into the Exit Ticket box."}catch(e){$("copied").textContent="Copy did not work here. Select the text above and copy it."}};
+$("exitlink").href=EXIT_URL;
+$("reset").onclick=()=>{if(confirm("Clear all answers saved on this device?")){ST={};save();location.reload()}};
+Object.values(SAVES).forEach(sv=>{if(sv.radio&&ST[sv.radio]){const r=document.querySelector(`input[name="${sv.radio}"][value="${ST[sv.radio]}"]`);if(r)r.checked=true}});
+RESTORE.forEach(id=>{if(ST[id]!=null&&$(id))$(id).value=ST[id]});
+if(typeof INIT==="function")INIT();
+refresh();
+
+/* hand-in: an answer file for myCourseVille (no name or ID in it) */
+async function handin(){summary();const lab=parseInt((KEY.match(/lab(\d+)/)||[0,0])[1],10);
+ const core={course:"2182209",edition:"2027",lab,lab_key:KEY,saved:new Date().toISOString(),
+  steps_done:ORDER.filter(id=>ST["done_"+id]).length,steps_total:ORDER.length,
+  steps:Object.fromEntries(ORDER.map(id=>[id,!!ST["done_"+id]])),
+  expected_shown:Object.keys(ST).filter(k=>k.startsWith("tries_")&&ST[k]>=2).map(k=>k.slice(6)),
+  summary:$("sum").textContent,state:ST};
+ const data=JSON.stringify(core);let check="";
+ try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("2182209-lab-file-v1|"+data));check=[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){}
+ const file={lab,steps_done:core.steps_done,steps_total:core.steps_total,expected_shown:core.expected_shown.length,saved:core.saved,data,check};
+ const name=`2182209-lab${String(lab).padStart(2,"0")}-answers.json`,a=document.createElement("a");
+ a.href=URL.createObjectURL(new Blob([JSON.stringify(file,null,1)],{type:"application/json"}));a.download=name;document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+ $("dlNote").textContent=`Saved ${name}: ${core.steps_done} of ${core.steps_total} steps done. Upload it to Lab ${lab} in myCourseVille.`}
+$("dlJson").onclick=()=>{handin()};
+</script>
+</body>
+</html>

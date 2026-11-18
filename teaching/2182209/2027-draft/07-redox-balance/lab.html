@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lab 7 · Counting electrons in redox · 2182209</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--graphite:#333F4A;--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--sand:#DFC98F;--ok:#0F6E6B;--bad:#BE654C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Helvetica Neue",Helvetica,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:18px 16px 80px}
+header h1{color:var(--teal);font-size:30px;margin:4px 0 2px}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+.sub{color:var(--slate);font-size:15px}
+.prog{position:sticky;top:0;background:var(--paper);padding:10px 0;z-index:3}
+.bar{height:8px;background:#e2ddd4;border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.prog span{font-size:13px;color:var(--slate)}
+.card{background:#fff;border-radius:14px;padding:18px 18px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:21px;margin:0 0 4px;color:var(--teal)}
+.card h3{font-size:17px;margin:16px 0 6px}
+.step{border-left:4px solid var(--mist);padding:2px 0 2px 14px;margin:14px 0}
+.step.done{border-color:var(--teal)}.step.locked{opacity:.45;pointer-events:none}
+.step.locked .chart,.step.locked .kpi,.step.locked .chk,.step.locked input[type=range],.step.locked .row{display:none}
+.step.locked::after{content:"Finish the step above to open this one.";display:block;font-size:13px;color:var(--slate)}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;border-radius:6px;padding:2px 8px;margin-right:6px;color:#fff;background:var(--slate)}
+.tag.p{background:var(--amber)}.tag.r{background:var(--teal)}.tag.c{background:var(--graphite)}.tag.e{background:var(--rust)}
+textarea,input[type=text],select{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--mist);border-radius:8px;padding:8px 10px;background:#fff}
+textarea{min-height:70px}
+button{font:inherit;font-size:15px;padding:8px 14px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer;margin:8px 8px 0 0}
+button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row label{flex:1 1 240px}
+.chk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.chk input{width:150px}
+.fb{font-size:15px}.fb.ok{color:var(--ok);font-weight:700}.fb.bad{color:var(--bad)}
+.choices label{display:block;margin:4px 0}
+.kpi{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}.kpi div{background:var(--paper);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--slate)}.kpi b{display:block;font-size:20px;color:var(--ink)}
+.chart{background:var(--paper);border-radius:12px;padding:6px;margin:8px 0}
+svg{width:100%;height:auto;display:block}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.note{font-size:14px;color:var(--slate)}
+.hidden{display:none}
+pre.sum{white-space:pre-wrap;background:var(--paper);border-radius:10px;padding:12px;font-size:14px}
+a{color:var(--teal)}
+</style>
+<style>
+.step.locked > *:not(.tag){display:none}
+table.tb{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.tb th{background:var(--paper);text-align:left;padding:5px 8px;border-bottom:2px solid var(--mist)}
+table.tb td{padding:5px 8px;border-bottom:1px solid #e6e3dd}
+table.tb td.n,table.tb th.n{text-align:right;font-variant-numeric:tabular-nums}
+ol.rl{margin:4px 0 0;padding-left:22px;font-size:15px}
+.lights{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.light{border-radius:999px;padding:3px 10px;font-size:14px;font-weight:700}
+.light.ok{background:#e3f0ef;color:var(--teal)}.light.bad{background:#f6e3de;color:var(--rust)}
+.code{background:#1f262d;color:#e8eef2;border-radius:10px;padding:10px 8px;font-family:Menlo,Consolas,monospace;font-size:13.5px;overflow-x:auto}
+.ln{display:flex;align-items:center;gap:8px;padding:3px 4px;border-radius:6px;white-space:pre}
+.ln.fixed{background:#24433f}
+.ln .no{color:#8a96a0;width:18px;text-align:right}
+.ln .tx{flex:1}
+.ln .okk{width:38px;color:#9fd6c9;font-size:12px;font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700}
+button.sm{width:38px;font-size:12px;padding:2px 9px;margin:0;background:transparent;color:#9fd6c9;border:1px solid #9fd6c9}
+.ctrlrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0;font-size:15px;color:var(--slate)}
+.ctrlrow input[type=range]{flex:1;min-width:160px;accent-color:var(--teal)}
+.wide{overflow-x:auto}.wide table.tb{font-size:12px}.wide table.tb td,.wide table.tb th{padding:3px 4px}
+@media (max-width:600px){table.tb{display:block;overflow-x:auto;font-size:13px}}
+</style>
+
+</head>
+<body><main>
+<header><div class="kicker">2182209 · Class 7 · Lab</div><h1>Counting electrons in redox</h1>
+<div class="sub">About 30 minutes. Works in class or on your own, on a laptop or a phone. Nothing to install; a calculator helps.</div></header>
+<div class="prog"><div class="bar"><i id="pbar"></i></div><span id="ptext"></span></div>
+<section class="card"><h2>How this lab works</h2>
+<p>You decide which species loses electrons when Zn meets Cu<sup>2+</sup>, assign oxidation numbers, balance a reaction so the electrons cancel, and then treat electrons and ions as reactants that can run out. Write each prediction before you look; the next step stays locked until you do. After two tries the expected value is shown.</p>
+<p class="note"><b>What runs where.</b> The expected values come from <a href="redox_lab.py">redox_lab.py</a>, computed in advance. The slider reads values the Python computed. No Python is installed or run on your device. To run the Python yourself, open the slides and press D, or run redox_lab.py in desktop Python.</p>
+<p class="note">Studying on your own? Watch the narrated slides for Class 7 first.</p></section>
+<section class="card" id="data"><h2>Data</h2>
+<table class="tb"><tr><th>Half-reaction (as a reduction)</th><th class="n">Electrons</th></tr>
+<tr><td>Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu</td><td class="n">2</td></tr><tr><td>Zn<sup>2+</sup> + 2e<sup>−</sup> → Zn</td><td class="n">2</td></tr><tr><td>Al<sup>3+</sup> + 3e<sup>−</sup> → Al</td><td class="n">3</td></tr></table>
+<table class="tb"><tr><th>Molar mass</th><th class="n">g/mol</th></tr><tr><td>Zn</td><td class="n">65.38</td></tr><tr><td>Cu</td><td class="n">63.546</td></tr></table>
+<p class="note">Oxidation-number rules: an element alone 0; a single-atom ion its charge; O usually −2, H usually +1; the sum equals the charge of the species.</p></section>
+<section class="card" id="t1"><h2>Task 1 · Who loses electrons?</h2>
+<div class="step" data-step="1a"><span class="tag p">PREDICT</span>A Zn strip is dipped in CuSO<sub>4</sub> solution, and Cu forms on it. Which species is oxidized?
+ <div class="choices"><label><input type="radio" name="p1" value="Zn"> Zn</label><label><input type="radio" name="p1" value="Cu2+"> Cu<sup>2+</sup></label><label><input type="radio" name="p1" value="SO4"> SO<sub>4</sub><sup>2−</sup></label></div>
+ <button data-save="1a">Save prediction</button></div>
+<div class="step" data-step="1b"><span class="tag c">CHECK</span>Use oxidation numbers for Zn + Cu<sup>2+</sup> → Zn<sup>2+</sup> + Cu.
+ <div class="chk"><span>Oxidation number of Zn changes from 0 to</span><input type="text" id="c1a" inputmode="decimal"><span class="fb" id="f1a"></span></div>
+ <div class="chk"><span>Electrons each Cu<sup>2+</sup> gains</span><input type="text" id="c1b" inputmode="decimal"><span class="fb" id="f1b"></span></div>
+ <div class="chk"><span>The oxidizing agent is</span><select id="c1c"><option value="">choose</option><option value="Zn">Zn</option><option value="Cu2+">Cu2+</option><option value="SO4">SO4 2-</option></select><span class="fb" id="f1c"></span></div>
+ <div class="chk"><span>Oxidation number of Si in SiO<sub>2</sub></span><input type="text" id="c1d" inputmode="decimal" placeholder="e.g. +3"><span class="fb" id="f1d"></span></div>
+ <button data-check="1b">Check</button></div>
+</section>
+<section class="card" id="t2"><h2>Task 2 · Balance Al with Cu<sup>2+</sup></h2>
+<div class="step" data-step="2a"><span class="tag r">RECOMPUTE</span>Al is oxidized to Al<sup>3+</sup> and Cu<sup>2+</sup> is reduced to Cu. Write a Al + b Cu<sup>2+</sup> → a Al<sup>3+</sup> + b Cu with the smallest whole numbers.
+ <div class="chk"><span>a (Al)</span><input type="text" id="c2a" inputmode="decimal"><span class="fb" id="f2a"></span></div>
+ <div class="chk"><span>b (Cu<sup>2+</sup>)</span><input type="text" id="c2b" inputmode="decimal"><span class="fb" id="f2b"></span></div>
+ <div class="chk"><span>Electrons transferred</span><input type="text" id="c2c" inputmode="decimal"><span class="fb" id="f2c"></span></div>
+ <button data-check="2a">Check</button></div>
+</section>
+<section class="card" id="t3"><h2>Task 3 · Electrons can run out</h2>
+<div class="step" data-step="3a"><span class="tag c">CHECK</span>3 Cu<sup>2+</sup> ions receive 4 electrons. Each Cu<sup>2+</sup> takes 2.
+ <div class="chk"><span>Cu atoms formed</span><input type="text" id="c3a" inputmode="decimal"><span class="fb" id="f3a"></span></div>
+ <div class="chk"><span>Cu<sup>2+</sup> ions left</span><input type="text" id="c3b" inputmode="decimal"><span class="fb" id="f3b"></span></div>
+ <button data-check="3a">Check</button></div>
+<div class="step" data-step="3b"><span class="tag r">CHANGE ONE CONDITION</span>Change the number of electrons supplied to the 3 Cu<sup>2+</sup> ions.
+ <div class="ctrlrow"><span>Electrons</span><input type="range" id="tE" min="0" max="8" step="1" value="4"><b id="tEv"></b></div>
+ <div class="kpi"><div>Cu formed<b id="km"></b></div><div>Cu<sup>2+</sup> left<b id="kl"></b></div><div>e<sup>−</sup> unused<b id="ku"></b></div></div>
+ <div class="chk"><span>Fewest electrons that reduce all 3 Cu<sup>2+</sup></span><input type="text" id="c3c" inputmode="decimal"><span class="fb" id="f3c"></span></div>
+ <div class="chk"><span>With 8 electrons, the limiting reactant is</span><select id="c3d"><option value="">choose</option><option value="ion">Cu2+</option><option value="e">electrons</option></select><span class="fb" id="f3d"></span></div>
+ <button data-check="3b">Check</button></div>
+</section>
+<section class="card" id="t4"><h2>Task 4 · Zn in a CuSO<sub>4</sub> beaker</h2>
+<div class="step" data-step="4a"><span class="tag r">RECOMPUTE</span>1.00 g of Zn is placed in 100.0 mL of 0.100 M CuSO<sub>4</sub>. Zn + Cu<sup>2+</sup> → Zn<sup>2+</sup> + Cu.
+ <div class="chk"><span>n(Zn), mol</span><input type="text" id="c4a" inputmode="decimal"><span class="fb" id="f4a"></span></div>
+ <div class="chk"><span>Limiting reactant</span><select id="c4b"><option value="">choose</option><option value="Zn">Zn</option><option value="Cu2+">Cu2+</option></select><span class="fb" id="f4b"></span></div>
+ <div class="chk"><span>Mass of Cu formed, g</span><input type="text" id="c4c" inputmode="decimal"><span class="fb" id="f4c"></span></div>
+ <div class="chk"><span>Mass of Zn left, g</span><input type="text" id="c4d" inputmode="decimal"><span class="fb" id="f4d"></span></div>
+ <button data-check="4a">Check</button></div>
+</section>
+<section class="card" id="t5"><h2>Task 5 · Explain</h2>
+<div class="step" data-step="5a"><span class="tag e">EXPLAIN</span>Explain to a classmate what happens to the electrons when Zn meets Cu<sup>2+</sup>, why the electrons must cancel in the overall equation, and what decided how much Cu formed in Task 4. Use numbers from this lab.
+ <textarea id="e5"></textarea><button data-save="5a">Save</button></div>
+</section>
+<section class="card" id="fin"><h2>Finish: Exit Ticket and feedback</h2>
+<div class="step" data-step="fin"><p>Copy your answers, open the Exit Ticket, choose <b>Class 7</b>, paste them in the Exit Ticket box, and answer the feedback questions. Choose "On my own" if you did this lab outside class.</p>
+<pre class="sum" id="sum"></pre>
+<button id="copy">Copy my answers</button><a id="exitlink" target="_blank" rel="noopener"><button class="ghost" type="button">Open Exit Ticket and feedback</button></a>
+<p class="note" id="copied"></p>
+<p class="note">Want the code? <a href="redox_lab.py">redox_lab.py</a> computes every value on this page; it runs in desktop Python, or open the slides and press D on any slide marked "D · Python".</p></div>
+<button class="ghost" id="reset">Clear my answers on this device</button>
+</section>
+<section class="card" id="handin"><h2>Hand in: your answer file for myCourseVille</h2>
+<p>Download your answers as a file and upload it to this lab's assignment in myCourseVille. You can download at any point, and again after more steps; upload the latest file. The file records the steps you finished, your answers, and the checks where the expected value was shown after two tries. It holds no name or student ID: myCourseVille records who uploaded it.</p>
+<button id="dlJson" type="button">Download my answer file (.json)</button>
+<p class="note" id="dlNote"></p></section>
+</main>
+<script>
+const R = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"ons":[{"f":"Cu","atom":"Cu","on":0.0},{"f":"Cu2+","atom":"Cu","on":2.0},{"f":"CuO","atom":"Cu","on":2.0},{"f":"Cu2O","atom":"Cu","on":1.0},{"f":"SiO2","atom":"Si","on":4.0},{"f":"SiCl4","atom":"Si","on":4.0},{"f":"SO4 2-","atom":"S","on":6.0},{"f":"H2O2","atom":"O","on":-1.0}],"pairs":[{"metal":"Zn","ion":"Cu2+","ox_ion":"Zn2+","product":"Cu","a":1,"b":1,"e":2,"charge_left":2,"charge_right":2,"goes":true},{"metal":"Zn","ion":"Ag+","ox_ion":"Zn2+","product":"Ag","a":1,"b":2,"e":2,"charge_left":2,"charge_right":2,"goes":true},{"metal":"Al","ion":"Cu2+","ox_ion":"Al3+","product":"Cu","a":2,"b":3,"e":6,"charge_left":6,"charge_right":6,"goes":true},{"metal":"Al","ion":"Ag+","ox_ion":"Al3+","product":"Ag","a":1,"b":3,"e":3,"charge_left":3,"charge_right":3,"goes":true},{"metal":"Al","ion":"Zn2+","ox_ion":"Al3+","product":"Zn","a":2,"b":3,"e":6,"charge_left":6,"charge_right":6,"goes":true},{"metal":"Fe","ion":"Cu2+","ox_ion":"Fe2+","product":"Cu","a":1,"b":1,"e":2,"charge_left":2,"charge_right":2,"goes":true},{"metal":"Fe","ion":"Ag+","ox_ion":"Fe2+","product":"Ag","a":1,"b":2,"e":2,"charge_left":2,"charge_right":2,"goes":true},{"metal":"Fe","ion":"Zn2+","ox_ion":"Fe2+","product":"Zn","a":1,"b":1,"e":2,"charge_left":2,"charge_right":2,"goes":false},{"metal":"Cu","ion":"Ag+","ox_ion":"Cu2+","product":"Ag","a":1,"b":2,"e":2,"charge_left":2,"charge_right":2,"goes":true},{"metal":"Cu","ion":"Zn2+","ox_ion":"Cu2+","product":"Zn","a":1,"b":1,"e":2,"charge_left":2,"charge_right":2,"goes":false}],"supply":[{"e":0,"made":0,"ions_left":3,"e_left":0},{"e":1,"made":0,"ions_left":3,"e_left":1},{"e":2,"made":1,"ions_left":2,"e_left":0},{"e":3,"made":1,"ions_left":2,"e_left":1},{"e":4,"made":2,"ions_left":1,"e_left":0},{"e":5,"made":2,"ions_left":1,"e_left":1},{"e":6,"made":3,"ions_left":0,"e_left":0},{"e":7,"made":3,"ions_left":0,"e_left":1},{"e":8,"made":3,"ions_left":0,"e_left":2}],"disp":[{"m_zn":0.25,"n_zn":0.003824,"n_cu2":0.01,"limiting":"Zn","n_rxn":0.003824,"m_cu":0.242987,"m_zn_used":0.25,"m_zn_left":0.0,"cu2_left":0.006176,"e_mol":0.007648},{"m_zn":0.5,"n_zn":0.007648,"n_cu2":0.01,"limiting":"Zn","n_rxn":0.007648,"m_cu":0.485974,"m_zn_used":0.5,"m_zn_left":0.0,"cu2_left":0.002352,"e_mol":0.015295},{"m_zn":0.75,"n_zn":0.011471,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6538,"m_zn_left":0.0962,"cu2_left":0.0,"e_mol":0.02},{"m_zn":1.0,"n_zn":0.015295,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6538,"m_zn_left":0.3462,"cu2_left":0.0,"e_mol":0.02},{"m_zn":1.25,"n_zn":0.019119,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6538,"m_zn_left":0.5962,"cu2_left":0.0,"e_mol":0.02},{"m_zn":1.5,"n_zn":0.022943,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6538,"m_zn_left":0.8462,"cu2_left":0.0,"e_mol":0.02},{"m_zn":1.75,"n_zn":0.026767,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6538,"m_zn_left":1.0962,"cu2_left":0.0,"e_mol":0.02},{"m_zn":2.0,"n_zn":0.03059,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6538,"m_zn_left":1.3462,"cu2_left":0.0,"e_mol":0.02}],"order":["Al","Zn","Fe","H2","Cu","Ag"],"molar":{"Cu":63.546,"Zn":65.38,"Al":26.982,"Fe":55.845,"Ag":107.87},"si_ox_e":4},"lab":{"zncu":{"metal":"Zn","ion":"Cu2+","ox_ion":"Zn2+","product":"Cu","a":1,"b":1,"e":2,"charge_left":2,"charge_right":2,"goes":true},"alcu":{"metal":"Al","ion":"Cu2+","ox_ion":"Al3+","product":"Cu","a":2,"b":3,"e":6,"charge_left":6,"charge_right":6,"goes":true},"sup4":{"e":4,"made":2,"ions_left":1,"e_left":0},"sup_all":6,"supply":[{"e":0,"made":0,"ions_left":3,"e_left":0},{"e":1,"made":0,"ions_left":3,"e_left":1},{"e":2,"made":1,"ions_left":2,"e_left":0},{"e":3,"made":1,"ions_left":2,"e_left":1},{"e":4,"made":2,"ions_left":1,"e_left":0},{"e":5,"made":2,"ions_left":1,"e_left":1},{"e":6,"made":3,"ions_left":0,"e_left":0},{"e":7,"made":3,"ions_left":0,"e_left":1},{"e":8,"made":3,"ions_left":0,"e_left":2}],"disp":{"m_zn":1.0,"n_zn":0.015295197308045275,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6537999999999999,"m_zn_left":0.34620000000000006,"cu2_left":0.0,"e_mol":0.02},"on_si":4.0}};
+const EXIT_URL = "https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=7";
+const KEY="lab7-2027-v1";
+const ORDER=["1a", "1b", "2a", "3a", "3b", "4a", "5a"];
+const SAVES={"1a": {"radio": "p1"}, "5a": {"text": "e5"}};
+const RESTORE=["e5", "c1a", "c1b", "c1c", "c1d", "c2a", "c2b", "c2c", "c3a", "c3b", "c3c", "c3d", "c4a", "c4b", "c4c", "c4d"];
+
+const $=id=>document.getElementById(id);
+const fmt=(x,d=0)=>x==null||!isFinite(x)?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+let ST={};
+try{ST=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){ST={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}};
+const L=R.lab;
+function refresh(){let open=true;ORDER.forEach(id=>{const el=document.querySelector(`[data-step="${id}"]`),done=!!ST["done_"+id];el.classList.toggle("done",done);el.classList.toggle("locked",!done&&!open);if(!done&&open)open=false});
+ document.querySelector('[data-step="fin"]').classList.toggle("locked",!ORDER.every(id=>ST["done_"+id]));
+ const n=ORDER.filter(id=>ST["done_"+id]).length;$("pbar").style.width=(100*n/ORDER.length)+"%";$("ptext").textContent=`${n} of ${ORDER.length} steps done`;summary();save()}
+function need(id,msg){const st=document.querySelector(`[data-step="${id}"]`);let f=st.querySelector(".need");if(!f){f=document.createElement("div");f.className="fb bad need";st.appendChild(f)}f.textContent=msg;return false}
+function markDone(id){const nd=document.querySelector(`[data-step="${id}"] .need`);if(nd)nd.textContent="";ST["done_"+id]=true;refresh()}
+const radio=n=>{const r=document.querySelector(`input[name="${n}"]:checked`);return r?r.value:""};
+/* accepts 1.2e22, 1.2E22, 1.2×10^22, 1.2x10^22, 1.2*10^22, a leading + and a trailing % */
+const num=s=>{let t=String(s).trim().replace(/,/g,"").replace(/−/g,"-").replace(/\s/g,"").replace(/%$/,"");const m=t.match(/^([-+]?[\d.]+)(?:[x×*]10\^?([-+]?\d+))$/i);if(m)return parseFloat(m[1])*10**parseInt(m[2],10);return parseFloat(t)};
+function verdict(input,fb,ok,expected){ST["tries_"+input]=(ST["tries_"+input]||0)+(ok?0:1);const f=$(fb);f.className="fb "+(ok?"ok":"bad");
+ f.textContent=ok?"Correct":(ST["tries_"+input]>=2?`Not yet. Expected: ${expected}.`:"Not yet. Look again.");return ok||ST["tries_"+input]>=2}
+function checkNum(input,fb,target,rel,abs,shown){const v=num($(input).value);ST[input]=$(input).value;return verdict(input,fb,isFinite(v)&&Math.abs(v-target)<=Math.max(abs,rel*Math.abs(target)),shown)}
+function checkSel(input,fb,target,label){ST[input]=$(input).value;return verdict(input,fb,$(input).value===target,label||target)}
+
+function drawE(){const s=L.supply[+$("tE").value];$("tEv").textContent=s.e;$("km").textContent=s.made;$("kl").textContent=s.ions_left;$("ku").textContent=s.e_left;ST.tE=$("tE").value;save()}
+$("tE").oninput=drawE;
+function INIT(){if(ST.tE!=null)$("tE").value=ST.tE;drawE()}
+const CHECKS={
+ "1b":()=>[checkNum("c1a","f1a",2,0,0.01,"+2"),checkNum("c1b","f1b",2,0,0.01,"2"),checkSel("c1c","f1c","Cu2+","Cu2+"),checkNum("c1d","f1d",L.on_si,0,0.01,"+4")].every(Boolean),
+ "2a":()=>[checkNum("c2a","f2a",L.alcu.a,0,0.01,String(L.alcu.a)),checkNum("c2b","f2b",L.alcu.b,0,0.01,String(L.alcu.b)),checkNum("c2c","f2c",L.alcu.e,0,0.01,String(L.alcu.e))].every(Boolean),
+ "3a":()=>[checkNum("c3a","f3a",L.sup4.made,0,0.01,String(L.sup4.made)),checkNum("c3b","f3b",L.sup4.ions_left,0,0.01,String(L.sup4.ions_left))].every(Boolean),
+ "3b":()=>[checkNum("c3c","f3c",L.sup_all,0,0.01,String(L.sup_all)),checkSel("c3d","f3d","ion","Cu2+: 2 electrons are left over")].every(Boolean),
+ "4a":()=>[checkNum("c4a","f4a",L.disp.n_zn,0.01,0,L.disp.n_zn.toFixed(4)),checkSel("c4b","f4b",L.disp.limiting,"Cu2+"),checkNum("c4c","f4c",L.disp.m_cu,0.01,0,L.disp.m_cu.toFixed(3)),checkNum("c4d","f4d",L.disp.m_zn_left,0.01,0,L.disp.m_zn_left.toFixed(3))].every(Boolean)};
+const SUMMARY=(v,sel)=>[`Lab 7 answers`,
+ `1. Predicted oxidized: ${v("p1")}. Zn 0 -> ${v("c1a")}; Cu2+ gains ${v("c1b")} e-; oxidizing agent ${v("c1c")}; Si in SiO2 ${v("c1d")}`,
+ `2. ${v("c2a")} Al + ${v("c2b")} Cu2+, ${v("c2c")} electrons`,
+ `3. 3 Cu2+ + 4 e-: ${v("c3a")} Cu, ${v("c3b")} Cu2+ left; all 3 need ${v("c3c")} e-; with 8 e- limiting: ${sel("c3d",{ion:"Cu2+",e:"electrons"})}`,
+ `4. n(Zn) ${v("c4a")} mol; limiting ${v("c4b")}; Cu ${v("c4c")} g; Zn left ${v("c4d")} g`,`5. ${v("e5")}`];
+
+document.querySelectorAll("[data-save]").forEach(b=>b.onclick=()=>{const id=b.dataset.save,sv=SAVES[id];
+ if(sv.radio){if(!radio(sv.radio))return need(id,"Choose a prediction first.");ST[sv.radio]=radio(sv.radio)}
+ if(sv.text){if($(sv.text).value.trim().length<60)return need(id,"Write at least three sentences.");ST[sv.text]=$(sv.text).value}
+ markDone(id)});
+document.querySelectorAll("[data-check]").forEach(b=>b.onclick=()=>{const id=b.dataset.check;const ok=CHECKS[id]();if(ok)markDone(id);else save()});
+function summary(){const sel=(id,map)=>map[ST[id]]||ST[id]||"?",v=id=>ST[id]||"?";$("sum").textContent=SUMMARY(v,sel).join("\n")}
+$("copy").onclick=async()=>{try{await navigator.clipboard.writeText($("sum").textContent);$("copied").textContent="Copied. Paste it into the Exit Ticket box."}catch(e){$("copied").textContent="Copy did not work here. Select the text above and copy it."}};
+$("exitlink").href=EXIT_URL;
+$("reset").onclick=()=>{if(confirm("Clear all answers saved on this device?")){ST={};save();location.reload()}};
+Object.values(SAVES).forEach(sv=>{if(sv.radio&&ST[sv.radio]){const r=document.querySelector(`input[name="${sv.radio}"][value="${ST[sv.radio]}"]`);if(r)r.checked=true}});
+RESTORE.forEach(id=>{if(ST[id]!=null&&$(id))$(id).value=ST[id]});
+if(typeof INIT==="function")INIT();
+refresh();
+
+/* hand-in: an answer file for myCourseVille (no name or ID in it) */
+async function handin(){summary();const lab=parseInt((KEY.match(/lab(\d+)/)||[0,0])[1],10);
+ const core={course:"2182209",edition:"2027",lab,lab_key:KEY,saved:new Date().toISOString(),
+  steps_done:ORDER.filter(id=>ST["done_"+id]).length,steps_total:ORDER.length,
+  steps:Object.fromEntries(ORDER.map(id=>[id,!!ST["done_"+id]])),
+  expected_shown:Object.keys(ST).filter(k=>k.startsWith("tries_")&&ST[k]>=2).map(k=>k.slice(6)),
+  summary:$("sum").textContent,state:ST};
+ const data=JSON.stringify(core);let check="";
+ try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("2182209-lab-file-v1|"+data));check=[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){}
+ const file={lab,steps_done:core.steps_done,steps_total:core.steps_total,expected_shown:core.expected_shown.length,saved:core.saved,data,check};
+ const name=`2182209-lab${String(lab).padStart(2,"0")}-answers.json`,a=document.createElement("a");
+ a.href=URL.createObjectURL(new Blob([JSON.stringify(file,null,1)],{type:"application/json"}));a.download=name;document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+ $("dlNote").textContent=`Saved ${name}: ${core.steps_done} of ${core.steps_total} steps done. Upload it to Lab ${lab} in myCourseVille.`}
+$("dlJson").onclick=()=>{handin()};
+</script>
+</body>
+</html>

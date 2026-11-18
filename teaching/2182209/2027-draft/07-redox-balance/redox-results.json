@@ -1,0 +1,445 @@
+{
+ "meta": {
+  "numpy": "2.2.5",
+  "scipy": "1.14.1",
+  "python": "3.13.18"
+ },
+ "lecture": {
+  "ons": [
+   {
+    "f": "Cu",
+    "atom": "Cu",
+    "on": 0.0
+   },
+   {
+    "f": "Cu2+",
+    "atom": "Cu",
+    "on": 2.0
+   },
+   {
+    "f": "CuO",
+    "atom": "Cu",
+    "on": 2.0
+   },
+   {
+    "f": "Cu2O",
+    "atom": "Cu",
+    "on": 1.0
+   },
+   {
+    "f": "SiO2",
+    "atom": "Si",
+    "on": 4.0
+   },
+   {
+    "f": "SiCl4",
+    "atom": "Si",
+    "on": 4.0
+   },
+   {
+    "f": "SO4 2-",
+    "atom": "S",
+    "on": 6.0
+   },
+   {
+    "f": "H2O2",
+    "atom": "O",
+    "on": -1.0
+   }
+  ],
+  "pairs": [
+   {
+    "metal": "Zn",
+    "ion": "Cu2+",
+    "ox_ion": "Zn2+",
+    "product": "Cu",
+    "a": 1,
+    "b": 1,
+    "e": 2,
+    "charge_left": 2,
+    "charge_right": 2,
+    "goes": true
+   },
+   {
+    "metal": "Zn",
+    "ion": "Ag+",
+    "ox_ion": "Zn2+",
+    "product": "Ag",
+    "a": 1,
+    "b": 2,
+    "e": 2,
+    "charge_left": 2,
+    "charge_right": 2,
+    "goes": true
+   },
+   {
+    "metal": "Al",
+    "ion": "Cu2+",
+    "ox_ion": "Al3+",
+    "product": "Cu",
+    "a": 2,
+    "b": 3,
+    "e": 6,
+    "charge_left": 6,
+    "charge_right": 6,
+    "goes": true
+   },
+   {
+    "metal": "Al",
+    "ion": "Ag+",
+    "ox_ion": "Al3+",
+    "product": "Ag",
+    "a": 1,
+    "b": 3,
+    "e": 3,
+    "charge_left": 3,
+    "charge_right": 3,
+    "goes": true
+   },
+   {
+    "metal": "Al",
+    "ion": "Zn2+",
+    "ox_ion": "Al3+",
+    "product": "Zn",
+    "a": 2,
+    "b": 3,
+    "e": 6,
+    "charge_left": 6,
+    "charge_right": 6,
+    "goes": true
+   },
+   {
+    "metal": "Fe",
+    "ion": "Cu2+",
+    "ox_ion": "Fe2+",
+    "product": "Cu",
+    "a": 1,
+    "b": 1,
+    "e": 2,
+    "charge_left": 2,
+    "charge_right": 2,
+    "goes": true
+   },
+   {
+    "metal": "Fe",
+    "ion": "Ag+",
+    "ox_ion": "Fe2+",
+    "product": "Ag",
+    "a": 1,
+    "b": 2,
+    "e": 2,
+    "charge_left": 2,
+    "charge_right": 2,
+    "goes": true
+   },
+   {
+    "metal": "Fe",
+    "ion": "Zn2+",
+    "ox_ion": "Fe2+",
+    "product": "Zn",
+    "a": 1,
+    "b": 1,
+    "e": 2,
+    "charge_left": 2,
+    "charge_right": 2,
+    "goes": false
+   },
+   {
+    "metal": "Cu",
+    "ion": "Ag+",
+    "ox_ion": "Cu2+",
+    "product": "Ag",
+    "a": 1,
+    "b": 2,
+    "e": 2,
+    "charge_left": 2,
+    "charge_right": 2,
+    "goes": true
+   },
+   {
+    "metal": "Cu",
+    "ion": "Zn2+",
+    "ox_ion": "Cu2+",
+    "product": "Zn",
+    "a": 1,
+    "b": 1,
+    "e": 2,
+    "charge_left": 2,
+    "charge_right": 2,
+    "goes": false
+   }
+  ],
+  "supply": [
+   {
+    "e": 0,
+    "made": 0,
+    "ions_left": 3,
+    "e_left": 0
+   },
+   {
+    "e": 1,
+    "made": 0,
+    "ions_left": 3,
+    "e_left": 1
+   },
+   {
+    "e": 2,
+    "made": 1,
+    "ions_left": 2,
+    "e_left": 0
+   },
+   {
+    "e": 3,
+    "made": 1,
+    "ions_left": 2,
+    "e_left": 1
+   },
+   {
+    "e": 4,
+    "made": 2,
+    "ions_left": 1,
+    "e_left": 0
+   },
+   {
+    "e": 5,
+    "made": 2,
+    "ions_left": 1,
+    "e_left": 1
+   },
+   {
+    "e": 6,
+    "made": 3,
+    "ions_left": 0,
+    "e_left": 0
+   },
+   {
+    "e": 7,
+    "made": 3,
+    "ions_left": 0,
+    "e_left": 1
+   },
+   {
+    "e": 8,
+    "made": 3,
+    "ions_left": 0,
+    "e_left": 2
+   }
+  ],
+  "disp": [
+   {
+    "m_zn": 0.25,
+    "n_zn": 0.003824,
+    "n_cu2": 0.01,
+    "limiting": "Zn",
+    "n_rxn": 0.003824,
+    "m_cu": 0.242987,
+    "m_zn_used": 0.25,
+    "m_zn_left": 0.0,
+    "cu2_left": 0.006176,
+    "e_mol": 0.007648
+   },
+   {
+    "m_zn": 0.5,
+    "n_zn": 0.007648,
+    "n_cu2": 0.01,
+    "limiting": "Zn",
+    "n_rxn": 0.007648,
+    "m_cu": 0.485974,
+    "m_zn_used": 0.5,
+    "m_zn_left": 0.0,
+    "cu2_left": 0.002352,
+    "e_mol": 0.015295
+   },
+   {
+    "m_zn": 0.75,
+    "n_zn": 0.011471,
+    "n_cu2": 0.01,
+    "limiting": "Cu2+",
+    "n_rxn": 0.01,
+    "m_cu": 0.63546,
+    "m_zn_used": 0.6538,
+    "m_zn_left": 0.0962,
+    "cu2_left": 0.0,
+    "e_mol": 0.02
+   },
+   {
+    "m_zn": 1.0,
+    "n_zn": 0.015295,
+    "n_cu2": 0.01,
+    "limiting": "Cu2+",
+    "n_rxn": 0.01,
+    "m_cu": 0.63546,
+    "m_zn_used": 0.6538,
+    "m_zn_left": 0.3462,
+    "cu2_left": 0.0,
+    "e_mol": 0.02
+   },
+   {
+    "m_zn": 1.25,
+    "n_zn": 0.019119,
+    "n_cu2": 0.01,
+    "limiting": "Cu2+",
+    "n_rxn": 0.01,
+    "m_cu": 0.63546,
+    "m_zn_used": 0.6538,
+    "m_zn_left": 0.5962,
+    "cu2_left": 0.0,
+    "e_mol": 0.02
+   },
+   {
+    "m_zn": 1.5,
+    "n_zn": 0.022943,
+    "n_cu2": 0.01,
+    "limiting": "Cu2+",
+    "n_rxn": 0.01,
+    "m_cu": 0.63546,
+    "m_zn_used": 0.6538,
+    "m_zn_left": 0.8462,
+    "cu2_left": 0.0,
+    "e_mol": 0.02
+   },
+   {
+    "m_zn": 1.75,
+    "n_zn": 0.026767,
+    "n_cu2": 0.01,
+    "limiting": "Cu2+",
+    "n_rxn": 0.01,
+    "m_cu": 0.63546,
+    "m_zn_used": 0.6538,
+    "m_zn_left": 1.0962,
+    "cu2_left": 0.0,
+    "e_mol": 0.02
+   },
+   {
+    "m_zn": 2.0,
+    "n_zn": 0.03059,
+    "n_cu2": 0.01,
+    "limiting": "Cu2+",
+    "n_rxn": 0.01,
+    "m_cu": 0.63546,
+    "m_zn_used": 0.6538,
+    "m_zn_left": 1.3462,
+    "cu2_left": 0.0,
+    "e_mol": 0.02
+   }
+  ],
+  "order": [
+   "Al",
+   "Zn",
+   "Fe",
+   "H2",
+   "Cu",
+   "Ag"
+  ],
+  "molar": {
+   "Cu": 63.546,
+   "Zn": 65.38,
+   "Al": 26.982,
+   "Fe": 55.845,
+   "Ag": 107.87
+  },
+  "si_ox_e": 4
+ },
+ "lab": {
+  "zncu": {
+   "metal": "Zn",
+   "ion": "Cu2+",
+   "ox_ion": "Zn2+",
+   "product": "Cu",
+   "a": 1,
+   "b": 1,
+   "e": 2,
+   "charge_left": 2,
+   "charge_right": 2,
+   "goes": true
+  },
+  "alcu": {
+   "metal": "Al",
+   "ion": "Cu2+",
+   "ox_ion": "Al3+",
+   "product": "Cu",
+   "a": 2,
+   "b": 3,
+   "e": 6,
+   "charge_left": 6,
+   "charge_right": 6,
+   "goes": true
+  },
+  "sup4": {
+   "e": 4,
+   "made": 2,
+   "ions_left": 1,
+   "e_left": 0
+  },
+  "sup_all": 6,
+  "supply": [
+   {
+    "e": 0,
+    "made": 0,
+    "ions_left": 3,
+    "e_left": 0
+   },
+   {
+    "e": 1,
+    "made": 0,
+    "ions_left": 3,
+    "e_left": 1
+   },
+   {
+    "e": 2,
+    "made": 1,
+    "ions_left": 2,
+    "e_left": 0
+   },
+   {
+    "e": 3,
+    "made": 1,
+    "ions_left": 2,
+    "e_left": 1
+   },
+   {
+    "e": 4,
+    "made": 2,
+    "ions_left": 1,
+    "e_left": 0
+   },
+   {
+    "e": 5,
+    "made": 2,
+    "ions_left": 1,
+    "e_left": 1
+   },
+   {
+    "e": 6,
+    "made": 3,
+    "ions_left": 0,
+    "e_left": 0
+   },
+   {
+    "e": 7,
+    "made": 3,
+    "ions_left": 0,
+    "e_left": 1
+   },
+   {
+    "e": 8,
+    "made": 3,
+    "ions_left": 0,
+    "e_left": 2
+   }
+  ],
+  "disp": {
+   "m_zn": 1.0,
+   "n_zn": 0.015295197308045275,
+   "n_cu2": 0.01,
+   "limiting": "Cu2+",
+   "n_rxn": 0.01,
+   "m_cu": 0.63546,
+   "m_zn_used": 0.6537999999999999,
+   "m_zn_left": 0.34620000000000006,
+   "cu2_left": 0.0,
+   "e_mol": 0.02
+  },
+  "on_si": 4.0
+ }
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lab 4 · Making and diluting a CuSO₄ bath · 2182209</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--graphite:#333F4A;--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--sand:#DFC98F;--ok:#0F6E6B;--bad:#BE654C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Helvetica Neue",Helvetica,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:18px 16px 80px}
+header h1{color:var(--teal);font-size:30px;margin:4px 0 2px}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+.sub{color:var(--slate);font-size:15px}
+.prog{position:sticky;top:0;background:var(--paper);padding:10px 0;z-index:3}
+.bar{height:8px;background:#e2ddd4;border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.prog span{font-size:13px;color:var(--slate)}
+.card{background:#fff;border-radius:14px;padding:18px 18px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:21px;margin:0 0 4px;color:var(--teal)}
+.card h3{font-size:17px;margin:16px 0 6px}
+.step{border-left:4px solid var(--mist);padding:2px 0 2px 14px;margin:14px 0}
+.step.done{border-color:var(--teal)}.step.locked{opacity:.45;pointer-events:none}
+.step.locked .chart,.step.locked .kpi,.step.locked .chk,.step.locked input[type=range],.step.locked .row{display:none}
+.step.locked::after{content:"Finish the step above to open this one.";display:block;font-size:13px;color:var(--slate)}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;border-radius:6px;padding:2px 8px;margin-right:6px;color:#fff;background:var(--slate)}
+.tag.p{background:var(--amber)}.tag.r{background:var(--teal)}.tag.c{background:var(--graphite)}.tag.e{background:var(--rust)}
+textarea,input[type=text],select{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--mist);border-radius:8px;padding:8px 10px;background:#fff}
+textarea{min-height:70px}
+button{font:inherit;font-size:15px;padding:8px 14px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer;margin:8px 8px 0 0}
+button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row label{flex:1 1 240px}
+.chk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.chk input{width:150px}
+.fb{font-size:15px}.fb.ok{color:var(--ok);font-weight:700}.fb.bad{color:var(--bad)}
+.choices label{display:block;margin:4px 0}
+.kpi{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}.kpi div{background:var(--paper);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--slate)}.kpi b{display:block;font-size:20px;color:var(--ink)}
+.chart{background:var(--paper);border-radius:12px;padding:6px;margin:8px 0}
+svg{width:100%;height:auto;display:block}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.note{font-size:14px;color:var(--slate)}
+.hidden{display:none}
+pre.sum{white-space:pre-wrap;background:var(--paper);border-radius:10px;padding:12px;font-size:14px}
+a{color:var(--teal)}
+</style>
+<style>
+.step.locked > *:not(.tag){display:none}
+table.tb{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.tb th{background:var(--paper);text-align:left;padding:5px 8px;border-bottom:2px solid var(--mist)}
+table.tb td{padding:5px 8px;border-bottom:1px solid #e6e3dd}
+table.tb td.n,table.tb th.n{text-align:right;font-variant-numeric:tabular-nums}
+ol.rl{margin:4px 0 0;padding-left:22px;font-size:15px}
+.lights{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.light{border-radius:999px;padding:3px 10px;font-size:14px;font-weight:700}
+.light.ok{background:#e3f0ef;color:var(--teal)}.light.bad{background:#f6e3de;color:var(--rust)}
+.code{background:#1f262d;color:#e8eef2;border-radius:10px;padding:10px 8px;font-family:Menlo,Consolas,monospace;font-size:13.5px;overflow-x:auto}
+.ln{display:flex;align-items:center;gap:8px;padding:3px 4px;border-radius:6px;white-space:pre}
+.ln.fixed{background:#24433f}
+.ln .no{color:#8a96a0;width:18px;text-align:right}
+.ln .tx{flex:1}
+.ln .okk{width:38px;color:#9fd6c9;font-size:12px;font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700}
+button.sm{width:38px;font-size:12px;padding:2px 9px;margin:0;background:transparent;color:#9fd6c9;border:1px solid #9fd6c9}
+.ctrlrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0;font-size:15px;color:var(--slate)}
+.ctrlrow input[type=range]{flex:1;min-width:160px;accent-color:var(--teal)}
+.wide{overflow-x:auto}.wide table.tb{font-size:12px}.wide table.tb td,.wide table.tb th{padding:3px 4px}
+@media (max-width:600px){table.tb{display:block;overflow-x:auto;font-size:13px}}
+</style>
+
+</head>
+<body><main>
+<header><div class="kicker">2182209 · Class 4 · Lab</div><h1>Making and diluting a CuSO<sub>4</sub> bath</h1>
+<div class="sub">About 30 minutes. Works in class or on your own, on a laptop or a phone. Nothing to install; a calculator helps.</div></header>
+<div class="prog"><div class="bar"><i id="pbar"></i></div><span id="ptext"></span></div>
+
+<section class="card"><h2>How this lab works</h2>
+<p>Copper wiring is plated from a CuSO<sub>4</sub> bath. You check amounts and concentrations, plan a dilution, weigh the crystals for a bath, and find the ions it contains. Write each prediction before you look; the next step stays locked until you do. After two tries the expected value is shown.</p>
+<p class="note"><b>What runs where.</b> The expected values come from <a href="solutions_lab.py">solutions_lab.py</a>, computed in advance. The sliders in Task 3 do one small calculation in JavaScript, m = C V M, the same as the Python. No Python is installed or run on your device. To run the Python yourself, open the slides and press D, or run solutions_lab.py in desktop Python.</p>
+<p class="note">Studying on your own? Watch the narrated slides for Class 4 first.</p></section>
+
+<section class="card" id="data"><h2>Data</h2>
+<table class="tb"><tr><th>Case</th><th class="n">Total solution volume</th><th class="n">CuSO<sub>4</sub> concentration</th></tr>
+<tr><td>A: before adding water</td><td class="n">20.0 mL</td><td class="n">0.100 mol/L</td></tr>
+<tr><td>B: water added to reach</td><td class="n">40.0 mL</td><td class="n">0.0500 mol/L</td></tr>
+<tr><td>C: more water added to reach</td><td class="n">100.0 mL</td><td class="n">0.0200 mol/L</td></tr></table>
+<p class="note">Synthetic dilution data with no loss of solute. M(CuSO<sub>4</sub>·5H<sub>2</sub>O) = 249.68 g/mol; M(Cl) = 35.45 g/mol. 1 mL = 10<sup>−3</sup> L.</p></section>
+
+<section class="card" id="t1"><h2>Task 1 · Amount and concentration</h2>
+<div class="step" data-step="1a"><span class="tag p">PREDICT</span>When water is added with no loss of solute, what changes?
+ <div class="choices"><label><input type="radio" name="p1" value="n only"> the amount n only</label><label><input type="radio" name="p1" value="C only"> the concentration C only</label><label><input type="radio" name="p1" value="both"> both n and C</label></div>
+ <button data-save="1a">Save prediction</button></div>
+<div class="step" data-step="1b"><span class="tag c">CHECK</span>Calculate n = CV, with V in liters.
+ <div class="chk"><span>n for case A, mol</span><input type="text" id="c1a" inputmode="decimal"><span class="fb" id="f1a"></span></div>
+ <div class="chk"><span>n for case C, mol</span><input type="text" id="c1b" inputmode="decimal"><span class="fb" id="f1b"></span></div>
+ <div class="chk"><span>From A to C</span><select id="c1c"><option value="">choose</option><option value="a">n stays the same; V rises and C falls</option><option value="b">n falls because the solution is weaker</option><option value="c">C stays the same because no solute was lost</option></select><span class="fb" id="f1c"></span></div>
+ <button data-check="1b">Check</button></div>
+</section>
+
+<section class="card" id="t2"><h2>Task 2 · Plan a dilution</h2>
+<div class="step" data-step="2a"><span class="tag r">RECOMPUTE</span>Make 80.0 mL of 0.0250 mol/L CuSO<sub>4</sub> from a 0.100 mol/L stock.
+ <div class="chk"><span>Volume of stock, mL</span><input type="text" id="c2a" inputmode="decimal"><span class="fb" id="f2a"></span></div>
+ <div class="chk"><span>Then</span><select id="c2b"><option value="">choose</option><option value="a">add 80.0 mL of water</option><option value="b">add water until the whole solution reaches the 80.0 mL mark</option><option value="c">add 60.0 mL of water exactly, without checking the mark</option></select><span class="fb" id="f2b"></span></div>
+ <button data-check="2a">Check</button></div>
+</section>
+
+<section class="card" id="t3"><h2>Task 3 · Weigh the crystals</h2>
+<div class="step" data-step="3a"><span class="tag r">RECOMPUTE</span>Mass of CuSO<sub>4</sub>·5H<sub>2</sub>O to make 250 mL of 0.100 mol/L CuSO<sub>4</sub>.
+ <div class="chk"><span>Mass, g</span><input type="text" id="c3a" inputmode="decimal"><span class="fb" id="f3a"></span></div>
+ <button data-check="3a">Check</button></div>
+<div class="step" data-step="3b"><span class="tag r">CHANGE ONE CONDITION</span>Change the volume and the concentration of the bath.
+ <div class="ctrlrow"><span>Volume, mL</span><input type="range" id="sv" min="50" max="1000" step="50" value="250"><b id="svv"></b></div>
+ <div class="ctrlrow"><span>C, mol/L</span><input type="range" id="sc" min="0.05" max="0.8" step="0.05" value="0.1"><b id="scv"></b></div>
+ <div class="kpi"><div>Crystals to weigh, g<b id="km"></b></div></div>
+ <div class="chk"><span>Mass for 500 mL of 0.200 mol/L, g</span><input type="text" id="c3b" inputmode="decimal"><span class="fb" id="f3b"></span></div>
+ <div class="chk"><span>Doubling both V and C multiplies the mass by</span><input type="text" id="c3c" inputmode="decimal"><span class="fb" id="f3c"></span></div>
+ <button data-check="3b">Check</button></div>
+</section>
+
+<section class="card" id="t4"><h2>Task 4 · Ions in the bath</h2>
+<div class="step" data-step="4a"><span class="tag c">CHECK</span>CuSO<sub>4</sub> dissociates completely: CuSO<sub>4</sub>(aq) → Cu<sup>2+</sup>(aq) + SO<sub>4</sub><sup>2−</sup>(aq).
+ <div class="chk"><span>[Cu<sup>2+</sup>] in 0.100 mol/L CuSO<sub>4</sub>, mol/L</span><input type="text" id="c4a" inputmode="decimal"><span class="fb" id="f4a"></span></div>
+ <div class="chk"><span>Total ion concentration, mol/L</span><input type="text" id="c4b" inputmode="decimal"><span class="fb" id="f4b"></span></div>
+ <div class="chk"><span>50 mg/L of Cl<sup>−</sup> is how many mol/L?</span><input type="text" id="c4c" inputmode="decimal" placeholder="e.g. 1.2e-3"><span class="fb" id="f4c"></span></div>
+ <div class="chk"><span>In the bath, the current is carried by</span><select id="c4d"><option value="">choose</option><option value="a">electrons moving through the water</option><option value="b">ions moving through the solution</option><option value="c">Cu atoms</option></select><span class="fb" id="f4d"></span></div>
+ <button data-check="4a">Check</button></div>
+</section>
+
+<section class="card" id="t5"><h2>Task 5 · Explain</h2>
+<div class="step" data-step="5a"><span class="tag e">EXPLAIN</span>A technician added 80.0 mL of water to 20.0 mL of 0.100 mol/L stock to make "80.0 mL of 0.0250 mol/L". Explain what concentration they really made and how to do it correctly, with numbers.
+ <textarea id="e5"></textarea><button data-save="5a">Save</button></div>
+</section>
+
+<section class="card" id="fin"><h2>Finish: Exit Ticket and feedback</h2>
+<div class="step" data-step="fin"><p>Copy your answers, open the Exit Ticket, choose <b>Class 4</b>, paste them in the Exit Ticket box, and answer the feedback questions. Choose "On my own" if you did this lab outside class.</p>
+<pre class="sum" id="sum"></pre>
+<button id="copy">Copy my answers</button><a id="exitlink" target="_blank" rel="noopener"><button class="ghost" type="button">Open Exit Ticket and feedback</button></a>
+<p class="note" id="copied"></p>
+<p class="note">Want the code? <a href="solutions_lab.py">solutions_lab.py</a> computes every value on this page; it runs in desktop Python, or open the slides and press D on any slide marked "D · Python".</p></div>
+<button class="ghost" id="reset">Clear my answers on this device</button>
+</section>
+<section class="card" id="handin"><h2>Hand in: your answer file for myCourseVille</h2>
+<p>Download your answers as a file and upload it to this lab's assignment in myCourseVille. You can download at any point, and again after more steps; upload the latest file. The file records the steps you finished, your answers, and the checks where the expected value was shown after two tries. It holds no name or student ID: myCourseVille records who uploaded it.</p>
+<button id="dlJson" type="button">Download my answer file (.json)</button>
+<p class="note" id="dlNote"></p></section>
+</main>
+<script>
+const R = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"M_CuSO4":159.6036,"M_H2O":18.0154,"M_hydrate":249.6806,"cases":[{"case":"A","C":0.1,"V_mL":20.0,"n":0.002},{"case":"B","C":0.05,"V_mL":40.0,"n":0.002},{"case":"C","C":0.02,"V_mL":100.0,"n":0.002}],"V_stock":20.0,"m_1L_0p25":62.42015,"ions":[{"cation":"Cu2+","anion":"SO4 2-","c_cat":0.1,"c_an":0.1,"c_total":0.2,"charge":0.0},{"cation":"Na+","anion":"Cl-","c_cat":0.1,"c_an":0.1,"c_total":0.2,"charge":0.0},{"cation":"Na+","anion":"SO4 2-","c_cat":0.2,"c_an":0.1,"c_total":0.30000000000000004,"charge":0.0}],"cl_50":0.0014104372355430183,"upw_Mohm_cm":18.18},"lab":{"cases":[{"case":"A","C":0.1,"V_mL":20.0,"n":0.002},{"case":"B","C":0.05,"V_mL":40.0,"n":0.002},{"case":"C","C":0.02,"V_mL":100.0,"n":0.002}],"V_stock":20.0,"M_hydrate":249.6806,"m_250mL_0p1":6.242015,"m_500mL_0p2":24.96806,"ions_0p1":{"cation":"Cu2+","anion":"SO4 2-","c_cat":0.1,"c_an":0.1,"c_total":0.2,"charge":0.0},"cl_50":0.0014104372355430183}};
+const EXIT_URL = "https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=4";
+const $=id=>document.getElementById(id);
+const fmt=(x,d=0)=>x==null||!isFinite(x)?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+const KEY="lab4-2027-v1"; let ST={};
+try{ST=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){ST={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}};
+const L=R.lab;
+/* same formula as solutions_lab.hydrate_mass: m = C V M */
+function drawM(){const V=+$("sv").value,Cc=+$("sc").value;$("svv").textContent=V+" mL";$("scv").textContent=Cc.toFixed(2);$("km").textContent=fmt(Cc*V/1000*L.M_hydrate,2);ST.sv=V;ST.sc=Cc;save()}
+$("sv").oninput=drawM;$("sc").oninput=drawM;
+const ORDER=["1a","1b","2a","3a","3b","4a","5a"];
+function refresh(){let open=true;ORDER.forEach(id=>{const el=document.querySelector(`[data-step="${id}"]`),done=!!ST["done_"+id];el.classList.toggle("done",done);el.classList.toggle("locked",!done&&!open);if(!done&&open)open=false});
+ document.querySelector('[data-step="fin"]').classList.toggle("locked",!ORDER.every(id=>ST["done_"+id]));
+ const n=ORDER.filter(id=>ST["done_"+id]).length;$("pbar").style.width=(100*n/ORDER.length)+"%";$("ptext").textContent=`${n} of ${ORDER.length} steps done`;summary();save()}
+function need(id,msg){const st=document.querySelector(`[data-step="${id}"]`);let f=st.querySelector(".need");if(!f){f=document.createElement("div");f.className="fb bad need";st.appendChild(f)}f.textContent=msg;return false}
+function markDone(id){const nd=document.querySelector(`[data-step="${id}"] .need`);if(nd)nd.textContent="";ST["done_"+id]=true;refresh()}
+const radio=n=>{const r=document.querySelector(`input[name="${n}"]:checked`);return r?r.value:""};
+/* accepts 1.2e22, 1.2E22, 1.2×10^22, 1.2x10^22, 1.2*10^22 */
+const num=s=>{let t=String(s).trim().replace(/,/g,"").replace(/−/g,"-").replace(/\s/g,"");const m=t.match(/^([-+]?[\d.]+)(?:[x×*]10\^?([-+]?\d+))$/i);if(m)return parseFloat(m[1])*10**parseInt(m[2],10);return parseFloat(t)};
+document.querySelectorAll("[data-save]").forEach(b=>b.onclick=()=>{const id=b.dataset.save;
+ if(id==="1a"){if(!radio("p1"))return need(id,"Choose a prediction first.");ST.p1=radio("p1")}
+ if(id==="5a"){if($("e5").value.trim().length<60)return need(id,"Write at least three sentences.");ST.e5=$("e5").value}
+ markDone(id)});
+function verdict(input,fb,ok,expected){ST["tries_"+input]=(ST["tries_"+input]||0)+(ok?0:1);const f=$(fb);f.className="fb "+(ok?"ok":"bad");
+ f.textContent=ok?"Correct":(ST["tries_"+input]>=2?`Not yet. Expected: ${expected}.`:"Not yet. Look again.");return ok||ST["tries_"+input]>=2}
+function checkNum(input,fb,target,rel,abs,shown){const v=num($(input).value);ST[input]=$(input).value;return verdict(input,fb,isFinite(v)&&Math.abs(v-target)<=Math.max(abs,rel*Math.abs(target)),shown)}
+function checkSel(input,fb,target,label){ST[input]=$(input).value;return verdict(input,fb,$(input).value===target,label||target)}
+
+document.querySelectorAll("[data-check]").forEach(b=>b.onclick=()=>{const id=b.dataset.check;let ok=false;const cs=L.cases;
+ if(id==="1b")ok=[checkNum("c1a","f1a",cs[0].n,0.01,0,"0.00200"),checkNum("c1b","f1b",cs[2].n,0.01,0,"0.00200"),checkSel("c1c","f1c","a","n stays; V rises and C falls")].every(Boolean);
+ if(id==="2a")ok=[checkNum("c2a","f2a",L.V_stock,0.01,0,fmt(L.V_stock,1)),checkSel("c2b","f2b","b","fill to the 80.0 mL mark")].every(Boolean);
+ if(id==="3a")ok=checkNum("c3a","f3a",L.m_250mL_0p1,0.01,0,fmt(L.m_250mL_0p1,2));
+ if(id==="3b")ok=[checkNum("c3b","f3b",L.m_500mL_0p2,0.01,0,fmt(L.m_500mL_0p2,2)),checkNum("c3c","f3c",4,0.001,0,"4")].every(Boolean);
+ if(id==="4a")ok=[checkNum("c4a","f4a",L.ions_0p1.c_cat,0.01,0,"0.100"),checkNum("c4b","f4b",L.ions_0p1.c_total,0.01,0,"0.200"),checkNum("c4c","f4c",L.cl_50,0.015,0,"1.41e-3"),checkSel("c4d","f4d","b","ions moving through the solution")].every(Boolean);
+ if(ok)markDone(id);else save()});
+function summary(){const sel=(id,map)=>map[ST[id]]||ST[id]||"?";
+ $("sum").textContent=[`Lab 4 answers`,
+ `1. Predicted: ${ST.p1||"?"}. n(A) = ${ST.c1a||"?"} mol; n(C) = ${ST.c1b||"?"} mol; ${sel("c1c",{a:"n stays, C falls"})}`,
+ `2. Stock volume ${ST.c2a||"?"} mL; then ${sel("c2b",{b:"fill to the 80.0 mL mark"})}`,
+ `3. Hydrate for 250 mL of 0.100 M: ${ST.c3a||"?"} g; for 500 mL of 0.200 M: ${ST.c3b||"?"} g; factor ${ST.c3c||"?"}`,
+ `4. [Cu2+] ${ST.c4a||"?"}; total ions ${ST.c4b||"?"} mol/L; Cl- ${ST.c4c||"?"} mol/L; carriers: ${sel("c4d",{b:"ions"})}`,`5. ${ST.e5||"?"}`].join("\n")}
+$("copy").onclick=async()=>{try{await navigator.clipboard.writeText($("sum").textContent);$("copied").textContent="Copied. Paste it into the Exit Ticket box."}catch(e){$("copied").textContent="Copy did not work here. Select the text above and copy it."}};
+$("exitlink").href=EXIT_URL;
+$("reset").onclick=()=>{if(confirm("Clear all answers saved on this device?")){ST={};save();location.reload()}};
+if(ST.p1){const r=document.querySelector(`input[name="p1"][value="${ST.p1}"]`);if(r)r.checked=true}
+["e5","c1a","c1b","c1c","c2a","c2b","c3a","c3b","c3c","c4a","c4b","c4c","c4d"].forEach(id=>{if(ST[id]!=null)$(id).value=ST[id]});
+if(ST.sv!=null)$("sv").value=ST.sv;if(ST.sc!=null)$("sc").value=ST.sc;
+drawM();refresh();
+/* hand-in: an answer file for myCourseVille (no name or ID in it) */
+async function handin(){summary();const lab=parseInt((KEY.match(/lab(\d+)/)||[0,0])[1],10);
+ const core={course:"2182209",edition:"2027",lab,lab_key:KEY,saved:new Date().toISOString(),
+  steps_done:ORDER.filter(id=>ST["done_"+id]).length,steps_total:ORDER.length,
+  steps:Object.fromEntries(ORDER.map(id=>[id,!!ST["done_"+id]])),
+  expected_shown:Object.keys(ST).filter(k=>k.startsWith("tries_")&&ST[k]>=2).map(k=>k.slice(6)),
+  summary:$("sum").textContent,state:ST};
+ const data=JSON.stringify(core);let check="";
+ try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("2182209-lab-file-v1|"+data));check=[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){}
+ const file={lab,steps_done:core.steps_done,steps_total:core.steps_total,expected_shown:core.expected_shown.length,saved:core.saved,data,check};
+ const name=`2182209-lab${String(lab).padStart(2,"0")}-answers.json`,a=document.createElement("a");
+ a.href=URL.createObjectURL(new Blob([JSON.stringify(file,null,1)],{type:"application/json"}));a.download=name;document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+ $("dlNote").textContent=`Saved ${name}: ${core.steps_done} of ${core.steps_total} steps done. Upload it to Lab ${lab} in myCourseVille.`}
+$("dlJson").onclick=()=>{handin()};
+</script>
+</body>
+</html>

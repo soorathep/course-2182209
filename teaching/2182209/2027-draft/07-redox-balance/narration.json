@@ -1,0 +1,605 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 701.8,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 30.432,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.813,
+     "en": "Welcome to Class 7: redox reactions and electron balance."
+    },
+    {
+     "s": 4.813,
+     "e": 15.671,
+     "en": "This class opens the electrochemistry block. In Class 6, electrons moved within a solid. Today they move from one species to another."
+    },
+    {
+     "s": 15.671,
+     "e": 21.263,
+     "en": "We will see who loses electrons, who gains them, and how to make the count come out even."
+    },
+    {
+     "s": 21.263,
+     "e": 30.382,
+     "en": "If you are studying on your own, the narration takes about twelve minutes. Stop at the activity and at each check, then do Lab 7."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 31.104,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.434,
+     "en": "A five minute activity reviews earlier classes."
+    },
+    {
+     "s": 6.434,
+     "e": 15.145,
+     "en": "Part one covers oxidation and reduction, oxidation numbers, and how to combine half-reactions. It ends with Check 1."
+    },
+    {
+     "s": 15.145,
+     "e": 26.211,
+     "en": "Part two treats electrons as a reactant, follows a displacement reaction in a beaker, puts the metals in order, and looks at redox in the fab. It ends with Check 2."
+    },
+    {
+     "s": 26.211,
+     "e": 31.039,
+     "en": "Then you do Lab 7 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 29.592,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.671,
+     "en": "Activity 1. Answer four questions without notes, then compare with a partner."
+    },
+    {
+     "s": 6.671,
+     "e": 24.724,
+     "en": "Count the electrons in Cu and Cu²⁺. Find the moles of Cu in 6.35 g, and of Cu²⁺ in 100.0 mL of 0.100 M CuSO₄. And say whether P in Si gives or takes an electron."
+    },
+    {
+     "s": 24.724,
+     "e": 29.526,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 28.968,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.524,
+     "en": "By the end of today you can identify oxidation and reduction as the loss and gain of electrons, and name the oxidizing and reducing agents."
+    },
+    {
+     "s": 8.524,
+     "e": 12.211,
+     "en": "You can assign oxidation numbers with four rules."
+    },
+    {
+     "s": 12.211,
+     "e": 17.092,
+     "en": "You can write half-reactions and combine them so that the electrons cancel."
+    },
+    {
+     "s": 17.092,
+     "e": 22.408,
+     "en": "You can treat electrons as a reactant, and find what limits a deposition."
+    },
+    {
+     "s": 22.408,
+     "e": 28.908,
+     "en": "And you can calculate the masses in a metal displacement reaction, and say which metal displaces which."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 33.192,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.418,
+     "en": "Today builds on four earlier classes."
+    },
+    {
+     "s": 3.418,
+     "e": 13.013,
+     "en": "From Class 1, Cu²⁺ has two fewer electrons than Cu. Today we see where those two electrons come from and go."
+    },
+    {
+     "s": 13.013,
+     "e": 20.921,
+     "en": "From Class 3, mole ratios and the limiting reactant. Today electrons become one of the reactants."
+    },
+    {
+     "s": 20.921,
+     "e": 33.132,
+     "en": "From Class 4, n equals C times V gives the moles of ions in a bath. And from Class 6, electrons move within silicon. Today they move between species."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 56.904,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.408,
+     "en": "Dip a zinc strip into blue copper sulfate solution. After some time, the blue fades, copper coats the strip, and some zinc dissolves."
+    },
+    {
+     "s": 9.408,
+     "e": 16.5,
+     "en": "Zn loses two electrons and becomes Zn²⁺. Loss of electrons is oxidation."
+    },
+    {
+     "s": 16.5,
+     "e": 23.947,
+     "en": "Cu²⁺ gains those two electrons and becomes Cu. Gain of electrons is reduction."
+    },
+    {
+     "s": 23.947,
+     "e": 35.671,
+     "en": "Zn is the reducing agent: it gives the electrons, and is itself oxidized. Cu²⁺ is the oxidizing agent: it takes the electrons, and is itself reduced."
+    },
+    {
+     "s": 35.671,
+     "e": 48.803,
+     "en": "The electrons pass from zinc to copper ions at the metal surface. They are not left free in the solution. And the sulfate ion takes no part. It is a spectator ion."
+    },
+    {
+     "s": 48.803,
+     "e": 56.829,
+     "en": "Oxidation and reduction always happen together. One species can lose electrons only if another takes them."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 48.36,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.129,
+     "en": "To keep track of electrons in any reaction, we use oxidation numbers, with four rules."
+    },
+    {
+     "s": 6.129,
+     "e": 18.148,
+     "en": "An element on its own has zero. A single-atom ion has its charge. Oxygen is usually minus two, hydrogen usually plus one, and chlorine usually minus one."
+    },
+    {
+     "s": 18.148,
+     "e": 22.987,
+     "en": "And the oxidation numbers add up to the charge of the species."
+    },
+    {
+     "s": 22.987,
+     "e": 35.237,
+     "en": "For SiO₂: x + 2(−2) = 0, so Si is +4. In Cu₂O, Cu is +1, and in CuO it is +2."
+    },
+    {
+     "s": 35.237,
+     "e": 41.829,
+     "en": "Rule three says usually. In H₂O₂, O is −1."
+    },
+    {
+     "s": 41.829,
+     "e": 48.289,
+     "en": "In oxidation, the oxidation number rises. In reduction, it falls."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 47.136,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.645,
+     "en": "Now combine half-reactions. Write each one with its electrons."
+    },
+    {
+     "s": 5.645,
+     "e": 15.75,
+     "en": "Then multiply them so that the electrons lost equal the electrons gained, using the lowest common multiple. Add them, and cancel the electrons."
+    },
+    {
+     "s": 15.75,
+     "e": 29.882,
+     "en": "Choose Al with Cu²⁺. Each Al gives three electrons, and each Cu²⁺ takes two. Six is the lowest common multiple, so 2 Al react with 3 Cu²⁺."
+    },
+    {
+     "s": 29.882,
+     "e": 35.092,
+     "en": "Check the result: the atoms balance, and the charge is plus six on each side."
+    },
+    {
+     "s": 35.092,
+     "e": 47.066,
+     "en": "Now choose Cu with Zn²⁺. The equation balances, but the reaction does not go on its own. A balanced equation does not say whether a reaction happens."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 24.456,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 20.303,
+     "en": "Name the species oxidized and the oxidizing agent in the aluminum reaction. Give two oxidation numbers. Balance zinc with silver ions. And explain why the electrons must cancel."
+    },
+    {
+     "s": 20.303,
+     "e": 24.382,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 42.168,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.063,
+     "en": "In part two, we treat electrons as a reactant."
+    },
+    {
+     "s": 4.063,
+     "e": 11.934,
+     "en": "Each Cu²⁺ takes two electrons. So two moles of electrons deposit one mole of Cu."
+    },
+    {
+     "s": 11.934,
+     "e": 22.605,
+     "en": "Move the slider. With four electrons and three Cu²⁺ ions, the electrons run out first: two Cu atoms form, and one Cu²⁺ stays in solution."
+    },
+    {
+     "s": 22.605,
+     "e": 30.684,
+     "en": "With eight electrons, all three ions are reduced, and two electrons are left over. Now the ions are limiting."
+    },
+    {
+     "s": 30.684,
+     "e": 42.105,
+     "en": "In electroplating, a power supply delivers the electrons, so the electrons supplied set how much copper deposits. In Class 10, we count them as electric charge."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 47.04,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.895,
+     "en": "Back to the beaker, with numbers. Put one gram of zinc into one hundred milliliters of zero point one molar copper sulfate."
+    },
+    {
+     "s": 8.895,
+     "e": 21.947,
+     "en": "n(Zn) = 0.0153 mol. n(Cu²⁺) = 0.0100 mol. The reaction is 1 to 1, so Cu²⁺ is the limiting reactant."
+    },
+    {
+     "s": 21.947,
+     "e": 33.303,
+     "en": "So 0.635 g of Cu form, and 0.346 g of Zn are left. 0.0200 mol of electrons moved from Zn to Cu²⁺."
+    },
+    {
+     "s": 33.303,
+     "e": 46.974,
+     "en": "Move the slider to change the zinc. Below about zero point six five grams, zinc runs out first instead. This is the limiting reactant of Class 3, with the moles of ions from Class 4."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 40.896,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.382,
+     "en": "Which metal displaces which? Put the metals in order, from the most readily oxidized at the top."
+    },
+    {
+     "s": 7.382,
+     "e": 13.882,
+     "en": "Aluminum, zinc and iron are above hydrogen. Copper and silver are below it."
+    },
+    {
+     "s": 13.882,
+     "e": 25.816,
+     "en": "A metal reduces the ion of any metal below it. So Zn with Cu²⁺ goes, and Cu with Ag⁺ goes. But Cu with Zn²⁺ does not go."
+    },
+    {
+     "s": 25.816,
+     "e": 32.513,
+     "en": "Metals above hydrogen dissolve in acids and give hydrogen gas. Copper does not."
+    },
+    {
+     "s": 32.513,
+     "e": 40.829,
+     "en": "This order comes from standard reduction potentials, which Class 9 measures in volts. Today it is only an order."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 38.88,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.892,
+     "en": "Here is a common mistake: a reaction is an oxidation only if oxygen is added."
+    },
+    {
+     "s": 5.892,
+     "e": 22.053,
+     "en": "Oxidation is the loss of electrons, a rise in oxidation number. Zn → Zn²⁺ has no oxygen in it. And Si with Cl₂ oxidizes Si from 0 to +4, exactly as Si with O₂ does."
+    },
+    {
+     "s": 22.053,
+     "e": 32.316,
+     "en": "The name is historical. The first oxidations studied were reactions with oxygen, and oxygen is a common oxidizing agent, but it is one of many."
+    },
+    {
+     "s": 32.316,
+     "e": 38.803,
+     "en": "A second mistake is leaving electrons in the overall equation. They must cancel."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 42.312,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.368,
+     "en": "A chip goes through many redox reactions. Here are four."
+    },
+    {
+     "s": 5.368,
+     "e": 13.079,
+     "en": "In dry thermal oxidation, silicon goes from zero to plus four, giving four electrons per silicon atom to oxygen."
+    },
+    {
+     "s": 13.079,
+     "e": 25.026,
+     "en": "In wet thermal oxidation, silicon reacts with water. Here the oxidizing agent is the hydrogen in water, which goes from plus one to zero, while oxygen stays at minus two."
+    },
+    {
+     "s": 25.026,
+     "e": 32.566,
+     "en": "In Cu electroplating, the wafer receives electrons from a power supply, and Cu²⁺ is reduced to Cu."
+    },
+    {
+     "s": 32.566,
+     "e": 42.237,
+     "en": "And in copper polishing, hydrogen peroxide in the slurry oxidizes the copper surface. Each line can be checked with the rules from part one."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 27.528,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 19.265,
+     "en": "Find what forms from three copper ions and four electrons. Find the electrons needed for zero point zero one moles of copper. Find the limiting reactant and the copper mass in the beaker."
+    },
+    {
+     "s": 19.265,
+     "e": 23.382,
+     "en": "And decide whether a copper wire reacts with zinc sulfate."
+    },
+    {
+     "s": 23.382,
+     "e": 27.461,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 26.352,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.642,
+     "en": "Today's reactions run the next six classes."
+    },
+    {
+     "s": 3.642,
+     "e": 12.171,
+     "en": "In Class 8, we put the two half-reactions at two electrodes, so the electrons flow through a wire. That is a cell."
+    },
+    {
+     "s": 12.171,
+     "e": 26.289,
+     "en": "Class 9 turns the order of metals into potentials in volts. Class 10 counts electrons as charge, to find how much copper a current deposits. And Class 13 maps copper and its oxides in water."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 27.192,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.026,
+     "en": "Now it is time for Lab 7. Scan the code or open the lab page."
+    },
+    {
+     "s": 6.026,
+     "e": 12.947,
+     "en": "You will predict which species is oxidized, assign oxidation numbers, and balance aluminum with copper ions."
+    },
+    {
+     "s": 12.947,
+     "e": 21.171,
+     "en": "Then you change the electron supply to three copper ions, and find the limiting reactant and the masses in the zinc and copper sulfate beaker."
+    },
+    {
+     "s": 21.171,
+     "e": 27.118,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 32.76,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 9.868,
+     "en": "Oxidation is the loss of electrons, and reduction is the gain. They always happen together."
+    },
+    {
+     "s": 9.868,
+     "e": 16.763,
+     "en": "Oxidation numbers track the electrons. They rise in oxidation and fall in reduction."
+    },
+    {
+     "s": 16.763,
+     "e": 22.408,
+     "en": "Combine half-reactions so the electrons cancel, then check the atoms and the charge."
+    },
+    {
+     "s": 22.408,
+     "e": 25.816,
+     "en": "Electrons can be the limiting reactant."
+    },
+    {
+     "s": 25.816,
+     "e": 32.697,
+     "en": "And a balanced equation does not say whether a reaction goes. The order of the metals does."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 21.84,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.55,
+     "en": "Before the next class, finish Lab 7 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.55,
+     "e": 15.079,
+     "en": "Read OpenStax Chemistry two e, section four point two on oxidation-reduction reactions, and section seventeen point one on balancing with half-reactions."
+    },
+    {
+     "s": 15.079,
+     "e": 21.776,
+     "en": "Class 8 is about cells and batteries: the same two half-reactions, at two electrodes joined by a wire."
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "file": "audio/slide-20.mp3",
+   "duration": 24.648,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.053,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 7."
+    },
+    {
+     "s": 7.053,
+     "e": 15.842,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.842,
+     "e": 24.579,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 8."
+    }
+   ]
+  }
+ ]
+}

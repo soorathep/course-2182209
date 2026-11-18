@@ -1,0 +1,567 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 608.6,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 26.232,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.011,
+     "en": "Welcome to Class 4: solutions, concentration and electrolytes."
+    },
+    {
+     "s": 5.011,
+     "e": 10.206,
+     "en": "Copper wiring in a chip is plated from a bath of copper sulfate dissolved in water."
+    },
+    {
+     "s": 10.206,
+     "e": 17.132,
+     "en": "Today we learn how much copper sulfate is in such a bath, how to make and dilute it, and why it carries current."
+    },
+    {
+     "s": 17.132,
+     "e": 26.171,
+     "en": "If you are studying on your own, the narration takes about ten minutes. Stop at the activity and at each check, then do Lab 4."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 31.584,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.105,
+     "en": "A five minute activity reviews Class 3."
+    },
+    {
+     "s": 6.105,
+     "e": 16.658,
+     "en": "Part one is about concentration: amount and concentration, dilution, making a bath from crystals, and units used in industry. It ends with Check 1."
+    },
+    {
+     "s": 16.658,
+     "e": 26.816,
+     "en": "Part two is about electrolytes: ions in solution, charge balance, the two kinds of charge carrier, and planning a dilution. It ends with Check 2."
+    },
+    {
+     "s": 26.816,
+     "e": 31.526,
+     "en": "Then you do Lab 4 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 28.176,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.513,
+     "en": "Activity 1. Answer four questions about Class 3 without notes, then compare with a partner."
+    },
+    {
+     "s": 7.513,
+     "e": 18.812,
+     "en": "Find the moles in zero point five six two grams of silicon. Calculate the molar mass of copper sulfate. Explain why an oxidized wafer gets heavier."
+    },
+    {
+     "s": 18.812,
+     "e": 23.316,
+     "en": "And say what the coefficients of a balanced equation count."
+    },
+    {
+     "s": 23.316,
+     "e": 28.118,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 28.272,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.024,
+     "en": "By the end of today you can calculate a concentration and tell it apart from the amount of solute."
+    },
+    {
+     "s": 6.024,
+     "e": 10.316,
+     "en": "You can plan a dilution and fill to the final volume correctly."
+    },
+    {
+     "s": 10.316,
+     "e": 17.895,
+     "en": "You can calculate the mass of copper sulfate crystals for a bath, and convert milligrams per liter to moles per liter."
+    },
+    {
+     "s": 17.895,
+     "e": 22.382,
+     "en": "You can write the ions a salt gives in water and check charge balance."
+    },
+    {
+     "s": 22.382,
+     "e": 28.197,
+     "en": "And you can explain why ions carry current in a solution while electrons carry it in a wire."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 34.176,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 10.895,
+     "en": "In Class 3, the amount in moles was mass divided by molar mass. Today, concentration is the amount divided by the volume of the solution, in moles per liter."
+    },
+    {
+     "s": 10.895,
+     "e": 17.579,
+     "en": "The ions of Class 1, such as the copper two plus ion and the sulfate ion, are now free to move in water."
+    },
+    {
+     "s": 17.579,
+     "e": 23.092,
+     "en": "And solid sodium chloride, which does not conduct, conducts when it is dissolved."
+    },
+    {
+     "s": 23.092,
+     "e": 34.118,
+     "en": "New symbols: C is concentration in moles per liter, often written capital M. V is the volume of the whole solution in liters. And a q means dissolved in water."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 35.424,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.971,
+     "en": "Start with a solution of copper sulfate, twenty milliliters at zero point one zero zero moles per liter."
+    },
+    {
+     "s": 6.971,
+     "e": 20.132,
+     "en": "Add water only, and watch the two numbers. The amount of copper sulfate, zero point zero zero two zero zero moles, stays the same. The concentration falls as the volume grows."
+    },
+    {
+     "s": 20.132,
+     "e": 29.75,
+     "en": "The table shows three cases: twenty, forty and one hundred milliliters. Each holds zero point zero zero two zero zero moles."
+    },
+    {
+     "s": 29.75,
+     "e": 35.355,
+     "en": "Remember that V is the volume of the whole solution, not the volume of water added."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 43.728,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 11.224,
+     "en": "Here is a worked example. Make eighty milliliters of zero point zero two five zero moles per liter copper sulfate from a zero point one zero zero moles per liter stock."
+    },
+    {
+     "s": 11.224,
+     "e": 16.568,
+     "en": "Because the amount does not change on dilution, C one V one equals C two V two."
+    },
+    {
+     "s": 16.568,
+     "e": 25.184,
+     "en": "The stock volume is zero point zero two five zero times eighty, divided by zero point one zero zero, which is twenty milliliters."
+    },
+    {
+     "s": 25.184,
+     "e": 31.658,
+     "en": "Pipette twenty milliliters of stock into a flask, then add water up to the eighty milliliter mark."
+    },
+    {
+     "s": 31.658,
+     "e": 43.671,
+     "en": "A common mistake is to add eighty milliliters of water to the stock. That makes one hundred milliliters at zero point zero two zero zero moles per liter, which is the wrong concentration."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 52.56,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.833,
+     "en": "Copper sulfate is sold as blue crystals that contain water: copper sulfate pentahydrate."
+    },
+    {
+     "s": 5.833,
+     "e": 12.855,
+     "en": "Its molar mass includes five water molecules, so it is two hundred forty nine point six eight grams per mole."
+    },
+    {
+     "s": 12.855,
+     "e": 21.908,
+     "en": "To make one liter of zero point two five zero moles per liter, you need zero point two five zero moles, which is sixty two point four grams of crystals."
+    },
+    {
+     "s": 21.908,
+     "e": 31.263,
+     "en": "If you forget the water and weigh only thirty nine point nine grams of crystals, you get zero point one six zero moles, and the bath is thirty six percent too weak."
+    },
+    {
+     "s": 31.263,
+     "e": 41.066,
+     "en": "Acid copper baths for chip wiring typically hold copper ions at about zero point three to zero point eight moles per liter, with sulfuric acid and a little chloride."
+    },
+    {
+     "s": 41.066,
+     "e": 52.5,
+     "en": "Plants often state concentrations in grams or milligrams per liter. Fifty milligrams per liter of chloride is one point four one times ten to the minus three moles per liter."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 27.72,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 16.259,
+     "en": "Decide what changes when water is added. Find the moles in forty milliliters of a zero point zero five zero zero molar solution. Plan a dilution."
+    },
+    {
+     "s": 16.259,
+     "e": 23.579,
+     "en": "And find the mass of crystals for one hundred milliliters of a zero point one zero zero molar solution."
+    },
+    {
+     "s": 23.579,
+     "e": 27.658,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 39.336,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.892,
+     "en": "Part 2 is about electrolytes."
+    },
+    {
+     "s": 2.892,
+     "e": 14.303,
+     "en": "When copper sulfate dissolves, it separates into copper two plus ions and sulfate ions. A substance whose solution conducts because it contains free ions is an electrolyte."
+    },
+    {
+     "s": 14.303,
+     "e": 25.158,
+     "en": "In zero point one zero zero molar copper sulfate, each ion is at zero point one zero zero moles per liter, so there are zero point two zero zero moles per liter of ions in all."
+    },
+    {
+     "s": 25.158,
+     "e": 31.526,
+     "en": "Sodium sulfate shows a two to one salt: the sodium concentration is twice the salt concentration."
+    },
+    {
+     "s": 31.526,
+     "e": 39.276,
+     "en": "In every case, the positive and negative charges add to zero. Every solution is electrically neutral."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 39.768,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.755,
+     "en": "In a copper wire, electrons carry the current. In the bath, the ions themselves move:"
+    },
+    {
+     "s": 5.755,
+     "e": 12.724,
+     "en": "positive copper ions toward the negative terminal, and negative sulfate ions toward the positive terminal."
+    },
+    {
+     "s": 12.724,
+     "e": 22.395,
+     "en": "So the bath carries matter along with charge. At the electrode surface, the two kinds of carrier meet, and Class 7 shows what happens there."
+    },
+    {
+     "s": 22.395,
+     "e": 27.853,
+     "en": "Pure water has very few ions, about ten to the minus seven moles per liter each."
+    },
+    {
+     "s": 27.853,
+     "e": 39.711,
+     "en": "Chip fabs rinse wafers in ultrapure water and check it by its resistivity, which is eighteen point one eight megohm centimeters at twenty five degrees. Any stray ion lowers it."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 31.152,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.826,
+     "en": "Here is a claim to test: the darker blue solution conducts better, so color tells us how well it conducts."
+    },
+    {
+     "s": 6.826,
+     "e": 18.592,
+     "en": "The blue comes from the copper ion only, so it tracks the copper concentration, not all the ions. A colorless sodium chloride or sulfuric acid solution can conduct far better."
+    },
+    {
+     "s": 18.592,
+     "e": 31.079,
+     "en": "Conductivity depends on every ion present and on how fast each moves. It must be measured. A real plating bath is acidic, and its hydrogen ions carry much of the current."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 30.048,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.421,
+     "en": "This planner works for any dilution. Choose the stock concentration, the target concentration, and the final volume."
+    },
+    {
+     "s": 8.421,
+     "e": 15.474,
+     "en": "The stock volume is C two V two divided by C one. Then add water up to the mark."
+    },
+    {
+     "s": 15.474,
+     "e": 21.355,
+     "en": "If the target is stronger than the stock, dilution cannot make it, and the planner says so."
+    },
+    {
+     "s": 21.355,
+     "e": 29.987,
+     "en": "The water volume is approximate, because the volumes of liquids do not always add exactly. Always fill to the mark."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 29.736,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 16.11,
+     "en": "Give the ion concentrations in zero point one zero zero molar copper sulfate. Find the net charge of a particle diagram before and after dilution."
+    },
+    {
+     "s": 16.11,
+     "e": 25.605,
+     "en": "Say which particles carry the current in the bath and in the wire. And convert fifty milligrams per liter of chloride to moles per liter."
+    },
+    {
+     "s": 25.605,
+     "e": 29.684,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 25.848,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.234,
+     "en": "The bath comes back in later classes."
+    },
+    {
+     "s": 3.234,
+     "e": 14.053,
+     "en": "Class 5 is about the hydrogen ion concentration and why plating baths are acidic. In Class 7, copper ions from the bath take two electrons at the wafer."
+    },
+    {
+     "s": 14.053,
+     "e": 25.789,
+     "en": "In Class 9, the potential of copper depends on the copper ion concentration. And in Class 12, we ask how fast copper ions can reach the surface from the bulk of the bath."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 25.392,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.947,
+     "en": "Now it is time for Lab 4. Scan the code or open the lab page."
+    },
+    {
+     "s": 5.947,
+     "e": 12.066,
+     "en": "You will predict what dilution changes, check the amounts in three solutions, and plan a dilution."
+    },
+    {
+     "s": 12.066,
+     "e": 19.368,
+     "en": "Then you weigh copper sulfate crystals for a bath, change its volume and concentration, and find the ions it contains."
+    },
+    {
+     "s": 19.368,
+     "e": 25.316,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 35.976,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 7.737,
+     "en": "Concentration is moles divided by the volume of the whole solution in liters."
+    },
+    {
+     "s": 7.737,
+     "e": 16.237,
+     "en": "Dilution keeps the amount and lowers the concentration, so C one V one equals C two V two. Fill to the mark."
+    },
+    {
+     "s": 16.237,
+     "e": 24.776,
+     "en": "Weigh the hydrate with its water of crystallization: sixty two point four grams for one liter of zero point two five zero molar copper sulfate."
+    },
+    {
+     "s": 24.776,
+     "e": 30.039,
+     "en": "A dissolved salt gives free ions, and every solution is electrically neutral."
+    },
+    {
+     "s": 30.039,
+     "e": 35.908,
+     "en": "Ions carry current in solution, electrons in metals, and color is not conductivity."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 18.696,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.471,
+     "en": "Before the next class, finish Lab 4 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.471,
+     "e": 13.513,
+     "en": "Read OpenStax Chemistry two e, section three point three on molarity and section three point four on other units of concentration."
+    },
+    {
+     "s": 13.513,
+     "e": 18.632,
+     "en": "Class 5 is about acids, bases, pH and chemical equilibrium."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 24.768,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.013,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 4."
+    },
+    {
+     "s": 7.013,
+     "e": 15.803,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.803,
+     "e": 24.697,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 5."
+    }
+   ]
+  }
+ ]
+}

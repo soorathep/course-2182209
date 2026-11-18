@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lab 13 · Reading a Pourbaix diagram · 2182209</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--graphite:#333F4A;--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--sand:#DFC98F;--ok:#0F6E6B;--bad:#BE654C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Helvetica Neue",Helvetica,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:18px 16px 80px}
+header h1{color:var(--teal);font-size:30px;margin:4px 0 2px}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+.sub{color:var(--slate);font-size:15px}
+.prog{position:sticky;top:0;background:var(--paper);padding:10px 0;z-index:3}
+.bar{height:8px;background:#e2ddd4;border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.prog span{font-size:13px;color:var(--slate)}
+.card{background:#fff;border-radius:14px;padding:18px 18px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:21px;margin:0 0 4px;color:var(--teal)}
+.card h3{font-size:17px;margin:16px 0 6px}
+.step{border-left:4px solid var(--mist);padding:2px 0 2px 14px;margin:14px 0}
+.step.done{border-color:var(--teal)}.step.locked{opacity:.45;pointer-events:none}
+.step.locked .chart,.step.locked .kpi,.step.locked .chk,.step.locked input[type=range],.step.locked .row{display:none}
+.step.locked::after{content:"Finish the step above to open this one.";display:block;font-size:13px;color:var(--slate)}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;border-radius:6px;padding:2px 8px;margin-right:6px;color:#fff;background:var(--slate)}
+.tag.p{background:var(--amber)}.tag.r{background:var(--teal)}.tag.c{background:var(--graphite)}.tag.e{background:var(--rust)}
+textarea,input[type=text],select{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--mist);border-radius:8px;padding:8px 10px;background:#fff}
+textarea{min-height:70px}
+button{font:inherit;font-size:15px;padding:8px 14px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer;margin:8px 8px 0 0}
+button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row label{flex:1 1 240px}
+.chk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.chk input{width:150px}
+.fb{font-size:15px}.fb.ok{color:var(--ok);font-weight:700}.fb.bad{color:var(--bad)}
+.choices label{display:block;margin:4px 0}
+.kpi{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}.kpi div{background:var(--paper);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--slate)}.kpi b{display:block;font-size:20px;color:var(--ink)}
+.chart{background:var(--paper);border-radius:12px;padding:6px;margin:8px 0}
+svg{width:100%;height:auto;display:block}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.note{font-size:14px;color:var(--slate)}
+.hidden{display:none}
+pre.sum{white-space:pre-wrap;background:var(--paper);border-radius:10px;padding:12px;font-size:14px}
+a{color:var(--teal)}
+</style>
+<style>
+.step.locked > *:not(.tag){display:none}
+table.tb{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.tb th{background:var(--paper);text-align:left;padding:5px 8px;border-bottom:2px solid var(--mist)}
+table.tb td{padding:5px 8px;border-bottom:1px solid #e6e3dd}
+table.tb td.n,table.tb th.n{text-align:right;font-variant-numeric:tabular-nums}
+ol.rl{margin:4px 0 0;padding-left:22px;font-size:15px}
+.lights{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.light{border-radius:999px;padding:3px 10px;font-size:14px;font-weight:700}
+.light.ok{background:#e3f0ef;color:var(--teal)}.light.bad{background:#f6e3de;color:var(--rust)}
+.code{background:#1f262d;color:#e8eef2;border-radius:10px;padding:10px 8px;font-family:Menlo,Consolas,monospace;font-size:13.5px;overflow-x:auto}
+.ln{display:flex;align-items:center;gap:8px;padding:3px 4px;border-radius:6px;white-space:pre}
+.ln.fixed{background:#24433f}
+.ln .no{color:#8a96a0;width:18px;text-align:right}
+.ln .tx{flex:1}
+.ln .okk{width:38px;color:#9fd6c9;font-size:12px;font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700}
+button.sm{width:38px;font-size:12px;padding:2px 9px;margin:0;background:transparent;color:#9fd6c9;border:1px solid #9fd6c9}
+.ctrlrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0;font-size:15px;color:var(--slate)}
+.ctrlrow input[type=range]{flex:1;min-width:160px;accent-color:var(--teal)}
+.wide{overflow-x:auto}.wide table.tb{font-size:12px}.wide table.tb td,.wide table.tb th{padding:3px 4px}
+@media (max-width:600px){table.tb{display:block;overflow-x:auto;font-size:13px}}
+button.ghost.on{background:var(--teal);color:#fff}
+</style>
+
+</head>
+<body><main>
+<header><div class="kicker">2182209 · Class 13 · Lab</div><h1>Reading a Pourbaix diagram</h1>
+<div class="sub">About 30 minutes. Works in class or on your own, on a laptop or a phone. Nothing to install; a calculator helps.</div></header>
+<div class="prog"><div class="bar"><i id="pbar"></i></div><span id="ptext"></span></div>
+<section class="card"><h2>How this lab works</h2>
+<p>You read a Pourbaix diagram for Cu in water: which form of Cu is stable at a given pH and potential, where the boundaries lie at pH 9, and what the diagram cannot tell you. Write each prediction before you look; the next step stays locked until you do. After two tries the expected answer is shown.</p>
+<p class="note"><b>What runs where.</b> The diagram and the expected answers come from <a href="pourbaix_lab.py">pourbaix_lab.py</a>, computed in advance. No Python is installed or run on your device. To run the Python yourself, open the slides and press D, or run pourbaix_lab.py in desktop Python.</p>
+<p class="note">Studying on your own? Watch the narrated slides for Class 13 first.</p></section>
+<section class="card" id="data"><h2>The diagram</h2>
+<div id="pbd" style="max-width:520px"></div>
+<p class="note">Cu, Cu<sup>2+</sup>, Cu<sub>2</sub>O and CuO only; dissolved Cu 10<sup>−6</sup> M; 25 °C; E against the SHE. Dashed lines: water reduced to H<sub>2</sub> (lower) and oxidized to O<sub>2</sub> (upper).</p></section>
+<section class="card" id="t1"><h2>Task 1 · Read four points</h2>
+<div class="step" data-step="1a"><span class="tag p">PREDICT</span>Before you look closely: in acid (pH 3) at a high potential (+0.50 V), Cu is most likely to be
+ <div class="choices"><label><input type="radio" name="p1" value="Cu"> Cu metal</label><label><input type="radio" name="p1" value="Cu2+"> Cu<sup>2+</sup> ions in solution</label><label><input type="radio" name="p1" value="oxide"> a solid oxide</label></div>
+ <button data-save="1a">Save prediction</button></div>
+<div class="step" data-step="1b"><span class="tag c">CHECK</span>Read the stable form at each point on the diagram.
+ <div class="chk"><span>A: pH 4, E = −0.10 V</span><select id="c1a"></select><span class="fb" id="f1a"></span></div>
+ <div class="chk"><span>B: pH 3, E = +0.50 V</span><select id="c1b"></select><span class="fb" id="f1b"></span></div>
+ <div class="chk"><span>C: pH 9, E = +0.05 V</span><select id="c1c"></select><span class="fb" id="f1c"></span></div>
+ <div class="chk"><span>D: pH 9, E = +0.40 V</span><select id="c1d"></select><span class="fb" id="f1d"></span></div>
+ <button data-check="1b">Check</button></div>
+</section>
+<section class="card" id="t2"><h2>Task 2 · Move E at pH 9</h2>
+<div class="step" data-step="2a"><span class="tag r">CHANGE ONE CONDITION</span>Keep pH 9 and move the potential.
+ <div class="ctrlrow"><span>E, V</span><input type="range" id="sE" min="0" max="18" step="1" value="6"><b id="sEv"></b></div>
+ <div class="kpi"><div>Stable form<b id="kS"></b></div></div>
+ <div class="chk"><span>Boundary Cu / Cu<sub>2</sub>O at pH 9, V</span><input type="text" id="c2a" inputmode="decimal"><span class="fb" id="f2a"></span></div>
+ <div class="chk"><span>Boundary Cu<sub>2</sub>O / CuO at pH 9, V</span><input type="text" id="c2b" inputmode="decimal"><span class="fb" id="f2b"></span></div>
+ <p class="note">Use the line equations: E = 0.4721 − 0.0592 pH and E = 0.6410 − 0.0592 pH.</p>
+ <button data-check="2a">Check</button></div>
+</section>
+<section class="card" id="t3"><h2>Task 3 · Lines and limits</h2>
+<div class="step" data-step="3a"><span class="tag c">CHECK</span>
+ <div class="chk"><span>The Cu<sup>2+</sup>/Cu line is horizontal because</span><select id="c3a"><option value="">choose</option><option value="e">only electrons take part, no H+</option><option value="h">only H+ takes part, no electrons</option></select><span class="fb" id="f3a"></span></div>
+ <div class="chk"><span>pH at which CuO dissolves to Cu<sup>2+</sup> (10<sup>−6</sup> M)</span><input type="text" id="c3b" inputmode="decimal"><span class="fb" id="f3b"></span></div>
+ <div class="chk"><span>The diagram tells you</span><select id="c3c"><option value="">choose</option><option value="stab">which form is stable, not how fast it forms</option><option value="rate">how fast the oxide grows</option></select><span class="fb" id="f3c"></span></div>
+ <button data-check="3a">Check</button></div>
+<div class="step" data-step="3b"><span class="tag c">CHECK</span>Use the words immunity, corrosion and passivation.
+ <div class="chk"><span>Region where Cu dissolves</span><select id="c3d"><option value="">choose</option><option value="imm">immunity</option><option value="cor">corrosion</option><option value="pas">passivation</option></select><span class="fb" id="f3d"></span></div>
+ <div class="chk"><span>Region where an oxide film may form</span><select id="c3e"><option value="">choose</option><option value="imm">immunity</option><option value="cor">corrosion</option><option value="pas">passivation</option></select><span class="fb" id="f3e"></span></div>
+ <button data-check="3b">Check</button></div>
+</section>
+<section class="card" id="t4"><h2>Task 4 · Explain</h2>
+<div class="step" data-step="4a"><span class="tag e">EXPLAIN</span>A polishing slurry runs at pH 9. Explain to a classmate what the diagram says about Cu as the potential rises, why the boundaries slope, and what the diagram cannot tell the process engineer. Use numbers from this lab.
+ <textarea id="e5"></textarea><button data-save="4a">Save</button></div>
+</section>
+<section class="card" id="fin"><h2>Finish: Exit Ticket and feedback</h2>
+<div class="step" data-step="fin"><p>Copy your answers, open the Exit Ticket, choose <b>Class 13</b>, paste them in the Exit Ticket box, and answer the feedback questions. Choose "On my own" if you did this lab outside class.</p>
+<pre class="sum" id="sum"></pre>
+<button id="copy">Copy my answers</button><a id="exitlink" target="_blank" rel="noopener"><button class="ghost" type="button">Open Exit Ticket and feedback</button></a>
+<p class="note" id="copied"></p>
+<p class="note">Want the code? <a href="pourbaix_lab.py">pourbaix_lab.py</a> computes every value on this page; it runs in desktop Python, or open the slides and press D on any slide marked "D · Python".</p></div>
+<button class="ghost" id="reset">Clear my answers on this device</button>
+</section>
+<section class="card" id="handin"><h2>Hand in: your answer file for myCourseVille</h2>
+<p>Download your answers as a file and upload it to this lab's assignment in myCourseVille. You can download at any point, and again after more steps; upload the latest file. The file records the steps you finished, your answers, and the checks where the expected value was shown after two tries. It holds no name or student ID: myCourseVille records who uploaded it.</p>
+<button id="dlJson" type="button">Download my answer file (.json)</button>
+<p class="note" id="dlNote"></p></section>
+</main>
+<script>
+const R = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"box":[0.0,14.0,-0.6,1.2],"c":1e-06,"regions":{"Cu":[[0.0,-0.6],[14.0,-0.6],[14.0,-0.3561],[5.2425,0.162],[0.0,0.162]],"Cu2+":[[6.6703,1.2],[0.0,1.2],[0.0,0.162],[5.2425,0.162],[6.6703,0.2464]],"Cu2O":[[14.0,-0.3561],[14.0,-0.1872],[6.6703,0.2464],[5.2425,0.162]],"CuO":[[14.0,-0.1872],[14.0,1.2],[6.6703,1.2],[6.6703,0.2464]]},"lines":{"Cu2+/Cu":{"e0":0.16195178219706605,"m":0.0},"Cu2O/Cu":{"e0":0.47209248285893757,"m":-0.059159349685721514},"CuO/Cu2O":{"e0":0.6410300782618066,"m":-0.059159349685721514},"Cu2+/Cu2O":{"e0":-0.14818891846480542,"m":0.059159349685721514},"CuO/Cu2+":{"pH":6.670281205923186}},"slope":0.059159349685721514,"water":{"H2":{"e0":0.0,"m":-0.059159349685721514},"O2":{"e0":1.229,"m":-0.059159349685721514}},"fab":[{"k":"Acid Cu plating bath","pH":1.0,"E":0.5,"sp":"Cu2+"},{"k":"Neutral rinse water with air","pH":7.0,"E":0.8,"sp":"CuO"},{"k":"Alkaline slurry, mild oxidizer","pH":9.0,"E":0.3,"sp":"CuO"},{"k":"Under a cathodic potential","pH":7.0,"E":-0.4,"sp":"Cu"}]},"lab":{"points":{"A":{"pH":4.0,"E":-0.1,"sp":"Cu"},"B":{"pH":3.0,"E":0.5,"sp":"Cu2+"},"C":{"pH":9.0,"E":0.05,"sp":"Cu2O"},"D":{"pH":9.0,"E":0.4,"sp":"CuO"}},"pH9":{"Cu_to_Cu2O":-0.060341664312556054,"Cu2O_to_CuO":0.10859593109031296},"scan9":[{"E":-0.3,"sp":"Cu"},{"E":-0.25,"sp":"Cu"},{"E":-0.2,"sp":"Cu"},{"E":-0.15,"sp":"Cu"},{"E":-0.1,"sp":"Cu"},{"E":-0.05,"sp":"Cu2O"},{"E":0.0,"sp":"Cu2O"},{"E":0.05,"sp":"Cu2O"},{"E":0.1,"sp":"Cu2O"},{"E":0.15,"sp":"CuO"},{"E":0.2,"sp":"CuO"},{"E":0.25,"sp":"CuO"},{"E":0.3,"sp":"CuO"},{"E":0.35,"sp":"CuO"},{"E":0.4,"sp":"CuO"},{"E":0.45,"sp":"CuO"},{"E":0.5,"sp":"CuO"},{"E":0.55,"sp":"CuO"},{"E":0.6,"sp":"CuO"}],"pH_CuO_Cu2":6.670281205923186,"E_Cu2_Cu":0.16195178219706605}};
+const EXIT_URL = "https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=13";
+const KEY="lab13-2027-v1";
+const ORDER=["1a", "1b", "2a", "3a", "3b", "4a"];
+const SAVES={"1a": {"radio": "p1"}, "4a": {"text": "e5"}};
+const RESTORE=["e5", "c1a", "c1b", "c1c", "c1d", "c2a", "c2b", "c3a", "c3b", "c3c", "c3d", "c3e"];
+
+const $=id=>document.getElementById(id);
+const fmt=(x,d=0)=>x==null||!isFinite(x)?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+let ST={};
+try{ST=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){ST={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}};
+const L=R.lab;
+function refresh(){let open=true;ORDER.forEach(id=>{const el=document.querySelector(`[data-step="${id}"]`),done=!!ST["done_"+id];el.classList.toggle("done",done);el.classList.toggle("locked",!done&&!open);if(!done&&open)open=false});
+ document.querySelector('[data-step="fin"]').classList.toggle("locked",!ORDER.every(id=>ST["done_"+id]));
+ const n=ORDER.filter(id=>ST["done_"+id]).length;$("pbar").style.width=(100*n/ORDER.length)+"%";$("ptext").textContent=`${n} of ${ORDER.length} steps done`;summary();save()}
+function need(id,msg){const st=document.querySelector(`[data-step="${id}"]`);let f=st.querySelector(".need");if(!f){f=document.createElement("div");f.className="fb bad need";st.appendChild(f)}f.textContent=msg;return false}
+function markDone(id){const nd=document.querySelector(`[data-step="${id}"] .need`);if(nd)nd.textContent="";ST["done_"+id]=true;refresh()}
+const radio=n=>{const r=document.querySelector(`input[name="${n}"]:checked`);return r?r.value:""};
+/* accepts 1.2e22, 1.2E22, 1.2×10^22, 1.2x10^22, 1.2*10^22, a leading + and a trailing % */
+const num=s=>{let t=String(s).trim().replace(/,/g,"").replace(/−/g,"-").replace(/\s/g,"").replace(/%$/,"");const m=t.match(/^([-+]?[\d.]+)(?:[x×*]10\^?([-+]?\d+))$/i);if(m)return parseFloat(m[1])*10**parseInt(m[2],10);return parseFloat(t)};
+function verdict(input,fb,ok,expected){ST["tries_"+input]=(ST["tries_"+input]||0)+(ok?0:1);const f=$(fb);f.className="fb "+(ok?"ok":"bad");
+ f.textContent=ok?"Correct":(ST["tries_"+input]>=2?`Not yet. Expected: ${expected}.`:"Not yet. Look again.");return ok||ST["tries_"+input]>=2}
+function checkNum(input,fb,target,rel,abs,shown){const v=num($(input).value);ST[input]=$(input).value;return verdict(input,fb,isFinite(v)&&Math.abs(v-target)<=Math.max(abs,rel*Math.abs(target)),shown)}
+function checkSel(input,fb,target,label){ST[input]=$(input).value;return verdict(input,fb,$(input).value===target,label||target)}
+
+const SPN={"Cu":"Cu","Cu2+":"Cu²⁺","Cu2O":"Cu₂O","CuO":"CuO"},COLS={"Cu":"#0F6E6B","Cu2+":"#BE654C","Cu2O":"#E29A2D","CuO":"#5A91BE"};
+["c1a","c1b","c1c","c1d"].forEach(id=>{$(id).innerHTML=`<option value="">choose</option>`+Object.keys(SPN).map(s=>`<option value="${s}">${SPN[s]}</option>`).join("")});
+(function(){const Lc=R.lecture,[x0,x1,y0,y1]=Lc.box,w=520,h=330,l=56,t=12,X=w-l-12,Y=h-t-44,px=v=>l+X*(v-x0)/(x1-x0),py=v=>t+Y*(y1-v)/(y1-y0);
+ let s=`<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:auto" font-family="Helvetica Neue,Arial,sans-serif"><defs><clipPath id="lbc"><rect x="${l}" y="${t}" width="${X}" height="${Y}"/></clipPath></defs>`;
+ for(const [sp,P] of Object.entries(Lc.regions)) s+=`<polygon points="${P.map(p=>`${px(p[0]).toFixed(1)},${py(p[1]).toFixed(1)}`).join(" ")}" fill="${COLS[sp]}" opacity=".45" stroke="#333F4A" stroke-width="1.5"/>`;
+ const lab={"Cu":[10,-0.4],"Cu2+":[2.5,0.75],"Cu2O":[11,0.0],"CuO":[10.5,0.75]};for(const [sp,[a,e]] of Object.entries(lab)) s+=`<text x="${px(a)}" y="${py(e)}" font-size="16" text-anchor="middle" fill="#1C242B">${SPN[sp]}</text>`;
+ s+=`<g clip-path="url(#lbc)">`+["H2","O2"].map(k=>{const W=Lc.water[k];return `<line x1="${px(0)}" y1="${py(W.e0)}" x2="${px(14)}" y2="${py(W.e0+14*W.m)}" stroke="#333F4A" stroke-width="1.5" stroke-dasharray="6 5"/>`}).join("")+`</g>`;
+ for(let v=0;v<=14;v+=2) s+=`<text x="${px(v)}" y="${t+Y+17}" font-size="12" text-anchor="middle" fill="#1C242B">${v}</text>`;
+ for(let e=-0.6;e<=1.21;e+=0.3) s+=`<line x1="${l-4}" x2="${l}" y1="${py(e)}" y2="${py(e)}" stroke="#333F4A"/><text x="${l-7}" y="${py(e)+4}" font-size="12" text-anchor="end" fill="#1C242B">${e.toFixed(1).replace("-","−")}</text>`;
+ s+=`<text x="${l+X/2}" y="${h-6}" font-size="13" text-anchor="middle" fill="#1C242B">pH</text><text transform="translate(14,${t+Y/2}) rotate(-90)" font-size="13" text-anchor="middle" fill="#1C242B">E, V vs SHE</text>`;
+ for(const [k,p] of Object.entries(L.points)) s+=`<circle cx="${px(p.pH)}" cy="${py(p.E)}" r="6" fill="#fff" stroke="#1C242B" stroke-width="2.5"/><text x="${px(p.pH)+11}" y="${py(p.E)-7}" font-size="14" fill="#1C242B">${k}</text>`;
+ $("pbd").innerHTML=s+"</svg>"})();
+function drawE(){const r=L.scan9[+$("sE").value];$("sEv").textContent=(r.E>=0?"+":"−")+Math.abs(r.E).toFixed(2);$("kS").textContent=SPN[r.sp];ST.sE=$("sE").value;save()}
+$("sE").oninput=drawE;
+function INIT(){if(ST.sE!=null)$("sE").value=ST.sE;drawE()}
+const CHECKS={
+ "1b":()=>[checkSel("c1a","f1a",L.points.A.sp,SPN[L.points.A.sp]),checkSel("c1b","f1b",L.points.B.sp,SPN[L.points.B.sp]),checkSel("c1c","f1c",L.points.C.sp,SPN[L.points.C.sp]),checkSel("c1d","f1d",L.points.D.sp,SPN[L.points.D.sp])].every(Boolean),
+ "2a":()=>[checkNum("c2a","f2a",L.pH9.Cu_to_Cu2O,0,0.006,L.pH9.Cu_to_Cu2O.toFixed(3)),checkNum("c2b","f2b",L.pH9.Cu2O_to_CuO,0,0.006,L.pH9.Cu2O_to_CuO.toFixed(3))].every(Boolean),
+ "3a":()=>[checkSel("c3a","f3a","e","only electrons take part"),checkNum("c3b","f3b",L.pH_CuO_Cu2,0,0.06,L.pH_CuO_Cu2.toFixed(2)),checkSel("c3c","f3c","stab","which form is stable, not how fast")].every(Boolean),
+ "3b":()=>[checkSel("c3d","f3d","cor","corrosion"),checkSel("c3e","f3e","pas","passivation")].every(Boolean)};
+const SUMMARY=(v,sel)=>[`Lab 13 answers`,
+ `1. Predicted at pH 3, +0.50 V: ${sel("p1",{Cu:"Cu",["Cu2+"]:"Cu2+",oxide:"oxide"})}. A ${v("c1a")}; B ${v("c1b")}; C ${v("c1c")}; D ${v("c1d")}`,
+ `2. pH 9 boundaries: Cu/Cu2O ${v("c2a")} V; Cu2O/CuO ${v("c2b")} V`,
+ `3. Horizontal line: ${sel("c3a",{e:"electrons only",h:"H+ only"})}; CuO dissolves below pH ${v("c3b")}; diagram gives ${sel("c3c",{stab:"stability, not rate",rate:"rate"})}; dissolves: ${sel("c3d",{imm:"immunity",cor:"corrosion",pas:"passivation"})}; oxide film: ${sel("c3e",{imm:"immunity",cor:"corrosion",pas:"passivation"})}`,`4. ${v("e5")}`];
+
+document.querySelectorAll("[data-save]").forEach(b=>b.onclick=()=>{const id=b.dataset.save,sv=SAVES[id];
+ if(sv.radio){if(!radio(sv.radio))return need(id,"Choose a prediction first.");ST[sv.radio]=radio(sv.radio)}
+ if(sv.text){if($(sv.text).value.trim().length<60)return need(id,"Write at least three sentences.");ST[sv.text]=$(sv.text).value}
+ markDone(id)});
+document.querySelectorAll("[data-check]").forEach(b=>b.onclick=()=>{const id=b.dataset.check;const ok=CHECKS[id]();if(ok)markDone(id);else save()});
+function summary(){const sel=(id,map)=>map[ST[id]]||ST[id]||"?",v=id=>ST[id]||"?";$("sum").textContent=SUMMARY(v,sel).join("\n")}
+$("copy").onclick=async()=>{try{await navigator.clipboard.writeText($("sum").textContent);$("copied").textContent="Copied. Paste it into the Exit Ticket box."}catch(e){$("copied").textContent="Copy did not work here. Select the text above and copy it."}};
+$("exitlink").href=EXIT_URL;
+$("reset").onclick=()=>{if(confirm("Clear all answers saved on this device?")){ST={};save();location.reload()}};
+Object.values(SAVES).forEach(sv=>{if(sv.radio&&ST[sv.radio]){const r=document.querySelector(`input[name="${sv.radio}"][value="${ST[sv.radio]}"]`);if(r)r.checked=true}});
+RESTORE.forEach(id=>{if(ST[id]!=null&&$(id))$(id).value=ST[id]});
+if(typeof INIT==="function")INIT();
+refresh();
+
+/* hand-in: an answer file for myCourseVille (no name or ID in it) */
+async function handin(){summary();const lab=parseInt((KEY.match(/lab(\d+)/)||[0,0])[1],10);
+ const core={course:"2182209",edition:"2027",lab,lab_key:KEY,saved:new Date().toISOString(),
+  steps_done:ORDER.filter(id=>ST["done_"+id]).length,steps_total:ORDER.length,
+  steps:Object.fromEntries(ORDER.map(id=>[id,!!ST["done_"+id]])),
+  expected_shown:Object.keys(ST).filter(k=>k.startsWith("tries_")&&ST[k]>=2).map(k=>k.slice(6)),
+  summary:$("sum").textContent,state:ST};
+ const data=JSON.stringify(core);let check="";
+ try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("2182209-lab-file-v1|"+data));check=[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){}
+ const file={lab,steps_done:core.steps_done,steps_total:core.steps_total,expected_shown:core.expected_shown.length,saved:core.saved,data,check};
+ const name=`2182209-lab${String(lab).padStart(2,"0")}-answers.json`,a=document.createElement("a");
+ a.href=URL.createObjectURL(new Blob([JSON.stringify(file,null,1)],{type:"application/json"}));a.download=name;document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+ $("dlNote").textContent=`Saved ${name}: ${core.steps_done} of ${core.steps_total} steps done. Upload it to Lab ${lab} in myCourseVille.`}
+$("dlJson").onclick=()=>{handin()};
+</script>
+</body>
+</html>

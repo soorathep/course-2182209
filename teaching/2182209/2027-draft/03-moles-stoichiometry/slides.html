@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>2182209 · Class 3 · Moles, units and stoichiometry</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--sky:#5A91BE;--sage:#83A462;--plum:#995A90;--graphite:#333F4A;--sand:#DFC98F;
+--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--mono:Menlo,Consolas,"DejaVu Sans Mono",monospace}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#2b3138;font-family:"Helvetica Neue",Helvetica,Arial,"DejaVu Sans",sans-serif;color:var(--ink)}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#stage{width:1280px;height:720px;flex:0 0 auto;overflow:hidden;background:#fff;position:relative;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.slide{position:absolute;inset:0;padding:40px 64px 58px;display:none;flex-direction:column}
+.slide.on{display:flex}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.14em;font-size:15px;text-transform:uppercase;margin:0}
+h1{color:var(--teal);font-size:42px;line-height:1.12;margin:6px 0 22px;font-weight:800}
+.body{flex:1;display:flex;gap:28px;min-height:0}
+.col{flex:1;min-width:0;display:flex;flex-direction:column}
+.w40{flex:0 0 40%}.w45{flex:0 0 45%}.w55{flex:0 0 55%}.w60{flex:0 0 60%}
+ul.b{list-style:none;margin:0;padding:0;font-size:24px;line-height:1.36}
+ul.b>li{position:relative;padding-left:30px;margin:0 0 16px}
+ul.b>li::before{content:"";position:absolute;left:2px;top:.5em;width:11px;height:11px;background:var(--amber)}
+ul.b.sm{font-size:21px}ul.b.sm>li{margin-bottom:11px}
+ul.b.xs{font-size:19px}ul.b.xs>li{margin-bottom:8px}
+.hl{color:var(--teal);font-weight:700}
+.panel{background:var(--paper);border-radius:14px;padding:16px 18px;min-height:0;display:flex;flex-direction:column}
+.panel.grow{flex:1}
+.math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:25px;line-height:1.75}
+.math .lbl{font-family:"Helvetica Neue",Arial,sans-serif;font-size:16px;color:var(--slate);display:inline-block;width:150px}
+.code{font-family:var(--mono);font-size:17px;line-height:1.5;white-space:pre;color:var(--graphite)}
+.note{font-size:18px;color:var(--slate);margin-top:10px;line-height:1.4}
+.big{font-size:56px;font-weight:800;color:var(--teal)}
+table.t{border-collapse:collapse;font-size:19px;width:100%}
+table.t th{background:var(--paper);text-align:left;padding:7px 10px;border-bottom:2px solid var(--mist);font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid #e3e6e8}
+table.t td.n,table.t th.n{text-align:right;font-variant-numeric:tabular-nums}
+.act{border:3px solid var(--amber);border-radius:16px;padding:22px 28px;background:#fdf6ea}
+.act .tag{display:inline-block;background:var(--amber);color:#fff;font-weight:800;letter-spacing:.1em;font-size:15px;padding:4px 10px;border-radius:6px;margin-bottom:12px}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px;align-items:center;font-size:16px;color:var(--slate)}
+.ctrl button{font:inherit;font-size:15px;padding:5px 11px;border-radius:8px;border:1.5px solid var(--teal);background:#fff;color:var(--teal);cursor:pointer}
+.ctrl button.on{background:var(--teal);color:#fff}
+.ctrl input[type=range]{width:220px;accent-color:var(--teal)}
+.kpi{display:flex;gap:14px;margin-top:8px}
+.kpi div{background:#fff;border-radius:10px;padding:8px 12px;font-size:15px;color:var(--slate);flex:1}
+.kpi b{display:block;font-size:24px;color:var(--ink)}
+.kpi b.a{color:var(--amber)}
+svg.ch{width:100%;height:100%;display:block}
+.chart{flex:1;min-height:0}
+footer{position:absolute;left:64px;right:64px;bottom:20px;border-top:1px solid var(--mist);padding-top:7px;display:flex;justify-content:space-between;font-size:13px;color:var(--slate)}
+.title-slide{justify-content:center}
+.title-slide h1{font-size:64px;margin-bottom:12px}
+.title-slide .sub{font-size:28px;color:var(--graphite);margin-bottom:40px}
+.title-slide .meta{font-size:19px;color:var(--slate);line-height:1.6}
+.pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;letter-spacing:.06em}
+.pill.rec{background:var(--paper);color:var(--slate)}.pill.live{background:var(--amber);color:#fff}
+.dhint{position:absolute;right:64px;top:42px;font-size:13px;color:var(--slate);border:1px solid var(--mist);border-radius:8px;padding:3px 8px}
+/* Python drawer */
+#drawer{position:absolute;top:0;right:0;bottom:0;width:47%;background:#fbfaf7;border-left:3px solid var(--teal);box-shadow:-8px 0 24px rgba(0,0,0,.15);
+ transform:translateX(102%);transition:transform .25s;display:flex;flex-direction:column;padding:22px 24px 18px;z-index:5}
+#drawer.open{transform:none}
+#drawer h2{margin:0 0 4px;color:var(--teal);font-size:22px}
+#drawer .sub{font-size:14px;color:var(--slate);margin-bottom:10px}
+#drawer textarea{width:100%;height:190px;resize:vertical;border:none;margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13px;line-height:1.45;color:var(--ink);white-space:pre-wrap;outline:none}
+#drawer pre{margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13.5px;line-height:1.45;overflow:auto;white-space:pre}
+#drawer .out{margin-top:10px;flex:1;min-height:0;display:flex;flex-direction:column}
+#drawer .out pre{flex:1;background:#1f262d;color:#e8eef2}
+#drawer .bar{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:13px;color:var(--slate)}
+#drawer button{font:inherit;font-size:14px;padding:6px 12px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer}
+#drawer button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+#notes{position:fixed;left:12px;bottom:12px;max-width:520px;background:#fffef8;border:1px solid var(--mist);border-radius:10px;padding:10px 14px;font-size:14px;line-height:1.45;display:none;z-index:9}
+#help{position:fixed;right:12px;bottom:12px;color:#c9d1d6;font-size:12px}
+
+/* narration and captions */
+#dock{position:fixed;left:0;right:0;display:none;flex-direction:column;align-items:center;gap:6px;padding:0 8px;z-index:8}
+#cap{display:none;color:#F3F0EB;line-height:1.45;text-align:center;overflow:hidden;padding:2px 6px;font-family:"Helvetica Neue",Arial,"Sukhumvit Set","Thonburi","Noto Sans Thai","Sarabun",sans-serif}
+#nbar{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;align-items:center;background:rgba(28,36,43,.9);color:#e8eef2;padding:6px 10px;border-radius:12px;font:13px "Helvetica Neue",Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+#nbar button,#nbar select{white-space:nowrap;font:inherit;font-size:14px;background:#2f3a44;color:#fff;border:1px solid #4a5763;border-radius:8px;padding:5px 10px;cursor:pointer}
+#nbar button.on{background:#0F6E6B;border-color:#0F6E6B}
+#nbar .t{min-width:88px;text-align:center;font-variant-numeric:tabular-nums;color:#c9d1d6}
+#nbar .msg{color:#E29A2D;max-width:330px;line-height:1.25}
+#startov{position:absolute;inset:0;background:rgba(243,240,235,.92);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:6;gap:14px}
+#startov button{font:inherit;font-size:24px;padding:14px 28px;border-radius:12px;border:none;background:#0F6E6B;color:#fff;cursor:pointer}
+#startov p{color:#333F4A;font-size:18px;margin:0}
+@media print{#dock,#startov{display:none!important}}
+@media print{#viewport{position:static;display:block}#stage{transform:none!important;box-shadow:none}.slide{display:flex!important;position:relative;page-break-after:always;height:720px}#drawer,#help,#notes,.dhint{display:none}}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<div id="slides"></div>
+<div id="startov"><button id="startBtn">▶ Start the narrated session</button><p>English narration with English captions below the slide. You move to the next slide yourself.</p><p>→ or Next: next slide · P: pause · C: captions on or off</p></div>
+<aside id="drawer" aria-label="Python for this slide">
+  <h2 id="dTitle">Python</h2>
+  <div class="sub" id="dSub"></div>
+  <textarea id="dCode" spellcheck="false"></textarea>
+  <div class="out"><div class="bar" style="margin:0 0 6px"><span>Output</span><span id="dMode" class="pill rec">RECORDED RUN</span></div><pre id="dOut"></pre></div>
+  <div class="bar"><button id="runCode">Run this code</button><button class="ghost" id="runLive">Recompute all slides</button><button class="ghost" id="useRec">Recorded run</button></div>
+  <div class="bar" id="liveMsg" style="min-height:18px"></div>
+</aside>
+</div></div>
+<div id="notes"></div>
+<div id="dock"><div id="cap" aria-live="polite"></div>
+<div id="nbar"><button id="nPrev" title="Previous slide (←)">‹ Back</button><button id="nPlay" title="Play or pause the narration (P)">▶ Play</button><button id="nStop" title="Stop and go back to the start of this slide">■ Stop</button><span class="t" id="nTime">0:00 / 0:00</span><select id="nSpeed" title="Speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select><button id="nCC" title="Captions: off or English (C)">CC off</button><button id="nNext" title="Next slide (→)">Next ›</button><span class="msg" id="nMsg"></span></div></div>
+<audio id="narr" preload="none"></audio>
+<div id="help">← → move · P narration · C captions · D Python · F full screen · N notes</div>
+<script>
+const RECORDED = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"NA":6.02214076e+23,"M":{"Si":28.0855,"O":15.9994,"Cu":63.546,"N":14.007,"H":1.008,"S":32.06,"Cl":35.45,"F":18.998,"C":12.011},"M_given":{"Si":28.1,"O":16.0},"rho_si":2.329,"rho_ox":2.2,"molar":[{"formula":"Si","M":28.0855},{"formula":"SiO2","M":60.0843},{"formula":"CuSO4","M":159.6036},{"formula":"NH3","M":17.031}],"atoms_1g":{"Si":{"m_g":1.0,"M":28.0855,"n_mol":0.03560556158872016,"N":2.14421703726122e+22},"Cu":{"m_g":1.0,"M":63.546,"n_mol":0.015736631731344222,"N":9.47682113744374e+21}},"ox281":{"m_Si":0.281,"n_Si":0.01,"M_SiO2":60.1,"m_SiO2":0.601,"m_O2":0.32,"balance":0.0},"ox562":{"m_Si":0.562,"n_Si":0.02,"M_SiO2":60.1,"m_SiO2":1.202,"m_O2":0.64,"balance":0.0},"si_density":{"a_cm":5.431e-08,"atoms_per_cm3":4.994023465124319e+22,"rho":2.3290662178037342},"ratio":0.4415443646745737,"layer100":{"t_ox_nm":100.0,"t_si_nm":44.15443646745737,"m_SiO2_g":2.2e-05,"m_Si_g":1.028356825327082e-05,"m_O_g":1.171643174672918e-05,"gain_g":1.171643174672918e-05,"n_mol":3.661522227936416e-07}},"lab":{"M_SiO2":60.1,"ox562":{"m_Si":0.562,"n_Si":0.02,"M_SiO2":60.1,"m_SiO2":1.202,"m_O2":0.64,"balance":0.0},"atoms_0p02":1.204428152e+22,"si_density":{"a_cm":5.431e-08,"atoms_per_cm3":4.994023465124319e+22,"rho":2.3290662178037342},"ratio":0.4415443646745737,"layer100":{"t_ox_nm":100.0,"t_si_nm":44.15443646745737,"m_SiO2_g":2.2e-05,"m_Si_g":1.028356825327082e-05,"m_O_g":1.171643174672918e-05,"gain_g":1.171643174672918e-05,"n_mol":3.661522227936416e-07},"sweep":[{"t_ox_nm":0.0,"t_si_nm":0.0,"m_SiO2_g":0.0,"m_Si_g":0.0,"m_O_g":0.0,"gain_g":0.0,"n_mol":0.0},{"t_ox_nm":10.0,"t_si_nm":4.415443646745737,"m_SiO2_g":2.2e-06,"m_Si_g":1.0283568253270821e-06,"m_O_g":1.171643174672918e-06,"gain_g":1.171643174672918e-06,"n_mol":3.6615222279364163e-08},{"t_ox_nm":20.0,"t_si_nm":8.830887293491473,"m_SiO2_g":4.4e-06,"m_Si_g":2.0567136506541643e-06,"m_O_g":2.343286349345836e-06,"gain_g":2.343286349345836e-06,"n_mol":7.323044455872833e-08},{"t_ox_nm":30.0,"t_si_nm":13.246330940237211,"m_SiO2_g":6.6e-06,"m_Si_g":3.0850704759812462e-06,"m_O_g":3.514929524018754e-06,"gain_g":3.514929524018754e-06,"n_mol":1.0984566683809248e-07},{"t_ox_nm":40.0,"t_si_nm":17.661774586982947,"m_SiO2_g":8.8e-06,"m_Si_g":4.113427301308329e-06,"m_O_g":4.686572698691672e-06,"gain_g":4.686572698691672e-06,"n_mol":1.4646088911745665e-07},{"t_ox_nm":50.0,"t_si_nm":22.077218233728686,"m_SiO2_g":1.1e-05,"m_Si_g":5.14178412663541e-06,"m_O_g":5.85821587336459e-06,"gain_g":5.85821587336459e-06,"n_mol":1.830761113968208e-07},{"t_ox_nm":60.0,"t_si_nm":26.492661880474422,"m_SiO2_g":1.32e-05,"m_Si_g":6.1701409519624924e-06,"m_O_g":7.029859048037508e-06,"gain_g":7.029859048037508e-06,"n_mol":2.1969133367618497e-07},{"t_ox_nm":70.0,"t_si_nm":30.908105527220158,"m_SiO2_g":1.54e-05,"m_Si_g":7.198497777289576e-06,"m_O_g":8.201502222710425e-06,"gain_g":8.201502222710425e-06,"n_mol":2.5630655595554914e-07},{"t_ox_nm":80.0,"t_si_nm":35.323549173965894,"m_SiO2_g":1.76e-05,"m_Si_g":8.226854602616657e-06,"m_O_g":9.373145397383344e-06,"gain_g":9.373145397383344e-06,"n_mol":2.929217782349133e-07},{"t_ox_nm":90.0,"t_si_nm":39.73899282071163,"m_SiO2_g":1.9800000000000004e-05,"m_Si_g":9.255211427943741e-06,"m_O_g":1.0544788572056262e-05,"gain_g":1.0544788572056262e-05,"n_mol":3.2953700051427753e-07},{"t_ox_nm":100.0,"t_si_nm":44.15443646745737,"m_SiO2_g":2.2e-05,"m_Si_g":1.028356825327082e-05,"m_O_g":1.171643174672918e-05,"gain_g":1.171643174672918e-05,"n_mol":3.661522227936416e-07},{"t_ox_nm":110.0,"t_si_nm":48.56988011420311,"m_SiO2_g":2.4200000000000002e-05,"m_Si_g":1.1311925078597904e-05,"m_O_g":1.2888074921402098e-05,"gain_g":1.2888074921402098e-05,"n_mol":4.027674450730058e-07},{"t_ox_nm":120.0,"t_si_nm":52.985323760948845,"m_SiO2_g":2.64e-05,"m_Si_g":1.2340281903924985e-05,"m_O_g":1.4059718096075016e-05,"gain_g":1.4059718096075016e-05,"n_mol":4.3938266735236994e-07},{"t_ox_nm":130.0,"t_si_nm":57.40076740769458,"m_SiO2_g":2.86e-05,"m_Si_g":1.3368638729252067e-05,"m_O_g":1.5231361270747933e-05,"gain_g":1.5231361270747933e-05,"n_mol":4.759978896317341e-07},{"t_ox_nm":140.0,"t_si_nm":61.816211054440316,"m_SiO2_g":3.08e-05,"m_Si_g":1.4396995554579151e-05,"m_O_g":1.640300444542085e-05,"gain_g":1.640300444542085e-05,"n_mol":5.126131119110983e-07},{"t_ox_nm":150.0,"t_si_nm":66.23165470118606,"m_SiO2_g":3.3e-05,"m_Si_g":1.5425352379906235e-05,"m_O_g":1.7574647620093767e-05,"gain_g":1.7574647620093767e-05,"n_mol":5.492283341904625e-07},{"t_ox_nm":160.0,"t_si_nm":70.64709834793179,"m_SiO2_g":3.52e-05,"m_Si_g":1.6453709205233314e-05,"m_O_g":1.8746290794766687e-05,"gain_g":1.8746290794766687e-05,"n_mol":5.858435564698266e-07},{"t_ox_nm":170.0,"t_si_nm":75.06254199467753,"m_SiO2_g":3.74e-05,"m_Si_g":1.7482066030560397e-05,"m_O_g":1.9917933969439604e-05,"gain_g":1.9917933969439604e-05,"n_mol":6.224587787491907e-07},{"t_ox_nm":180.0,"t_si_nm":79.47798564142326,"m_SiO2_g":3.960000000000001e-05,"m_Si_g":1.8510422855887482e-05,"m_O_g":2.1089577144112525e-05,"gain_g":2.1089577144112525e-05,"n_mol":6.590740010285551e-07},{"t_ox_nm":190.0,"t_si_nm":83.893429288169,"m_SiO2_g":4.18e-05,"m_Si_g":1.953877968121456e-05,"m_O_g":2.2261220318785438e-05,"gain_g":2.2261220318785438e-05,"n_mol":6.956892233079191e-07},{"t_ox_nm":200.0,"t_si_nm":88.30887293491475,"m_SiO2_g":4.4e-05,"m_Si_g":2.056713650654164e-05,"m_O_g":2.343286349345836e-05,"gain_g":2.343286349345836e-05,"n_mol":7.323044455872832e-07},{"t_ox_nm":210.0,"t_si_nm":92.72431658166047,"m_SiO2_g":4.62e-05,"m_Si_g":2.1595493331868723e-05,"m_O_g":2.4604506668131275e-05,"gain_g":2.4604506668131275e-05,"n_mol":7.689196678666473e-07},{"t_ox_nm":220.0,"t_si_nm":97.13976022840622,"m_SiO2_g":4.8400000000000004e-05,"m_Si_g":2.262385015719581e-05,"m_O_g":2.5776149842804196e-05,"gain_g":2.5776149842804196e-05,"n_mol":8.055348901460116e-07},{"t_ox_nm":230.0,"t_si_nm":101.55520387515195,"m_SiO2_g":5.0600000000000003e-05,"m_Si_g":2.365220698252289e-05,"m_O_g":2.6947793017477113e-05,"gain_g":2.6947793017477113e-05,"n_mol":8.421501124253758e-07},{"t_ox_nm":240.0,"t_si_nm":105.97064752189769,"m_SiO2_g":5.28e-05,"m_Si_g":2.468056380784997e-05,"m_O_g":2.8119436192150033e-05,"gain_g":2.8119436192150033e-05,"n_mol":8.787653347047399e-07},{"t_ox_nm":250.0,"t_si_nm":110.38609116864342,"m_SiO2_g":5.5e-05,"m_Si_g":2.5708920633177056e-05,"m_O_g":2.9291079366822946e-05,"gain_g":2.9291079366822946e-05,"n_mol":9.153805569841041e-07},{"t_ox_nm":260.0,"t_si_nm":114.80153481538916,"m_SiO2_g":5.72e-05,"m_Si_g":2.6737277458504135e-05,"m_O_g":3.0462722541495867e-05,"gain_g":3.0462722541495867e-05,"n_mol":9.519957792634682e-07},{"t_ox_nm":270.0,"t_si_nm":119.2169784621349,"m_SiO2_g":5.94e-05,"m_Si_g":2.776563428383122e-05,"m_O_g":3.163436571616878e-05,"gain_g":3.163436571616878e-05,"n_mol":9.886110015428324e-07},{"t_ox_nm":280.0,"t_si_nm":123.63242210888063,"m_SiO2_g":6.16e-05,"m_Si_g":2.8793991109158303e-05,"m_O_g":3.28060088908417e-05,"gain_g":3.28060088908417e-05,"n_mol":1.0252262238221966e-06},{"t_ox_nm":290.0,"t_si_nm":128.04786575562636,"m_SiO2_g":6.38e-05,"m_Si_g":2.982234793448538e-05,"m_O_g":3.3977652065514624e-05,"gain_g":3.3977652065514624e-05,"n_mol":1.0618414461015607e-06},{"t_ox_nm":300.0,"t_si_nm":132.46330940237212,"m_SiO2_g":6.6e-05,"m_Si_g":3.085070475981247e-05,"m_O_g":3.5149295240187534e-05,"gain_g":3.5149295240187534e-05,"n_mol":1.098456668380925e-06},{"t_ox_nm":310.0,"t_si_nm":136.87875304911785,"m_SiO2_g":6.82e-05,"m_Si_g":3.1879061585139546e-05,"m_O_g":3.632093841486046e-05,"gain_g":3.632093841486046e-05,"n_mol":1.1350718906602891e-06},{"t_ox_nm":320.0,"t_si_nm":141.29419669586358,"m_SiO2_g":7.04e-05,"m_Si_g":3.290741841046663e-05,"m_O_g":3.7492581589533375e-05,"gain_g":3.7492581589533375e-05,"n_mol":1.1716871129396532e-06},{"t_ox_nm":330.0,"t_si_nm":145.70964034260933,"m_SiO2_g":7.26e-05,"m_Si_g":3.393577523579371e-05,"m_O_g":3.866422476420629e-05,"gain_g":3.866422476420629e-05,"n_mol":1.2083023352190173e-06},{"t_ox_nm":340.0,"t_si_nm":150.12508398935506,"m_SiO2_g":7.48e-05,"m_Si_g":3.496413206112079e-05,"m_O_g":3.983586793887921e-05,"gain_g":3.983586793887921e-05,"n_mol":1.2449175574983815e-06},{"t_ox_nm":350.0,"t_si_nm":154.5405276361008,"m_SiO2_g":7.7e-05,"m_Si_g":3.5992488886447876e-05,"m_O_g":4.1007511113552126e-05,"gain_g":4.1007511113552126e-05,"n_mol":1.2815327797777456e-06},{"t_ox_nm":360.0,"t_si_nm":158.95597128284652,"m_SiO2_g":7.920000000000001e-05,"m_Si_g":3.7020845711774965e-05,"m_O_g":4.217915428822505e-05,"gain_g":4.217915428822505e-05,"n_mol":1.3181480020571101e-06},{"t_ox_nm":370.0,"t_si_nm":163.37141492959228,"m_SiO2_g":8.14e-05,"m_Si_g":3.804920253710204e-05,"m_O_g":4.335079746289796e-05,"gain_g":4.335079746289796e-05,"n_mol":1.354763224336474e-06},{"t_ox_nm":380.0,"t_si_nm":167.786858576338,"m_SiO2_g":8.36e-05,"m_Si_g":3.907755936242912e-05,"m_O_g":4.4522440637570876e-05,"gain_g":4.4522440637570876e-05,"n_mol":1.3913784466158381e-06},{"t_ox_nm":390.0,"t_si_nm":172.20230222308373,"m_SiO2_g":8.580000000000001e-05,"m_Si_g":4.010591618775621e-05,"m_O_g":4.56940838122438e-05,"gain_g":4.56940838122438e-05,"n_mol":1.4279936688952025e-06},{"t_ox_nm":400.0,"t_si_nm":176.6177458698295,"m_SiO2_g":8.8e-05,"m_Si_g":4.113427301308328e-05,"m_O_g":4.686572698691672e-05,"gain_g":4.686572698691672e-05,"n_mol":1.4646088911745664e-06},{"t_ox_nm":410.0,"t_si_nm":181.03318951657522,"m_SiO2_g":9.020000000000001e-05,"m_Si_g":4.216262983841037e-05,"m_O_g":4.803737016158964e-05,"gain_g":4.803737016158964e-05,"n_mol":1.5012241134539307e-06},{"t_ox_nm":420.0,"t_si_nm":185.44863316332095,"m_SiO2_g":9.24e-05,"m_Si_g":4.3190986663737445e-05,"m_O_g":4.920901333626255e-05,"gain_g":4.920901333626255e-05,"n_mol":1.5378393357332946e-06},{"t_ox_nm":430.0,"t_si_nm":189.86407681006668,"m_SiO2_g":9.46e-05,"m_Si_g":4.421934348906453e-05,"m_O_g":5.038065651093547e-05,"gain_g":5.038065651093547e-05,"n_mol":1.5744545580126587e-06},{"t_ox_nm":440.0,"t_si_nm":194.27952045681243,"m_SiO2_g":9.680000000000001e-05,"m_Si_g":4.524770031439162e-05,"m_O_g":5.155229968560839e-05,"gain_g":5.155229968560839e-05,"n_mol":1.6110697802920233e-06},{"t_ox_nm":450.0,"t_si_nm":198.69496410355816,"m_SiO2_g":9.9e-05,"m_Si_g":4.627605713971869e-05,"m_O_g":5.27239428602813e-05,"gain_g":5.27239428602813e-05,"n_mol":1.6476850025713872e-06},{"t_ox_nm":460.0,"t_si_nm":203.1104077503039,"m_SiO2_g":0.00010120000000000001,"m_Si_g":4.730441396504578e-05,"m_O_g":5.3895586034954225e-05,"gain_g":5.3895586034954225e-05,"n_mol":1.6843002248507515e-06},{"t_ox_nm":470.0,"t_si_nm":207.52585139704965,"m_SiO2_g":0.0001034,"m_Si_g":4.8332770790372864e-05,"m_O_g":5.506722920962714e-05,"gain_g":5.506722920962714e-05,"n_mol":1.7209154471301156e-06},{"t_ox_nm":480.0,"t_si_nm":211.94129504379538,"m_SiO2_g":0.0001056,"m_Si_g":4.936112761569994e-05,"m_O_g":5.6238872384300066e-05,"gain_g":5.6238872384300066e-05,"n_mol":1.7575306694094797e-06},{"t_ox_nm":490.0,"t_si_nm":216.3567386905411,"m_SiO2_g":0.0001078,"m_Si_g":5.038948444102702e-05,"m_O_g":5.741051555897298e-05,"gain_g":5.741051555897298e-05,"n_mol":1.7941458916888439e-06},{"t_ox_nm":500.0,"t_si_nm":220.77218233728684,"m_SiO2_g":0.00011,"m_Si_g":5.141784126635411e-05,"m_O_g":5.858215873364589e-05,"gain_g":5.858215873364589e-05,"n_mol":1.8307611139682082e-06}]}};
+const LAB_FILE = "stoich_lab.py?v=c03-f2d7391f";
+const LAB_SRC = "\"\"\"Class 3 of 2182209 Chemistry for Semiconductor Engineering (2027 draft).\n\nMoles, units and stoichiometry: from a mass of Si to atoms, and from a balanced\nequation to the SiO2 grown on a wafer. Every number on the Class 3 slides and in\nLab 3 comes from this module.\n\nRun `python stoich_lab.py` for a printed summary, or `python stoich_lab.py --json`\nto write stoich-results.json.\n\nData: Avogadro constant (exact, SI 2019); atomic masses from Class 1 (NIST isotopes)\nand the rounded values supplied in the exercises; Si lattice constant 0.5431 nm and\ndensities of crystalline Si (2.329 g/cm3) and thermal SiO2 (2.20 g/cm3) from the CRC\nHandbook. NumPy only, so it also runs in the browser.\n\"\"\"\nimport json\nimport sys\n\nimport numpy as np\n\nNA = 6.02214076e23                       # 1/mol, exact\nM_PRECISE = {\"Si\": 28.0855, \"O\": 15.9994, \"Cu\": 63.546, \"N\": 14.007, \"H\": 1.008, \"S\": 32.06, \"Cl\": 35.45, \"F\": 18.998, \"C\": 12.011}\nM_GIVEN = {\"Si\": 28.1, \"O\": 16.0}         # the rounded values supplied in the exercises\nRHO_SI, RHO_OX = 2.329, 2.20              # g/cm3: crystalline Si, thermal (amorphous) SiO2\nA_SI_NM = 0.5431                          # Si lattice constant, nm; 8 atoms per diamond-cubic cell (Class 2)\n\n\ndef r6(x):\n    if isinstance(x, (list, tuple)):\n        return [r6(v) for v in x]\n    v = round(float(x), 6)\n    return 0.0 if v == 0 else v\n\n\ndef molar_mass(formula, table=None):\n    \"\"\"Molar mass in g/mol of a formula given as {\"Si\": 1, \"O\": 2}.\"\"\"\n    t = table or M_PRECISE\n    return sum(t[el] * n for el, n in formula.items())\n\n\nSIO2 = {\"Si\": 1, \"O\": 2}\n\n\ndef mass_to_atoms(m_g, M):\n    n = m_g / M\n    return {\"m_g\": m_g, \"M\": M, \"n_mol\": n, \"N\": n * NA}\n\n\ndef oxidation(m_si_g, table=M_GIVEN):\n    \"\"\"Si + O2 -> SiO2, complete conversion of m_si_g of Si with excess O2 (mole ratio 1:1:1).\"\"\"\n    n = m_si_g / table[\"Si\"]\n    M_ox = molar_mass(SIO2, table)\n    return {\"m_Si\": m_si_g, \"n_Si\": n, \"M_SiO2\": M_ox, \"m_SiO2\": n * M_ox, \"m_O2\": n * 2 * table[\"O\"],\n            \"balance\": m_si_g + n * 2 * table[\"O\"] - n * M_ox}\n\n\ndef si_density_from_cell():\n    \"\"\"Density of Si from its unit cell: 8 atoms in a cube of edge a.\"\"\"\n    a_cm = A_SI_NM * 1e-7\n    n_per_cm3 = 8 / a_cm ** 3\n    return {\"a_cm\": a_cm, \"atoms_per_cm3\": n_per_cm3, \"rho\": n_per_cm3 * M_PRECISE[\"Si\"] / NA}\n\n\ndef si_consumed_ratio():\n    \"\"\"Thickness of Si consumed per thickness of SiO2 grown: (rho_ox/M_ox) / (rho_Si/M_Si).\"\"\"\n    m_ox = molar_mass(SIO2)\n    return (RHO_OX / m_ox) / (RHO_SI / M_PRECISE[\"Si\"])\n\n\ndef oxide_layer(t_ox_nm, area_cm2=1.0):\n    \"\"\"Grow t_ox_nm of SiO2 on area_cm2 of a Si wafer.\"\"\"\n    k = si_consumed_ratio()\n    V_ox = t_ox_nm * 1e-7 * area_cm2\n    m_ox = V_ox * RHO_OX\n    n = m_ox / molar_mass(SIO2)\n    m_si = n * M_PRECISE[\"Si\"]\n    return {\"t_ox_nm\": t_ox_nm, \"t_si_nm\": k * t_ox_nm, \"m_SiO2_g\": m_ox, \"m_Si_g\": m_si, \"m_O_g\": m_ox - m_si,\n            \"gain_g\": m_ox - m_si, \"n_mol\": n}\n\n\ndef lab_results():\n    ox = oxidation(0.562)\n    return {\n        \"M_SiO2\": molar_mass(SIO2, M_GIVEN), \"ox562\": ox,\n        \"atoms_0p02\": ox[\"n_Si\"] * NA,\n        \"si_density\": si_density_from_cell(),\n        \"ratio\": si_consumed_ratio(),\n        \"layer100\": oxide_layer(100.0),\n        \"sweep\": [oxide_layer(float(t)) for t in range(0, 501, 10)],\n    }\n\n\ndef classroom_results():\n    R = {\"meta\": {\"numpy\": np.__version__, \"scipy\": __import__(\"scipy\").__version__, \"python\": sys.version.split()[0]}}\n    R[\"lecture\"] = {\n        \"NA\": NA, \"M\": M_PRECISE, \"M_given\": M_GIVEN, \"rho_si\": RHO_SI, \"rho_ox\": RHO_OX,\n        \"molar\": [{\"formula\": f, \"M\": molar_mass(c)} for f, c in ((\"Si\", {\"Si\": 1}), (\"SiO2\", SIO2), (\"CuSO4\", {\"Cu\": 1, \"S\": 1, \"O\": 4}), (\"NH3\", {\"N\": 1, \"H\": 3}))],\n        \"atoms_1g\": {el: mass_to_atoms(1.0, M_PRECISE[el]) for el in (\"Si\", \"Cu\")},\n        \"ox281\": oxidation(0.281), \"ox562\": oxidation(0.562),\n        \"si_density\": si_density_from_cell(), \"ratio\": si_consumed_ratio(),\n        \"layer100\": oxide_layer(100.0),\n    }\n    R[\"lab\"] = lab_results()\n    return R\n\n\nif __name__ == \"__main__\":\n    R = classroom_results()\n    if \"--json\" in sys.argv:\n        with open(\"stoich-results.json\", \"w\") as fh:\n            json.dump(R, fh, indent=1)\n        print(\"wrote stoich-results.json\"); sys.exit()\n    L = R[\"lecture\"]\n    for q in L[\"molar\"]:\n        print(f\"M({q['formula']}) = {r6(q['M'])} g/mol\")\n    print(\"1 g Si:\", L[\"atoms_1g\"][\"Si\"])\n    print(\"562 mg Si:\", {k: r6(v) for k, v in L[\"ox562\"].items()})\n    print(\"Si density from the unit cell:\", {k: r6(v) for k, v in L[\"si_density\"].items()})\n    print(\"Si consumed per SiO2 grown:\", r6(L[\"ratio\"]))\n    print(\"100 nm oxide on 1 cm2:\", {k: r6(v) for k, v in L[\"layer100\"].items()})\n";   // embedded copy, so live Python also works when the file is opened locally
+let R = RECORDED, MODE = "recorded";
+const C = {teal:"#0F6E6B",amber:"#E29A2D",rust:"#BE654C",sky:"#5A91BE",sage:"#83A462",plum:"#995A90",graphite:"#333F4A",sand:"#DFC98F",ink:"#1C242B",slate:"#66727C",mist:"#B9C1C6",paper:"#F3F0EB"};
+const fmt = (x,d=0)=>x==null?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+
+/* ---------- tiny SVG chart helpers ---------- */
+function svgEl(w,h){return `<svg class="ch" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">`}
+function niceStep(r,n=5){const raw=r/n,p=Math.pow(10,Math.floor(Math.log10(raw||1)));for(const m of [1,2,2.5,5,10]){if(m*p>=raw-1e-12)return m*p}return 10*p}
+function scale(o,lo,hi){const st=niceStep(hi-lo);o.step=st;o.ymin=Math.floor(lo/st+1e-9)*st;o.ymax=Math.ceil(hi/st-1e-9)*st;o.ticks=Math.round((o.ymax-o.ymin)/st);return o}
+function niceMax(v){const p=Math.pow(10,Math.floor(Math.log10(v||1)));for(const m of [1,1.2,1.5,2,2.5,3,4,5,6,8,10]){if(m*p>=v)return m*p}return 10*p}
+function axes(o){ // o: w,h,l,r,t,b,ymin,ymax,xlabels,ylab,ticks
+  const {w,h,l,r,t,b,ymin,ymax}=o, X=w-l-r, Y=h-t-b, n=o.ticks||5; let s="";
+  for(let k=0;k<=n;k++){const v=ymin+(ymax-ymin)*k/n, y=t+Y-(v-ymin)/(ymax-ymin)*Y;
+    s+=`<line x1="${l}" x2="${w-r}" y1="${y}" y2="${y}" stroke="${C.mist}" stroke-width="0.8" opacity=".7"/><text x="${l-8}" y="${y+5}" font-size="16" text-anchor="end" fill="${C.ink}">${fmt(v, (o.step||1)<1?1:0)}</text>`}
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${t+Y}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  const z=t+Y-(0-ymin)/(ymax-ymin)*Y; s+=`<line x1="${l}" x2="${w-r}" y1="${Math.min(t+Y,Math.max(t,z))}" y2="${Math.min(t+Y,Math.max(t,z))}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  if(o.ylab)s+=`<text transform="translate(${16},${t+Y/2}) rotate(-90)" font-size="17" text-anchor="middle" fill="${C.ink}">${o.ylab}</text>`;
+  return s}
+function ymap(o,v){const Y=o.h-o.t-o.b;return o.t+Y-(v-o.ymin)/(o.ymax-o.ymin)*Y}
+function legend(items,x,y){let s="";items.forEach((it,i)=>{const yy=y+i*22;s+=it.line?`<line x1="${x}" x2="${x+22}" y1="${yy}" y2="${yy}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${x}" y="${yy-8}" width="16" height="16" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${x+28}" y="${yy+5}" font-size="16" fill="${C.ink}">${it.t}</text>`});return s}
+function legendRow(items,x,y){let s="",xx=x;items.forEach(it=>{s+=it.line?`<line x1="${xx}" x2="${xx+20}" y1="${y}" y2="${y}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${xx}" y="${y-7}" width="14" height="14" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${xx+26}" y="${y+5}" font-size="16" fill="${C.ink}">${it.t}</text>`;xx+=38+it.t.length*8.2});return s}
+
+/* Food Manufacture: stacked bars of a [month][oil] matrix, optional line */
+function hbar(items,opt={}){ // items: {t,v,c}
+  const w=opt.w||640,h=opt.h||330,l=opt.l||250,r=90,t=16,rowh=(h-t-20)/items.length;
+  const mx=opt.max||niceMax(Math.max(...items.map(i=>i.v)));let s=svgEl(w,h);
+  items.forEach((it,i)=>{const y=t+i*rowh,bw=(w-l-r)*it.v/mx;
+    s+=`<text x="${l-12}" y="${y+rowh/2+5}" font-size="16" text-anchor="end" fill="${C.ink}">${it.t}</text><rect x="${l}" y="${y+rowh*0.18}" width="${Math.max(bw,1)}" height="${rowh*0.64}" fill="${it.c}" rx="3"/><text x="${l+bw+8}" y="${y+rowh/2+6}" font-size="17" font-weight="700" fill="${C.ink}">${opt.fmt?opt.fmt(it.v):fmt(it.v)}</text>`});
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${h-20}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  return s+"</svg>"}
+
+/* ---------- Class 3 helpers ---------- */
+const foot = "2182209 Chemistry for Semiconductor Engineering · Class 3 · Moles, units and stoichiometry · draft for 2027";
+const LC = () => R.lecture;
+const S = [];
+const sub2 = f => f.replace(/(\d+)/g, "<sub>$1</sub>");
+const py6 = v => {let r = Math.round(v * 1e6) / 1e6; if (Object.is(r, -0) || r === 0) r = 0; const s = String(r); return /[.e]/.test(s) ? s : s + ".0"};
+/* Python repr of a float, enough for the values printed in the drawers */
+const pyr = v => {if (v === 0) return "0.0"; const a = Math.abs(v); if (a >= 1e16 || a < 1e-4){let s = v.toExponential(); s = s.replace(/e([+-])(\d)$/, "e$10$2"); return s.replace("e+", "e+")} const s = String(v); return /[.e]/.test(s) ? s : s + ".0"};
+function reveal(bid, aid){const b = document.getElementById(bid); b.onclick = () => {const p = document.getElementById(aid), on = p.style.visibility === "hidden"; p.style.visibility = on ? "visible" : "hidden"; b.textContent = on ? "Hide answers" : "Show answers"}}
+const CHECK = (n, q, a) => `<div class="body"><div class="col w55"><div class="act"><span class="tag">PAUSE AND ANSWER</span>${q}</div>
+<div class="ctrl" style="margin-top:12px"><button id="k${n}btn">Show answers</button></div></div>
+<div class="col"><div class="panel grow" id="k${n}ans" style="visibility:hidden"><ul class="b xs">${a}</ul></div></div></div>`;
+const OL = `<ol style="font-size:21px;line-height:1.5;margin:0;padding-left:26px">`;
+const sci = (x, d = 3) => {if (x === 0) return "0"; const e = Math.floor(Math.log10(Math.abs(x))), m = x / 10 ** e; return Math.abs(e) < 3 ? Number(x.toPrecision(d + 1)).toString() : `${m.toFixed(d)} × 10<sup>${e < 0 ? "−" + (-e) : e}</sup>`};
+
+/* ---------- opening ---------- */
+S.push({cls:"title-slide", html:()=>`<p class="kicker">Class 3 · Lab 3</p><h1>Moles, units and stoichiometry</h1>
+<div class="sub">From a mass of silicon to a number of atoms, and from a balanced equation to the oxide grown on a wafer</div>
+<div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p>`,
+notes:"Classes 1 and 2 counted atoms one at a time. Today we count them by weighing."});
+
+S.push({kicker:"Plan for today", title:"Ninety minutes, one activity, two checks and a lab", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:19px">
+<tr><th>Part</th><th>Content</th><th class="n">Minutes</th></tr>
+<tr><td></td><td>Activity 1: retrieval check on Class 2</td><td class="n">5</td></tr>
+<tr><td>1</td><td>The mole: counting by weighing, molar mass, mass to atoms, balanced equations; Check 1</td><td class="n">25</td></tr>
+<tr><td>2</td><td>Stoichiometry at work: Si to SiO<sub>2</sub>, conservation of mass, the density of Si, how much Si an oxide consumes; Check 2</td><td class="n">25</td></tr>
+<tr><td>Lab 3</td><td>The oxide on a silicon wafer</td><td class="n">30</td></tr>
+<tr><td></td><td>Exit Ticket and feedback</td><td class="n">5</td></tr>
+<tr><td></td><td><b>Total</b></td><td class="n"><b>90</b></td></tr></table>
+<p class="note">Studying on your own: the narration takes about 12 minutes. Stop at the activity and at each check, then do Lab 3.</p></div></div>`});
+
+S.push({kicker:"Activity 1 · 5 minutes · alone, then in pairs", title:"Retrieval check: Class 2 without notes", html:()=>`<div class="body"><div class="col w55"><div class="act"><span class="tag">WRITE, THEN COMPARE</span>
+${OL}<li>Which electrons carry the current in a Cu wire?</li>
+<li>χ(Si) = 1.8, χ(O) = 3.5. What kind of bond is Si–O?</li>
+<li>How many atoms belong to one diamond-cubic cell of Si?</li>
+<li>A wire is made twice as long. What happens to its resistance?</li></ol></div>
+<div class="ctrl" style="margin-top:12px"><button id="a1btn">Show answers</button></div></div>
+<div class="col"><div class="panel grow" id="a1ans" style="visibility:hidden"><ul class="b xs">
+<li>The electrons shared by the whole metal</li><li>Δχ = 1.7: polar covalent</li><li>8 × 1/8 + 6 × 1/2 + 4 = 8. Today we turn this into the density of Si</li><li>R = ρL/A, so R doubles</li></ul></div></div></div>`,
+draw:()=>reveal("a1btn","a1ans"), notes:"Question 3 returns in Part 2."});
+
+S.push({kicker:"Learning outcomes", title:"By the end of today you can", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Explain the mole as a count of particles, and use N<sub>A</sub> to convert moles to atoms</li>
+<li>Calculate a molar mass from a formula and convert mass to moles with n = m/M, with units</li>
+<li>Balance a simple equation and read its coefficients as mole ratios, not mass ratios</li>
+<li>Calculate the masses of SiO<sub>2</sub> formed and O<sub>2</sub> used when Si is oxidized, and explain why the mass rises</li>
+<li>Calculate the density of Si from its unit cell</li>
+<li>Find how much Si is consumed when an oxide grows on a wafer, and say what this model cannot tell you</li></ul></div></div>`});
+
+S.push({kicker:"Context", title:"From atom counts to masses you can weigh", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
+<tr><th>You have</th><th>From</th><th>Today</th></tr>
+<tr><td>M(Cu) = 63.546 u, M(Si) = 28.085 u per atom</td><td>Class 1</td><td>The same numbers in g/mol</td></tr>
+<tr><td>Formulas count atoms: SiO<sub>2</sub></td><td>Class 1</td><td>M(SiO<sub>2</sub>) from the formula</td></tr>
+<tr><td>8 atoms in a Si unit cell of edge 0.5431 nm</td><td>Class 2</td><td>The density of a Si wafer</td></tr>
+<tr><td>SiO<sub>2</sub> insulates the wires</td><td>Class 2</td><td>How much Si a grown oxide uses up</td></tr></table>
+<p class="note">New symbols: n, amount in mol; m, mass in g; M, molar mass in g/mol; N, number of particles; N<sub>A</sub> = 6.022 × 10<sup>23</sup> mol<sup>−1</sup>, the Avogadro constant; ρ, density in g/cm³ (in Class 2, ρ was resistivity; the context tells you which).</p></div></div>`});
+
+/* ---------- Part 1 ---------- */
+S.push({kicker:"Part 1 · The mole", title:"A mole is a count: 6.022 × 10²³ particles", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Atoms are too small to count one by one, so chemists count them by weighing</li>
+<li>One mole is N<sub>A</sub> = 6.02214076 × 10<sup>23</sup> particles, exactly. A dozen is 12; a mole is a much larger dozen</li>
+<li>The trick: the mass of one mole in grams equals the atomic mass in u. One Si atom is 28.085 u, so one mole of Si is 28.085 g</li>
+<li>So M, the molar mass in g/mol, is read straight from the atomic masses of Class 1</li></ul></div>
+<div class="col"><div class="panel"><div class="math" style="font-size:21px;line-height:1.7">n = m / M &nbsp;&nbsp; N = n · N<sub>A</sub><br>1 g of Si: n = 1/28.0855 = ${LC().atoms_1g.Si.n_mol.toFixed(4)} mol<br>N = ${sci(LC().atoms_1g.Si.N)} atoms</div></div>
+<p class="note">1 g of Cu holds fewer atoms, ${sci(LC().atoms_1g.Cu.N)}, because each Cu atom is heavier.</p></div></div>`});
+
+S.push({kicker:"Part 1 · Molar mass", title:"Molar mass from a formula", html:()=>`<div class="body"><div class="col w55"><table class="t" style="font-size:18px" id="mtab"></table>
+<div class="panel" style="margin-top:12px"><div class="math" style="font-size:20px;line-height:1.6">M(SiO<sub>2</sub>) = M(Si) + 2 M(O) = 28.0855 + 2 × 15.9994 = <b>${LC().molar[1].M.toFixed(2)} g/mol</b></div></div></div>
+<div class="col"><ul class="b xs"><li>Multiply each atomic mass by its subscript and add</li>
+<li>CuSO<sub>4</sub> is the salt in Cu plating baths (Class 4 and Class 10)</li>
+<li>NH<sub>3</sub> is used to deposit silicon nitride on chips</li>
+<li>Exercises supply rounded values, such as M(Si) = 28.1 and M(O) = 16.0 g/mol. Use the values given; the answer changes in the third or fourth figure</li></ul></div></div>`,
+draw:()=>{document.getElementById("mtab").innerHTML = `<tr><th>Formula</th><th class="n">M, g/mol</th></tr>` + LC().molar.map(q => `<tr><td>${sub2(q.formula)}</td><td class="n">${q.M.toFixed(3)}</td></tr>`).join("")},
+py:{title:"Molar masses from formulas", sub:"stoich_lab.molar_mass()", code:
+`from stoich_lab import molar_mass, r6
+for name, f in [("Si", {"Si": 1}), ("SiO2", {"Si": 1, "O": 2}),
+                ("CuSO4", {"Cu": 1, "S": 1, "O": 4}), ("NH3", {"N": 1, "H": 3})]:
+    print(name, r6(molar_mass(f)))`,
+out:()=>LC().molar.map(q=>`${q.formula} ${py6(q.M)}`).join("\n")}});
+
+S.push({kicker:"Part 1 · Demo", title:"Mass, moles and atoms: three views of one sample", html:()=>`<div class="body"><div class="col w55">
+<div class="ctrl"><button id="mm0" class="on">Si</button><button id="mm1">Cu</button>&nbsp; Mass <input type="range" id="mmm" min="-6" max="1" step="0.5" value="0"><b id="mmv"></b></div>
+<div class="kpi"><div>Mass m<b id="km"></b></div><div>Amount n = m/M<b id="kn"></b></div><div>Atoms N = n N<sub>A</sub><b class="a" id="kN"></b></div></div>
+<div class="panel" style="display:block;margin-top:12px;font-size:19px;line-height:1.5" id="mmt"></div></div>
+<div class="col"><ul class="b xs"><li>The slider moves in steps of a factor of about 3, from 1 µg to 10 g</li>
+<li>Even 1 µg of Si holds about 2 × 10<sup>16</sup> atoms</li>
+<li>Units first: convert mg or µg to g before dividing by M in g/mol</li>
+<li>1 mg = 10<sup>−3</sup> g; 1 µg = 10<sup>−6</sup> g</li></ul></div></div>`,
+draw:()=>{const E = ["Si", "Cu"], NA = LC().NA; let k = 0; const unit = g => g >= 1 ? `${+g.toPrecision(3)} g` : g >= 1e-3 ? `${+(g * 1e3).toPrecision(3)} mg` : `${+(g * 1e6).toPrecision(3)} µg`;
+ const go = () => {const g = 10 ** +document.getElementById("mmm").value, M = LC().M[E[k]], n = g / M; E.forEach((_, i) => document.getElementById("mm" + i).classList.toggle("on", i === k));
+  document.getElementById("mmv").textContent = unit(g); document.getElementById("km").textContent = unit(g); document.getElementById("kn").innerHTML = sci(n) + " mol"; document.getElementById("kN").innerHTML = sci(n * NA);
+  document.getElementById("mmt").innerHTML = `${E[k]}: M = ${M} g/mol. n = ${sci(g)} g ÷ ${M} g/mol = ${sci(n)} mol.`};
+ E.forEach((_, i) => document.getElementById("mm" + i).onclick = () => {k = i; go()}); document.getElementById("mmm").oninput = go; go()},
+notes:"Ask: how many atoms in the 1 µg of Si? Students usually guess a small number."});
+
+S.push({kicker:"Part 1 · Balanced equations", title:"Coefficients count particles, not grams", html:()=>`<div class="body"><div class="col w55"><div class="panel"><div class="math" style="font-size:30px;text-align:center">Si + O<sub>2</sub> → SiO<sub>2</sub></div>
+<table class="t" style="font-size:18px;margin-top:10px"><tr><th></th><th class="n">Left</th><th class="n">Right</th></tr><tr><td>Si atoms</td><td class="n">1</td><td class="n">1</td></tr><tr><td>O atoms</td><td class="n">2</td><td class="n">2</td></tr></table></div>
+<p class="note">Coefficients 1 : 1 : 1. Read them as "1 Si atom with 1 O<sub>2</sub> molecule gives 1 SiO<sub>2</sub> unit", or the same in moles.</p></div>
+<div class="col"><ul class="b sm"><li>A balanced equation has the same number of each kind of atom on both sides</li>
+<li>Coefficients are ratios of particles or of moles</li>
+<li>They are not ratios of mass: 1 mol of Si (28.1 g) reacts with 1 mol of O<sub>2</sub> (32.0 g)</li>
+<li>This is the reaction that grows the insulating SiO<sub>2</sub> on a heated Si wafer in dry O<sub>2</sub></li></ul></div></div>`});
+
+S.push({kicker:"Check 1 · 5 minutes", title:"Check 1: moles and formulas", html:()=>CHECK(1,`${OL}
+<li>How many moles are in 56.2 g of Si? Use M(Si) = 28.1 g/mol.</li>
+<li>Calculate M(SiO<sub>2</sub>) with M(Si) = 28.1 and M(O) = 16.0 g/mol.</li>
+<li>A classmate writes 2.0 mol for 56.2 mg of Si. Find the error.</li>
+<li>In Si + O<sub>2</sub> → SiO<sub>2</sub>, do 28.1 g of Si react with 28.1 g of O<sub>2</sub>?</li></ol>`,
+`<li>n = 56.2/28.1 = 2.00 mol</li><li>28.1 + 2 × 16.0 = 60.1 g/mol</li>
+<li>56.2 mg = 0.0562 g, so n = 0.00200 mol. The mg was not converted to g</li><li>No. 1 mol Si (28.1 g) reacts with 1 mol O<sub>2</sub> (32.0 g): coefficients are mole ratios</li>`),
+draw:()=>reveal("k1btn","k1ans")});
+
+/* ---------- Part 2 ---------- */
+S.push({kicker:"Part 2 · Worked example", title:"Oxidize 562 mg of Si completely", html:()=>{const o = LC().ox562; return `<div class="body"><div class="col w55"><div class="panel"><div class="math" style="font-size:20px;line-height:1.75">
+m(Si) = 562 mg = 0.562 g<br>n(Si) = 0.562 / 28.1 = <b>${o.n_Si.toFixed(4)} mol</b><br>n(SiO<sub>2</sub>) = n(O<sub>2</sub>) = ${o.n_Si.toFixed(4)} mol (ratio 1 : 1 : 1)<br>
+m(SiO<sub>2</sub>) = ${o.n_Si.toFixed(4)} × 60.1 = <b>${o.m_SiO2.toFixed(3)} g</b><br>m(O<sub>2</sub>) = ${o.n_Si.toFixed(4)} × 32.0 = <b>${o.m_O2.toFixed(3)} g</b><br>Check: 0.562 + ${o.m_O2.toFixed(3)} = ${(o.m_Si + o.m_O2).toFixed(3)} g ✓</div></div></div>
+<div class="col"><ul class="b xs"><li>Units at every step: mg → g, then g ÷ g/mol = mol</li>
+<li>The mole ratio from the equation carries you from Si to SiO<sub>2</sub> and O<sub>2</sub></li>
+<li>The mass check closes: mass of reactants = mass of product</li>
+<li>Excess O<sub>2</sub> and complete conversion are assumptions of the exercise</li></ul></div></div>`},
+py:{title:"Complete oxidation of 562 mg of Si", sub:"stoich_lab.oxidation(0.562)", code:
+`from stoich_lab import oxidation, r6
+o = oxidation(0.562)
+for k in ("n_Si", "M_SiO2", "m_SiO2", "m_O2", "balance"):
+    print(k, r6(o[k]))`,
+out:()=>["n_Si","M_SiO2","m_SiO2","m_O2","balance"].map(k=>`${k} ${py6(LC().ox562[k])}`).join("\n")}});
+
+S.push({kicker:"Part 2 · A common mistake", title:"“The product is heavier, so mass was created”", html:()=>`<div class="body"><div class="col w55"><div class="act" style="border-color:${C.rust};background:#fbf0ec"><span class="tag" style="background:${C.rust}">THE CLAIM</span>
+<div style="font-size:22px;line-height:1.45">“0.562 g of Si became 1.202 g of SiO<sub>2</sub>. That breaks conservation of mass.”</div></div>
+<div class="panel" style="margin-top:16px"><b style="color:${C.teal};font-size:19px">The correction</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
+The O atoms came from the gas around the wafer: 0.640 g of O<sub>2</sub>. Count everything that enters: 0.562 + 0.640 = 1.202 g. Mass is conserved; it was the accounting that left something out.</div></div></div>
+<div class="col"><ul class="b sm"><li>A wafer gains mass when it is oxidized</li><li>For 100 nm of oxide on 1 cm², the gain is about ${(LC().layer100.gain_g * 1e6).toFixed(1)} µg: measurable on a microbalance</li>
+<li>Always ask: what crossed the boundary of my system?</li></ul></div></div>`});
+
+S.push({kicker:"Part 2 · From the unit cell to the wafer", title:"The density of Si, from Class 2's unit cell", html:()=>{const d = LC().si_density; return `<div class="body"><div class="col w55"><div class="panel"><div class="math" style="font-size:20px;line-height:1.75">
+a = 0.5431 nm = 5.431 × 10<sup>−8</sup> cm<br>atoms per cm³ = 8 / a³ = <b>${sci(d.atoms_per_cm3)}</b><br>ρ = (atoms per cm³) × M / N<sub>A</sub><br>= ${sci(d.atoms_per_cm3)} × 28.0855 / 6.022 × 10<sup>23</sup> = <b>${d.rho.toFixed(3)} g/cm³</b></div></div></div>
+<div class="col"><ul class="b sm"><li>The measured density of Si is 2.329 g/cm³: the unit-cell count predicts it to four figures</li>
+<li>So the atom picture of Class 2 and the mole of today agree</li>
+<li>A 300 mm wafer, 0.775 mm thick, holds about 128 g of Si: about 2.7 × 10<sup>24</sup> atoms</li></ul></div></div>`},
+py:{title:"Density of Si from its unit cell", sub:"stoich_lab.si_density_from_cell()", code:
+`from stoich_lab import si_density_from_cell
+d = si_density_from_cell()
+print("atoms per cm3", d["atoms_per_cm3"])
+print("density", round(d["rho"], 4), "g/cm3")`,
+out:()=>`atoms per cm3 ${pyr(LC().si_density.atoms_per_cm3)}\ndensity ${py6(Math.round(LC().si_density.rho * 1e4) / 1e4)} g/cm3`},
+notes:"Wafer: pi × 15² × 0.0775 cm³ = 54.8 cm³ × 2.329 = 127.6 g; /28.0855 × NA = 2.74e24."});
+
+function oxSVG(t){const w = 560, h = 340, k = LC().ratio, s0 = 160, sc = 0.5; let s = svgEl(w, h);
+ const below = k * t * sc, above = (1 - k) * t * sc;
+ s += `<rect x="80" y="${s0 + below}" width="380" height="${h - 50 - s0 - below}" fill="${C.teal}" opacity=".85"/>`;
+ s += `<rect x="80" y="${s0 - above}" width="380" height="${above + below}" fill="${C.amber}" opacity=".9"/>`;
+ s += `<line x1="60" x2="480" y1="${s0}" y2="${s0}" stroke="${C.graphite}" stroke-width="2" stroke-dasharray="7 5"/><text x="486" y="${s0 + 5}" font-size="13" fill="${C.graphite}">original</text><text x="486" y="${s0 + 20}" font-size="13" fill="${C.graphite}">surface</text>`;
+ s += `<text x="270" y="${h - 62}" font-size="16" fill="#fff" text-anchor="middle">Si wafer</text>`;
+ if (above > 22) s += `<text x="270" y="${s0 - above / 2 + 5}" font-size="15" fill="${C.ink}" text-anchor="middle">SiO₂ above the old surface</text>`;
+ if (below > 22) s += `<text x="270" y="${s0 + below / 2 + 5}" font-size="15" fill="${C.ink}" text-anchor="middle">SiO₂ that replaced Si</text>`;
+ s += `<text x="20" y="${h - 26}" font-size="13" fill="${C.slate}">Cross-section; vertical scale exaggerated.</text><text x="20" y="${h - 9}" font-size="13" fill="${C.slate}">${(100 * k).toFixed(1)}% of the oxide thickness lies below the original surface.</text>`;
+ return s + "</svg>"}
+S.push({kicker:"Part 2 · Demo", title:"Growing an oxide uses up silicon", html:()=>`<div class="body"><div class="col w55"><div class="ctrl">Oxide thickness <input type="range" id="tox" min="0" max="500" step="10" value="100"><b id="toxv"></b></div>
+<div class="panel grow"><div class="chart" id="oxch"></div></div></div>
+<div class="col"><div class="panel"><div class="math" style="font-size:19px;line-height:1.6">t<sub>Si</sub> / t<sub>ox</sub> = (ρ<sub>ox</sub>/M<sub>ox</sub>) / (ρ<sub>Si</sub>/M<sub>Si</sub>)<br>= (2.20/60.08) / (2.329/28.09) = <b>${LC().ratio.toFixed(3)}</b></div></div>
+<div class="kpi"><div>Si consumed, nm<b class="a" id="tsi"></b></div><div>Mass gain on 1 cm², µg<b id="tgain"></b></div></div>
+<ul class="b xs" style="margin-top:10px"><li>Each SiO<sub>2</sub> unit takes one Si atom from the wafer</li><li>The oxide has fewer Si atoms per cm³ than Si, so it is thicker than the Si it used</li><li>Process engineers use the factor 0.44 every day</li></ul></div></div>`,
+draw:()=>{const sl = document.getElementById("tox"), k = LC().ratio, Mox = LC().molar[1].M, MSi = LC().M.Si;
+ const go = () => {const t = +sl.value, m_ox = t * 1e-7 * LC().rho_ox, gain = m_ox - m_ox / Mox * MSi; document.getElementById("toxv").textContent = t + " nm";
+  document.getElementById("tsi").textContent = (k * t).toFixed(1); document.getElementById("tgain").textContent = (gain * 1e6).toFixed(2); document.getElementById("oxch").innerHTML = oxSVG(t)}; sl.oninput = go; go()},
+py:{title:"A 100 nm oxide on 1 cm² of wafer", sub:"stoich_lab.oxide_layer(100)", code:
+`from stoich_lab import oxide_layer, r6
+q = oxide_layer(100.0)
+print("Si consumed, nm", r6(q["t_si_nm"]))
+print("SiO2 mass, ug", r6(q["m_SiO2_g"] * 1e6))
+print("mass gain, ug", r6(q["gain_g"] * 1e6))`,
+out:()=>{const q = LC().layer100; return `Si consumed, nm ${py6(q.t_si_nm)}\nSiO2 mass, ug ${py6(q.m_SiO2_g * 1e6)}\nmass gain, ug ${py6(q.gain_g * 1e6)}`}},
+notes:"The factor 0.44 is in every microfabrication text. Here students derive it from Classes 1 to 3."});
+
+S.push({kicker:"Part 2 · What the model cannot tell you", title:"Stoichiometry gives amounts, not times", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Stoichiometry answers "how much": how much Si is used, how much SiO<sub>2</sub> forms, how much O<sub>2</sub> is needed</li>
+<li>It does not answer "how fast": the same 100 nm can take minutes or hours, depending on temperature and whether the oxidant is O<sub>2</sub> or H<sub>2</sub>O</li>
+<li>Growth slows as the oxide thickens, because O must diffuse through the oxide already there</li>
+<li>Rates need kinetics and transport. Class 12 meets them in electrochemistry</li></ul></div>
+<div class="col"><div class="panel"><b style="color:${C.teal};font-size:19px">Assumptions in today's numbers</b><ul class="b xs" style="margin-top:8px"><li>Complete conversion; excess O<sub>2</sub></li><li>Pure Si; oxide of density 2.20 g/cm³</li><li>Flat wafer; uniform oxide</li></ul></div></div></div>`});
+
+S.push({kicker:"Check 2 · 5 minutes", title:"Check 2: stoichiometry on a wafer", html:()=>CHECK(2,`${OL}
+<li>0.281 g of Si is oxidized completely. Find the mass of SiO<sub>2</sub>. Use 28.1 and 60.1 g/mol.</li>
+<li>Why does the wafer get heavier when it is oxidized?</li>
+<li>About how many nm of Si are consumed when 200 nm of SiO<sub>2</sub> grows?</li>
+<li>Can these numbers tell you how long the oxidation takes? Why?</li></ol>`,
+`<li>n = 0.281/28.1 = 0.0100 mol; m = 0.0100 × 60.1 = ${LC().ox281.m_SiO2.toFixed(3)} g</li><li>O atoms from the gas join the wafer; the mass of O<sub>2</sub> used is added</li>
+<li>0.44 × 200 ≈ ${(LC().ratio * 200).toFixed(0)} nm</li><li>No. Stoichiometry fixes amounts; time needs kinetics and diffusion data</li>`),
+draw:()=>reveal("k2btn","k2ans")});
+
+/* ---------- closing ---------- */
+S.push({kicker:"Where this goes next", title:"The mole is the unit of every calculation ahead", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
+<tr><th>Class</th><th>What today gives it</th></tr>
+<tr><td>4 · Solutions</td><td>Concentration in mol/L: moles per volume of a CuSO<sub>4</sub> bath</td></tr>
+<tr><td>5 · pH</td><td>[H<sup>+</sup>] in mol/L, on a log scale</td></tr>
+<tr><td>7 · Redox</td><td>Moles of electrons: Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu</td></tr>
+<tr><td>10 · Faraday</td><td>Moles of electrons from a current, then moles and mass of Cu plated</td></tr></table></div></div>`});
+
+S.push({kicker:"Lab 3 · 30 minutes", title:"The oxide on a silicon wafer", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Predict whether an oxidized wafer gets heavier</li>
+<li>Calculate M(SiO<sub>2</sub>), moles of Si, and the masses of SiO<sub>2</sub> and O<sub>2</sub> for 562 mg of Si</li>
+<li>Count the atoms in 0.0200 mol</li><li>Calculate the density of Si from its unit cell</li>
+<li>Change the oxide thickness and find the Si consumed</li></ul></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="45mm" height="45mm" version="1.1" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM10,2H11V3H10zM11,2H12V3H11zM13,2H14V3H13zM14,2H15V3H14zM16,2H17V3H16zM18,2H19V3H18zM20,2H21V3H20zM21,2H22V3H21zM22,2H23V3H22zM24,2H25V3H24zM25,2H26V3H25zM26,2H27V3H26zM27,2H28V3H27zM30,2H31V3H30zM31,2H32V3H31zM33,2H34V3H33zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM39,2H40V3H39zM40,2H41V3H40zM41,2H42V3H41zM42,2H43V3H42zM2,3H3V4H2zM8,3H9V4H8zM10,3H11V4H10zM12,3H13V4H12zM13,3H14V4H13zM15,3H16V4H15zM17,3H18V4H17zM19,3H20V4H19zM22,3H23V4H22zM25,3H26V4H25zM27,3H28V4H27zM31,3H32V4H31zM32,3H33V4H32zM34,3H35V4H34zM36,3H37V4H36zM42,3H43V4H42zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM12,4H13V5H12zM15,4H16V5H15zM17,4H18V5H17zM18,4H19V5H18zM20,4H21V5H20zM21,4H22V5H21zM22,4H23V5H22zM24,4H25V5H24zM27,4H28V5H27zM28,4H29V5H28zM29,4H30V5H29zM30,4H31V5H30zM32,4H33V5H32zM33,4H34V5H33zM36,4H37V5H36zM38,4H39V5H38zM39,4H40V5H39zM40,4H41V5H40zM42,4H43V5H42zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM11,5H12V6H11zM15,5H16V6H15zM17,5H18V6H17zM18,5H19V6H18zM20,5H21V6H20zM21,5H22V6H21zM24,5H25V6H24zM26,5H27V6H26zM27,5H28V6H27zM28,5H29V6H28zM29,5H30V6H29zM30,5H31V6H30zM31,5H32V6H31zM34,5H35V6H34zM36,5H37V6H36zM38,5H39V6H38zM39,5H40V6H39zM40,5H41V6H40zM42,5H43V6H42zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM11,6H12V7H11zM13,6H14V7H13zM15,6H16V7H15zM17,6H18V7H17zM19,6H20V7H19zM20,6H21V7H20zM21,6H22V7H21zM24,6H25V7H24zM26,6H27V7H26zM28,6H29V7H28zM29,6H30V7H29zM31,6H32V7H31zM33,6H34V7H33zM34,6H35V7H34zM36,6H37V7H36zM38,6H39V7H38zM39,6H40V7H39zM40,6H41V7H40zM42,6H43V7H42zM2,7H3V8H2zM8,7H9V8H8zM12,7H13V8H12zM14,7H15V8H14zM16,7H17V8H16zM18,7H19V8H18zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM26,7H27V8H26zM27,7H28V8H27zM28,7H29V8H28zM30,7H31V8H30zM31,7H32V8H31zM33,7H34V8H33zM34,7H35V8H34zM36,7H37V8H36zM42,7H43V8H42zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM34,8H35V9H34zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM39,8H40V9H39zM40,8H41V9H40zM41,8H42V9H41zM42,8H43V9H42zM10,9H11V10H10zM12,9H13V10H12zM14,9H15V10H14zM15,9H16V10H15zM16,9H17V10H16zM17,9H18V10H17zM18,9H19V10H18zM19,9H20V10H19zM21,9H22V10H21zM24,9H25V10H24zM25,9H26V10H25zM26,9H27V10H26zM28,9H29V10H28zM29,9H30V10H29zM31,9H32V10H31zM32,9H33V10H32zM2,10H3V11H2zM4,10H5V11H4zM5,10H6V11H5zM7,10H8V11H7zM8,10H9V11H8zM9,10H10V11H9zM12,10H13V11H12zM13,10H14V11H13zM14,10H15V11H14zM15,10H16V11H15zM16,10H17V11H16zM17,10H18V11H17zM18,10H19V11H18zM19,10H20V11H19zM23,10H24V11H23zM28,10H29V11H28zM31,10H32V11H31zM32,10H33V11H32zM34,10H35V11H34zM36,10H37V11H36zM39,10H40V11H39zM41,10H42V11H41zM42,10H43V11H42zM2,11H3V12H2zM3,11H4V12H3zM4,11H5V12H4zM10,11H11V12H10zM13,11H14V12H13zM15,11H16V12H15zM17,11H18V12H17zM20,11H21V12H20zM21,11H22V12H21zM22,11H23V12H22zM23,11H24V12H23zM25,11H26V12H25zM30,11H31V12H30zM32,11H33V12H32zM33,11H34V12H33zM34,11H35V12H34zM36,11H37V12H36zM38,11H39V12H38zM40,11H41V12H40zM42,11H43V12H42zM3,12H4V13H3zM4,12H5V13H4zM6,12H7V13H6zM7,12H8V13H7zM8,12H9V13H8zM10,12H11V13H10zM11,12H12V13H11zM12,12H13V13H12zM13,12H14V13H13zM14,12H15V13H14zM20,12H21V13H20zM25,12H26V13H25zM28,12H29V13H28zM30,12H31V13H30zM37,12H38V13H37zM40,12H41V13H40zM41,12H42V13H41zM5,13H6V14H5zM6,13H7V14H6zM9,13H10V14H9zM10,13H11V14H10zM12,13H13V14H12zM13,13H14V14H13zM15,13H16V14H15zM16,13H17V14H16zM20,13H21V14H20zM21,13H22V14H21zM22,13H23V14H22zM25,13H26V14H25zM26,13H27V14H26zM27,13H28V14H27zM30,13H31V14H30zM34,13H35V14H34zM35,13H36V14H35zM41,13H42V14H41zM2,14H3V15H2zM3,14H4V15H3zM4,14H5V15H4zM5,14H6V15H5zM6,14H7V15H6zM7,14H8V15H7zM8,14H9V15H8zM9,14H10V15H9zM10,14H11V15H10zM12,14H13V15H12zM14,14H15V15H14zM15,14H16V15H15zM17,14H18V15H17zM18,14H19V15H18zM19,14H20V15H19zM20,14H21V15H20zM24,14H25V15H24zM25,14H26V15H25zM26,14H27V15H26zM27,14H28V15H27zM29,14H30V15H29zM31,14H32V15H31zM32,14H33V15H32zM33,14H34V15H33zM37,14H38V15H37zM39,14H40V15H39zM40,14H41V15H40zM41,14H42V15H41zM6,15H7V16H6zM7,15H8V16H7zM9,15H10V16H9zM10,15H11V16H10zM11,15H12V16H11zM12,15H13V16H12zM13,15H14V16H13zM17,15H18V16H17zM19,15H20V16H19zM26,15H27V16H26zM29,15H30V16H29zM31,15H32V16H31zM32,15H33V16H32zM33,15H34V16H33zM36,15H37V16H36zM39,15H40V16H39zM41,15H42V16H41zM42,15H43V16H42zM2,16H3V17H2zM3,16H4V17H3zM6,16H7V17H6zM7,16H8V17H7zM8,16H9V17H8zM11,16H12V17H11zM12,16H13V17H12zM13,16H14V17H13zM15,16H16V17H15zM16,16H17V17H16zM20,16H21V17H20zM23,16H24V17H23zM24,16H25V17H24zM27,16H28V17H27zM31,16H32V17H31zM33,16H34V17H33zM34,16H35V17H34zM36,16H37V17H36zM37,16H38V17H37zM40,16H41V17H40zM42,16H43V17H42zM4,17H5V18H4zM5,17H6V18H5zM6,17H7V18H6zM9,17H10V18H9zM11,17H12V18H11zM13,17H14V18H13zM16,17H17V18H16zM17,17H18V18H17zM21,17H22V18H21zM22,17H23V18H22zM23,17H24V18H23zM24,17H25V18H24zM25,17H26V18H25zM28,17H29V18H28zM29,17H30V18H29zM32,17H33V18H32zM33,17H34V18H33zM34,17H35V18H34zM36,17H37V18H36zM37,17H38V18H37zM38,17H39V18H38zM39,17H40V18H39zM2,18H3V19H2zM3,18H4V19H3zM4,18H5V19H4zM5,18H6V19H5zM8,18H9V19H8zM10,18H11V19H10zM16,18H17V19H16zM20,18H21V19H20zM21,18H22V19H21zM22,18H23V19H22zM23,18H24V19H23zM26,18H27V19H26zM27,18H28V19H27zM29,18H30V19H29zM30,18H31V19H30zM33,18H34V19H33zM38,18H39V19H38zM4,19H5V20H4zM6,19H7V20H6zM11,19H12V20H11zM12,19H13V20H12zM13,19H14V20H13zM15,19H16V20H15zM16,19H17V20H16zM17,19H18V20H17zM18,19H19V20H18zM19,19H20V20H19zM20,19H21V20H20zM22,19H23V20H22zM24,19H25V20H24zM25,19H26V20H25zM29,19H30V20H29zM32,19H33V20H32zM35,19H36V20H35zM37,19H38V20H37zM39,19H40V20H39zM40,19H41V20H40zM2,20H3V21H2zM3,20H4V21H3zM5,20H6V21H5zM7,20H8V21H7zM8,20H9V21H8zM10,20H11V21H10zM12,20H13V21H12zM13,20H14V21H13zM15,20H16V21H15zM16,20H17V21H16zM18,20H19V21H18zM19,20H20V21H19zM22,20H23V21H22zM23,20H24V21H23zM24,20H25V21H24zM28,20H29V21H28zM29,20H30V21H29zM35,20H36V21H35zM38,20H39V21H38zM41,20H42V21H41zM5,21H6V22H5zM6,21H7V22H6zM13,21H14V22H13zM18,21H19V22H18zM21,21H22V22H21zM26,21H27V22H26zM28,21H29V22H28zM30,21H31V22H30zM31,21H32V22H31zM32,21H33V22H32zM33,21H34V22H33zM34,21H35V22H34zM36,21H37V22H36zM37,21H38V22H37zM40,21H41V22H40zM41,21H42V22H41zM42,21H43V22H42zM4,22H5V23H4zM6,22H7V23H6zM8,22H9V23H8zM9,22H10V23H9zM11,22H12V23H11zM12,22H13V23H12zM15,22H16V23H15zM17,22H18V23H17zM18,22H19V23H18zM20,22H21V23H20zM23,22H24V23H23zM25,22H26V23H25zM28,22H29V23H28zM31,22H32V23H31zM32,22H33V23H32zM33,22H34V23H33zM35,22H36V23H35zM36,22H37V23H36zM38,22H39V23H38zM40,22H41V23H40zM41,22H42V23H41zM4,23H5V24H4zM5,23H6V24H5zM6,23H7V24H6zM13,23H14V24H13zM14,23H15V24H14zM15,23H16V24H15zM17,23H18V24H17zM19,23H20V24H19zM20,23H21V24H20zM21,23H22V24H21zM22,23H23V24H22zM25,23H26V24H25zM27,23H28V24H27zM31,23H32V24H31zM33,23H34V24H33zM36,23H37V24H36zM37,23H38V24H37zM38,23H39V24H38zM39,23H40V24H39zM41,23H42V24H41zM42,23H43V24H42zM2,24H3V25H2zM5,24H6V25H5zM8,24H9V25H8zM15,24H16V25H15zM17,24H18V25H17zM18,24H19V25H18zM20,24H21V25H20zM25,24H26V25H25zM28,24H29V25H28zM32,24H33V25H32zM36,24H37V25H36zM40,24H41V25H40zM41,24H42V25H41zM3,25H4V26H3zM5,25H6V26H5zM6,25H7V26H6zM12,25H13V26H12zM13,25H14V26H13zM14,25H15V26H14zM15,25H16V26H15zM16,25H17V26H16zM17,25H18V26H17zM18,25H19V26H18zM21,25H22V26H21zM26,25H27V26H26zM27,25H28V26H27zM29,25H30V26H29zM30,25H31V26H30zM32,25H33V26H32zM33,25H34V26H33zM34,25H35V26H34zM35,25H36V26H35zM36,25H37V26H36zM38,25H39V26H38zM2,26H3V27H2zM4,26H5V27H4zM5,26H6V27H5zM6,26H7V27H6zM8,26H9V27H8zM9,26H10V27H9zM10,26H11V27H10zM12,26H13V27H12zM14,26H15V27H14zM16,26H17V27H16zM19,26H20V27H19zM21,26H22V27H21zM22,26H23V27H22zM24,26H25V27H24zM26,26H27V27H26zM27,26H28V27H27zM28,26H29V27H28zM29,26H30V27H29zM31,26H32V27H31zM35,26H36V27H35zM37,26H38V27H37zM40,26H41V27H40zM3,27H4V28H3zM4,27H5V28H4zM5,27H6V28H5zM6,27H7V28H6zM9,27H10V28H9zM12,27H13V28H12zM15,27H16V28H15zM16,27H17V28H16zM18,27H19V28H18zM21,27H22V28H21zM24,27H25V28H24zM27,27H28V28H27zM28,27H29V28H28zM29,27H30V28H29zM30,27H31V28H30zM31,27H32V28H31zM33,27H34V28H33zM34,27H35V28H34zM36,27H37V28H36zM37,27H38V28H37zM39,27H40V28H39zM40,27H41V28H40zM41,27H42V28H41zM42,27H43V28H42zM3,28H4V29H3zM7,28H8V29H7zM8,28H9V29H8zM10,28H11V29H10zM11,28H12V29H11zM13,28H14V29H13zM16,28H17V29H16zM19,28H20V29H19zM20,28H21V29H20zM21,28H22V29H21zM23,28H24V29H23zM24,28H25V29H24zM27,28H28V29H27zM30,28H31V29H30zM33,28H34V29H33zM34,28H35V29H34zM38,28H39V29H38zM39,28H40V29H39zM41,28H42V29H41zM42,28H43V29H42zM2,29H3V30H2zM3,29H4V30H3zM4,29H5V30H4zM5,29H6V30H5zM9,29H10V30H9zM12,29H13V30H12zM15,29H16V30H15zM18,29H19V30H18zM23,29H24V30H23zM24,29H25V30H24zM26,29H27V30H26zM28,29H29V30H28zM33,29H34V30H33zM34,29H35V30H34zM35,29H36V30H35zM38,29H39V30H38zM39,29H40V30H39zM3,30H4V31H3zM5,30H6V31H5zM8,30H9V31H8zM10,30H11V31H10zM11,30H12V31H11zM12,30H13V31H12zM13,30H14V31H13zM17,30H18V31H17zM21,30H22V31H21zM22,30H23V31H22zM23,30H24V31H23zM24,30H25V31H24zM25,30H26V31H25zM27,30H28V31H27zM28,30H29V31H28zM30,30H31V31H30zM33,30H34V31H33zM34,30H35V31H34zM35,30H36V31H35zM38,30H39V31H38zM39,30H40V31H39zM41,30H42V31H41zM42,30H43V31H42zM3,31H4V32H3zM5,31H6V32H5zM7,31H8V32H7zM9,31H10V32H9zM10,31H11V32H10zM11,31H12V32H11zM13,31H14V32H13zM16,31H17V32H16zM17,31H18V32H17zM20,31H21V32H20zM21,31H22V32H21zM23,31H24V32H23zM24,31H25V32H24zM25,31H26V32H25zM27,31H28V32H27zM29,31H30V32H29zM32,31H33V32H32zM34,31H35V32H34zM37,31H38V32H37zM39,31H40V32H39zM41,31H42V32H41zM2,32H3V33H2zM6,32H7V33H6zM7,32H8V33H7zM8,32H9V33H8zM9,32H10V33H9zM10,32H11V33H10zM12,32H13V33H12zM14,32H15V33H14zM15,32H16V33H15zM19,32H20V33H19zM20,32H21V33H20zM23,32H24V33H23zM24,32H25V33H24zM26,32H27V33H26zM27,32H28V33H27zM28,32H29V33H28zM29,32H30V33H29zM31,32H32V33H31zM34,32H35V33H34zM35,32H36V33H35zM36,32H37V33H36zM37,32H38V33H37zM39,32H40V33H39zM40,32H41V33H40zM41,32H42V33H41zM12,33H13V34H12zM16,33H17V34H16zM17,33H18V34H17zM19,33H20V34H19zM20,33H21V34H20zM24,33H25V34H24zM28,33H29V34H28zM29,33H30V34H29zM31,33H32V34H31zM32,33H33V34H32zM34,33H35V34H34zM36,33H37V34H36zM38,33H39V34H38zM39,33H40V34H39zM40,33H41V34H40zM42,33H43V34H42zM3,34H4V35H3zM4,34H5V35H4zM6,34H7V35H6zM7,34H8V35H7zM8,34H9V35H8zM10,34H11V35H10zM11,34H12V35H11zM12,34H13V35H12zM15,34H16V35H15zM17,34H18V35H17zM18,34H19V35H18zM19,34H20V35H19zM23,34H24V35H23zM28,34H29V35H28zM30,34H31V35H30zM31,34H32V35H31zM34,34H35V35H34zM35,34H36V35H35zM36,34H37V35H36zM37,34H38V35H37zM38,34H39V35H38zM39,34H40V35H39zM40,34H41V35H40zM42,34H43V35H42zM10,35H11V36H10zM11,35H12V36H11zM14,35H15V36H14zM16,35H17V36H16zM18,35H19V36H18zM20,35H21V36H20zM21,35H22V36H21zM22,35H23V36H22zM25,35H26V36H25zM26,35H27V36H26zM28,35H29V36H28zM30,35H31V36H30zM32,35H33V36H32zM33,35H34V36H33zM34,35H35V36H34zM38,35H39V36H38zM41,35H42V36H41zM42,35H43V36H42zM2,36H3V37H2zM3,36H4V37H3zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM7,36H8V37H7zM8,36H9V37H8zM10,36H11V37H10zM13,36H14V37H13zM14,36H15V37H14zM15,36H16V37H15zM18,36H19V37H18zM19,36H20V37H19zM24,36H25V37H24zM25,36H26V37H25zM28,36H29V37H28zM30,36H31V37H30zM31,36H32V37H31zM32,36H33V37H32zM33,36H34V37H33zM34,36H35V37H34zM36,36H37V37H36zM38,36H39V37H38zM41,36H42V37H41zM2,37H3V38H2zM8,37H9V38H8zM10,37H11V38H10zM13,37H14V38H13zM17,37H18V38H17zM18,37H19V38H18zM20,37H21V38H20zM21,37H22V38H21zM22,37H23V38H22zM26,37H27V38H26zM27,37H28V38H27zM28,37H29V38H28zM33,37H34V38H33zM34,37H35V38H34zM38,37H39V38H38zM39,37H40V38H39zM41,37H42V38H41zM42,37H43V38H42zM2,38H3V39H2zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM8,38H9V39H8zM12,38H13V39H12zM17,38H18V39H17zM18,38H19V39H18zM20,38H21V39H20zM21,38H22V39H21zM24,38H25V39H24zM27,38H28V39H27zM28,38H29V39H28zM30,38H31V39H30zM31,38H32V39H31zM34,38H35V39H34zM35,38H36V39H35zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38zM39,38H40V39H39zM40,38H41V39H40zM41,38H42V39H41zM42,38H43V39H42zM2,39H3V40H2zM4,39H5V40H4zM5,39H6V40H5zM6,39H7V40H6zM8,39H9V40H8zM10,39H11V40H10zM13,39H14V40H13zM15,39H16V40H15zM18,39H19V40H18zM19,39H20V40H19zM20,39H21V40H20zM21,39H22V40H21zM26,39H27V40H26zM28,39H29V40H28zM29,39H30V40H29zM32,39H33V40H32zM33,39H34V40H33zM38,39H39V40H38zM39,39H40V40H39zM42,39H43V40H42zM2,40H3V41H2zM4,40H5V41H4zM5,40H6V41H5zM6,40H7V41H6zM8,40H9V41H8zM10,40H11V41H10zM11,40H12V41H11zM17,40H18V41H17zM20,40H21V41H20zM21,40H22V41H21zM26,40H27V41H26zM27,40H28V41H27zM28,40H29V41H28zM30,40H31V41H30zM31,40H32V41H31zM32,40H33V41H32zM34,40H35V41H34zM37,40H38V41H37zM40,40H41V41H40zM41,40H42V41H41zM42,40H43V41H42zM2,41H3V42H2zM8,41H9V42H8zM12,41H13V42H12zM13,41H14V42H13zM16,41H17V42H16zM18,41H19V42H18zM19,41H20V42H19zM23,41H24V42H23zM25,41H26V42H25zM28,41H29V42H28zM29,41H30V42H29zM34,41H35V42H34zM35,41H36V42H35zM38,41H39V42H38zM39,41H40V42H39zM41,41H42V42H41zM2,42H3V43H2zM3,42H4V43H3zM4,42H5V43H4zM5,42H6V43H5zM6,42H7V43H6zM7,42H8V43H7zM8,42H9V43H8zM10,42H11V43H10zM12,42H13V43H12zM16,42H17V43H16zM17,42H18V43H17zM20,42H21V43H20zM21,42H22V43H21zM22,42H23V43H22zM23,42H24V43H23zM24,42H25V43H24zM26,42H27V43H26zM27,42H28V43H27zM29,42H30V43H29zM30,42H31V43H30zM32,42H33V43H32zM33,42H34V43H33zM34,42H35V43H34zM35,42H36V43H35zM36,42H37V43H36zM41,42H42V43H41z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="lab.html" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the lab page</a></div></div></div>`,
+notes:"Early finishers: how many Si atoms are in one 300 mm wafer, 0.775 mm thick? (about 2.7e24)"});
+
+S.push({kicker:"Summary", title:"What to take from today", html:()=>`<div class="body"><div class="col w45"><table class="t" style="font-size:17px">
+<tr><th>Quantity</th><th class="n">Value</th></tr>
+<tr><td>N<sub>A</sub></td><td class="n">6.022 × 10<sup>23</sup> mol<sup>−1</sup></td></tr>
+<tr><td>M(SiO<sub>2</sub>), exercise values</td><td class="n">60.1 g/mol</td></tr>
+<tr><td>562 mg Si: n, m(SiO<sub>2</sub>), m(O<sub>2</sub>)</td><td class="n">0.0200 mol, 1.202 g, 0.640 g</td></tr>
+<tr><td>Si density from the unit cell</td><td class="n">${LC().si_density.rho.toFixed(3)} g/cm³</td></tr>
+<tr><td>Si consumed per SiO<sub>2</sub> grown</td><td class="n">${LC().ratio.toFixed(2)}</td></tr>
+<tr><td>100 nm oxide on 1 cm²: mass gain</td><td class="n">${(LC().layer100.gain_g * 1e6).toFixed(1)} µg</td></tr></table></div>
+<div class="col"><ul class="b xs"><li>A mole is a count; M in g/mol equals the atomic mass in u</li>
+<li>n = m/M with mass in g; N = n N<sub>A</sub></li><li>Coefficients are mole ratios, not mass ratios</li>
+<li>Mass is conserved when you count everything that enters, including the O<sub>2</sub></li>
+<li>The unit cell predicts the density of Si; densities predict that an oxide uses 0.44 of its thickness in Si</li>
+<li>Stoichiometry gives amounts, not times</li></ul></div></div>`});
+
+S.push({kicker:"Before the next class", title:"Before we meet again", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Finish Lab 3 if you did not finish in class, and upload the answer file to myCourseVille</li>
+<li>Read OpenStax <i>Chemistry 2e</i>, Section 3.1 (Formula mass and the mole concept) and Section 4.3 (Reaction stoichiometry)</li>
+<li>Class 4: solutions, concentration and electrolytes. How much CuSO<sub>4</sub> is in a plating bath, and why it conducts</li></ul></div></div>`});
+
+S.push({kicker:"Exit Ticket and feedback · 5 minutes", title:"Exit Ticket and feedback", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Scan the code and choose <b>Class 3</b></li><li>Exit Ticket: paste the answers that the lab page copies for you</li>
+<li>Feedback: pace, confidence, how far you got in the lab, and what is still unclear</li><li>Studying on your own? Choose "On my own"</li></ul>
+<p class="note">One form for both. Anonymous; no name or student ID.</p></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="41mm" height="41mm" version="1.1" viewBox="0 0 41 41" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM10,2H11V3H10zM11,2H12V3H11zM15,2H16V3H15zM16,2H17V3H16zM18,2H19V3H18zM20,2H21V3H20zM21,2H22V3H21zM22,2H23V3H22zM25,2H26V3H25zM28,2H29V3H28zM32,2H33V3H32zM33,2H34V3H33zM34,2H35V3H34zM35,2H36V3H35zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM2,3H3V4H2zM8,3H9V4H8zM10,3H11V4H10zM12,3H13V4H12zM13,3H14V4H13zM16,3H17V4H16zM18,3H19V4H18zM19,3H20V4H19zM20,3H21V4H20zM22,3H23V4H22zM23,3H24V4H23zM24,3H25V4H24zM25,3H26V4H25zM32,3H33V4H32zM38,3H39V4H38zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM11,4H12V5H11zM12,4H13V5H12zM13,4H14V5H13zM14,4H15V5H14zM16,4H17V5H16zM20,4H21V5H20zM22,4H23V5H22zM24,4H25V5H24zM25,4H26V5H25zM27,4H28V5H27zM28,4H29V5H28zM30,4H31V5H30zM32,4H33V5H32zM34,4H35V5H34zM35,4H36V5H35zM36,4H37V5H36zM38,4H39V5H38zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM11,5H12V6H11zM12,5H13V6H12zM14,5H15V6H14zM15,5H16V6H15zM16,5H17V6H16zM19,5H20V6H19zM20,5H21V6H20zM21,5H22V6H21zM24,5H25V6H24zM26,5H27V6H26zM27,5H28V6H27zM28,5H29V6H28zM29,5H30V6H29zM32,5H33V6H32zM34,5H35V6H34zM35,5H36V6H35zM36,5H37V6H36zM38,5H39V6H38zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM11,6H12V7H11zM17,6H18V7H17zM21,6H22V7H21zM27,6H28V7H27zM29,6H30V7H29zM30,6H31V7H30zM32,6H33V7H32zM34,6H35V7H34zM35,6H36V7H35zM36,6H37V7H36zM38,6H39V7H38zM2,7H3V8H2zM8,7H9V8H8zM11,7H12V8H11zM16,7H17V8H16zM17,7H18V8H17zM18,7H19V8H18zM21,7H22V8H21zM22,7H23V8H22zM24,7H25V8H24zM27,7H28V8H27zM30,7H31V8H30zM32,7H33V8H32zM38,7H39V8H38zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM33,8H34V9H33zM34,8H35V9H34zM35,8H36V9H35zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM10,9H11V10H10zM12,9H13V10H12zM13,9H14V10H13zM15,9H16V10H15zM17,9H18V10H17zM18,9H19V10H18zM19,9H20V10H19zM21,9H22V10H21zM22,9H23V10H22zM24,9H25V10H24zM2,10H3V11H2zM4,10H5V11H4zM5,10H6V11H5zM7,10H8V11H7zM8,10H9V11H8zM9,10H10V11H9zM15,10H16V11H15zM16,10H17V11H16zM17,10H18V11H17zM18,10H19V11H18zM19,10H20V11H19zM20,10H21V11H20zM21,10H22V11H21zM23,10H24V11H23zM26,10H27V11H26zM29,10H30V11H29zM32,10H33V11H32zM35,10H36V11H35zM37,10H38V11H37zM38,10H39V11H38zM3,11H4V12H3zM5,11H6V12H5zM6,11H7V12H6zM7,11H8V12H7zM9,11H10V12H9zM11,11H12V12H11zM15,11H16V12H15zM17,11H18V12H17zM19,11H20V12H19zM21,11H22V12H21zM25,11H26V12H25zM37,11H38V12H37zM2,12H3V13H2zM4,12H5V13H4zM6,12H7V13H6zM8,12H9V13H8zM9,12H10V13H9zM12,12H13V13H12zM16,12H17V13H16zM18,12H19V13H18zM19,12H20V13H19zM20,12H21V13H20zM22,12H23V13H22zM25,12H26V13H25zM28,12H29V13H28zM31,12H32V13H31zM33,12H34V13H33zM35,12H36V13H35zM3,13H4V14H3zM4,13H5V14H4zM7,13H8V14H7zM9,13H10V14H9zM16,13H17V14H16zM17,13H18V14H17zM18,13H19V14H18zM20,13H21V14H20zM21,13H22V14H21zM22,13H23V14H22zM26,13H27V14H26zM27,13H28V14H27zM29,13H30V14H29zM30,13H31V14H30zM31,13H32V14H31zM32,13H33V14H32zM35,13H36V14H35zM36,13H37V14H36zM3,14H4V15H3zM4,14H5V15H4zM5,14H6V15H5zM6,14H7V15H6zM7,14H8V15H7zM8,14H9V15H8zM9,14H10V15H9zM17,14H18V15H17zM18,14H19V15H18zM19,14H20V15H19zM20,14H21V15H20zM22,14H23V15H22zM24,14H25V15H24zM26,14H27V15H26zM27,14H28V15H27zM29,14H30V15H29zM31,14H32V15H31zM32,14H33V15H32zM33,14H34V15H33zM34,14H35V15H34zM35,14H36V15H35zM36,14H37V15H36zM37,14H38V15H37zM38,14H39V15H38zM6,15H7V16H6zM9,15H10V16H9zM10,15H11V16H10zM11,15H12V16H11zM13,15H14V16H13zM16,15H17V16H16zM17,15H18V16H17zM19,15H20V16H19zM20,15H21V16H20zM21,15H22V16H21zM26,15H27V16H26zM27,15H28V16H27zM28,15H29V16H28zM29,15H30V16H29zM30,15H31V16H30zM31,15H32V16H31zM32,15H33V16H32zM33,15H34V16H33zM34,15H35V16H34zM35,15H36V16H35zM37,15H38V16H37zM38,15H39V16H38zM2,16H3V17H2zM3,16H4V17H3zM4,16H5V17H4zM5,16H6V17H5zM7,16H8V17H7zM8,16H9V17H8zM10,16H11V17H10zM12,16H13V17H12zM13,16H14V17H13zM14,16H15V17H14zM18,16H19V17H18zM20,16H21V17H20zM21,16H22V17H21zM23,16H24V17H23zM26,16H27V17H26zM28,16H29V17H28zM30,16H31V17H30zM31,16H32V17H31zM32,16H33V17H32zM34,16H35V17H34zM36,16H37V17H36zM37,16H38V17H37zM2,17H3V18H2zM3,17H4V18H3zM5,17H6V18H5zM6,17H7V18H6zM7,17H8V18H7zM10,17H11V18H10zM15,17H16V18H15zM17,17H18V18H17zM20,17H21V18H20zM21,17H22V18H21zM23,17H24V18H23zM28,17H29V18H28zM29,17H30V18H29zM30,17H31V18H30zM31,17H32V18H31zM33,17H34V18H33zM34,17H35V18H34zM38,17H39V18H38zM2,18H3V19H2zM3,18H4V19H3zM4,18H5V19H4zM6,18H7V19H6zM7,18H8V19H7zM8,18H9V19H8zM9,18H10V19H9zM10,18H11V19H10zM14,18H15V19H14zM15,18H16V19H15zM16,18H17V19H16zM18,18H19V19H18zM20,18H21V19H20zM23,18H24V19H23zM24,18H25V19H24zM25,18H26V19H25zM27,18H28V19H27zM28,18H29V19H28zM30,18H31V19H30zM31,18H32V19H31zM35,18H36V19H35zM36,18H37V19H36zM3,19H4V20H3zM4,19H5V20H4zM5,19H6V20H5zM10,19H11V20H10zM12,19H13V20H12zM15,19H16V20H15zM16,19H17V20H16zM17,19H18V20H17zM18,19H19V20H18zM22,19H23V20H22zM23,19H24V20H23zM25,19H26V20H25zM26,19H27V20H26zM28,19H29V20H28zM29,19H30V20H29zM30,19H31V20H30zM31,19H32V20H31zM32,19H33V20H32zM36,19H37V20H36zM37,19H38V20H37zM38,19H39V20H38zM2,20H3V21H2zM5,20H6V21H5zM7,20H8V21H7zM8,20H9V21H8zM9,20H10V21H9zM11,20H12V21H11zM13,20H14V21H13zM14,20H15V21H14zM16,20H17V21H16zM17,20H18V21H17zM18,20H19V21H18zM19,20H20V21H19zM20,20H21V21H20zM22,20H23V21H22zM24,20H25V21H24zM27,20H28V21H27zM28,20H29V21H28zM29,20H30V21H29zM31,20H32V21H31zM34,20H35V21H34zM37,20H38V21H37zM38,20H39V21H38zM2,21H3V22H2zM5,21H6V22H5zM6,21H7V22H6zM10,21H11V22H10zM11,21H12V22H11zM12,21H13V22H12zM13,21H14V22H13zM14,21H15V22H14zM15,21H16V22H15zM16,21H17V22H16zM18,21H19V22H18zM19,21H20V22H19zM22,21H23V22H22zM24,21H25V22H24zM25,21H26V22H25zM26,21H27V22H26zM28,21H29V22H28zM29,21H30V22H29zM32,21H33V22H32zM33,21H34V22H33zM35,21H36V22H35zM37,21H38V22H37zM3,22H4V23H3zM7,22H8V23H7zM8,22H9V23H8zM9,22H10V23H9zM10,22H11V23H10zM14,22H15V23H14zM16,22H17V23H16zM17,22H18V23H17zM19,22H20V23H19zM22,22H23V23H22zM23,22H24V23H23zM24,22H25V23H24zM25,22H26V23H25zM26,22H27V23H26zM28,22H29V23H28zM31,22H32V23H31zM33,22H34V23H33zM34,22H35V23H34zM38,22H39V23H38zM2,23H3V24H2zM3,23H4V24H3zM4,23H5V24H4zM5,23H6V24H5zM13,23H14V24H13zM15,23H16V24H15zM16,23H17V24H16zM19,23H20V24H19zM21,23H22V24H21zM22,23H23V24H22zM23,23H24V24H23zM25,23H26V24H25zM30,23H31V24H30zM35,23H36V24H35zM37,23H38V24H37zM2,24H3V25H2zM4,24H5V25H4zM5,24H6V25H5zM7,24H8V25H7zM8,24H9V25H8zM10,24H11V25H10zM11,24H12V25H11zM12,24H13V25H12zM14,24H15V25H14zM16,24H17V25H16zM19,24H20V25H19zM20,24H21V25H20zM24,24H25V25H24zM25,24H26V25H25zM27,24H28V25H27zM28,24H29V25H28zM30,24H31V25H30zM31,24H32V25H31zM33,24H34V25H33zM2,25H3V26H2zM4,25H5V26H4zM5,25H6V26H5zM9,25H10V26H9zM15,25H16V26H15zM16,25H17V26H16zM17,25H18V26H17zM18,25H19V26H18zM20,25H21V26H20zM21,25H22V26H21zM22,25H23V26H22zM24,25H25V26H24zM27,25H28V26H27zM30,25H31V26H30zM32,25H33V26H32zM34,25H35V26H34zM35,25H36V26H35zM36,25H37V26H36zM37,25H38V26H37zM38,25H39V26H38zM2,26H3V27H2zM5,26H6V27H5zM7,26H8V27H7zM8,26H9V27H8zM9,26H10V27H9zM10,26H11V27H10zM13,26H14V27H13zM15,26H16V27H15zM17,26H18V27H17zM18,26H19V27H18zM19,26H20V27H19zM25,26H26V27H25zM26,26H27V27H26zM27,26H28V27H27zM29,26H30V27H29zM30,26H31V27H30zM32,26H33V27H32zM34,26H35V27H34zM36,26H37V27H36zM37,26H38V27H37zM5,27H6V28H5zM7,27H8V28H7zM9,27H10V28H9zM12,27H13V28H12zM16,27H17V28H16zM17,27H18V28H17zM19,27H20V28H19zM21,27H22V28H21zM23,27H24V28H23zM29,27H30V28H29zM32,27H33V28H32zM33,27H34V28H33zM34,27H35V28H34zM37,27H38V28H37zM38,27H39V28H38zM3,28H4V29H3zM4,28H5V29H4zM6,28H7V29H6zM7,28H8V29H7zM8,28H9V29H8zM9,28H10V29H9zM14,28H15V29H14zM21,28H22V29H21zM23,28H24V29H23zM26,28H27V29H26zM28,28H29V29H28zM30,28H31V29H30zM31,28H32V29H31zM32,28H33V29H32zM35,28H36V29H35zM37,28H38V29H37zM2,29H3V30H2zM4,29H5V30H4zM6,29H7V30H6zM11,29H12V30H11zM12,29H13V30H12zM13,29H14V30H13zM15,29H16V30H15zM23,29H24V30H23zM24,29H25V30H24zM25,29H26V30H25zM28,29H29V30H28zM29,29H30V30H29zM31,29H32V30H31zM34,29H35V30H34zM38,29H39V30H38zM6,30H7V31H6zM8,30H9V31H8zM10,30H11V31H10zM13,30H14V31H13zM15,30H16V31H15zM18,30H19V31H18zM21,30H22V31H21zM23,30H24V31H23zM24,30H25V31H24zM25,30H26V31H25zM27,30H28V31H27zM29,30H30V31H29zM30,30H31V31H30zM31,30H32V31H31zM32,30H33V31H32zM33,30H34V31H33zM34,30H35V31H34zM36,30H37V31H36zM10,31H11V32H10zM12,31H13V32H12zM14,31H15V32H14zM17,31H18V32H17zM18,31H19V32H18zM19,31H20V32H19zM20,31H21V32H20zM22,31H23V32H22zM23,31H24V32H23zM24,31H25V32H24zM25,31H26V32H25zM26,31H27V32H26zM27,31H28V32H27zM30,31H31V32H30zM34,31H35V32H34zM36,31H37V32H36zM38,31H39V32H38zM2,32H3V33H2zM3,32H4V33H3zM4,32H5V33H4zM5,32H6V33H5zM6,32H7V33H6zM7,32H8V33H7zM8,32H9V33H8zM10,32H11V33H10zM11,32H12V33H11zM12,32H13V33H12zM14,32H15V33H14zM15,32H16V33H15zM16,32H17V33H16zM17,32H18V33H17zM22,32H23V33H22zM24,32H25V33H24zM26,32H27V33H26zM30,32H31V33H30zM32,32H33V33H32zM34,32H35V33H34zM36,32H37V33H36zM38,32H39V33H38zM2,33H3V34H2zM8,33H9V34H8zM10,33H11V34H10zM13,33H14V34H13zM14,33H15V34H14zM15,33H16V34H15zM17,33H18V34H17zM19,33H20V34H19zM21,33H22V34H21zM24,33H25V34H24zM25,33H26V34H25zM26,33H27V34H26zM28,33H29V34H28zM29,33H30V34H29zM30,33H31V34H30zM34,33H35V34H34zM2,34H3V35H2zM4,34H5V35H4zM5,34H6V35H5zM6,34H7V35H6zM8,34H9V35H8zM11,34H12V35H11zM12,34H13V35H12zM13,34H14V35H13zM15,34H16V35H15zM19,34H20V35H19zM22,34H23V35H22zM23,34H24V35H23zM26,34H27V35H26zM30,34H31V35H30zM31,34H32V35H31zM32,34H33V35H32zM33,34H34V35H33zM34,34H35V35H34zM35,34H36V35H35zM38,34H39V35H38zM2,35H3V36H2zM4,35H5V36H4zM5,35H6V36H5zM6,35H7V36H6zM8,35H9V36H8zM10,35H11V36H10zM11,35H12V36H11zM13,35H14V36H13zM16,35H17V36H16zM18,35H19V36H18zM19,35H20V36H19zM21,35H22V36H21zM22,35H23V36H22zM23,35H24V36H23zM25,35H26V36H25zM26,35H27V36H26zM27,35H28V36H27zM28,35H29V36H28zM29,35H30V36H29zM30,35H31V36H30zM31,35H32V36H31zM32,35H33V36H32zM34,35H35V36H34zM35,35H36V36H35zM36,35H37V36H36zM37,35H38V36H37zM38,35H39V36H38zM2,36H3V37H2zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM8,36H9V37H8zM10,36H11V37H10zM11,36H12V37H11zM13,36H14V37H13zM14,36H15V37H14zM15,36H16V37H15zM18,36H19V37H18zM19,36H20V37H19zM23,36H24V37H23zM25,36H26V37H25zM28,36H29V37H28zM32,36H33V37H32zM34,36H35V37H34zM2,37H3V38H2zM8,37H9V38H8zM11,37H12V38H11zM12,37H13V38H12zM14,37H15V38H14zM15,37H16V38H15zM16,37H17V38H16zM17,37H18V38H17zM21,37H22V38H21zM22,37H23V38H22zM25,37H26V38H25zM27,37H28V38H27zM28,37H29V38H28zM29,37H30V38H29zM33,37H34V38H33zM34,37H35V38H34zM35,37H36V38H35zM36,37H37V38H36zM2,38H3V39H2zM3,38H4V39H3zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM7,38H8V39H7zM8,38H9V39H8zM10,38H11V39H10zM12,38H13V39H12zM13,38H14V39H13zM15,38H16V39H15zM16,38H17V39H16zM18,38H19V39H18zM19,38H20V39H19zM20,38H21V39H20zM24,38H25V39H24zM27,38H28V39H27zM28,38H29V39H28zM29,38H30V39H29zM31,38H32V39H31zM32,38H33V39H32zM34,38H35V39H34zM35,38H36V39H35zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=3" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the Exit Ticket</a></div></div></div>`,
+notes:"Leave this slide on screen for the last five minutes."});
+
+/* ---------- deck engine ---------- */
+const N=S.length; let cur=0;
+function build(){const host=document.getElementById("slides");host.innerHTML="";
+ S.forEach((s,i)=>{const d=document.createElement("section");d.className="slide"+(s.cls?" "+s.cls:"");d.id="s"+(i+1);
+  d.innerHTML=(s.kicker&&!s.cls?`<p class="kicker">${s.kicker}</p>`:"")+(s.title?`<h1>${s.title}</h1>`:"")+s.html()+(s.py?`<div class="dhint">D · Python</div>`:"")+`<footer><span>${foot}</span><span>${i+1} / ${N}</span></footer>`;host.appendChild(d)})}
+function drawAll(){S.forEach(s=>{if(s.draw)try{s.draw()}catch(e){console.error(e)}})}
+function show(i){cur=Math.max(0,Math.min(N-1,i));document.querySelectorAll(".slide").forEach((el,k)=>el.classList.toggle("on",k===cur));
+ history.replaceState(null,"",location.search+"#"+(cur+1));fillDrawer();if(window.onSlideChange)onSlideChange(cur);const n=document.getElementById("notes");n.textContent=S[cur].notes||"No notes for this slide."}
+let CAP_ON=false;   // set by the narration player; reserves a caption band under the slide
+function fit(){const W=innerWidth,H=innerHeight,vp=document.getElementById("viewport"),dock=document.getElementById("dock"),cap=document.getElementById("cap");
+ const hasDock=dock.style.display==="flex",barH=hasDock?document.getElementById("nbar").offsetHeight:0;
+ let k=Math.min(W/1280,H/720)*0.98,capH=0,fs=0,dockH=0;
+ for(let it=0;it<3;it++){if(hasDock&&CAP_ON){const lines=k<0.6?4:2;fs=Math.max(12,Math.min(22,24*k));capH=Math.ceil(lines*fs*1.45)+4}else capH=0;
+  dockH=hasDock?capH+barH+(capH?6:0)+14:0;k=Math.min(W/1280,Math.max(120,H-dockH)/720)*0.98}
+ const h=720*k,pad=10,top=Math.max(0,(H-h-dockH)/2);
+ vp.style.top=(top-pad)+"px";vp.style.bottom="auto";vp.style.height=(h+2*pad)+"px";
+ document.getElementById("stage").style.transform=`scale(${k})`;
+ if(hasDock){dock.style.top=(top+h+6)+"px";cap.style.display=CAP_ON?"block":"none";cap.style.width=Math.min(1280*k,W-16)+"px";cap.style.height=capH+"px";cap.dataset.fs=fs;if(window.capRefit)capRefit()}}
+function fillDrawer(){const p=S[cur].py,dr=document.getElementById("drawer");
+ if(!p){document.getElementById("dTitle").textContent="No Python on this slide";document.getElementById("dSub").textContent="Slides with a 'D · Python' tag have code and output.";document.getElementById("dCode").value="";document.getElementById("dOut").textContent="";return}
+ document.getElementById("dTitle").textContent=p.title;document.getElementById("dSub").textContent=p.sub||"";document.getElementById("dCode").value=p.code;
+ try{document.getElementById("dOut").textContent=p.out()}catch(e){document.getElementById("dOut").textContent=String(e)}
+ const m=document.getElementById("dMode");m.className="pill "+(MODE==="live"?"live":"rec");m.textContent=MODE==="live"?"LIVE RUN":"RECORDED RUN"}
+document.addEventListener("keydown",e=>{if(["INPUT","TEXTAREA"].includes(e.target.tagName)){if(e.key==="Escape")e.target.blur();return}const k=e.key;
+ if(["ArrowRight","PageDown"," "].includes(k)){e.preventDefault();show(cur+1)}else if(["ArrowLeft","PageUp"].includes(k)){e.preventDefault();show(cur-1)}
+ else if(k==="Home")show(0);else if(k==="End")show(N-1);else if(k==="d"||k==="D")document.getElementById("drawer").classList.toggle("open");
+ else if(k==="f"||k==="F"){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+ else if(k==="p"||k==="P"){if(window.narrToggle)narrToggle()}
+ else if(k==="c"||k==="C"){if(window.ccCycle)ccCycle()}
+ else if(k==="n"||k==="N"){const n=document.getElementById("notes");n.style.display=n.style.display==="block"?"none":"block"}});
+document.getElementById("stage").addEventListener("click",e=>{if(e.target.closest("button,input,select,#drawer,a,#startov"))return;const r=e.currentTarget.getBoundingClientRect();(e.clientX-r.left)>r.width*0.5?show(cur+1):show(cur-1)});
+addEventListener("resize",fit);
+
+/* ---------- live Python (Pyodide) ---------- */
+let py=null;
+async function ensurePy(msg){if(py)return py;msg.textContent="Loading Python in the browser (first time about 5–10 s) ...";
+ if(!window.loadPyodide){await new Promise((ok,bad)=>{const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js";s.onload=ok;s.onerror=()=>bad(new Error("could not load Pyodide"));document.head.appendChild(s)})}
+ const p=await loadPyodide();await p.loadPackage(["numpy","scipy"]);
+ const src=LAB_SRC||await (await fetch(LAB_FILE)).text();p.FS.writeFile("stoich_lab.py",src);
+ await p.runPythonAsync('import sys\nsys.path.insert(0, ".")\nfrom stoich_lab import *');py=p;return p}
+async function runCode(){const msg=document.getElementById("liveMsg"),out=document.getElementById("dOut"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Running ...";const buf=[];p.setStdout({batched:s=>buf.push(s)});p.setStderr({batched:s=>buf.push(s)});
+  try{await p.runPythonAsync(document.getElementById("dCode").value)}catch(e){buf.push(String(e.message||e).split("\n").slice(-4).join("\n"))}
+  out.textContent=buf.join("\n")||"(no output)";const m=document.getElementById("dMode");m.className="pill live";m.textContent="LIVE OUTPUT";
+  msg.textContent=`Ran in ${((performance.now()-t0)/1000).toFixed(1)} s in the browser`}
+ catch(e){msg.textContent="Python could not start: "+e.message+". The recorded output is still available."}}
+async function runLive(){const msg=document.getElementById("liveMsg"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Solving every model ...";
+  const out=await p.runPythonAsync('import importlib, json\nimport stoich_lab as lab\nimportlib.reload(lab)\njson.dumps(lab.classroom_results())');
+  R=JSON.parse(out);MODE="live";drawAll();fillDrawer();msg.textContent=`All slides now show a live run (${((performance.now()-t0)/1000).toFixed(1)} s, SciPy ${R.meta.scipy})`}
+ catch(e){msg.textContent="Live run failed: "+e.message+". The recorded run is still shown."}}
+document.getElementById("runCode").onclick=runCode;
+document.getElementById("runLive").onclick=runLive;
+document.getElementById("useRec").onclick=()=>{R=RECORDED;MODE="recorded";drawAll();fillDrawer();document.getElementById("liveMsg").textContent="Showing the recorded run."};
+
+/* ---------- narration and captions ---------- */
+const NARR = {
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 717.2,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 28.248,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.563,
+     "en": "Welcome to Class 3: moles, units and stoichiometry."
+    },
+    {
+     "s": 4.563,
+     "e": 11.237,
+     "en": "In Classes 1 and 2 we counted atoms one at a time. Today we count them by weighing."
+    },
+    {
+     "s": 11.237,
+     "e": 19.079,
+     "en": "We will go from a mass of silicon to a number of atoms, and from a balanced equation to the silicon dioxide grown on a wafer."
+    },
+    {
+     "s": 19.079,
+     "e": 28.184,
+     "en": "If you are studying on your own, the narration takes about twelve minutes. Stop at the activity and at each check, then do Lab 3."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 30.624,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.026,
+     "en": "A five minute activity reviews Class 2."
+    },
+    {
+     "s": 6.026,
+     "e": 13.132,
+     "en": "Part one introduces the mole, molar mass, and balanced equations. It ends with Check 1."
+    },
+    {
+     "s": 13.132,
+     "e": 25.816,
+     "en": "Part two puts stoichiometry to work on a wafer: the oxidation of silicon, conservation of mass, the density of silicon, and how much silicon an oxide uses up. It ends with Check 2."
+    },
+    {
+     "s": 25.816,
+     "e": 30.553,
+     "en": "Then you do Lab 3 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 26.832,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.395,
+     "en": "Activity 1. Answer four questions about Class 2 without notes, then compare with a partner."
+    },
+    {
+     "s": 7.395,
+     "e": 21.974,
+     "en": "Which electrons carry current in copper? What kind of bond is silicon oxygen? How many atoms belong to a silicon unit cell? And what happens to the resistance of a wire made twice as long?"
+    },
+    {
+     "s": 21.974,
+     "e": 26.776,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 30.648,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.353,
+     "en": "By the end of today you can do six things."
+    },
+    {
+     "s": 3.353,
+     "e": 8.066,
+     "en": "Explain the mole as a count of particles, and convert moles to atoms."
+    },
+    {
+     "s": 8.066,
+     "e": 13.447,
+     "en": "Calculate a molar mass from a formula, and convert mass to moles with units."
+    },
+    {
+     "s": 13.447,
+     "e": 17.882,
+     "en": "Read the coefficients of a balanced equation as mole ratios."
+    },
+    {
+     "s": 17.882,
+     "e": 23.605,
+     "en": "Calculate the masses in the oxidation of silicon, and explain why the mass rises."
+    },
+    {
+     "s": 23.605,
+     "e": 30.592,
+     "en": "Calculate the density of silicon from its unit cell, and find how much silicon a grown oxide uses up."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 34.488,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.274,
+     "en": "Today connects the first two classes to masses you can weigh."
+    },
+    {
+     "s": 4.274,
+     "e": 12.092,
+     "en": "The atomic masses from Class 1, such as twenty eight point zero eight five for silicon, become molar masses in grams per mole."
+    },
+    {
+     "s": 12.092,
+     "e": 16.684,
+     "en": "The silicon unit cell from Class 2 gives the density of a wafer."
+    },
+    {
+     "s": 16.684,
+     "e": 27.752,
+     "en": "New symbols: n is the amount in moles, m is mass in grams, M is molar mass in grams per mole, and N is a number of particles. N A is the Avogadro constant."
+    },
+    {
+     "s": 27.752,
+     "e": 34.421,
+     "en": "Rho now means density in grams per cubic centimeter; the context tells you which rho is meant."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 41.64,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.287,
+     "en": "Atoms are too small to count one by one, so chemists count them by weighing."
+    },
+    {
+     "s": 5.287,
+     "e": 13.921,
+     "en": "One mole is exactly six point zero two two times ten to the twenty three particles. Think of it as a much larger dozen."
+    },
+    {
+     "s": 13.921,
+     "e": 20.27,
+     "en": "The useful fact is this: the mass of one mole in grams equals the atomic mass in atomic mass units."
+    },
+    {
+     "s": 20.27,
+     "e": 28.461,
+     "en": "One silicon atom is twenty eight point zero eight five units, so one mole of silicon is twenty eight point zero eight five grams."
+    },
+    {
+     "s": 28.461,
+     "e": 36.765,
+     "en": "So one gram of silicon is zero point zero three five six moles, which is about two point one times ten to the twenty two atoms."
+    },
+    {
+     "s": 36.765,
+     "e": 41.566,
+     "en": "One gram of copper holds fewer atoms, because each copper atom is heavier."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 39.792,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.524,
+     "en": "To find a molar mass, multiply each atomic mass by its subscript and add."
+    },
+    {
+     "s": 5.524,
+     "e": 14.079,
+     "en": "For silicon dioxide, twenty eight point zero eight five plus two times fifteen point nine nine nine gives sixty point zero eight grams per mole."
+    },
+    {
+     "s": 14.079,
+     "e": 25.632,
+     "en": "Copper sulfate, the salt in copper plating baths, is one hundred fifty nine point six. Ammonia, used to deposit silicon nitride, is seventeen point zero three."
+    },
+    {
+     "s": 25.632,
+     "e": 35.938,
+     "en": "Exercises often supply rounded values, such as twenty eight point one for silicon and sixteen point zero for oxygen. Use the values you are given."
+    },
+    {
+     "s": 35.938,
+     "e": 39.724,
+     "en": "The answer changes only in the third or fourth figure."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 29.808,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.642,
+     "en": "This demo shows one sample in three ways: its mass, its amount in moles, and its number of atoms."
+    },
+    {
+     "s": 6.642,
+     "e": 11.961,
+     "en": "Choose silicon or copper, and move the mass from one microgram to ten grams."
+    },
+    {
+     "s": 11.961,
+     "e": 18.013,
+     "en": "Notice that even one microgram of silicon holds about two times ten to the sixteen atoms."
+    },
+    {
+     "s": 18.013,
+     "e": 29.75,
+     "en": "Always convert the mass to grams before dividing by the molar mass in grams per mole. One milligram is ten to the minus three grams, and one microgram is ten to the minus six."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 32.232,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 10.855,
+     "en": "Silicon reacts with oxygen to form silicon dioxide. This is the reaction that grows the insulating oxide on a heated silicon wafer in dry oxygen."
+    },
+    {
+     "s": 10.855,
+     "e": 16.421,
+     "en": "The equation is balanced: one silicon atom and two oxygen atoms on each side."
+    },
+    {
+     "s": 16.421,
+     "e": 24.539,
+     "en": "The coefficients, one to one to one, are ratios of particles, or of moles. They are not ratios of mass."
+    },
+    {
+     "s": 24.539,
+     "e": 32.171,
+     "en": "One mole of silicon, twenty eight point one grams, reacts with one mole of oxygen gas, thirty two point zero grams."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 27.6,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 18.981,
+     "en": "Find the moles in fifty six point two grams of silicon. Calculate the molar mass of silicon dioxide. Find the error in a classmate's answer for fifty six point two milligrams."
+    },
+    {
+     "s": 18.981,
+     "e": 23.447,
+     "en": "And decide whether equal masses of silicon and oxygen react."
+    },
+    {
+     "s": 23.447,
+     "e": 27.526,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 52.728,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.368,
+     "en": "Part 2 starts with a worked example. Five hundred sixty two milligrams of silicon is oxidized completely, with excess oxygen."
+    },
+    {
+     "s": 9.368,
+     "e": 15.279,
+     "en": "First convert units: five hundred sixty two milligrams is zero point five six two grams."
+    },
+    {
+     "s": 15.279,
+     "e": 22.053,
+     "en": "Divide by twenty eight point one grams per mole to get zero point zero two zero zero moles of silicon."
+    },
+    {
+     "s": 22.053,
+     "e": 31.066,
+     "en": "The mole ratio is one to one to one, so zero point zero two zero zero moles of silicon dioxide form, using the same amount of oxygen gas."
+    },
+    {
+     "s": 31.066,
+     "e": 43.671,
+     "en": "The mass of silicon dioxide is zero point zero two zero zero times sixty point one, which is one point two zero two grams. The mass of oxygen used is zero point six four zero grams."
+    },
+    {
+     "s": 43.671,
+     "e": 52.671,
+     "en": "Check: zero point five six two plus zero point six four zero equals one point two zero two grams. The masses balance."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 43.704,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 10.382,
+     "en": "Here is a common objection. Zero point five six two grams of silicon became one point two zero two grams of silicon dioxide, so mass was created."
+    },
+    {
+     "s": 10.382,
+     "e": 23.674,
+     "en": "The oxygen atoms came from the gas around the wafer. Count everything that entered: the silicon plus zero point six four zero grams of oxygen. The total is one point two zero two grams."
+    },
+    {
+     "s": 23.674,
+     "e": 27.461,
+     "en": "Mass is conserved; the accounting left something out."
+    },
+    {
+     "s": 27.461,
+     "e": 39.934,
+     "en": "So a wafer gains mass when it is oxidized. For one hundred nanometers of oxide on one square centimeter, the gain is about eleven point seven micrograms, which a microbalance can measure."
+    },
+    {
+     "s": 39.934,
+     "e": 43.632,
+     "en": "Always ask what crossed the boundary of your system."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 39.912,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.984,
+     "en": "Now connect the mole to the unit cell from Class 2."
+    },
+    {
+     "s": 3.984,
+     "e": 15.25,
+     "en": "A silicon unit cell has eight atoms in a cube of edge zero point five four three one nanometers. That is about five times ten to the twenty two atoms per cubic centimeter."
+    },
+    {
+     "s": 15.25,
+     "e": 23.855,
+     "en": "Multiply by the molar mass and divide by the Avogadro constant, and you get a density of two point three two nine grams per cubic centimeter."
+    },
+    {
+     "s": 23.855,
+     "e": 30.495,
+     "en": "The measured density of silicon is two point three two nine. The atom count predicts it to four figures."
+    },
+    {
+     "s": 30.495,
+     "e": 39.855,
+     "en": "A three hundred millimeter wafer holds about one hundred twenty eight grams of silicon, or about two point seven times ten to the twenty four atoms."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 48.072,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.513,
+     "en": "When an oxide grows, each silicon dioxide unit takes one silicon atom from the wafer. So growing oxide uses up silicon."
+    },
+    {
+     "s": 9.513,
+     "e": 20.368,
+     "en": "How much? Compare the moles of silicon per cubic centimeter in the oxide and in silicon. The ratio of thicknesses is zero point four four."
+    },
+    {
+     "s": 20.368,
+     "e": 33.158,
+     "en": "So one hundred nanometers of oxide consumes about forty four nanometers of silicon. The oxide is thicker than the silicon it used, because it holds fewer silicon atoms per cubic centimeter."
+    },
+    {
+     "s": 33.158,
+     "e": 41.579,
+     "en": "Move the slider. About forty four percent of the oxide lies below the original surface, and fifty six percent above it."
+    },
+    {
+     "s": 41.579,
+     "e": 48.013,
+     "en": "Process engineers use this factor every day, and you have just derived it from Classes 1 to 3."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 36.816,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.221,
+     "en": "Stoichiometry answers the question how much: how much silicon is used, how much oxide forms, and how much oxygen is needed."
+    },
+    {
+     "s": 8.221,
+     "e": 19.632,
+     "en": "It does not answer the question how fast. The same one hundred nanometers can take minutes or hours, depending on temperature and on whether the oxidant is oxygen or water vapor."
+    },
+    {
+     "s": 19.632,
+     "e": 25.803,
+     "en": "Growth slows as the oxide thickens, because oxygen must diffuse through the oxide already there."
+    },
+    {
+     "s": 25.803,
+     "e": 36.75,
+     "en": "Rates need kinetics and transport, which we meet in Class 12. Today's numbers also assume complete conversion, pure silicon, and a flat, uniform oxide."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 28.248,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 18.961,
+     "en": "Find the mass of silicon dioxide from zero point two eight one grams of silicon. Explain why the wafer gets heavier. Estimate the silicon consumed by two hundred nanometers of oxide."
+    },
+    {
+     "s": 18.961,
+     "e": 24.092,
+     "en": "And say whether these numbers can tell you how long the oxidation takes."
+    },
+    {
+     "s": 24.092,
+     "e": 28.171,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 25.056,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.866,
+     "en": "The mole is the unit of every calculation ahead."
+    },
+    {
+     "s": 3.866,
+     "e": 15.026,
+     "en": "In Class 4, concentration is moles per liter of a copper sulfate bath. In Class 5, the hydrogen ion concentration is in moles per liter, on a log scale."
+    },
+    {
+     "s": 15.026,
+     "e": 25.0,
+     "en": "In Class 7, we count moles of electrons. And in Class 10, a current gives moles of electrons, then moles and mass of copper plated."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 28.632,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.961,
+     "en": "Now it is time for Lab 3. Scan the code or open the lab page."
+    },
+    {
+     "s": 5.961,
+     "e": 15.066,
+     "en": "You will predict whether an oxidized wafer gets heavier, follow the masses and moles for five hundred sixty two milligrams of silicon, and count the atoms."
+    },
+    {
+     "s": 15.066,
+     "e": 22.632,
+     "en": "Then you calculate the density of silicon from its unit cell, change the oxide thickness, and find the silicon consumed."
+    },
+    {
+     "s": 22.632,
+     "e": 28.579,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 45.576,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 12.382,
+     "en": "A mole is a count of six point zero two two times ten to the twenty three particles, and the molar mass in grams per mole equals the atomic mass in atomic mass units."
+    },
+    {
+     "s": 12.382,
+     "e": 21.645,
+     "en": "The amount is mass divided by molar mass, with mass in grams. The number of particles is the amount times the Avogadro constant."
+    },
+    {
+     "s": 21.645,
+     "e": 30.829,
+     "en": "Coefficients are mole ratios, not mass ratios. Mass is conserved when you count everything that enters, including the oxygen."
+    },
+    {
+     "s": 30.829,
+     "e": 41.816,
+     "en": "The unit cell predicts the density of silicon, two point three two nine grams per cubic centimeter, and densities predict that an oxide uses zero point four four of its thickness in silicon."
+    },
+    {
+     "s": 41.816,
+     "e": 45.5,
+     "en": "And stoichiometry gives amounts, not times."
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "file": "audio/slide-20.mp3",
+   "duration": 21.84,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.445,
+     "en": "Before the next class, finish Lab 3 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.445,
+     "e": 13.539,
+     "en": "Read OpenStax Chemistry two e, section three point one on the mole concept and section four point three on reaction stoichiometry."
+    },
+    {
+     "s": 13.539,
+     "e": 21.789,
+     "en": "Class 4 is about solutions, concentration and electrolytes: how much copper sulfate is in a plating bath, and why the bath conducts."
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "file": "audio/slide-21.mp3",
+   "duration": 24.744,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.987,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 3."
+    },
+    {
+     "s": 6.987,
+     "e": 15.776,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.776,
+     "e": 24.671,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 4."
+    }
+   ]
+  }
+ ]
+};
+(function(){if(!NARR)return;
+ const au=document.getElementById("narr"),bar=document.getElementById("nbar"),cap=document.getElementById("cap"),play=document.getElementById("nPlay"),tm=document.getElementById("nTime"),msg=document.getElementById("nMsg");
+ document.getElementById("dock").style.display="flex";document.getElementById("help").style.display="none";let on=false,lang="off",slideIdx=-1;
+ const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
+ lang=ls("cc-lang")||"off";if(lang!=="en")lang="off";const sp=ls("narr-speed");if(sp)document.getElementById("nSpeed").value=sp;
+ const fmtT=t=>isFinite(t)?`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,"0")}`:"0:00";
+ const S_=i=>NARR.slides[i];
+ function load(i){slideIdx=i;const s=S_(i);if(!s){au.removeAttribute("src");return}au.src=s.file;au.playbackRate=+document.getElementById("nSpeed").value;tm.textContent=`0:00 / ${fmtT(s.duration)}`;showCap(0)}
+ function setPlayUI(){play.textContent=au.paused?"▶ Play":"❚❚ Pause";play.classList.toggle("on",!au.paused)}
+ // captions sit in their own band under the slide; long lines shrink to fit the band
+ window.capRefit=()=>{let f=parseFloat(cap.dataset.fs)||18;cap.style.fontSize=f+"px";while(cap.scrollHeight>cap.clientHeight+1&&f>11){f-=1;cap.style.fontSize=f+"px"}};
+ function showCap(t){const s=S_(slideIdx);let c=null;if(s&&lang!=="off"){for(const q of s.cues){if(t>=q.s-0.05)c=q;else break}}
+  const txt=(!c||(au.paused&&au.currentTime===0&&!on))?"":c.en;if(cap.textContent!==txt){cap.textContent=txt;capRefit()}}
+ function ccUI(){const b=document.getElementById("nCC");b.textContent=lang==="off"?"CC off":"CC on";b.classList.toggle("on",lang!=="off");CAP_ON=lang!=="off";fit();showCap(au.currentTime||0)}
+ window.ccCycle=()=>{lang=lang==="off"?"en":"off";ls("cc-lang",lang);ccUI()};
+ // "on" means the student is listening: it starts with Play and ends with Pause or Stop.
+ // Slides change only when the student moves; the new slide's narration then starts if "on".
+ window.narrToggle=()=>{if(au.paused){on=true;if(slideIdx!==cur)load(cur);if(au.ended)au.currentTime=0;msg.textContent="";au.play().catch(()=>{msg.textContent="Press Play again to start audio."})}else{on=false;au.pause()}};
+ window.onSlideChange=i=>{au.pause();msg.textContent="";load(i);if(on)au.play().catch(()=>{})};
+ document.getElementById("nPlay").onclick=narrToggle;
+ document.getElementById("nStop").onclick=()=>{au.pause();au.currentTime=0;on=false;setPlayUI();showCap(0);tm.textContent=`0:00 / ${fmtT((S_(cur)||{}).duration)}`};
+ document.getElementById("nCC").onclick=ccCycle;
+ document.getElementById("nPrev").onclick=()=>show(cur-1);document.getElementById("nNext").onclick=()=>show(cur+1);
+ document.getElementById("nSpeed").onchange=e=>{au.playbackRate=+e.target.value;ls("narr-speed",e.target.value)};
+ au.addEventListener("play",setPlayUI);au.addEventListener("pause",setPlayUI);
+ au.addEventListener("timeupdate",()=>{tm.textContent=`${fmtT(au.currentTime)} / ${fmtT((S_(slideIdx)||{}).duration)}`;showCap(au.currentTime)});
+ au.addEventListener("ended",()=>{setPlayUI();const s=S_(slideIdx);msg.textContent=s&&s.hold?"Activity: do it now, then press Next ›":cur<N-1?"Press Next › or → for the next slide":"End of the session"});
+ const q=new URLSearchParams(location.search);
+ if(q.get("narrate")==="1"){const ov=document.getElementById("startov");ov.style.display="flex";document.getElementById("startBtn").onclick=()=>{ov.style.display="none";if(lang==="off"){lang="en";ls("cc-lang",lang)}ccUI();on=true;load(cur);au.play().catch(()=>{})}}
+ ccUI();setTimeout(()=>{if(slideIdx<0)load(cur)},0);
+})();
+
+build();drawAll();fit();show((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>

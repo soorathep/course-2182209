@@ -1,0 +1,402 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 415.7,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 20.88,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.629,
+     "en": "Welcome to Class 14, the last class of this half: a review in three stations."
+    },
+    {
+     "s": 5.629,
+     "e": 16.211,
+     "en": "Today you use what you learned in Classes 1 to 13 on three problems: the materials and doping of a chip, copper deposition, and the choice between a supercapacitor and a battery."
+    },
+    {
+     "s": 16.211,
+     "e": 20.816,
+     "en": "Today's Exit Ticket form also asks about the whole course, once."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 24.288,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 8.447,
+     "en": "A five minute activity, then ten minutes on the course as a whole and on how the stations work."
+    },
+    {
+     "s": 8.447,
+     "e": 15.855,
+     "en": "Then three stations of twenty minutes each, and fifteen minutes at the end for the Exit Ticket and the feedback on the whole course."
+    },
+    {
+     "s": 15.855,
+     "e": 24.224,
+     "en": "If you are studying on your own, the narration takes about seven minutes. Then work through the three stations in Lab 14."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 29.136,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.263,
+     "en": "Activity 1. Answer four questions without notes, one from each part of the course, then compare with a partner."
+    },
+    {
+     "s": 8.263,
+     "e": 20.782,
+     "en": "Choose the interconnect, the insulator and the semiconductor. Say what phosphorus does in silicon. Write the relations for charge, current, time and moles of electrons."
+    },
+    {
+     "s": 20.782,
+     "e": 24.263,
+     "en": "And write the charge and energy of a capacitor."
+    },
+    {
+     "s": 24.263,
+     "e": 29.066,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 24.408,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.313,
+     "en": "By the end of today you can choose materials for a chip, and calculate the carriers and resistivity of doped silicon."
+    },
+    {
+     "s": 7.313,
+     "e": 15.237,
+     "en": "You can calculate the mass, thickness and electrode potential of plated copper, and say which form of copper is stable in the bath."
+    },
+    {
+     "s": 15.237,
+     "e": 20.75,
+     "en": "You can choose a supercapacitor or a battery for a load from its energy and power."
+    },
+    {
+     "s": 20.75,
+     "e": 24.342,
+     "en": "And you can link each answer to the class it came from."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 41.736,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.826,
+     "en": "Here is the course on one page, in three blocks."
+    },
+    {
+     "s": 3.826,
+     "e": 11.842,
+     "en": "In the materials block, electrons in atoms and bonds decide whether a solid conducts, and a few dopant atoms decide how much."
+    },
+    {
+     "s": 11.842,
+     "e": 20.184,
+     "en": "In the block on amounts and solutions, we counted atoms, ions and moles, and used equilibria and logarithms to set concentrations."
+    },
+    {
+     "s": 20.184,
+     "e": 30.882,
+     "en": "In the electrochemistry block, we counted electrons. The potential says whether a reaction goes. Kinetics and transport say how fast."
+    },
+    {
+     "s": 30.882,
+     "e": 41.684,
+     "en": "Cu runs through all three: Cu²⁺ with 27 electrons, the interconnect metal, the ion in a plating bath, and the metal that plates, corrodes or passivates."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 32.184,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.603,
+     "en": "Station 1 is about materials and doping, from Classes 1, 2 and 6."
+    },
+    {
+     "s": 5.603,
+     "e": 15.618,
+     "en": "You choose the interconnect and the insulator, count the electrons in a copper ion, and then dope silicon with ten to the sixteen phosphorus atoms per cubic centimeter."
+    },
+    {
+     "s": 15.618,
+     "e": 25.882,
+     "en": "Use n times p equals n i squared for the holes, and the conductivity formula for the resistivity. And decide whether the doped wafer carries a charge."
+    },
+    {
+     "s": 25.882,
+     "e": 32.132,
+     "en": "The answers are behind the Show answers button. Show them only after the stations."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 24.864,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.668,
+     "en": "Station 2 is about copper deposition, from Classes 9, 10 and 13."
+    },
+    {
+     "s": 5.668,
+     "e": 14.842,
+     "en": "You plate copper at zero point one amps for six hundred seconds, at ninety percent efficiency, on ten square centimeters, and find the mass and thickness."
+    },
+    {
+     "s": 14.842,
+     "e": 24.803,
+     "en": "Then you find the copper potential at zero point zero one molar, read the stable form of copper in an acid bath, and decide what to change to plate twice as thick in the same time."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 43.728,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.618,
+     "en": "Station 3 asks: a supercapacitor or a battery? It uses Classes 10 and 11."
+    },
+    {
+     "s": 7.618,
+     "e": 20.421,
+     "en": "The energy a load needs is its power times its time. A 3 W pulse for 5 s needs 15 J. A 0.10 W load for 1 h needs 360 J."
+    },
+    {
+     "s": 20.421,
+     "e": 32.487,
+     "en": "The supercapacitor stores 16.0 J and can deliver 5 W. The battery stores 1332 J, but can deliver only about 0.74 W."
+    },
+    {
+     "s": 32.487,
+     "e": 43.671,
+     "en": "A device must store enough energy and deliver enough power. Press the buttons to try other loads. Some loads fit neither device, and some fit both."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 31.944,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.734,
+     "en": "Here is how the stations work."
+    },
+    {
+     "s": 2.734,
+     "e": 10.224,
+     "en": "Work in groups of three. Start at the station your instructor gives you, and move on every twenty minutes."
+    },
+    {
+     "s": 10.224,
+     "e": 21.447,
+     "en": "Each station has a step where you calculate or check, and a step where you change something. The answers stay hidden until you try, and after two tries the expected value is shown."
+    },
+    {
+     "s": 21.447,
+     "e": 31.882,
+     "en": "Write down which class each formula came from. That is the point of the review. Then finish with the explain step, and download your answer file."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 41.496,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.484,
+     "en": "Before you start, here are six claims from this half that are wrong."
+    },
+    {
+     "s": 4.484,
+     "e": 14.813,
+     "en": "N-type silicon is not charged: each free electron is balanced by a fixed phosphorus ion. Oxidation is the loss of electrons, not adding oxygen."
+    },
+    {
+     "s": 14.813,
+     "e": 19.763,
+     "en": "The anode is where oxidation happens, and in charging it is positive."
+    },
+    {
+     "s": 19.763,
+     "e": 30.066,
+     "en": "The standard potential is not multiplied with the equation, but the Gibbs energy is. More milliamp hours does not mean more energy: compare in watt hours."
+    },
+    {
+     "s": 30.066,
+     "e": 41.421,
+     "en": "And more voltage, or a region on a Pourbaix diagram, does not mean a reaction happens fast. Transport limits the rate, and a Pourbaix diagram gives stability only."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 26.544,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.132,
+     "en": "Now it is time for Lab 14. Scan the code or open the lab page."
+    },
+    {
+     "s": 6.132,
+     "e": 12.655,
+     "en": "All three stations are on the one page. The steps unlock in the order station one, two, three."
+    },
+    {
+     "s": 12.655,
+     "e": 20.276,
+     "en": "If your group starts at station two or three, work it on paper first, then enter the answers when you reach it."
+    },
+    {
+     "s": 20.276,
+     "e": 26.474,
+     "en": "The stations take about sixty minutes. Pause the narration now and work through them."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 26.832,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.458,
+     "en": "Here is what to take from this half of the course."
+    },
+    {
+     "s": 3.458,
+     "e": 9.855,
+     "en": "Count first: protons and electrons, atoms and moles, carriers, and electrons as charge."
+    },
+    {
+     "s": 9.855,
+     "e": 16.118,
+     "en": "Know what decides whether a reaction goes: the Gibbs energy, the cell potential, and the Pourbaix map."
+    },
+    {
+     "s": 16.118,
+     "e": 21.947,
+     "en": "Know what decides how fast: the overpotential, the exchange current, and transport."
+    },
+    {
+     "s": 21.947,
+     "e": 26.776,
+     "en": "And check every claim against a number, and every number against its source."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 18.264,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.261,
+     "en": "Classes fifteen onward make up the second half of the course."
+    },
+    {
+     "s": 4.261,
+     "e": 12.724,
+     "en": "The band gaps of Class 6, the potentials of Class 9, and the Pourbaix map of Class 13 return when semiconductors meet solutions."
+    },
+    {
+     "s": 12.724,
+     "e": 18.211,
+     "en": "Keep your lab answer files. They hold the numbers you will need again."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 29.424,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.158,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 14."
+    },
+    {
+     "s": 7.158,
+     "e": 14.276,
+     "en": "Paste the answers that the lab page copied for you. Then give your feedback on today, and on the whole course."
+    },
+    {
+     "s": 14.276,
+     "e": 20.816,
+     "en": "This is the only time the form asks about the course as a whole, so please take the time to answer it."
+    },
+    {
+     "s": 20.816,
+     "e": 29.355,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you for this half of the course."
+    }
+   ]
+  }
+ ]
+}

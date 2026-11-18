@@ -1,0 +1,582 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 638.4,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 34.488,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.813,
+     "en": "Welcome to Class 11: the double layer and supercapacitors."
+    },
+    {
+     "s": 4.813,
+     "e": 18.132,
+     "en": "From Class 7 to Class 10, electrons crossed from an electrode into a species by a redox reaction. Today nothing crosses. Charge is stored at a surface, with no reaction at all."
+    },
+    {
+     "s": 18.132,
+     "e": 25.171,
+     "en": "We will see how a supercapacitor works, how to measure its capacitance, and why a chip is full of capacitors."
+    },
+    {
+     "s": 25.171,
+     "e": 34.421,
+     "en": "If you are studying on your own, the narration takes about eleven minutes. Stop at the activity and at each check, then do Lab 11."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 30.024,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.434,
+     "en": "A five minute activity reviews earlier classes."
+    },
+    {
+     "s": 6.434,
+     "e": 15.526,
+     "en": "Part one covers the electric double layer, why it holds so much charge, and how to measure a capacitance. It ends with Check 1."
+    },
+    {
+     "s": 15.526,
+     "e": 25.053,
+     "en": "Part two covers charge and energy, the choice between a supercapacitor and a battery, and capacitors on a chip. It ends with Check 2."
+    },
+    {
+     "s": 25.053,
+     "e": 29.961,
+     "en": "Then you do Lab 11 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 26.856,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.671,
+     "en": "Activity 1. Answer four questions without notes, then compare with a partner."
+    },
+    {
+     "s": 6.671,
+     "e": 19.72,
+     "en": "Find the charge that passes at zero point zero one amps for twenty seconds. Say whether amp hours measure charge or energy. Explain why ions must move inside a cell."
+    },
+    {
+     "s": 19.72,
+     "e": 22.0,
+     "en": "And classify silicon dioxide."
+    },
+    {
+     "s": 22.0,
+     "e": 26.803,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 29.4,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.603,
+     "en": "By the end of today you can describe the electric double layer, and say how it stores charge without a reaction."
+    },
+    {
+     "s": 6.603,
+     "e": 11.461,
+     "en": "You can explain why a double layer on porous carbon holds so much charge."
+    },
+    {
+     "s": 11.461,
+     "e": 15.474,
+     "en": "You can find a capacitance from constant-current data."
+    },
+    {
+     "s": 15.474,
+     "e": 22.895,
+     "en": "You can calculate the charge and the energy of a capacitor, and predict what changing the capacitance or the voltage does."
+    },
+    {
+     "s": 22.895,
+     "e": 29.342,
+     "en": "And you can compare a supercapacitor with a battery, and give an example of a capacitor on a chip."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 40.68,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.445,
+     "en": "Today connects to four earlier ideas."
+    },
+    {
+     "s": 3.445,
+     "e": 15.908,
+     "en": "In Classes 7 to 10, electrons crossed the interface in a reaction. That is called Faradaic. Today no electrons cross, and the process is called non-Faradaic."
+    },
+    {
+     "s": 15.908,
+     "e": 26.671,
+     "en": "In Class 10, charge was current times time, and capacity was in amp hours. Today, charge is capacitance times voltage, and capacitance is in farads."
+    },
+    {
+     "s": 26.671,
+     "e": 33.602,
+     "en": "In Class 8, ions moved to keep the electrolyte neutral. Today they gather at a charged surface."
+    },
+    {
+     "s": 33.602,
+     "e": 40.605,
+     "en": "And silicon dioxide, the insulator, becomes the layer between the plates of capacitors on a chip."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 32.4,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.8,
+     "en": "Push electrons into an electrode, and its surface turns negative."
+    },
+    {
+     "s": 4.8,
+     "e": 16.763,
+     "en": "Cations in the electrolyte gather at the surface and balance it. Two layers of opposite charge form, less than a nanometer apart. This is the electric double layer."
+    },
+    {
+     "s": 16.763,
+     "e": 21.763,
+     "en": "Make the electrode positive instead, and anions gather at the surface."
+    },
+    {
+     "s": 21.763,
+     "e": 32.329,
+     "en": "No electron crosses the interface, and nothing is oxidized or reduced. The double layer is like a capacitor whose two plates are less than a nanometer apart."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 48.096,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.303,
+     "en": "Why is the capacitance so large? For a capacitor, C equals epsilon A over d."
+    },
+    {
+     "s": 7.303,
+     "e": 17.947,
+     "en": "In the double layer, d is set by the size of the ions, less than a nanometer. That gives about ten microfarads for every square centimeter of real surface."
+    },
+    {
+     "s": 17.947,
+     "e": 27.25,
+     "en": "Activated carbon is very porous. One gram has a surface of about one thousand square meters, like a tennis court in a few grams."
+    },
+    {
+     "s": 27.25,
+     "e": 35.275,
+     "en": "Ten microfarads per square centimeter times ten million square centimeters per gram gives about one hundred farads per gram."
+    },
+    {
+     "s": 35.275,
+     "e": 40.026,
+     "en": "Real carbons store less, because the ions do not reach all of the surface."
+    },
+    {
+     "s": 40.026,
+     "e": 48.039,
+     "en": "So a supercapacitor the size of a coin can hold farads, while ordinary capacitors in a circuit hold micro or picofarads."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 45.888,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.579,
+     "en": "How do we measure a capacitance? Charge the capacitor at a constant current, and record the voltage."
+    },
+    {
+     "s": 7.579,
+     "e": 18.005,
+     "en": "The charge grows steadily, so the voltage rises in a straight line. The capacitance is the current divided by the slope: C equals I times delta t over delta V."
+    },
+    {
+     "s": 18.005,
+     "e": 32.816,
+     "en": "Capacitor A rises at 0.0500 V/s. At 0.010 A, that gives 0.200 F. Capacitor B rises twice as fast, so it has half the capacitance, 0.100 F."
+    },
+    {
+     "s": 32.816,
+     "e": 45.829,
+     "en": "Notice the small step of zero point zero one volts at time zero. It comes from the internal resistance of the cell. So use the slope, not the voltage divided by the time at one point."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 24.24,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 20.105,
+     "en": "Say whether electrons cross the interface in a double layer. Explain why its capacitance is so large. Find a capacitance from a slope. And compare two capacitors from their slopes."
+    },
+    {
+     "s": 20.105,
+     "e": 24.184,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 45.336,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.145,
+     "en": "In part two, charge and energy. The charge is C times V, and the energy is one half C V squared."
+    },
+    {
+     "s": 8.145,
+     "e": 13.645,
+     "en": "Capacitor A at 1.0 V holds 0.200 C and 0.100 J."
+    },
+    {
+     "s": 13.645,
+     "e": 26.171,
+     "en": "Now keep that charge, and move the slider to a larger capacitance. At 0.400 F, the voltage halves to 0.500 V, and the energy halves to 0.050 J."
+    },
+    {
+     "s": 26.171,
+     "e": 28.97,
+     "en": "Energy grows with the square of the voltage."
+    },
+    {
+     "s": 28.97,
+     "e": 38.671,
+     "en": "An organic electrolyte that allows two point seven volts, instead of about one volt in water, stores about seven times more energy at the same capacitance."
+    },
+    {
+     "s": 38.671,
+     "e": 45.263,
+     "en": "Water limits the voltage because it splits into hydrogen and oxygen above about one point two three volts."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 40.464,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.076,
+     "en": "Supercapacitor or battery?"
+    },
+    {
+     "s": 3.076,
+     "e": 10.549,
+     "en": "A supercapacitor stores charge with ions at a surface. Its voltage falls in a straight line as it discharges."
+    },
+    {
+     "s": 10.549,
+     "e": 17.75,
+     "en": "It charges in seconds and lasts hundreds of thousands of cycles, but it stores little energy per kilogram."
+    },
+    {
+     "s": 17.75,
+     "e": 29.842,
+     "en": "A battery stores charge in redox reactions. Its voltage stays nearly flat. It takes much longer to charge and lasts fewer cycles, but it stores much more energy."
+    },
+    {
+     "s": 29.842,
+     "e": 40.395,
+     "en": "So use a supercapacitor for short, strong pulses and many cycles, and a battery for long running time. Class 14 chooses between them for two loads."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 42.672,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.589,
+     "en": "Here is a common mistake: a supercapacitor is a battery that charges fast."
+    },
+    {
+     "s": 5.589,
+     "e": 19.605,
+     "en": "A double layer capacitor stores charge by ions gathering at a surface. No electron crosses the interface, so Faraday's law from Class 10 does not give its capacity. Q equals C V does."
+    },
+    {
+     "s": 19.605,
+     "e": 25.434,
+     "en": "Because nothing reacts, it charges in seconds and lasts hundreds of thousands of cycles."
+    },
+    {
+     "s": 25.434,
+     "e": 36.33,
+     "en": "There is a middle ground. Pseudocapacitors, made from materials such as ruthenium oxide, manganese oxide, or MXenes, add fast redox reactions at the surface."
+    },
+    {
+     "s": 36.33,
+     "e": 42.605,
+     "en": "They hold more charge than a double layer capacitor, and charge faster than most batteries."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 43.536,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.882,
+     "en": "Capacitors are everywhere on a chip. Every bit of DRAM memory is a tiny capacitor."
+    },
+    {
+     "s": 6.882,
+     "e": 18.737,
+     "en": "A typical cell is about 20 fF, charged to about 1 V. That is a charge of 2 × 10⁻¹⁴ C, about 1.2 × 10⁵ electrons."
+    },
+    {
+     "s": 18.737,
+     "e": 28.276,
+     "en": "A charged cell is a one, and an empty cell is a zero. The charge leaks away, so the memory refreshes every cell many times a second."
+    },
+    {
+     "s": 28.276,
+     "e": 36.627,
+     "en": "The transistor gate is a capacitor too: metal, a thin insulator, and silicon. C equals epsilon A over d again."
+    },
+    {
+     "s": 36.627,
+     "e": 43.474,
+     "en": "A thinner insulator gives more capacitance, the same reason the double layer holds so much."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 25.536,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 18.451,
+     "en": "Find the charge and energy of capacitor A at one volt. Find the voltage and energy on a larger capacitor with the same charge. Say which device keeps a flat voltage."
+    },
+    {
+     "s": 18.451,
+     "e": 21.395,
+     "en": "And count the electrons in a DRAM cell."
+    },
+    {
+     "s": 21.395,
+     "e": 25.474,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 19.896,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.024,
+     "en": "Next, we return to reactions, and to choices."
+    },
+    {
+     "s": 4.024,
+     "e": 15.082,
+     "en": "Class 12 looks at what happens when electrons do cross: the rate of a reaction. Class 13 asks which form of copper is stable at each pH and potential."
+    },
+    {
+     "s": 15.082,
+     "e": 19.842,
+     "en": "And Class 14 chooses a supercapacitor or a battery for two loads."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 27.072,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.066,
+     "en": "Now it is time for Lab 11. Scan the code or open the lab page."
+    },
+    {
+     "s": 6.066,
+     "e": 13.197,
+     "en": "You will predict which capacitor is larger, then read the slopes from the data and calculate both capacitances."
+    },
+    {
+     "s": 13.197,
+     "e": 21.053,
+     "en": "Then you calculate the charge and energy, change the capacitance at fixed charge, and compare a supercapacitor with a battery."
+    },
+    {
+     "s": 21.053,
+     "e": 27.0,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 32.784,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 8.566,
+     "en": "The double layer stores charge by ions at a surface. Nothing reacts."
+    },
+    {
+     "s": 8.566,
+     "e": 15.013,
+     "en": "C equals epsilon A over d. A tiny d and a huge A give farads."
+    },
+    {
+     "s": 15.013,
+     "e": 18.842,
+     "en": "Find C from a constant-current charge with the slope."
+    },
+    {
+     "s": 18.842,
+     "e": 25.592,
+     "en": "Q equals C V, and E equals one half C V squared, so energy grows with the square of the voltage."
+    },
+    {
+     "s": 25.592,
+     "e": 32.711,
+     "en": "And supercapacitors are fast and long lived but low in energy. Batteries are the opposite."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 24.168,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.616,
+     "en": "Before the next class, finish Lab 11 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.616,
+     "e": 15.763,
+     "en": "Read OpenStax University Physics volume two, section eight point one on capacitors and capacitance, and section eight point three on the energy stored in a capacitor."
+    },
+    {
+     "s": 15.763,
+     "e": 24.105,
+     "en": "Class 12 is about electrode kinetics and mass transport: why a reaction needs extra voltage to run fast, and where the limit is."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 24.912,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.092,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 11."
+    },
+    {
+     "s": 7.092,
+     "e": 15.882,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.882,
+     "e": 24.842,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 12."
+    }
+   ]
+  }
+ ]
+}

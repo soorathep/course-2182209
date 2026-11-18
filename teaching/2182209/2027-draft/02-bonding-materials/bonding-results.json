@@ -1,0 +1,264 @@
+{
+ "meta": {
+  "numpy": "2.2.5",
+  "scipy": "1.14.1",
+  "python": "3.13.18"
+ },
+ "lecture": {
+  "EN": {
+   "H": 2.1,
+   "C": 2.5,
+   "N": 3.0,
+   "O": 3.5,
+   "F": 4.0,
+   "Li": 1.0,
+   "Na": 0.9,
+   "Al": 1.5,
+   "Si": 1.8,
+   "Cl": 3.0,
+   "Cu": 1.9
+  },
+  "metals": [
+   "Al",
+   "Cu",
+   "Li",
+   "Na"
+  ],
+  "pairs": [
+   {
+    "a": "Cu",
+    "b": "Cu",
+    "dEN": 0.0,
+    "kind": "metallic"
+   },
+   {
+    "a": "Si",
+    "b": "Si",
+    "dEN": 0.0,
+    "kind": "nonpolar covalent"
+   },
+   {
+    "a": "C",
+    "b": "C",
+    "dEN": 0.0,
+    "kind": "nonpolar covalent"
+   },
+   {
+    "a": "Si",
+    "b": "O",
+    "dEN": 1.7,
+    "kind": "polar covalent"
+   },
+   {
+    "a": "Na",
+    "b": "Cl",
+    "dEN": 2.1,
+    "kind": "ionic"
+   },
+   {
+    "a": "Li",
+    "b": "F",
+    "dEN": 3.0,
+    "kind": "ionic"
+   }
+  ],
+  "rho": [
+   {
+    "material": "Cu",
+    "rho": 1.68e-08,
+    "bonding": "metallic",
+    "class": "conductor",
+    "note": "wires and vias in chips"
+   },
+   {
+    "material": "Al",
+    "rho": 2.65e-08,
+    "bonding": "metallic",
+    "class": "conductor",
+    "note": "chip wiring before Cu"
+   },
+   {
+    "material": "W",
+    "rho": 5.6e-08,
+    "bonding": "metallic",
+    "class": "conductor",
+    "note": "contacts to the transistors"
+   },
+   {
+    "material": "graphite",
+    "rho": 1e-05,
+    "bonding": "covalent layers",
+    "class": "conductor",
+    "note": "order of magnitude; depends on direction"
+   },
+   {
+    "material": "Si (pure)",
+    "rho": 2300.0,
+    "bonding": "covalent network",
+    "class": "semiconductor",
+    "note": "intrinsic, 300 K; doping lowers it (Class 6)"
+   },
+   {
+    "material": "SiO2 (amorphous)",
+    "rho": 1e+16,
+    "bonding": "covalent network",
+    "class": "insulator",
+    "note": "order of magnitude"
+   }
+  ],
+  "orders_SiO2_Cu": 23.774690718274137,
+  "line": {
+   "L": 0.001,
+   "w": 1e-07,
+   "t": 2e-07
+  },
+  "lines": [
+   {
+    "material": "Cu",
+    "rho": 1.68e-08,
+    "R": 840.0000000000002,
+    "vs_Cu": 1.0
+   },
+   {
+    "material": "Al",
+    "rho": 2.65e-08,
+    "R": 1325.0000000000002,
+    "vs_Cu": 1.5773809523809523
+   },
+   {
+    "material": "W",
+    "rho": 5.6e-08,
+    "R": 2800.0000000000005,
+    "vs_Cu": 3.333333333333333
+   }
+  ],
+  "leak": {
+   "R": 1e+21,
+   "I": 1e-21,
+   "t": 1e-07,
+   "area": 1e-12,
+   "V": 1.0
+  },
+  "cells": [
+   {
+    "lattice": "face-centered cubic",
+    "a_nm": 0.3615,
+    "corner": 8,
+    "face": 6,
+    "inside": 0,
+    "name": "Cu",
+    "atoms": 4.0
+   },
+   {
+    "lattice": "body-centered cubic",
+    "a_nm": 0.3165,
+    "corner": 8,
+    "face": 0,
+    "inside": 1,
+    "name": "W",
+    "atoms": 2.0
+   },
+   {
+    "lattice": "diamond cubic",
+    "a_nm": 0.5431,
+    "corner": 8,
+    "face": 6,
+    "inside": 4,
+    "name": "Si",
+    "atoms": 8.0
+   }
+  ],
+  "silica": {
+   "quartz": 2.65,
+   "fused": 2.2,
+   "percent_lower": 16.981132075471688
+  }
+ },
+ "lab": {
+  "pairs": {
+   "Si-O": {
+    "a": "Si",
+    "b": "O",
+    "dEN": 1.7,
+    "kind": "polar covalent"
+   },
+   "Na-Cl": {
+    "a": "Na",
+    "b": "Cl",
+    "dEN": 2.1,
+    "kind": "ionic"
+   },
+   "Cu-Cu": {
+    "a": "Cu",
+    "b": "Cu",
+    "dEN": 0.0,
+    "kind": "metallic"
+   }
+  },
+  "rho": [
+   {
+    "material": "Cu",
+    "rho": 1.68e-08,
+    "bonding": "metallic",
+    "class": "conductor",
+    "note": "wires and vias in chips"
+   },
+   {
+    "material": "Al",
+    "rho": 2.65e-08,
+    "bonding": "metallic",
+    "class": "conductor",
+    "note": "chip wiring before Cu"
+   },
+   {
+    "material": "W",
+    "rho": 5.6e-08,
+    "bonding": "metallic",
+    "class": "conductor",
+    "note": "contacts to the transistors"
+   },
+   {
+    "material": "graphite",
+    "rho": 1e-05,
+    "bonding": "covalent layers",
+    "class": "conductor",
+    "note": "order of magnitude; depends on direction"
+   },
+   {
+    "material": "Si (pure)",
+    "rho": 2300.0,
+    "bonding": "covalent network",
+    "class": "semiconductor",
+    "note": "intrinsic, 300 K; doping lowers it (Class 6)"
+   },
+   {
+    "material": "SiO2 (amorphous)",
+    "rho": 1e+16,
+    "bonding": "covalent network",
+    "class": "insulator",
+    "note": "order of magnitude"
+   }
+  ],
+  "orders_SiO2_Cu": 23.774690718274137,
+  "orders_Si_Cu": 11.13641855429173,
+  "line": {
+   "L": 0.001,
+   "w": 1e-07,
+   "t": 2e-07
+  },
+  "R_Cu": 840.0000000000002,
+  "R_Al": 1325.0000000000002,
+  "R_W": 2800.0000000000005,
+  "R_Cu_half_width": 1680.0000000000005,
+  "cells": {
+   "Cu": 4.0,
+   "W": 2.0,
+   "Si": 8.0
+  },
+  "silica": {
+   "quartz": 2.65,
+   "fused": 2.2,
+   "percent_lower": 16.981132075471688
+  }
+ }
+}

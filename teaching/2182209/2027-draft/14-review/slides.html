@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>2182209 · Class 14 · Review: three stations</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--sky:#5A91BE;--sage:#83A462;--plum:#995A90;--graphite:#333F4A;--sand:#DFC98F;
+--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--mono:Menlo,Consolas,"DejaVu Sans Mono",monospace}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#2b3138;font-family:"Helvetica Neue",Helvetica,Arial,"DejaVu Sans",sans-serif;color:var(--ink)}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#stage{width:1280px;height:720px;flex:0 0 auto;overflow:hidden;background:#fff;position:relative;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.slide{position:absolute;inset:0;padding:40px 64px 58px;display:none;flex-direction:column}
+.slide.on{display:flex}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.14em;font-size:15px;text-transform:uppercase;margin:0}
+h1{color:var(--teal);font-size:42px;line-height:1.12;margin:6px 0 22px;font-weight:800}
+.body{flex:1;display:flex;gap:28px;min-height:0}
+.col{flex:1;min-width:0;display:flex;flex-direction:column}
+.w40{flex:0 0 40%}.w45{flex:0 0 45%}.w55{flex:0 0 55%}.w60{flex:0 0 60%}
+ul.b{list-style:none;margin:0;padding:0;font-size:24px;line-height:1.36}
+ul.b>li{position:relative;padding-left:30px;margin:0 0 16px}
+ul.b>li::before{content:"";position:absolute;left:2px;top:.5em;width:11px;height:11px;background:var(--amber)}
+ul.b.sm{font-size:21px}ul.b.sm>li{margin-bottom:11px}
+ul.b.xs{font-size:19px}ul.b.xs>li{margin-bottom:8px}
+.hl{color:var(--teal);font-weight:700}
+.panel{background:var(--paper);border-radius:14px;padding:16px 18px;min-height:0;display:flex;flex-direction:column}
+.panel.grow{flex:1}
+.math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:25px;line-height:1.75}
+.math .lbl{font-family:"Helvetica Neue",Arial,sans-serif;font-size:16px;color:var(--slate);display:inline-block;width:150px}
+.code{font-family:var(--mono);font-size:17px;line-height:1.5;white-space:pre;color:var(--graphite)}
+.note{font-size:18px;color:var(--slate);margin-top:10px;line-height:1.4}
+.big{font-size:56px;font-weight:800;color:var(--teal)}
+table.t{border-collapse:collapse;font-size:19px;width:100%}
+table.t th{background:var(--paper);text-align:left;padding:7px 10px;border-bottom:2px solid var(--mist);font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid #e3e6e8}
+table.t td.n,table.t th.n{text-align:right;font-variant-numeric:tabular-nums}
+.act{border:3px solid var(--amber);border-radius:16px;padding:22px 28px;background:#fdf6ea}
+.act .tag{display:inline-block;background:var(--amber);color:#fff;font-weight:800;letter-spacing:.1em;font-size:15px;padding:4px 10px;border-radius:6px;margin-bottom:12px}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px;align-items:center;font-size:16px;color:var(--slate)}
+.ctrl button{font:inherit;font-size:15px;padding:5px 11px;border-radius:8px;border:1.5px solid var(--teal);background:#fff;color:var(--teal);cursor:pointer}
+.ctrl button.on{background:var(--teal);color:#fff}
+.ctrl input[type=range]{width:220px;accent-color:var(--teal)}
+.kpi{display:flex;gap:14px;margin-top:8px}
+.kpi div{background:#fff;border-radius:10px;padding:8px 12px;font-size:15px;color:var(--slate);flex:1}
+.kpi b{display:block;font-size:24px;color:var(--ink)}
+.kpi b.a{color:var(--amber)}
+svg.ch{width:100%;height:100%;display:block}
+.chart{flex:1;min-height:0}
+footer{position:absolute;left:64px;right:64px;bottom:20px;border-top:1px solid var(--mist);padding-top:7px;display:flex;justify-content:space-between;font-size:13px;color:var(--slate)}
+.title-slide{justify-content:center}
+.title-slide h1{font-size:64px;margin-bottom:12px}
+.title-slide .sub{font-size:28px;color:var(--graphite);margin-bottom:40px}
+.title-slide .meta{font-size:19px;color:var(--slate);line-height:1.6}
+.pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;letter-spacing:.06em}
+.pill.rec{background:var(--paper);color:var(--slate)}.pill.live{background:var(--amber);color:#fff}
+.dhint{position:absolute;right:64px;top:42px;font-size:13px;color:var(--slate);border:1px solid var(--mist);border-radius:8px;padding:3px 8px}
+/* Python drawer */
+#drawer{position:absolute;top:0;right:0;bottom:0;width:47%;background:#fbfaf7;border-left:3px solid var(--teal);box-shadow:-8px 0 24px rgba(0,0,0,.15);
+ transform:translateX(102%);transition:transform .25s;display:flex;flex-direction:column;padding:22px 24px 18px;z-index:5}
+#drawer.open{transform:none}
+#drawer h2{margin:0 0 4px;color:var(--teal);font-size:22px}
+#drawer .sub{font-size:14px;color:var(--slate);margin-bottom:10px}
+#drawer textarea{width:100%;height:190px;resize:vertical;border:none;margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13px;line-height:1.45;color:var(--ink);white-space:pre-wrap;outline:none}
+#drawer pre{margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13.5px;line-height:1.45;overflow:auto;white-space:pre}
+#drawer .out{margin-top:10px;flex:1;min-height:0;display:flex;flex-direction:column}
+#drawer .out pre{flex:1;background:#1f262d;color:#e8eef2}
+#drawer .bar{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:13px;color:var(--slate)}
+#drawer button{font:inherit;font-size:14px;padding:6px 12px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer}
+#drawer button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+#notes{position:fixed;left:12px;bottom:12px;max-width:520px;background:#fffef8;border:1px solid var(--mist);border-radius:10px;padding:10px 14px;font-size:14px;line-height:1.45;display:none;z-index:9}
+#help{position:fixed;right:12px;bottom:12px;color:#c9d1d6;font-size:12px}
+
+/* narration and captions */
+#dock{position:fixed;left:0;right:0;display:none;flex-direction:column;align-items:center;gap:6px;padding:0 8px;z-index:8}
+#cap{display:none;color:#F3F0EB;line-height:1.45;text-align:center;overflow:hidden;padding:2px 6px;font-family:"Helvetica Neue",Arial,"Sukhumvit Set","Thonburi","Noto Sans Thai","Sarabun",sans-serif}
+#nbar{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;align-items:center;background:rgba(28,36,43,.9);color:#e8eef2;padding:6px 10px;border-radius:12px;font:13px "Helvetica Neue",Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+#nbar button,#nbar select{white-space:nowrap;font:inherit;font-size:14px;background:#2f3a44;color:#fff;border:1px solid #4a5763;border-radius:8px;padding:5px 10px;cursor:pointer}
+#nbar button.on{background:#0F6E6B;border-color:#0F6E6B}
+#nbar .t{min-width:88px;text-align:center;font-variant-numeric:tabular-nums;color:#c9d1d6}
+#nbar .msg{color:#E29A2D;max-width:330px;line-height:1.25}
+#startov{position:absolute;inset:0;background:rgba(243,240,235,.92);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:6;gap:14px}
+#startov button{font:inherit;font-size:24px;padding:14px 28px;border-radius:12px;border:none;background:#0F6E6B;color:#fff;cursor:pointer}
+#startov p{color:#333F4A;font-size:18px;margin:0}
+@media print{#dock,#startov{display:none!important}}
+@media print{#viewport{position:static;display:block}#stage{transform:none!important;box-shadow:none}.slide{display:flex!important;position:relative;page-break-after:always;height:720px}#drawer,#help,#notes,.dhint{display:none}}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<div id="slides"></div>
+<div id="startov"><button id="startBtn">▶ Start the narrated session</button><p>English narration with English captions below the slide. You move to the next slide yourself.</p><p>→ or Next: next slide · P: pause · C: captions on or off</p></div>
+<aside id="drawer" aria-label="Python for this slide">
+  <h2 id="dTitle">Python</h2>
+  <div class="sub" id="dSub"></div>
+  <textarea id="dCode" spellcheck="false"></textarea>
+  <div class="out"><div class="bar" style="margin:0 0 6px"><span>Output</span><span id="dMode" class="pill rec">RECORDED RUN</span></div><pre id="dOut"></pre></div>
+  <div class="bar"><button id="runCode">Run this code</button><button class="ghost" id="runLive">Recompute all slides</button><button class="ghost" id="useRec">Recorded run</button></div>
+  <div class="bar" id="liveMsg" style="min-height:18px"></div>
+</aside>
+</div></div>
+<div id="notes"></div>
+<div id="dock"><div id="cap" aria-live="polite"></div>
+<div id="nbar"><button id="nPrev" title="Previous slide (←)">‹ Back</button><button id="nPlay" title="Play or pause the narration (P)">▶ Play</button><button id="nStop" title="Stop and go back to the start of this slide">■ Stop</button><span class="t" id="nTime">0:00 / 0:00</span><select id="nSpeed" title="Speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select><button id="nCC" title="Captions: off or English (C)">CC off</button><button id="nNext" title="Next slide (→)">Next ›</button><span class="msg" id="nMsg"></span></div></div>
+<audio id="narr" preload="none"></audio>
+<div id="help">← → move · P narration · C captions · D Python · F full screen · N notes</div>
+<script>
+const RECORDED = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"grid":{"0.1|1":{"P":0.1,"t":1,"E_J":0.1,"fits":{"EDLC":{"energy_ok":true,"power_ok":true,"ok":true},"battery":{"energy_ok":true,"power_ok":true,"ok":true}}},"0.1|5":{"P":0.1,"t":5,"E_J":0.5,"fits":{"EDLC":{"energy_ok":true,"power_ok":true,"ok":true},"battery":{"energy_ok":true,"power_ok":true,"ok":true}}},"0.1|60":{"P":0.1,"t":60,"E_J":6.0,"fits":{"EDLC":{"energy_ok":true,"power_ok":true,"ok":true},"battery":{"energy_ok":true,"power_ok":true,"ok":true}}},"0.1|600":{"P":0.1,"t":600,"E_J":60.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":true,"power_ok":true,"ok":true}}},"0.1|3600":{"P":0.1,"t":3600,"E_J":360.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":true,"power_ok":true,"ok":true}}},"0.5|1":{"P":0.5,"t":1,"E_J":0.5,"fits":{"EDLC":{"energy_ok":true,"power_ok":true,"ok":true},"battery":{"energy_ok":true,"power_ok":true,"ok":true}}},"0.5|5":{"P":0.5,"t":5,"E_J":2.5,"fits":{"EDLC":{"energy_ok":true,"power_ok":true,"ok":true},"battery":{"energy_ok":true,"power_ok":true,"ok":true}}},"0.5|60":{"P":0.5,"t":60,"E_J":30.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":true,"power_ok":true,"ok":true}}},"0.5|600":{"P":0.5,"t":600,"E_J":300.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":true,"power_ok":true,"ok":true}}},"0.5|3600":{"P":0.5,"t":3600,"E_J":1800.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":false,"power_ok":true,"ok":false}}},"1|1":{"P":1.0,"t":1,"E_J":1.0,"fits":{"EDLC":{"energy_ok":true,"power_ok":true,"ok":true},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"1|5":{"P":1.0,"t":5,"E_J":5.0,"fits":{"EDLC":{"energy_ok":true,"power_ok":true,"ok":true},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"1|60":{"P":1.0,"t":60,"E_J":60.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"1|600":{"P":1.0,"t":600,"E_J":600.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"1|3600":{"P":1.0,"t":3600,"E_J":3600.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":false,"power_ok":false,"ok":false}}},"2|1":{"P":2.0,"t":1,"E_J":2.0,"fits":{"EDLC":{"energy_ok":true,"power_ok":true,"ok":true},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"2|5":{"P":2.0,"t":5,"E_J":10.0,"fits":{"EDLC":{"energy_ok":true,"power_ok":true,"ok":true},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"2|60":{"P":2.0,"t":60,"E_J":120.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"2|600":{"P":2.0,"t":600,"E_J":1200.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"2|3600":{"P":2.0,"t":3600,"E_J":7200.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":false,"power_ok":false,"ok":false}}},"3|1":{"P":3.0,"t":1,"E_J":3.0,"fits":{"EDLC":{"energy_ok":true,"power_ok":true,"ok":true},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"3|5":{"P":3.0,"t":5,"E_J":15.0,"fits":{"EDLC":{"energy_ok":true,"power_ok":true,"ok":true},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"3|60":{"P":3.0,"t":60,"E_J":180.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"3|600":{"P":3.0,"t":600,"E_J":1800.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":false,"power_ok":false,"ok":false}}},"3|3600":{"P":3.0,"t":3600,"E_J":10800.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":false,"power_ok":false,"ok":false}}},"5|1":{"P":5.0,"t":1,"E_J":5.0,"fits":{"EDLC":{"energy_ok":true,"power_ok":true,"ok":true},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"5|5":{"P":5.0,"t":5,"E_J":25.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"5|60":{"P":5.0,"t":60,"E_J":300.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"5|600":{"P":5.0,"t":600,"E_J":3000.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":false,"power_ok":false,"ok":false}}},"5|3600":{"P":5.0,"t":3600,"E_J":18000.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":false,"power_ok":false,"ok":false}}}},"K":0.059159349685721514,"F":96485.33212,"atoms_si":4.994023465124319e+22,"ni":14500000000.0},"lab":{"s1":{"cu2_electrons":27,"p":21024.9999999558,"rho":0.4623340055142944,"rho_i":235217.97906390665,"ratio":508762.0124378548,"frac":2.0023934748875001e-07},"s2":{"Q":60.0,"m_mg":17.78241274918462,"h_um":1.9846442800429258,"E_001":0.2808406503142785,"bath_sp":"Cu2+"},"s3":{"pulse":{"P":3.0,"t":5.0,"E_J":15.0,"fits":{"EDLC":{"energy_ok":true,"power_ok":true,"ok":true},"battery":{"energy_ok":true,"power_ok":false,"ok":false}}},"long":{"P":0.1,"t":3600.0,"E_J":360.0,"fits":{"EDLC":{"energy_ok":false,"power_ok":true,"ok":false},"battery":{"energy_ok":true,"power_ok":true,"ok":true}}},"edlc":{"C":4.4,"V":2.7,"Pmax":5.0,"E_J":16.038000000000004},"bat":{"Ah":0.1,"V":3.7,"E_J":1332.0000000000002,"Pmax":0.7400000000000001},"table_P":[0.1,0.5,1.0,2.0,3.0,5.0],"table_t":[1,5,60,600,3600]}}};
+const LAB_FILE = "review_checks.py?v=c14-997474a7";
+const LAB_SRC = "\"\"\"Class 14 of 2182209 Chemistry for Semiconductor Engineering (2027 draft).\n\nReview in three stations. Every number on the Class 14 slides and in Lab 14 comes from this\nmodule. The formulas are the same as in the Class 6, 9, 10, 11 and 13 modules; they are\nrepeated here so that this file runs on its own.\n\nRun `python review_checks.py` for a printed summary, or `python review_checks.py --json` to\nwrite review-results.json.\n\nStation 1, materials and doping (Classes 1, 2, 6): Si at 300 K, n_i 1.45e10 cm-3,\nmobilities 1350 and 480 cm2/(V s), 1e16 cm-3 of P.\nStation 2, Cu deposition (Classes 9, 10, 13): 0.100 A, 600 s, 90% efficiency, 10.0 cm2;\nE0(Cu2+/Cu) 0.34 V; acid bath at pH 1.\nStation 3, storage choice (Classes 10, 11): a 3 W, 5 s pulse and a 0.10 W, 1 h load.\nTeaching devices, stated: an EDLC of 4.4 F charged to 2.7 V (usable energy taken as all of\n1/2 C V^2), maximum power 5 W; a Li-ion cell of 100 mAh at 3.7 V, maximum power at 2C.\n\"\"\"\nimport json\nimport math\nimport sys\n\nimport numpy as np\nfrom scipy import constants as sc\n\nQ_E, F = sc.e, sc.physical_constants[\"Faraday constant\"][0]\nRT = sc.R * 298.15\nK = math.log(10) * RT / F\n\n# Station 1\nNI, MU_N, MU_P = 1.45e10, 1350.0, 480.0\nATOMS_SI = 8 / (0.5431e-7) ** 3\n\n\ndef carriers_n(N):\n    n = N / 2 + math.sqrt(N * N / 4 + NI * NI)\n    p = NI * NI / n\n    return {\"n\": n, \"p\": p, \"rho\": 1 / (Q_E * (n * MU_N + p * MU_P))}\n\n\n# Station 2\nM_CU, RHO_CU = 63.546, 8.96\n\n\ndef plate(I, t, eff, area):\n    m = eff * I * t / F / 2 * M_CU\n    return {\"Q\": I * t, \"m_mg\": m * 1e3, \"h_um\": m / RHO_CU / area * 1e4}\n\n\n# Station 3\nEDLC = {\"C\": 4.4, \"V\": 2.7, \"Pmax\": 5.0}\nEDLC[\"E_J\"] = 0.5 * EDLC[\"C\"] * EDLC[\"V\"] ** 2\nBAT = {\"Ah\": 0.100, \"V\": 3.7}\nBAT[\"E_J\"] = BAT[\"Ah\"] * BAT[\"V\"] * 3600\nBAT[\"Pmax\"] = 2 * BAT[\"Ah\"] * BAT[\"V\"]            # 2C\n\n\ndef choose(P, t):\n    \"\"\"Which devices can deliver power P (W) for t (s).\"\"\"\n    need = P * t\n    ok = {}\n    for name, d in ((\"EDLC\", EDLC), (\"battery\", BAT)):\n        ok[name] = {\"energy_ok\": d[\"E_J\"] >= need, \"power_ok\": d[\"Pmax\"] >= P}\n        ok[name][\"ok\"] = ok[name][\"energy_ok\"] and ok[name][\"power_ok\"]\n    return {\"P\": P, \"t\": t, \"E_J\": need, \"fits\": ok}\n\n\ndef lab_results():\n    c = carriers_n(1e16)\n    intr = 1 / (Q_E * NI * (MU_N + MU_P))\n    return {\"s1\": {\"cu2_electrons\": 29 - 2, \"p\": c[\"p\"], \"rho\": c[\"rho\"], \"rho_i\": intr, \"ratio\": intr / c[\"rho\"], \"frac\": 1e16 / ATOMS_SI},\n            \"s2\": {**plate(0.100, 600, 0.90, 10.0), \"E_001\": 0.34 + K / 2 * math.log10(0.010), \"bath_sp\": \"Cu2+\"},\n            \"s3\": {\"pulse\": choose(3.0, 5.0), \"long\": choose(0.10, 3600.0), \"edlc\": EDLC, \"bat\": BAT,\n                   \"table_P\": [0.1, 0.5, 1.0, 2.0, 3.0, 5.0], \"table_t\": [1, 5, 60, 600, 3600]}}\n\n\ndef classroom_results():\n    R = {\"meta\": {\"numpy\": np.__version__, \"scipy\": __import__(\"scipy\").__version__, \"python\": sys.version.split()[0]}}\n    L = lab_results()\n    grid = {f\"{P:g}|{t:g}\": choose(P, t) for P in L[\"s3\"][\"table_P\"] for t in L[\"s3\"][\"table_t\"]}\n    R[\"lecture\"] = {\"grid\": grid, \"K\": K, \"F\": F, \"atoms_si\": ATOMS_SI, \"ni\": NI}\n    R[\"lab\"] = L\n    return R\n\n\nif __name__ == \"__main__\":\n    R = classroom_results()\n    if \"--json\" in sys.argv:\n        with open(\"review-results.json\", \"w\") as fh:\n            json.dump(R, fh, indent=1)\n        print(\"wrote review-results.json\"); sys.exit()\n    s1, s2, s3 = R[\"lab\"][\"s1\"], R[\"lab\"][\"s2\"], R[\"lab\"][\"s3\"]\n    print(\"S1: Cu2+ e- %d; p %.2e; rho %.4f; rho_i %.3e; ratio %.2e; fraction %.1e\" % (s1[\"cu2_electrons\"], s1[\"p\"], s1[\"rho\"], s1[\"rho_i\"], s1[\"ratio\"], s1[\"frac\"]))\n    print(\"S2: Q %.1f C; m %.2f mg; h %.3f um; E(0.010 M) %.4f V; bath %s\" % (s2[\"Q\"], s2[\"m_mg\"], s2[\"h_um\"], s2[\"E_001\"], s2[\"bath_sp\"]))\n    print(\"S3: EDLC %.1f J, %.1f W; battery %.0f J, %.2f W\" % (s3[\"edlc\"][\"E_J\"], s3[\"edlc\"][\"Pmax\"], s3[\"bat\"][\"E_J\"], s3[\"bat\"][\"Pmax\"]))\n    for k in (\"pulse\", \"long\"):\n        c = s3[k]; print(k, \"%.0f J\" % c[\"E_J\"], {n: v[\"ok\"] for n, v in c[\"fits\"].items()})\n";   // embedded copy, so live Python also works when the file is opened locally
+let R = RECORDED, MODE = "recorded";
+const C = {teal:"#0F6E6B",amber:"#E29A2D",rust:"#BE654C",sky:"#5A91BE",sage:"#83A462",plum:"#995A90",graphite:"#333F4A",sand:"#DFC98F",ink:"#1C242B",slate:"#66727C",mist:"#B9C1C6",paper:"#F3F0EB"};
+const fmt = (x,d=0)=>x==null?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+
+/* ---------- tiny SVG chart helpers ---------- */
+function svgEl(w,h){return `<svg class="ch" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">`}
+function niceStep(r,n=5){const raw=r/n,p=Math.pow(10,Math.floor(Math.log10(raw||1)));for(const m of [1,2,2.5,5,10]){if(m*p>=raw-1e-12)return m*p}return 10*p}
+function scale(o,lo,hi){const st=niceStep(hi-lo);o.step=st;o.ymin=Math.floor(lo/st+1e-9)*st;o.ymax=Math.ceil(hi/st-1e-9)*st;o.ticks=Math.round((o.ymax-o.ymin)/st);return o}
+function niceMax(v){const p=Math.pow(10,Math.floor(Math.log10(v||1)));for(const m of [1,1.2,1.5,2,2.5,3,4,5,6,8,10]){if(m*p>=v)return m*p}return 10*p}
+function axes(o){ // o: w,h,l,r,t,b,ymin,ymax,xlabels,ylab,ticks
+  const {w,h,l,r,t,b,ymin,ymax}=o, X=w-l-r, Y=h-t-b, n=o.ticks||5; let s="";
+  for(let k=0;k<=n;k++){const v=ymin+(ymax-ymin)*k/n, y=t+Y-(v-ymin)/(ymax-ymin)*Y;
+    s+=`<line x1="${l}" x2="${w-r}" y1="${y}" y2="${y}" stroke="${C.mist}" stroke-width="0.8" opacity=".7"/><text x="${l-8}" y="${y+5}" font-size="16" text-anchor="end" fill="${C.ink}">${fmt(v, (o.step||1)<1?1:0)}</text>`}
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${t+Y}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  const z=t+Y-(0-ymin)/(ymax-ymin)*Y; s+=`<line x1="${l}" x2="${w-r}" y1="${Math.min(t+Y,Math.max(t,z))}" y2="${Math.min(t+Y,Math.max(t,z))}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  if(o.ylab)s+=`<text transform="translate(${16},${t+Y/2}) rotate(-90)" font-size="17" text-anchor="middle" fill="${C.ink}">${o.ylab}</text>`;
+  return s}
+function ymap(o,v){const Y=o.h-o.t-o.b;return o.t+Y-(v-o.ymin)/(o.ymax-o.ymin)*Y}
+function legend(items,x,y){let s="";items.forEach((it,i)=>{const yy=y+i*22;s+=it.line?`<line x1="${x}" x2="${x+22}" y1="${yy}" y2="${yy}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${x}" y="${yy-8}" width="16" height="16" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${x+28}" y="${yy+5}" font-size="16" fill="${C.ink}">${it.t}</text>`});return s}
+function legendRow(items,x,y){let s="",xx=x;items.forEach(it=>{s+=it.line?`<line x1="${xx}" x2="${xx+20}" y1="${y}" y2="${y}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${xx}" y="${y-7}" width="14" height="14" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${xx+26}" y="${y+5}" font-size="16" fill="${C.ink}">${it.t}</text>`;xx+=38+it.t.length*8.2});return s}
+
+/* Food Manufacture: stacked bars of a [month][oil] matrix, optional line */
+function hbar(items,opt={}){ // items: {t,v,c}
+  const w=opt.w||640,h=opt.h||330,l=opt.l||250,r=90,t=16,rowh=(h-t-20)/items.length;
+  const mx=opt.max||niceMax(Math.max(...items.map(i=>i.v)));let s=svgEl(w,h);
+  items.forEach((it,i)=>{const y=t+i*rowh,bw=(w-l-r)*it.v/mx;
+    s+=`<text x="${l-12}" y="${y+rowh/2+5}" font-size="16" text-anchor="end" fill="${C.ink}">${it.t}</text><rect x="${l}" y="${y+rowh*0.18}" width="${Math.max(bw,1)}" height="${rowh*0.64}" fill="${it.c}" rx="3"/><text x="${l+bw+8}" y="${y+rowh/2+6}" font-size="17" font-weight="700" fill="${C.ink}">${opt.fmt?opt.fmt(it.v):fmt(it.v)}</text>`});
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${h-20}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  return s+"</svg>"}
+
+/* ---------- Class 14 helpers ---------- */
+const foot = "2182209 Chemistry for Semiconductor Engineering · Class 14 · Review: three stations · draft for 2027";
+const LC = () => R.lecture;
+const S = [];
+function reveal(bid, aid){const b = document.getElementById(bid); b.onclick = () => {const p = document.getElementById(aid), on = p.style.visibility === "hidden"; p.style.visibility = on ? "visible" : "hidden"; b.textContent = on ? "Hide answers" : "Show answers"}}
+const OL = `<ol style="font-size:21px;line-height:1.5;margin:0;padding-left:26px">`;
+const sci = (x, d = 2) => {const e = Math.floor(Math.log10(Math.abs(x))), m = x / 10 ** e; return `${m.toFixed(d)} × 10<sup>${e < 0 ? "−" + (-e) : e}</sup>`};
+const pye = (x, d = 2) => x.toExponential(d).replace(/e([+-])(\d)$/, "e$10$2");
+/* hide the answer column of a table until the button is pressed */
+function hideCol(tid, bid){const cells = [...document.querySelectorAll(`#${tid} td.n`)]; cells.forEach(c => c.style.visibility = "hidden"); const b = document.getElementById(bid);
+ b.onclick = () => {const on = cells[0].style.visibility === "hidden"; cells.forEach(c => c.style.visibility = on ? "visible" : "hidden"); b.textContent = on ? "Hide answers" : "Show answers"}}
+const yes = b => b ? `<b style="color:${C.teal}">yes</b>` : `<b style="color:${C.rust}">no</b>`;
+
+/* ---------- opening ---------- */
+S.push({cls:"title-slide", html:()=>`<p class="kicker">Class 14 · Lab 14</p><h1>Review: three stations</h1>
+<div class="sub">Materials and doping, Cu deposition, and a supercapacitor or a battery: Classes 1 to 13 in three problems</div>
+<div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p>`,
+notes:"Last class of this half. Today the Exit Ticket form also asks about the whole course, once."});
+
+S.push({kicker:"Plan for today", title:"Ninety minutes: three stations and the course feedback", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:19px">
+<tr><th>Part</th><th>Content</th><th class="n">Minutes</th></tr>
+<tr><td></td><td>Activity 1: retrieval check across Classes 1 to 13</td><td class="n">5</td></tr>
+<tr><td></td><td>The course on one page, and how the stations work</td><td class="n">10</td></tr>
+<tr><td>Station 1</td><td>Materials and doping (Classes 1, 2, 6)</td><td class="n">20</td></tr>
+<tr><td>Station 2</td><td>Cu deposition (Classes 9, 10, 13)</td><td class="n">20</td></tr>
+<tr><td>Station 3</td><td>A supercapacitor or a battery (Classes 10, 11)</td><td class="n">20</td></tr>
+<tr><td></td><td>Exit Ticket, and feedback on the whole course</td><td class="n">15</td></tr>
+<tr><td></td><td><b>Total</b></td><td class="n"><b>90</b></td></tr></table>
+<p class="note">Studying on your own: the narration takes about 7 minutes. Then work through the three stations in Lab 14.</p></div></div>`});
+
+S.push({kicker:"Activity 1 · 5 minutes · alone, then in pairs", title:"Retrieval check: one question per block", html:()=>`<div class="body"><div class="col w55"><div class="act"><span class="tag">WRITE, THEN COMPARE</span>
+${OL}<li>Which is the interconnect, which the insulator, and which the semiconductor: Si, SiO<sub>2</sub>, Cu? (Class 2)</li>
+<li>Is P in Si a donor or an acceptor? What is the majority carrier? (Class 6)</li>
+<li>Write the relation between charge, current and time, and between moles of electrons and charge. (Class 10)</li>
+<li>Write Q and E for a capacitor in terms of C and V. (Class 11)</li></ol></div>
+<div class="ctrl" style="margin-top:12px"><button id="a1btn">Show answers</button></div></div>
+<div class="col"><div class="panel grow" id="a1ans" style="visibility:hidden"><ul class="b xs">
+<li>Cu interconnect, SiO<sub>2</sub> insulator, Si semiconductor</li><li>Donor; electrons</li><li>Q = It; n(e<sup>−</sup>) = Q/F</li><li>Q = CV; E = ½CV²</li></ul></div></div></div>`,
+draw:()=>reveal("a1btn","a1ans")});
+
+S.push({kicker:"Learning outcomes", title:"By the end of today you can", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Choose materials for a chip, and calculate the carriers and resistivity of doped Si</li>
+<li>Calculate the mass and thickness of Cu plated, and its electrode potential, and say which form of Cu is stable in the bath</li>
+<li>Choose a supercapacitor or a battery for a load from its energy and power</li>
+<li>Link each answer to the class it came from</li></ul></div></div>`});
+
+S.push({kicker:"The course on one page", title:"Three blocks, one chip", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:17px">
+<tr><th>Block</th><th>Classes</th><th>The idea that carried forward</th></tr>
+<tr><td style="color:${C.teal}"><b>Materials</b></td><td>1 Atoms and ions · 2 Bonding · 6 Bands and doping</td><td>Electrons in atoms and bonds decide whether a solid conducts; a few dopant atoms decide how much</td></tr>
+<tr><td style="color:${C.amber}"><b>Amounts and solutions</b></td><td>3 Moles · 4 Solutions · 5 pH and equilibrium</td><td>Count atoms, ions and moles; equilibria and logarithms set concentrations</td></tr>
+<tr><td style="color:${C.rust}"><b>Electrochemistry</b></td><td>7 Redox · 8 Cells · 9 Nernst · 10 Faraday · 11 Double layer · 12 Kinetics · 13 Pourbaix</td><td>Count the electrons; the potential says whether, kinetics and transport say how fast</td></tr></table>
+<p class="note">Cu runs through all three: Cu<sup>2+</sup> with 27 electrons (Class 1), the interconnect metal (Class 2), the ion in a plating bath (Class 4), and the metal that plates, corrodes or passivates (Classes 7 to 13).</p></div></div>`});
+
+S.push({kicker:"Station 1 · Materials and doping", title:"Station 1: build the transistor’s materials", html:()=>{const s = R.lab.s1; return `<div class="body"><div class="col w55"><table class="t" style="font-size:18px" id="s1t">
+<tr><th>Question</th><th class="n">Answer</th></tr>
+<tr><td>Electrons in Cu<sup>2+</sup></td><td class="n">${s.cu2_electrons}</td></tr>
+<tr><td>Holes in Si with 10<sup>16</sup> cm<sup>−3</sup> P</td><td class="n">${sci(s.p)} cm<sup>−3</sup></td></tr>
+<tr><td>ρ of that Si</td><td class="n">${s.rho.toFixed(3)} Ω·cm</td></tr><tr><td>ρ of pure Si ÷ ρ doped</td><td class="n">${sci(s.ratio)}</td></tr>
+<tr><td>P atoms per Si atom</td><td class="n">${sci(s.frac, 1)}</td></tr></table></div>
+<div class="col"><ul class="b sm"><li>Classes 1, 2 and 6</li><li>n p = n<sub>i</sub><sup>2</sup>; ρ = 1/[e(nμ<sub>n</sub> + pμ<sub>p</sub>)]</li><li>Show the answers only after the stations</li></ul><div class="ctrl" style="margin-top:12px"><button id="s1btn">Show answers</button></div></div></div>`},
+draw:()=>hideCol("s1t", "s1btn"),
+py:{title:"Station 1 values", sub:"review_checks.carriers_n(1e16)", code:
+`from review_checks import carriers_n, NI, MU_N, MU_P, Q_E, ATOMS_SI
+c = carriers_n(1e16)
+rho_i = 1 / (Q_E * NI * (MU_N + MU_P))
+print("p = %.2e cm^-3, rho = %.4f ohm cm" % (c["p"], c["rho"]))
+print("rho pure / rho doped = %.2e" % (rho_i / c["rho"]))
+print("P per Si = %.1e" % (1e16 / ATOMS_SI))`,
+out:()=>{const s = R.lab.s1; return `p = ${pye(s.p)} cm^-3, rho = ${s.rho.toFixed(4)} ohm cm\nrho pure / rho doped = ${pye(s.ratio)}\nP per Si = ${pye(s.frac, 1)}`}},
+notes:"In class, show this slide only after the stations, or keep the panel covered."});
+
+S.push({kicker:"Station 2 · Cu deposition", title:"Station 2: plate the interconnect", html:()=>{const s = R.lab.s2; return `<div class="body"><div class="col w55"><table class="t" style="font-size:18px" id="s2t">
+<tr><th>0.100 A, 600 s, 90%, 10.0 cm²</th><th class="n">Answer</th></tr>
+<tr><td>Charge</td><td class="n">${s.Q.toFixed(1)} C</td></tr><tr><td>Mass of Cu</td><td class="n">${s.m_mg.toFixed(2)} mg</td></tr>
+<tr><td>Thickness</td><td class="n">${s.h_um.toFixed(3)} µm</td></tr><tr><td>E(Cu<sup>2+</sup>/Cu) at 0.010 M</td><td class="n">${s.E_001.toFixed(4)} V</td></tr>
+<tr><td>Stable form in an acid bath (pH 1, +0.5 V)</td><td class="n">Cu<sup>2+</sup></td></tr></table></div>
+<div class="col"><ul class="b sm"><li>Classes 9, 10 and 13</li><li>Q = It; m = εQM/(zF); h = m/(ρA); E = E° + (0.0592/2) log c</li><li>Then: what would you change to plate twice as thick?</li></ul><div class="ctrl" style="margin-top:12px"><button id="s2btn">Show answers</button></div></div></div>`},
+draw:()=>hideCol("s2t", "s2btn"),
+py:{title:"Station 2 values", sub:"review_checks.plate(0.100, 600, 0.90, 10.0)", code:
+`from review_checks import plate, K
+import math
+p = plate(0.100, 600, 0.90, 10.0)
+print("Q = %.1f C, m = %.2f mg, h = %.3f um" % (p["Q"], p["m_mg"], p["h_um"]))
+print("E(0.010 M) = %.4f V" % (0.34 + K / 2 * math.log10(0.010)))`,
+out:()=>{const s = R.lab.s2; return `Q = ${s.Q.toFixed(1)} C, m = ${s.m_mg.toFixed(2)} mg, h = ${s.h_um.toFixed(3)} um\nE(0.010 M) = ${s.E_001.toFixed(4)} V`}}});
+
+S.push({kicker:"Station 3 · Demo", title:"Station 3: a supercapacitor or a battery?", html:()=>{const s = R.lab.s3; return `<div class="body"><div class="col w55">
+<div class="ctrl"><span style="width:90px">Power, W</span>${s.table_P.map((p, i) => `<button id="sp${i}"${p === 3 ? ' class="on"' : ""}>${p}</button>`).join("")}</div>
+<div class="ctrl"><span style="width:90px">Time</span>${s.table_t.map((t, i) => `<button id="st${i}"${t === 5 ? ' class="on"' : ""}>${t < 60 ? t + " s" : t < 3600 ? t / 60 + " min" : "1 h"}</button>`).join("")}</div>
+<div class="kpi" style="margin-top:12px"><div>Energy needed, J<b class="a" id="sE"></b></div></div>
+<table class="t" style="font-size:17px;margin-top:10px" id="stab"></table></div>
+<div class="col"><table class="t" style="font-size:16px"><tr><th>Device</th><th class="n">Energy</th><th class="n">Max power</th></tr>
+<tr><td>EDLC, ${s.edlc.C} F at ${s.edlc.V} V</td><td class="n">${s.edlc.E_J.toFixed(1)} J</td><td class="n">${s.edlc.Pmax.toFixed(1)} W</td></tr>
+<tr><td>Li-ion, ${(s.bat.Ah * 1000).toFixed(0)} mAh at ${s.bat.V} V</td><td class="n">${s.bat.E_J.toFixed(0)} J</td><td class="n">${s.bat.Pmax.toFixed(2)} W (2C)</td></tr></table>
+<ul class="b xs" style="margin-top:10px"><li>Energy needed = P × t. The device must store enough energy and deliver enough power</li><li>3 W for 5 s: 15 J. 0.10 W for 1 h: 360 J</li></ul></div></div>`},
+draw:()=>{const s = R.lab.s3; let i = s.table_P.indexOf(3), j = s.table_t.indexOf(5); const go = () => {s.table_P.forEach((_, k) => document.getElementById("sp" + k).classList.toggle("on", k === i)); s.table_t.forEach((_, k) => document.getElementById("st" + k).classList.toggle("on", k === j));
+ const g = LC().grid[`${s.table_P[i]}|${s.table_t[j]}`]; document.getElementById("sE").textContent = g.E_J.toFixed(1);
+ document.getElementById("stab").innerHTML = `<tr><th>Device</th><th>Enough energy?</th><th>Enough power?</th><th>Use it?</th></tr>` + Object.entries(g.fits).map(([n, f]) => `<tr><td>${n}</td><td>${yes(f.energy_ok)}</td><td>${yes(f.power_ok)}</td><td>${yes(f.ok)}</td></tr>`).join("")};
+ s.table_P.forEach((_, k) => document.getElementById("sp" + k).onclick = () => {i = k; go()}); s.table_t.forEach((_, k) => document.getElementById("st" + k).onclick = () => {j = k; go()}); go()},
+notes:"Teaching devices: EDLC 4.4 F at 2.7 V, all of ½CV² usable; Li-ion 100 mAh at 3.7 V, at most 2C. Some loads fit neither; some fit both."});
+
+S.push({kicker:"How the stations work", title:"Twenty minutes each, all on one lab page", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Work in groups of three. Start at the station your instructor gives you, and move on every 20 minutes</li>
+<li>Each station has a CHECK or RECOMPUTE step and a CHANGE step. The answers stay hidden until you try; after two tries the expected value is shown</li>
+<li>Write down which class each formula came from. That is the point of the review</li>
+<li>Finish with the EXPLAIN step, then download your answer file for myCourseVille</li></ul>
+<p class="note">Studying on your own: work through the three stations in order. Allow about an hour.</p></div></div>`});
+
+S.push({kicker:"Six mistakes from this half", title:"Six claims that are wrong, and why", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:16px">
+<tr><th>Class</th><th>The claim</th><th>The correction</th></tr>
+<tr><td>6</td><td>n-type Si is negatively charged</td><td>Each free electron is balanced by a fixed P<sup>+</sup>: the wafer is neutral</td></tr>
+<tr><td>7</td><td>Oxidation means adding oxygen</td><td>Oxidation is loss of electrons; Zn → Zn<sup>2+</sup> has no oxygen</td></tr>
+<tr><td>8</td><td>The anode is always negative</td><td>The anode is where oxidation happens; in charging it is positive</td></tr>
+<tr><td>9</td><td>Multiply the equation, multiply E°</td><td>E° is per unit charge; ΔG° scales, E° does not</td></tr>
+<tr><td>10</td><td>More mAh means more energy</td><td>Energy is Ah × V; compare in Wh</td></tr>
+<tr><td>12, 13</td><td>More voltage, or a Pourbaix region, means it happens fast</td><td>Transport limits the rate; a Pourbaix diagram gives stability only</td></tr></table></div></div>`});
+
+S.push({kicker:"Lab 14 · 60 minutes", title:"Review stations", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Station 1: materials and doping</li><li>Station 2: Cu deposition</li><li>Station 3: a supercapacitor or a battery</li><li>Finish with one EXPLAIN step that links the three</li></ul></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="45mm" height="45mm" version="1.1" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM10,2H11V3H10zM11,2H12V3H11zM14,2H15V3H14zM15,2H16V3H15zM19,2H20V3H19zM20,2H21V3H20zM21,2H22V3H21zM22,2H23V3H22zM23,2H24V3H23zM24,2H25V3H24zM25,2H26V3H25zM26,2H27V3H26zM27,2H28V3H27zM30,2H31V3H30zM31,2H32V3H31zM33,2H34V3H33zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM39,2H40V3H39zM40,2H41V3H40zM41,2H42V3H41zM42,2H43V3H42zM2,3H3V4H2zM8,3H9V4H8zM10,3H11V4H10zM11,3H12V4H11zM13,3H14V4H13zM14,3H15V4H14zM17,3H18V4H17zM20,3H21V4H20zM22,3H23V4H22zM25,3H26V4H25zM26,3H27V4H26zM27,3H28V4H27zM31,3H32V4H31zM32,3H33V4H32zM34,3H35V4H34zM36,3H37V4H36zM42,3H43V4H42zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM12,4H13V5H12zM16,4H17V5H16zM17,4H18V5H17zM19,4H20V5H19zM22,4H23V5H22zM29,4H30V5H29zM30,4H31V5H30zM33,4H34V5H33zM36,4H37V5H36zM38,4H39V5H38zM39,4H40V5H39zM40,4H41V5H40zM42,4H43V5H42zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM18,5H19V6H18zM23,5H24V6H23zM26,5H27V6H26zM28,5H29V6H28zM29,5H30V6H29zM30,5H31V6H30zM32,5H33V6H32zM34,5H35V6H34zM36,5H37V6H36zM38,5H39V6H38zM39,5H40V6H39zM40,5H41V6H40zM42,5H43V6H42zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM11,6H12V7H11zM12,6H13V7H12zM13,6H14V7H13zM17,6H18V7H17zM19,6H20V7H19zM21,6H22V7H21zM24,6H25V7H24zM26,6H27V7H26zM28,6H29V7H28zM29,6H30V7H29zM31,6H32V7H31zM33,6H34V7H33zM34,6H35V7H34zM36,6H37V7H36zM38,6H39V7H38zM39,6H40V7H39zM40,6H41V7H40zM42,6H43V7H42zM2,7H3V8H2zM8,7H9V8H8zM11,7H12V8H11zM12,7H13V8H12zM14,7H15V8H14zM16,7H17V8H16zM18,7H19V8H18zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM26,7H27V8H26zM27,7H28V8H27zM28,7H29V8H28zM30,7H31V8H30zM31,7H32V8H31zM33,7H34V8H33zM34,7H35V8H34zM36,7H37V8H36zM42,7H43V8H42zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM34,8H35V9H34zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM39,8H40V9H39zM40,8H41V9H40zM41,8H42V9H41zM42,8H43V9H42zM10,9H11V10H10zM11,9H12V10H11zM12,9H13V10H12zM14,9H15V10H14zM16,9H17V10H16zM17,9H18V10H17zM18,9H19V10H18zM19,9H20V10H19zM21,9H22V10H21zM24,9H25V10H24zM25,9H26V10H25zM26,9H27V10H26zM28,9H29V10H28zM29,9H30V10H29zM31,9H32V10H31zM32,9H33V10H32zM2,10H3V11H2zM4,10H5V11H4zM5,10H6V11H5zM7,10H8V11H7zM8,10H9V11H8zM9,10H10V11H9zM12,10H13V11H12zM13,10H14V11H13zM14,10H15V11H14zM17,10H18V11H17zM19,10H20V11H19zM23,10H24V11H23zM28,10H29V11H28zM31,10H32V11H31zM32,10H33V11H32zM34,10H35V11H34zM36,10H37V11H36zM39,10H40V11H39zM41,10H42V11H41zM42,10H43V11H42zM3,11H4V12H3zM4,11H5V12H4zM6,11H7V12H6zM10,11H11V12H10zM13,11H14V12H13zM14,11H15V12H14zM15,11H16V12H15zM17,11H18V12H17zM20,11H21V12H20zM21,11H22V12H21zM22,11H23V12H22zM23,11H24V12H23zM25,11H26V12H25zM30,11H31V12H30zM32,11H33V12H32zM33,11H34V12H33zM34,11H35V12H34zM36,11H37V12H36zM38,11H39V12H38zM40,11H41V12H40zM41,11H42V12H41zM42,11H43V12H42zM2,12H3V13H2zM5,12H6V13H5zM7,12H8V13H7zM8,12H9V13H8zM10,12H11V13H10zM11,12H12V13H11zM12,12H13V13H12zM13,12H14V13H13zM14,12H15V13H14zM17,12H18V13H17zM20,12H21V13H20zM25,12H26V13H25zM28,12H29V13H28zM30,12H31V13H30zM35,12H36V13H35zM36,12H37V13H36zM37,12H38V13H37zM40,12H41V13H40zM41,12H42V13H41zM2,13H3V14H2zM3,13H4V14H3zM4,13H5V14H4zM6,13H7V14H6zM10,13H11V14H10zM12,13H13V14H12zM14,13H15V14H14zM15,13H16V14H15zM16,13H17V14H16zM17,13H18V14H17zM20,13H21V14H20zM21,13H22V14H21zM22,13H23V14H22zM25,13H26V14H25zM26,13H27V14H26zM27,13H28V14H27zM30,13H31V14H30zM34,13H35V14H34zM41,13H42V14H41zM4,14H5V15H4zM5,14H6V15H5zM6,14H7V15H6zM7,14H8V15H7zM8,14H9V15H8zM10,14H11V15H10zM12,14H13V15H12zM15,14H16V15H15zM18,14H19V15H18zM19,14H20V15H19zM20,14H21V15H20zM22,14H23V15H22zM24,14H25V15H24zM25,14H26V15H25zM26,14H27V15H26zM27,14H28V15H27zM29,14H30V15H29zM30,14H31V15H30zM31,14H32V15H31zM32,14H33V15H32zM33,14H34V15H33zM37,14H38V15H37zM39,14H40V15H39zM40,14H41V15H40zM42,14H43V15H42zM3,15H4V16H3zM6,15H7V16H6zM9,15H10V16H9zM10,15H11V16H10zM12,15H13V16H12zM18,15H19V16H18zM22,15H23V16H22zM25,15H26V16H25zM26,15H27V16H26zM31,15H32V16H31zM32,15H33V16H32zM33,15H34V16H33zM36,15H37V16H36zM39,15H40V16H39zM41,15H42V16H41zM42,15H43V16H42zM8,16H9V17H8zM12,16H13V17H12zM13,16H14V17H13zM18,16H19V17H18zM21,16H22V17H21zM22,16H23V17H22zM25,16H26V17H25zM27,16H28V17H27zM31,16H32V17H31zM33,16H34V17H33zM34,16H35V17H34zM36,16H37V17H36zM37,16H38V17H37zM40,16H41V17H40zM42,16H43V17H42zM3,17H4V18H3zM4,17H5V18H4zM5,17H6V18H5zM6,17H7V18H6zM9,17H10V18H9zM11,17H12V18H11zM15,17H16V18H15zM18,17H19V18H18zM23,17H24V18H23zM25,17H26V18H25zM28,17H29V18H28zM29,17H30V18H29zM32,17H33V18H32zM34,17H35V18H34zM36,17H37V18H36zM37,17H38V18H37zM38,17H39V18H38zM39,17H40V18H39zM3,18H4V19H3zM4,18H5V19H4zM6,18H7V19H6zM7,18H8V19H7zM8,18H9V19H8zM11,18H12V19H11zM12,18H13V19H12zM13,18H14V19H13zM14,18H15V19H14zM15,18H16V19H15zM18,18H19V19H18zM20,18H21V19H20zM23,18H24V19H23zM26,18H27V19H26zM27,18H28V19H27zM30,18H31V19H30zM33,18H34V19H33zM38,18H39V19H38zM6,19H7V20H6zM7,19H8V20H7zM12,19H13V20H12zM13,19H14V20H13zM15,19H16V20H15zM22,19H23V20H22zM23,19H24V20H23zM24,19H25V20H24zM25,19H26V20H25zM27,19H28V20H27zM29,19H30V20H29zM31,19H32V20H31zM32,19H33V20H32zM35,19H36V20H35zM37,19H38V20H37zM39,19H40V20H39zM40,19H41V20H40zM2,20H3V21H2zM3,20H4V21H3zM4,20H5V21H4zM7,20H8V21H7zM8,20H9V21H8zM9,20H10V21H9zM11,20H12V21H11zM12,20H13V21H12zM13,20H14V21H13zM14,20H15V21H14zM17,20H18V21H17zM20,20H21V21H20zM22,20H23V21H22zM24,20H25V21H24zM29,20H30V21H29zM31,20H32V21H31zM35,20H36V21H35zM38,20H39V21H38zM41,20H42V21H41zM6,21H7V22H6zM11,21H12V22H11zM12,21H13V22H12zM13,21H14V22H13zM14,21H15V22H14zM16,21H17V22H16zM18,21H19V22H18zM19,21H20V22H19zM20,21H21V22H20zM23,21H24V22H23zM26,21H27V22H26zM30,21H31V22H30zM33,21H34V22H33zM34,21H35V22H34zM36,21H37V22H36zM37,21H38V22H37zM40,21H41V22H40zM41,21H42V22H41zM42,21H43V22H42zM4,22H5V23H4zM5,22H6V23H5zM6,22H7V23H6zM8,22H9V23H8zM11,22H12V23H11zM13,22H14V23H13zM16,22H17V23H16zM18,22H19V23H18zM21,22H22V23H21zM25,22H26V23H25zM27,22H28V23H27zM32,22H33V23H32zM33,22H34V23H33zM35,22H36V23H35zM36,22H37V23H36zM38,22H39V23H38zM40,22H41V23H40zM41,22H42V23H41zM5,23H6V24H5zM13,23H14V24H13zM14,23H15V24H14zM15,23H16V24H15zM17,23H18V24H17zM19,23H20V24H19zM21,23H22V24H21zM22,23H23V24H22zM25,23H26V24H25zM27,23H28V24H27zM28,23H29V24H28zM31,23H32V24H31zM32,23H33V24H32zM33,23H34V24H33zM36,23H37V24H36zM38,23H39V24H38zM39,23H40V24H39zM40,23H41V24H40zM41,23H42V24H41zM42,23H43V24H42zM2,24H3V25H2zM3,24H4V25H3zM8,24H9V25H8zM9,24H10V25H9zM10,24H11V25H10zM11,24H12V25H11zM12,24H13V25H12zM15,24H16V25H15zM17,24H18V25H17zM18,24H19V25H18zM20,24H21V25H20zM25,24H26V25H25zM28,24H29V25H28zM32,24H33V25H32zM36,24H37V25H36zM37,24H38V25H37zM38,24H39V25H38zM40,24H41V25H40zM41,24H42V25H41zM2,25H3V26H2zM3,25H4V26H3zM5,25H6V26H5zM6,25H7V26H6zM10,25H11V26H10zM11,25H12V26H11zM12,25H13V26H12zM13,25H14V26H13zM14,25H15V26H14zM15,25H16V26H15zM17,25H18V26H17zM18,25H19V26H18zM21,25H22V26H21zM26,25H27V26H26zM27,25H28V26H27zM29,25H30V26H29zM30,25H31V26H30zM32,25H33V26H32zM33,25H34V26H33zM34,25H35V26H34zM35,25H36V26H35zM36,25H37V26H36zM41,25H42V26H41zM42,25H43V26H42zM3,26H4V27H3zM4,26H5V27H4zM5,26H6V27H5zM6,26H7V27H6zM8,26H9V27H8zM9,26H10V27H9zM11,26H12V27H11zM14,26H15V27H14zM16,26H17V27H16zM18,26H19V27H18zM19,26H20V27H19zM21,26H22V27H21zM22,26H23V27H22zM24,26H25V27H24zM26,26H27V27H26zM27,26H28V27H27zM28,26H29V27H28zM29,26H30V27H29zM31,26H32V27H31zM35,26H36V27H35zM37,26H38V27H37zM40,26H41V27H40zM41,26H42V27H41zM42,26H43V27H42zM14,27H15V28H14zM15,27H16V28H15zM17,27H18V28H17zM18,27H19V28H18zM21,27H22V28H21zM24,27H25V28H24zM27,27H28V28H27zM28,27H29V28H28zM29,27H30V28H29zM30,27H31V28H30zM31,27H32V28H31zM33,27H34V28H33zM34,27H35V28H34zM36,27H37V28H36zM37,27H38V28H37zM39,27H40V28H39zM40,27H41V28H40zM42,27H43V28H42zM6,28H7V29H6zM7,28H8V29H7zM8,28H9V29H8zM9,28H10V29H9zM10,28H11V29H10zM11,28H12V29H11zM16,28H17V29H16zM17,28H18V29H17zM19,28H20V29H19zM20,28H21V29H20zM21,28H22V29H21zM23,28H24V29H23zM24,28H25V29H24zM27,28H28V29H27zM30,28H31V29H30zM33,28H34V29H33zM34,28H35V29H34zM38,28H39V29H38zM39,28H40V29H39zM42,28H43V29H42zM3,29H4V30H3zM9,29H10V30H9zM10,29H11V30H10zM12,29H13V30H12zM13,29H14V30H13zM15,29H16V30H15zM17,29H18V30H17zM23,29H24V30H23zM24,29H25V30H24zM26,29H27V30H26zM28,29H29V30H28zM33,29H34V30H33zM34,29H35V30H34zM35,29H36V30H35zM38,29H39V30H38zM39,29H40V30H39zM42,29H43V30H42zM3,30H4V31H3zM4,30H5V31H4zM5,30H6V31H5zM8,30H9V31H8zM9,30H10V31H9zM10,30H11V31H10zM11,30H12V31H11zM12,30H13V31H12zM13,30H14V31H13zM14,30H15V31H14zM18,30H19V31H18zM21,30H22V31H21zM22,30H23V31H22zM23,30H24V31H23zM24,30H25V31H24zM25,30H26V31H25zM26,30H27V31H26zM27,30H28V31H27zM28,30H29V31H28zM33,30H34V31H33zM34,30H35V31H34zM35,30H36V31H35zM38,30H39V31H38zM39,30H40V31H39zM41,30H42V31H41zM3,31H4V32H3zM5,31H6V32H5zM9,31H10V32H9zM10,31H11V32H10zM11,31H12V32H11zM13,31H14V32H13zM14,31H15V32H14zM15,31H16V32H15zM16,31H17V32H16zM18,31H19V32H18zM20,31H21V32H20zM21,31H22V32H21zM22,31H23V32H22zM23,31H24V32H23zM24,31H25V32H24zM27,31H28V32H27zM32,31H33V32H32zM34,31H35V32H34zM35,31H36V32H35zM37,31H38V32H37zM39,31H40V32H39zM41,31H42V32H41zM2,32H3V33H2zM6,32H7V33H6zM8,32H9V33H8zM9,32H10V33H9zM10,32H11V33H10zM11,32H12V33H11zM13,32H14V33H13zM14,32H15V33H14zM15,32H16V33H15zM16,32H17V33H16zM17,32H18V33H17zM21,32H22V33H21zM23,32H24V33H23zM24,32H25V33H24zM27,32H28V33H27zM28,32H29V33H28zM31,32H32V33H31zM35,32H36V33H35zM36,32H37V33H36zM37,32H38V33H37zM39,32H40V33H39zM40,32H41V33H40zM41,32H42V33H41zM7,33H8V34H7zM12,33H13V34H12zM13,33H14V34H13zM15,33H16V34H15zM16,33H17V34H16zM18,33H19V34H18zM19,33H20V34H19zM20,33H21V34H20zM21,33H22V34H21zM24,33H25V34H24zM25,33H26V34H25zM28,33H29V34H28zM29,33H30V34H29zM30,33H31V34H30zM31,33H32V34H31zM32,33H33V34H32zM36,33H37V34H36zM38,33H39V34H38zM39,33H40V34H39zM40,33H41V34H40zM42,33H43V34H42zM3,34H4V35H3zM4,34H5V35H4zM6,34H7V35H6zM7,34H8V35H7zM8,34H9V35H8zM15,34H16V35H15zM17,34H18V35H17zM18,34H19V35H18zM19,34H20V35H19zM20,34H21V35H20zM23,34H24V35H23zM28,34H29V35H28zM29,34H30V35H29zM30,34H31V35H30zM31,34H32V35H31zM33,34H34V35H33zM34,34H35V35H34zM35,34H36V35H35zM36,34H37V35H36zM37,34H38V35H37zM38,34H39V35H38zM39,34H40V35H39zM40,34H41V35H40zM42,34H43V35H42zM10,35H11V36H10zM11,35H12V36H11zM12,35H13V36H12zM15,35H16V36H15zM19,35H20V36H19zM21,35H22V36H21zM22,35H23V36H22zM23,35H24V36H23zM24,35H25V36H24zM25,35H26V36H25zM26,35H27V36H26zM27,35H28V36H27zM28,35H29V36H28zM30,35H31V36H30zM32,35H33V36H32zM33,35H34V36H33zM34,35H35V36H34zM38,35H39V36H38zM41,35H42V36H41zM42,35H43V36H42zM2,36H3V37H2zM3,36H4V37H3zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM7,36H8V37H7zM8,36H9V37H8zM10,36H11V37H10zM11,36H12V37H11zM12,36H13V37H12zM13,36H14V37H13zM14,36H15V37H14zM16,36H17V37H16zM18,36H19V37H18zM20,36H21V37H20zM22,36H23V37H22zM25,36H26V37H25zM27,36H28V37H27zM30,36H31V37H30zM31,36H32V37H31zM33,36H34V37H33zM34,36H35V37H34zM36,36H37V37H36zM38,36H39V37H38zM41,36H42V37H41zM2,37H3V38H2zM8,37H9V38H8zM10,37H11V38H10zM11,37H12V38H11zM13,37H14V38H13zM14,37H15V38H14zM15,37H16V38H15zM18,37H19V38H18zM19,37H20V38H19zM26,37H27V38H26zM32,37H33V38H32zM33,37H34V38H33zM34,37H35V38H34zM38,37H39V38H38zM39,37H40V38H39zM41,37H42V38H41zM42,37H43V38H42zM2,38H3V39H2zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM8,38H9V39H8zM11,38H12V39H11zM12,38H13V39H12zM13,38H14V39H13zM17,38H18V39H17zM18,38H19V39H18zM23,38H24V39H23zM28,38H29V39H28zM30,38H31V39H30zM32,38H33V39H32zM34,38H35V39H34zM35,38H36V39H35zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38zM39,38H40V39H39zM40,38H41V39H40zM41,38H42V39H41zM42,38H43V39H42zM2,39H3V40H2zM4,39H5V40H4zM5,39H6V40H5zM6,39H7V40H6zM8,39H9V40H8zM10,39H11V40H10zM12,39H13V40H12zM13,39H14V40H13zM15,39H16V40H15zM18,39H19V40H18zM21,39H22V40H21zM24,39H25V40H24zM26,39H27V40H26zM28,39H29V40H28zM29,39H30V40H29zM32,39H33V40H32zM33,39H34V40H33zM38,39H39V40H38zM40,39H41V40H40zM41,39H42V40H41zM2,40H3V41H2zM4,40H5V41H4zM5,40H6V41H5zM6,40H7V41H6zM8,40H9V41H8zM10,40H11V41H10zM11,40H12V41H11zM15,40H16V41H15zM17,40H18V41H17zM20,40H21V41H20zM21,40H22V41H21zM26,40H27V41H26zM27,40H28V41H27zM28,40H29V41H28zM30,40H31V41H30zM31,40H32V41H31zM32,40H33V41H32zM34,40H35V41H34zM37,40H38V41H37zM41,40H42V41H41zM42,40H43V41H42zM2,41H3V42H2zM8,41H9V42H8zM11,41H12V42H11zM13,41H14V42H13zM16,41H17V42H16zM18,41H19V42H18zM20,41H21V42H20zM23,41H24V42H23zM25,41H26V42H25zM28,41H29V42H28zM29,41H30V42H29zM34,41H35V42H34zM35,41H36V42H35zM38,41H39V42H38zM39,41H40V42H39zM41,41H42V42H41zM2,42H3V43H2zM3,42H4V43H3zM4,42H5V43H4zM5,42H6V43H5zM6,42H7V43H6zM7,42H8V43H7zM8,42H9V43H8zM10,42H11V43H10zM14,42H15V43H14zM15,42H16V43H15zM17,42H18V43H17zM21,42H22V43H21zM22,42H23V43H22zM23,42H24V43H23zM24,42H25V43H24zM26,42H27V43H26zM27,42H28V43H27zM29,42H30V43H29zM30,42H31V43H30zM32,42H33V43H32zM33,42H34V43H33zM34,42H35V43H34zM35,42H36V43H35zM36,42H37V43H36zM41,42H42V43H41z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="lab.html" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the lab page</a></div></div></div>`,
+notes:"Rotate groups every 20 minutes. The lab page holds all three stations; groups can start at any of them."});
+
+S.push({kicker:"Summary", title:"What to take from this half of the course", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Count first: protons and electrons, atoms and moles, carriers, electrons as charge</li>
+<li>Know what decides whether: Gibbs energy, the cell potential, the Pourbaix map</li>
+<li>Know what decides how fast: overpotential, exchange current, transport</li>
+<li>Check every claim against a number, and every number against its source</li></ul></div></div>`});
+
+S.push({kicker:"What comes next", title:"The second half of the course", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Classes 15 onward make up the second half of the course</li>
+<li>Band gaps (Class 6), potentials (Class 9) and the Pourbaix map (Class 13) return when semiconductors meet solutions</li>
+<li>Keep your lab answer files: they hold the numbers you will need again</li></ul></div></div>`});
+
+S.push({kicker:"Exit Ticket and course feedback · 15 minutes", title:"Exit Ticket, and feedback on the whole course", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Scan the code and choose <b>Class 14</b></li><li>Exit Ticket: paste the answers that the lab page copies for you</li>
+<li>Feedback on today, then on the whole course: this is the only time the form asks about the course as a whole</li><li>Studying on your own? Choose "On my own"</li></ul>
+<p class="note">One form for both. Anonymous; no name or student ID.</p></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="45mm" height="45mm" version="1.1" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM10,2H11V3H10zM11,2H12V3H11zM15,2H16V3H15zM16,2H17V3H16zM18,2H19V3H18zM19,2H20V3H19zM21,2H22V3H21zM22,2H23V3H22zM23,2H24V3H23zM24,2H25V3H24zM25,2H26V3H25zM27,2H28V3H27zM30,2H31V3H30zM33,2H34V3H33zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM39,2H40V3H39zM40,2H41V3H40zM41,2H42V3H41zM42,2H43V3H42zM2,3H3V4H2zM8,3H9V4H8zM10,3H11V4H10zM11,3H12V4H11zM13,3H14V4H13zM14,3H15V4H14zM15,3H16V4H15zM20,3H21V4H20zM22,3H23V4H22zM25,3H26V4H25zM26,3H27V4H26zM27,3H28V4H27zM31,3H32V4H31zM34,3H35V4H34zM36,3H37V4H36zM42,3H43V4H42zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM11,4H12V5H11zM12,4H13V5H12zM14,4H15V5H14zM15,4H16V5H15zM17,4H18V5H17zM19,4H20V5H19zM21,4H22V5H21zM26,4H27V5H26zM29,4H30V5H29zM30,4H31V5H30zM32,4H33V5H32zM33,4H34V5H33zM36,4H37V5H36zM38,4H39V5H38zM39,4H40V5H39zM40,4H41V5H40zM42,4H43V5H42zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM11,5H12V6H11zM15,5H16V6H15zM16,5H17V6H16zM17,5H18V6H17zM18,5H19V6H18zM21,5H22V6H21zM23,5H24V6H23zM26,5H27V6H26zM28,5H29V6H28zM29,5H30V6H29zM30,5H31V6H30zM32,5H33V6H32zM34,5H35V6H34zM36,5H37V6H36zM38,5H39V6H38zM39,5H40V6H39zM40,5H41V6H40zM42,5H43V6H42zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM11,6H12V7H11zM12,6H13V7H12zM13,6H14V7H13zM17,6H18V7H17zM19,6H20V7H19zM21,6H22V7H21zM24,6H25V7H24zM26,6H27V7H26zM28,6H29V7H28zM29,6H30V7H29zM31,6H32V7H31zM32,6H33V7H32zM33,6H34V7H33zM34,6H35V7H34zM36,6H37V7H36zM38,6H39V7H38zM39,6H40V7H39zM40,6H41V7H40zM42,6H43V7H42zM2,7H3V8H2zM8,7H9V8H8zM11,7H12V8H11zM12,7H13V8H12zM14,7H15V8H14zM15,7H16V8H15zM16,7H17V8H16zM18,7H19V8H18zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM26,7H27V8H26zM27,7H28V8H27zM28,7H29V8H28zM30,7H31V8H30zM31,7H32V8H31zM33,7H34V8H33zM34,7H35V8H34zM36,7H37V8H36zM42,7H43V8H42zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM34,8H35V9H34zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM39,8H40V9H39zM40,8H41V9H40zM41,8H42V9H41zM42,8H43V9H42zM10,9H11V10H10zM14,9H15V10H14zM15,9H16V10H15zM17,9H18V10H17zM18,9H19V10H18zM19,9H20V10H19zM21,9H22V10H21zM24,9H25V10H24zM25,9H26V10H25zM26,9H27V10H26zM28,9H29V10H28zM29,9H30V10H29zM31,9H32V10H31zM32,9H33V10H32zM2,10H3V11H2zM4,10H5V11H4zM5,10H6V11H5zM7,10H8V11H7zM8,10H9V11H8zM9,10H10V11H9zM11,10H12V11H11zM12,10H13V11H12zM13,10H14V11H13zM14,10H15V11H14zM17,10H18V11H17zM19,10H20V11H19zM23,10H24V11H23zM28,10H29V11H28zM31,10H32V11H31zM32,10H33V11H32zM34,10H35V11H34zM36,10H37V11H36zM39,10H40V11H39zM41,10H42V11H41zM42,10H43V11H42zM2,11H3V12H2zM4,11H5V12H4zM7,11H8V12H7zM9,11H10V12H9zM10,11H11V12H10zM12,11H13V12H12zM13,11H14V12H13zM15,11H16V12H15zM17,11H18V12H17zM20,11H21V12H20zM21,11H22V12H21zM22,11H23V12H22zM23,11H24V12H23zM25,11H26V12H25zM30,11H31V12H30zM32,11H33V12H32zM33,11H34V12H33zM34,11H35V12H34zM36,11H37V12H36zM38,11H39V12H38zM40,11H41V12H40zM42,11H43V12H42zM4,12H5V13H4zM6,12H7V13H6zM8,12H9V13H8zM10,12H11V13H10zM11,12H12V13H11zM12,12H13V13H12zM13,12H14V13H13zM17,12H18V13H17zM20,12H21V13H20zM25,12H26V13H25zM28,12H29V13H28zM30,12H31V13H30zM35,12H36V13H35zM37,12H38V13H37zM40,12H41V13H40zM41,12H42V13H41zM2,13H3V14H2zM3,13H4V14H3zM6,13H7V14H6zM7,13H8V14H7zM10,13H11V14H10zM12,13H13V14H12zM13,13H14V14H13zM14,13H15V14H14zM15,13H16V14H15zM16,13H17V14H16zM20,13H21V14H20zM21,13H22V14H21zM22,13H23V14H22zM25,13H26V14H25zM26,13H27V14H26zM27,13H28V14H27zM30,13H31V14H30zM34,13H35V14H34zM36,13H37V14H36zM41,13H42V14H41zM3,14H4V15H3zM4,14H5V15H4zM5,14H6V15H5zM8,14H9V15H8zM10,14H11V15H10zM12,14H13V15H12zM15,14H16V15H15zM17,14H18V15H17zM19,14H20V15H19zM20,14H21V15H20zM22,14H23V15H22zM24,14H25V15H24zM25,14H26V15H25zM26,14H27V15H26zM27,14H28V15H27zM29,14H30V15H29zM30,14H31V15H30zM31,14H32V15H31zM32,14H33V15H32zM33,14H34V15H33zM35,14H36V15H35zM37,14H38V15H37zM39,14H40V15H39zM40,14H41V15H40zM42,14H43V15H42zM6,15H7V16H6zM9,15H10V16H9zM10,15H11V16H10zM11,15H12V16H11zM12,15H13V16H12zM14,15H15V16H14zM17,15H18V16H17zM18,15H19V16H18zM19,15H20V16H19zM22,15H23V16H22zM23,15H24V16H23zM25,15H26V16H25zM26,15H27V16H26zM31,15H32V16H31zM32,15H33V16H32zM39,15H40V16H39zM41,15H42V16H41zM42,15H43V16H42zM6,16H7V17H6zM8,16H9V17H8zM13,16H14V17H13zM14,16H15V17H14zM17,16H18V17H17zM18,16H19V17H18zM20,16H21V17H20zM21,16H22V17H21zM22,16H23V17H22zM24,16H25V17H24zM25,16H26V17H25zM27,16H28V17H27zM31,16H32V17H31zM36,16H37V17H36zM37,16H38V17H37zM40,16H41V17H40zM42,16H43V17H42zM3,17H4V18H3zM4,17H5V18H4zM5,17H6V18H5zM6,17H7V18H6zM9,17H10V18H9zM13,17H14V18H13zM14,17H15V18H14zM15,17H16V18H15zM20,17H21V18H20zM23,17H24V18H23zM25,17H26V18H25zM28,17H29V18H28zM29,17H30V18H29zM32,17H33V18H32zM33,17H34V18H33zM34,17H35V18H34zM36,17H37V18H36zM37,17H38V18H37zM38,17H39V18H38zM39,17H40V18H39zM2,18H3V19H2zM4,18H5V19H4zM5,18H6V19H5zM8,18H9V19H8zM11,18H12V19H11zM14,18H15V19H14zM16,18H17V19H16zM18,18H19V19H18zM20,18H21V19H20zM22,18H23V19H22zM23,18H24V19H23zM24,18H25V19H24zM27,18H28V19H27zM30,18H31V19H30zM33,18H34V19H33zM38,18H39V19H38zM4,19H5V20H4zM6,19H7V20H6zM7,19H8V20H7zM10,19H11V20H10zM12,19H13V20H12zM13,19H14V20H13zM15,19H16V20H15zM16,19H17V20H16zM17,19H18V20H17zM22,19H23V20H22zM23,19H24V20H23zM24,19H25V20H24zM25,19H26V20H25zM26,19H27V20H26zM27,19H28V20H27zM29,19H30V20H29zM31,19H32V20H31zM32,19H33V20H32zM35,19H36V20H35zM37,19H38V20H37zM39,19H40V20H39zM40,19H41V20H40zM2,20H3V21H2zM3,20H4V21H3zM5,20H6V21H5zM7,20H8V21H7zM8,20H9V21H8zM10,20H11V21H10zM12,20H13V21H12zM13,20H14V21H13zM14,20H15V21H14zM16,20H17V21H16zM17,20H18V21H17zM20,20H21V21H20zM24,20H25V21H24zM29,20H30V21H29zM31,20H32V21H31zM35,20H36V21H35zM38,20H39V21H38zM41,20H42V21H41zM5,21H6V22H5zM6,21H7V22H6zM11,21H12V22H11zM12,21H13V22H12zM15,21H16V22H15zM16,21H17V22H16zM17,21H18V22H17zM18,21H19V22H18zM19,21H20V22H19zM20,21H21V22H20zM21,21H22V22H21zM23,21H24V22H23zM26,21H27V22H26zM30,21H31V22H30zM33,21H34V22H33zM34,21H35V22H34zM36,21H37V22H36zM37,21H38V22H37zM40,21H41V22H40zM41,21H42V22H41zM42,21H43V22H42zM4,22H5V23H4zM6,22H7V23H6zM8,22H9V23H8zM9,22H10V23H9zM11,22H12V23H11zM12,22H13V23H12zM17,22H18V23H17zM18,22H19V23H18zM25,22H26V23H25zM27,22H28V23H27zM32,22H33V23H32zM33,22H34V23H33zM35,22H36V23H35zM36,22H37V23H36zM37,22H38V23H37zM38,22H39V23H38zM40,22H41V23H40zM41,22H42V23H41zM6,23H7V24H6zM9,23H10V24H9zM10,23H11V24H10zM13,23H14V24H13zM14,23H15V24H14zM15,23H16V24H15zM16,23H17V24H16zM17,23H18V24H17zM19,23H20V24H19zM21,23H22V24H21zM22,23H23V24H22zM25,23H26V24H25zM27,23H28V24H27zM28,23H29V24H28zM31,23H32V24H31zM32,23H33V24H32zM33,23H34V24H33zM36,23H37V24H36zM38,23H39V24H38zM41,23H42V24H41zM42,23H43V24H42zM3,24H4V25H3zM8,24H9V25H8zM9,24H10V25H9zM11,24H12V25H11zM15,24H16V25H15zM16,24H17V25H16zM17,24H18V25H17zM18,24H19V25H18zM20,24H21V25H20zM25,24H26V25H25zM28,24H29V25H28zM32,24H33V25H32zM36,24H37V25H36zM39,24H40V25H39zM41,24H42V25H41zM6,25H7V26H6zM10,25H11V26H10zM11,25H12V26H11zM12,25H13V26H12zM13,25H14V26H13zM14,25H15V26H14zM16,25H17V26H16zM17,25H18V26H17zM18,25H19V26H18zM21,25H22V26H21zM26,25H27V26H26zM27,25H28V26H27zM29,25H30V26H29zM30,25H31V26H30zM32,25H33V26H32zM33,25H34V26H33zM34,25H35V26H34zM35,25H36V26H35zM36,25H37V26H36zM39,25H40V26H39zM41,25H42V26H41zM42,25H43V26H42zM3,26H4V27H3zM5,26H6V27H5zM6,26H7V27H6zM8,26H9V27H8zM10,26H11V27H10zM14,26H15V27H14zM15,26H16V27H15zM16,26H17V27H16zM19,26H20V27H19zM21,26H22V27H21zM22,26H23V27H22zM24,26H25V27H24zM26,26H27V27H26zM27,26H28V27H27zM28,26H29V27H28zM29,26H30V27H29zM31,26H32V27H31zM35,26H36V27H35zM37,26H38V27H37zM39,26H40V27H39zM40,26H41V27H40zM3,27H4V28H3zM5,27H6V28H5zM10,27H11V28H10zM12,27H13V28H12zM15,27H16V28H15zM16,27H17V28H16zM17,27H18V28H17zM18,27H19V28H18zM21,27H22V28H21zM24,27H25V28H24zM27,27H28V28H27zM28,27H29V28H28zM29,27H30V28H29zM30,27H31V28H30zM31,27H32V28H31zM33,27H34V28H33zM34,27H35V28H34zM36,27H37V28H36zM37,27H38V28H37zM39,27H40V28H39zM40,27H41V28H40zM41,27H42V28H41zM42,27H43V28H42zM2,28H3V29H2zM4,28H5V29H4zM6,28H7V29H6zM8,28H9V29H8zM9,28H10V29H9zM11,28H12V29H11zM13,28H14V29H13zM14,28H15V29H14zM16,28H17V29H16zM19,28H20V29H19zM20,28H21V29H20zM21,28H22V29H21zM23,28H24V29H23zM24,28H25V29H24zM27,28H28V29H27zM30,28H31V29H30zM33,28H34V29H33zM34,28H35V29H34zM35,28H36V29H35zM38,28H39V29H38zM39,28H40V29H39zM42,28H43V29H42zM3,29H4V30H3zM4,29H5V30H4zM6,29H7V30H6zM12,29H13V30H12zM15,29H16V30H15zM17,29H18V30H17zM23,29H24V30H23zM24,29H25V30H24zM26,29H27V30H26zM28,29H29V30H28zM33,29H34V30H33zM34,29H35V30H34zM35,29H36V30H35zM36,29H37V30H36zM38,29H39V30H38zM39,29H40V30H39zM41,29H42V30H41zM3,30H4V31H3zM5,30H6V31H5zM6,30H7V31H6zM7,30H8V31H7zM8,30H9V31H8zM10,30H11V31H10zM11,30H12V31H11zM12,30H13V31H12zM14,30H15V31H14zM21,30H22V31H21zM22,30H23V31H22zM23,30H24V31H23zM24,30H25V31H24zM25,30H26V31H25zM26,30H27V31H26zM27,30H28V31H27zM28,30H29V31H28zM33,30H34V31H33zM35,30H36V31H35zM36,30H37V31H36zM38,30H39V31H38zM39,30H40V31H39zM41,30H42V31H41zM42,30H43V31H42zM3,31H4V32H3zM5,31H6V32H5zM6,31H7V32H6zM7,31H8V32H7zM9,31H10V32H9zM10,31H11V32H10zM11,31H12V32H11zM14,31H15V32H14zM16,31H17V32H16zM18,31H19V32H18zM19,31H20V32H19zM20,31H21V32H20zM21,31H22V32H21zM22,31H23V32H22zM23,31H24V32H23zM24,31H25V32H24zM27,31H28V32H27zM32,31H33V32H32zM33,31H34V32H33zM36,31H37V32H36zM37,31H38V32H37zM39,31H40V32H39zM41,31H42V32H41zM2,32H3V33H2zM7,32H8V33H7zM8,32H9V33H8zM9,32H10V33H9zM10,32H11V33H10zM11,32H12V33H11zM14,32H15V33H14zM15,32H16V33H15zM21,32H22V33H21zM23,32H24V33H23zM27,32H28V33H27zM28,32H29V33H28zM31,32H32V33H31zM34,32H35V33H34zM35,32H36V33H35zM36,32H37V33H36zM37,32H38V33H37zM39,32H40V33H39zM40,32H41V33H40zM41,32H42V33H41zM11,33H12V34H11zM14,33H15V34H14zM19,33H20V34H19zM20,33H21V34H20zM21,33H22V34H21zM24,33H25V34H24zM25,33H26V34H25zM28,33H29V34H28zM29,33H30V34H29zM30,33H31V34H30zM31,33H32V34H31zM32,33H33V34H32zM34,33H35V34H34zM36,33H37V34H36zM38,33H39V34H38zM39,33H40V34H39zM40,33H41V34H40zM42,33H43V34H42zM3,34H4V35H3zM4,34H5V35H4zM6,34H7V35H6zM8,34H9V35H8zM11,34H12V35H11zM17,34H18V35H17zM18,34H19V35H18zM19,34H20V35H19zM20,34H21V35H20zM23,34H24V35H23zM28,34H29V35H28zM29,34H30V35H29zM30,34H31V35H30zM31,34H32V35H31zM33,34H34V35H33zM34,34H35V35H34zM35,34H36V35H35zM36,34H37V35H36zM37,34H38V35H37zM38,34H39V35H38zM39,34H40V35H39zM40,34H41V35H40zM42,34H43V35H42zM10,35H11V36H10zM11,35H12V36H11zM13,35H14V36H13zM14,35H15V36H14zM15,35H16V36H15zM16,35H17V36H16zM18,35H19V36H18zM19,35H20V36H19zM20,35H21V36H20zM21,35H22V36H21zM23,35H24V36H23zM24,35H25V36H24zM25,35H26V36H25zM26,35H27V36H26zM27,35H28V36H27zM28,35H29V36H28zM30,35H31V36H30zM32,35H33V36H32zM33,35H34V36H33zM34,35H35V36H34zM38,35H39V36H38zM41,35H42V36H41zM42,35H43V36H42zM2,36H3V37H2zM3,36H4V37H3zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM7,36H8V37H7zM8,36H9V37H8zM10,36H11V37H10zM11,36H12V37H11zM12,36H13V37H12zM14,36H15V37H14zM15,36H16V37H15zM20,36H21V37H20zM22,36H23V37H22zM25,36H26V37H25zM27,36H28V37H27zM30,36H31V37H30zM31,36H32V37H31zM33,36H34V37H33zM34,36H35V37H34zM36,36H37V37H36zM38,36H39V37H38zM41,36H42V37H41zM2,37H3V38H2zM8,37H9V38H8zM10,37H11V38H10zM11,37H12V38H11zM18,37H19V38H18zM19,37H20V38H19zM21,37H22V38H21zM22,37H23V38H22zM26,37H27V38H26zM32,37H33V38H32zM33,37H34V38H33zM34,37H35V38H34zM38,37H39V38H38zM39,37H40V38H39zM41,37H42V38H41zM42,37H43V38H42zM2,38H3V39H2zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM8,38H9V39H8zM12,38H13V39H12zM16,38H17V39H16zM17,38H18V39H17zM18,38H19V39H18zM23,38H24V39H23zM28,38H29V39H28zM30,38H31V39H30zM32,38H33V39H32zM34,38H35V39H34zM35,38H36V39H35zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38zM39,38H40V39H39zM40,38H41V39H40zM41,38H42V39H41zM42,38H43V39H42zM2,39H3V40H2zM4,39H5V40H4zM5,39H6V40H5zM6,39H7V40H6zM8,39H9V40H8zM10,39H11V40H10zM11,39H12V40H11zM12,39H13V40H12zM13,39H14V40H13zM15,39H16V40H15zM18,39H19V40H18zM21,39H22V40H21zM24,39H25V40H24zM26,39H27V40H26zM28,39H29V40H28zM29,39H30V40H29zM32,39H33V40H32zM33,39H34V40H33zM38,39H39V40H38zM39,39H40V40H39zM41,39H42V40H41zM2,40H3V41H2zM4,40H5V41H4zM5,40H6V41H5zM6,40H7V41H6zM8,40H9V41H8zM10,40H11V41H10zM11,40H12V41H11zM12,40H13V41H12zM17,40H18V41H17zM19,40H20V41H19zM20,40H21V41H20zM21,40H22V41H21zM26,40H27V41H26zM27,40H28V41H27zM28,40H29V41H28zM30,40H31V41H30zM31,40H32V41H31zM32,40H33V41H32zM34,40H35V41H34zM37,40H38V41H37zM41,40H42V41H41zM42,40H43V41H42zM2,41H3V42H2zM8,41H9V42H8zM11,41H12V42H11zM12,41H13V42H12zM13,41H14V42H13zM16,41H17V42H16zM18,41H19V42H18zM19,41H20V42H19zM23,41H24V42H23zM25,41H26V42H25zM28,41H29V42H28zM29,41H30V42H29zM34,41H35V42H34zM35,41H36V42H35zM38,41H39V42H38zM41,41H42V42H41zM2,42H3V43H2zM3,42H4V43H3zM4,42H5V43H4zM5,42H6V43H5zM6,42H7V43H6zM7,42H8V43H7zM8,42H9V43H8zM10,42H11V43H10zM11,42H12V43H11zM12,42H13V43H12zM14,42H15V43H14zM15,42H16V43H15zM16,42H17V43H16zM17,42H18V43H17zM18,42H19V43H18zM19,42H20V43H19zM21,42H22V43H21zM22,42H23V43H22zM23,42H24V43H23zM24,42H25V43H24zM26,42H27V43H26zM27,42H28V43H27zM29,42H30V43H29zM30,42H31V43H30zM32,42H33V43H32zM33,42H34V43H33zM34,42H35V43H34zM35,42H36V43H35zM36,42H37V43H36zM39,42H40V43H39zM41,42H42V43H41z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=14" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the Exit Ticket</a></div></div></div>`,
+notes:"Leave this slide on screen for the last fifteen minutes."});
+
+/* ---------- deck engine ---------- */
+const N=S.length; let cur=0;
+function build(){const host=document.getElementById("slides");host.innerHTML="";
+ S.forEach((s,i)=>{const d=document.createElement("section");d.className="slide"+(s.cls?" "+s.cls:"");d.id="s"+(i+1);
+  d.innerHTML=(s.kicker&&!s.cls?`<p class="kicker">${s.kicker}</p>`:"")+(s.title?`<h1>${s.title}</h1>`:"")+s.html()+(s.py?`<div class="dhint">D · Python</div>`:"")+`<footer><span>${foot}</span><span>${i+1} / ${N}</span></footer>`;host.appendChild(d)})}
+function drawAll(){S.forEach(s=>{if(s.draw)try{s.draw()}catch(e){console.error(e)}})}
+function show(i){cur=Math.max(0,Math.min(N-1,i));document.querySelectorAll(".slide").forEach((el,k)=>el.classList.toggle("on",k===cur));
+ history.replaceState(null,"",location.search+"#"+(cur+1));fillDrawer();if(window.onSlideChange)onSlideChange(cur);const n=document.getElementById("notes");n.textContent=S[cur].notes||"No notes for this slide."}
+let CAP_ON=false;   // set by the narration player; reserves a caption band under the slide
+function fit(){const W=innerWidth,H=innerHeight,vp=document.getElementById("viewport"),dock=document.getElementById("dock"),cap=document.getElementById("cap");
+ const hasDock=dock.style.display==="flex",barH=hasDock?document.getElementById("nbar").offsetHeight:0;
+ let k=Math.min(W/1280,H/720)*0.98,capH=0,fs=0,dockH=0;
+ for(let it=0;it<3;it++){if(hasDock&&CAP_ON){const lines=k<0.6?4:2;fs=Math.max(12,Math.min(22,24*k));capH=Math.ceil(lines*fs*1.45)+4}else capH=0;
+  dockH=hasDock?capH+barH+(capH?6:0)+14:0;k=Math.min(W/1280,Math.max(120,H-dockH)/720)*0.98}
+ const h=720*k,pad=10,top=Math.max(0,(H-h-dockH)/2);
+ vp.style.top=(top-pad)+"px";vp.style.bottom="auto";vp.style.height=(h+2*pad)+"px";
+ document.getElementById("stage").style.transform=`scale(${k})`;
+ if(hasDock){dock.style.top=(top+h+6)+"px";cap.style.display=CAP_ON?"block":"none";cap.style.width=Math.min(1280*k,W-16)+"px";cap.style.height=capH+"px";cap.dataset.fs=fs;if(window.capRefit)capRefit()}}
+function fillDrawer(){const p=S[cur].py,dr=document.getElementById("drawer");
+ if(!p){document.getElementById("dTitle").textContent="No Python on this slide";document.getElementById("dSub").textContent="Slides with a 'D · Python' tag have code and output.";document.getElementById("dCode").value="";document.getElementById("dOut").textContent="";return}
+ document.getElementById("dTitle").textContent=p.title;document.getElementById("dSub").textContent=p.sub||"";document.getElementById("dCode").value=p.code;
+ try{document.getElementById("dOut").textContent=p.out()}catch(e){document.getElementById("dOut").textContent=String(e)}
+ const m=document.getElementById("dMode");m.className="pill "+(MODE==="live"?"live":"rec");m.textContent=MODE==="live"?"LIVE RUN":"RECORDED RUN"}
+document.addEventListener("keydown",e=>{if(["INPUT","TEXTAREA"].includes(e.target.tagName)){if(e.key==="Escape")e.target.blur();return}const k=e.key;
+ if(["ArrowRight","PageDown"," "].includes(k)){e.preventDefault();show(cur+1)}else if(["ArrowLeft","PageUp"].includes(k)){e.preventDefault();show(cur-1)}
+ else if(k==="Home")show(0);else if(k==="End")show(N-1);else if(k==="d"||k==="D")document.getElementById("drawer").classList.toggle("open");
+ else if(k==="f"||k==="F"){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+ else if(k==="p"||k==="P"){if(window.narrToggle)narrToggle()}
+ else if(k==="c"||k==="C"){if(window.ccCycle)ccCycle()}
+ else if(k==="n"||k==="N"){const n=document.getElementById("notes");n.style.display=n.style.display==="block"?"none":"block"}});
+document.getElementById("stage").addEventListener("click",e=>{if(e.target.closest("button,input,select,#drawer,a,#startov"))return;const r=e.currentTarget.getBoundingClientRect();(e.clientX-r.left)>r.width*0.5?show(cur+1):show(cur-1)});
+addEventListener("resize",fit);
+
+/* ---------- live Python (Pyodide) ---------- */
+let py=null;
+async function ensurePy(msg){if(py)return py;msg.textContent="Loading Python in the browser (first time about 5–10 s) ...";
+ if(!window.loadPyodide){await new Promise((ok,bad)=>{const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js";s.onload=ok;s.onerror=()=>bad(new Error("could not load Pyodide"));document.head.appendChild(s)})}
+ const p=await loadPyodide();await p.loadPackage(["numpy","scipy"]);
+ const src=LAB_SRC||await (await fetch(LAB_FILE)).text();p.FS.writeFile("review_checks.py",src);
+ await p.runPythonAsync('import sys\nsys.path.insert(0, ".")\nfrom review_checks import *');py=p;return p}
+async function runCode(){const msg=document.getElementById("liveMsg"),out=document.getElementById("dOut"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Running ...";const buf=[];p.setStdout({batched:s=>buf.push(s)});p.setStderr({batched:s=>buf.push(s)});
+  try{await p.runPythonAsync(document.getElementById("dCode").value)}catch(e){buf.push(String(e.message||e).split("\n").slice(-4).join("\n"))}
+  out.textContent=buf.join("\n")||"(no output)";const m=document.getElementById("dMode");m.className="pill live";m.textContent="LIVE OUTPUT";
+  msg.textContent=`Ran in ${((performance.now()-t0)/1000).toFixed(1)} s in the browser`}
+ catch(e){msg.textContent="Python could not start: "+e.message+". The recorded output is still available."}}
+async function runLive(){const msg=document.getElementById("liveMsg"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Solving every model ...";
+  const out=await p.runPythonAsync('import importlib, json\nimport review_checks as lab\nimportlib.reload(lab)\njson.dumps(lab.classroom_results())');
+  R=JSON.parse(out);MODE="live";drawAll();fillDrawer();msg.textContent=`All slides now show a live run (${((performance.now()-t0)/1000).toFixed(1)} s, SciPy ${R.meta.scipy})`}
+ catch(e){msg.textContent="Live run failed: "+e.message+". The recorded run is still shown."}}
+document.getElementById("runCode").onclick=runCode;
+document.getElementById("runLive").onclick=runLive;
+document.getElementById("useRec").onclick=()=>{R=RECORDED;MODE="recorded";drawAll();fillDrawer();document.getElementById("liveMsg").textContent="Showing the recorded run."};
+
+/* ---------- narration and captions ---------- */
+const NARR = {
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 415.7,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 20.88,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.629,
+     "en": "Welcome to Class 14, the last class of this half: a review in three stations."
+    },
+    {
+     "s": 5.629,
+     "e": 16.211,
+     "en": "Today you use what you learned in Classes 1 to 13 on three problems: the materials and doping of a chip, copper deposition, and the choice between a supercapacitor and a battery."
+    },
+    {
+     "s": 16.211,
+     "e": 20.816,
+     "en": "Today's Exit Ticket form also asks about the whole course, once."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 24.288,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 8.447,
+     "en": "A five minute activity, then ten minutes on the course as a whole and on how the stations work."
+    },
+    {
+     "s": 8.447,
+     "e": 15.855,
+     "en": "Then three stations of twenty minutes each, and fifteen minutes at the end for the Exit Ticket and the feedback on the whole course."
+    },
+    {
+     "s": 15.855,
+     "e": 24.224,
+     "en": "If you are studying on your own, the narration takes about seven minutes. Then work through the three stations in Lab 14."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 29.136,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.263,
+     "en": "Activity 1. Answer four questions without notes, one from each part of the course, then compare with a partner."
+    },
+    {
+     "s": 8.263,
+     "e": 20.782,
+     "en": "Choose the interconnect, the insulator and the semiconductor. Say what phosphorus does in silicon. Write the relations for charge, current, time and moles of electrons."
+    },
+    {
+     "s": 20.782,
+     "e": 24.263,
+     "en": "And write the charge and energy of a capacitor."
+    },
+    {
+     "s": 24.263,
+     "e": 29.066,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 24.408,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.313,
+     "en": "By the end of today you can choose materials for a chip, and calculate the carriers and resistivity of doped silicon."
+    },
+    {
+     "s": 7.313,
+     "e": 15.237,
+     "en": "You can calculate the mass, thickness and electrode potential of plated copper, and say which form of copper is stable in the bath."
+    },
+    {
+     "s": 15.237,
+     "e": 20.75,
+     "en": "You can choose a supercapacitor or a battery for a load from its energy and power."
+    },
+    {
+     "s": 20.75,
+     "e": 24.342,
+     "en": "And you can link each answer to the class it came from."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 41.736,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.826,
+     "en": "Here is the course on one page, in three blocks."
+    },
+    {
+     "s": 3.826,
+     "e": 11.842,
+     "en": "In the materials block, electrons in atoms and bonds decide whether a solid conducts, and a few dopant atoms decide how much."
+    },
+    {
+     "s": 11.842,
+     "e": 20.184,
+     "en": "In the block on amounts and solutions, we counted atoms, ions and moles, and used equilibria and logarithms to set concentrations."
+    },
+    {
+     "s": 20.184,
+     "e": 30.882,
+     "en": "In the electrochemistry block, we counted electrons. The potential says whether a reaction goes. Kinetics and transport say how fast."
+    },
+    {
+     "s": 30.882,
+     "e": 41.684,
+     "en": "Cu runs through all three: Cu²⁺ with 27 electrons, the interconnect metal, the ion in a plating bath, and the metal that plates, corrodes or passivates."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 32.184,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.603,
+     "en": "Station 1 is about materials and doping, from Classes 1, 2 and 6."
+    },
+    {
+     "s": 5.603,
+     "e": 15.618,
+     "en": "You choose the interconnect and the insulator, count the electrons in a copper ion, and then dope silicon with ten to the sixteen phosphorus atoms per cubic centimeter."
+    },
+    {
+     "s": 15.618,
+     "e": 25.882,
+     "en": "Use n times p equals n i squared for the holes, and the conductivity formula for the resistivity. And decide whether the doped wafer carries a charge."
+    },
+    {
+     "s": 25.882,
+     "e": 32.132,
+     "en": "The answers are behind the Show answers button. Show them only after the stations."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 24.864,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.668,
+     "en": "Station 2 is about copper deposition, from Classes 9, 10 and 13."
+    },
+    {
+     "s": 5.668,
+     "e": 14.842,
+     "en": "You plate copper at zero point one amps for six hundred seconds, at ninety percent efficiency, on ten square centimeters, and find the mass and thickness."
+    },
+    {
+     "s": 14.842,
+     "e": 24.803,
+     "en": "Then you find the copper potential at zero point zero one molar, read the stable form of copper in an acid bath, and decide what to change to plate twice as thick in the same time."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 43.728,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.618,
+     "en": "Station 3 asks: a supercapacitor or a battery? It uses Classes 10 and 11."
+    },
+    {
+     "s": 7.618,
+     "e": 20.421,
+     "en": "The energy a load needs is its power times its time. A 3 W pulse for 5 s needs 15 J. A 0.10 W load for 1 h needs 360 J."
+    },
+    {
+     "s": 20.421,
+     "e": 32.487,
+     "en": "The supercapacitor stores 16.0 J and can deliver 5 W. The battery stores 1332 J, but can deliver only about 0.74 W."
+    },
+    {
+     "s": 32.487,
+     "e": 43.671,
+     "en": "A device must store enough energy and deliver enough power. Press the buttons to try other loads. Some loads fit neither device, and some fit both."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 31.944,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.734,
+     "en": "Here is how the stations work."
+    },
+    {
+     "s": 2.734,
+     "e": 10.224,
+     "en": "Work in groups of three. Start at the station your instructor gives you, and move on every twenty minutes."
+    },
+    {
+     "s": 10.224,
+     "e": 21.447,
+     "en": "Each station has a step where you calculate or check, and a step where you change something. The answers stay hidden until you try, and after two tries the expected value is shown."
+    },
+    {
+     "s": 21.447,
+     "e": 31.882,
+     "en": "Write down which class each formula came from. That is the point of the review. Then finish with the explain step, and download your answer file."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 41.496,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.484,
+     "en": "Before you start, here are six claims from this half that are wrong."
+    },
+    {
+     "s": 4.484,
+     "e": 14.813,
+     "en": "N-type silicon is not charged: each free electron is balanced by a fixed phosphorus ion. Oxidation is the loss of electrons, not adding oxygen."
+    },
+    {
+     "s": 14.813,
+     "e": 19.763,
+     "en": "The anode is where oxidation happens, and in charging it is positive."
+    },
+    {
+     "s": 19.763,
+     "e": 30.066,
+     "en": "The standard potential is not multiplied with the equation, but the Gibbs energy is. More milliamp hours does not mean more energy: compare in watt hours."
+    },
+    {
+     "s": 30.066,
+     "e": 41.421,
+     "en": "And more voltage, or a region on a Pourbaix diagram, does not mean a reaction happens fast. Transport limits the rate, and a Pourbaix diagram gives stability only."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 26.544,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.132,
+     "en": "Now it is time for Lab 14. Scan the code or open the lab page."
+    },
+    {
+     "s": 6.132,
+     "e": 12.655,
+     "en": "All three stations are on the one page. The steps unlock in the order station one, two, three."
+    },
+    {
+     "s": 12.655,
+     "e": 20.276,
+     "en": "If your group starts at station two or three, work it on paper first, then enter the answers when you reach it."
+    },
+    {
+     "s": 20.276,
+     "e": 26.474,
+     "en": "The stations take about sixty minutes. Pause the narration now and work through them."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 26.832,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.458,
+     "en": "Here is what to take from this half of the course."
+    },
+    {
+     "s": 3.458,
+     "e": 9.855,
+     "en": "Count first: protons and electrons, atoms and moles, carriers, and electrons as charge."
+    },
+    {
+     "s": 9.855,
+     "e": 16.118,
+     "en": "Know what decides whether a reaction goes: the Gibbs energy, the cell potential, and the Pourbaix map."
+    },
+    {
+     "s": 16.118,
+     "e": 21.947,
+     "en": "Know what decides how fast: the overpotential, the exchange current, and transport."
+    },
+    {
+     "s": 21.947,
+     "e": 26.776,
+     "en": "And check every claim against a number, and every number against its source."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 18.264,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.261,
+     "en": "Classes fifteen onward make up the second half of the course."
+    },
+    {
+     "s": 4.261,
+     "e": 12.724,
+     "en": "The band gaps of Class 6, the potentials of Class 9, and the Pourbaix map of Class 13 return when semiconductors meet solutions."
+    },
+    {
+     "s": 12.724,
+     "e": 18.211,
+     "en": "Keep your lab answer files. They hold the numbers you will need again."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 29.424,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.158,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 14."
+    },
+    {
+     "s": 7.158,
+     "e": 14.276,
+     "en": "Paste the answers that the lab page copied for you. Then give your feedback on today, and on the whole course."
+    },
+    {
+     "s": 14.276,
+     "e": 20.816,
+     "en": "This is the only time the form asks about the course as a whole, so please take the time to answer it."
+    },
+    {
+     "s": 20.816,
+     "e": 29.355,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you for this half of the course."
+    }
+   ]
+  }
+ ]
+};
+(function(){if(!NARR)return;
+ const au=document.getElementById("narr"),bar=document.getElementById("nbar"),cap=document.getElementById("cap"),play=document.getElementById("nPlay"),tm=document.getElementById("nTime"),msg=document.getElementById("nMsg");
+ document.getElementById("dock").style.display="flex";document.getElementById("help").style.display="none";let on=false,lang="off",slideIdx=-1;
+ const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
+ lang=ls("cc-lang")||"off";if(lang!=="en")lang="off";const sp=ls("narr-speed");if(sp)document.getElementById("nSpeed").value=sp;
+ const fmtT=t=>isFinite(t)?`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,"0")}`:"0:00";
+ const S_=i=>NARR.slides[i];
+ function load(i){slideIdx=i;const s=S_(i);if(!s){au.removeAttribute("src");return}au.src=s.file;au.playbackRate=+document.getElementById("nSpeed").value;tm.textContent=`0:00 / ${fmtT(s.duration)}`;showCap(0)}
+ function setPlayUI(){play.textContent=au.paused?"▶ Play":"❚❚ Pause";play.classList.toggle("on",!au.paused)}
+ // captions sit in their own band under the slide; long lines shrink to fit the band
+ window.capRefit=()=>{let f=parseFloat(cap.dataset.fs)||18;cap.style.fontSize=f+"px";while(cap.scrollHeight>cap.clientHeight+1&&f>11){f-=1;cap.style.fontSize=f+"px"}};
+ function showCap(t){const s=S_(slideIdx);let c=null;if(s&&lang!=="off"){for(const q of s.cues){if(t>=q.s-0.05)c=q;else break}}
+  const txt=(!c||(au.paused&&au.currentTime===0&&!on))?"":c.en;if(cap.textContent!==txt){cap.textContent=txt;capRefit()}}
+ function ccUI(){const b=document.getElementById("nCC");b.textContent=lang==="off"?"CC off":"CC on";b.classList.toggle("on",lang!=="off");CAP_ON=lang!=="off";fit();showCap(au.currentTime||0)}
+ window.ccCycle=()=>{lang=lang==="off"?"en":"off";ls("cc-lang",lang);ccUI()};
+ // "on" means the student is listening: it starts with Play and ends with Pause or Stop.
+ // Slides change only when the student moves; the new slide's narration then starts if "on".
+ window.narrToggle=()=>{if(au.paused){on=true;if(slideIdx!==cur)load(cur);if(au.ended)au.currentTime=0;msg.textContent="";au.play().catch(()=>{msg.textContent="Press Play again to start audio."})}else{on=false;au.pause()}};
+ window.onSlideChange=i=>{au.pause();msg.textContent="";load(i);if(on)au.play().catch(()=>{})};
+ document.getElementById("nPlay").onclick=narrToggle;
+ document.getElementById("nStop").onclick=()=>{au.pause();au.currentTime=0;on=false;setPlayUI();showCap(0);tm.textContent=`0:00 / ${fmtT((S_(cur)||{}).duration)}`};
+ document.getElementById("nCC").onclick=ccCycle;
+ document.getElementById("nPrev").onclick=()=>show(cur-1);document.getElementById("nNext").onclick=()=>show(cur+1);
+ document.getElementById("nSpeed").onchange=e=>{au.playbackRate=+e.target.value;ls("narr-speed",e.target.value)};
+ au.addEventListener("play",setPlayUI);au.addEventListener("pause",setPlayUI);
+ au.addEventListener("timeupdate",()=>{tm.textContent=`${fmtT(au.currentTime)} / ${fmtT((S_(slideIdx)||{}).duration)}`;showCap(au.currentTime)});
+ au.addEventListener("ended",()=>{setPlayUI();const s=S_(slideIdx);msg.textContent=s&&s.hold?"Activity: do it now, then press Next ›":cur<N-1?"Press Next › or → for the next slide":"End of the session"});
+ const q=new URLSearchParams(location.search);
+ if(q.get("narrate")==="1"){const ov=document.getElementById("startov");ov.style.display="flex";document.getElementById("startBtn").onclick=()=>{ov.style.display="none";if(lang==="off"){lang="en";ls("cc-lang",lang)}ccUI();on=true;load(cur);au.play().catch(()=>{})}}
+ ccUI();setTimeout(()=>{if(slideIdx<0)load(cur)},0);
+})();
+
+build();drawAll();fit();show((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>

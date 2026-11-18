@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>2182209 · Class 5 · Acids, bases, pH and equilibrium</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--sky:#5A91BE;--sage:#83A462;--plum:#995A90;--graphite:#333F4A;--sand:#DFC98F;
+--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--mono:Menlo,Consolas,"DejaVu Sans Mono",monospace}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#2b3138;font-family:"Helvetica Neue",Helvetica,Arial,"DejaVu Sans",sans-serif;color:var(--ink)}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#stage{width:1280px;height:720px;flex:0 0 auto;overflow:hidden;background:#fff;position:relative;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.slide{position:absolute;inset:0;padding:40px 64px 58px;display:none;flex-direction:column}
+.slide.on{display:flex}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.14em;font-size:15px;text-transform:uppercase;margin:0}
+h1{color:var(--teal);font-size:42px;line-height:1.12;margin:6px 0 22px;font-weight:800}
+.body{flex:1;display:flex;gap:28px;min-height:0}
+.col{flex:1;min-width:0;display:flex;flex-direction:column}
+.w40{flex:0 0 40%}.w45{flex:0 0 45%}.w55{flex:0 0 55%}.w60{flex:0 0 60%}
+ul.b{list-style:none;margin:0;padding:0;font-size:24px;line-height:1.36}
+ul.b>li{position:relative;padding-left:30px;margin:0 0 16px}
+ul.b>li::before{content:"";position:absolute;left:2px;top:.5em;width:11px;height:11px;background:var(--amber)}
+ul.b.sm{font-size:21px}ul.b.sm>li{margin-bottom:11px}
+ul.b.xs{font-size:19px}ul.b.xs>li{margin-bottom:8px}
+.hl{color:var(--teal);font-weight:700}
+.panel{background:var(--paper);border-radius:14px;padding:16px 18px;min-height:0;display:flex;flex-direction:column}
+.panel.grow{flex:1}
+.math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:25px;line-height:1.75}
+.math .lbl{font-family:"Helvetica Neue",Arial,sans-serif;font-size:16px;color:var(--slate);display:inline-block;width:150px}
+.code{font-family:var(--mono);font-size:17px;line-height:1.5;white-space:pre;color:var(--graphite)}
+.note{font-size:18px;color:var(--slate);margin-top:10px;line-height:1.4}
+.big{font-size:56px;font-weight:800;color:var(--teal)}
+table.t{border-collapse:collapse;font-size:19px;width:100%}
+table.t th{background:var(--paper);text-align:left;padding:7px 10px;border-bottom:2px solid var(--mist);font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid #e3e6e8}
+table.t td.n,table.t th.n{text-align:right;font-variant-numeric:tabular-nums}
+.act{border:3px solid var(--amber);border-radius:16px;padding:22px 28px;background:#fdf6ea}
+.act .tag{display:inline-block;background:var(--amber);color:#fff;font-weight:800;letter-spacing:.1em;font-size:15px;padding:4px 10px;border-radius:6px;margin-bottom:12px}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px;align-items:center;font-size:16px;color:var(--slate)}
+.ctrl button{font:inherit;font-size:15px;padding:5px 11px;border-radius:8px;border:1.5px solid var(--teal);background:#fff;color:var(--teal);cursor:pointer}
+.ctrl button.on{background:var(--teal);color:#fff}
+.ctrl input[type=range]{width:220px;accent-color:var(--teal)}
+.kpi{display:flex;gap:14px;margin-top:8px}
+.kpi div{background:#fff;border-radius:10px;padding:8px 12px;font-size:15px;color:var(--slate);flex:1}
+.kpi b{display:block;font-size:24px;color:var(--ink)}
+.kpi b.a{color:var(--amber)}
+svg.ch{width:100%;height:100%;display:block}
+.chart{flex:1;min-height:0}
+footer{position:absolute;left:64px;right:64px;bottom:20px;border-top:1px solid var(--mist);padding-top:7px;display:flex;justify-content:space-between;font-size:13px;color:var(--slate)}
+.title-slide{justify-content:center}
+.title-slide h1{font-size:64px;margin-bottom:12px}
+.title-slide .sub{font-size:28px;color:var(--graphite);margin-bottom:40px}
+.title-slide .meta{font-size:19px;color:var(--slate);line-height:1.6}
+.pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;letter-spacing:.06em}
+.pill.rec{background:var(--paper);color:var(--slate)}.pill.live{background:var(--amber);color:#fff}
+.dhint{position:absolute;right:64px;top:42px;font-size:13px;color:var(--slate);border:1px solid var(--mist);border-radius:8px;padding:3px 8px}
+/* Python drawer */
+#drawer{position:absolute;top:0;right:0;bottom:0;width:47%;background:#fbfaf7;border-left:3px solid var(--teal);box-shadow:-8px 0 24px rgba(0,0,0,.15);
+ transform:translateX(102%);transition:transform .25s;display:flex;flex-direction:column;padding:22px 24px 18px;z-index:5}
+#drawer.open{transform:none}
+#drawer h2{margin:0 0 4px;color:var(--teal);font-size:22px}
+#drawer .sub{font-size:14px;color:var(--slate);margin-bottom:10px}
+#drawer textarea{width:100%;height:190px;resize:vertical;border:none;margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13px;line-height:1.45;color:var(--ink);white-space:pre-wrap;outline:none}
+#drawer pre{margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13.5px;line-height:1.45;overflow:auto;white-space:pre}
+#drawer .out{margin-top:10px;flex:1;min-height:0;display:flex;flex-direction:column}
+#drawer .out pre{flex:1;background:#1f262d;color:#e8eef2}
+#drawer .bar{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:13px;color:var(--slate)}
+#drawer button{font:inherit;font-size:14px;padding:6px 12px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer}
+#drawer button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+#notes{position:fixed;left:12px;bottom:12px;max-width:520px;background:#fffef8;border:1px solid var(--mist);border-radius:10px;padding:10px 14px;font-size:14px;line-height:1.45;display:none;z-index:9}
+#help{position:fixed;right:12px;bottom:12px;color:#c9d1d6;font-size:12px}
+
+/* narration and captions */
+#dock{position:fixed;left:0;right:0;display:none;flex-direction:column;align-items:center;gap:6px;padding:0 8px;z-index:8}
+#cap{display:none;color:#F3F0EB;line-height:1.45;text-align:center;overflow:hidden;padding:2px 6px;font-family:"Helvetica Neue",Arial,"Sukhumvit Set","Thonburi","Noto Sans Thai","Sarabun",sans-serif}
+#nbar{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;align-items:center;background:rgba(28,36,43,.9);color:#e8eef2;padding:6px 10px;border-radius:12px;font:13px "Helvetica Neue",Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+#nbar button,#nbar select{white-space:nowrap;font:inherit;font-size:14px;background:#2f3a44;color:#fff;border:1px solid #4a5763;border-radius:8px;padding:5px 10px;cursor:pointer}
+#nbar button.on{background:#0F6E6B;border-color:#0F6E6B}
+#nbar .t{min-width:88px;text-align:center;font-variant-numeric:tabular-nums;color:#c9d1d6}
+#nbar .msg{color:#E29A2D;max-width:330px;line-height:1.25}
+#startov{position:absolute;inset:0;background:rgba(243,240,235,.92);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:6;gap:14px}
+#startov button{font:inherit;font-size:24px;padding:14px 28px;border-radius:12px;border:none;background:#0F6E6B;color:#fff;cursor:pointer}
+#startov p{color:#333F4A;font-size:18px;margin:0}
+@media print{#dock,#startov{display:none!important}}
+@media print{#viewport{position:static;display:block}#stage{transform:none!important;box-shadow:none}.slide{display:flex!important;position:relative;page-break-after:always;height:720px}#drawer,#help,#notes,.dhint{display:none}}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<div id="slides"></div>
+<div id="startov"><button id="startBtn">▶ Start the narrated session</button><p>English narration with English captions below the slide. You move to the next slide yourself.</p><p>→ or Next: next slide · P: pause · C: captions on or off</p></div>
+<aside id="drawer" aria-label="Python for this slide">
+  <h2 id="dTitle">Python</h2>
+  <div class="sub" id="dSub"></div>
+  <textarea id="dCode" spellcheck="false"></textarea>
+  <div class="out"><div class="bar" style="margin:0 0 6px"><span>Output</span><span id="dMode" class="pill rec">RECORDED RUN</span></div><pre id="dOut"></pre></div>
+  <div class="bar"><button id="runCode">Run this code</button><button class="ghost" id="runLive">Recompute all slides</button><button class="ghost" id="useRec">Recorded run</button></div>
+  <div class="bar" id="liveMsg" style="min-height:18px"></div>
+</aside>
+</div></div>
+<div id="notes"></div>
+<div id="dock"><div id="cap" aria-live="polite"></div>
+<div id="nbar"><button id="nPrev" title="Previous slide (←)">‹ Back</button><button id="nPlay" title="Play or pause the narration (P)">▶ Play</button><button id="nStop" title="Stop and go back to the start of this slide">■ Stop</button><span class="t" id="nTime">0:00 / 0:00</span><select id="nSpeed" title="Speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select><button id="nCC" title="Captions: off or English (C)">CC off</button><button id="nNext" title="Next slide (→)">Next ›</button><span class="msg" id="nMsg"></span></div></div>
+<audio id="narr" preload="none"></audio>
+<div id="help">← → move · P narration · C captions · D Python · F full screen · N notes</div>
+<script>
+const RECORDED = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"samples":[{"s":"A","h":0.01,"pH":2.0,"oh":1e-12},{"s":"B","h":0.001,"pH":3.0,"oh":1e-11},{"s":"C","h":0.0001,"pH":4.0,"oh":9.999999999999999e-11}],"water":{"h":1e-07,"pH":7.0},"ratio_2_4":100,"series":[{"k":0,"c":0.1,"pH_simple":1.0,"pH":0.9999999999995657},{"k":1,"c":0.01,"pH_simple":2.0,"pH":1.9999999999565705},{"k":2,"c":0.001,"pH_simple":3.0,"pH":2.9999999956570553},{"k":3,"c":0.0001,"pH_simple":4.0,"pH":3.9999995657061693},{"k":4,"c":1e-05,"pH_simple":5.0,"pH":4.999956577064779},{"k":5,"c":1e-06,"pH_simple":6.0,"pH":5.995720788643735},{"k":6,"c":1.0000000000000001e-07,"pH_simple":7.0,"pH":6.791012359750021},{"k":7,"c":1e-08,"pH_simple":8.0,"pH":6.978294313542888},{"k":8,"c":1e-09,"pH_simple":9.0,"pH":6.997828536638184},{"k":9,"c":1e-10,"pH_simple":10.0,"pH":6.999782852768096}],"eq12":{"round":0,"A":8,"B":4,"fwd":2.0,"rev":2.0},"after":[{"round":0,"A":16,"B":4,"fwd":4.0,"rev":2.0},{"round":1,"A":14.0,"B":6.0,"fwd":3.5,"rev":3.0},{"round":2,"A":13.5,"B":6.5,"fwd":3.375,"rev":3.25},{"round":3,"A":13.375,"B":6.625,"fwd":3.34375,"rev":3.3125},{"round":4,"A":13.34375,"B":6.65625,"fwd":3.3359375,"rev":3.328125},{"round":5,"A":13.3359375,"B":6.6640625,"fwd":3.333984375,"rev":3.33203125},{"round":6,"A":13.333984375,"B":6.666015625,"fwd":3.33349609375,"rev":3.3330078125},{"round":7,"A":13.33349609375,"B":6.66650390625,"fwd":3.3333740234375,"rev":3.333251953125},{"round":8,"A":13.3333740234375,"B":6.6666259765625,"fwd":3.333343505859375,"rev":3.33331298828125},{"round":9,"A":13.333343505859375,"B":6.666656494140625,"fwd":3.3333358764648438,"rev":3.3333282470703125},{"round":10,"A":13.333335876464844,"B":6.666664123535156,"fwd":3.333333969116211,"rev":3.333332061767578},{"round":11,"A":13.333333969116211,"B":6.666666030883789,"fwd":3.3333334922790527,"rev":3.3333330154418945},{"round":12,"A":13.333333492279053,"B":6.666666507720947,"fwd":3.333333373069763,"rev":3.3333332538604736}],"eq20":{"K":0.5,"A":13.333333333333334,"B":6.666666666666666},"eq12_eq":{"K":0.5,"A":8.0,"B":4.0}},"lab":{"samples":[{"s":"A","h":0.01,"pH":2.0},{"s":"B","h":0.001,"pH":3.0},{"s":"C","h":0.0001,"pH":4.0}],"ratio_2_4":100,"pH_0p01_x10":3.0,"oh_at_pH3":1e-11,"series":[{"k":0,"c":0.1,"pH_simple":1.0,"pH":0.9999999999995657},{"k":1,"c":0.01,"pH_simple":2.0,"pH":1.9999999999565705},{"k":2,"c":0.001,"pH_simple":3.0,"pH":2.9999999956570553},{"k":3,"c":0.0001,"pH_simple":4.0,"pH":3.9999995657061693},{"k":4,"c":1e-05,"pH_simple":5.0,"pH":4.999956577064779},{"k":5,"c":1e-06,"pH_simple":6.0,"pH":5.995720788643735},{"k":6,"c":1.0000000000000001e-07,"pH_simple":7.0,"pH":6.791012359750021},{"k":7,"c":1e-08,"pH_simple":8.0,"pH":6.978294313542888},{"k":8,"c":1e-09,"pH_simple":9.0,"pH":6.997828536638184},{"k":9,"c":1e-10,"pH_simple":10.0,"pH":6.999782852768096}],"pH_1e8":6.978294313542888,"start":{"round":0,"A":8,"B":4,"fwd":2.0,"rev":2.0},"after1":{"round":1,"A":14.0,"B":6.0,"fwd":3.5,"rev":3.0},"rounds":[{"round":0,"A":16,"B":4,"fwd":4.0,"rev":2.0},{"round":1,"A":14.0,"B":6.0,"fwd":3.5,"rev":3.0},{"round":2,"A":13.5,"B":6.5,"fwd":3.375,"rev":3.25},{"round":3,"A":13.375,"B":6.625,"fwd":3.34375,"rev":3.3125},{"round":4,"A":13.34375,"B":6.65625,"fwd":3.3359375,"rev":3.328125},{"round":5,"A":13.3359375,"B":6.6640625,"fwd":3.333984375,"rev":3.33203125},{"round":6,"A":13.333984375,"B":6.666015625,"fwd":3.33349609375,"rev":3.3330078125},{"round":7,"A":13.33349609375,"B":6.66650390625,"fwd":3.3333740234375,"rev":3.333251953125},{"round":8,"A":13.3333740234375,"B":6.6666259765625,"fwd":3.333343505859375,"rev":3.33331298828125},{"round":9,"A":13.333343505859375,"B":6.666656494140625,"fwd":3.3333358764648438,"rev":3.3333282470703125},{"round":10,"A":13.333335876464844,"B":6.666664123535156,"fwd":3.333333969116211,"rev":3.333332061767578},{"round":11,"A":13.333333969116211,"B":6.666666030883789,"fwd":3.3333334922790527,"rev":3.3333330154418945},{"round":12,"A":13.333333492279053,"B":6.666666507720947,"fwd":3.333333373069763,"rev":3.3333332538604736},{"round":13,"A":13.333333373069763,"B":6.666666626930237,"fwd":3.333333343267441,"rev":3.3333333134651184},{"round":14,"A":13.33333334326744,"B":6.666666656732559,"fwd":3.33333333581686,"rev":3.3333333283662796},{"round":15,"A":13.33333333581686,"B":6.66666666418314,"fwd":3.333333333954215,"rev":3.33333333209157},{"round":16,"A":13.333333333954215,"B":6.666666666045785,"fwd":3.3333333334885538,"rev":3.3333333330228925},{"round":17,"A":13.333333333488554,"B":6.666666666511446,"fwd":3.3333333333721384,"rev":3.333333333255723},{"round":18,"A":13.333333333372138,"B":6.666666666627862,"fwd":3.3333333333430346,"rev":3.333333333313931},{"round":19,"A":13.333333333343035,"B":6.666666666656965,"fwd":3.3333333333357587,"rev":3.3333333333284827},{"round":20,"A":13.333333333335759,"B":6.666666666664241,"fwd":3.3333333333339397,"rev":3.3333333333321207},{"round":21,"A":13.33333333333394,"B":6.66666666666606,"fwd":3.333333333333485,"rev":3.33333333333303},{"round":22,"A":13.333333333333485,"B":6.666666666666515,"fwd":3.3333333333333712,"rev":3.3333333333332575},{"round":23,"A":13.333333333333371,"B":6.666666666666629,"fwd":3.333333333333343,"rev":3.3333333333333144},{"round":24,"A":13.333333333333343,"B":6.666666666666657,"fwd":3.3333333333333357,"rev":3.3333333333333286},{"round":25,"A":13.333333333333336,"B":6.666666666666664,"fwd":3.333333333333334,"rev":3.333333333333332},{"round":26,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":27,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":28,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":29,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":30,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":31,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":32,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":33,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":34,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":35,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":36,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":37,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":38,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":39,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":40,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333}],"eq20":{"K":0.5,"A":13.333333333333334,"B":6.666666666666666}}};
+const LAB_FILE = "ph_lab.py?v=c05-2807fc02";
+const LAB_SRC = "\"\"\"Class 5 of 2182209 Chemistry for Semiconductor Engineering (2027 draft).\n\nAcids, bases, pH and equilibrium. Every number on the Class 5 slides and in Lab 5\ncomes from this module.\n\nRun `python ph_lab.py` for a printed summary, or `python ph_lab.py --json` to write\nph-results.json.\n\nModel choices, stated: dilute solutions with concentration used in place of activity;\n25 C, Kw = 1.0e-14; a strong acid is fully dissociated. The A <=> B exchange is a\ncounting model of dynamic equilibrium (synthetic). NumPy only, so it also runs in the browser.\n\"\"\"\nimport json\nimport math\nimport sys\n\nimport numpy as np\n\nKW = 1.0e-14\n\n\ndef r6(x):\n    if isinstance(x, (list, tuple)):\n        return [r6(v) for v in x]\n    v = round(float(x), 6)\n    return 0.0 if v == 0 else v\n\n\ndef pH(h):\n    \"\"\"pH = -log10([H+] / 1 mol/L).\"\"\"\n    return -math.log10(h)\n\n\ndef h_from_pH(p):\n    return 10 ** (-p)\n\n\ndef ratio(p1, p2):\n    \"\"\"How many times larger [H+] is at p1 than at p2.\"\"\"\n    return 10 ** (p2 - p1)\n\n\ndef strong_acid_h(c):\n    \"\"\"[H+] of a strong monoprotic acid at concentration c, counting the H+ from water too.\n\n    Charge balance [H+] = c + [OH-] with [H+][OH-] = Kw gives [H+] = c/2 + sqrt(c^2/4 + Kw).\n    \"\"\"\n    return c / 2 + math.sqrt(c * c / 4 + KW)\n\n\ndef dilution_series(c0=0.10, kmax=9):\n    \"\"\"pH of a strong acid diluted by 10^k: the simple answer -log10(c) and the full one.\"\"\"\n    out = []\n    for k in range(kmax + 1):\n        c = c0 / 10 ** k\n        out.append({\"k\": k, \"c\": c, \"pH_simple\": pH(c), \"pH\": pH(strong_acid_h(c))})\n    return out\n\n\ndef exchange(A, B, kf=0.25, kr=0.5, rounds=12):\n    \"\"\"Counting model of A <=> B: each round, kf*A goes to B and kr*B goes back to A.\"\"\"\n    hist = [{\"round\": 0, \"A\": A, \"B\": B, \"fwd\": kf * A, \"rev\": kr * B}]\n    for n in range(1, rounds + 1):\n        f, r = kf * A, kr * B\n        A, B = A - f + r, B + f - r\n        hist.append({\"round\": n, \"A\": A, \"B\": B, \"fwd\": kf * A, \"rev\": kr * B})\n    return hist\n\n\ndef equilibrium(total, kf=0.25, kr=0.5):\n    \"\"\"At equilibrium kf A = kr B, so B/A = kf/kr.\"\"\"\n    K = kf / kr\n    A = total / (1 + K)\n    return {\"K\": K, \"A\": A, \"B\": total - A}\n\n\nSAMPLES = [(\"A\", 1.0e-2), (\"B\", 1.0e-3), (\"C\", 1.0e-4)]\n\n\ndef lab_results():\n    after = exchange(16, 4, rounds=40)\n    return {\n        \"samples\": [{\"s\": s, \"h\": h, \"pH\": pH(h)} for s, h in SAMPLES],\n        \"ratio_2_4\": ratio(2, 4),\n        \"pH_0p01_x10\": pH(0.010 / 10),\n        \"oh_at_pH3\": KW / h_from_pH(3),\n        \"series\": dilution_series(),\n        \"pH_1e8\": pH(strong_acid_h(1e-8)),\n        \"start\": exchange(8, 4, rounds=0)[0],\n        \"after1\": after[1], \"rounds\": after,\n        \"eq20\": equilibrium(20),\n    }\n\n\ndef classroom_results():\n    R = {\"meta\": {\"numpy\": np.__version__, \"scipy\": __import__(\"scipy\").__version__, \"python\": sys.version.split()[0]}}\n    R[\"lecture\"] = {\n        \"samples\": [{\"s\": s, \"h\": h, \"pH\": pH(h), \"oh\": KW / h} for s, h in SAMPLES],\n        \"water\": {\"h\": math.sqrt(KW), \"pH\": pH(math.sqrt(KW))},\n        \"ratio_2_4\": ratio(2, 4),\n        \"series\": dilution_series(),\n        \"eq12\": exchange(8, 4, rounds=0)[0],\n        \"after\": exchange(16, 4, rounds=12),\n        \"eq20\": equilibrium(20), \"eq12_eq\": equilibrium(12),\n    }\n    R[\"lab\"] = lab_results()\n    return R\n\n\nif __name__ == \"__main__\":\n    R = classroom_results()\n    if \"--json\" in sys.argv:\n        with open(\"ph-results.json\", \"w\") as fh:\n            json.dump(R, fh, indent=1)\n        print(\"wrote ph-results.json\"); sys.exit()\n    L = R[\"lecture\"]\n    for q in L[\"samples\"]:\n        print(q[\"s\"], \"pH\", r6(q[\"pH\"]), \"[OH-]\", q[\"oh\"])\n    for q in L[\"series\"]:\n        print(\"dilute x10^%d: simple %.2f, full %.3f\" % (q[\"k\"], q[\"pH_simple\"], q[\"pH\"]))\n    for q in L[\"after\"][:4]:\n        print(\"round\", q[\"round\"], \"A\", r6(q[\"A\"]), \"B\", r6(q[\"B\"]))\n    print(\"new equilibrium:\", L[\"eq20\"])\n";   // embedded copy, so live Python also works when the file is opened locally
+let R = RECORDED, MODE = "recorded";
+const C = {teal:"#0F6E6B",amber:"#E29A2D",rust:"#BE654C",sky:"#5A91BE",sage:"#83A462",plum:"#995A90",graphite:"#333F4A",sand:"#DFC98F",ink:"#1C242B",slate:"#66727C",mist:"#B9C1C6",paper:"#F3F0EB"};
+const fmt = (x,d=0)=>x==null?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+
+/* ---------- tiny SVG chart helpers ---------- */
+function svgEl(w,h){return `<svg class="ch" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">`}
+function niceStep(r,n=5){const raw=r/n,p=Math.pow(10,Math.floor(Math.log10(raw||1)));for(const m of [1,2,2.5,5,10]){if(m*p>=raw-1e-12)return m*p}return 10*p}
+function scale(o,lo,hi){const st=niceStep(hi-lo);o.step=st;o.ymin=Math.floor(lo/st+1e-9)*st;o.ymax=Math.ceil(hi/st-1e-9)*st;o.ticks=Math.round((o.ymax-o.ymin)/st);return o}
+function niceMax(v){const p=Math.pow(10,Math.floor(Math.log10(v||1)));for(const m of [1,1.2,1.5,2,2.5,3,4,5,6,8,10]){if(m*p>=v)return m*p}return 10*p}
+function axes(o){ // o: w,h,l,r,t,b,ymin,ymax,xlabels,ylab,ticks
+  const {w,h,l,r,t,b,ymin,ymax}=o, X=w-l-r, Y=h-t-b, n=o.ticks||5; let s="";
+  for(let k=0;k<=n;k++){const v=ymin+(ymax-ymin)*k/n, y=t+Y-(v-ymin)/(ymax-ymin)*Y;
+    s+=`<line x1="${l}" x2="${w-r}" y1="${y}" y2="${y}" stroke="${C.mist}" stroke-width="0.8" opacity=".7"/><text x="${l-8}" y="${y+5}" font-size="16" text-anchor="end" fill="${C.ink}">${fmt(v, (o.step||1)<1?1:0)}</text>`}
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${t+Y}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  const z=t+Y-(0-ymin)/(ymax-ymin)*Y; s+=`<line x1="${l}" x2="${w-r}" y1="${Math.min(t+Y,Math.max(t,z))}" y2="${Math.min(t+Y,Math.max(t,z))}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  if(o.ylab)s+=`<text transform="translate(${16},${t+Y/2}) rotate(-90)" font-size="17" text-anchor="middle" fill="${C.ink}">${o.ylab}</text>`;
+  return s}
+function ymap(o,v){const Y=o.h-o.t-o.b;return o.t+Y-(v-o.ymin)/(o.ymax-o.ymin)*Y}
+function legend(items,x,y){let s="";items.forEach((it,i)=>{const yy=y+i*22;s+=it.line?`<line x1="${x}" x2="${x+22}" y1="${yy}" y2="${yy}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${x}" y="${yy-8}" width="16" height="16" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${x+28}" y="${yy+5}" font-size="16" fill="${C.ink}">${it.t}</text>`});return s}
+function legendRow(items,x,y){let s="",xx=x;items.forEach(it=>{s+=it.line?`<line x1="${xx}" x2="${xx+20}" y1="${y}" y2="${y}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${xx}" y="${y-7}" width="14" height="14" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${xx+26}" y="${y+5}" font-size="16" fill="${C.ink}">${it.t}</text>`;xx+=38+it.t.length*8.2});return s}
+
+/* Food Manufacture: stacked bars of a [month][oil] matrix, optional line */
+function hbar(items,opt={}){ // items: {t,v,c}
+  const w=opt.w||640,h=opt.h||330,l=opt.l||250,r=90,t=16,rowh=(h-t-20)/items.length;
+  const mx=opt.max||niceMax(Math.max(...items.map(i=>i.v)));let s=svgEl(w,h);
+  items.forEach((it,i)=>{const y=t+i*rowh,bw=(w-l-r)*it.v/mx;
+    s+=`<text x="${l-12}" y="${y+rowh/2+5}" font-size="16" text-anchor="end" fill="${C.ink}">${it.t}</text><rect x="${l}" y="${y+rowh*0.18}" width="${Math.max(bw,1)}" height="${rowh*0.64}" fill="${it.c}" rx="3"/><text x="${l+bw+8}" y="${y+rowh/2+6}" font-size="17" font-weight="700" fill="${C.ink}">${opt.fmt?opt.fmt(it.v):fmt(it.v)}</text>`});
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${h-20}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  return s+"</svg>"}
+
+/* ---------- Class 5 helpers ---------- */
+const foot = "2182209 Chemistry for Semiconductor Engineering · Class 5 · Acids, bases, pH and equilibrium · draft for 2027";
+const LC = () => R.lecture;
+const S = [];
+const sub2 = f => f.replace(/(\d+)/g, "<sub>$1</sub>");
+const py6 = v => {let r = Math.round(v * 1e6) / 1e6; if (Object.is(r, -0) || r === 0) r = 0; const s = String(r); return /[.e]/.test(s) ? s : s + ".0"};
+function reveal(bid, aid){const b = document.getElementById(bid); b.onclick = () => {const p = document.getElementById(aid), on = p.style.visibility === "hidden"; p.style.visibility = on ? "visible" : "hidden"; b.textContent = on ? "Hide answers" : "Show answers"}}
+const CHECK = (n, q, a) => `<div class="body"><div class="col w55"><div class="act"><span class="tag">PAUSE AND ANSWER</span>${q}</div>
+<div class="ctrl" style="margin-top:12px"><button id="k${n}btn">Show answers</button></div></div>
+<div class="col"><div class="panel grow" id="k${n}ans" style="visibility:hidden"><ul class="b xs">${a}</ul></div></div></div>`;
+const OL = `<ol style="font-size:21px;line-height:1.5;margin:0;padding-left:26px">`;
+const pow10 = e => `10<sup>${e < 0 ? "−" + (-e) : e}</sup>`;
+const sci = (x, d = 2) => {const e = Math.floor(Math.log10(x) + 1e-12), m = x / 10 ** e; return Math.abs(m - 1) < 1e-9 ? pow10(e) : `${m.toFixed(d)} × ${pow10(e)}`};
+/* same formulas as ph_lab */
+const KW = 1e-14, pHof = h => -Math.log10(h), strongH = c => c / 2 + Math.sqrt(c * c / 4 + KW);
+
+/* ---------- opening ---------- */
+S.push({cls:"title-slide", html:()=>`<p class="kicker">Class 5 · Lab 5</p><h1>Acids, bases, pH and equilibrium</h1>
+<div class="sub">Reading the pH scale, why a factor of 10 hides in each unit, and what "at equilibrium" really means</div>
+<div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p>`,
+notes:"pH is the x-axis of the Pourbaix diagram in Class 13; equilibrium returns in Class 9."});
+
+S.push({kicker:"Plan for today", title:"Ninety minutes, one activity, two checks and a lab", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:19px">
+<tr><th>Part</th><th>Content</th><th class="n">Minutes</th></tr>
+<tr><td></td><td>Activity 1: retrieval check on Class 4</td><td class="n">5</td></tr>
+<tr><td>1</td><td>pH: [H<sup>+</sup>] on a log scale, water and K<sub>w</sub>, acids and bases in a fab, dilution; Check 1</td><td class="n">25</td></tr>
+<tr><td>2</td><td>Equilibrium: a dynamic balance, the equilibrium ratio, adding a reactant; Check 2</td><td class="n">25</td></tr>
+<tr><td>Lab 5</td><td>pH and a shifting equilibrium</td><td class="n">30</td></tr>
+<tr><td></td><td>Exit Ticket and feedback</td><td class="n">5</td></tr>
+<tr><td></td><td><b>Total</b></td><td class="n"><b>90</b></td></tr></table>
+<p class="note">Studying on your own: the narration takes about 10 minutes. Stop at the activity and at each check, then do Lab 5.</p></div></div>`});
+
+S.push({kicker:"Activity 1 · 5 minutes · alone, then in pairs", title:"Retrieval check: Class 4 without notes", html:()=>`<div class="body"><div class="col w55"><div class="act"><span class="tag">WRITE, THEN COMPARE</span>
+${OL}<li>What is n in 20.0 mL of 0.100 mol/L CuSO<sub>4</sub>?</li>
+<li>Water is added to it until the volume is 40.0 mL. What is C now?</li>
+<li>Which particles carry the current in a CuSO<sub>4</sub> bath?</li>
+<li>Write the ions of 0.10 mol/L HCl, a strong acid, with their concentrations.</li></ol></div>
+<div class="ctrl" style="margin-top:12px"><button id="a1btn">Show answers</button></div></div>
+<div class="col"><div class="panel grow" id="a1ans" style="visibility:hidden"><ul class="b xs">
+<li>0.100 × 0.0200 = 0.00200 mol</li><li>0.00200 / 0.0400 = 0.0500 mol/L</li><li>Ions: Cu<sup>2+</sup> and SO<sub>4</sub><sup>2−</sup></li><li>H<sup>+</sup> 0.10 and Cl<sup>−</sup> 0.10 mol/L. Today: what 0.10 mol/L of H<sup>+</sup> means as a pH</li></ul></div></div></div>`,
+draw:()=>reveal("a1btn","a1ans")});
+
+S.push({kicker:"Learning outcomes", title:"By the end of today you can", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Calculate pH from [H<sup>+</sup>] and [H<sup>+</sup>] from pH, and compare two solutions by their ratio, not their difference</li>
+<li>Use K<sub>w</sub> = 1.0 × 10<sup>−14</sup> at 25 °C to find [OH<sup>−</sup>], and say why pure water has pH 7</li>
+<li>Predict the pH after diluting a strong acid, and explain why it never passes 7</li>
+<li>Describe equilibrium as equal forward and reverse rates, not equal amounts</li>
+<li>Predict the direction of change after adding a reactant, and find the new equilibrium in a counting model</li></ul></div></div>`});
+
+S.push({kicker:"Context", title:"Concentration again, now on a log scale", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
+<tr><th>You have</th><th>From</th><th>Today</th></tr>
+<tr><td>C in mol/L, dilution keeps n</td><td>Class 4</td><td>[H<sup>+</sup>] in mol/L, then pH</td></tr>
+<tr><td>Strong electrolytes dissociate fully</td><td>Class 4</td><td>Strong acids: HCl → H<sup>+</sup> + Cl<sup>−</sup></td></tr>
+<tr><td>Coefficients are mole ratios</td><td>Class 3</td><td>A ⇌ B: reactions that run both ways</td></tr></table>
+<p class="note">New symbols: [X], concentration of X in mol/L; pH = −log<sub>10</sub>[H<sup>+</sup>]; K<sub>w</sub>, the ion product of water; ⇌, a reaction that runs both ways. H<sup>+</sup> is shorthand for H<sub>3</sub>O<sup>+</sup> in water. Today concentration stands in for activity (dilute solutions).</p></div></div>`});
+
+/* ---------- Part 1 ---------- */
+function phSVG(p){const w = 600, h = 230, l = 30, X = 540, px = q => l + X * q / 14; let s = svgEl(w, h);
+ for (let q = 0; q <= 14; q++){const x0 = px(q), c = q < 7 ? `rgb(${226},${154 + q * 9},${45 + q * 20})` : q > 7 ? `rgb(${90 + (14 - q) * 10},${145},${190})` : "#ddd"; if (q < 14) s += `<rect x="${x0}" y="70" width="${X / 14}" height="40" fill="${c}" opacity=".55"/>`; s += `<text x="${x0}" y="128" font-size="13" text-anchor="middle" fill="${C.ink}">${q}</text>`}
+ s += `<text x="${px(3.5)}" y="60" font-size="14" text-anchor="middle" fill="${C.ink}">acidic</text><text x="${px(7)}" y="60" font-size="14" text-anchor="middle" fill="${C.ink}">neutral</text><text x="${px(10.5)}" y="60" font-size="14" text-anchor="middle" fill="${C.ink}">basic</text>`;
+ LC().samples.forEach(q => s += `<line x1="${px(q.pH)}" x2="${px(q.pH)}" y1="112" y2="140" stroke="${C.teal}" stroke-width="2"/><text x="${px(q.pH)}" y="156" font-size="13" text-anchor="middle" fill="${C.teal}">${q.s}</text>`);
+ const pp = Math.max(0, Math.min(14, p)); s += `<polygon points="${px(pp)},68 ${px(pp) - 9},48 ${px(pp) + 9},48" fill="${C.amber}"/>`;
+ s += `<text x="${l}" y="196" font-size="14" fill="${C.ink}">pH = −log₁₀[H⁺]. One unit to the left: [H⁺] × 10.</text>`; return s + "</svg>"}
+S.push({kicker:"Part 1 · Demo", title:"pH counts powers of ten", html:()=>`<div class="body"><div class="col w55"><div class="ctrl"><span>[H<sup>+</sup>], mol/L</span> <input type="range" id="ph" min="-13" max="-1" step="0.5" value="-2"><b id="phv"></b></div>
+<div class="panel"><div class="chart" id="phch" style="height:230px"></div></div>
+<div class="kpi"><div>pH<b class="a" id="kp"></b></div><div>[OH<sup>−</sup>] = K<sub>w</sub>/[H<sup>+</sup>]<b id="koh"></b></div></div></div>
+<div class="col"><table class="t" style="font-size:17px" id="phtab"></table>
+<ul class="b xs" style="margin-top:12px"><li>pH 2 is not "twice" pH 4: [H<sup>+</sup>] is 10<sup>4−2</sup> = 100 times larger</li><li>pH is a number without units; the [H<sup>+</sup>] inside the log is divided by 1 mol/L</li></ul></div></div>`,
+draw:()=>{document.getElementById("phtab").innerHTML = `<tr><th>Sample</th><th class="n">[H<sup>+</sup>], mol/L</th><th class="n">pH</th></tr>` + LC().samples.map(q => `<tr><td>${q.s}</td><td class="n">${sci(q.h, 1)}</td><td class="n">${q.pH.toFixed(2)}</td></tr>`).join("");
+ const sl = document.getElementById("ph"), go = () => {const h = 10 ** +sl.value; document.getElementById("phv").innerHTML = sci(h, 1); document.getElementById("kp").textContent = pHof(h).toFixed(2); document.getElementById("koh").innerHTML = sci(KW / h, 1); document.getElementById("phch").innerHTML = phSVG(pHof(h))}; sl.oninput = go; go()},
+py:{title:"pH of the three samples", sub:"ph_lab.pH()", code:
+`from ph_lab import SAMPLES, pH, ratio, r6
+for s, h in SAMPLES:
+    print(s, "[H+] =", h, "pH =", r6(pH(h)))
+print("[H+] at pH 2 / at pH 4 =", r6(ratio(2, 4)))`,
+out:()=>LC().samples.map(q=>`${q.s} [H+] = ${q.h} pH = ${py6(q.pH)}`).concat([`[H+] at pH 2 / at pH 4 = ${py6(LC().ratio_2_4)}`]).join("\n")},
+notes:"Python prints 0.01, 0.001, 0.0001 for the [H+] values; the drawer matches that."});
+
+S.push({kicker:"Part 1 · Water", title:"Even pure water has ions: K<sub>w</sub> and pH 7", html:()=>`<div class="body"><div class="col w55"><div class="panel"><div class="math" style="font-size:21px;line-height:1.75">
+H<sub>2</sub>O ⇌ H<sup>+</sup> + OH<sup>−</sup><br>K<sub>w</sub> = [H<sup>+</sup>][OH<sup>−</sup>] = 1.0 × 10<sup>−14</sup> at 25 °C<br>Pure water: [H<sup>+</sup>] = [OH<sup>−</sup>] = 1.0 × 10<sup>−7</sup> mol/L → pH 7.00</div></div>
+<p class="note">K<sub>w</sub> changes with temperature, so neutral is pH 7 only at 25 °C.</p></div>
+<div class="col"><ul class="b sm"><li>Acidic: [H<sup>+</sup>] > [OH<sup>−</sup>], pH below 7. Basic: the reverse</li><li>Sample A, pH 2: [OH<sup>−</sup>] = 10<sup>−14</sup>/10<sup>−2</sup> = 10<sup>−12</sup> mol/L</li>
+<li>These 10<sup>−7</sup> mol/L of ions are why ultrapure water (Class 4) still conducts a little</li></ul></div></div>`});
+
+S.push({kicker:"Part 1 · Acids and bases in a fab", title:"Where pH matters in making chips", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
+<tr><th>Solution</th><th>Acidic or basic</th><th>Why the pH matters</th></tr>
+<tr><td>Acid copper plating bath (CuSO<sub>4</sub> + H<sub>2</sub>SO<sub>4</sub>)</td><td>Strongly acidic, pH about 1 or below</td><td>Keeps Cu<sup>2+</sup> dissolved instead of forming hydroxide or oxide; the H<sup>+</sup> raises conductivity</td></tr>
+<tr><td>RCA SC-1 clean (NH<sub>4</sub>OH + H<sub>2</sub>O<sub>2</sub> + H<sub>2</sub>O)</td><td>Basic</td><td>Lifts particles and organic residue off wafers</td></tr>
+<tr><td>RCA SC-2 clean (HCl + H<sub>2</sub>O<sub>2</sub> + H<sub>2</sub>O)</td><td>Acidic</td><td>Removes metal ions from the surface</td></tr>
+<tr><td>Rinse water</td><td>Neutral</td><td>Must leave no ions behind</td></tr></table>
+<p class="note">Class 13 draws Cu's stable forms on a map whose x-axis is pH. Today's scale is that axis.</p></div></div>`});
+
+function dilSVG(){const Q = LC().series, w = 560, h = 330, l = 56, r = 16, t = 18, b = 48, X = w - l - r, Y = h - t - b, px = k => l + X * k / 9, py = p => t + Y * (11 - p) / 11; let s = svgEl(w, h);
+ for (let p = 0; p <= 11; p++) s += `<line x1="${l}" x2="${l + X}" y1="${py(p)}" y2="${py(p)}" stroke="${C.mist}" stroke-width=".7"/><text x="${l - 8}" y="${py(p) + 5}" font-size="13" text-anchor="end" fill="${C.ink}">${p}</text>`;
+ for (let k = 0; k <= 9; k++) s += `<text x="${px(k)}" y="${t + Y + 20}" font-size="13" text-anchor="middle" fill="${C.ink}">10${"⁰¹²³⁴⁵⁶⁷⁸⁹"[k]}</text>`;
+ s += `<line x1="${l}" x2="${l + X}" y1="${py(7)}" y2="${py(7)}" stroke="${C.graphite}" stroke-dasharray="6 4"/><text x="${l + X - 4}" y="${py(7) - 6}" font-size="13" text-anchor="end" fill="${C.graphite}">neutral</text>`;
+ s += `<polyline fill="none" stroke="${C.teal}" stroke-width="2.5" stroke-dasharray="7 5" points="${Q.map(q => `${px(q.k)},${py(q.pH_simple)}`).join(" ")}"/>`;
+ s += `<polyline fill="none" stroke="${C.amber}" stroke-width="3" points="${Q.map(q => `${px(q.k)},${py(q.pH)}`).join(" ")}"/>`;
+ s += `<text x="${l + X / 2}" y="${h - 8}" font-size="14" text-anchor="middle" fill="${C.ink}">dilution factor (0.10 mol/L HCl)</text><text transform="translate(16,${t + Y / 2}) rotate(-90)" font-size="14" text-anchor="middle" fill="${C.ink}">pH</text>`;
+ return s + legend([{t: "−log₁₀(c): acid only", c: C.teal, line: true, dash: true}, {t: "with H⁺ from water", c: C.amber, line: true}], l + 14, t + 18) + "</svg>"}
+S.push({kicker:"Part 1 · Dilution", title:"Dilute an acid: one pH unit per factor of 10, until water takes over", html:()=>`<div class="body"><div class="col w55"><div class="panel grow"><div class="chart" id="dch"></div></div></div>
+<div class="col"><ul class="b xs"><li>Strong acid at c: [H<sup>+</sup>] = c, so pH = −log<sub>10</sub>c. Dilute 10 times: pH rises by 1</li>
+<li>0.10 mol/L HCl, pH 1.00; diluted 10<sup>7</sup> times, c = 10<sup>−8</sup> mol/L. Does pH become 8? No</li>
+<li>Water's own H<sup>+</sup> (10<sup>−7</sup> mol/L) now outweighs the acid's: [H<sup>+</sup>] = c/2 + √(c²/4 + K<sub>w</sub>) gives pH ${LC().series[7].pH.toFixed(2)}</li>
+<li>Diluting an acid with water can approach pH 7 but never pass it</li></ul></div></div>`,
+draw:()=>{document.getElementById("dch").innerHTML = dilSVG()},
+py:{title:"pH of 0.10 mol/L HCl, diluted by powers of 10", sub:"ph_lab.dilution_series()", code:
+`from ph_lab import dilution_series
+for q in dilution_series():
+    print("x10^%d  simple %.2f  with water %.3f" % (q["k"], q["pH_simple"], q["pH"]))`,
+out:()=>LC().series.map(q=>`x10^${q.k}  simple ${q.pH_simple.toFixed(2)}  with water ${q.pH.toFixed(3)}`).join("\n")},
+notes:"The formula is for enthusiasts; year-1 students need only the shape: the curve flattens at 7."});
+
+S.push({kicker:"Check 1 · 5 minutes", title:"Check 1: pH", html:()=>CHECK(1,`${OL}
+<li>[H<sup>+</sup>] = 1.0 × 10<sup>−3</sup> mol/L. What is the pH?</li>
+<li>A classmate says [H<sup>+</sup>] at pH 2 is twice that at pH 4. Correct it.</li>
+<li>Sample A has pH 2. What is [OH<sup>−</sup>] at 25 °C?</li>
+<li>0.010 mol/L HCl is diluted 10 times. What is the new pH?</li></ol>`,
+`<li>pH 3.00</li><li>10<sup>4−2</sup> = 100 times larger</li><li>10<sup>−14</sup>/10<sup>−2</sup> = 1.0 × 10<sup>−12</sup> mol/L</li><li>c = 0.0010 mol/L, pH 3.00</li>`),
+draw:()=>reveal("k1btn","k1ans")});
+
+/* ---------- Part 2 ---------- */
+S.push({kicker:"Part 2 · Equilibrium", title:"At equilibrium both directions continue at equal rates", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Many reactions run both ways: A ⇌ B. Molecules of A become B, and B become A, all the time</li>
+<li>Equilibrium is reached when the forward rate equals the reverse rate. The amounts then stop changing</li>
+<li>Equal rates, not equal amounts. A and B can stay very different</li>
+<li>Water itself is an equilibrium: H<sub>2</sub>O ⇌ H<sup>+</sup> + OH<sup>−</sup></li></ul></div>
+<div class="col"><div class="panel"><b style="color:${C.teal};font-size:19px">A counting model</b><div style="font-size:19px;line-height:1.55;margin-top:4px">Each round, 1/4 of the A units become B, and 1/2 of the B units become A.<br>Start: A = 8, B = 4.<br>Forward: 8/4 = 2. Reverse: 4/2 = 2.<br>Equal, so the amounts stay at 8 and 4: <b>equilibrium</b>.</div></div>
+<p class="note">A synthetic model with whole units; real reactions involve about 10<sup>23</sup> particles.</p></div></div>`});
+
+function eqSVG(h, n){const w = 560, h0 = 330, l = 60, t = 20, Y = 240, sc = Y / 20; let s = svgEl(w, h0); const q = h[n];
+ [["A", q.A, C.teal, 140], ["B", q.B, C.amber, 340]].forEach(([nm, v, c, x]) => {s += `<rect x="${x}" y="${t + Y - v * sc}" width="90" height="${v * sc}" fill="${c}" rx="4"/><text x="${x + 45}" y="${t + Y - v * sc - 8}" font-size="17" font-weight="700" text-anchor="middle" fill="${C.ink}">${v.toFixed(2)}</text><text x="${x + 45}" y="${t + Y + 22}" font-size="17" text-anchor="middle" fill="${C.ink}">${nm}</text>`});
+ s += `<line x1="${l + 40}" x2="${w - 40}" y1="${t + Y}" y2="${t + Y}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+ s += `<text x="${w / 2}" y="${h0 - 8}" font-size="14" text-anchor="middle" fill="${C.slate}">Round ${q.round}: forward ${q.fwd.toFixed(2)}, reverse ${q.rev.toFixed(2)}${Math.abs(q.fwd - q.rev) < 0.01 ? " (balanced)" : ""}</text>`; return s + "</svg>"}
+S.push({kicker:"Part 2 · Demo", title:"Add 8 units of A and watch the system shift", html:()=>`<div class="body"><div class="col w55"><div class="ctrl"><span>Rounds after adding 8 A</span> <input type="range" id="rd" min="0" max="12" step="1" value="0"><b id="rdv"></b></div>
+<div class="panel grow"><div class="chart" id="eqch"></div></div></div>
+<div class="col"><table class="t" style="font-size:17px" id="eqtab"></table>
+<ul class="b xs" style="margin-top:10px"><li>After adding A: 16 and 4. Forward 4, reverse 2, so the net change runs toward B</li>
+<li>The shift slows as the rates approach each other</li><li>New equilibrium: A = ${LC().eq20.A.toFixed(2)}, B = ${LC().eq20.B.toFixed(2)}. The ratio B/A is ${LC().eq20.K} again, the same as 4/8 before</li>
+<li>Adding a reactant shifts the balance toward products, but A does not disappear</li></ul></div></div>`,
+draw:()=>{const H = LC().after, sl = document.getElementById("rd");
+ document.getElementById("eqtab").innerHTML = `<tr><th>Round</th><th class="n">A</th><th class="n">B</th><th class="n">B/A</th></tr>` + H.slice(0, 4).map(q => `<tr><td>${q.round}</td><td class="n">${q.A.toFixed(3)}</td><td class="n">${q.B.toFixed(3)}</td><td class="n">${(q.B / q.A).toFixed(3)}</td></tr>`).join("") + `<tr><td>12</td><td class="n">${H[12].A.toFixed(3)}</td><td class="n">${H[12].B.toFixed(3)}</td><td class="n">${(H[12].B / H[12].A).toFixed(3)}</td></tr>`;
+ const go = () => {const n = +sl.value; document.getElementById("rdv").textContent = n; document.getElementById("eqch").innerHTML = eqSVG(H, n)}; sl.oninput = go; go()},
+py:{title:"The A ⇌ B counting model after adding 8 A", sub:"ph_lab.exchange(16, 4)", code:
+`from ph_lab import exchange, equilibrium, r6
+for q in exchange(16, 4, rounds=3):
+    print(q["round"], r6(q["A"]), r6(q["B"]))
+print(equilibrium(20))`,
+out:()=>LC().after.slice(0, 4).map(q=>`${q.round} ${py6(q.A)} ${py6(q.B)}`).concat([`{'K': ${py6(LC().eq20.K)}, 'A': ${LC().eq20.A}, 'B': ${LC().eq20.B}}`]).join("\n")},
+notes:"This is Le Chatelier's principle without the name. The ratio B/A = kf/kr is the equilibrium constant of the model."});
+
+S.push({kicker:"Part 2 · The equilibrium ratio", title:"One number describes the balance: K", html:()=>`<div class="body"><div class="col w55"><div class="panel"><div class="math" style="font-size:21px;line-height:1.75">
+At equilibrium: forward rate = reverse rate<br>k<sub>f</sub>[A] = k<sub>r</sub>[B] &nbsp;→&nbsp; K = [B]/[A] = k<sub>f</sub>/k<sub>r</sub><br>In the model: K = (1/4)/(1/2) = <b>0.5</b></div></div>
+<p class="note">k<sub>f</sub>, k<sub>r</sub>: the fractions that react per round. Real K values come from measurements and depend on temperature.</p></div>
+<div class="col"><ul class="b sm"><li>K does not change when you add A. The amounts move until their ratio is K again</li><li>K<sub>w</sub> is the same idea for water</li>
+<li>Class 9 links K to a cell's voltage; Class 13 uses equilibrium to draw the Pourbaix map</li></ul></div></div>`});
+
+S.push({kicker:"Part 2 · A common mistake", title:"“At equilibrium the reaction has stopped”", html:()=>`<div class="body"><div class="col w55"><div class="act" style="border-color:${C.rust};background:#fbf0ec"><span class="tag" style="background:${C.rust}">THE CLAIM</span>
+<div style="font-size:22px;line-height:1.45">“At equilibrium nothing happens, and A and B are equal.”</div></div>
+<div class="panel" style="margin-top:16px"><b style="color:${C.teal};font-size:19px">The correction</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
+In the model at equilibrium, 2 units go each way every round: both reactions continue. The amounts stay at 8 and 4: constant, not equal. Only the net change is zero.</div></div></div>
+<div class="col"><ul class="b sm"><li>The same mistake appears with currents in Class 12: at equilibrium the net current is zero, but the exchange current is not</li></ul></div></div>`});
+
+S.push({kicker:"Check 2 · 5 minutes", title:"Check 2: equilibrium", html:()=>CHECK(2,`${OL}
+<li>In the model, is A = 8, B = 4 at equilibrium? Show the two rates.</li>
+<li>Add 8 A. What are A and B after one round?</li>
+<li>Does adding A make all of A disappear? Give the new equilibrium amounts.</li>
+<li>What stays the same before and after: the amounts, or the ratio B/A?</li></ol>`,
+`<li>Yes: forward 8/4 = 2, reverse 4/2 = 2</li><li>16 − 4 + 2 = 14 and 4 + 4 − 2 = 6</li><li>No. A = 13.33, B = 6.67</li><li>The ratio, 0.5</li>`),
+draw:()=>reveal("k2btn","k2ans")});
+
+/* ---------- closing ---------- */
+S.push({kicker:"Where this goes next", title:"pH and equilibrium come back", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
+<tr><th>Class</th><th>What today gives it</th></tr>
+<tr><td>7 · Redox</td><td>Half-reactions in acid: where H<sup>+</sup> appears in an equation</td></tr>
+<tr><td>9 · Nernst</td><td>Equilibrium written as a voltage, with a log of concentration</td></tr>
+<tr><td>12 · Kinetics</td><td>Zero net current at equilibrium, with exchange in both directions</td></tr>
+<tr><td>13 · Pourbaix</td><td>pH as the x-axis of Cu's stability map</td></tr></table></div></div>`});
+
+S.push({kicker:"Lab 5 · 30 minutes", title:"pH and a shifting equilibrium", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Predict, then compare [H<sup>+</sup>] at pH 2 and pH 4</li><li>Calculate pH and [OH<sup>−</sup>] for samples and a diluted acid</li>
+<li>Dilute an acid step by step and see where pH stops</li><li>Shift the A ⇌ B model and find the new equilibrium</li></ul></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="45mm" height="45mm" version="1.1" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM12,2H13V3H12zM19,2H20V3H19zM20,2H21V3H20zM21,2H22V3H21zM25,2H26V3H25zM26,2H27V3H26zM27,2H28V3H27zM28,2H29V3H28zM29,2H30V3H29zM31,2H32V3H31zM33,2H34V3H33zM34,2H35V3H34zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM39,2H40V3H39zM40,2H41V3H40zM41,2H42V3H41zM42,2H43V3H42zM2,3H3V4H2zM8,3H9V4H8zM11,3H12V4H11zM13,3H14V4H13zM14,3H15V4H14zM16,3H17V4H16zM18,3H19V4H18zM20,3H21V4H20zM22,3H23V4H22zM23,3H24V4H23zM24,3H25V4H24zM25,3H26V4H25zM29,3H30V4H29zM30,3H31V4H30zM32,3H33V4H32zM36,3H37V4H36zM42,3H43V4H42zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM11,4H12V5H11zM14,4H15V5H14zM17,4H18V5H17zM18,4H19V5H18zM20,4H21V5H20zM22,4H23V5H22zM25,4H26V5H25zM26,4H27V5H26zM29,4H30V5H29zM30,4H31V5H30zM31,4H32V5H31zM36,4H37V5H36zM38,4H39V5H38zM39,4H40V5H39zM40,4H41V5H40zM42,4H43V5H42zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM11,5H12V6H11zM12,5H13V6H12zM13,5H14V6H13zM14,5H15V6H14zM18,5H19V6H18zM19,5H20V6H19zM20,5H21V6H20zM23,5H24V6H23zM25,5H26V6H25zM28,5H29V6H28zM29,5H30V6H29zM30,5H31V6H30zM32,5H33V6H32zM33,5H34V6H33zM34,5H35V6H34zM36,5H37V6H36zM38,5H39V6H38zM39,5H40V6H39zM40,5H41V6H40zM42,5H43V6H42zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM12,6H13V7H12zM14,6H15V7H14zM15,6H16V7H15zM16,6H17V7H16zM17,6H18V7H17zM20,6H21V7H20zM24,6H25V7H24zM25,6H26V7H25zM27,6H28V7H27zM29,6H30V7H29zM32,6H33V7H32zM34,6H35V7H34zM36,6H37V7H36zM38,6H39V7H38zM39,6H40V7H39zM40,6H41V7H40zM42,6H43V7H42zM2,7H3V8H2zM8,7H9V8H8zM10,7H11V8H10zM11,7H12V8H11zM12,7H13V8H12zM14,7H15V8H14zM15,7H16V8H15zM16,7H17V8H16zM17,7H18V8H17zM19,7H20V8H19zM21,7H22V8H21zM22,7H23V8H22zM24,7H25V8H24zM26,7H27V8H26zM27,7H28V8H27zM29,7H30V8H29zM31,7H32V8H31zM33,7H34V8H33zM36,7H37V8H36zM42,7H43V8H42zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM34,8H35V9H34zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM39,8H40V9H39zM40,8H41V9H40zM41,8H42V9H41zM42,8H43V9H42zM11,9H12V10H11zM14,9H15V10H14zM19,9H20V10H19zM21,9H22V10H21zM22,9H23V10H22zM23,9H24V10H23zM25,9H26V10H25zM26,9H27V10H26zM30,9H31V10H30zM31,9H32V10H31zM32,9H33V10H32zM34,9H35V10H34zM2,10H3V11H2zM5,10H6V11H5zM7,10H8V11H7zM8,10H9V11H8zM10,10H11V11H10zM11,10H12V11H11zM17,10H18V11H17zM18,10H19V11H18zM20,10H21V11H20zM21,10H22V11H21zM23,10H24V11H23zM25,10H26V11H25zM26,10H27V11H26zM27,10H28V11H27zM28,10H29V11H28zM33,10H34V11H33zM34,10H35V11H34zM35,10H36V11H35zM37,10H38V11H37zM3,11H4V12H3zM5,11H6V12H5zM6,11H7V12H6zM9,11H10V12H9zM13,11H14V12H13zM14,11H15V12H14zM16,11H17V12H16zM17,11H18V12H17zM19,11H20V12H19zM22,11H23V12H22zM23,11H24V12H23zM26,11H27V12H26zM27,11H28V12H27zM30,11H31V12H30zM31,11H32V12H31zM34,11H35V12H34zM36,11H37V12H36zM37,11H38V12H37zM39,11H40V12H39zM40,11H41V12H40zM41,11H42V12H41zM42,11H43V12H42zM3,12H4V13H3zM4,12H5V13H4zM6,12H7V13H6zM8,12H9V13H8zM11,12H12V13H11zM12,12H13V13H12zM13,12H14V13H13zM15,12H16V13H15zM17,12H18V13H17zM19,12H20V13H19zM21,12H22V13H21zM26,12H27V13H26zM27,12H28V13H27zM28,12H29V13H28zM30,12H31V13H30zM31,12H32V13H31zM32,12H33V13H32zM33,12H34V13H33zM38,12H39V13H38zM39,12H40V13H39zM40,12H41V13H40zM41,12H42V13H41zM4,13H5V14H4zM7,13H8V14H7zM11,13H12V14H11zM14,13H15V14H14zM15,13H16V14H15zM17,13H18V14H17zM20,13H21V14H20zM21,13H22V14H21zM23,13H24V14H23zM24,13H25V14H24zM25,13H26V14H25zM26,13H27V14H26zM27,13H28V14H27zM28,13H29V14H28zM29,13H30V14H29zM35,13H36V14H35zM36,13H37V14H36zM40,13H41V14H40zM2,14H3V15H2zM6,14H7V15H6zM8,14H9V15H8zM11,14H12V15H11zM13,14H14V15H13zM15,14H16V15H15zM16,14H17V15H16zM18,14H19V15H18zM19,14H20V15H19zM20,14H21V15H20zM23,14H24V15H23zM25,14H26V15H25zM26,14H27V15H26zM27,14H28V15H27zM28,14H29V15H28zM30,14H31V15H30zM31,14H32V15H31zM32,14H33V15H32zM33,14H34V15H33zM34,14H35V15H34zM35,14H36V15H35zM36,14H37V15H36zM37,14H38V15H37zM39,14H40V15H39zM2,15H3V16H2zM4,15H5V16H4zM5,15H6V16H5zM7,15H8V16H7zM9,15H10V16H9zM11,15H12V16H11zM15,15H16V16H15zM16,15H17V16H16zM17,15H18V16H17zM18,15H19V16H18zM19,15H20V16H19zM23,15H24V16H23zM24,15H25V16H24zM25,15H26V16H25zM26,15H27V16H26zM28,15H29V16H28zM31,15H32V16H31zM32,15H33V16H32zM33,15H34V16H33zM35,15H36V16H35zM39,15H40V16H39zM40,15H41V16H40zM7,16H8V17H7zM8,16H9V17H8zM9,16H10V17H9zM11,16H12V17H11zM12,16H13V17H12zM15,16H16V17H15zM16,16H17V17H16zM17,16H18V17H17zM19,16H20V17H19zM22,16H23V17H22zM26,16H27V17H26zM30,16H31V17H30zM32,16H33V17H32zM34,16H35V17H34zM36,16H37V17H36zM38,16H39V17H38zM39,16H40V17H39zM40,16H41V17H40zM42,16H43V17H42zM3,17H4V18H3zM4,17H5V18H4zM5,17H6V18H5zM7,17H8V18H7zM11,17H12V18H11zM12,17H13V18H12zM15,17H16V18H15zM17,17H18V18H17zM18,17H19V18H18zM19,17H20V18H19zM20,17H21V18H20zM21,17H22V18H21zM23,17H24V18H23zM24,17H25V18H24zM26,17H27V18H26zM27,17H28V18H27zM28,17H29V18H28zM30,17H31V18H30zM31,17H32V18H31zM33,17H34V18H33zM34,17H35V18H34zM36,17H37V18H36zM3,18H4V19H3zM4,18H5V19H4zM6,18H7V19H6zM8,18H9V19H8zM9,18H10V19H9zM12,18H13V19H12zM14,18H15V19H14zM15,18H16V19H15zM19,18H20V19H19zM21,18H22V19H21zM22,18H23V19H22zM23,18H24V19H23zM25,18H26V19H25zM29,18H30V19H29zM30,18H31V19H30zM31,18H32V19H31zM32,18H33V19H32zM37,18H38V19H37zM39,18H40V19H39zM3,19H4V20H3zM9,19H10V20H9zM10,19H11V20H10zM12,19H13V20H12zM14,19H15V20H14zM18,19H19V20H18zM20,19H21V20H20zM22,19H23V20H22zM25,19H26V20H25zM27,19H28V20H27zM28,19H29V20H28zM30,19H31V20H30zM31,19H32V20H31zM32,19H33V20H32zM34,19H35V20H34zM36,19H37V20H36zM37,19H38V20H37zM39,19H40V20H39zM41,19H42V20H41zM42,19H43V20H42zM2,20H3V21H2zM3,20H4V21H3zM5,20H6V21H5zM6,20H7V21H6zM7,20H8V21H7zM8,20H9V21H8zM10,20H11V21H10zM11,20H12V21H11zM15,20H16V21H15zM17,20H18V21H17zM20,20H21V21H20zM22,20H23V21H22zM23,20H24V21H23zM30,20H31V21H30zM34,20H35V21H34zM36,20H37V21H36zM38,20H39V21H38zM40,20H41V21H40zM42,20H43V21H42zM4,21H5V22H4zM12,21H13V22H12zM14,21H15V22H14zM19,21H20V22H19zM20,21H21V22H20zM24,21H25V22H24zM26,21H27V22H26zM29,21H30V22H29zM31,21H32V22H31zM33,21H34V22H33zM35,21H36V22H35zM37,21H38V22H37zM2,22H3V23H2zM3,22H4V23H3zM4,22H5V23H4zM6,22H7V23H6zM7,22H8V23H7zM8,22H9V23H8zM10,22H11V23H10zM11,22H12V23H11zM14,22H15V23H14zM18,22H19V23H18zM19,22H20V23H19zM20,22H21V23H20zM21,22H22V23H21zM26,22H27V23H26zM27,22H28V23H27zM28,22H29V23H28zM35,22H36V23H35zM36,22H37V23H36zM39,22H40V23H39zM40,22H41V23H40zM41,22H42V23H41zM2,23H3V24H2zM3,23H4V24H3zM4,23H5V24H4zM5,23H6V24H5zM7,23H8V24H7zM9,23H10V24H9zM12,23H13V24H12zM17,23H18V24H17zM20,23H21V24H20zM22,23H23V24H22zM26,23H27V24H26zM36,23H37V24H36zM40,23H41V24H40zM41,23H42V24H41zM42,23H43V24H42zM2,24H3V25H2zM3,24H4V25H3zM4,24H5V25H4zM7,24H8V25H7zM8,24H9V25H8zM9,24H10V25H9zM13,24H14V25H13zM14,24H15V25H14zM17,24H18V25H17zM18,24H19V25H18zM19,24H20V25H19zM21,24H22V25H21zM26,24H27V25H26zM27,24H28V25H27zM28,24H29V25H28zM31,24H32V25H31zM33,24H34V25H33zM36,24H37V25H36zM39,24H40V25H39zM40,24H41V25H40zM41,24H42V25H41zM2,25H3V26H2zM5,25H6V26H5zM7,25H8V26H7zM11,25H12V26H11zM12,25H13V26H12zM13,25H14V26H13zM14,25H15V26H14zM16,25H17V26H16zM21,25H22V26H21zM22,25H23V26H22zM23,25H24V26H23zM24,25H25V26H24zM26,25H27V26H26zM27,25H28V26H27zM28,25H29V26H28zM32,25H33V26H32zM33,25H34V26H33zM40,25H41V26H40zM2,26H3V27H2zM8,26H9V27H8zM14,26H15V27H14zM16,26H17V27H16zM17,26H18V27H17zM18,26H19V27H18zM19,26H20V27H19zM21,26H22V27H21zM23,26H24V27H23zM26,26H27V27H26zM27,26H28V27H27zM30,26H31V27H30zM31,26H32V27H31zM34,26H35V27H34zM36,26H37V27H36zM37,26H38V27H37zM42,26H43V27H42zM3,27H4V28H3zM4,27H5V28H4zM7,27H8V28H7zM9,27H10V28H9zM10,27H11V28H10zM11,27H12V28H11zM12,27H13V28H12zM15,27H16V28H15zM16,27H17V28H16zM21,27H22V28H21zM22,27H23V28H22zM23,27H24V28H23zM27,27H28V28H27zM31,27H32V28H31zM33,27H34V28H33zM35,27H36V28H35zM37,27H38V28H37zM39,27H40V28H39zM41,27H42V28H41zM2,28H3V29H2zM3,28H4V29H3zM6,28H7V29H6zM8,28H9V29H8zM9,28H10V29H9zM10,28H11V29H10zM11,28H12V29H11zM15,28H16V29H15zM16,28H17V29H16zM23,28H24V29H23zM24,28H25V29H24zM25,28H26V29H25zM26,28H27V29H26zM30,28H31V29H30zM31,28H32V29H31zM32,28H33V29H32zM34,28H35V29H34zM37,28H38V29H37zM41,28H42V29H41zM42,28H43V29H42zM5,29H6V30H5zM7,29H8V30H7zM10,29H11V30H10zM12,29H13V30H12zM14,29H15V30H14zM19,29H20V30H19zM20,29H21V30H20zM21,29H22V30H21zM23,29H24V30H23zM24,29H25V30H24zM25,29H26V30H25zM27,29H28V30H27zM28,29H29V30H28zM31,29H32V30H31zM32,29H33V30H32zM34,29H35V30H34zM37,29H38V30H37zM2,30H3V31H2zM3,30H4V31H3zM5,30H6V31H5zM8,30H9V31H8zM10,30H11V31H10zM11,30H12V31H11zM12,30H13V31H12zM13,30H14V31H13zM14,30H15V31H14zM15,30H16V31H15zM17,30H18V31H17zM19,30H20V31H19zM20,30H21V31H20zM22,30H23V31H22zM23,30H24V31H23zM24,30H25V31H24zM26,30H27V31H26zM28,30H29V31H28zM31,30H32V31H31zM32,30H33V31H32zM34,30H35V31H34zM35,30H36V31H35zM37,30H38V31H37zM41,30H42V31H41zM4,31H5V32H4zM7,31H8V32H7zM9,31H10V32H9zM11,31H12V32H11zM12,31H13V32H12zM18,31H19V32H18zM20,31H21V32H20zM21,31H22V32H21zM27,31H28V32H27zM28,31H29V32H28zM32,31H33V32H32zM36,31H37V32H36zM37,31H38V32H37zM39,31H40V32H39zM40,31H41V32H40zM42,31H43V32H42zM2,32H3V33H2zM4,32H5V33H4zM5,32H6V33H5zM7,32H8V33H7zM8,32H9V33H8zM9,32H10V33H9zM13,32H14V33H13zM14,32H15V33H14zM15,32H16V33H15zM16,32H17V33H16zM17,32H18V33H17zM18,32H19V33H18zM20,32H21V33H20zM21,32H22V33H21zM22,32H23V33H22zM26,32H27V33H26zM27,32H28V33H27zM30,32H31V33H30zM31,32H32V33H31zM37,32H38V33H37zM39,32H40V33H39zM42,32H43V33H42zM4,33H5V34H4zM5,33H6V34H5zM7,33H8V34H7zM10,33H11V34H10zM13,33H14V34H13zM16,33H17V34H16zM17,33H18V34H17zM18,33H19V34H18zM19,33H20V34H19zM20,33H21V34H20zM21,33H22V34H21zM22,33H23V34H22zM23,33H24V34H23zM25,33H26V34H25zM26,33H27V34H26zM30,33H31V34H30zM31,33H32V34H31zM32,33H33V34H32zM34,33H35V34H34zM35,33H36V34H35zM38,33H39V34H38zM39,33H40V34H39zM41,33H42V34H41zM2,34H3V35H2zM4,34H5V35H4zM8,34H9V35H8zM9,34H10V35H9zM10,34H11V35H10zM12,34H13V35H12zM15,34H16V35H15zM21,34H22V35H21zM23,34H24V35H23zM26,34H27V35H26zM27,34H28V35H27zM28,34H29V35H28zM30,34H31V35H30zM32,34H33V35H32zM34,34H35V35H34zM35,34H36V35H35zM36,34H37V35H36zM37,34H38V35H37zM38,34H39V35H38zM40,34H41V35H40zM42,34H43V35H42zM10,35H11V36H10zM13,35H14V36H13zM14,35H15V36H14zM16,35H17V36H16zM17,35H18V36H17zM18,35H19V36H18zM20,35H21V36H20zM22,35H23V36H22zM23,35H24V36H23zM24,35H25V36H24zM28,35H29V36H28zM30,35H31V36H30zM31,35H32V36H31zM34,35H35V36H34zM38,35H39V36H38zM39,35H40V36H39zM41,35H42V36H41zM42,35H43V36H42zM2,36H3V37H2zM3,36H4V37H3zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM7,36H8V37H7zM8,36H9V37H8zM13,36H14V37H13zM17,36H18V37H17zM18,36H19V37H18zM19,36H20V37H19zM21,36H22V37H21zM22,36H23V37H22zM26,36H27V37H26zM27,36H28V37H27zM30,36H31V37H30zM32,36H33V37H32zM34,36H35V37H34zM36,36H37V37H36zM38,36H39V37H38zM39,36H40V37H39zM41,36H42V37H41zM2,37H3V38H2zM8,37H9V38H8zM10,37H11V38H10zM12,37H13V38H12zM15,37H16V38H15zM18,37H19V38H18zM19,37H20V38H19zM21,37H22V38H21zM22,37H23V38H22zM23,37H24V38H23zM24,37H25V38H24zM26,37H27V38H26zM27,37H28V38H27zM29,37H30V38H29zM30,37H31V38H30zM32,37H33V38H32zM33,37H34V38H33zM34,37H35V38H34zM38,37H39V38H38zM39,37H40V38H39zM40,37H41V38H40zM2,38H3V39H2zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM8,38H9V39H8zM12,38H13V39H12zM13,38H14V39H13zM17,38H18V39H17zM22,38H23V39H22zM24,38H25V39H24zM27,38H28V39H27zM29,38H30V39H29zM31,38H32V39H31zM34,38H35V39H34zM35,38H36V39H35zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38zM39,38H40V39H39zM2,39H3V40H2zM4,39H5V40H4zM5,39H6V40H5zM6,39H7V40H6zM8,39H9V40H8zM10,39H11V40H10zM11,39H12V40H11zM12,39H13V40H12zM13,39H14V40H13zM15,39H16V40H15zM16,39H17V40H16zM17,39H18V40H17zM19,39H20V40H19zM21,39H22V40H21zM22,39H23V40H22zM23,39H24V40H23zM26,39H27V40H26zM30,39H31V40H30zM33,39H34V40H33zM34,39H35V40H34zM35,39H36V40H35zM36,39H37V40H36zM38,39H39V40H38zM40,39H41V40H40zM41,39H42V40H41zM2,40H3V41H2zM4,40H5V41H4zM5,40H6V41H5zM6,40H7V41H6zM8,40H9V41H8zM11,40H12V41H11zM13,40H14V41H13zM14,40H15V41H14zM15,40H16V41H15zM17,40H18V41H17zM25,40H26V41H25zM28,40H29V41H28zM30,40H31V41H30zM33,40H34V41H33zM34,40H35V41H34zM38,40H39V41H38zM39,40H40V41H39zM41,40H42V41H41zM42,40H43V41H42zM2,41H3V42H2zM8,41H9V42H8zM12,41H13V42H12zM14,41H15V42H14zM15,41H16V42H15zM18,41H19V42H18zM20,41H21V42H20zM21,41H22V42H21zM23,41H24V42H23zM26,41H27V42H26zM27,41H28V42H27zM28,41H29V42H28zM29,41H30V42H29zM31,41H32V42H31zM32,41H33V42H32zM33,41H34V42H33zM34,41H35V42H34zM35,41H36V42H35zM37,41H38V42H37zM41,41H42V42H41zM2,42H3V43H2zM3,42H4V43H3zM4,42H5V43H4zM5,42H6V43H5zM6,42H7V43H6zM7,42H8V43H7zM8,42H9V43H8zM10,42H11V43H10zM11,42H12V43H11zM12,42H13V43H12zM13,42H14V43H13zM15,42H16V43H15zM17,42H18V43H17zM18,42H19V43H18zM19,42H20V43H19zM20,42H21V43H20zM22,42H23V43H22zM23,42H24V43H23zM24,42H25V43H24zM25,42H26V43H25zM29,42H30V43H29zM30,42H31V43H30zM31,42H32V43H31zM34,42H35V43H34zM35,42H36V43H35zM36,42H37V43H36zM37,42H38V43H37zM38,42H39V43H38zM39,42H40V43H39zM41,42H42V43H41z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="lab.html" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the lab page</a></div></div></div>`,
+notes:"Early finishers: in the model, what happens if 8 units of B are added instead? (A rises; new equilibrium A = 13.33, B = 6.67 again for total 20)"});
+
+S.push({kicker:"Summary", title:"What to take from today", html:()=>`<div class="body"><div class="col w45"><table class="t" style="font-size:17px">
+<tr><th>Quantity</th><th class="n">Value</th></tr>
+<tr><td>pH of A, B, C</td><td class="n">2, 3, 4</td></tr><tr><td>[H<sup>+</sup>] ratio, pH 2 vs 4</td><td class="n">100</td></tr>
+<tr><td>K<sub>w</sub> at 25 °C</td><td class="n">1.0 × 10<sup>−14</sup></td></tr><tr><td>HCl diluted to 10<sup>−8</sup> mol/L</td><td class="n">pH ${LC().series[7].pH.toFixed(2)}</td></tr>
+<tr><td>Model after adding A: round 1</td><td class="n">14, 6</td></tr><tr><td>New equilibrium</td><td class="n">13.33, 6.67</td></tr></table></div>
+<div class="col"><ul class="b xs"><li>pH = −log<sub>10</sub>[H<sup>+</sup>]; each unit is a factor of 10</li><li>[H<sup>+</sup>][OH<sup>−</sup>] = K<sub>w</sub>; neutral is pH 7 at 25 °C</li>
+<li>Diluting acid raises pH toward 7, never past it</li><li>Equilibrium: equal rates, not equal amounts, and not stopped</li>
+<li>Adding a reactant shifts the balance until the ratio returns to K</li></ul></div></div>`});
+
+S.push({kicker:"Before the next class", title:"Before we meet again", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Finish Lab 5 if you did not finish in class, and upload the answer file to myCourseVille</li>
+<li>Read OpenStax <i>Chemistry 2e</i>, Section 13.1 (Chemical equilibria) and Section 14.2 (pH and pOH)</li>
+<li>Optional: PhET <i>pH Scale Basics</i></li><li>Class 6: electronic materials, energy bands and doping of Si</li></ul></div></div>`});
+
+S.push({kicker:"Exit Ticket and feedback · 5 minutes", title:"Exit Ticket and feedback", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Scan the code and choose <b>Class 5</b></li><li>Exit Ticket: paste the answers that the lab page copies for you</li>
+<li>Feedback: pace, confidence, how far you got in the lab, and what is still unclear</li><li>Studying on your own? Choose "On my own"</li></ul>
+<p class="note">One form for both. Anonymous; no name or student ID.</p></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="41mm" height="41mm" version="1.1" viewBox="0 0 41 41" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM10,2H11V3H10zM11,2H12V3H11zM12,2H13V3H12zM15,2H16V3H15zM16,2H17V3H16zM18,2H19V3H18zM20,2H21V3H20zM21,2H22V3H21zM22,2H23V3H22zM25,2H26V3H25zM28,2H29V3H28zM32,2H33V3H32zM33,2H34V3H33zM34,2H35V3H34zM35,2H36V3H35zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM2,3H3V4H2zM8,3H9V4H8zM10,3H11V4H10zM12,3H13V4H12zM14,3H15V4H14zM16,3H17V4H16zM19,3H20V4H19zM20,3H21V4H20zM22,3H23V4H22zM23,3H24V4H23zM24,3H25V4H24zM25,3H26V4H25zM32,3H33V4H32zM38,3H39V4H38zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM11,4H12V5H11zM12,4H13V5H12zM13,4H14V5H13zM16,4H17V5H16zM20,4H21V5H20zM22,4H23V5H22zM24,4H25V5H24zM25,4H26V5H25zM27,4H28V5H27zM28,4H29V5H28zM30,4H31V5H30zM32,4H33V5H32zM34,4H35V5H34zM35,4H36V5H35zM36,4H37V5H36zM38,4H39V5H38zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM11,5H12V6H11zM12,5H13V6H12zM14,5H15V6H14zM15,5H16V6H15zM16,5H17V6H16zM19,5H20V6H19zM20,5H21V6H20zM21,5H22V6H21zM24,5H25V6H24zM26,5H27V6H26zM27,5H28V6H27zM28,5H29V6H28zM29,5H30V6H29zM32,5H33V6H32zM34,5H35V6H34zM35,5H36V6H35zM36,5H37V6H36zM38,5H39V6H38zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM11,6H12V7H11zM15,6H16V7H15zM17,6H18V7H17zM21,6H22V7H21zM27,6H28V7H27zM29,6H30V7H29zM30,6H31V7H30zM32,6H33V7H32zM34,6H35V7H34zM35,6H36V7H35zM36,6H37V7H36zM38,6H39V7H38zM2,7H3V8H2zM8,7H9V8H8zM11,7H12V8H11zM15,7H16V8H15zM16,7H17V8H16zM17,7H18V8H17zM18,7H19V8H18zM21,7H22V8H21zM22,7H23V8H22zM24,7H25V8H24zM27,7H28V8H27zM30,7H31V8H30zM32,7H33V8H32zM38,7H39V8H38zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM33,8H34V9H33zM34,8H35V9H34zM35,8H36V9H35zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM10,9H11V10H10zM11,9H12V10H11zM12,9H13V10H12zM13,9H14V10H13zM17,9H18V10H17zM18,9H19V10H18zM19,9H20V10H19zM21,9H22V10H21zM22,9H23V10H22zM24,9H25V10H24zM2,10H3V11H2zM4,10H5V11H4zM5,10H6V11H5zM7,10H8V11H7zM8,10H9V11H8zM9,10H10V11H9zM11,10H12V11H11zM12,10H13V11H12zM14,10H15V11H14zM16,10H17V11H16zM17,10H18V11H17zM18,10H19V11H18zM19,10H20V11H19zM20,10H21V11H20zM21,10H22V11H21zM23,10H24V11H23zM26,10H27V11H26zM29,10H30V11H29zM32,10H33V11H32zM35,10H36V11H35zM37,10H38V11H37zM38,10H39V11H38zM3,11H4V12H3zM4,11H5V12H4zM6,11H7V12H6zM9,11H10V12H9zM10,11H11V12H10zM11,11H12V12H11zM13,11H14V12H13zM14,11H15V12H14zM15,11H16V12H15zM17,11H18V12H17zM19,11H20V12H19zM21,11H22V12H21zM25,11H26V12H25zM37,11H38V12H37zM2,12H3V13H2zM4,12H5V13H4zM6,12H7V13H6zM8,12H9V13H8zM9,12H10V13H9zM10,12H11V13H10zM12,12H13V13H12zM14,12H15V13H14zM16,12H17V13H16zM18,12H19V13H18zM19,12H20V13H19zM20,12H21V13H20zM22,12H23V13H22zM25,12H26V13H25zM28,12H29V13H28zM31,12H32V13H31zM33,12H34V13H33zM35,12H36V13H35zM3,13H4V14H3zM5,13H6V14H5zM7,13H8V14H7zM9,13H10V14H9zM14,13H15V14H14zM16,13H17V14H16zM20,13H21V14H20zM21,13H22V14H21zM22,13H23V14H22zM26,13H27V14H26zM27,13H28V14H27zM29,13H30V14H29zM30,13H31V14H30zM31,13H32V14H31zM32,13H33V14H32zM35,13H36V14H35zM36,13H37V14H36zM3,14H4V15H3zM4,14H5V15H4zM5,14H6V15H5zM6,14H7V15H6zM7,14H8V15H7zM8,14H9V15H8zM9,14H10V15H9zM17,14H18V15H17zM18,14H19V15H18zM19,14H20V15H19zM20,14H21V15H20zM22,14H23V15H22zM24,14H25V15H24zM26,14H27V15H26zM27,14H28V15H27zM29,14H30V15H29zM31,14H32V15H31zM32,14H33V15H32zM33,14H34V15H33zM34,14H35V15H34zM35,14H36V15H35zM36,14H37V15H36zM37,14H38V15H37zM38,14H39V15H38zM6,15H7V16H6zM9,15H10V16H9zM10,15H11V16H10zM11,15H12V16H11zM13,15H14V16H13zM15,15H16V16H15zM16,15H17V16H16zM17,15H18V16H17zM19,15H20V16H19zM20,15H21V16H20zM21,15H22V16H21zM26,15H27V16H26zM27,15H28V16H27zM28,15H29V16H28zM29,15H30V16H29zM30,15H31V16H30zM31,15H32V16H31zM32,15H33V16H32zM33,15H34V16H33zM34,15H35V16H34zM35,15H36V16H35zM37,15H38V16H37zM38,15H39V16H38zM2,16H3V17H2zM3,16H4V17H3zM4,16H5V17H4zM5,16H6V17H5zM6,16H7V17H6zM8,16H9V17H8zM10,16H11V17H10zM11,16H12V17H11zM13,16H14V17H13zM14,16H15V17H14zM18,16H19V17H18zM20,16H21V17H20zM21,16H22V17H21zM23,16H24V17H23zM26,16H27V17H26zM28,16H29V17H28zM30,16H31V17H30zM31,16H32V17H31zM32,16H33V17H32zM34,16H35V17H34zM36,16H37V17H36zM37,16H38V17H37zM2,17H3V18H2zM3,17H4V18H3zM5,17H6V18H5zM6,17H7V18H6zM7,17H8V18H7zM10,17H11V18H10zM15,17H16V18H15zM16,17H17V18H16zM17,17H18V18H17zM20,17H21V18H20zM21,17H22V18H21zM23,17H24V18H23zM28,17H29V18H28zM29,17H30V18H29zM30,17H31V18H30zM31,17H32V18H31zM33,17H34V18H33zM34,17H35V18H34zM38,17H39V18H38zM2,18H3V19H2zM4,18H5V19H4zM5,18H6V19H5zM6,18H7V19H6zM7,18H8V19H7zM8,18H9V19H8zM9,18H10V19H9zM11,18H12V19H11zM14,18H15V19H14zM15,18H16V19H15zM16,18H17V19H16zM18,18H19V19H18zM20,18H21V19H20zM23,18H24V19H23zM24,18H25V19H24zM25,18H26V19H25zM27,18H28V19H27zM28,18H29V19H28zM30,18H31V19H30zM31,18H32V19H31zM35,18H36V19H35zM36,18H37V19H36zM3,19H4V20H3zM4,19H5V20H4zM9,19H10V20H9zM10,19H11V20H10zM12,19H13V20H12zM14,19H15V20H14zM15,19H16V20H15zM17,19H18V20H17zM18,19H19V20H18zM22,19H23V20H22zM23,19H24V20H23zM25,19H26V20H25zM26,19H27V20H26zM28,19H29V20H28zM29,19H30V20H29zM30,19H31V20H30zM31,19H32V20H31zM32,19H33V20H32zM36,19H37V20H36zM37,19H38V20H37zM38,19H39V20H38zM2,20H3V21H2zM4,20H5V21H4zM5,20H6V21H5zM7,20H8V21H7zM8,20H9V21H8zM10,20H11V21H10zM11,20H12V21H11zM13,20H14V21H13zM14,20H15V21H14zM16,20H17V21H16zM17,20H18V21H17zM18,20H19V21H18zM19,20H20V21H19zM20,20H21V21H20zM22,20H23V21H22zM24,20H25V21H24zM27,20H28V21H27zM28,20H29V21H28zM29,20H30V21H29zM31,20H32V21H31zM34,20H35V21H34zM37,20H38V21H37zM38,20H39V21H38zM2,21H3V22H2zM4,21H5V22H4zM6,21H7V22H6zM10,21H11V22H10zM11,21H12V22H11zM12,21H13V22H12zM15,21H16V22H15zM16,21H17V22H16zM18,21H19V22H18zM19,21H20V22H19zM22,21H23V22H22zM24,21H25V22H24zM25,21H26V22H25zM26,21H27V22H26zM28,21H29V22H28zM29,21H30V22H29zM32,21H33V22H32zM33,21H34V22H33zM35,21H36V22H35zM37,21H38V22H37zM3,22H4V23H3zM4,22H5V23H4zM7,22H8V23H7zM8,22H9V23H8zM9,22H10V23H9zM10,22H11V23H10zM13,22H14V23H13zM14,22H15V23H14zM16,22H17V23H16zM17,22H18V23H17zM19,22H20V23H19zM22,22H23V23H22zM23,22H24V23H23zM24,22H25V23H24zM25,22H26V23H25zM26,22H27V23H26zM28,22H29V23H28zM31,22H32V23H31zM33,22H34V23H33zM34,22H35V23H34zM38,22H39V23H38zM2,23H3V24H2zM3,23H4V24H3zM4,23H5V24H4zM5,23H6V24H5zM11,23H12V24H11zM13,23H14V24H13zM15,23H16V24H15zM16,23H17V24H16zM19,23H20V24H19zM21,23H22V24H21zM22,23H23V24H22zM23,23H24V24H23zM25,23H26V24H25zM30,23H31V24H30zM35,23H36V24H35zM37,23H38V24H37zM2,24H3V25H2zM4,24H5V25H4zM5,24H6V25H5zM6,24H7V25H6zM7,24H8V25H7zM8,24H9V25H8zM10,24H11V25H10zM11,24H12V25H11zM12,24H13V25H12zM14,24H15V25H14zM15,24H16V25H15zM19,24H20V25H19zM20,24H21V25H20zM24,24H25V25H24zM25,24H26V25H25zM27,24H28V25H27zM28,24H29V25H28zM30,24H31V25H30zM31,24H32V25H31zM33,24H34V25H33zM4,25H5V26H4zM5,25H6V26H5zM6,25H7V26H6zM9,25H10V26H9zM11,25H12V26H11zM17,25H18V26H17zM18,25H19V26H18zM20,25H21V26H20zM21,25H22V26H21zM22,25H23V26H22zM24,25H25V26H24zM27,25H28V26H27zM30,25H31V26H30zM32,25H33V26H32zM34,25H35V26H34zM35,25H36V26H35zM36,25H37V26H36zM37,25H38V26H37zM38,25H39V26H38zM5,26H6V27H5zM7,26H8V27H7zM8,26H9V27H8zM9,26H10V27H9zM10,26H11V27H10zM11,26H12V27H11zM13,26H14V27H13zM15,26H16V27H15zM17,26H18V27H17zM18,26H19V27H18zM19,26H20V27H19zM25,26H26V27H25zM26,26H27V27H26zM27,26H28V27H27zM29,26H30V27H29zM30,26H31V27H30zM32,26H33V27H32zM34,26H35V27H34zM36,26H37V27H36zM37,26H38V27H37zM5,27H6V28H5zM9,27H10V28H9zM12,27H13V28H12zM13,27H14V28H13zM14,27H15V28H14zM16,27H17V28H16zM17,27H18V28H17zM19,27H20V28H19zM21,27H22V28H21zM23,27H24V28H23zM29,27H30V28H29zM32,27H33V28H32zM33,27H34V28H33zM34,27H35V28H34zM37,27H38V28H37zM38,27H39V28H38zM3,28H4V29H3zM4,28H5V29H4zM6,28H7V29H6zM7,28H8V29H7zM8,28H9V29H8zM14,28H15V29H14zM21,28H22V29H21zM23,28H24V29H23zM26,28H27V29H26zM28,28H29V29H28zM30,28H31V29H30zM31,28H32V29H31zM32,28H33V29H32zM35,28H36V29H35zM37,28H38V29H37zM2,29H3V30H2zM4,29H5V30H4zM6,29H7V30H6zM11,29H12V30H11zM12,29H13V30H12zM13,29H14V30H13zM15,29H16V30H15zM23,29H24V30H23zM24,29H25V30H24zM25,29H26V30H25zM28,29H29V30H28zM29,29H30V30H29zM31,29H32V30H31zM34,29H35V30H34zM38,29H39V30H38zM4,30H5V31H4zM6,30H7V31H6zM8,30H9V31H8zM10,30H11V31H10zM13,30H14V31H13zM15,30H16V31H15zM18,30H19V31H18zM21,30H22V31H21zM23,30H24V31H23zM24,30H25V31H24zM25,30H26V31H25zM27,30H28V31H27zM29,30H30V31H29zM30,30H31V31H30zM31,30H32V31H31zM32,30H33V31H32zM33,30H34V31H33zM34,30H35V31H34zM36,30H37V31H36zM10,31H11V32H10zM12,31H13V32H12zM14,31H15V32H14zM17,31H18V32H17zM18,31H19V32H18zM19,31H20V32H19zM20,31H21V32H20zM22,31H23V32H22zM23,31H24V32H23zM24,31H25V32H24zM25,31H26V32H25zM26,31H27V32H26zM27,31H28V32H27zM30,31H31V32H30zM34,31H35V32H34zM36,31H37V32H36zM38,31H39V32H38zM2,32H3V33H2zM3,32H4V33H3zM4,32H5V33H4zM5,32H6V33H5zM6,32H7V33H6zM7,32H8V33H7zM8,32H9V33H8zM10,32H11V33H10zM11,32H12V33H11zM12,32H13V33H12zM14,32H15V33H14zM15,32H16V33H15zM17,32H18V33H17zM22,32H23V33H22zM24,32H25V33H24zM26,32H27V33H26zM30,32H31V33H30zM32,32H33V33H32zM34,32H35V33H34zM36,32H37V33H36zM38,32H39V33H38zM2,33H3V34H2zM8,33H9V34H8zM10,33H11V34H10zM13,33H14V34H13zM14,33H15V34H14zM16,33H17V34H16zM17,33H18V34H17zM19,33H20V34H19zM21,33H22V34H21zM24,33H25V34H24zM25,33H26V34H25zM26,33H27V34H26zM28,33H29V34H28zM29,33H30V34H29zM30,33H31V34H30zM34,33H35V34H34zM2,34H3V35H2zM4,34H5V35H4zM5,34H6V35H5zM6,34H7V35H6zM8,34H9V35H8zM12,34H13V35H12zM13,34H14V35H13zM14,34H15V35H14zM15,34H16V35H15zM19,34H20V35H19zM22,34H23V35H22zM23,34H24V35H23zM26,34H27V35H26zM30,34H31V35H30zM31,34H32V35H31zM32,34H33V35H32zM33,34H34V35H33zM34,34H35V35H34zM35,34H36V35H35zM38,34H39V35H38zM2,35H3V36H2zM4,35H5V36H4zM5,35H6V36H5zM6,35H7V36H6zM8,35H9V36H8zM10,35H11V36H10zM11,35H12V36H11zM13,35H14V36H13zM16,35H17V36H16zM18,35H19V36H18zM19,35H20V36H19zM21,35H22V36H21zM22,35H23V36H22zM23,35H24V36H23zM25,35H26V36H25zM26,35H27V36H26zM27,35H28V36H27zM28,35H29V36H28zM29,35H30V36H29zM30,35H31V36H30zM31,35H32V36H31zM32,35H33V36H32zM34,35H35V36H34zM35,35H36V36H35zM36,35H37V36H36zM37,35H38V36H37zM38,35H39V36H38zM2,36H3V37H2zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM8,36H9V37H8zM10,36H11V37H10zM11,36H12V37H11zM14,36H15V37H14zM15,36H16V37H15zM18,36H19V37H18zM19,36H20V37H19zM23,36H24V37H23zM25,36H26V37H25zM28,36H29V37H28zM32,36H33V37H32zM34,36H35V37H34zM2,37H3V38H2zM8,37H9V38H8zM11,37H12V38H11zM12,37H13V38H12zM13,37H14V38H13zM14,37H15V38H14zM15,37H16V38H15zM16,37H17V38H16zM17,37H18V38H17zM21,37H22V38H21zM22,37H23V38H22zM25,37H26V38H25zM27,37H28V38H27zM28,37H29V38H28zM29,37H30V38H29zM33,37H34V38H33zM34,37H35V38H34zM35,37H36V38H35zM36,37H37V38H36zM2,38H3V39H2zM3,38H4V39H3zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM7,38H8V39H7zM8,38H9V39H8zM10,38H11V39H10zM12,38H13V39H12zM13,38H14V39H13zM15,38H16V39H15zM16,38H17V39H16zM18,38H19V39H18zM19,38H20V39H19zM20,38H21V39H20zM24,38H25V39H24zM27,38H28V39H27zM28,38H29V39H28zM29,38H30V39H29zM31,38H32V39H31zM32,38H33V39H32zM34,38H35V39H34zM35,38H36V39H35zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=5" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the Exit Ticket</a></div></div></div>`,
+notes:"Leave this slide on screen for the last five minutes."});
+
+/* ---------- deck engine ---------- */
+const N=S.length; let cur=0;
+function build(){const host=document.getElementById("slides");host.innerHTML="";
+ S.forEach((s,i)=>{const d=document.createElement("section");d.className="slide"+(s.cls?" "+s.cls:"");d.id="s"+(i+1);
+  d.innerHTML=(s.kicker&&!s.cls?`<p class="kicker">${s.kicker}</p>`:"")+(s.title?`<h1>${s.title}</h1>`:"")+s.html()+(s.py?`<div class="dhint">D · Python</div>`:"")+`<footer><span>${foot}</span><span>${i+1} / ${N}</span></footer>`;host.appendChild(d)})}
+function drawAll(){S.forEach(s=>{if(s.draw)try{s.draw()}catch(e){console.error(e)}})}
+function show(i){cur=Math.max(0,Math.min(N-1,i));document.querySelectorAll(".slide").forEach((el,k)=>el.classList.toggle("on",k===cur));
+ history.replaceState(null,"",location.search+"#"+(cur+1));fillDrawer();if(window.onSlideChange)onSlideChange(cur);const n=document.getElementById("notes");n.textContent=S[cur].notes||"No notes for this slide."}
+let CAP_ON=false;   // set by the narration player; reserves a caption band under the slide
+function fit(){const W=innerWidth,H=innerHeight,vp=document.getElementById("viewport"),dock=document.getElementById("dock"),cap=document.getElementById("cap");
+ const hasDock=dock.style.display==="flex",barH=hasDock?document.getElementById("nbar").offsetHeight:0;
+ let k=Math.min(W/1280,H/720)*0.98,capH=0,fs=0,dockH=0;
+ for(let it=0;it<3;it++){if(hasDock&&CAP_ON){const lines=k<0.6?4:2;fs=Math.max(12,Math.min(22,24*k));capH=Math.ceil(lines*fs*1.45)+4}else capH=0;
+  dockH=hasDock?capH+barH+(capH?6:0)+14:0;k=Math.min(W/1280,Math.max(120,H-dockH)/720)*0.98}
+ const h=720*k,pad=10,top=Math.max(0,(H-h-dockH)/2);
+ vp.style.top=(top-pad)+"px";vp.style.bottom="auto";vp.style.height=(h+2*pad)+"px";
+ document.getElementById("stage").style.transform=`scale(${k})`;
+ if(hasDock){dock.style.top=(top+h+6)+"px";cap.style.display=CAP_ON?"block":"none";cap.style.width=Math.min(1280*k,W-16)+"px";cap.style.height=capH+"px";cap.dataset.fs=fs;if(window.capRefit)capRefit()}}
+function fillDrawer(){const p=S[cur].py,dr=document.getElementById("drawer");
+ if(!p){document.getElementById("dTitle").textContent="No Python on this slide";document.getElementById("dSub").textContent="Slides with a 'D · Python' tag have code and output.";document.getElementById("dCode").value="";document.getElementById("dOut").textContent="";return}
+ document.getElementById("dTitle").textContent=p.title;document.getElementById("dSub").textContent=p.sub||"";document.getElementById("dCode").value=p.code;
+ try{document.getElementById("dOut").textContent=p.out()}catch(e){document.getElementById("dOut").textContent=String(e)}
+ const m=document.getElementById("dMode");m.className="pill "+(MODE==="live"?"live":"rec");m.textContent=MODE==="live"?"LIVE RUN":"RECORDED RUN"}
+document.addEventListener("keydown",e=>{if(["INPUT","TEXTAREA"].includes(e.target.tagName)){if(e.key==="Escape")e.target.blur();return}const k=e.key;
+ if(["ArrowRight","PageDown"," "].includes(k)){e.preventDefault();show(cur+1)}else if(["ArrowLeft","PageUp"].includes(k)){e.preventDefault();show(cur-1)}
+ else if(k==="Home")show(0);else if(k==="End")show(N-1);else if(k==="d"||k==="D")document.getElementById("drawer").classList.toggle("open");
+ else if(k==="f"||k==="F"){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+ else if(k==="p"||k==="P"){if(window.narrToggle)narrToggle()}
+ else if(k==="c"||k==="C"){if(window.ccCycle)ccCycle()}
+ else if(k==="n"||k==="N"){const n=document.getElementById("notes");n.style.display=n.style.display==="block"?"none":"block"}});
+document.getElementById("stage").addEventListener("click",e=>{if(e.target.closest("button,input,select,#drawer,a,#startov"))return;const r=e.currentTarget.getBoundingClientRect();(e.clientX-r.left)>r.width*0.5?show(cur+1):show(cur-1)});
+addEventListener("resize",fit);
+
+/* ---------- live Python (Pyodide) ---------- */
+let py=null;
+async function ensurePy(msg){if(py)return py;msg.textContent="Loading Python in the browser (first time about 5–10 s) ...";
+ if(!window.loadPyodide){await new Promise((ok,bad)=>{const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js";s.onload=ok;s.onerror=()=>bad(new Error("could not load Pyodide"));document.head.appendChild(s)})}
+ const p=await loadPyodide();await p.loadPackage(["numpy","scipy"]);
+ const src=LAB_SRC||await (await fetch(LAB_FILE)).text();p.FS.writeFile("ph_lab.py",src);
+ await p.runPythonAsync('import sys\nsys.path.insert(0, ".")\nfrom ph_lab import *');py=p;return p}
+async function runCode(){const msg=document.getElementById("liveMsg"),out=document.getElementById("dOut"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Running ...";const buf=[];p.setStdout({batched:s=>buf.push(s)});p.setStderr({batched:s=>buf.push(s)});
+  try{await p.runPythonAsync(document.getElementById("dCode").value)}catch(e){buf.push(String(e.message||e).split("\n").slice(-4).join("\n"))}
+  out.textContent=buf.join("\n")||"(no output)";const m=document.getElementById("dMode");m.className="pill live";m.textContent="LIVE OUTPUT";
+  msg.textContent=`Ran in ${((performance.now()-t0)/1000).toFixed(1)} s in the browser`}
+ catch(e){msg.textContent="Python could not start: "+e.message+". The recorded output is still available."}}
+async function runLive(){const msg=document.getElementById("liveMsg"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Solving every model ...";
+  const out=await p.runPythonAsync('import importlib, json\nimport ph_lab as lab\nimportlib.reload(lab)\njson.dumps(lab.classroom_results())');
+  R=JSON.parse(out);MODE="live";drawAll();fillDrawer();msg.textContent=`All slides now show a live run (${((performance.now()-t0)/1000).toFixed(1)} s, SciPy ${R.meta.scipy})`}
+ catch(e){msg.textContent="Live run failed: "+e.message+". The recorded run is still shown."}}
+document.getElementById("runCode").onclick=runCode;
+document.getElementById("runLive").onclick=runLive;
+document.getElementById("useRec").onclick=()=>{R=RECORDED;MODE="recorded";drawAll();fillDrawer();document.getElementById("liveMsg").textContent="Showing the recorded run."};
+
+/* ---------- narration and captions ---------- */
+const NARR = {
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 649.1,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 30.336,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.063,
+     "en": "Welcome to Class 5: acids, bases, pH and equilibrium."
+    },
+    {
+     "s": 5.063,
+     "e": 13.461,
+     "en": "Today we read the pH scale, find the factor of ten hidden in each unit, and see what it really means for a reaction to be at equilibrium."
+    },
+    {
+     "s": 13.461,
+     "e": 21.211,
+     "en": "pH becomes the horizontal axis of the copper stability map in Class 13, and equilibrium returns in Class 9."
+    },
+    {
+     "s": 21.211,
+     "e": 30.263,
+     "en": "If you are studying on your own, the narration takes about ten minutes. Stop at the activity and at each check, then do Lab 5."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 32.808,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.105,
+     "en": "A five minute activity reviews Class 4."
+    },
+    {
+     "s": 6.105,
+     "e": 17.882,
+     "en": "Part one is about pH: the hydrogen ion concentration on a log scale, water and its ion product, acids and bases in a chip fab, and dilution. It ends with Check 1."
+    },
+    {
+     "s": 17.882,
+     "e": 27.974,
+     "en": "Part two is about equilibrium: a dynamic balance, the equilibrium ratio, and what happens when a reactant is added. It ends with Check 2."
+    },
+    {
+     "s": 27.974,
+     "e": 32.737,
+     "en": "Then you do Lab 5 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 30.408,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.513,
+     "en": "Activity 1. Answer four questions about Class 4 without notes, then compare with a partner."
+    },
+    {
+     "s": 7.513,
+     "e": 17.103,
+     "en": "Find the amount in twenty milliliters of a zero point one zero zero molar solution, and its concentration after dilution to forty milliliters."
+    },
+    {
+     "s": 17.103,
+     "e": 25.553,
+     "en": "Say which particles carry current in a copper sulfate bath. And write the ions of zero point one zero molar hydrochloric acid."
+    },
+    {
+     "s": 25.553,
+     "e": 30.355,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 29.88,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.984,
+     "en": "By the end of today you can calculate pH from the hydrogen ion concentration and back, and compare two solutions by their ratio."
+    },
+    {
+     "s": 7.984,
+     "e": 15.421,
+     "en": "You can use the ion product of water to find the hydroxide concentration, and explain why pure water has pH seven."
+    },
+    {
+     "s": 15.421,
+     "e": 21.408,
+     "en": "You can predict the pH of a diluted strong acid, and explain why it never passes seven."
+    },
+    {
+     "s": 21.408,
+     "e": 29.816,
+     "en": "And you can describe equilibrium as equal rates, predict the effect of adding a reactant, and find the new equilibrium in a counting model."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 38.808,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.234,
+     "en": "Today uses concentration again, now on a log scale."
+    },
+    {
+     "s": 4.234,
+     "e": 15.197,
+     "en": "In Class 4, strong electrolytes dissociated completely. A strong acid such as hydrochloric acid does the same, giving hydrogen ions and chloride ions."
+    },
+    {
+     "s": 15.197,
+     "e": 25.009,
+     "en": "Square brackets around a species mean its concentration in moles per liter. pH is minus the base ten log of the hydrogen ion concentration."
+    },
+    {
+     "s": 25.009,
+     "e": 28.934,
+     "en": "And a double arrow means a reaction that runs both ways."
+    },
+    {
+     "s": 28.934,
+     "e": 38.75,
+     "en": "In water, H plus is shorthand for the hydronium ion. Today we use concentration in place of activity, which is fine for dilute solutions."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 36.432,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.958,
+     "en": "pH counts powers of ten."
+    },
+    {
+     "s": 2.958,
+     "e": 16.671,
+     "en": "Move the slider to change the hydrogen ion concentration. Sample A, at ten to the minus two moles per liter, has pH two. Sample B has pH three, and sample C has pH four."
+    },
+    {
+     "s": 16.671,
+     "e": 26.263,
+     "en": "pH two is not twice pH four. The hydrogen ion concentration is ten to the power four minus two, or one hundred times larger."
+    },
+    {
+     "s": 26.263,
+     "e": 36.368,
+     "en": "pH has no unit, because the concentration inside the log is divided by one mole per liter. Press D to see the same calculation in Python."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 47.496,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.355,
+     "en": "Even pure water has ions. A tiny fraction of water molecules split into hydrogen and hydroxide ions."
+    },
+    {
+     "s": 8.355,
+     "e": 14.711,
+     "en": "Their product, K w, is one point zero times ten to the minus fourteen at twenty five degrees."
+    },
+    {
+     "s": 14.711,
+     "e": 21.947,
+     "en": "In pure water the two are equal, each one times ten to the minus seven moles per liter, so the pH is seven."
+    },
+    {
+     "s": 21.947,
+     "e": 30.974,
+     "en": "Acidic solutions have more hydrogen ions than hydroxide ions, and a pH below seven. Basic solutions are the reverse."
+    },
+    {
+     "s": 30.974,
+     "e": 41.132,
+     "en": "For sample A, at pH two, the hydroxide concentration is ten to the minus fourteen divided by ten to the minus two, which is ten to the minus twelve moles per liter."
+    },
+    {
+     "s": 41.132,
+     "e": 47.421,
+     "en": "K w changes with temperature, so neutral means pH seven only at twenty five degrees."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 41.952,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.247,
+     "en": "Where does pH matter in making chips?"
+    },
+    {
+     "s": 3.247,
+     "e": 15.118,
+     "en": "The acid copper plating bath is strongly acidic. The acid keeps copper ions dissolved, instead of forming hydroxide or oxide, and the hydrogen ions raise the conductivity."
+    },
+    {
+     "s": 15.118,
+     "e": 28.553,
+     "en": "Wafers are cleaned in two standard solutions. The first, SC one, is basic and lifts particles and organic residue. The second, SC two, is acidic and removes metal ions."
+    },
+    {
+     "s": 28.553,
+     "e": 33.0,
+     "en": "And the rinse water must be neutral and leave no ions behind."
+    },
+    {
+     "s": 33.0,
+     "e": 41.895,
+     "en": "In Class 13, copper's stable forms are drawn on a map whose horizontal axis is pH. Today's scale is that axis."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 42.672,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 13.132,
+     "en": "Now dilute a strong acid. At a concentration c, the hydrogen ion concentration is c, so the pH is minus log c. Each tenfold dilution raises the pH by one."
+    },
+    {
+     "s": 13.132,
+     "e": 25.724,
+     "en": "Start with zero point one zero molar hydrochloric acid, at pH one. Dilute it ten million times, to ten to the minus eight moles per liter. Does the pH become eight?"
+    },
+    {
+     "s": 25.724,
+     "e": 36.842,
+     "en": "No. Water's own hydrogen ions, at about ten to the minus seven, now outweigh the acid's. Including them gives a pH of six point nine eight."
+    },
+    {
+     "s": 36.842,
+     "e": 42.605,
+     "en": "So diluting an acid with water can bring its pH close to seven, but never past it."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 26.304,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 19.443,
+     "en": "Find the pH at ten to the minus three moles per liter. Correct the claim that pH two has twice the hydrogen ions of pH four. Find the hydroxide concentration at pH two."
+    },
+    {
+     "s": 19.443,
+     "e": 22.171,
+     "en": "And find the pH of a diluted acid."
+    },
+    {
+     "s": 22.171,
+     "e": 26.25,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 39.408,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.932,
+     "en": "Part 2 is about equilibrium."
+    },
+    {
+     "s": 2.932,
+     "e": 9.118,
+     "en": "Many reactions run both ways: A turns into B, and B turns back into A, all the time."
+    },
+    {
+     "s": 9.118,
+     "e": 20.105,
+     "en": "Equilibrium is reached when the forward rate equals the reverse rate. The amounts then stop changing. The rates are equal, but the amounts need not be."
+    },
+    {
+     "s": 20.105,
+     "e": 33.368,
+     "en": "Here is a counting model. Each round, one quarter of A becomes B, and one half of B becomes A. Start with eight units of A and four of B. Two units go forward and two come back."
+    },
+    {
+     "s": 33.368,
+     "e": 39.329,
+     "en": "The rates are equal, so the amounts stay at eight and four. That is equilibrium."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 36.336,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.379,
+     "en": "Now add eight units of A, so A is sixteen and B is four."
+    },
+    {
+     "s": 4.379,
+     "e": 14.455,
+     "en": "In the first round, four units go forward and only two come back. So A falls to fourteen and B rises to six. The net change runs toward B."
+    },
+    {
+     "s": 14.455,
+     "e": 20.303,
+     "en": "Move the slider through the rounds. The shift slows as the two rates approach each other."
+    },
+    {
+     "s": 20.303,
+     "e": 30.974,
+     "en": "The new equilibrium is A thirteen point three three and B six point six seven. The ratio of B to A is zero point five again, the same as four over eight before."
+    },
+    {
+     "s": 30.974,
+     "e": 36.263,
+     "en": "Adding a reactant shifts the balance toward products, but A does not disappear."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 33.84,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.15,
+     "en": "One number describes the balance: the equilibrium constant, K."
+    },
+    {
+     "s": 4.15,
+     "e": 12.394,
+     "en": "At equilibrium the forward and reverse rates are equal, so K, the ratio of B to A, equals the ratio of the two rate fractions."
+    },
+    {
+     "s": 12.394,
+     "e": 17.197,
+     "en": "In the model, that is one quarter divided by one half, or zero point five."
+    },
+    {
+     "s": 17.197,
+     "e": 23.632,
+     "en": "K does not change when you add A. The amounts move until their ratio is K again."
+    },
+    {
+     "s": 23.632,
+     "e": 33.776,
+     "en": "K w is the same idea for water. Class 9 links K to the voltage of a cell, and Class 13 uses equilibrium to draw the Pourbaix map."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 29.736,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.787,
+     "en": "Here is a common mistake: at equilibrium nothing happens, and A and B are equal."
+    },
+    {
+     "s": 5.787,
+     "e": 20.408,
+     "en": "In the model at equilibrium, two units go each way every round. Both reactions continue. The amounts stay at eight and four: constant, but not equal. Only the net change is zero."
+    },
+    {
+     "s": 20.408,
+     "e": 29.671,
+     "en": "The same idea returns in Class 12. At equilibrium the net current is zero, but the exchange current in each direction is not."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 24.936,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 18.921,
+     "en": "Decide whether eight and four is an equilibrium. Find A and B after one round when eight units of A are added. Give the new equilibrium amounts. And say what stays the same:"
+    },
+    {
+     "s": 18.921,
+     "e": 20.789,
+     "en": "the amounts or the ratio."
+    },
+    {
+     "s": 20.789,
+     "e": 24.868,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 23.424,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.142,
+     "en": "pH and equilibrium come back."
+    },
+    {
+     "s": 3.142,
+     "e": 13.934,
+     "en": "Class 7 writes half reactions in acid, where hydrogen ions appear in the equation. Class 9 writes equilibrium as a voltage, with a log of concentration."
+    },
+    {
+     "s": 13.934,
+     "e": 23.368,
+     "en": "Class 12 meets zero net current at equilibrium. And Class 13 uses pH as the horizontal axis of copper's stability map."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 28.104,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.0,
+     "en": "Now it is time for Lab 5. Scan the code or open the lab page."
+    },
+    {
+     "s": 6.0,
+     "e": 17.263,
+     "en": "You will compare hydrogen ion concentrations on the pH scale, calculate the pH and hydroxide concentration of a diluted acid, and dilute an acid step by step to see where the pH stops."
+    },
+    {
+     "s": 17.263,
+     "e": 22.092,
+     "en": "Then you shift the counting model of equilibrium and find the new balance."
+    },
+    {
+     "s": 22.092,
+     "e": 28.039,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 32.592,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 8.895,
+     "en": "pH is minus the log of the hydrogen ion concentration, and each unit is a factor of ten."
+    },
+    {
+     "s": 8.895,
+     "e": 16.75,
+     "en": "The product of the hydrogen and hydroxide concentrations is K w, and neutral is pH seven at twenty five degrees."
+    },
+    {
+     "s": 16.75,
+     "e": 21.421,
+     "en": "Diluting an acid raises its pH toward seven, never past it."
+    },
+    {
+     "s": 21.421,
+     "e": 27.711,
+     "en": "Equilibrium means equal rates, not equal amounts, and it does not mean the reaction has stopped."
+    },
+    {
+     "s": 27.711,
+     "e": 32.526,
+     "en": "Adding a reactant shifts the balance until the ratio returns to K."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 18.84,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.497,
+     "en": "Before the next class, finish Lab 5 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.497,
+     "e": 13.662,
+     "en": "Read OpenStax Chemistry two e, section thirteen point one on chemical equilibria and section fourteen point two on pH and p O H."
+    },
+    {
+     "s": 13.662,
+     "e": 18.776,
+     "en": "Class 6 is about electronic materials: energy bands and the doping of silicon."
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "file": "audio/slide-20.mp3",
+   "duration": 24.792,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.013,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 5."
+    },
+    {
+     "s": 7.013,
+     "e": 15.803,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.803,
+     "e": 24.724,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 6."
+    }
+   ]
+  }
+ ]
+};
+(function(){if(!NARR)return;
+ const au=document.getElementById("narr"),bar=document.getElementById("nbar"),cap=document.getElementById("cap"),play=document.getElementById("nPlay"),tm=document.getElementById("nTime"),msg=document.getElementById("nMsg");
+ document.getElementById("dock").style.display="flex";document.getElementById("help").style.display="none";let on=false,lang="off",slideIdx=-1;
+ const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
+ lang=ls("cc-lang")||"off";if(lang!=="en")lang="off";const sp=ls("narr-speed");if(sp)document.getElementById("nSpeed").value=sp;
+ const fmtT=t=>isFinite(t)?`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,"0")}`:"0:00";
+ const S_=i=>NARR.slides[i];
+ function load(i){slideIdx=i;const s=S_(i);if(!s){au.removeAttribute("src");return}au.src=s.file;au.playbackRate=+document.getElementById("nSpeed").value;tm.textContent=`0:00 / ${fmtT(s.duration)}`;showCap(0)}
+ function setPlayUI(){play.textContent=au.paused?"▶ Play":"❚❚ Pause";play.classList.toggle("on",!au.paused)}
+ // captions sit in their own band under the slide; long lines shrink to fit the band
+ window.capRefit=()=>{let f=parseFloat(cap.dataset.fs)||18;cap.style.fontSize=f+"px";while(cap.scrollHeight>cap.clientHeight+1&&f>11){f-=1;cap.style.fontSize=f+"px"}};
+ function showCap(t){const s=S_(slideIdx);let c=null;if(s&&lang!=="off"){for(const q of s.cues){if(t>=q.s-0.05)c=q;else break}}
+  const txt=(!c||(au.paused&&au.currentTime===0&&!on))?"":c.en;if(cap.textContent!==txt){cap.textContent=txt;capRefit()}}
+ function ccUI(){const b=document.getElementById("nCC");b.textContent=lang==="off"?"CC off":"CC on";b.classList.toggle("on",lang!=="off");CAP_ON=lang!=="off";fit();showCap(au.currentTime||0)}
+ window.ccCycle=()=>{lang=lang==="off"?"en":"off";ls("cc-lang",lang);ccUI()};
+ // "on" means the student is listening: it starts with Play and ends with Pause or Stop.
+ // Slides change only when the student moves; the new slide's narration then starts if "on".
+ window.narrToggle=()=>{if(au.paused){on=true;if(slideIdx!==cur)load(cur);if(au.ended)au.currentTime=0;msg.textContent="";au.play().catch(()=>{msg.textContent="Press Play again to start audio."})}else{on=false;au.pause()}};
+ window.onSlideChange=i=>{au.pause();msg.textContent="";load(i);if(on)au.play().catch(()=>{})};
+ document.getElementById("nPlay").onclick=narrToggle;
+ document.getElementById("nStop").onclick=()=>{au.pause();au.currentTime=0;on=false;setPlayUI();showCap(0);tm.textContent=`0:00 / ${fmtT((S_(cur)||{}).duration)}`};
+ document.getElementById("nCC").onclick=ccCycle;
+ document.getElementById("nPrev").onclick=()=>show(cur-1);document.getElementById("nNext").onclick=()=>show(cur+1);
+ document.getElementById("nSpeed").onchange=e=>{au.playbackRate=+e.target.value;ls("narr-speed",e.target.value)};
+ au.addEventListener("play",setPlayUI);au.addEventListener("pause",setPlayUI);
+ au.addEventListener("timeupdate",()=>{tm.textContent=`${fmtT(au.currentTime)} / ${fmtT((S_(slideIdx)||{}).duration)}`;showCap(au.currentTime)});
+ au.addEventListener("ended",()=>{setPlayUI();const s=S_(slideIdx);msg.textContent=s&&s.hold?"Activity: do it now, then press Next ›":cur<N-1?"Press Next › or → for the next slide":"End of the session"});
+ const q=new URLSearchParams(location.search);
+ if(q.get("narrate")==="1"){const ov=document.getElementById("startov");ov.style.display="flex";document.getElementById("startBtn").onclick=()=>{ov.style.display="none";if(lang==="off"){lang="en";ls("cc-lang",lang)}ccUI();on=true;load(cur);au.play().catch(()=>{})}}
+ ccUI();setTimeout(()=>{if(slideIdx<0)load(cur)},0);
+})();
+
+build();drawAll();fit();show((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>

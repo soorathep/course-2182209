@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>2182209 · Class 7 · Redox reactions and electron balance</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--sky:#5A91BE;--sage:#83A462;--plum:#995A90;--graphite:#333F4A;--sand:#DFC98F;
+--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--mono:Menlo,Consolas,"DejaVu Sans Mono",monospace}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#2b3138;font-family:"Helvetica Neue",Helvetica,Arial,"DejaVu Sans",sans-serif;color:var(--ink)}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#stage{width:1280px;height:720px;flex:0 0 auto;overflow:hidden;background:#fff;position:relative;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.slide{position:absolute;inset:0;padding:40px 64px 58px;display:none;flex-direction:column}
+.slide.on{display:flex}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.14em;font-size:15px;text-transform:uppercase;margin:0}
+h1{color:var(--teal);font-size:42px;line-height:1.12;margin:6px 0 22px;font-weight:800}
+.body{flex:1;display:flex;gap:28px;min-height:0}
+.col{flex:1;min-width:0;display:flex;flex-direction:column}
+.w40{flex:0 0 40%}.w45{flex:0 0 45%}.w55{flex:0 0 55%}.w60{flex:0 0 60%}
+ul.b{list-style:none;margin:0;padding:0;font-size:24px;line-height:1.36}
+ul.b>li{position:relative;padding-left:30px;margin:0 0 16px}
+ul.b>li::before{content:"";position:absolute;left:2px;top:.5em;width:11px;height:11px;background:var(--amber)}
+ul.b.sm{font-size:21px}ul.b.sm>li{margin-bottom:11px}
+ul.b.xs{font-size:19px}ul.b.xs>li{margin-bottom:8px}
+.hl{color:var(--teal);font-weight:700}
+.panel{background:var(--paper);border-radius:14px;padding:16px 18px;min-height:0;display:flex;flex-direction:column}
+.panel.grow{flex:1}
+.math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:25px;line-height:1.75}
+.math .lbl{font-family:"Helvetica Neue",Arial,sans-serif;font-size:16px;color:var(--slate);display:inline-block;width:150px}
+.code{font-family:var(--mono);font-size:17px;line-height:1.5;white-space:pre;color:var(--graphite)}
+.note{font-size:18px;color:var(--slate);margin-top:10px;line-height:1.4}
+.big{font-size:56px;font-weight:800;color:var(--teal)}
+table.t{border-collapse:collapse;font-size:19px;width:100%}
+table.t th{background:var(--paper);text-align:left;padding:7px 10px;border-bottom:2px solid var(--mist);font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid #e3e6e8}
+table.t td.n,table.t th.n{text-align:right;font-variant-numeric:tabular-nums}
+.act{border:3px solid var(--amber);border-radius:16px;padding:22px 28px;background:#fdf6ea}
+.act .tag{display:inline-block;background:var(--amber);color:#fff;font-weight:800;letter-spacing:.1em;font-size:15px;padding:4px 10px;border-radius:6px;margin-bottom:12px}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px;align-items:center;font-size:16px;color:var(--slate)}
+.ctrl button{font:inherit;font-size:15px;padding:5px 11px;border-radius:8px;border:1.5px solid var(--teal);background:#fff;color:var(--teal);cursor:pointer}
+.ctrl button.on{background:var(--teal);color:#fff}
+.ctrl input[type=range]{width:220px;accent-color:var(--teal)}
+.kpi{display:flex;gap:14px;margin-top:8px}
+.kpi div{background:#fff;border-radius:10px;padding:8px 12px;font-size:15px;color:var(--slate);flex:1}
+.kpi b{display:block;font-size:24px;color:var(--ink)}
+.kpi b.a{color:var(--amber)}
+svg.ch{width:100%;height:100%;display:block}
+.chart{flex:1;min-height:0}
+footer{position:absolute;left:64px;right:64px;bottom:20px;border-top:1px solid var(--mist);padding-top:7px;display:flex;justify-content:space-between;font-size:13px;color:var(--slate)}
+.title-slide{justify-content:center}
+.title-slide h1{font-size:64px;margin-bottom:12px}
+.title-slide .sub{font-size:28px;color:var(--graphite);margin-bottom:40px}
+.title-slide .meta{font-size:19px;color:var(--slate);line-height:1.6}
+.pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;letter-spacing:.06em}
+.pill.rec{background:var(--paper);color:var(--slate)}.pill.live{background:var(--amber);color:#fff}
+.dhint{position:absolute;right:64px;top:42px;font-size:13px;color:var(--slate);border:1px solid var(--mist);border-radius:8px;padding:3px 8px}
+/* Python drawer */
+#drawer{position:absolute;top:0;right:0;bottom:0;width:47%;background:#fbfaf7;border-left:3px solid var(--teal);box-shadow:-8px 0 24px rgba(0,0,0,.15);
+ transform:translateX(102%);transition:transform .25s;display:flex;flex-direction:column;padding:22px 24px 18px;z-index:5}
+#drawer.open{transform:none}
+#drawer h2{margin:0 0 4px;color:var(--teal);font-size:22px}
+#drawer .sub{font-size:14px;color:var(--slate);margin-bottom:10px}
+#drawer textarea{width:100%;height:190px;resize:vertical;border:none;margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13px;line-height:1.45;color:var(--ink);white-space:pre-wrap;outline:none}
+#drawer pre{margin:0;background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:13.5px;line-height:1.45;overflow:auto;white-space:pre}
+#drawer .out{margin-top:10px;flex:1;min-height:0;display:flex;flex-direction:column}
+#drawer .out pre{flex:1;background:#1f262d;color:#e8eef2}
+#drawer .bar{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:13px;color:var(--slate)}
+#drawer button{font:inherit;font-size:14px;padding:6px 12px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer}
+#drawer button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+#notes{position:fixed;left:12px;bottom:12px;max-width:520px;background:#fffef8;border:1px solid var(--mist);border-radius:10px;padding:10px 14px;font-size:14px;line-height:1.45;display:none;z-index:9}
+#help{position:fixed;right:12px;bottom:12px;color:#c9d1d6;font-size:12px}
+
+/* narration and captions */
+#dock{position:fixed;left:0;right:0;display:none;flex-direction:column;align-items:center;gap:6px;padding:0 8px;z-index:8}
+#cap{display:none;color:#F3F0EB;line-height:1.45;text-align:center;overflow:hidden;padding:2px 6px;font-family:"Helvetica Neue",Arial,"Sukhumvit Set","Thonburi","Noto Sans Thai","Sarabun",sans-serif}
+#nbar{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;align-items:center;background:rgba(28,36,43,.9);color:#e8eef2;padding:6px 10px;border-radius:12px;font:13px "Helvetica Neue",Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+#nbar button,#nbar select{white-space:nowrap;font:inherit;font-size:14px;background:#2f3a44;color:#fff;border:1px solid #4a5763;border-radius:8px;padding:5px 10px;cursor:pointer}
+#nbar button.on{background:#0F6E6B;border-color:#0F6E6B}
+#nbar .t{min-width:88px;text-align:center;font-variant-numeric:tabular-nums;color:#c9d1d6}
+#nbar .msg{color:#E29A2D;max-width:330px;line-height:1.25}
+#startov{position:absolute;inset:0;background:rgba(243,240,235,.92);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:6;gap:14px}
+#startov button{font:inherit;font-size:24px;padding:14px 28px;border-radius:12px;border:none;background:#0F6E6B;color:#fff;cursor:pointer}
+#startov p{color:#333F4A;font-size:18px;margin:0}
+@media print{#dock,#startov{display:none!important}}
+@media print{#viewport{position:static;display:block}#stage{transform:none!important;box-shadow:none}.slide{display:flex!important;position:relative;page-break-after:always;height:720px}#drawer,#help,#notes,.dhint{display:none}}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<div id="slides"></div>
+<div id="startov"><button id="startBtn">▶ Start the narrated session</button><p>English narration with English captions below the slide. You move to the next slide yourself.</p><p>→ or Next: next slide · P: pause · C: captions on or off</p></div>
+<aside id="drawer" aria-label="Python for this slide">
+  <h2 id="dTitle">Python</h2>
+  <div class="sub" id="dSub"></div>
+  <textarea id="dCode" spellcheck="false"></textarea>
+  <div class="out"><div class="bar" style="margin:0 0 6px"><span>Output</span><span id="dMode" class="pill rec">RECORDED RUN</span></div><pre id="dOut"></pre></div>
+  <div class="bar"><button id="runCode">Run this code</button><button class="ghost" id="runLive">Recompute all slides</button><button class="ghost" id="useRec">Recorded run</button></div>
+  <div class="bar" id="liveMsg" style="min-height:18px"></div>
+</aside>
+</div></div>
+<div id="notes"></div>
+<div id="dock"><div id="cap" aria-live="polite"></div>
+<div id="nbar"><button id="nPrev" title="Previous slide (←)">‹ Back</button><button id="nPlay" title="Play or pause the narration (P)">▶ Play</button><button id="nStop" title="Stop and go back to the start of this slide">■ Stop</button><span class="t" id="nTime">0:00 / 0:00</span><select id="nSpeed" title="Speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select><button id="nCC" title="Captions: off or English (C)">CC off</button><button id="nNext" title="Next slide (→)">Next ›</button><span class="msg" id="nMsg"></span></div></div>
+<audio id="narr" preload="none"></audio>
+<div id="help">← → move · P narration · C captions · D Python · F full screen · N notes</div>
+<script>
+const RECORDED = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"ons":[{"f":"Cu","atom":"Cu","on":0.0},{"f":"Cu2+","atom":"Cu","on":2.0},{"f":"CuO","atom":"Cu","on":2.0},{"f":"Cu2O","atom":"Cu","on":1.0},{"f":"SiO2","atom":"Si","on":4.0},{"f":"SiCl4","atom":"Si","on":4.0},{"f":"SO4 2-","atom":"S","on":6.0},{"f":"H2O2","atom":"O","on":-1.0}],"pairs":[{"metal":"Zn","ion":"Cu2+","ox_ion":"Zn2+","product":"Cu","a":1,"b":1,"e":2,"charge_left":2,"charge_right":2,"goes":true},{"metal":"Zn","ion":"Ag+","ox_ion":"Zn2+","product":"Ag","a":1,"b":2,"e":2,"charge_left":2,"charge_right":2,"goes":true},{"metal":"Al","ion":"Cu2+","ox_ion":"Al3+","product":"Cu","a":2,"b":3,"e":6,"charge_left":6,"charge_right":6,"goes":true},{"metal":"Al","ion":"Ag+","ox_ion":"Al3+","product":"Ag","a":1,"b":3,"e":3,"charge_left":3,"charge_right":3,"goes":true},{"metal":"Al","ion":"Zn2+","ox_ion":"Al3+","product":"Zn","a":2,"b":3,"e":6,"charge_left":6,"charge_right":6,"goes":true},{"metal":"Fe","ion":"Cu2+","ox_ion":"Fe2+","product":"Cu","a":1,"b":1,"e":2,"charge_left":2,"charge_right":2,"goes":true},{"metal":"Fe","ion":"Ag+","ox_ion":"Fe2+","product":"Ag","a":1,"b":2,"e":2,"charge_left":2,"charge_right":2,"goes":true},{"metal":"Fe","ion":"Zn2+","ox_ion":"Fe2+","product":"Zn","a":1,"b":1,"e":2,"charge_left":2,"charge_right":2,"goes":false},{"metal":"Cu","ion":"Ag+","ox_ion":"Cu2+","product":"Ag","a":1,"b":2,"e":2,"charge_left":2,"charge_right":2,"goes":true},{"metal":"Cu","ion":"Zn2+","ox_ion":"Cu2+","product":"Zn","a":1,"b":1,"e":2,"charge_left":2,"charge_right":2,"goes":false}],"supply":[{"e":0,"made":0,"ions_left":3,"e_left":0},{"e":1,"made":0,"ions_left":3,"e_left":1},{"e":2,"made":1,"ions_left":2,"e_left":0},{"e":3,"made":1,"ions_left":2,"e_left":1},{"e":4,"made":2,"ions_left":1,"e_left":0},{"e":5,"made":2,"ions_left":1,"e_left":1},{"e":6,"made":3,"ions_left":0,"e_left":0},{"e":7,"made":3,"ions_left":0,"e_left":1},{"e":8,"made":3,"ions_left":0,"e_left":2}],"disp":[{"m_zn":0.25,"n_zn":0.003824,"n_cu2":0.01,"limiting":"Zn","n_rxn":0.003824,"m_cu":0.242987,"m_zn_used":0.25,"m_zn_left":0.0,"cu2_left":0.006176,"e_mol":0.007648},{"m_zn":0.5,"n_zn":0.007648,"n_cu2":0.01,"limiting":"Zn","n_rxn":0.007648,"m_cu":0.485974,"m_zn_used":0.5,"m_zn_left":0.0,"cu2_left":0.002352,"e_mol":0.015295},{"m_zn":0.75,"n_zn":0.011471,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6538,"m_zn_left":0.0962,"cu2_left":0.0,"e_mol":0.02},{"m_zn":1.0,"n_zn":0.015295,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6538,"m_zn_left":0.3462,"cu2_left":0.0,"e_mol":0.02},{"m_zn":1.25,"n_zn":0.019119,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6538,"m_zn_left":0.5962,"cu2_left":0.0,"e_mol":0.02},{"m_zn":1.5,"n_zn":0.022943,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6538,"m_zn_left":0.8462,"cu2_left":0.0,"e_mol":0.02},{"m_zn":1.75,"n_zn":0.026767,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6538,"m_zn_left":1.0962,"cu2_left":0.0,"e_mol":0.02},{"m_zn":2.0,"n_zn":0.03059,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6538,"m_zn_left":1.3462,"cu2_left":0.0,"e_mol":0.02}],"order":["Al","Zn","Fe","H2","Cu","Ag"],"molar":{"Cu":63.546,"Zn":65.38,"Al":26.982,"Fe":55.845,"Ag":107.87},"si_ox_e":4},"lab":{"zncu":{"metal":"Zn","ion":"Cu2+","ox_ion":"Zn2+","product":"Cu","a":1,"b":1,"e":2,"charge_left":2,"charge_right":2,"goes":true},"alcu":{"metal":"Al","ion":"Cu2+","ox_ion":"Al3+","product":"Cu","a":2,"b":3,"e":6,"charge_left":6,"charge_right":6,"goes":true},"sup4":{"e":4,"made":2,"ions_left":1,"e_left":0},"sup_all":6,"supply":[{"e":0,"made":0,"ions_left":3,"e_left":0},{"e":1,"made":0,"ions_left":3,"e_left":1},{"e":2,"made":1,"ions_left":2,"e_left":0},{"e":3,"made":1,"ions_left":2,"e_left":1},{"e":4,"made":2,"ions_left":1,"e_left":0},{"e":5,"made":2,"ions_left":1,"e_left":1},{"e":6,"made":3,"ions_left":0,"e_left":0},{"e":7,"made":3,"ions_left":0,"e_left":1},{"e":8,"made":3,"ions_left":0,"e_left":2}],"disp":{"m_zn":1.0,"n_zn":0.015295197308045275,"n_cu2":0.01,"limiting":"Cu2+","n_rxn":0.01,"m_cu":0.63546,"m_zn_used":0.6537999999999999,"m_zn_left":0.34620000000000006,"cu2_left":0.0,"e_mol":0.02},"on_si":4.0}};
+const LAB_FILE = "redox_lab.py?v=c07-6636a702";
+const LAB_SRC = "\"\"\"Class 7 of 2182209 Chemistry for Semiconductor Engineering (2027 draft).\n\nRedox reactions and electron balance. Every number on the Class 7 slides and in Lab 7\ncomes from this module.\n\nRun `python redox_lab.py` for a printed summary, or `python redox_lab.py --json` to\nwrite redox-results.json.\n\nHalf-reactions are written as reductions, ion + z e- -> metal. Molar masses (g/mol) from\nthe IUPAC 2021 standard atomic weights, as in Class 3. The order of how readily the metals\nare oxidized follows their standard reduction potentials (Class 9), given here only as an\norder. Model choices, stated: in the electron-supply model each Cu2+ takes two electrons\nin one step, so an odd electron is left unused. The calculation needs only the standard\nlibrary; NumPy and SciPy are imported only to record their versions.\n\"\"\"\nimport json\nimport math\nimport sys\n\nHALF = {\"Cu\": (\"Cu2+\", 2), \"Zn\": (\"Zn2+\", 2), \"Al\": (\"Al3+\", 3), \"Fe\": (\"Fe2+\", 2), \"Ag\": (\"Ag+\", 1)}\nMOLAR = {\"Cu\": 63.546, \"Zn\": 65.38, \"Al\": 26.982, \"Fe\": 55.845, \"Ag\": 107.87}\nORDER = [\"Al\", \"Zn\", \"Fe\", \"H2\", \"Cu\", \"Ag\"]    # most readily oxidized first\n# oxidation numbers: (formula, charge, atom to find, count of it, [(partner, count, its oxidation number)])\nONS = [(\"Cu\", 0, \"Cu\", 1, []), (\"Cu2+\", 2, \"Cu\", 1, []), (\"CuO\", 0, \"Cu\", 1, [(\"O\", 1, -2)]),\n       (\"Cu2O\", 0, \"Cu\", 2, [(\"O\", 1, -2)]), (\"SiO2\", 0, \"Si\", 1, [(\"O\", 2, -2)]),\n       (\"SiCl4\", 0, \"Si\", 1, [(\"Cl\", 4, -1)]), (\"SO4 2-\", -2, \"S\", 1, [(\"O\", 4, -2)]),\n       (\"H2O2\", 0, \"O\", 2, [(\"H\", 2, 1)])]\n\n\ndef r6(x):\n    v = round(float(x), 6)\n    return 0.0 if v == 0 else v\n\n\ndef oxidation_number(charge, count, partners):\n    \"\"\"Sum of oxidation numbers equals the charge of the species.\"\"\"\n    return (charge - sum(n * on for _, n, on in partners)) / count\n\n\ndef combine(metal, ion_of):\n    \"\"\"Overall reaction: `metal` is oxidized, the ion of `ion_of` is reduced.\n\n    Multiply each half-reaction so the electrons lost equal the electrons gained.\n    \"\"\"\n    z_ox, z_red = HALF[metal][1], HALF[ion_of][1]\n    e = z_ox * z_red // math.gcd(z_ox, z_red)\n    a, b = e // z_ox, e // z_red                     # a metal + b ion -> a metal ion + b metal\n    left = b * z_red                                 # charge on the left (ions only)\n    right = a * z_ox\n    spont = ORDER.index(metal) < ORDER.index(ion_of)\n    return {\"metal\": metal, \"ion\": HALF[ion_of][0], \"ox_ion\": HALF[metal][0], \"product\": ion_of,\n            \"a\": a, \"b\": b, \"e\": e, \"charge_left\": left, \"charge_right\": right, \"goes\": spont}\n\n\ndef supply(n_ions, n_e, z=2):\n    \"\"\"Whole ions and electrons: each ion takes z electrons at once.\"\"\"\n    made = min(n_ions, n_e // z)\n    return {\"e\": n_e, \"made\": made, \"ions_left\": n_ions - made, \"e_left\": n_e - z * made}\n\n\ndef displacement(m_zn, c_cu, v_ml):\n    \"\"\"Zn(s) + Cu2+(aq) -> Zn2+(aq) + Cu(s), 1:1.\"\"\"\n    n_zn, n_cu = m_zn / MOLAR[\"Zn\"], c_cu * v_ml / 1000\n    n = min(n_zn, n_cu)\n    return {\"m_zn\": m_zn, \"n_zn\": n_zn, \"n_cu2\": n_cu, \"limiting\": \"Cu2+\" if n_cu < n_zn else \"Zn\",\n            \"n_rxn\": n, \"m_cu\": n * MOLAR[\"Cu\"], \"m_zn_used\": n * MOLAR[\"Zn\"], \"m_zn_left\": m_zn - n * MOLAR[\"Zn\"],\n            \"cu2_left\": n_cu - n, \"e_mol\": 2 * n}\n\n\ndef lab_results():\n    return {\"zncu\": combine(\"Zn\", \"Cu\"), \"alcu\": combine(\"Al\", \"Cu\"),\n            \"sup4\": supply(3, 4), \"sup_all\": 3 * 2, \"supply\": [supply(3, k) for k in range(9)],\n            \"disp\": displacement(1.00, 0.100, 100.0), \"on_si\": oxidation_number(0, 1, [(\"O\", 2, -2)])}\n\n\ndef classroom_results():\n    R = {\"meta\": {\"numpy\": __import__(\"numpy\").__version__, \"scipy\": __import__(\"scipy\").__version__, \"python\": sys.version.split()[0]}}\n    R[\"lecture\"] = {\n        \"ons\": [{\"f\": f, \"atom\": a, \"on\": oxidation_number(c, n, p)} for f, c, a, n, p in ONS],\n        \"pairs\": [combine(m, i) for m in (\"Zn\", \"Al\", \"Fe\", \"Cu\") for i in (\"Cu\", \"Ag\", \"Zn\") if m != i],\n        \"supply\": [supply(3, k) for k in range(9)],\n        \"disp\": [{k: r6(v) if isinstance(v, float) else v for k, v in displacement(m / 4, 0.100, 100.0).items()} for m in range(1, 9)],\n        \"order\": ORDER, \"molar\": MOLAR,\n        \"si_ox_e\": 4,                     # Si 0 -> +4: 4 electrons per Si in Si + O2 -> SiO2\n    }\n    R[\"lab\"] = lab_results()\n    return R\n\n\nif __name__ == \"__main__\":\n    R = classroom_results()\n    if \"--json\" in sys.argv:\n        with open(\"redox-results.json\", \"w\") as fh:\n            json.dump(R, fh, indent=1)\n        print(\"wrote redox-results.json\"); sys.exit()\n    L = R[\"lecture\"]\n    for o in L[\"ons\"]:\n        print(\"%-7s %s: %s\" % (o[\"f\"], o[\"atom\"], \"%+d\" % o[\"on\"] if o[\"on\"] else \"0\"))\n    for p in L[\"pairs\"]:\n        print(\"%d %s + %d %s -> %d %s + %d %s  e=%d  charge %d = %d  goes: %s\" % (p[\"a\"], p[\"metal\"], p[\"b\"], p[\"ion\"], p[\"a\"], p[\"ox_ion\"], p[\"b\"], p[\"product\"], p[\"e\"], p[\"charge_left\"], p[\"charge_right\"], p[\"goes\"]))\n    for s in L[\"supply\"]:\n        print(s)\n    d = R[\"lab\"][\"disp\"]\n    print(\"Zn %.4f mol, Cu2+ %.4f mol, limiting %s, Cu %.4f g, Zn left %.4f g\" % (d[\"n_zn\"], d[\"n_cu2\"], d[\"limiting\"], d[\"m_cu\"], d[\"m_zn_left\"]))\n";   // embedded copy, so live Python also works when the file is opened locally
+let R = RECORDED, MODE = "recorded";
+const C = {teal:"#0F6E6B",amber:"#E29A2D",rust:"#BE654C",sky:"#5A91BE",sage:"#83A462",plum:"#995A90",graphite:"#333F4A",sand:"#DFC98F",ink:"#1C242B",slate:"#66727C",mist:"#B9C1C6",paper:"#F3F0EB"};
+const fmt = (x,d=0)=>x==null?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+
+/* ---------- tiny SVG chart helpers ---------- */
+function svgEl(w,h){return `<svg class="ch" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">`}
+function niceStep(r,n=5){const raw=r/n,p=Math.pow(10,Math.floor(Math.log10(raw||1)));for(const m of [1,2,2.5,5,10]){if(m*p>=raw-1e-12)return m*p}return 10*p}
+function scale(o,lo,hi){const st=niceStep(hi-lo);o.step=st;o.ymin=Math.floor(lo/st+1e-9)*st;o.ymax=Math.ceil(hi/st-1e-9)*st;o.ticks=Math.round((o.ymax-o.ymin)/st);return o}
+function niceMax(v){const p=Math.pow(10,Math.floor(Math.log10(v||1)));for(const m of [1,1.2,1.5,2,2.5,3,4,5,6,8,10]){if(m*p>=v)return m*p}return 10*p}
+function axes(o){ // o: w,h,l,r,t,b,ymin,ymax,xlabels,ylab,ticks
+  const {w,h,l,r,t,b,ymin,ymax}=o, X=w-l-r, Y=h-t-b, n=o.ticks||5; let s="";
+  for(let k=0;k<=n;k++){const v=ymin+(ymax-ymin)*k/n, y=t+Y-(v-ymin)/(ymax-ymin)*Y;
+    s+=`<line x1="${l}" x2="${w-r}" y1="${y}" y2="${y}" stroke="${C.mist}" stroke-width="0.8" opacity=".7"/><text x="${l-8}" y="${y+5}" font-size="16" text-anchor="end" fill="${C.ink}">${fmt(v, (o.step||1)<1?1:0)}</text>`}
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${t+Y}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  const z=t+Y-(0-ymin)/(ymax-ymin)*Y; s+=`<line x1="${l}" x2="${w-r}" y1="${Math.min(t+Y,Math.max(t,z))}" y2="${Math.min(t+Y,Math.max(t,z))}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  if(o.ylab)s+=`<text transform="translate(${16},${t+Y/2}) rotate(-90)" font-size="17" text-anchor="middle" fill="${C.ink}">${o.ylab}</text>`;
+  return s}
+function ymap(o,v){const Y=o.h-o.t-o.b;return o.t+Y-(v-o.ymin)/(o.ymax-o.ymin)*Y}
+function legend(items,x,y){let s="";items.forEach((it,i)=>{const yy=y+i*22;s+=it.line?`<line x1="${x}" x2="${x+22}" y1="${yy}" y2="${yy}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${x}" y="${yy-8}" width="16" height="16" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${x+28}" y="${yy+5}" font-size="16" fill="${C.ink}">${it.t}</text>`});return s}
+function legendRow(items,x,y){let s="",xx=x;items.forEach(it=>{s+=it.line?`<line x1="${xx}" x2="${xx+20}" y1="${y}" y2="${y}" stroke="${it.c}" stroke-width="3" ${it.dash?'stroke-dasharray="6 4"':''}/>`:`<rect x="${xx}" y="${y-7}" width="14" height="14" fill="${it.c}" ${it.op?`opacity="${it.op}"`:''}/>`;s+=`<text x="${xx+26}" y="${y+5}" font-size="16" fill="${C.ink}">${it.t}</text>`;xx+=38+it.t.length*8.2});return s}
+
+/* Food Manufacture: stacked bars of a [month][oil] matrix, optional line */
+function hbar(items,opt={}){ // items: {t,v,c}
+  const w=opt.w||640,h=opt.h||330,l=opt.l||250,r=90,t=16,rowh=(h-t-20)/items.length;
+  const mx=opt.max||niceMax(Math.max(...items.map(i=>i.v)));let s=svgEl(w,h);
+  items.forEach((it,i)=>{const y=t+i*rowh,bw=(w-l-r)*it.v/mx;
+    s+=`<text x="${l-12}" y="${y+rowh/2+5}" font-size="16" text-anchor="end" fill="${C.ink}">${it.t}</text><rect x="${l}" y="${y+rowh*0.18}" width="${Math.max(bw,1)}" height="${rowh*0.64}" fill="${it.c}" rx="3"/><text x="${l+bw+8}" y="${y+rowh/2+6}" font-size="17" font-weight="700" fill="${C.ink}">${opt.fmt?opt.fmt(it.v):fmt(it.v)}</text>`});
+  s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${h-20}" stroke="${C.graphite}" stroke-width="1.5"/>`;
+  return s+"</svg>"}
+
+/* ---------- Class 7 helpers ---------- */
+const foot = "2182209 Chemistry for Semiconductor Engineering · Class 7 · Redox reactions and electron balance · draft for 2027";
+const LC = () => R.lecture;
+const S = [];
+const sub2 = f => f.replace(/(\d+)/g, "<sub>$1</sub>");
+/* chemical formula: Cu2+ → Cu²⁺, SO4 2- → SO₄²⁻, Cu2O → Cu₂O */
+function fm(f){if (f === "SO4 2-") return "SO<sub>4</sub><sup>2−</sup>"; const m = f.match(/^([A-Z][a-z]?)(\d?)([+-])$/);
+ return m ? `${m[1]}<sup>${m[2]}${m[3] === "-" ? "−" : "+"}</sup>` : sub2(f)}
+const co = k => k === 1 ? "" : k + " ";
+const onS = v => v > 0 ? "+" + v : v < 0 ? "−" + (-v) : "0";
+function reveal(bid, aid){const b = document.getElementById(bid); b.onclick = () => {const p = document.getElementById(aid), on = p.style.visibility === "hidden"; p.style.visibility = on ? "visible" : "hidden"; b.textContent = on ? "Hide answers" : "Show answers"}}
+const CHECK = (n, q, a) => `<div class="body"><div class="col w55"><div class="act"><span class="tag">PAUSE AND ANSWER</span>${q}</div>
+<div class="ctrl" style="margin-top:12px"><button id="k${n}btn">Show answers</button></div></div>
+<div class="col"><div class="panel grow" id="k${n}ans" style="visibility:hidden"><ul class="b xs">${a}</ul></div></div></div>`;
+const OL = `<ol style="font-size:21px;line-height:1.5;margin:0;padding-left:26px">`;
+const E = `e<sup>−</sup>`;
+
+/* ---------- opening ---------- */
+S.push({cls:"title-slide", html:()=>`<p class="kicker">Class 7 · Lab 7</p><h1>Redox reactions and electron balance</h1>
+<div class="sub">Who loses electrons, who gains them, and how to make the count come out even</div>
+<div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p>`,
+notes:"First class of the electrochemistry block. Class 6 moved electrons within a solid; today they move between species."});
+
+S.push({kicker:"Plan for today", title:"Ninety minutes, one activity, two checks and a lab", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:19px">
+<tr><th>Part</th><th>Content</th><th class="n">Minutes</th></tr>
+<tr><td></td><td>Activity 1: retrieval check on Classes 1 to 6</td><td class="n">5</td></tr>
+<tr><td>1</td><td>Oxidation and reduction, oxidation numbers, half-reactions and how to combine them; Check 1</td><td class="n">25</td></tr>
+<tr><td>2</td><td>Electrons as a reactant, a displacement reaction in a beaker, which metal displaces which, redox in the fab; Check 2</td><td class="n">25</td></tr>
+<tr><td>Lab 7</td><td>Counting electrons in redox</td><td class="n">30</td></tr>
+<tr><td></td><td>Exit Ticket and feedback</td><td class="n">5</td></tr>
+<tr><td></td><td><b>Total</b></td><td class="n"><b>90</b></td></tr></table>
+<p class="note">Studying on your own: the narration takes about 12 minutes. Stop at the activity and at each check, then do Lab 7.</p></div></div>`});
+
+S.push({kicker:"Activity 1 · 5 minutes · alone, then in pairs", title:"Retrieval check: Classes 1 to 6", html:()=>`<div class="body"><div class="col w55"><div class="act"><span class="tag">WRITE, THEN COMPARE</span>
+${OL}<li>How many electrons does a Cu atom have, and how many does a Cu<sup>2+</sup> ion have? (Class 1)</li>
+<li>How many moles of Cu are in 6.35 g of Cu? (Class 3)</li>
+<li>How many moles of Cu<sup>2+</sup> are in 100.0 mL of 0.100 M CuSO<sub>4</sub>? (Class 4)</li>
+<li>Does a P atom in Si give or take an electron? (Class 6)</li></ol></div>
+<div class="ctrl" style="margin-top:12px"><button id="a1btn">Show answers</button></div></div>
+<div class="col"><div class="panel grow" id="a1ans" style="visibility:hidden"><ul class="b xs">
+<li>Cu 29, Cu<sup>2+</sup> 27. Cu<sup>2+</sup> needs 2 electrons to become Cu again: today's main reaction</li><li>6.35 g ÷ 63.55 g/mol = 0.100 mol</li><li>n = CV = 0.100 mol/L × 0.1000 L = 0.0100 mol</li><li>It gives one: P is a donor. Today electrons move from one species to another</li></ul></div></div></div>`,
+draw:()=>reveal("a1btn","a1ans"), notes:"Questions 2 and 3 are the numbers of the beaker problem in Part 2."});
+
+S.push({kicker:"Learning outcomes", title:"By the end of today you can", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Identify oxidation and reduction as loss and gain of electrons, and name the oxidizing and reducing agents</li>
+<li>Assign oxidation numbers with four rules</li>
+<li>Write half-reactions and combine them so that the electrons cancel</li>
+<li>Treat electrons as a reactant, and find what limits a deposition</li>
+<li>Calculate the masses in a metal displacement reaction, and say which metal displaces which</li></ul></div></div>`});
+
+S.push({kicker:"Context", title:"From electrons inside a solid to electrons between species", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
+<tr><th>You have</th><th>From</th><th>Today</th></tr>
+<tr><td>Ions: Cu<sup>2+</sup> has 2 fewer electrons than Cu</td><td>Class 1</td><td>Where the 2 electrons come from and go</td></tr>
+<tr><td>Mole ratios and the limiting reactant</td><td>Class 3</td><td>Electrons as one of the reactants</td></tr>
+<tr><td>n = C V for solutions</td><td>Class 4</td><td>Moles of Cu<sup>2+</sup> in a plating or displacement bath</td></tr>
+<tr><td>Electrons and holes move within Si</td><td>Class 6</td><td>Electrons move from one species to another</td></tr></table>
+<p class="note">New words: oxidation, reduction, oxidizing agent, reducing agent, oxidation number, half-reaction. Reading: OpenStax <i>Chemistry 2e</i>, Sections 4.2 and 17.1.</p></div></div>`});
+
+/* ---------- Part 1 ---------- */
+function beakerSVG(after){const w = 500, h = 330; let s = svgEl(w, h);
+ s += `<path d="M120 60 L120 290 Q120 305 135 305 L365 305 Q380 305 380 290 L380 60" fill="none" stroke="${C.graphite}" stroke-width="2.5"/>`;
+ s += `<rect x="122" y="110" width="256" height="193" fill="${C.sky}" opacity="${after ? 0.12 : 0.55}"/>`;
+ s += `<rect x="232" y="30" width="36" height="250" fill="#a9b3ba" stroke="${C.graphite}" stroke-width="1.5"/>`;
+ if (after){s += `<rect x="226" y="110" width="6" height="170" fill="${C.rust}"/><rect x="268" y="110" width="6" height="170" fill="${C.rust}"/><rect x="226" y="280" width="48" height="6" fill="${C.rust}"/>`;
+  for (let i = 0; i < 6; i++) s += `<circle cx="${150 + i * 9}" cy="${296 - (i % 2) * 6}" r="5" fill="${C.rust}"/>`}
+ s += `<text x="250" y="22" font-size="15" text-anchor="middle" fill="${C.ink}">Zn strip</text>`;
+ s += `<text x="395" y="${after ? 200 : 150}" font-size="15" fill="${C.ink}">${after ? "Zn²⁺(aq):" : "Cu²⁺(aq):"}</text><text x="395" y="${after ? 220 : 170}" font-size="15" fill="${C.ink}">${after ? "colorless" : "blue"}</text>`;
+ if (after) s += `<text x="20" y="200" font-size="15" fill="${C.rust}">Cu(s) on</text><text x="20" y="220" font-size="15" fill="${C.rust}">the strip</text>`;
+ s += `<text x="20" y="325" font-size="13" fill="${C.slate}">${after ? "After some time: the blue fades, Cu coats the strip, and some Zn has dissolved" : "A Zn strip dipped in CuSO₄ solution"}</text>`;
+ return s + "</svg>"}
+S.push({kicker:"Part 1 · Oxidation and reduction", title:"Electrons go from Zn to Cu<sup>2+</sup>", html:()=>`<div class="body"><div class="col w55"><div class="ctrl"><button id="bk0" class="on">Start</button><button id="bk1">After some time</button></div>
+<div class="panel grow"><div class="chart" id="bkch"></div></div></div>
+<div class="col"><div class="panel" style="display:block;font-size:19px;line-height:1.7">
+Zn → Zn<sup>2+</sup> + 2${E} &nbsp;<b style="color:${C.teal}">oxidation</b>: loss of electrons<br>
+Cu<sup>2+</sup> + 2${E} → Cu &nbsp;<b style="color:${C.amber}">reduction</b>: gain of electrons<br>
+Zn + Cu<sup>2+</sup> → Zn<sup>2+</sup> + Cu</div>
+<ul class="b xs" style="margin-top:10px"><li>Zn is the <b>reducing agent</b>: it gives the electrons and is itself oxidized</li><li>Cu<sup>2+</sup> is the <b>oxidizing agent</b>: it takes the electrons and is itself reduced</li>
+<li>The electrons pass from Zn to Cu<sup>2+</sup> at the metal surface; they are not left free in the solution</li>
+<li>The sulfate ion takes no part: a spectator ion</li></ul></div></div>`,
+draw:()=>{let k = 0; const go = () => {["bk0", "bk1"].forEach((id, i) => document.getElementById(id).classList.toggle("on", i === k)); document.getElementById("bkch").innerHTML = beakerSVG(k === 1)};
+ ["bk0", "bk1"].forEach((id, i) => document.getElementById(id).onclick = () => {k = i; go()}); go()},
+notes:"The blue color is from Cu2+(aq). Oxidation and reduction always happen together: one species can only lose electrons if another takes them."});
+
+S.push({kicker:"Part 1 · Oxidation numbers", title:"Oxidation numbers keep track of electrons", html:()=>`<div class="body"><div class="col w55"><div class="panel" style="display:block"><b style="color:${C.teal};font-size:19px">Four rules</b>
+<ol style="font-size:19px;line-height:1.5;margin:6px 0 0;padding-left:24px"><li>An element on its own: 0 (Cu, Si, O<sub>2</sub>)</li><li>A single-atom ion: its charge (Cu<sup>2+</sup>: +2)</li>
+<li>O is usually −2, H usually +1, Cl usually −1</li><li>The oxidation numbers add up to the charge of the species</li></ol></div>
+<p class="note">Oxidation: the oxidation number rises. Reduction: it falls. Rule 3 says "usually": in H<sub>2</sub>O<sub>2</sub>, O is −1.</p></div>
+<div class="col"><table class="t" style="font-size:17px"><tr><th>Species</th><th>Atom</th><th class="n">Oxidation number</th></tr>
+${LC().ons.map(o => `<tr><td>${fm(o.f)}</td><td>${o.atom}</td><td class="n">${onS(o.on)}</td></tr>`).join("")}</table>
+<p class="note">Example, SiO<sub>2</sub>: x + 2(−2) = 0, so x = +4. Cu<sub>2</sub>O and CuO return in Class 13.</p></div></div>`,
+notes:"The table comes from redox_lab.oxidation_number, which applies rule 4."});
+
+function pairOf(m, i){return LC().pairs.find(p => p.metal === m && p.product === i)}
+S.push({kicker:"Part 1 · Demo", title:"Combine half-reactions so the electrons cancel", html:()=>`<div class="body"><div class="col w55">
+<div class="ctrl"><span>Metal oxidized</span><button id="hm0" class="on">Zn</button><button id="hm1">Al</button><button id="hm2">Fe</button><button id="hm3">Cu</button></div>
+<div class="ctrl"><span>Ion reduced</span><button id="hi0" class="on">Cu²⁺</button><button id="hi1">Ag⁺</button><button id="hi2">Zn²⁺</button></div>
+<div class="panel grow" style="display:block;font-size:23px;line-height:1.9" id="hrx"></div></div>
+<div class="col"><div class="kpi"><div>Electrons transferred<b id="ke"></b></div><div>Charge left = right<b class="a" id="kc"></b></div></div>
+<ul class="b xs" style="margin-top:10px"><li>Write each half-reaction with its electrons</li><li>Multiply so that electrons lost = electrons gained (the lowest common multiple)</li><li>Add, and cancel the electrons</li><li>Check: atoms balance, and the charge on each side is the same</li></ul>
+<p class="note" id="hgo"></p></div></div>`,
+draw:()=>{const M = ["Zn", "Al", "Fe", "Cu"], I = ["Cu", "Ag", "Zn"], IL = {Cu: "Cu²⁺", Ag: "Ag⁺", Zn: "Zn²⁺"}; let m = 0, i = 0;
+ const go = () => {if (M[m] === I[i]) i = M[m] === "Cu" ? 1 : 0; const p = pairOf(M[m], I[i]), zo = p.e / p.a, zr = p.e / p.b;
+  M.forEach((_, k) => document.getElementById("hm" + k).classList.toggle("on", k === m)); I.forEach((x, k) => {const b = document.getElementById("hi" + k); b.classList.toggle("on", k === i); b.disabled = x === M[m]});
+  document.getElementById("hrx").innerHTML = `<span style="color:${C.teal}">${p.a > 1 ? p.a + " × (" : ""}${p.metal} → ${fm(p.ox_ion)} + ${co(zo)}${E}${p.a > 1 ? ")" : ""}</span><br>
+<span style="color:${C.amber}">${p.b > 1 ? p.b + " × (" : ""}${fm(p.ion)} + ${co(zr)}${E} → ${p.product}${p.b > 1 ? ")" : ""}</span><br>
+<b>${co(p.a)}${p.metal} + ${co(p.b)}${fm(p.ion)} → ${co(p.a)}${fm(p.ox_ion)} + ${co(p.b)}${p.product}</b>`;
+  document.getElementById("ke").textContent = p.e; document.getElementById("kc").textContent = `+${p.charge_left} = +${p.charge_right}`;
+  document.getElementById("hgo").innerHTML = p.goes ? "This reaction goes on its own (see the order of metals in Part 2)." : `<b style="color:${C.rust}">Balanced, but it does not go on its own</b>: ${p.metal} is less readily oxidized than ${I[i]}. A balanced equation does not say whether a reaction happens.`};
+ M.forEach((_, k) => document.getElementById("hm" + k).onclick = () => {m = k; go()}); I.forEach((_, k) => document.getElementById("hi" + k).onclick = () => {i = k; go()}); go()},
+py:{title:"Combine two half-reactions", sub:"redox_lab.combine(metal, ion_of)", code:
+`from redox_lab import combine
+for m, i in (("Zn", "Cu"), ("Al", "Cu"), ("Cu", "Ag")):
+    p = combine(m, i)
+    print("%d %s + %d %s -> %d %s + %d %s, %d e-, charge %d = %d" % (
+        p["a"], p["metal"], p["b"], p["ion"], p["a"], p["ox_ion"],
+        p["b"], p["product"], p["e"], p["charge_left"], p["charge_right"]))`,
+out:()=>[["Zn", "Cu"], ["Al", "Cu"], ["Cu", "Ag"]].map(([m, i]) => {const p = pairOf(m, i); return `${p.a} ${p.metal} + ${p.b} ${p.ion} -> ${p.a} ${p.ox_ion} + ${p.b} ${p.product}, ${p.e} e-, charge ${p.charge_left} = ${p.charge_right}`}).join("\n")},
+notes:"Al with Cu2+ needs 6 electrons: 2 Al give 3 each, 3 Cu2+ take 2 each. Cu with Zn2+ balances but does not go."});
+
+S.push({kicker:"Check 1 · 5 minutes", title:"Check 1: oxidation, reduction and balance", html:()=>CHECK(1,`${OL}
+<li>In 2 Al + 3 Cu<sup>2+</sup> → 2 Al<sup>3+</sup> + 3 Cu, which species is oxidized, and which is the oxidizing agent?</li>
+<li>Give the oxidation number of Si in SiO<sub>2</sub> and of Cu in Cu<sub>2</sub>O.</li>
+<li>Balance: Zn + Ag<sup>+</sup> → Zn<sup>2+</sup> + Ag.</li>
+<li>Why must the electrons cancel in the overall equation?</li></ol>`,
+`<li>Al is oxidized (0 → +3); Cu<sup>2+</sup> is the oxidizing agent</li><li>Si +4; Cu +1</li>
+<li>Zn + 2 Ag<sup>+</sup> → Zn<sup>2+</sup> + 2 Ag: 2 electrons, charge +2 on each side</li><li>Every electron one species loses, another gains; none are left free in solution</li>`),
+draw:()=>reveal("k1btn","k1ans")});
+
+/* ---------- Part 2 ---------- */
+function supSVG(s){const w = 520, h = 300; let svg = svgEl(w, h);
+ for (let k = 0; k < 3; k++){const x = 110 + k * 150, y = 150, made = k < s.made;
+  svg += made ? `<circle cx="${x}" cy="${y}" r="34" fill="${C.amber}"/><text x="${x}" y="${y + 7}" font-size="20" text-anchor="middle" fill="#fff">Cu</text>`
+   : `<circle cx="${x}" cy="${y}" r="34" fill="#fff" stroke="${C.teal}" stroke-width="3"/><text x="${x}" y="${y + 7}" font-size="20" text-anchor="middle" fill="${C.teal}">Cu²⁺</text>`;
+  if (made) for (let j = 0; j < 2; j++) svg += `<circle cx="${x - 10 + j * 20}" cy="${y - 48}" r="6" fill="${C.graphite}"/>`}
+ for (let j = 0; j < s.e_left; j++) svg += `<circle cx="${70 + j * 22}" cy="250" r="7" fill="${C.graphite}"/>`;
+ svg += `<text x="70" y="${s.e_left ? 280 : 250}" font-size="14" fill="${C.slate}">${s.e_left ? "unused electrons: one Cu²⁺ needs two" : "no electrons left over"}</text>`;
+ svg += `<text x="20" y="30" font-size="15" fill="${C.ink}">3 Cu²⁺ ions and ${s.e} electrons (●); each Cu²⁺ takes 2</text>`;
+ return svg + "</svg>"}
+S.push({kicker:"Part 2 · Demo", title:"Electrons are a reactant too", html:()=>`<div class="body"><div class="col w55"><div class="ctrl"><span>Electrons supplied</span> <input type="range" id="sE" min="0" max="8" step="1" value="4"><b id="sEv"></b></div>
+<div class="panel grow"><div class="chart" id="sch"></div></div></div>
+<div class="col"><div class="kpi"><div>Cu formed<b class="a" id="km"></b></div><div>Cu<sup>2+</sup> left<b id="kl"></b></div><div>e<sup>−</sup> unused<b id="ku"></b></div></div>
+<ul class="b xs" style="margin-top:10px"><li>Cu<sup>2+</sup> + 2${E} → Cu: 2 electrons per Cu atom, 2 mol of electrons per mol of Cu</li>
+<li>With 4 electrons and 3 Cu<sup>2+</sup>, the electrons run out first: 2 Cu form and 1 Cu<sup>2+</sup> stays</li>
+<li>In electroplating a power supply delivers the electrons, so the electrons supplied set how much Cu deposits. Class 10 counts them as electric charge</li></ul></div></div>`,
+draw:()=>{const go = () => {const s = LC().supply[+document.getElementById("sE").value]; document.getElementById("sEv").textContent = s.e;
+ document.getElementById("km").textContent = s.made; document.getElementById("kl").textContent = s.ions_left; document.getElementById("ku").textContent = s.e_left; document.getElementById("sch").innerHTML = supSVG(s)};
+ document.getElementById("sE").oninput = go; go()},
+notes:"The limiting-reactant idea of Class 3, with electrons as one of the reactants. The model takes whole ions, so an odd electron is left unused."});
+
+function dispSVG(d){const w = 520, h = 300, l = 120, X = 360, mx = 0.025, bx = v => X * v / mx; let s = svgEl(w, h);
+ const rows = [["Zn left", d.n_zn - d.n_rxn, C.graphite], ["Cu²⁺ left", d.cu2_left, C.teal], ["Zn²⁺ formed", d.n_rxn, C.sky], ["Cu formed", d.n_rxn, C.amber]];
+ rows.forEach(([t, v, c], k) => {const y = 40 + k * 55; s += `<text x="${l - 10}" y="${y + 22}" font-size="15" text-anchor="end" fill="${C.ink}">${t}</text><rect x="${l}" y="${y}" width="${Math.max(bx(v), 0)}" height="32" fill="${c}"/><text x="${l + bx(v) + 8}" y="${y + 22}" font-size="15" fill="${C.ink}">${v.toFixed(4)} mol</text>`});
+ s += `<line x1="${l}" x2="${l}" y1="30" y2="262" stroke="${C.graphite}" stroke-width="1.5"/><text x="20" y="292" font-size="13" fill="${C.slate}">After the reaction, in 100.0 mL of 0.100 M CuSO₄ (0.0100 mol Cu²⁺ at the start)</text>`;
+ return s + "</svg>"}
+S.push({kicker:"Part 2 · Demo", title:"Zn in a CuSO<sub>4</sub> bath: which reactant runs out?", html:()=>`<div class="body"><div class="col w55"><div class="ctrl"><span>Mass of Zn</span> <input type="range" id="dZ" min="0" max="7" step="1" value="3"><b id="dZv"></b></div>
+<div class="panel grow"><div class="chart" id="dch"></div></div></div>
+<div class="col"><table class="t" style="font-size:17px" id="dtab"></table>
+<ul class="b xs" style="margin-top:10px"><li>Zn + Cu<sup>2+</sup> → Zn<sup>2+</sup> + Cu: 1 mol to 1 mol</li><li>n(Zn) = m/M; n(Cu<sup>2+</sup>) = C V; the smaller one is limiting</li><li>Each mol that reacts moves 2 mol of electrons from Zn to Cu<sup>2+</sup></li></ul></div></div>`,
+draw:()=>{const go = () => {const d = LC().disp[+document.getElementById("dZ").value]; document.getElementById("dZv").textContent = d.m_zn.toFixed(2) + " g";
+ document.getElementById("dtab").innerHTML = `<tr><th>Quantity</th><th class="n">Value</th></tr><tr><td>n(Zn) at start</td><td class="n">${d.n_zn.toFixed(4)} mol</td></tr><tr><td>n(Cu<sup>2+</sup>) at start</td><td class="n">${d.n_cu2.toFixed(4)} mol</td></tr>
+<tr><td>Limiting reactant</td><td class="n"><b>${fm(d.limiting)}</b></td></tr><tr><td>Cu deposited</td><td class="n"><b style="color:${C.amber}">${d.m_cu.toFixed(3)} g</b></td></tr><tr><td>Zn left</td><td class="n">${d.m_zn_left.toFixed(3)} g</td></tr><tr><td>Electrons moved</td><td class="n">${d.e_mol.toFixed(4)} mol</td></tr>`;
+ document.getElementById("dch").innerHTML = dispSVG(d)}; document.getElementById("dZ").oninput = go; go()},
+py:{title:"Zn + Cu2+ in 100.0 mL of 0.100 M CuSO4", sub:"redox_lab.displacement(1.00, 0.100, 100.0)", code:
+`from redox_lab import displacement
+d = displacement(1.00, 0.100, 100.0)
+print("n(Zn) = %.4f mol, n(Cu2+) = %.4f mol" % (d["n_zn"], d["n_cu2"]))
+print("limiting:", d["limiting"])
+print("Cu deposited = %.4f g, Zn left = %.4f g" % (d["m_cu"], d["m_zn_left"]))
+print("electrons moved = %.4f mol" % d["e_mol"])`,
+out:()=>{const d = R.lab.disp; return `n(Zn) = ${d.n_zn.toFixed(4)} mol, n(Cu2+) = ${d.n_cu2.toFixed(4)} mol\nlimiting: ${d.limiting}\nCu deposited = ${d.m_cu.toFixed(4)} g, Zn left = ${d.m_zn_left.toFixed(4)} g\nelectrons moved = ${d.e_mol.toFixed(4)} mol`}},
+notes:"Above 0.654 g of Zn, Cu2+ is limiting and the Cu deposited stops at 0.635 g; below it, Zn is limiting."});
+
+function orderSVG(){const w = 460, h = 330, O = LC().order, lab = {H2: "H₂ (from H⁺)"}; let s = svgEl(w, h);
+ s += `<line x1="70" x2="70" y1="40" y2="300" stroke="${C.graphite}" stroke-width="2"/><polygon points="70,30 64,44 76,44" fill="${C.graphite}"/>`;
+ s += `<text transform="translate(42,170) rotate(-90)" font-size="14" text-anchor="middle" fill="${C.ink}">more readily oxidized</text>`;
+ O.forEach((m, k) => {const y = 62 + k * 46, hy = m === "H2"; s += `<rect x="100" y="${y - 18}" width="${hy ? 160 : 90}" height="34" rx="6" fill="${hy ? "#fff" : k < 3 ? C.teal : C.amber}" stroke="${hy ? C.graphite : "none"}" stroke-dasharray="${hy ? "5 4" : ""}"/><text x="${hy ? 180 : 145}" y="${y + 5}" font-size="17" text-anchor="middle" fill="${hy ? C.ink : "#fff"}">${lab[m] || m}</text>`});
+ s += `<text x="280" y="90" font-size="14" fill="${C.ink}">A metal reduces the ion</text><text x="280" y="110" font-size="14" fill="${C.ink}">of any metal below it</text>`;
+ s += `<text x="280" y="250" font-size="14" fill="${C.ink}">Metals above H₂ react</text><text x="280" y="270" font-size="14" fill="${C.ink}">with acids and give H₂</text>`;
+ return s + "</svg>"}
+S.push({kicker:"Part 2 · Which metal displaces which", title:"An order of the metals", html:()=>`<div class="body"><div class="col w55"><div class="panel grow"><div class="chart">${orderSVG()}</div></div></div>
+<div class="col"><ul class="b sm"><li>Zn + Cu<sup>2+</sup> goes: Zn is above Cu</li><li>Cu + Zn<sup>2+</sup> does not go, though it balances</li><li>Cu + 2 Ag<sup>+</sup> goes: Cu is above Ag</li>
+<li>Zn and Fe dissolve in acid and give H<sub>2</sub>; Cu does not</li></ul>
+<p class="note">The order comes from standard reduction potentials, which Class 9 measures in volts. Today it is only an order.</p></div></div>`,
+notes:"This is why a balanced equation is not enough: the order says which direction goes on its own."});
+
+S.push({kicker:"Part 2 · A common mistake", title:"“Oxidation means adding oxygen”", html:()=>`<div class="body"><div class="col w55"><div class="act" style="border-color:${C.rust};background:#fbf0ec"><span class="tag" style="background:${C.rust}">THE CLAIM</span>
+<div style="font-size:22px;line-height:1.45">“A reaction is an oxidation only if oxygen is added.”</div></div>
+<div class="panel" style="margin-top:16px;display:block"><b style="color:${C.teal};font-size:19px">The correction</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
+Oxidation is the loss of electrons: the oxidation number rises. Zn → Zn<sup>2+</sup> + 2${E} has no oxygen in it. Si + 2 Cl<sub>2</sub> → SiCl<sub>4</sub> oxidizes Si from 0 to +4 exactly as Si + O<sub>2</sub> → SiO<sub>2</sub> does.</div></div></div>
+<div class="col"><ul class="b sm"><li>The name is historical: the first oxidations studied were reactions with oxygen</li><li>O<sub>2</sub> is a common oxidizing agent because O takes electrons readily, but it is one of many</li>
+<li>A second mistake: leaving electrons in the overall equation. They must cancel</li></ul></div></div>`});
+
+S.push({kicker:"Part 2 · Redox in the fab", title:"Four redox reactions a chip goes through", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:17px">
+<tr><th>Process</th><th>Reaction</th><th>What changes</th><th>Class</th></tr>
+<tr><td>Dry thermal oxidation</td><td>Si + O<sub>2</sub> → SiO<sub>2</sub></td><td>Si 0 → +4 (${LC().si_ox_e} e<sup>−</sup> per Si); O 0 → −2</td><td>3</td></tr>
+<tr><td>Wet thermal oxidation</td><td>Si + 2 H<sub>2</sub>O → SiO<sub>2</sub> + 2 H<sub>2</sub></td><td>Si 0 → +4; H +1 → 0</td><td>3</td></tr>
+<tr><td>Cu electroplating</td><td>Cu<sup>2+</sup> + 2${E} → Cu</td><td>The wafer receives the electrons from a power supply</td><td>10</td></tr>
+<tr><td>Cu polishing (CMP)</td><td>H<sub>2</sub>O<sub>2</sub> in the slurry oxidizes the Cu surface</td><td>Cu 0 → +1 or +2; O −1 → −2</td><td>13</td></tr></table>
+<p class="note">In wet oxidation the oxidizing agent is H in water, not O: the oxidation number of O stays −2. CMP: chemical-mechanical planarization, which polishes the wafer flat.</p></div></div>`,
+notes:"Each line can be checked with the oxidation-number rules from Part 1."});
+
+S.push({kicker:"Check 2 · 5 minutes", title:"Check 2: electrons as a reactant", html:()=>CHECK(2,`${OL}
+<li>3 Cu<sup>2+</sup> ions receive 4 electrons. How many Cu atoms form, and what is left?</li>
+<li>How many moles of electrons deposit 0.0100 mol of Cu?</li>
+<li>1.00 g of Zn goes into 100.0 mL of 0.100 M CuSO<sub>4</sub>. Which reactant is limiting, and what mass of Cu forms?</li>
+<li>Will a Cu wire react with ZnSO<sub>4</sub> solution? Why?</li></ol>`,
+`<li>2 Cu; 1 Cu<sup>2+</sup> is left. The electrons are limiting</li><li>0.0200 mol: 2 per Cu</li>
+<li>n(Zn) = 0.0153 mol, n(Cu<sup>2+</sup>) = 0.0100 mol: Cu<sup>2+</sup> is limiting; 0.635 g of Cu</li><li>No: Cu is below Zn, so Cu cannot reduce Zn<sup>2+</sup></li>`),
+draw:()=>reveal("k2btn","k2ans")});
+
+/* ---------- closing ---------- */
+S.push({kicker:"Where this goes next", title:"From one beaker to a cell", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
+<tr><th>Class</th><th>What today gives it</th></tr>
+<tr><td>8 · Cells and batteries</td><td>Put the two half-reactions at two electrodes: the electrons then flow through a wire</td></tr>
+<tr><td>9 · Nernst</td><td>The order of metals, measured as potentials in volts</td></tr>
+<tr><td>10 · Faraday and capacity</td><td>Electrons counted as charge: how much Cu a current deposits</td></tr>
+<tr><td>13 · Cu Pourbaix</td><td>Cu, Cu<sub>2</sub>O, CuO and Cu<sup>2+</sup> in water, by pH and potential</td></tr></table></div></div>`});
+
+S.push({kicker:"Lab 7 · 30 minutes", title:"Counting electrons in redox", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Predict which species is oxidized when Zn meets Cu<sup>2+</sup></li><li>Assign oxidation numbers and count the electrons</li>
+<li>Balance Al with Cu<sup>2+</sup></li><li>Change the electron supply to 3 Cu<sup>2+</sup> ions</li><li>Find the limiting reactant and the masses in a Zn and CuSO<sub>4</sub> beaker</li></ul></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="45mm" height="45mm" version="1.1" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM12,2H13V3H12zM13,2H14V3H13zM16,2H17V3H16zM17,2H18V3H17zM20,2H21V3H20zM21,2H22V3H21zM23,2H24V3H23zM25,2H26V3H25zM26,2H27V3H26zM28,2H29V3H28zM29,2H30V3H29zM31,2H32V3H31zM33,2H34V3H33zM34,2H35V3H34zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM39,2H40V3H39zM40,2H41V3H40zM41,2H42V3H41zM42,2H43V3H42zM2,3H3V4H2zM8,3H9V4H8zM14,3H15V4H14zM15,3H16V4H15zM17,3H18V4H17zM19,3H20V4H19zM25,3H26V4H25zM28,3H29V4H28zM29,3H30V4H29zM30,3H31V4H30zM31,3H32V4H31zM32,3H33V4H32zM36,3H37V4H36zM42,3H43V4H42zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM11,4H12V5H11zM16,4H17V5H16zM19,4H20V5H19zM22,4H23V5H22zM23,4H24V5H23zM24,4H25V5H24zM25,4H26V5H25zM26,4H27V5H26zM29,4H30V5H29zM30,4H31V5H30zM31,4H32V5H31zM32,4H33V5H32zM36,4H37V5H36zM38,4H39V5H38zM39,4H40V5H39zM40,4H41V5H40zM42,4H43V5H42zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM13,5H14V6H13zM14,5H15V6H14zM16,5H17V6H16zM17,5H18V6H17zM18,5H19V6H18zM19,5H20V6H19zM21,5H22V6H21zM23,5H24V6H23zM24,5H25V6H24zM25,5H26V6H25zM28,5H29V6H28zM29,5H30V6H29zM30,5H31V6H30zM32,5H33V6H32zM33,5H34V6H33zM34,5H35V6H34zM36,5H37V6H36zM38,5H39V6H38zM39,5H40V6H39zM40,5H41V6H40zM42,5H43V6H42zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM12,6H13V7H12zM14,6H15V7H14zM16,6H17V7H16zM17,6H18V7H17zM25,6H26V7H25zM27,6H28V7H27zM28,6H29V7H28zM29,6H30V7H29zM32,6H33V7H32zM34,6H35V7H34zM36,6H37V7H36zM38,6H39V7H38zM39,6H40V7H39zM40,6H41V7H40zM42,6H43V7H42zM2,7H3V8H2zM8,7H9V8H8zM10,7H11V8H10zM11,7H12V8H11zM14,7H15V8H14zM17,7H18V8H17zM19,7H20V8H19zM21,7H22V8H21zM22,7H23V8H22zM24,7H25V8H24zM26,7H27V8H26zM27,7H28V8H27zM29,7H30V8H29zM31,7H32V8H31zM33,7H34V8H33zM36,7H37V8H36zM42,7H43V8H42zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM34,8H35V9H34zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM39,8H40V9H39zM40,8H41V9H40zM41,8H42V9H41zM42,8H43V9H42zM11,9H12V10H11zM14,9H15V10H14zM16,9H17V10H16zM19,9H20V10H19zM21,9H22V10H21zM22,9H23V10H22zM23,9H24V10H23zM25,9H26V10H25zM26,9H27V10H26zM30,9H31V10H30zM31,9H32V10H31zM32,9H33V10H32zM34,9H35V10H34zM2,10H3V11H2zM5,10H6V11H5zM7,10H8V11H7zM8,10H9V11H8zM10,10H11V11H10zM11,10H12V11H11zM12,10H13V11H12zM17,10H18V11H17zM18,10H19V11H18zM20,10H21V11H20zM21,10H22V11H21zM23,10H24V11H23zM25,10H26V11H25zM26,10H27V11H26zM27,10H28V11H27zM28,10H29V11H28zM33,10H34V11H33zM34,10H35V11H34zM35,10H36V11H35zM37,10H38V11H37zM4,11H5V12H4zM5,11H6V12H5zM6,11H7V12H6zM9,11H10V12H9zM12,11H13V12H12zM13,11H14V12H13zM14,11H15V12H14zM17,11H18V12H17zM19,11H20V12H19zM22,11H23V12H22zM23,11H24V12H23zM26,11H27V12H26zM27,11H28V12H27zM30,11H31V12H30zM31,11H32V12H31zM34,11H35V12H34zM36,11H37V12H36zM37,11H38V12H37zM39,11H40V12H39zM40,11H41V12H40zM41,11H42V12H41zM42,11H43V12H42zM2,12H3V13H2zM4,12H5V13H4zM7,12H8V13H7zM8,12H9V13H8zM11,12H12V13H11zM12,12H13V13H12zM13,12H14V13H13zM14,12H15V13H14zM15,12H16V13H15zM18,12H19V13H18zM19,12H20V13H19zM21,12H22V13H21zM26,12H27V13H26zM27,12H28V13H27zM28,12H29V13H28zM30,12H31V13H30zM31,12H32V13H31zM32,12H33V13H32zM33,12H34V13H33zM35,12H36V13H35zM36,12H37V13H36zM38,12H39V13H38zM39,12H40V13H39zM40,12H41V13H40zM41,12H42V13H41zM3,13H4V14H3zM4,13H5V14H4zM5,13H6V14H5zM6,13H7V14H6zM11,13H12V14H11zM13,13H14V14H13zM15,13H16V14H15zM17,13H18V14H17zM20,13H21V14H20zM21,13H22V14H21zM23,13H24V14H23zM24,13H25V14H24zM25,13H26V14H25zM26,13H27V14H26zM27,13H28V14H27zM28,13H29V14H28zM29,13H30V14H29zM35,13H36V14H35zM36,13H37V14H36zM40,13H41V14H40zM41,13H42V14H41zM42,13H43V14H42zM3,14H4V15H3zM4,14H5V15H4zM7,14H8V15H7zM8,14H9V15H8zM11,14H12V15H11zM15,14H16V15H15zM16,14H17V15H16zM19,14H20V15H19zM20,14H21V15H20zM22,14H23V15H22zM23,14H24V15H23zM25,14H26V15H25zM27,14H28V15H27zM28,14H29V15H28zM31,14H32V15H31zM32,14H33V15H32zM33,14H34V15H33zM34,14H35V15H34zM35,14H36V15H35zM36,14H37V15H36zM37,14H38V15H37zM39,14H40V15H39zM42,14H43V15H42zM3,15H4V16H3zM4,15H5V16H4zM5,15H6V16H5zM9,15H10V16H9zM11,15H12V16H11zM13,15H14V16H13zM14,15H15V16H14zM16,15H17V16H16zM22,15H23V16H22zM23,15H24V16H23zM24,15H25V16H24zM25,15H26V16H25zM28,15H29V16H28zM31,15H32V16H31zM32,15H33V16H32zM33,15H34V16H33zM34,15H35V16H34zM35,15H36V16H35zM39,15H40V16H39zM40,15H41V16H40zM6,16H7V17H6zM8,16H9V17H8zM9,16H10V17H9zM12,16H13V17H12zM14,16H15V17H14zM16,16H17V17H16zM18,16H19V17H18zM21,16H22V17H21zM23,16H24V17H23zM25,16H26V17H25zM30,16H31V17H30zM32,16H33V17H32zM34,16H35V17H34zM36,16H37V17H36zM38,16H39V17H38zM39,16H40V17H39zM40,16H41V17H40zM42,16H43V17H42zM2,17H3V18H2zM3,17H4V18H3zM4,17H5V18H4zM5,17H6V18H5zM6,17H7V18H6zM11,17H12V18H11zM19,17H20V18H19zM20,17H21V18H20zM22,17H23V18H22zM23,17H24V18H23zM24,17H25V18H24zM25,17H26V18H25zM27,17H28V18H27zM28,17H29V18H28zM29,17H30V18H29zM31,17H32V18H31zM34,17H35V18H34zM36,17H37V18H36zM2,18H3V19H2zM4,18H5V19H4zM6,18H7V19H6zM7,18H8V19H7zM8,18H9V19H8zM9,18H10V19H9zM10,18H11V19H10zM16,18H17V19H16zM19,18H20V19H19zM22,18H23V19H22zM23,18H24V19H23zM29,18H30V19H29zM30,18H31V19H30zM31,18H32V19H31zM32,18H33V19H32zM37,18H38V19H37zM39,18H40V19H39zM3,19H4V20H3zM4,19H5V20H4zM5,19H6V20H5zM7,19H8V20H7zM9,19H10V20H9zM13,19H14V20H13zM15,19H16V20H15zM16,19H17V20H16zM18,19H19V20H18zM19,19H20V20H19zM20,19H21V20H20zM23,19H24V20H23zM25,19H26V20H25zM28,19H29V20H28zM30,19H31V20H30zM32,19H33V20H32zM34,19H35V20H34zM36,19H37V20H36zM37,19H38V20H37zM39,19H40V20H39zM41,19H42V20H41zM42,19H43V20H42zM2,20H3V21H2zM3,20H4V21H3zM4,20H5V21H4zM6,20H7V21H6zM7,20H8V21H7zM8,20H9V21H8zM9,20H10V21H9zM12,20H13V21H12zM13,20H14V21H13zM19,20H20V21H19zM24,20H25V21H24zM30,20H31V21H30zM32,20H33V21H32zM34,20H35V21H34zM36,20H37V21H36zM38,20H39V21H38zM40,20H41V21H40zM42,20H43V21H42zM16,21H17V22H16zM18,21H19V22H18zM22,21H23V22H22zM23,21H24V22H23zM26,21H27V22H26zM28,21H29V22H28zM29,21H30V22H29zM31,21H32V22H31zM32,21H33V22H32zM33,21H34V22H33zM35,21H36V22H35zM37,21H38V22H37zM2,22H3V23H2zM3,22H4V23H3zM5,22H6V23H5zM6,22H7V23H6zM7,22H8V23H7zM8,22H9V23H8zM11,22H12V23H11zM13,22H14V23H13zM14,22H15V23H14zM18,22H19V23H18zM19,22H20V23H19zM24,22H25V23H24zM26,22H27V23H26zM27,22H28V23H27zM28,22H29V23H28zM35,22H36V23H35zM36,22H37V23H36zM37,22H38V23H37zM39,22H40V23H39zM40,22H41V23H40zM41,22H42V23H41zM3,23H4V24H3zM5,23H6V24H5zM6,23H7V24H6zM7,23H8V24H7zM11,23H12V24H11zM12,23H13V24H12zM15,23H16V24H15zM17,23H18V24H17zM22,23H23V24H22zM24,23H25V24H24zM26,23H27V24H26zM36,23H37V24H36zM39,23H40V24H39zM41,23H42V24H41zM42,23H43V24H42zM2,24H3V25H2zM3,24H4V25H3zM4,24H5V25H4zM7,24H8V25H7zM8,24H9V25H8zM10,24H11V25H10zM11,24H12V25H11zM13,24H14V25H13zM14,24H15V25H14zM15,24H16V25H15zM17,24H18V25H17zM18,24H19V25H18zM19,24H20V25H19zM21,24H22V25H21zM26,24H27V25H26zM27,24H28V25H27zM28,24H29V25H28zM31,24H32V25H31zM33,24H34V25H33zM36,24H37V25H36zM37,24H38V25H37zM38,24H39V25H38zM40,24H41V25H40zM41,24H42V25H41zM5,25H6V26H5zM6,25H7V26H6zM7,25H8V26H7zM9,25H10V26H9zM13,25H14V26H13zM14,25H15V26H14zM15,25H16V26H15zM21,25H22V26H21zM22,25H23V26H22zM23,25H24V26H23zM24,25H25V26H24zM26,25H27V26H26zM27,25H28V26H27zM28,25H29V26H28zM32,25H33V26H32zM33,25H34V26H33zM40,25H41V26H40zM41,25H42V26H41zM2,26H3V27H2zM4,26H5V27H4zM5,26H6V27H5zM7,26H8V27H7zM8,26H9V27H8zM9,26H10V27H9zM12,26H13V27H12zM14,26H15V27H14zM15,26H16V27H15zM17,26H18V27H17zM18,26H19V27H18zM19,26H20V27H19zM21,26H22V27H21zM23,26H24V27H23zM26,26H27V27H26zM27,26H28V27H27zM30,26H31V27H30zM31,26H32V27H31zM34,26H35V27H34zM36,26H37V27H36zM37,26H38V27H37zM42,26H43V27H42zM10,27H11V28H10zM11,27H12V28H11zM12,27H13V28H12zM13,27H14V28H13zM14,27H15V28H14zM15,27H16V28H15zM16,27H17V28H16zM21,27H22V28H21zM22,27H23V28H22zM23,27H24V28H23zM27,27H28V28H27zM31,27H32V28H31zM33,27H34V28H33zM35,27H36V28H35zM37,27H38V28H37zM39,27H40V28H39zM41,27H42V28H41zM4,28H5V29H4zM5,28H6V29H5zM8,28H9V29H8zM9,28H10V29H9zM11,28H12V29H11zM13,28H14V29H13zM15,28H16V29H15zM16,28H17V29H16zM17,28H18V29H17zM23,28H24V29H23zM24,28H25V29H24zM25,28H26V29H25zM26,28H27V29H26zM30,28H31V29H30zM31,28H32V29H31zM32,28H33V29H32zM34,28H35V29H34zM36,28H37V29H36zM37,28H38V29H37zM41,28H42V29H41zM42,28H43V29H42zM6,29H7V30H6zM9,29H10V30H9zM10,29H11V30H10zM12,29H13V30H12zM13,29H14V30H13zM18,29H19V30H18zM19,29H20V30H19zM20,29H21V30H20zM21,29H22V30H21zM23,29H24V30H23zM24,29H25V30H24zM25,29H26V30H25zM27,29H28V30H27zM28,29H29V30H28zM31,29H32V30H31zM32,29H33V30H32zM34,29H35V30H34zM36,29H37V30H36zM37,29H38V30H37zM4,30H5V31H4zM5,30H6V31H5zM8,30H9V31H8zM10,30H11V31H10zM11,30H12V31H11zM12,30H13V31H12zM14,30H15V31H14zM15,30H16V31H15zM19,30H20V31H19zM20,30H21V31H20zM23,30H24V31H23zM24,30H25V31H24zM26,30H27V31H26zM28,30H29V31H28zM31,30H32V31H31zM32,30H33V31H32zM34,30H35V31H34zM35,30H36V31H35zM37,30H38V31H37zM41,30H42V31H41zM42,30H43V31H42zM4,31H5V32H4zM6,31H7V32H6zM7,31H8V32H7zM9,31H10V32H9zM12,31H13V32H12zM14,31H15V32H14zM17,31H18V32H17zM19,31H20V32H19zM20,31H21V32H20zM21,31H22V32H21zM22,31H23V32H22zM26,31H27V32H26zM27,31H28V32H27zM28,31H29V32H28zM30,31H31V32H30zM32,31H33V32H32zM34,31H35V32H34zM35,31H36V32H35zM36,31H37V32H36zM37,31H38V32H37zM39,31H40V32H39zM40,31H41V32H40zM42,31H43V32H42zM2,32H3V33H2zM4,32H5V33H4zM5,32H6V33H5zM6,32H7V33H6zM8,32H9V33H8zM9,32H10V33H9zM12,32H13V33H12zM14,32H15V33H14zM15,32H16V33H15zM17,32H18V33H17zM18,32H19V33H18zM20,32H21V33H20zM25,32H26V33H25zM26,32H27V33H26zM27,32H28V33H27zM30,32H31V33H30zM31,32H32V33H31zM37,32H38V33H37zM39,32H40V33H39zM42,32H43V33H42zM4,33H5V34H4zM5,33H6V34H5zM7,33H8V34H7zM10,33H11V34H10zM11,33H12V34H11zM15,33H16V34H15zM18,33H19V34H18zM19,33H20V34H19zM23,33H24V34H23zM26,33H27V34H26zM31,33H32V34H31zM32,33H33V34H32zM34,33H35V34H34zM35,33H36V34H35zM38,33H39V34H38zM39,33H40V34H39zM41,33H42V34H41zM2,34H3V35H2zM4,34H5V35H4zM8,34H9V35H8zM9,34H10V35H9zM13,34H14V35H13zM16,34H17V35H16zM20,34H21V35H20zM23,34H24V35H23zM26,34H27V35H26zM27,34H28V35H27zM28,34H29V35H28zM29,34H30V35H29zM30,34H31V35H30zM32,34H33V35H32zM34,34H35V35H34zM35,34H36V35H35zM36,34H37V35H36zM37,34H38V35H37zM38,34H39V35H38zM40,34H41V35H40zM42,34H43V35H42zM10,35H11V36H10zM19,35H20V36H19zM22,35H23V36H22zM24,35H25V36H24zM28,35H29V36H28zM30,35H31V36H30zM31,35H32V36H31zM34,35H35V36H34zM38,35H39V36H38zM39,35H40V36H39zM41,35H42V36H41zM42,35H43V36H42zM2,36H3V37H2zM3,36H4V37H3zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM7,36H8V37H7zM8,36H9V37H8zM11,36H12V37H11zM12,36H13V37H12zM13,36H14V37H13zM16,36H17V37H16zM17,36H18V37H17zM18,36H19V37H18zM20,36H21V37H20zM21,36H22V37H21zM22,36H23V37H22zM23,36H24V37H23zM24,36H25V37H24zM26,36H27V37H26zM27,36H28V37H27zM30,36H31V37H30zM31,36H32V37H31zM32,36H33V37H32zM34,36H35V37H34zM36,36H37V37H36zM38,36H39V37H38zM39,36H40V37H39zM41,36H42V37H41zM2,37H3V38H2zM8,37H9V38H8zM10,37H11V38H10zM17,37H18V38H17zM20,37H21V38H20zM22,37H23V38H22zM26,37H27V38H26zM27,37H28V38H27zM28,37H29V38H28zM29,37H30V38H29zM30,37H31V38H30zM33,37H34V38H33zM34,37H35V38H34zM38,37H39V38H38zM39,37H40V38H39zM40,37H41V38H40zM2,38H3V39H2zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM8,38H9V39H8zM11,38H12V39H11zM15,38H16V39H15zM16,38H17V39H16zM20,38H21V39H20zM22,38H23V39H22zM28,38H29V39H28zM29,38H30V39H29zM31,38H32V39H31zM32,38H33V39H32zM34,38H35V39H34zM35,38H36V39H35zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38zM39,38H40V39H39zM2,39H3V40H2zM4,39H5V40H4zM5,39H6V40H5zM6,39H7V40H6zM8,39H9V40H8zM10,39H11V40H10zM11,39H12V40H11zM12,39H13V40H12zM13,39H14V40H13zM15,39H16V40H15zM16,39H17V40H16zM17,39H18V40H17zM20,39H21V40H20zM21,39H22V40H21zM22,39H23V40H22zM23,39H24V40H23zM24,39H25V40H24zM26,39H27V40H26zM30,39H31V40H30zM33,39H34V40H33zM34,39H35V40H34zM35,39H36V40H35zM36,39H37V40H36zM38,39H39V40H38zM39,39H40V40H39zM40,39H41V40H40zM41,39H42V40H41zM2,40H3V41H2zM4,40H5V41H4zM5,40H6V41H5zM6,40H7V41H6zM8,40H9V41H8zM12,40H13V41H12zM13,40H14V41H13zM14,40H15V41H14zM15,40H16V41H15zM17,40H18V41H17zM19,40H20V41H19zM25,40H26V41H25zM28,40H29V41H28zM30,40H31V41H30zM33,40H34V41H33zM34,40H35V41H34zM38,40H39V41H38zM41,40H42V41H41zM42,40H43V41H42zM2,41H3V42H2zM8,41H9V42H8zM11,41H12V42H11zM12,41H13V42H12zM14,41H15V42H14zM15,41H16V42H15zM18,41H19V42H18zM21,41H22V42H21zM23,41H24V42H23zM26,41H27V42H26zM27,41H28V42H27zM28,41H29V42H28zM29,41H30V42H29zM31,41H32V42H31zM32,41H33V42H32zM33,41H34V42H33zM34,41H35V42H34zM35,41H36V42H35zM37,41H38V42H37zM41,41H42V42H41zM2,42H3V43H2zM3,42H4V43H3zM4,42H5V43H4zM5,42H6V43H5zM6,42H7V43H6zM7,42H8V43H7zM8,42H9V43H8zM10,42H11V43H10zM11,42H12V43H11zM12,42H13V43H12zM13,42H14V43H13zM14,42H15V43H14zM16,42H17V43H16zM17,42H18V43H17zM18,42H19V43H18zM22,42H23V43H22zM23,42H24V43H23zM24,42H25V43H24zM25,42H26V43H25zM29,42H30V43H29zM30,42H31V43H30zM31,42H32V43H31zM34,42H35V43H34zM35,42H36V43H35zM36,42H37V43H36zM37,42H38V43H37zM38,42H39V43H38zM39,42H40V43H39zM41,42H42V43H41z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="lab.html" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the lab page</a></div></div></div>`,
+notes:"Early finishers: what mass of Zn is just enough to use up all the Cu2+? (0.654 g)"});
+
+S.push({kicker:"Summary", title:"What to take from today", html:()=>`<div class="body"><div class="col w45"><table class="t" style="font-size:17px">
+<tr><th>Result</th><th class="n">Value</th></tr>
+<tr><td>Zn + Cu<sup>2+</sup>: electrons</td><td class="n">2</td></tr><tr><td>2 Al + 3 Cu<sup>2+</sup>: electrons</td><td class="n">6</td></tr>
+<tr><td>Si in SiO<sub>2</sub></td><td class="n">+4</td></tr><tr><td>3 Cu<sup>2+</sup> + 4 ${E}</td><td class="n">2 Cu, 1 Cu<sup>2+</sup> left</td></tr>
+<tr><td>1.00 g Zn, 0.0100 mol Cu<sup>2+</sup>: Cu</td><td class="n">0.635 g</td></tr></table></div>
+<div class="col"><ul class="b xs"><li>Oxidation is loss of electrons, reduction is gain; they always happen together</li>
+<li>Oxidation numbers track the electrons: they rise in oxidation and fall in reduction</li><li>Combine half-reactions so the electrons cancel; check atoms and charge</li>
+<li>Electrons can be the limiting reactant</li><li>A balanced equation does not say whether a reaction goes; the order of metals does</li></ul></div></div>`});
+
+S.push({kicker:"Before the next class", title:"Before we meet again", html:()=>`<div class="body"><div class="col"><ul class="b sm">
+<li>Finish Lab 7 if you did not finish in class, and upload the answer file to myCourseVille</li>
+<li>Read OpenStax <i>Chemistry 2e</i>, Section 4.2 (oxidation-reduction reactions) and Section 17.1 (balancing with half-reactions)</li>
+<li>Class 8: cells and batteries. The same two half-reactions, at two electrodes joined by a wire</li></ul></div></div>`});
+
+S.push({kicker:"Exit Ticket and feedback · 5 minutes", title:"Exit Ticket and feedback", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
+<li>Scan the code and choose <b>Class 7</b></li><li>Exit Ticket: paste the answers that the lab page copies for you</li>
+<li>Feedback: pace, confidence, how far you got in the lab, and what is still unclear</li><li>Studying on your own? Choose "On my own"</li></ul>
+<p class="note">One form for both. Anonymous; no name or student ID.</p></div>
+<div class="col"><div class="panel grow" style="align-items:center;justify-content:center;text-align:center"><div style="width:270px"><svg style="width:100%;height:auto;background:#fff;border-radius:8px" width="41mm" height="41mm" version="1.1" viewBox="0 0 41 41" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM10,2H11V3H10zM13,2H14V3H13zM14,2H15V3H14zM16,2H17V3H16zM18,2H19V3H18zM20,2H21V3H20zM23,2H24V3H23zM25,2H26V3H25zM27,2H28V3H27zM29,2H30V3H29zM32,2H33V3H32zM33,2H34V3H33zM34,2H35V3H34zM35,2H36V3H35zM36,2H37V3H36zM37,2H38V3H37zM38,2H39V3H38zM2,3H3V4H2zM8,3H9V4H8zM12,3H13V4H12zM13,3H14V4H13zM14,3H15V4H14zM15,3H16V4H15zM16,3H17V4H16zM17,3H18V4H17zM18,3H19V4H18zM21,3H22V4H21zM22,3H23V4H22zM23,3H24V4H23zM24,3H25V4H24zM26,3H27V4H26zM27,3H28V4H27zM32,3H33V4H32zM38,3H39V4H38zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM12,4H13V5H12zM13,4H14V5H13zM15,4H16V5H15zM16,4H17V5H16zM18,4H19V5H18zM19,4H20V5H19zM20,4H21V5H20zM21,4H22V5H21zM22,4H23V5H22zM23,4H24V5H23zM24,4H25V5H24zM28,4H29V5H28zM29,4H30V5H29zM30,4H31V5H30zM32,4H33V5H32zM34,4H35V5H34zM35,4H36V5H35zM36,4H37V5H36zM38,4H39V5H38zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM11,5H12V6H11zM13,5H14V6H13zM15,5H16V6H15zM16,5H17V6H16zM17,5H18V6H17zM18,5H19V6H18zM21,5H22V6H21zM25,5H26V6H25zM27,5H28V6H27zM28,5H29V6H28zM29,5H30V6H29zM30,5H31V6H30zM32,5H33V6H32zM34,5H35V6H34zM35,5H36V6H35zM36,5H37V6H36zM38,5H39V6H38zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM10,6H11V7H10zM13,6H14V7H13zM14,6H15V7H14zM17,6H18V7H17zM19,6H20V7H19zM20,6H21V7H20zM25,6H26V7H25zM26,6H27V7H26zM29,6H30V7H29zM30,6H31V7H30zM32,6H33V7H32zM34,6H35V7H34zM35,6H36V7H35zM36,6H37V7H36zM38,6H39V7H38zM2,7H3V8H2zM8,7H9V8H8zM10,7H11V8H10zM14,7H15V8H14zM16,7H17V8H16zM17,7H18V8H17zM20,7H21V8H20zM21,7H22V8H21zM26,7H27V8H26zM27,7H28V8H27zM28,7H29V8H28zM32,7H33V8H32zM38,7H39V8H38zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM22,8H23V9H22zM24,8H25V9H24zM26,8H27V9H26zM28,8H29V9H28zM30,8H31V9H30zM32,8H33V9H32zM33,8H34V9H33zM34,8H35V9H34zM35,8H36V9H35zM36,8H37V9H36zM37,8H38V9H37zM38,8H39V9H38zM10,9H11V10H10zM12,9H13V10H12zM13,9H14V10H13zM16,9H17V10H16zM19,9H20V10H19zM21,9H22V10H21zM23,9H24V10H23zM28,9H29V10H28zM29,9H30V10H29zM30,9H31V10H30zM2,10H3V11H2zM6,10H7V11H6zM8,10H9V11H8zM9,10H10V11H9zM10,10H11V11H10zM11,10H12V11H11zM15,10H16V11H15zM16,10H17V11H16zM17,10H18V11H17zM19,10H20V11H19zM21,10H22V11H21zM22,10H23V11H22zM23,10H24V11H23zM24,10H25V11H24zM28,10H29V11H28zM29,10H30V11H29zM30,10H31V11H30zM31,10H32V11H31zM32,10H33V11H32zM33,10H34V11H33zM34,10H35V11H34zM35,10H36V11H35zM38,10H39V11H38zM4,11H5V12H4zM5,11H6V12H5zM6,11H7V12H6zM12,11H13V12H12zM16,11H17V12H16zM19,11H20V12H19zM22,11H23V12H22zM23,11H24V12H23zM25,11H26V12H25zM27,11H28V12H27zM28,11H29V12H28zM29,11H30V12H29zM33,11H34V12H33zM34,11H35V12H34zM35,11H36V12H35zM37,11H38V12H37zM2,12H3V13H2zM5,12H6V13H5zM8,12H9V13H8zM10,12H11V13H10zM11,12H12V13H11zM14,12H15V13H14zM17,12H18V13H17zM19,12H20V13H19zM20,12H21V13H20zM23,12H24V13H23zM24,12H25V13H24zM25,12H26V13H25zM29,12H30V13H29zM30,12H31V13H30zM31,12H32V13H31zM33,12H34V13H33zM34,12H35V13H34zM36,12H37V13H36zM4,13H5V14H4zM9,13H10V14H9zM10,13H11V14H10zM11,13H12V14H11zM13,13H14V14H13zM15,13H16V14H15zM16,13H17V14H16zM19,13H20V14H19zM20,13H21V14H20zM22,13H23V14H22zM23,13H24V14H23zM25,13H26V14H25zM26,13H27V14H26zM30,13H31V14H30zM32,13H33V14H32zM33,13H34V14H33zM36,13H37V14H36zM37,13H38V14H37zM6,14H7V15H6zM7,14H8V15H7zM8,14H9V15H8zM9,14H10V15H9zM10,14H11V15H10zM11,14H12V15H11zM13,14H14V15H13zM15,14H16V15H15zM16,14H17V15H16zM18,14H19V15H18zM19,14H20V15H19zM20,14H21V15H20zM21,14H22V15H21zM23,14H24V15H23zM24,14H25V15H24zM26,14H27V15H26zM28,14H29V15H28zM31,14H32V15H31zM32,14H33V15H32zM36,14H37V15H36zM37,14H38V15H37zM38,14H39V15H38zM3,15H4V16H3zM6,15H7V16H6zM7,15H8V16H7zM10,15H11V16H10zM14,15H15V16H14zM15,15H16V16H15zM16,15H17V16H16zM17,15H18V16H17zM25,15H26V16H25zM28,15H29V16H28zM29,15H30V16H29zM30,15H31V16H30zM34,15H35V16H34zM35,15H36V16H35zM3,16H4V17H3zM4,16H5V17H4zM7,16H8V17H7zM8,16H9V17H8zM9,16H10V17H9zM10,16H11V17H10zM12,16H13V17H12zM14,16H15V17H14zM15,16H16V17H15zM17,16H18V17H17zM18,16H19V17H18zM19,16H20V17H19zM20,16H21V17H20zM25,16H26V17H25zM26,16H27V17H26zM27,16H28V17H27zM28,16H29V17H28zM29,16H30V17H29zM30,16H31V17H30zM32,16H33V17H32zM33,16H34V17H33zM34,16H35V17H34zM35,16H36V17H35zM36,16H37V17H36zM5,17H6V18H5zM10,17H11V18H10zM13,17H14V18H13zM14,17H15V18H14zM15,17H16V18H15zM16,17H17V18H16zM17,17H18V18H17zM18,17H19V18H18zM19,17H20V18H19zM21,17H22V18H21zM23,17H24V18H23zM24,17H25V18H24zM25,17H26V18H25zM26,17H27V18H26zM28,17H29V18H28zM29,17H30V18H29zM32,17H33V18H32zM33,17H34V18H33zM34,17H35V18H34zM36,17H37V18H36zM37,17H38V18H37zM2,18H3V19H2zM4,18H5V19H4zM6,18H7V19H6zM8,18H9V19H8zM10,18H11V19H10zM11,18H12V19H11zM12,18H13V19H12zM13,18H14V19H13zM18,18H19V19H18zM19,18H20V19H19zM21,18H22V19H21zM23,18H24V19H23zM24,18H25V19H24zM26,18H27V19H26zM28,18H29V19H28zM30,18H31V19H30zM32,18H33V19H32zM33,18H34V19H33zM35,18H36V19H35zM36,18H37V19H36zM37,18H38V19H37zM38,18H39V19H38zM2,19H3V20H2zM4,19H5V20H4zM6,19H7V20H6zM9,19H10V20H9zM12,19H13V20H12zM14,19H15V20H14zM15,19H16V20H15zM16,19H17V20H16zM17,19H18V20H17zM20,19H21V20H20zM23,19H24V20H23zM24,19H25V20H24zM25,19H26V20H25zM29,19H30V20H29zM31,19H32V20H31zM34,19H35V20H34zM37,19H38V20H37zM6,20H7V21H6zM8,20H9V21H8zM9,20H10V21H9zM10,20H11V21H10zM11,20H12V21H11zM12,20H13V21H12zM13,20H14V21H13zM14,20H15V21H14zM16,20H17V21H16zM17,20H18V21H17zM22,20H23V21H22zM25,20H26V21H25zM26,20H27V21H26zM27,20H28V21H27zM28,20H29V21H28zM29,20H30V21H29zM30,20H31V21H30zM32,20H33V21H32zM34,20H35V21H34zM36,20H37V21H36zM2,21H3V22H2zM14,21H15V22H14zM15,21H16V22H15zM17,21H18V22H17zM19,21H20V22H19zM23,21H24V22H23zM25,21H26V22H25zM26,21H27V22H26zM30,21H31V22H30zM32,21H33V22H32zM33,21H34V22H33zM34,21H35V22H34zM36,21H37V22H36zM37,21H38V22H37zM2,22H3V23H2zM3,22H4V23H3zM6,22H7V23H6zM7,22H8V23H7zM8,22H9V23H8zM9,22H10V23H9zM12,22H13V23H12zM13,22H14V23H13zM17,22H18V23H17zM18,22H19V23H18zM19,22H20V23H19zM20,22H21V23H20zM23,22H24V23H23zM25,22H26V23H25zM30,22H31V23H30zM31,22H32V23H31zM32,22H33V23H32zM33,22H34V23H33zM36,22H37V23H36zM2,23H3V24H2zM6,23H7V24H6zM9,23H10V24H9zM10,23H11V24H10zM11,23H12V24H11zM13,23H14V24H13zM17,23H18V24H17zM19,23H20V24H19zM25,23H26V24H25zM27,23H28V24H27zM28,23H29V24H28zM29,23H30V24H29zM30,23H31V24H30zM33,23H34V24H33zM34,23H35V24H34zM37,23H38V24H37zM2,24H3V25H2zM6,24H7V25H6zM8,24H9V25H8zM14,24H15V25H14zM16,24H17V25H16zM17,24H18V25H17zM18,24H19V25H18zM19,24H20V25H19zM20,24H21V25H20zM22,24H23V25H22zM23,24H24V25H23zM25,24H26V25H25zM27,24H28V25H27zM29,24H30V25H29zM31,24H32V25H31zM33,24H34V25H33zM34,24H35V25H34zM35,24H36V25H35zM36,24H37V25H36zM3,25H4V26H3zM4,25H5V26H4zM7,25H8V26H7zM11,25H12V26H11zM13,25H14V26H13zM18,25H19V26H18zM19,25H20V26H19zM20,25H21V26H20zM22,25H23V26H22zM23,25H24V26H23zM24,25H25V26H24zM25,25H26V26H25zM29,25H30V26H29zM30,25H31V26H30zM31,25H32V26H31zM32,25H33V26H32zM33,25H34V26H33zM34,25H35V26H34zM36,25H37V26H36zM38,25H39V26H38zM2,26H3V27H2zM4,26H5V27H4zM5,26H6V27H5zM8,26H9V27H8zM10,26H11V27H10zM12,26H13V27H12zM13,26H14V27H13zM16,26H17V27H16zM18,26H19V27H18zM19,26H20V27H19zM21,26H22V27H21zM22,26H23V27H22zM23,26H24V27H23zM25,26H26V27H25zM26,26H27V27H26zM28,26H29V27H28zM30,26H31V27H30zM32,26H33V27H32zM33,26H34V27H33zM35,26H36V27H35zM36,26H37V27H36zM37,26H38V27H37zM2,27H3V28H2zM3,27H4V28H3zM4,27H5V28H4zM5,27H6V28H5zM7,27H8V28H7zM9,27H10V28H9zM13,27H14V28H13zM15,27H16V28H15zM16,27H17V28H16zM17,27H18V28H17zM20,27H21V28H20zM23,27H24V28H23zM25,27H26V28H25zM26,27H27V28H26zM27,27H28V28H27zM29,27H30V28H29zM31,27H32V28H31zM34,27H35V28H34zM5,28H6V29H5zM6,28H7V29H6zM8,28H9V29H8zM9,28H10V29H9zM10,28H11V29H10zM11,28H12V29H11zM13,28H14V29H13zM14,28H15V29H14zM15,28H16V29H15zM17,28H18V29H17zM19,28H20V29H19zM25,28H26V29H25zM26,28H27V29H26zM27,28H28V29H27zM28,28H29V29H28zM29,28H30V29H29zM30,28H31V29H30zM32,28H33V29H32zM33,28H34V29H33zM4,29H5V30H4zM7,29H8V30H7zM9,29H10V30H9zM10,29H11V30H10zM11,29H12V30H11zM14,29H15V30H14zM15,29H16V30H15zM18,29H19V30H18zM19,29H20V30H19zM20,29H21V30H20zM23,29H24V30H23zM26,29H27V30H26zM28,29H29V30H28zM29,29H30V30H29zM30,29H31V30H30zM32,29H33V30H32zM34,29H35V30H34zM36,29H37V30H36zM37,29H38V30H37zM2,30H3V31H2zM3,30H4V31H3zM6,30H7V31H6zM7,30H8V31H7zM8,30H9V31H8zM10,30H11V31H10zM14,30H15V31H14zM18,30H19V31H18zM19,30H20V31H19zM20,30H21V31H20zM23,30H24V31H23zM24,30H25V31H24zM26,30H27V31H26zM29,30H30V31H29zM30,30H31V31H30zM31,30H32V31H31zM32,30H33V31H32zM33,30H34V31H33zM34,30H35V31H34zM36,30H37V31H36zM37,30H38V31H37zM38,30H39V31H38zM10,31H11V32H10zM11,31H12V32H11zM15,31H16V32H15zM16,31H17V32H16zM17,31H18V32H17zM19,31H20V32H19zM23,31H24V32H23zM25,31H26V32H25zM27,31H28V32H27zM28,31H29V32H28zM30,31H31V32H30zM34,31H35V32H34zM2,32H3V33H2zM3,32H4V33H3zM4,32H5V33H4zM5,32H6V33H5zM6,32H7V33H6zM7,32H8V33H7zM8,32H9V33H8zM10,32H11V33H10zM12,32H13V33H12zM13,32H14V33H13zM15,32H16V33H15zM16,32H17V33H16zM17,32H18V33H17zM18,32H19V33H18zM19,32H20V33H19zM20,32H21V33H20zM22,32H23V33H22zM25,32H26V33H25zM30,32H31V33H30zM32,32H33V33H32zM34,32H35V33H34zM37,32H38V33H37zM2,33H3V34H2zM8,33H9V34H8zM11,33H12V34H11zM13,33H14V34H13zM14,33H15V34H14zM18,33H19V34H18zM19,33H20V34H19zM21,33H22V34H21zM22,33H23V34H22zM23,33H24V34H23zM25,33H26V34H25zM26,33H27V34H26zM30,33H31V34H30zM34,33H35V34H34zM35,33H36V34H35zM36,33H37V34H36zM2,34H3V35H2zM4,34H5V35H4zM5,34H6V35H5zM6,34H7V35H6zM8,34H9V35H8zM10,34H11V35H10zM12,34H13V35H12zM13,34H14V35H13zM16,34H17V35H16zM18,34H19V35H18zM19,34H20V35H19zM20,34H21V35H20zM23,34H24V35H23zM24,34H25V35H24zM28,34H29V35H28zM30,34H31V35H30zM31,34H32V35H31zM32,34H33V35H32zM33,34H34V35H33zM34,34H35V35H34zM35,34H36V35H35zM36,34H37V35H36zM2,35H3V36H2zM4,35H5V36H4zM5,35H6V36H5zM6,35H7V36H6zM8,35H9V36H8zM12,35H13V36H12zM13,35H14V36H13zM14,35H15V36H14zM15,35H16V36H15zM16,35H17V36H16zM17,35H18V36H17zM18,35H19V36H18zM19,35H20V36H19zM25,35H26V36H25zM26,35H27V36H26zM30,35H31V36H30zM31,35H32V36H31zM32,35H33V36H32zM33,35H34V36H33zM36,35H37V36H36zM37,35H38V36H37zM38,35H39V36H38zM2,36H3V37H2zM4,36H5V37H4zM5,36H6V37H5zM6,36H7V37H6zM8,36H9V37H8zM12,36H13V37H12zM13,36H14V37H13zM14,36H15V37H14zM15,36H16V37H15zM16,36H17V37H16zM17,36H18V37H17zM19,36H20V37H19zM22,36H23V37H22zM24,36H25V37H24zM25,36H26V37H25zM29,36H30V37H29zM30,36H31V37H30zM32,36H33V37H32zM35,36H36V37H35zM36,36H37V37H36zM2,37H3V38H2zM8,37H9V38H8zM12,37H13V38H12zM13,37H14V38H13zM16,37H17V38H16zM19,37H20V38H19zM22,37H23V38H22zM23,37H24V38H23zM28,37H29V38H28zM31,37H32V38H31zM34,37H35V38H34zM36,37H37V38H36zM37,37H38V38H37zM2,38H3V39H2zM3,38H4V39H3zM4,38H5V39H4zM5,38H6V39H5zM6,38H7V39H6zM7,38H8V39H7zM8,38H9V39H8zM10,38H11V39H10zM11,38H12V39H11zM12,38H13V39H12zM17,38H18V39H17zM18,38H19V39H18zM19,38H20V39H19zM20,38H21V39H20zM21,38H22V39H21zM22,38H23V39H22zM23,38H24V39H23zM24,38H25V39H24zM31,38H32V39H31zM32,38H33V39H32zM33,38H34V39H33zM36,38H37V39H36zM37,38H38V39H37zM38,38H39V39H38z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><a href="https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=7" target="_blank" rel="noopener" style="color:${C.teal};font-size:18px;margin-top:10px">Open the Exit Ticket</a></div></div></div>`,
+notes:"Leave this slide on screen for the last five minutes."});
+
+/* ---------- deck engine ---------- */
+const N=S.length; let cur=0;
+function build(){const host=document.getElementById("slides");host.innerHTML="";
+ S.forEach((s,i)=>{const d=document.createElement("section");d.className="slide"+(s.cls?" "+s.cls:"");d.id="s"+(i+1);
+  d.innerHTML=(s.kicker&&!s.cls?`<p class="kicker">${s.kicker}</p>`:"")+(s.title?`<h1>${s.title}</h1>`:"")+s.html()+(s.py?`<div class="dhint">D · Python</div>`:"")+`<footer><span>${foot}</span><span>${i+1} / ${N}</span></footer>`;host.appendChild(d)})}
+function drawAll(){S.forEach(s=>{if(s.draw)try{s.draw()}catch(e){console.error(e)}})}
+function show(i){cur=Math.max(0,Math.min(N-1,i));document.querySelectorAll(".slide").forEach((el,k)=>el.classList.toggle("on",k===cur));
+ history.replaceState(null,"",location.search+"#"+(cur+1));fillDrawer();if(window.onSlideChange)onSlideChange(cur);const n=document.getElementById("notes");n.textContent=S[cur].notes||"No notes for this slide."}
+let CAP_ON=false;   // set by the narration player; reserves a caption band under the slide
+function fit(){const W=innerWidth,H=innerHeight,vp=document.getElementById("viewport"),dock=document.getElementById("dock"),cap=document.getElementById("cap");
+ const hasDock=dock.style.display==="flex",barH=hasDock?document.getElementById("nbar").offsetHeight:0;
+ let k=Math.min(W/1280,H/720)*0.98,capH=0,fs=0,dockH=0;
+ for(let it=0;it<3;it++){if(hasDock&&CAP_ON){const lines=k<0.6?4:2;fs=Math.max(12,Math.min(22,24*k));capH=Math.ceil(lines*fs*1.45)+4}else capH=0;
+  dockH=hasDock?capH+barH+(capH?6:0)+14:0;k=Math.min(W/1280,Math.max(120,H-dockH)/720)*0.98}
+ const h=720*k,pad=10,top=Math.max(0,(H-h-dockH)/2);
+ vp.style.top=(top-pad)+"px";vp.style.bottom="auto";vp.style.height=(h+2*pad)+"px";
+ document.getElementById("stage").style.transform=`scale(${k})`;
+ if(hasDock){dock.style.top=(top+h+6)+"px";cap.style.display=CAP_ON?"block":"none";cap.style.width=Math.min(1280*k,W-16)+"px";cap.style.height=capH+"px";cap.dataset.fs=fs;if(window.capRefit)capRefit()}}
+function fillDrawer(){const p=S[cur].py,dr=document.getElementById("drawer");
+ if(!p){document.getElementById("dTitle").textContent="No Python on this slide";document.getElementById("dSub").textContent="Slides with a 'D · Python' tag have code and output.";document.getElementById("dCode").value="";document.getElementById("dOut").textContent="";return}
+ document.getElementById("dTitle").textContent=p.title;document.getElementById("dSub").textContent=p.sub||"";document.getElementById("dCode").value=p.code;
+ try{document.getElementById("dOut").textContent=p.out()}catch(e){document.getElementById("dOut").textContent=String(e)}
+ const m=document.getElementById("dMode");m.className="pill "+(MODE==="live"?"live":"rec");m.textContent=MODE==="live"?"LIVE RUN":"RECORDED RUN"}
+document.addEventListener("keydown",e=>{if(["INPUT","TEXTAREA"].includes(e.target.tagName)){if(e.key==="Escape")e.target.blur();return}const k=e.key;
+ if(["ArrowRight","PageDown"," "].includes(k)){e.preventDefault();show(cur+1)}else if(["ArrowLeft","PageUp"].includes(k)){e.preventDefault();show(cur-1)}
+ else if(k==="Home")show(0);else if(k==="End")show(N-1);else if(k==="d"||k==="D")document.getElementById("drawer").classList.toggle("open");
+ else if(k==="f"||k==="F"){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+ else if(k==="p"||k==="P"){if(window.narrToggle)narrToggle()}
+ else if(k==="c"||k==="C"){if(window.ccCycle)ccCycle()}
+ else if(k==="n"||k==="N"){const n=document.getElementById("notes");n.style.display=n.style.display==="block"?"none":"block"}});
+document.getElementById("stage").addEventListener("click",e=>{if(e.target.closest("button,input,select,#drawer,a,#startov"))return;const r=e.currentTarget.getBoundingClientRect();(e.clientX-r.left)>r.width*0.5?show(cur+1):show(cur-1)});
+addEventListener("resize",fit);
+
+/* ---------- live Python (Pyodide) ---------- */
+let py=null;
+async function ensurePy(msg){if(py)return py;msg.textContent="Loading Python in the browser (first time about 5–10 s) ...";
+ if(!window.loadPyodide){await new Promise((ok,bad)=>{const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js";s.onload=ok;s.onerror=()=>bad(new Error("could not load Pyodide"));document.head.appendChild(s)})}
+ const p=await loadPyodide();await p.loadPackage(["numpy","scipy"]);
+ const src=LAB_SRC||await (await fetch(LAB_FILE)).text();p.FS.writeFile("redox_lab.py",src);
+ await p.runPythonAsync('import sys\nsys.path.insert(0, ".")\nfrom redox_lab import *');py=p;return p}
+async function runCode(){const msg=document.getElementById("liveMsg"),out=document.getElementById("dOut"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Running ...";const buf=[];p.setStdout({batched:s=>buf.push(s)});p.setStderr({batched:s=>buf.push(s)});
+  try{await p.runPythonAsync(document.getElementById("dCode").value)}catch(e){buf.push(String(e.message||e).split("\n").slice(-4).join("\n"))}
+  out.textContent=buf.join("\n")||"(no output)";const m=document.getElementById("dMode");m.className="pill live";m.textContent="LIVE OUTPUT";
+  msg.textContent=`Ran in ${((performance.now()-t0)/1000).toFixed(1)} s in the browser`}
+ catch(e){msg.textContent="Python could not start: "+e.message+". The recorded output is still available."}}
+async function runLive(){const msg=document.getElementById("liveMsg"),t0=performance.now();
+ try{const p=await ensurePy(msg);msg.textContent="Solving every model ...";
+  const out=await p.runPythonAsync('import importlib, json\nimport redox_lab as lab\nimportlib.reload(lab)\njson.dumps(lab.classroom_results())');
+  R=JSON.parse(out);MODE="live";drawAll();fillDrawer();msg.textContent=`All slides now show a live run (${((performance.now()-t0)/1000).toFixed(1)} s, SciPy ${R.meta.scipy})`}
+ catch(e){msg.textContent="Live run failed: "+e.message+". The recorded run is still shown."}}
+document.getElementById("runCode").onclick=runCode;
+document.getElementById("runLive").onclick=runLive;
+document.getElementById("useRec").onclick=()=>{R=RECORDED;MODE="recorded";drawAll();fillDrawer();document.getElementById("liveMsg").textContent="Showing the recorded run."};
+
+/* ---------- narration and captions ---------- */
+const NARR = {
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 701.8,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 30.432,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.813,
+     "en": "Welcome to Class 7: redox reactions and electron balance."
+    },
+    {
+     "s": 4.813,
+     "e": 15.671,
+     "en": "This class opens the electrochemistry block. In Class 6, electrons moved within a solid. Today they move from one species to another."
+    },
+    {
+     "s": 15.671,
+     "e": 21.263,
+     "en": "We will see who loses electrons, who gains them, and how to make the count come out even."
+    },
+    {
+     "s": 21.263,
+     "e": 30.382,
+     "en": "If you are studying on your own, the narration takes about twelve minutes. Stop at the activity and at each check, then do Lab 7."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 31.104,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.434,
+     "en": "A five minute activity reviews earlier classes."
+    },
+    {
+     "s": 6.434,
+     "e": 15.145,
+     "en": "Part one covers oxidation and reduction, oxidation numbers, and how to combine half-reactions. It ends with Check 1."
+    },
+    {
+     "s": 15.145,
+     "e": 26.211,
+     "en": "Part two treats electrons as a reactant, follows a displacement reaction in a beaker, puts the metals in order, and looks at redox in the fab. It ends with Check 2."
+    },
+    {
+     "s": 26.211,
+     "e": 31.039,
+     "en": "Then you do Lab 7 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 29.592,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.671,
+     "en": "Activity 1. Answer four questions without notes, then compare with a partner."
+    },
+    {
+     "s": 6.671,
+     "e": 24.724,
+     "en": "Count the electrons in Cu and Cu²⁺. Find the moles of Cu in 6.35 g, and of Cu²⁺ in 100.0 mL of 0.100 M CuSO₄. And say whether P in Si gives or takes an electron."
+    },
+    {
+     "s": 24.724,
+     "e": 29.526,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 28.968,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.524,
+     "en": "By the end of today you can identify oxidation and reduction as the loss and gain of electrons, and name the oxidizing and reducing agents."
+    },
+    {
+     "s": 8.524,
+     "e": 12.211,
+     "en": "You can assign oxidation numbers with four rules."
+    },
+    {
+     "s": 12.211,
+     "e": 17.092,
+     "en": "You can write half-reactions and combine them so that the electrons cancel."
+    },
+    {
+     "s": 17.092,
+     "e": 22.408,
+     "en": "You can treat electrons as a reactant, and find what limits a deposition."
+    },
+    {
+     "s": 22.408,
+     "e": 28.908,
+     "en": "And you can calculate the masses in a metal displacement reaction, and say which metal displaces which."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 33.192,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.418,
+     "en": "Today builds on four earlier classes."
+    },
+    {
+     "s": 3.418,
+     "e": 13.013,
+     "en": "From Class 1, Cu²⁺ has two fewer electrons than Cu. Today we see where those two electrons come from and go."
+    },
+    {
+     "s": 13.013,
+     "e": 20.921,
+     "en": "From Class 3, mole ratios and the limiting reactant. Today electrons become one of the reactants."
+    },
+    {
+     "s": 20.921,
+     "e": 33.132,
+     "en": "From Class 4, n equals C times V gives the moles of ions in a bath. And from Class 6, electrons move within silicon. Today they move between species."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 56.904,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 9.408,
+     "en": "Dip a zinc strip into blue copper sulfate solution. After some time, the blue fades, copper coats the strip, and some zinc dissolves."
+    },
+    {
+     "s": 9.408,
+     "e": 16.5,
+     "en": "Zn loses two electrons and becomes Zn²⁺. Loss of electrons is oxidation."
+    },
+    {
+     "s": 16.5,
+     "e": 23.947,
+     "en": "Cu²⁺ gains those two electrons and becomes Cu. Gain of electrons is reduction."
+    },
+    {
+     "s": 23.947,
+     "e": 35.671,
+     "en": "Zn is the reducing agent: it gives the electrons, and is itself oxidized. Cu²⁺ is the oxidizing agent: it takes the electrons, and is itself reduced."
+    },
+    {
+     "s": 35.671,
+     "e": 48.803,
+     "en": "The electrons pass from zinc to copper ions at the metal surface. They are not left free in the solution. And the sulfate ion takes no part. It is a spectator ion."
+    },
+    {
+     "s": 48.803,
+     "e": 56.829,
+     "en": "Oxidation and reduction always happen together. One species can lose electrons only if another takes them."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 48.36,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.129,
+     "en": "To keep track of electrons in any reaction, we use oxidation numbers, with four rules."
+    },
+    {
+     "s": 6.129,
+     "e": 18.148,
+     "en": "An element on its own has zero. A single-atom ion has its charge. Oxygen is usually minus two, hydrogen usually plus one, and chlorine usually minus one."
+    },
+    {
+     "s": 18.148,
+     "e": 22.987,
+     "en": "And the oxidation numbers add up to the charge of the species."
+    },
+    {
+     "s": 22.987,
+     "e": 35.237,
+     "en": "For SiO₂: x + 2(−2) = 0, so Si is +4. In Cu₂O, Cu is +1, and in CuO it is +2."
+    },
+    {
+     "s": 35.237,
+     "e": 41.829,
+     "en": "Rule three says usually. In H₂O₂, O is −1."
+    },
+    {
+     "s": 41.829,
+     "e": 48.289,
+     "en": "In oxidation, the oxidation number rises. In reduction, it falls."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 47.136,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.645,
+     "en": "Now combine half-reactions. Write each one with its electrons."
+    },
+    {
+     "s": 5.645,
+     "e": 15.75,
+     "en": "Then multiply them so that the electrons lost equal the electrons gained, using the lowest common multiple. Add them, and cancel the electrons."
+    },
+    {
+     "s": 15.75,
+     "e": 29.882,
+     "en": "Choose Al with Cu²⁺. Each Al gives three electrons, and each Cu²⁺ takes two. Six is the lowest common multiple, so 2 Al react with 3 Cu²⁺."
+    },
+    {
+     "s": 29.882,
+     "e": 35.092,
+     "en": "Check the result: the atoms balance, and the charge is plus six on each side."
+    },
+    {
+     "s": 35.092,
+     "e": 47.066,
+     "en": "Now choose Cu with Zn²⁺. The equation balances, but the reaction does not go on its own. A balanced equation does not say whether a reaction happens."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 24.456,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 20.303,
+     "en": "Name the species oxidized and the oxidizing agent in the aluminum reaction. Give two oxidation numbers. Balance zinc with silver ions. And explain why the electrons must cancel."
+    },
+    {
+     "s": 20.303,
+     "e": 24.382,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 42.168,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.063,
+     "en": "In part two, we treat electrons as a reactant."
+    },
+    {
+     "s": 4.063,
+     "e": 11.934,
+     "en": "Each Cu²⁺ takes two electrons. So two moles of electrons deposit one mole of Cu."
+    },
+    {
+     "s": 11.934,
+     "e": 22.605,
+     "en": "Move the slider. With four electrons and three Cu²⁺ ions, the electrons run out first: two Cu atoms form, and one Cu²⁺ stays in solution."
+    },
+    {
+     "s": 22.605,
+     "e": 30.684,
+     "en": "With eight electrons, all three ions are reduced, and two electrons are left over. Now the ions are limiting."
+    },
+    {
+     "s": 30.684,
+     "e": 42.105,
+     "en": "In electroplating, a power supply delivers the electrons, so the electrons supplied set how much copper deposits. In Class 10, we count them as electric charge."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 47.04,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.895,
+     "en": "Back to the beaker, with numbers. Put one gram of zinc into one hundred milliliters of zero point one molar copper sulfate."
+    },
+    {
+     "s": 8.895,
+     "e": 21.947,
+     "en": "n(Zn) = 0.0153 mol. n(Cu²⁺) = 0.0100 mol. The reaction is 1 to 1, so Cu²⁺ is the limiting reactant."
+    },
+    {
+     "s": 21.947,
+     "e": 33.303,
+     "en": "So 0.635 g of Cu form, and 0.346 g of Zn are left. 0.0200 mol of electrons moved from Zn to Cu²⁺."
+    },
+    {
+     "s": 33.303,
+     "e": 46.974,
+     "en": "Move the slider to change the zinc. Below about zero point six five grams, zinc runs out first instead. This is the limiting reactant of Class 3, with the moles of ions from Class 4."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 40.896,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.382,
+     "en": "Which metal displaces which? Put the metals in order, from the most readily oxidized at the top."
+    },
+    {
+     "s": 7.382,
+     "e": 13.882,
+     "en": "Aluminum, zinc and iron are above hydrogen. Copper and silver are below it."
+    },
+    {
+     "s": 13.882,
+     "e": 25.816,
+     "en": "A metal reduces the ion of any metal below it. So Zn with Cu²⁺ goes, and Cu with Ag⁺ goes. But Cu with Zn²⁺ does not go."
+    },
+    {
+     "s": 25.816,
+     "e": 32.513,
+     "en": "Metals above hydrogen dissolve in acids and give hydrogen gas. Copper does not."
+    },
+    {
+     "s": 32.513,
+     "e": 40.829,
+     "en": "This order comes from standard reduction potentials, which Class 9 measures in volts. Today it is only an order."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 38.88,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.892,
+     "en": "Here is a common mistake: a reaction is an oxidation only if oxygen is added."
+    },
+    {
+     "s": 5.892,
+     "e": 22.053,
+     "en": "Oxidation is the loss of electrons, a rise in oxidation number. Zn → Zn²⁺ has no oxygen in it. And Si with Cl₂ oxidizes Si from 0 to +4, exactly as Si with O₂ does."
+    },
+    {
+     "s": 22.053,
+     "e": 32.316,
+     "en": "The name is historical. The first oxidations studied were reactions with oxygen, and oxygen is a common oxidizing agent, but it is one of many."
+    },
+    {
+     "s": 32.316,
+     "e": 38.803,
+     "en": "A second mistake is leaving electrons in the overall equation. They must cancel."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 42.312,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.368,
+     "en": "A chip goes through many redox reactions. Here are four."
+    },
+    {
+     "s": 5.368,
+     "e": 13.079,
+     "en": "In dry thermal oxidation, silicon goes from zero to plus four, giving four electrons per silicon atom to oxygen."
+    },
+    {
+     "s": 13.079,
+     "e": 25.026,
+     "en": "In wet thermal oxidation, silicon reacts with water. Here the oxidizing agent is the hydrogen in water, which goes from plus one to zero, while oxygen stays at minus two."
+    },
+    {
+     "s": 25.026,
+     "e": 32.566,
+     "en": "In Cu electroplating, the wafer receives electrons from a power supply, and Cu²⁺ is reduced to Cu."
+    },
+    {
+     "s": 32.566,
+     "e": 42.237,
+     "en": "And in copper polishing, hydrogen peroxide in the slurry oxidizes the copper surface. Each line can be checked with the rules from part one."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 27.528,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 19.265,
+     "en": "Find what forms from three copper ions and four electrons. Find the electrons needed for zero point zero one moles of copper. Find the limiting reactant and the copper mass in the beaker."
+    },
+    {
+     "s": 19.265,
+     "e": 23.382,
+     "en": "And decide whether a copper wire reacts with zinc sulfate."
+    },
+    {
+     "s": 23.382,
+     "e": 27.461,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 26.352,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.642,
+     "en": "Today's reactions run the next six classes."
+    },
+    {
+     "s": 3.642,
+     "e": 12.171,
+     "en": "In Class 8, we put the two half-reactions at two electrodes, so the electrons flow through a wire. That is a cell."
+    },
+    {
+     "s": 12.171,
+     "e": 26.289,
+     "en": "Class 9 turns the order of metals into potentials in volts. Class 10 counts electrons as charge, to find how much copper a current deposits. And Class 13 maps copper and its oxides in water."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 27.192,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.026,
+     "en": "Now it is time for Lab 7. Scan the code or open the lab page."
+    },
+    {
+     "s": 6.026,
+     "e": 12.947,
+     "en": "You will predict which species is oxidized, assign oxidation numbers, and balance aluminum with copper ions."
+    },
+    {
+     "s": 12.947,
+     "e": 21.171,
+     "en": "Then you change the electron supply to three copper ions, and find the limiting reactant and the masses in the zinc and copper sulfate beaker."
+    },
+    {
+     "s": 21.171,
+     "e": 27.118,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 32.76,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 9.868,
+     "en": "Oxidation is the loss of electrons, and reduction is the gain. They always happen together."
+    },
+    {
+     "s": 9.868,
+     "e": 16.763,
+     "en": "Oxidation numbers track the electrons. They rise in oxidation and fall in reduction."
+    },
+    {
+     "s": 16.763,
+     "e": 22.408,
+     "en": "Combine half-reactions so the electrons cancel, then check the atoms and the charge."
+    },
+    {
+     "s": 22.408,
+     "e": 25.816,
+     "en": "Electrons can be the limiting reactant."
+    },
+    {
+     "s": 25.816,
+     "e": 32.697,
+     "en": "And a balanced equation does not say whether a reaction goes. The order of the metals does."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 21.84,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.55,
+     "en": "Before the next class, finish Lab 7 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.55,
+     "e": 15.079,
+     "en": "Read OpenStax Chemistry two e, section four point two on oxidation-reduction reactions, and section seventeen point one on balancing with half-reactions."
+    },
+    {
+     "s": 15.079,
+     "e": 21.776,
+     "en": "Class 8 is about cells and batteries: the same two half-reactions, at two electrodes joined by a wire."
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "file": "audio/slide-20.mp3",
+   "duration": 24.648,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.053,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 7."
+    },
+    {
+     "s": 7.053,
+     "e": 15.842,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.842,
+     "e": 24.579,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 8."
+    }
+   ]
+  }
+ ]
+};
+(function(){if(!NARR)return;
+ const au=document.getElementById("narr"),bar=document.getElementById("nbar"),cap=document.getElementById("cap"),play=document.getElementById("nPlay"),tm=document.getElementById("nTime"),msg=document.getElementById("nMsg");
+ document.getElementById("dock").style.display="flex";document.getElementById("help").style.display="none";let on=false,lang="off",slideIdx=-1;
+ const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
+ lang=ls("cc-lang")||"off";if(lang!=="en")lang="off";const sp=ls("narr-speed");if(sp)document.getElementById("nSpeed").value=sp;
+ const fmtT=t=>isFinite(t)?`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,"0")}`:"0:00";
+ const S_=i=>NARR.slides[i];
+ function load(i){slideIdx=i;const s=S_(i);if(!s){au.removeAttribute("src");return}au.src=s.file;au.playbackRate=+document.getElementById("nSpeed").value;tm.textContent=`0:00 / ${fmtT(s.duration)}`;showCap(0)}
+ function setPlayUI(){play.textContent=au.paused?"▶ Play":"❚❚ Pause";play.classList.toggle("on",!au.paused)}
+ // captions sit in their own band under the slide; long lines shrink to fit the band
+ window.capRefit=()=>{let f=parseFloat(cap.dataset.fs)||18;cap.style.fontSize=f+"px";while(cap.scrollHeight>cap.clientHeight+1&&f>11){f-=1;cap.style.fontSize=f+"px"}};
+ function showCap(t){const s=S_(slideIdx);let c=null;if(s&&lang!=="off"){for(const q of s.cues){if(t>=q.s-0.05)c=q;else break}}
+  const txt=(!c||(au.paused&&au.currentTime===0&&!on))?"":c.en;if(cap.textContent!==txt){cap.textContent=txt;capRefit()}}
+ function ccUI(){const b=document.getElementById("nCC");b.textContent=lang==="off"?"CC off":"CC on";b.classList.toggle("on",lang!=="off");CAP_ON=lang!=="off";fit();showCap(au.currentTime||0)}
+ window.ccCycle=()=>{lang=lang==="off"?"en":"off";ls("cc-lang",lang);ccUI()};
+ // "on" means the student is listening: it starts with Play and ends with Pause or Stop.
+ // Slides change only when the student moves; the new slide's narration then starts if "on".
+ window.narrToggle=()=>{if(au.paused){on=true;if(slideIdx!==cur)load(cur);if(au.ended)au.currentTime=0;msg.textContent="";au.play().catch(()=>{msg.textContent="Press Play again to start audio."})}else{on=false;au.pause()}};
+ window.onSlideChange=i=>{au.pause();msg.textContent="";load(i);if(on)au.play().catch(()=>{})};
+ document.getElementById("nPlay").onclick=narrToggle;
+ document.getElementById("nStop").onclick=()=>{au.pause();au.currentTime=0;on=false;setPlayUI();showCap(0);tm.textContent=`0:00 / ${fmtT((S_(cur)||{}).duration)}`};
+ document.getElementById("nCC").onclick=ccCycle;
+ document.getElementById("nPrev").onclick=()=>show(cur-1);document.getElementById("nNext").onclick=()=>show(cur+1);
+ document.getElementById("nSpeed").onchange=e=>{au.playbackRate=+e.target.value;ls("narr-speed",e.target.value)};
+ au.addEventListener("play",setPlayUI);au.addEventListener("pause",setPlayUI);
+ au.addEventListener("timeupdate",()=>{tm.textContent=`${fmtT(au.currentTime)} / ${fmtT((S_(slideIdx)||{}).duration)}`;showCap(au.currentTime)});
+ au.addEventListener("ended",()=>{setPlayUI();const s=S_(slideIdx);msg.textContent=s&&s.hold?"Activity: do it now, then press Next ›":cur<N-1?"Press Next › or → for the next slide":"End of the session"});
+ const q=new URLSearchParams(location.search);
+ if(q.get("narrate")==="1"){const ov=document.getElementById("startov");ov.style.display="flex";document.getElementById("startBtn").onclick=()=>{ov.style.display="none";if(lang==="off"){lang="en";ls("cc-lang",lang)}ccUI();on=true;load(cur);au.play().catch(()=>{})}}
+ ccUI();setTimeout(()=>{if(slideIdx<0)load(cur)},0);
+})();
+
+build();drawAll();fit();show((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>

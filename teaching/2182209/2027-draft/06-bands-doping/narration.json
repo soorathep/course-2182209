@@ -1,0 +1,592 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 667.1,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 31.872,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.313,
+     "en": "Welcome to Class 6: electronic materials, energy bands and doping."
+    },
+    {
+     "s": 5.313,
+     "e": 14.671,
+     "en": "In Class 2 we said that silicon sits between conductors and insulators, and that doping can move it. Today we see why, and by how much."
+    },
+    {
+     "s": 14.671,
+     "e": 22.671,
+     "en": "We will meet electrons and holes, and see how one atom in five million changes the resistivity of silicon about half a million times."
+    },
+    {
+     "s": 22.671,
+     "e": 31.816,
+     "en": "If you are studying on your own, the narration takes about eleven minutes. Stop at the activity and at each check, then do Lab 6."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 33.528,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.434,
+     "en": "A five minute activity reviews earlier classes."
+    },
+    {
+     "s": 6.434,
+     "e": 17.645,
+     "en": "Part one is about bands: how energy levels merge into bands in a solid, and how they separate conductors, semiconductors and insulators. It ends with Check 1."
+    },
+    {
+     "s": 17.645,
+     "e": 28.684,
+     "en": "Part two is about doping: donors and acceptors, the balance between electrons and holes, resistivity, charge neutrality, and purity. It ends with Check 2."
+    },
+    {
+     "s": 28.684,
+     "e": 33.461,
+     "en": "Then you do Lab 6 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 29.856,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.671,
+     "en": "Activity 1. Answer four questions without notes, then compare with a partner."
+    },
+    {
+     "s": 6.671,
+     "e": 14.89,
+     "en": "Give the valence electrons of boron, silicon and phosphorus. Estimate the silicon atoms in one cubic centimeter."
+    },
+    {
+     "s": 14.89,
+     "e": 25.0,
+     "en": "Find the hydroxide concentration when the hydrogen ion concentration is ten to the minus three. And recall the resistivity of pure silicon."
+    },
+    {
+     "s": 25.0,
+     "e": 29.803,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 31.056,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.892,
+     "en": "By the end of today you can use band diagrams to tell conductors, semiconductors and insulators apart."
+    },
+    {
+     "s": 6.892,
+     "e": 11.566,
+     "en": "You can describe electrons and holes as the two carriers in silicon."
+    },
+    {
+     "s": 11.566,
+     "e": 17.961,
+     "en": "You can explain why phosphorus is a donor and boron an acceptor, and name the majority carrier in each."
+    },
+    {
+     "s": 17.961,
+     "e": 24.0,
+     "en": "You can use the product rule for electrons and holes to find the minority carrier concentration."
+    },
+    {
+     "s": 24.0,
+     "e": 31.0,
+     "en": "And you can calculate the resistivity of doped silicon, and explain why n type silicon has no net charge."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 41.376,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.787,
+     "en": "Today explains silicon's place in the resistivity chart of Class 2."
+    },
+    {
+     "s": 4.787,
+     "e": 14.132,
+     "en": "From Class 3 we know there are about five times ten to the twenty two silicon atoms per cubic centimeter, so we can compare carriers and dopants with that number."
+    },
+    {
+     "s": 14.132,
+     "e": 24.079,
+     "en": "And from Class 5, the product of hydrogen and hydroxide concentrations is fixed. A product rule of the same kind links electrons and holes."
+    },
+    {
+     "s": 24.079,
+     "e": 37.583,
+     "en": "New symbols: E g is the band gap in electron volts. n and p are the concentrations of free electrons and holes, per cubic centimeter. n i is their value in pure silicon."
+    },
+    {
+     "s": 37.583,
+     "e": 41.316,
+     "en": "And mu is mobility, how easily a carrier moves."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 50.592,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 10.566,
+     "en": "When atoms join into a solid, their energy levels merge into bands. Bands are ranges of energy that electrons may have, not layers inside the material."
+    },
+    {
+     "s": 10.566,
+     "e": 15.263,
+     "en": "To carry current, an electron needs an empty state close in energy."
+    },
+    {
+     "s": 15.263,
+     "e": 23.408,
+     "en": "In a metal such as copper, one band is only partly filled, so empty states sit right above the filled ones, and electrons move easily."
+    },
+    {
+     "s": 23.408,
+     "e": 35.513,
+     "en": "In silicon, a filled valence band and an empty conduction band are separated by a gap of one point one two electron volts. At room temperature, a few electrons are lifted across it."
+    },
+    {
+     "s": 35.513,
+     "e": 42.079,
+     "en": "In silicon dioxide, the gap is about nine electron volts, too large for electrons to cross."
+    },
+    {
+     "s": 42.079,
+     "e": 50.513,
+     "en": "But the gap alone does not give the conductivity. That also needs how many carriers there are, and how easily they move."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 39.72,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.671,
+     "en": "When an electron leaves a silicon bond, it becomes free to move. That is a conduction electron, with charge minus e."
+    },
+    {
+     "s": 8.671,
+     "e": 14.092,
+     "en": "The bond it left is short one electron. We call that a hole."
+    },
+    {
+     "s": 14.092,
+     "e": 23.0,
+     "en": "A neighboring bond electron can hop into the hole, so the hole moves the other way. It behaves like a mobile positive charge."
+    },
+    {
+     "s": 23.0,
+     "e": 31.553,
+     "en": "Think of a row of seats with one empty seat. As each person moves toward it, the empty seat moves the other way along the row."
+    },
+    {
+     "s": 31.553,
+     "e": 39.645,
+     "en": "So silicon has two carriers: electrons and holes. Holes move about three times more slowly than electrons."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 43.608,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 10.263,
+     "en": "How many carriers does pure silicon have? At room temperature, n and p are both about one point four five times ten to the ten per cubic centimeter."
+    },
+    {
+     "s": 10.263,
+     "e": 18.026,
+     "en": "Compared with five times ten to the twenty two atoms, that is only about three atoms in ten to the thirteen giving up an electron."
+    },
+    {
+     "s": 18.026,
+     "e": 23.844,
+     "en": "Multiply the carriers by the elementary charge and their mobilities to get the conductivity."
+    },
+    {
+     "s": 23.844,
+     "e": 31.539,
+     "en": "The resistivity is about two point three five times ten to the five ohm centimeters, which is the value we used in Class 2."
+    },
+    {
+     "s": 31.539,
+     "e": 43.553,
+     "en": "This intrinsic carrier concentration rises steeply with temperature. A device whose current changed that much with temperature would be useless, so doping fixes the carrier count on purpose."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 24.36,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 20.224,
+     "en": "Match three band diagrams to conductor, semiconductor and insulator. Say whether the gap alone gives the conductivity. Describe a hole. And give n and p in pure silicon."
+    },
+    {
+     "s": 20.224,
+     "e": 24.303,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 45.216,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.0,
+     "en": "Part 2 is about doping. Replace one silicon atom with phosphorus."
+    },
+    {
+     "s": 6.0,
+     "e": 14.136,
+     "en": "Phosphorus has five valence electrons. Four form bonds with silicon neighbors, and the fifth is easily freed."
+    },
+    {
+     "s": 14.136,
+     "e": 24.566,
+     "en": "Phosphorus is a donor, and the silicon becomes n type, with electrons as the majority carriers. A fixed positive phosphorus ion stays behind."
+    },
+    {
+     "s": 24.566,
+     "e": 34.749,
+     "en": "Now replace a silicon atom with boron. Boron has only three valence electrons for four bonds, so it takes one from a neighbor and creates a hole."
+    },
+    {
+     "s": 34.749,
+     "e": 41.026,
+     "en": "Boron is an acceptor, and the silicon becomes p type, with holes as the majority carriers."
+    },
+    {
+     "s": 41.026,
+     "e": 45.145,
+     "en": "Arsenic is also a donor, and aluminum an acceptor."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 51.888,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.566,
+     "en": "How many carriers does doping give? Each donor gives one electron, so n is about equal to the donor concentration."
+    },
+    {
+     "s": 8.566,
+     "e": 15.409,
+     "en": "Then the holes follow from the product rule: n times p equals n i squared, about two times ten to the twenty."
+    },
+    {
+     "s": 15.409,
+     "e": 20.697,
+     "en": "With ten to the sixteen donors, there are only about two times ten to the four holes."
+    },
+    {
+     "s": 20.697,
+     "e": 31.513,
+     "en": "Move the slider. As the majority carriers rise, the minority carriers fall, and their product stays the same, just like hydrogen and hydroxide ions in water."
+    },
+    {
+     "s": 31.513,
+     "e": 42.605,
+     "en": "With ten to the sixteen phosphorus atoms per cubic centimeter, the resistivity falls to about zero point four six ohm centimeters, about half a million times lower than pure silicon."
+    },
+    {
+     "s": 42.605,
+     "e": 51.829,
+     "en": "This model keeps the mobility constant. At very high doping, real mobility falls, so real resistivity is a little higher."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 37.08,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.774,
+     "en": "Here is a common mistake: n type silicon has extra electrons, so it carries a negative charge."
+    },
+    {
+     "s": 6.774,
+     "e": 17.684,
+     "en": "Each phosphorus atom brings one extra electron, but also one extra proton in its nucleus. When the electron is freed, a fixed positive ion stays behind."
+    },
+    {
+     "s": 17.684,
+     "e": 30.566,
+     "en": "So in a model with five donors, the ions carry plus five and the free electrons minus five. The total is zero. The name n type describes the majority carrier, not the charge."
+    },
+    {
+     "s": 30.566,
+     "e": 37.013,
+     "en": "Charge appears only where n type and p type regions meet, and that is how diodes and transistors work."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 39.672,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 10.07,
+     "en": "How little dopant is needed? Ten to the sixteen phosphorus atoms among five times ten to the twenty two silicon atoms is two times ten to the minus seven:"
+    },
+    {
+     "s": 10.07,
+     "e": 13.737,
+     "en": "one phosphorus atom per about five million silicon atoms."
+    },
+    {
+     "s": 13.737,
+     "e": 22.263,
+     "en": "That tiny amount cut the resistivity half a million times. Doping is added on purpose, in measured amounts and places."
+    },
+    {
+     "s": 22.263,
+     "e": 32.765,
+     "en": "If so little phosphorus changes silicon this much, unwanted atoms do too. Metals such as copper, iron and sodium can ruin devices at parts per billion."
+    },
+    {
+     "s": 32.765,
+     "e": 39.605,
+     "en": "That is why copper wiring is sealed off from silicon, and why fabs rinse wafers in ultrapure water."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 23.904,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 19.763,
+     "en": "Classify phosphorus and boron. Find n and p for ten to the sixteen donors. Find the total charge of a doped model. And explain why copper must be kept away from silicon."
+    },
+    {
+     "s": 19.763,
+     "e": 23.842,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 25.608,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.089,
+     "en": "Today closes the materials block and opens the electrochemistry block."
+    },
+    {
+     "s": 5.089,
+     "e": 14.75,
+     "en": "Class 7 moves electrons between species, not just within a solid. Class 8 sends electrons through a wire and ions through an electrolyte."
+    },
+    {
+     "s": 14.75,
+     "e": 25.539,
+     "en": "Class 11 looks at charge that builds up where two materials meet. And in the second half of the course, band gaps return in semiconductors that split water with light."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 27.744,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.987,
+     "en": "Now it is time for Lab 6. Scan the code or open the lab page."
+    },
+    {
+     "s": 5.987,
+     "e": 13.355,
+     "en": "You will predict whether phosphorus is a donor, classify phosphorus and boron, and check that doped silicon is neutral."
+    },
+    {
+     "s": 13.355,
+     "e": 21.737,
+     "en": "Then you find the dopant fraction and the minority carriers, change the doping to find the resistivity, and match band diagrams to materials."
+    },
+    {
+     "s": 21.737,
+     "e": 27.684,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 38.28,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 10.868,
+     "en": "Conductors have no gap, semiconductors a small gap, and insulators a large gap, but the gap alone is not the conductivity."
+    },
+    {
+     "s": 10.868,
+     "e": 14.934,
+     "en": "Silicon has two carriers, electrons and holes."
+    },
+    {
+     "s": 14.934,
+     "e": 24.566,
+     "en": "Phosphorus donates electrons and makes n type silicon. Boron accepts electrons and makes p type silicon, with holes as the majority."
+    },
+    {
+     "s": 24.566,
+     "e": 31.658,
+     "en": "The product of electrons and holes stays n i squared, so more majority carriers mean fewer minority carriers."
+    },
+    {
+     "s": 31.658,
+     "e": 38.224,
+     "en": "And doped silicon stays neutral, while tiny amounts of atoms, wanted or not, change it a great deal."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 26.952,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.458,
+     "en": "Before the next class, finish Lab 6 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.458,
+     "e": 11.087,
+     "en": "Read OpenStax Chemistry two e, section ten point five again on semiconductors."
+    },
+    {
+     "s": 11.087,
+     "e": 19.211,
+     "en": "For more depth, OpenStax University Physics volume three, section nine point six covers semiconductors and doping."
+    },
+    {
+     "s": 19.211,
+     "e": 26.882,
+     "en": "Class 7 is about redox reactions and electron balance, where the copper two plus ion finally takes its two electrons."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 24.744,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.066,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 6."
+    },
+    {
+     "s": 7.066,
+     "e": 15.855,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.855,
+     "e": 24.684,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 7."
+    }
+   ]
+  }
+ ]
+}

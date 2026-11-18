@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lab 5 · pH and a shifting equilibrium · 2182209</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--graphite:#333F4A;--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--sand:#DFC98F;--ok:#0F6E6B;--bad:#BE654C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Helvetica Neue",Helvetica,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:18px 16px 80px}
+header h1{color:var(--teal);font-size:30px;margin:4px 0 2px}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+.sub{color:var(--slate);font-size:15px}
+.prog{position:sticky;top:0;background:var(--paper);padding:10px 0;z-index:3}
+.bar{height:8px;background:#e2ddd4;border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.prog span{font-size:13px;color:var(--slate)}
+.card{background:#fff;border-radius:14px;padding:18px 18px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:21px;margin:0 0 4px;color:var(--teal)}
+.card h3{font-size:17px;margin:16px 0 6px}
+.step{border-left:4px solid var(--mist);padding:2px 0 2px 14px;margin:14px 0}
+.step.done{border-color:var(--teal)}.step.locked{opacity:.45;pointer-events:none}
+.step.locked .chart,.step.locked .kpi,.step.locked .chk,.step.locked input[type=range],.step.locked .row{display:none}
+.step.locked::after{content:"Finish the step above to open this one.";display:block;font-size:13px;color:var(--slate)}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;border-radius:6px;padding:2px 8px;margin-right:6px;color:#fff;background:var(--slate)}
+.tag.p{background:var(--amber)}.tag.r{background:var(--teal)}.tag.c{background:var(--graphite)}.tag.e{background:var(--rust)}
+textarea,input[type=text],select{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--mist);border-radius:8px;padding:8px 10px;background:#fff}
+textarea{min-height:70px}
+button{font:inherit;font-size:15px;padding:8px 14px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer;margin:8px 8px 0 0}
+button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row label{flex:1 1 240px}
+.chk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.chk input{width:150px}
+.fb{font-size:15px}.fb.ok{color:var(--ok);font-weight:700}.fb.bad{color:var(--bad)}
+.choices label{display:block;margin:4px 0}
+.kpi{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}.kpi div{background:var(--paper);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--slate)}.kpi b{display:block;font-size:20px;color:var(--ink)}
+.chart{background:var(--paper);border-radius:12px;padding:6px;margin:8px 0}
+svg{width:100%;height:auto;display:block}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.note{font-size:14px;color:var(--slate)}
+.hidden{display:none}
+pre.sum{white-space:pre-wrap;background:var(--paper);border-radius:10px;padding:12px;font-size:14px}
+a{color:var(--teal)}
+</style>
+<style>
+.step.locked > *:not(.tag){display:none}
+table.tb{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.tb th{background:var(--paper);text-align:left;padding:5px 8px;border-bottom:2px solid var(--mist)}
+table.tb td{padding:5px 8px;border-bottom:1px solid #e6e3dd}
+table.tb td.n,table.tb th.n{text-align:right;font-variant-numeric:tabular-nums}
+ol.rl{margin:4px 0 0;padding-left:22px;font-size:15px}
+.lights{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.light{border-radius:999px;padding:3px 10px;font-size:14px;font-weight:700}
+.light.ok{background:#e3f0ef;color:var(--teal)}.light.bad{background:#f6e3de;color:var(--rust)}
+.code{background:#1f262d;color:#e8eef2;border-radius:10px;padding:10px 8px;font-family:Menlo,Consolas,monospace;font-size:13.5px;overflow-x:auto}
+.ln{display:flex;align-items:center;gap:8px;padding:3px 4px;border-radius:6px;white-space:pre}
+.ln.fixed{background:#24433f}
+.ln .no{color:#8a96a0;width:18px;text-align:right}
+.ln .tx{flex:1}
+.ln .okk{width:38px;color:#9fd6c9;font-size:12px;font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700}
+button.sm{width:38px;font-size:12px;padding:2px 9px;margin:0;background:transparent;color:#9fd6c9;border:1px solid #9fd6c9}
+.ctrlrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0;font-size:15px;color:var(--slate)}
+.ctrlrow input[type=range]{flex:1;min-width:160px;accent-color:var(--teal)}
+.wide{overflow-x:auto}.wide table.tb{font-size:12px}.wide table.tb td,.wide table.tb th{padding:3px 4px}
+@media (max-width:600px){table.tb{display:block;overflow-x:auto;font-size:13px}}
+</style>
+
+</head>
+<body><main>
+<header><div class="kicker">2182209 · Class 5 · Lab</div><h1>pH and a shifting equilibrium</h1>
+<div class="sub">About 30 minutes. Works in class or on your own, on a laptop or a phone. Nothing to install; a calculator helps.</div></header>
+<div class="prog"><div class="bar"><i id="pbar"></i></div><span id="ptext"></span></div>
+<section class="card"><h2>How this lab works</h2>
+<p>You compare acidities on the pH scale, find [OH<sup>−</sup>] from K<sub>w</sub>, dilute an acid until water takes over, and shift a counting model of equilibrium. Write each prediction before you look; the next step stays locked until you do. After two tries the expected value is shown.</p>
+<p class="note"><b>What runs where.</b> The expected values come from <a href="ph_lab.py">ph_lab.py</a>, computed in advance. The two sliders do small calculations in JavaScript with the same formulas as the Python. No Python is installed or run on your device. To run the Python yourself, open the slides and press D, or run ph_lab.py in desktop Python.</p>
+<p class="note">Write small numbers as 1e-11 (meaning 1 × 10<sup>−11</sup>). Studying on your own? Watch the narrated slides for Class 5 first.</p></section>
+<section class="card" id="data"><h2>Data</h2>
+<table class="tb"><tr><th>Sample</th><th class="n">[H<sup>+</sup>], mol/L</th><th>Conditions</th></tr>
+<tr><td>A</td><td class="n">1.0 × 10<sup>−2</sup></td><td>Dilute; concentration used in place of activity</td></tr>
+<tr><td>B</td><td class="n">1.0 × 10<sup>−3</sup></td><td>25 °C, K<sub>w</sub> = 1.0 × 10<sup>−14</sup></td></tr>
+<tr><td>C</td><td class="n">1.0 × 10<sup>−4</sup></td><td>Hypothetical samples</td></tr></table>
+<p class="note">Counting model of A ⇌ B: each round, 1/4 of A becomes B and 1/2 of B becomes A (synthetic).</p></section>
+<section class="card" id="t1"><h2>Task 1 · Reading the pH scale</h2>
+<div class="step" data-step="1a"><span class="tag p">PREDICT</span>Compared with pH 4, the [H<sup>+</sup>] at pH 2 is
+ <div class="choices"><label><input type="radio" name="p1" value="2 times"> 2 times larger</label><label><input type="radio" name="p1" value="20 times"> 20 times larger</label><label><input type="radio" name="p1" value="100 times"> 100 times larger</label><label><input type="radio" name="p1" value="smaller"> smaller</label></div>
+ <button data-save="1a">Save prediction</button></div>
+<div class="step" data-step="1b"><span class="tag c">CHECK</span>Use pH = −log<sub>10</sub>[H<sup>+</sup>].
+ <div class="chk"><span>pH of sample A</span><input type="text" id="c1a" inputmode="decimal"><span class="fb" id="f1a"></span></div>
+ <div class="chk"><span>pH of sample C</span><input type="text" id="c1b" inputmode="decimal"><span class="fb" id="f1b"></span></div>
+ <div class="chk"><span>[H<sup>+</sup>] at pH 2 ÷ [H<sup>+</sup>] at pH 4</span><input type="text" id="c1c" inputmode="decimal"><span class="fb" id="f1c"></span></div>
+ <button data-check="1b">Check</button></div>
+</section>
+<section class="card" id="t2"><h2>Task 2 · Diluting an acid</h2>
+<div class="step" data-step="2a"><span class="tag r">RECOMPUTE</span>0.010 mol/L HCl, a strong acid, is diluted 10 times.
+ <div class="chk"><span>New pH</span><input type="text" id="c2a" inputmode="decimal"><span class="fb" id="f2a"></span></div>
+ <div class="chk"><span>[OH<sup>−</sup>] at that pH, mol/L</span><input type="text" id="c2b" inputmode="decimal" placeholder="e.g. 1e-9"><span class="fb" id="f2b"></span></div>
+ <button data-check="2a">Check</button></div>
+<div class="step" data-step="2b"><span class="tag r">CHANGE ONE CONDITION</span>Dilute 0.10 mol/L HCl by powers of 10. The slider shows pH = −log<sub>10</sub>(c), and pH with the H<sup>+</sup> from water included: [H<sup>+</sup>] = c/2 + √(c²/4 + K<sub>w</sub>).
+ <div class="ctrlrow"><span>Dilution factor 10^</span><input type="range" id="dk" min="0" max="9" step="1" value="1"><b id="dkv"></b></div>
+ <div class="kpi"><div>c, mol/L<b id="kc"></b></div><div>−log<sub>10</sub>(c)<b id="ks"></b></div><div>pH with water<b id="kf"></b></div></div>
+ <div class="chk"><span>pH with water included at 10<sup>7</sup> dilution (c = 10<sup>−8</sup> mol/L)</span><input type="text" id="c2c" inputmode="decimal"><span class="fb" id="f2c"></span></div>
+ <div class="chk"><span>Why is it not 8?</span><select id="c2d"><option value="">choose</option><option value="a">The acid becomes basic when very dilute</option><option value="b">Water's own H<sup>+</sup>, about 10<sup>−7</sup> mol/L, now outweighs the acid's</option><option value="c">The calculator rounds</option></select><span class="fb" id="f2d"></span></div>
+ <button data-check="2b">Check</button></div>
+</section>
+<section class="card" id="t3"><h2>Task 3 · A shifting equilibrium</h2>
+<div class="step" data-step="3a"><span class="tag c">CHECK</span>Start with A = 8 and B = 4.
+ <div class="chk"><span>Forward amount per round, A/4</span><input type="text" id="c3a" inputmode="decimal"><span class="fb" id="f3a"></span></div>
+ <div class="chk"><span>Is the system at equilibrium?</span><select id="c3b"><option value="">choose</option><option value="a">Yes: forward and reverse amounts are equal</option><option value="b">No: A and B are not equal</option></select><span class="fb" id="f3b"></span></div>
+ <button data-check="3a">Check</button></div>
+<div class="step" data-step="3b"><span class="tag r">CHANGE ONE CONDITION</span>Now add 8 units of A (A = 16, B = 4) and run the rounds.
+ <div class="ctrlrow"><span>Round</span><input type="range" id="rd" min="0" max="20" step="1" value="0"><b id="rdv"></b></div>
+ <div class="kpi"><div>A<b id="kA"></b></div><div>B<b id="kB"></b></div><div>B/A<b id="kR"></b></div></div>
+ <div class="chk"><span>A after one round</span><input type="text" id="c3c" inputmode="decimal"><span class="fb" id="f3c"></span></div>
+ <div class="chk"><span>A at the new equilibrium</span><input type="text" id="c3d" inputmode="decimal"><span class="fb" id="f3d"></span></div>
+ <div class="chk"><span>B/A at the new equilibrium</span><input type="text" id="c3e" inputmode="decimal"><span class="fb" id="f3e"></span></div>
+ <button data-check="3b">Check</button></div>
+</section>
+<section class="card" id="t4"><h2>Task 4 · Explain</h2>
+<div class="step" data-step="4a"><span class="tag e">EXPLAIN</span>A classmate says "at equilibrium the reaction has stopped, and A equals B". Correct both parts with numbers from Task 3.
+ <textarea id="e4"></textarea><button data-save="4a">Save</button></div>
+</section>
+<section class="card" id="fin"><h2>Finish: Exit Ticket and feedback</h2>
+<div class="step" data-step="fin"><p>Copy your answers, open the Exit Ticket, choose <b>Class 5</b>, paste them in the Exit Ticket box, and answer the feedback questions. Choose "On my own" if you did this lab outside class.</p>
+<pre class="sum" id="sum"></pre>
+<button id="copy">Copy my answers</button><a id="exitlink" target="_blank" rel="noopener"><button class="ghost" type="button">Open Exit Ticket and feedback</button></a>
+<p class="note" id="copied"></p>
+<p class="note">Want the code? <a href="ph_lab.py">ph_lab.py</a> computes every value on this page; it runs in desktop Python, or open the slides and press D on any slide marked "D · Python".</p></div>
+<button class="ghost" id="reset">Clear my answers on this device</button>
+</section>
+<section class="card" id="handin"><h2>Hand in: your answer file for myCourseVille</h2>
+<p>Download your answers as a file and upload it to this lab's assignment in myCourseVille. You can download at any point, and again after more steps; upload the latest file. The file records the steps you finished, your answers, and the checks where the expected value was shown after two tries. It holds no name or student ID: myCourseVille records who uploaded it.</p>
+<button id="dlJson" type="button">Download my answer file (.json)</button>
+<p class="note" id="dlNote"></p></section>
+</main>
+<script>
+const R = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"samples":[{"s":"A","h":0.01,"pH":2.0,"oh":1e-12},{"s":"B","h":0.001,"pH":3.0,"oh":1e-11},{"s":"C","h":0.0001,"pH":4.0,"oh":9.999999999999999e-11}],"water":{"h":1e-07,"pH":7.0},"ratio_2_4":100,"series":[{"k":0,"c":0.1,"pH_simple":1.0,"pH":0.9999999999995657},{"k":1,"c":0.01,"pH_simple":2.0,"pH":1.9999999999565705},{"k":2,"c":0.001,"pH_simple":3.0,"pH":2.9999999956570553},{"k":3,"c":0.0001,"pH_simple":4.0,"pH":3.9999995657061693},{"k":4,"c":1e-05,"pH_simple":5.0,"pH":4.999956577064779},{"k":5,"c":1e-06,"pH_simple":6.0,"pH":5.995720788643735},{"k":6,"c":1.0000000000000001e-07,"pH_simple":7.0,"pH":6.791012359750021},{"k":7,"c":1e-08,"pH_simple":8.0,"pH":6.978294313542888},{"k":8,"c":1e-09,"pH_simple":9.0,"pH":6.997828536638184},{"k":9,"c":1e-10,"pH_simple":10.0,"pH":6.999782852768096}],"eq12":{"round":0,"A":8,"B":4,"fwd":2.0,"rev":2.0},"after":[{"round":0,"A":16,"B":4,"fwd":4.0,"rev":2.0},{"round":1,"A":14.0,"B":6.0,"fwd":3.5,"rev":3.0},{"round":2,"A":13.5,"B":6.5,"fwd":3.375,"rev":3.25},{"round":3,"A":13.375,"B":6.625,"fwd":3.34375,"rev":3.3125},{"round":4,"A":13.34375,"B":6.65625,"fwd":3.3359375,"rev":3.328125},{"round":5,"A":13.3359375,"B":6.6640625,"fwd":3.333984375,"rev":3.33203125},{"round":6,"A":13.333984375,"B":6.666015625,"fwd":3.33349609375,"rev":3.3330078125},{"round":7,"A":13.33349609375,"B":6.66650390625,"fwd":3.3333740234375,"rev":3.333251953125},{"round":8,"A":13.3333740234375,"B":6.6666259765625,"fwd":3.333343505859375,"rev":3.33331298828125},{"round":9,"A":13.333343505859375,"B":6.666656494140625,"fwd":3.3333358764648438,"rev":3.3333282470703125},{"round":10,"A":13.333335876464844,"B":6.666664123535156,"fwd":3.333333969116211,"rev":3.333332061767578},{"round":11,"A":13.333333969116211,"B":6.666666030883789,"fwd":3.3333334922790527,"rev":3.3333330154418945},{"round":12,"A":13.333333492279053,"B":6.666666507720947,"fwd":3.333333373069763,"rev":3.3333332538604736}],"eq20":{"K":0.5,"A":13.333333333333334,"B":6.666666666666666},"eq12_eq":{"K":0.5,"A":8.0,"B":4.0}},"lab":{"samples":[{"s":"A","h":0.01,"pH":2.0},{"s":"B","h":0.001,"pH":3.0},{"s":"C","h":0.0001,"pH":4.0}],"ratio_2_4":100,"pH_0p01_x10":3.0,"oh_at_pH3":1e-11,"series":[{"k":0,"c":0.1,"pH_simple":1.0,"pH":0.9999999999995657},{"k":1,"c":0.01,"pH_simple":2.0,"pH":1.9999999999565705},{"k":2,"c":0.001,"pH_simple":3.0,"pH":2.9999999956570553},{"k":3,"c":0.0001,"pH_simple":4.0,"pH":3.9999995657061693},{"k":4,"c":1e-05,"pH_simple":5.0,"pH":4.999956577064779},{"k":5,"c":1e-06,"pH_simple":6.0,"pH":5.995720788643735},{"k":6,"c":1.0000000000000001e-07,"pH_simple":7.0,"pH":6.791012359750021},{"k":7,"c":1e-08,"pH_simple":8.0,"pH":6.978294313542888},{"k":8,"c":1e-09,"pH_simple":9.0,"pH":6.997828536638184},{"k":9,"c":1e-10,"pH_simple":10.0,"pH":6.999782852768096}],"pH_1e8":6.978294313542888,"start":{"round":0,"A":8,"B":4,"fwd":2.0,"rev":2.0},"after1":{"round":1,"A":14.0,"B":6.0,"fwd":3.5,"rev":3.0},"rounds":[{"round":0,"A":16,"B":4,"fwd":4.0,"rev":2.0},{"round":1,"A":14.0,"B":6.0,"fwd":3.5,"rev":3.0},{"round":2,"A":13.5,"B":6.5,"fwd":3.375,"rev":3.25},{"round":3,"A":13.375,"B":6.625,"fwd":3.34375,"rev":3.3125},{"round":4,"A":13.34375,"B":6.65625,"fwd":3.3359375,"rev":3.328125},{"round":5,"A":13.3359375,"B":6.6640625,"fwd":3.333984375,"rev":3.33203125},{"round":6,"A":13.333984375,"B":6.666015625,"fwd":3.33349609375,"rev":3.3330078125},{"round":7,"A":13.33349609375,"B":6.66650390625,"fwd":3.3333740234375,"rev":3.333251953125},{"round":8,"A":13.3333740234375,"B":6.6666259765625,"fwd":3.333343505859375,"rev":3.33331298828125},{"round":9,"A":13.333343505859375,"B":6.666656494140625,"fwd":3.3333358764648438,"rev":3.3333282470703125},{"round":10,"A":13.333335876464844,"B":6.666664123535156,"fwd":3.333333969116211,"rev":3.333332061767578},{"round":11,"A":13.333333969116211,"B":6.666666030883789,"fwd":3.3333334922790527,"rev":3.3333330154418945},{"round":12,"A":13.333333492279053,"B":6.666666507720947,"fwd":3.333333373069763,"rev":3.3333332538604736},{"round":13,"A":13.333333373069763,"B":6.666666626930237,"fwd":3.333333343267441,"rev":3.3333333134651184},{"round":14,"A":13.33333334326744,"B":6.666666656732559,"fwd":3.33333333581686,"rev":3.3333333283662796},{"round":15,"A":13.33333333581686,"B":6.66666666418314,"fwd":3.333333333954215,"rev":3.33333333209157},{"round":16,"A":13.333333333954215,"B":6.666666666045785,"fwd":3.3333333334885538,"rev":3.3333333330228925},{"round":17,"A":13.333333333488554,"B":6.666666666511446,"fwd":3.3333333333721384,"rev":3.333333333255723},{"round":18,"A":13.333333333372138,"B":6.666666666627862,"fwd":3.3333333333430346,"rev":3.333333333313931},{"round":19,"A":13.333333333343035,"B":6.666666666656965,"fwd":3.3333333333357587,"rev":3.3333333333284827},{"round":20,"A":13.333333333335759,"B":6.666666666664241,"fwd":3.3333333333339397,"rev":3.3333333333321207},{"round":21,"A":13.33333333333394,"B":6.66666666666606,"fwd":3.333333333333485,"rev":3.33333333333303},{"round":22,"A":13.333333333333485,"B":6.666666666666515,"fwd":3.3333333333333712,"rev":3.3333333333332575},{"round":23,"A":13.333333333333371,"B":6.666666666666629,"fwd":3.333333333333343,"rev":3.3333333333333144},{"round":24,"A":13.333333333333343,"B":6.666666666666657,"fwd":3.3333333333333357,"rev":3.3333333333333286},{"round":25,"A":13.333333333333336,"B":6.666666666666664,"fwd":3.333333333333334,"rev":3.333333333333332},{"round":26,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":27,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":28,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":29,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":30,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":31,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":32,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":33,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":34,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":35,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":36,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":37,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":38,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333},{"round":39,"A":13.333333333333332,"B":6.666666666666667,"fwd":3.333333333333333,"rev":3.3333333333333335},{"round":40,"A":13.333333333333334,"B":6.666666666666666,"fwd":3.3333333333333335,"rev":3.333333333333333}],"eq20":{"K":0.5,"A":13.333333333333334,"B":6.666666666666666}}};
+const EXIT_URL = "https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=5";
+const KEY="lab5-2027-v1";
+const ORDER=["1a", "1b", "2a", "2b", "3a", "3b", "4a"];
+const SAVES={"1a": {"radio": "p1"}, "4a": {"text": "e4"}};
+const RESTORE=["e4", "c1a", "c1b", "c1c", "c2a", "c2b", "c2c", "c2d", "c3a", "c3b", "c3c", "c3d", "c3e"];
+
+const $=id=>document.getElementById(id);
+const fmt=(x,d=0)=>x==null||!isFinite(x)?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+let ST={};
+try{ST=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){ST={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}};
+const L=R.lab;
+function refresh(){let open=true;ORDER.forEach(id=>{const el=document.querySelector(`[data-step="${id}"]`),done=!!ST["done_"+id];el.classList.toggle("done",done);el.classList.toggle("locked",!done&&!open);if(!done&&open)open=false});
+ document.querySelector('[data-step="fin"]').classList.toggle("locked",!ORDER.every(id=>ST["done_"+id]));
+ const n=ORDER.filter(id=>ST["done_"+id]).length;$("pbar").style.width=(100*n/ORDER.length)+"%";$("ptext").textContent=`${n} of ${ORDER.length} steps done`;summary();save()}
+function need(id,msg){const st=document.querySelector(`[data-step="${id}"]`);let f=st.querySelector(".need");if(!f){f=document.createElement("div");f.className="fb bad need";st.appendChild(f)}f.textContent=msg;return false}
+function markDone(id){const nd=document.querySelector(`[data-step="${id}"] .need`);if(nd)nd.textContent="";ST["done_"+id]=true;refresh()}
+const radio=n=>{const r=document.querySelector(`input[name="${n}"]:checked`);return r?r.value:""};
+/* accepts 1.2e22, 1.2E22, 1.2×10^22, 1.2x10^22, 1.2*10^22, a leading + and a trailing % */
+const num=s=>{let t=String(s).trim().replace(/,/g,"").replace(/−/g,"-").replace(/\s/g,"").replace(/%$/,"");const m=t.match(/^([-+]?[\d.]+)(?:[x×*]10\^?([-+]?\d+))$/i);if(m)return parseFloat(m[1])*10**parseInt(m[2],10);return parseFloat(t)};
+function verdict(input,fb,ok,expected){ST["tries_"+input]=(ST["tries_"+input]||0)+(ok?0:1);const f=$(fb);f.className="fb "+(ok?"ok":"bad");
+ f.textContent=ok?"Correct":(ST["tries_"+input]>=2?`Not yet. Expected: ${expected}.`:"Not yet. Look again.");return ok||ST["tries_"+input]>=2}
+function checkNum(input,fb,target,rel,abs,shown){const v=num($(input).value);ST[input]=$(input).value;return verdict(input,fb,isFinite(v)&&Math.abs(v-target)<=Math.max(abs,rel*Math.abs(target)),shown)}
+function checkSel(input,fb,target,label){ST[input]=$(input).value;return verdict(input,fb,$(input).value===target,label||target)}
+
+const KW=1e-14,pH=h=>-Math.log10(h),strongH=c=>c/2+Math.sqrt(c*c/4+KW);
+const sciS=x=>{const e=Math.floor(Math.log10(x)+1e-12),m=x/10**e;return (Math.abs(m-1)<1e-9?"":m.toFixed(2)+" × ")+"10^"+e};
+function drawD(){const k=+$("dk").value,c=0.10/10**k;$("dkv").textContent=k;$("kc").textContent=sciS(c);$("ks").textContent=fmt(pH(c),2);$("kf").textContent=fmt(pH(strongH(c)),3);ST.dk=k;save()}
+/* same counting model as ph_lab.exchange */
+function drawR(){const n=+$("rd").value;let A=16,B=4;for(let i=0;i<n;i++){const f=A/4,r=B/2;A=A-f+r;B=B+f-r}$("rdv").textContent=n;$("kA").textContent=fmt(A,3);$("kB").textContent=fmt(B,3);$("kR").textContent=fmt(B/A,3);ST.rd=n;save()}
+$("dk").oninput=drawD;$("rd").oninput=drawR;
+function INIT(){if(ST.dk!=null)$("dk").value=ST.dk;if(ST.rd!=null)$("rd").value=ST.rd;drawD();drawR()}
+const CHECKS={
+ "1b":()=>[checkNum("c1a","f1a",L.samples[0].pH,0,0.01,"2.00"),checkNum("c1b","f1b",L.samples[2].pH,0,0.01,"4.00"),checkNum("c1c","f1c",L.ratio_2_4,0.001,0,"100")].every(Boolean),
+ "2a":()=>[checkNum("c2a","f2a",L.pH_0p01_x10,0,0.01,"3.00"),checkNum("c2b","f2b",L.oh_at_pH3,0.02,0,"1e-11")].every(Boolean),
+ "2b":()=>[checkNum("c2c","f2c",L.pH_1e8,0,0.02,fmt(L.pH_1e8,2)),checkSel("c2d","f2d","b","water's own H+ outweighs the acid's")].every(Boolean),
+ "3a":()=>[checkNum("c3a","f3a",L.start.fwd,0,0.001,"2"),checkSel("c3b","f3b","a","yes: equal forward and reverse amounts")].every(Boolean),
+ "3b":()=>[checkNum("c3c","f3c",L.after1.A,0,0.01,"14"),checkNum("c3d","f3d",L.eq20.A,0,0.05,fmt(L.eq20.A,2)),checkNum("c3e","f3e",L.eq20.K,0,0.01,"0.5")].every(Boolean)};
+const SUMMARY=(v,sel)=>[`Lab 5 answers`,
+ `1. Predicted pH 2 vs 4: ${v("p1")}. pH A ${v("c1a")}, C ${v("c1b")}; ratio ${v("c1c")}`,
+ `2. 0.010 M HCl diluted 10x: pH ${v("c2a")}, [OH-] ${v("c2b")}; at 1e-8 M: pH ${v("c2c")}; why: ${sel("c2d",{b:"water's H+ outweighs the acid's"})}`,
+ `3. Forward at start ${v("c3a")}; equilibrium? ${sel("c3b",{a:"yes"})}; after adding A: round 1 A = ${v("c3c")}; new eq A = ${v("c3d")}; B/A = ${v("c3e")}`,
+ `4. ${v("e4")}`];
+
+document.querySelectorAll("[data-save]").forEach(b=>b.onclick=()=>{const id=b.dataset.save,sv=SAVES[id];
+ if(sv.radio){if(!radio(sv.radio))return need(id,"Choose a prediction first.");ST[sv.radio]=radio(sv.radio)}
+ if(sv.text){if($(sv.text).value.trim().length<60)return need(id,"Write at least three sentences.");ST[sv.text]=$(sv.text).value}
+ markDone(id)});
+document.querySelectorAll("[data-check]").forEach(b=>b.onclick=()=>{const id=b.dataset.check;const ok=CHECKS[id]();if(ok)markDone(id);else save()});
+function summary(){const sel=(id,map)=>map[ST[id]]||ST[id]||"?",v=id=>ST[id]||"?";$("sum").textContent=SUMMARY(v,sel).join("\n")}
+$("copy").onclick=async()=>{try{await navigator.clipboard.writeText($("sum").textContent);$("copied").textContent="Copied. Paste it into the Exit Ticket box."}catch(e){$("copied").textContent="Copy did not work here. Select the text above and copy it."}};
+$("exitlink").href=EXIT_URL;
+$("reset").onclick=()=>{if(confirm("Clear all answers saved on this device?")){ST={};save();location.reload()}};
+Object.values(SAVES).forEach(sv=>{if(sv.radio&&ST[sv.radio]){const r=document.querySelector(`input[name="${sv.radio}"][value="${ST[sv.radio]}"]`);if(r)r.checked=true}});
+RESTORE.forEach(id=>{if(ST[id]!=null&&$(id))$(id).value=ST[id]});
+if(typeof INIT==="function")INIT();
+refresh();
+
+/* hand-in: an answer file for myCourseVille (no name or ID in it) */
+async function handin(){summary();const lab=parseInt((KEY.match(/lab(\d+)/)||[0,0])[1],10);
+ const core={course:"2182209",edition:"2027",lab,lab_key:KEY,saved:new Date().toISOString(),
+  steps_done:ORDER.filter(id=>ST["done_"+id]).length,steps_total:ORDER.length,
+  steps:Object.fromEntries(ORDER.map(id=>[id,!!ST["done_"+id]])),
+  expected_shown:Object.keys(ST).filter(k=>k.startsWith("tries_")&&ST[k]>=2).map(k=>k.slice(6)),
+  summary:$("sum").textContent,state:ST};
+ const data=JSON.stringify(core);let check="";
+ try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("2182209-lab-file-v1|"+data));check=[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){}
+ const file={lab,steps_done:core.steps_done,steps_total:core.steps_total,expected_shown:core.expected_shown.length,saved:core.saved,data,check};
+ const name=`2182209-lab${String(lab).padStart(2,"0")}-answers.json`,a=document.createElement("a");
+ a.href=URL.createObjectURL(new Blob([JSON.stringify(file,null,1)],{type:"application/json"}));a.download=name;document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+ $("dlNote").textContent=`Saved ${name}: ${core.steps_done} of ${core.steps_total} steps done. Upload it to Lab ${lab} in myCourseVille.`}
+$("dlJson").onclick=()=>{handin()};
+</script>
+</body>
+</html>

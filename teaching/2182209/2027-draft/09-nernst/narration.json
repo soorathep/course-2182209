@@ -1,0 +1,610 @@
+{
+ "voice": "en-US-GuyNeural",
+ "rate": "-5%",
+ "provider": "Microsoft Edge neural speech (edge-tts)",
+ "synthetic_voice": true,
+ "captions": "en",
+ "total_seconds": 656.3,
+ "slides": [
+  {
+   "n": 1,
+   "file": "audio/slide-01.mp3",
+   "duration": 28.92,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.563,
+     "en": "Welcome to Class 9: cell potentials and the Nernst equation."
+    },
+    {
+     "s": 4.563,
+     "e": 11.292,
+     "en": "In Class 7 we put the metals in an order. In Class 8 the Daniell cell gave about one point one volts."
+    },
+    {
+     "s": 11.292,
+     "e": 19.737,
+     "en": "Today we turn the order into numbers in volts, see what the voltage says about the reaction, and see how concentration moves it."
+    },
+    {
+     "s": 19.737,
+     "e": 28.855,
+     "en": "If you are studying on your own, the narration takes about eleven minutes. Stop at the activity and at each check, then do Lab 9."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "file": "audio/slide-02.mp3",
+   "duration": 30.456,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.682,
+     "en": "Here is the plan for today."
+    },
+    {
+     "s": 2.682,
+     "e": 6.039,
+     "en": "A five minute activity reviews Class 8."
+    },
+    {
+     "s": 6.039,
+     "e": 15.039,
+     "en": "Part one covers standard potentials, the hydrogen reference, the cell potential, and the Gibbs energy. It ends with Check 1."
+    },
+    {
+     "s": 15.039,
+     "e": 25.605,
+     "en": "Part two is the Nernst equation: how concentration moves a potential, the Daniell cell away from one molar, and potentials in the fab. It ends with Check 2."
+    },
+    {
+     "s": 25.605,
+     "e": 30.382,
+     "en": "Then you do Lab 9 for thirty minutes, and finish with the Exit Ticket."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "file": "audio/slide-03.mp3",
+   "duration": 28.656,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.671,
+     "en": "Activity 1. Answer four questions without notes, then compare with a partner."
+    },
+    {
+     "s": 6.671,
+     "e": 17.701,
+     "en": "Name the anode of the Daniell cell and its sign. Give the direction of the electrons in the wire. Say whether copper plating is galvanic or electrolytic."
+    },
+    {
+     "s": 17.701,
+     "e": 23.789,
+     "en": "And find the base ten logarithms of zero point zero one and zero point zero zero one."
+    },
+    {
+     "s": 23.789,
+     "e": 28.592,
+     "en": "Pause the narration now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "file": "audio/slide-04.mp3",
+   "duration": 32.928,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.945,
+     "en": "By the end of today you can read a table of standard reduction potentials, and say what the hydrogen reference means."
+    },
+    {
+     "s": 6.945,
+     "e": 14.539,
+     "en": "You can calculate the standard cell potential as the cathode value minus the anode value, and say whether a reaction goes."
+    },
+    {
+     "s": 14.539,
+     "e": 22.895,
+     "en": "You can calculate the standard Gibbs energy from the cell potential, and explain why the potential does not change when an equation is multiplied."
+    },
+    {
+     "s": 22.895,
+     "e": 27.868,
+     "en": "You can use the Nernst equation for copper at twenty five degrees Celsius."
+    },
+    {
+     "s": 27.868,
+     "e": 32.855,
+     "en": "And you can calculate the potential of a Daniell cell away from one molar."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "file": "audio/slide-05.mp3",
+   "duration": 29.952,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 3.432,
+     "en": "Today builds on three earlier classes."
+    },
+    {
+     "s": 3.432,
+     "e": 8.842,
+     "en": "The order of metals from Class 7 becomes a table of standard potentials in volts."
+    },
+    {
+     "s": 8.842,
+     "e": 14.118,
+     "en": "The one point one volts of the Daniell cell from Class 8 gets its explanation."
+    },
+    {
+     "s": 14.118,
+     "e": 19.671,
+     "en": "And the logarithms of concentration from the pH class return in the Nernst equation."
+    },
+    {
+     "s": 19.671,
+     "e": 29.882,
+     "en": "One new constant: F, the Faraday constant, about ninety six thousand five hundred coulombs per mole. It is the charge of one mole of electrons."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "file": "audio/slide-06.mp3",
+   "duration": 46.152,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.747,
+     "en": "A voltmeter measures a difference between two electrodes, never one electrode alone."
+    },
+    {
+     "s": 5.747,
+     "e": 15.763,
+     "en": "So we choose a reference: the standard hydrogen electrode, where hydrogen ions are reduced to hydrogen gas. Its potential is set to zero volts."
+    },
+    {
+     "s": 15.763,
+     "e": 26.487,
+     "en": "The standard reduction potential, E zero, is the potential of a half-reaction, written as a reduction, against this reference, at one molar, one bar, and twenty five degrees."
+    },
+    {
+     "s": 26.487,
+     "e": 41.697,
+     "en": "The higher the value, the more the ion wants electrons. Ag⁺ is at +0.80 V, Cu²⁺ at +0.34 V, Zn²⁺ at −0.76 V, and Al³⁺ at −1.66 V."
+    },
+    {
+     "s": 41.697,
+     "e": 46.079,
+     "en": "This is the order of metals from Class 7, upside down."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "file": "audio/slide-07.mp3",
+   "duration": 41.232,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 12.289,
+     "en": "Now pick two half-cells. The cell potential is the cathode potential minus the anode potential. And the standard Gibbs energy change is minus n F times the cell potential."
+    },
+    {
+     "s": 12.289,
+     "e": 22.842,
+     "en": "With Cu²⁺ as the cathode and Zn as the anode, E°cell = +1.10 V, and ΔG° = −212.3 kJ/mol."
+    },
+    {
+     "s": 22.842,
+     "e": 29.132,
+     "en": "A positive cell potential means a negative Gibbs energy change, and the reaction goes on its own."
+    },
+    {
+     "s": 29.132,
+     "e": 41.158,
+     "en": "Swap them: make Zn²⁺ the cathode and Cu the anode. Now E°cell is negative, and the reaction does not go as written. The reverse reaction does."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "file": "audio/slide-08.mp3",
+   "duration": 31.32,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 7.089,
+     "en": "For the Daniell cell: zero point three four minus minus zero point seven six gives one point one zero volts."
+    },
+    {
+     "s": 7.089,
+     "e": 15.685,
+     "en": "Two electrons move per mole of reaction, so the Gibbs energy change is minus two times ninety six thousand four hundred eighty five times one point one zero,"
+    },
+    {
+     "s": 15.685,
+     "e": 19.276,
+     "en": "which is minus two hundred twelve point three kilojoules per mole."
+    },
+    {
+     "s": 19.276,
+     "e": 31.25,
+     "en": "n F is the charge carried per mole of reaction. Times the voltage, it is the most electrical work the cell can give. The Faraday constant returns in Class 10."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "file": "audio/slide-09.mp3",
+   "duration": 24.552,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.882,
+     "en": "Check 1. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.882,
+     "e": 16.529,
+     "en": "Explain why we need the hydrogen reference. Find the cell potential for iron with copper ions. Decide what a negative cell potential means."
+    },
+    {
+     "s": 16.529,
+     "e": 20.408,
+     "en": "And calculate the Gibbs energy of the Daniell cell."
+    },
+    {
+     "s": 20.408,
+     "e": 24.487,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "file": "audio/slide-10.mp3",
+   "duration": 48.912,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 11.605,
+     "en": "In part two, we leave one molar. The Nernst equation says: E equals E zero minus zero point zero five nine two over n, times the log of Q, at twenty five degrees."
+    },
+    {
+     "s": 11.605,
+     "e": 24.789,
+     "en": "For Cu²⁺ + 2e⁻ → Cu, Q = 1/[Cu²⁺]. So E = 0.34 + 0.0296 log₁₀[Cu²⁺]."
+    },
+    {
+     "s": 24.789,
+     "e": 36.702,
+     "en": "The zero point zero five nine two volts is two point three zero three R T over F at twenty five degrees. And Q has the same form as the equilibrium expression from Class 5."
+    },
+    {
+     "s": 36.702,
+     "e": 40.145,
+     "en": "A pure solid such as copper does not appear in it."
+    },
+    {
+     "s": 40.145,
+     "e": 48.855,
+     "en": "Less Cu²⁺ means less drive to take electrons, so the potential falls: by 0.0296 V for each tenfold drop."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "file": "audio/slide-11.mp3",
+   "duration": 29.904,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 8.763,
+     "en": "Move the slider to dilute the copper ions. On a log scale, the line is straight: the same step for each tenfold change."
+    },
+    {
+     "s": 8.763,
+     "e": 17.671,
+     "en": "From 1 M to 0.01 M, the potential falls by 0.0592 V, to 0.2808 V."
+    },
+    {
+     "s": 17.671,
+     "e": 29.829,
+     "en": "These changes are tens of millivolts, much smaller than the one point one volts between zinc and copper. Concentration fine-tunes a potential. The choice of metal sets it."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "file": "audio/slide-12.mp3",
+   "duration": 30.816,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 12.026,
+     "en": "Now the whole Daniell cell. The cell potential is one point one zero, minus zero point zero two nine six times the log of the zinc ion concentration over the copper ion concentration."
+    },
+    {
+     "s": 12.026,
+     "e": 18.447,
+     "en": "As the cell runs, copper ions are used up and zinc ions build up, so the voltage drifts down."
+    },
+    {
+     "s": 18.447,
+     "e": 25.829,
+     "en": "With 1 M Zn²⁺ and 0.010 M Cu²⁺, the cell gives 1.041 V."
+    },
+    {
+     "s": 25.829,
+     "e": 30.75,
+     "en": "Only the ratio matters here, because both ions take two electrons."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "file": "audio/slide-13.mp3",
+   "duration": 42.936,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.747,
+     "en": "Here is a common mistake: multiply the half-reaction, and multiply the potential."
+    },
+    {
+     "s": 5.747,
+     "e": 15.671,
+     "en": "For 2 Al + 3 Cu²⁺, some students write 3(0.34) − 2(−1.66). That is wrong."
+    },
+    {
+     "s": 15.671,
+     "e": 22.328,
+     "en": "The potential is energy per unit charge, so it does not depend on how many times the equation is written."
+    },
+    {
+     "s": 22.328,
+     "e": 29.237,
+     "en": "The cell potential is zero point three four minus minus one point six six, which is two point zero zero volts."
+    },
+    {
+     "s": 29.237,
+     "e": 37.944,
+     "en": "What does scale is the Gibbs energy: with six electrons, it is about minus one thousand one hundred fifty eight kilojoules per mole of reaction."
+    },
+    {
+     "s": 37.944,
+     "e": 42.868,
+     "en": "Like temperature, two cups of water at eighty degrees are still at eighty degrees."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "file": "audio/slide-14.mp3",
+   "duration": 44.736,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 4.142,
+     "en": "Potentials decide the outcome in three places in the fab."
+    },
+    {
+     "s": 4.142,
+     "e": 10.669,
+     "en": "In copper electroplating, copper deposits only when the wafer is held below the copper potential."
+    },
+    {
+     "s": 10.669,
+     "e": 17.395,
+     "en": "As the bath loses copper ions, that potential falls, so the bath concentration is kept under control."
+    },
+    {
+     "s": 17.395,
+     "e": 23.626,
+     "en": "When two metals touch in a liquid, the one with the lower potential becomes the anode and corrodes."
+    },
+    {
+     "s": 23.626,
+     "e": 29.671,
+     "en": "This is galvanic corrosion, a risk when copper touches another metal during polishing or rinsing."
+    },
+    {
+     "s": 29.671,
+     "e": 39.63,
+     "en": "And in dilute hydrofluoric acid, copper ions at parts per billion take electrons from bare silicon and plate out as copper metal: the contamination of Class 6."
+    },
+    {
+     "s": 39.63,
+     "e": 44.671,
+     "en": "That is one reason copper is kept out of the wet benches that clean bare silicon."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "file": "audio/slide-15.mp3",
+   "duration": 25.56,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.921,
+     "en": "Check 2. Answer these four questions on your own, in about five minutes."
+    },
+    {
+     "s": 5.921,
+     "e": 17.078,
+     "en": "Find the copper potential at zero point zero one molar. Find the change for a hundredfold drop. Find the Daniell cell potential away from one molar."
+    },
+    {
+     "s": 17.078,
+     "e": 21.421,
+     "en": "And find the cell potential for aluminum with copper ions."
+    },
+    {
+     "s": 21.421,
+     "e": 25.5,
+     "en": "Pause now, write your answers, and then press Show answers."
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "file": "audio/slide-16.mp3",
+   "duration": 25.08,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.25,
+     "en": "Today gave us volts. Next we turn them into amounts."
+    },
+    {
+     "s": 5.25,
+     "e": 14.099,
+     "en": "In Class 10, the Faraday constant turns electrons into charge, and gives the mass of copper deposited and the energy in watt hours."
+    },
+    {
+     "s": 14.099,
+     "e": 25.026,
+     "en": "Class 12 adds the extra voltage needed to make a reaction run at a useful rate. And Class 13 adds pH to the Nernst equation, to map copper and its oxides in water."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "file": "audio/slide-17.mp3",
+   "duration": 30.768,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.934,
+     "en": "Now it is time for Lab 9. Scan the code or open the lab page."
+    },
+    {
+     "s": 5.934,
+     "e": 15.158,
+     "en": "You will predict what dilution does to the copper potential, calculate it at zero point zero one molar, and then change the concentration over three decades."
+    },
+    {
+     "s": 15.158,
+     "e": 24.763,
+     "en": "Then you calculate the cell potential and Gibbs energy of the Daniell cell, the cell potential for aluminum with copper ions, and the Daniell cell away from one molar."
+    },
+    {
+     "s": 24.763,
+     "e": 30.711,
+     "en": "The lab takes about thirty minutes. Pause the narration now and work through it."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "file": "audio/slide-18.mp3",
+   "duration": 34.944,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 2.695,
+     "en": "Here is a summary of today."
+    },
+    {
+     "s": 2.695,
+     "e": 7.803,
+     "en": "Potentials are measured against the standard hydrogen electrode at zero volts."
+    },
+    {
+     "s": 7.803,
+     "e": 17.671,
+     "en": "The cell potential is the cathode value minus the anode value. A positive cell potential means a negative Gibbs energy, and the reaction goes."
+    },
+    {
+     "s": 17.671,
+     "e": 22.368,
+     "en": "The Gibbs energy scales with the equation, but the potential does not."
+    },
+    {
+     "s": 22.368,
+     "e": 30.039,
+     "en": "The Nernst equation gives zero point zero five nine two over n volts for each tenfold change in Q, at twenty five degrees."
+    },
+    {
+     "s": 30.039,
+     "e": 34.882,
+     "en": "And concentration fine-tunes a potential, while the choice of metal sets it."
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "file": "audio/slide-19.mp3",
+   "duration": 23.832,
+   "hold": false,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 5.484,
+     "en": "Before the next class, finish Lab 9 and upload your answer file to myCourseVille."
+    },
+    {
+     "s": 5.484,
+     "e": 15.776,
+     "en": "Read OpenStax Chemistry two e, section seventeen point three on electrode and cell potentials, and section seventeen point four on potential, free energy and equilibrium."
+    },
+    {
+     "s": 15.776,
+     "e": 23.776,
+     "en": "Class 10 is about Faraday's law and battery capacity: how much copper a current deposits, and what amp hours and watt hours mean."
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "file": "audio/slide-20.mp3",
+   "duration": 24.624,
+   "hold": true,
+   "cues": [
+    {
+     "s": 0.1,
+     "e": 6.947,
+     "en": "To finish, open the Exit Ticket and feedback form. Scan the code and choose Class 9."
+    },
+    {
+     "s": 6.947,
+     "e": 15.737,
+     "en": "Paste the answers that the lab page copied for you, and tell us about the pace, your confidence, how far you got in the lab, and what is still unclear."
+    },
+    {
+     "s": 15.737,
+     "e": 24.553,
+     "en": "If you studied on your own, choose On my own. The form is anonymous. Thank you, and see you in Class 10."
+    }
+   ]
+  }
+ ]
+}

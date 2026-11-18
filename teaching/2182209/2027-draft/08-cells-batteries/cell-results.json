@@ -1,0 +1,262 @@
+{
+ "meta": {
+  "numpy": "2.2.5",
+  "scipy": "1.14.1",
+  "python": "3.13.18"
+ },
+ "lecture": {
+  "cells": {
+   "daniell": {
+    "name": "Daniell cell",
+    "neg": "Zn",
+    "pos": "Cu",
+    "electrolyte": "salt bridge (KNO3)",
+    "neg_rx": [
+     "Zn \u2192 Zn2+ + 2e\u2212",
+     2
+    ],
+    "pos_rx": [
+     "Cu2+ + 2e\u2212 \u2192 Cu",
+     2
+    ],
+    "cation": "K+",
+    "anion": "NO3\u2212",
+    "rechargeable": false
+   },
+   "liion": {
+    "name": "Li-ion",
+    "neg": "graphite",
+    "pos": "LiCoO2",
+    "electrolyte": "Li+ in an organic solvent",
+    "neg_rx": [
+     "LiC6 \u2192 C6 + Li+ + e\u2212",
+     1
+    ],
+    "pos_rx": [
+     "CoO2 + Li+ + e\u2212 \u2192 LiCoO2",
+     1
+    ],
+    "cation": "Li+",
+    "anion": "PF6\u2212",
+    "rechargeable": true
+   },
+   "znair": {
+    "name": "zinc-air",
+    "neg": "Zn",
+    "pos": "air electrode",
+    "electrolyte": "KOH(aq)",
+    "neg_rx": [
+     "Zn + 2OH\u2212 \u2192 ZnO + H2O + 2e\u2212",
+     2
+    ],
+    "pos_rx": [
+     "O2 + 2H2O + 4e\u2212 \u2192 4OH\u2212",
+     4
+    ],
+    "cation": "K+",
+    "anion": "OH\u2212",
+    "rechargeable": false
+   }
+  },
+  "paths": {
+   "daniell_discharge": {
+    "cell": "daniell",
+    "mode": "discharge",
+    "anode": "Zn",
+    "cathode": "Cu",
+    "anode_sign": "negative",
+    "e_from": "Zn",
+    "e_to": "Cu",
+    "cation_to": "Cu",
+    "anion_to": "Zn",
+    "supply": false
+   },
+   "liion_discharge": {
+    "cell": "liion",
+    "mode": "discharge",
+    "anode": "graphite",
+    "cathode": "LiCoO2",
+    "anode_sign": "negative",
+    "e_from": "graphite",
+    "e_to": "LiCoO2",
+    "cation_to": "LiCoO2",
+    "anion_to": "graphite",
+    "supply": false
+   },
+   "liion_charge": {
+    "cell": "liion",
+    "mode": "charge",
+    "anode": "LiCoO2",
+    "cathode": "graphite",
+    "anode_sign": "positive",
+    "e_from": "LiCoO2",
+    "e_to": "graphite",
+    "cation_to": "graphite",
+    "anion_to": "LiCoO2",
+    "supply": true
+   },
+   "znair_discharge": {
+    "cell": "znair",
+    "mode": "discharge",
+    "anode": "Zn",
+    "cathode": "air electrode",
+    "anode_sign": "negative",
+    "e_from": "Zn",
+    "e_to": "air electrode",
+    "cation_to": "air electrode",
+    "anion_to": "Zn",
+    "supply": false
+   }
+  },
+  "bridge": {
+   "e_mol": 0.02,
+   "zn2_added": 0.01,
+   "cu2_removed": 0.01,
+   "anion_to_zn": 0.02,
+   "cation_to_cu": 0.02
+  },
+  "co": {
+   "CoO2": 4,
+   "LiCoO2": 3
+  },
+  "znair": {
+   "zn": 2,
+   "o2": 1,
+   "e": 4
+  },
+  "zn_table": [
+   {
+    "m_zn": 0.5,
+    "n_zn": 0.0076475986540226375,
+    "m_o2": 0.12235393086570819,
+    "m_zno": 0.6223539308657081,
+    "e_mol": 0.015295197308045275
+   },
+   {
+    "m_zn": 1.0,
+    "n_zn": 0.015295197308045275,
+    "m_o2": 0.24470786173141637,
+    "m_zno": 1.2447078617314162,
+    "e_mol": 0.03059039461609055
+   },
+   {
+    "m_zn": 1.5,
+    "n_zn": 0.022942795962067913,
+    "m_o2": 0.36706179259712457,
+    "m_zno": 1.8670617925971245,
+    "e_mol": 0.04588559192413583
+   },
+   {
+    "m_zn": 2.0,
+    "n_zn": 0.03059039461609055,
+    "m_o2": 0.48941572346283274,
+    "m_zno": 2.4894157234628325,
+    "e_mol": 0.0611807892321811
+   },
+   {
+    "m_zn": 2.5,
+    "n_zn": 0.03823799327011319,
+    "m_o2": 0.6117696543285409,
+    "m_zno": 3.1117696543285405,
+    "e_mol": 0.07647598654022637
+   },
+   {
+    "m_zn": 3.0,
+    "n_zn": 0.04588559192413583,
+    "m_o2": 0.7341235851942491,
+    "m_zno": 3.734123585194249,
+    "e_mol": 0.09177118384827165
+   },
+   {
+    "m_zn": 3.5,
+    "n_zn": 0.05353319057815846,
+    "m_o2": 0.8564775160599573,
+    "m_zno": 4.3564775160599565,
+    "e_mol": 0.10706638115631692
+   },
+   {
+    "m_zn": 4.0,
+    "n_zn": 0.0611807892321811,
+    "m_o2": 0.9788314469256655,
+    "m_zno": 4.978831446925665,
+    "e_mol": 0.1223615784643622
+   },
+   {
+    "m_zn": 4.5,
+    "n_zn": 0.06882838788620374,
+    "m_o2": 1.1011853777913736,
+    "m_zno": 5.601185377791373,
+    "e_mol": 0.13765677577240748
+   },
+   {
+    "m_zn": 5.0,
+    "n_zn": 0.07647598654022637,
+    "m_o2": 1.2235393086570818,
+    "m_zno": 6.223539308657081,
+    "e_mol": 0.15295197308045275
+   }
+  ],
+  "molar": {
+   "Zn": 65.38,
+   "O": 15.999,
+   "Cu": 63.546,
+   "O2": 31.998,
+   "ZnO": 81.37899999999999
+  },
+  "e_daniell_preview": 1.1
+ },
+ "lab": {
+  "daniell": {
+   "cell": "daniell",
+   "mode": "discharge",
+   "anode": "Zn",
+   "cathode": "Cu",
+   "anode_sign": "negative",
+   "e_from": "Zn",
+   "e_to": "Cu",
+   "cation_to": "Cu",
+   "anion_to": "Zn",
+   "supply": false
+  },
+  "li_dis": {
+   "cell": "liion",
+   "mode": "discharge",
+   "anode": "graphite",
+   "cathode": "LiCoO2",
+   "anode_sign": "negative",
+   "e_from": "graphite",
+   "e_to": "LiCoO2",
+   "cation_to": "LiCoO2",
+   "anion_to": "graphite",
+   "supply": false
+  },
+  "li_chg": {
+   "cell": "liion",
+   "mode": "charge",
+   "anode": "LiCoO2",
+   "cathode": "graphite",
+   "anode_sign": "positive",
+   "e_from": "LiCoO2",
+   "e_to": "graphite",
+   "cation_to": "graphite",
+   "anion_to": "LiCoO2",
+   "supply": true
+  },
+  "co": {
+   "CoO2": 4,
+   "LiCoO2": 3
+  },
+  "znair": {
+   "zn": 2,
+   "o2": 1,
+   "e": 4
+  },
+  "zn1": {
+   "m_zn": 1.0,
+   "n_zn": 0.015295197308045275,
+   "m_o2": 0.24470786173141637,
+   "m_zno": 1.2447078617314162,
+   "e_mol": 0.03059039461609055
+  }
+ }
+}

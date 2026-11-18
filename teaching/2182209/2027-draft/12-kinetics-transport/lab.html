@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lab 12 · Overpotential and the limiting current · 2182209</title>
+<style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--graphite:#333F4A;--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--sand:#DFC98F;--ok:#0F6E6B;--bad:#BE654C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Helvetica Neue",Helvetica,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:18px 16px 80px}
+header h1{color:var(--teal);font-size:30px;margin:4px 0 2px}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+.sub{color:var(--slate);font-size:15px}
+.prog{position:sticky;top:0;background:var(--paper);padding:10px 0;z-index:3}
+.bar{height:8px;background:#e2ddd4;border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.prog span{font-size:13px;color:var(--slate)}
+.card{background:#fff;border-radius:14px;padding:18px 18px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:21px;margin:0 0 4px;color:var(--teal)}
+.card h3{font-size:17px;margin:16px 0 6px}
+.step{border-left:4px solid var(--mist);padding:2px 0 2px 14px;margin:14px 0}
+.step.done{border-color:var(--teal)}.step.locked{opacity:.45;pointer-events:none}
+.step.locked .chart,.step.locked .kpi,.step.locked .chk,.step.locked input[type=range],.step.locked .row{display:none}
+.step.locked::after{content:"Finish the step above to open this one.";display:block;font-size:13px;color:var(--slate)}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;border-radius:6px;padding:2px 8px;margin-right:6px;color:#fff;background:var(--slate)}
+.tag.p{background:var(--amber)}.tag.r{background:var(--teal)}.tag.c{background:var(--graphite)}.tag.e{background:var(--rust)}
+textarea,input[type=text],select{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--mist);border-radius:8px;padding:8px 10px;background:#fff}
+textarea{min-height:70px}
+button{font:inherit;font-size:15px;padding:8px 14px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer;margin:8px 8px 0 0}
+button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row label{flex:1 1 240px}
+.chk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.chk input{width:150px}
+.fb{font-size:15px}.fb.ok{color:var(--ok);font-weight:700}.fb.bad{color:var(--bad)}
+.choices label{display:block;margin:4px 0}
+.kpi{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}.kpi div{background:var(--paper);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--slate)}.kpi b{display:block;font-size:20px;color:var(--ink)}
+.chart{background:var(--paper);border-radius:12px;padding:6px;margin:8px 0}
+svg{width:100%;height:auto;display:block}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.note{font-size:14px;color:var(--slate)}
+.hidden{display:none}
+pre.sum{white-space:pre-wrap;background:var(--paper);border-radius:10px;padding:12px;font-size:14px}
+a{color:var(--teal)}
+</style>
+<style>
+.step.locked > *:not(.tag){display:none}
+table.tb{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.tb th{background:var(--paper);text-align:left;padding:5px 8px;border-bottom:2px solid var(--mist)}
+table.tb td{padding:5px 8px;border-bottom:1px solid #e6e3dd}
+table.tb td.n,table.tb th.n{text-align:right;font-variant-numeric:tabular-nums}
+ol.rl{margin:4px 0 0;padding-left:22px;font-size:15px}
+.lights{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.light{border-radius:999px;padding:3px 10px;font-size:14px;font-weight:700}
+.light.ok{background:#e3f0ef;color:var(--teal)}.light.bad{background:#f6e3de;color:var(--rust)}
+.code{background:#1f262d;color:#e8eef2;border-radius:10px;padding:10px 8px;font-family:Menlo,Consolas,monospace;font-size:13.5px;overflow-x:auto}
+.ln{display:flex;align-items:center;gap:8px;padding:3px 4px;border-radius:6px;white-space:pre}
+.ln.fixed{background:#24433f}
+.ln .no{color:#8a96a0;width:18px;text-align:right}
+.ln .tx{flex:1}
+.ln .okk{width:38px;color:#9fd6c9;font-size:12px;font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700}
+button.sm{width:38px;font-size:12px;padding:2px 9px;margin:0;background:transparent;color:#9fd6c9;border:1px solid #9fd6c9}
+.ctrlrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0;font-size:15px;color:var(--slate)}
+.ctrlrow input[type=range]{flex:1;min-width:160px;accent-color:var(--teal)}
+.wide{overflow-x:auto}.wide table.tb{font-size:12px}.wide table.tb td,.wide table.tb th{padding:3px 4px}
+@media (max-width:600px){table.tb{display:block;overflow-x:auto;font-size:13px}}
+button.ghost.on{background:var(--teal);color:#fff}
+</style>
+
+</head>
+<body><main>
+<header><div class="kicker">2182209 · Class 12 · Lab</div><h1>Overpotential and the limiting current</h1>
+<div class="sub">About 30 minutes. Works in class or on your own, on a laptop or a phone. Nothing to install; a calculator helps.</div></header>
+<div class="prog"><div class="bar"><i id="pbar"></i></div><span id="ptext"></span></div>
+<section class="card"><h2>How this lab works</h2>
+<p>You calculate how fast a reduction runs at a given overpotential, see how a slow electrode changes that, and then add a limit set by mass transport. Write each prediction before you look; the next step stays locked until you do. After two tries the expected value is shown.</p>
+<p class="note"><b>What runs where.</b> The expected values come from <a href="kinetics_lab.py">kinetics_lab.py</a>, computed in advance. The sliders use the same equations in JavaScript. No Python is installed or run on your device. To run the Python yourself, open the slides and press D, or run kinetics_lab.py in desktop Python.</p>
+<p class="note">Cathodic currents are negative. Studying on your own? Watch the narrated slides for Class 12 first.</p></section>
+<section class="card" id="data"><h2>Model and data (25 °C)</h2>
+<table class="tb"><tr><th>Quantity</th><th class="n">Value</th></tr>
+<tr><td>Exchange current density j<sub>0</sub></td><td class="n">1.00 mA/cm²</td></tr><tr><td>Transfer coefficient α; electrons n</td><td class="n">0.5; 1</td></tr>
+<tr><td>f = F/RT</td><td class="n">38.92 V<sup>−1</sup></td></tr><tr><td>Limiting current density j<sub>lim</sub></td><td class="n">2 or 6 mA/cm²</td></tr></table>
+<p class="note">Butler-Volmer: j = j<sub>0</sub>[e<sup>αfη</sup> − e<sup>−αfη</sup>]. With transport: 1/|j| = 1/|j<sub>k</sub>| + 1/j<sub>lim</sub>, where j<sub>k</sub> is the Butler-Volmer current.</p></section>
+<section class="card" id="t1"><h2>Task 1 · Current from overpotential</h2>
+<div class="step" data-step="1a"><span class="tag p">PREDICT</span>η changes from −0.050 V to −0.100 V. The cathodic current
+ <div class="choices"><label><input type="radio" name="p1" value="less"> less than doubles</label><label><input type="radio" name="p1" value="double"> doubles</label><label><input type="radio" name="p1" value="more"> more than doubles</label></div>
+ <button data-save="1a">Save prediction</button></div>
+<div class="step" data-step="1b"><span class="tag r">RECOMPUTE</span>Use Butler-Volmer with j<sub>0</sub> = 1.00 mA/cm².
+ <div class="chk"><span>j at η = −0.050 V, mA/cm²</span><input type="text" id="c1a" inputmode="decimal"><span class="fb" id="f1a"></span></div>
+ <button data-check="1b">Check</button></div>
+</section>
+<section class="card" id="t2"><h2>Task 2 · Change the overpotential, then the electrode</h2>
+<div class="step" data-step="2a"><span class="tag r">CHANGE ONE CONDITION</span>Move η and watch j.
+ <div class="ctrlrow"><span>η, V</span><input type="range" id="sE" min="-0.25" max="0" step="0.01" value="-0.05"><b id="sEv"></b></div>
+ <div class="kpi"><div>j, mA/cm² (j<sub>0</sub> = 1.00)<b id="kj"></b></div></div>
+ <div class="chk"><span>j at η = −0.100 V, mA/cm²</span><input type="text" id="c2a" inputmode="decimal"><span class="fb" id="f2a"></span></div>
+ <button data-check="2a">Check</button></div>
+<div class="step" data-step="2b"><span class="tag c">CHECK</span>A slower electrode has j<sub>0</sub> = 0.10 mA/cm². It must give the same current as in Task 1.
+ <div class="chk"><span>η needed, V</span><input type="text" id="c2b" inputmode="decimal"><span class="fb" id="f2b"></span></div>
+ <button data-check="2b">Check</button></div>
+</section>
+<section class="card" id="t3"><h2>Task 3 · Add a transport limit</h2>
+<div class="step" data-step="3a"><span class="tag r">RECOMPUTE</span>j<sub>lim</sub> = 2 mA/cm².
+ <div class="ctrlrow"><span>η, V</span><input type="range" id="sP" min="-0.25" max="-0.01" step="0.01" value="-0.20"><b id="sPv"></b></div>
+ <div class="kpi"><div>|j|, j<sub>lim</sub> = 2<b id="k2"></b></div><div>|j|, j<sub>lim</sub> = 6<b id="k6"></b></div></div>
+ <div class="chk"><span>|j| at −0.20 V, mA/cm²</span><input type="text" id="c3a" inputmode="decimal"><span class="fb" id="f3a"></span></div>
+ <div class="chk"><span>|j| at −0.25 V, mA/cm²</span><input type="text" id="c3b" inputmode="decimal"><span class="fb" id="f3b"></span></div>
+ <div class="chk"><span>Rise from −0.20 to −0.25 V, %</span><input type="text" id="c3c" inputmode="decimal"><span class="fb" id="f3c"></span></div>
+ <button data-check="3a">Check</button></div>
+<div class="step" data-step="3b"><span class="tag r">CHANGE ONE CONDITION</span>Now stir the bath so that j<sub>lim</sub> = 6 mA/cm², at η = −0.25 V.
+ <div class="chk"><span>|j|, mA/cm²</span><input type="text" id="c3d" inputmode="decimal"><span class="fb" id="f3d"></span></div>
+ <div class="chk"><span>Near j<sub>lim</sub>, the better way to raise the current is</span><select id="c3e"><option value="">choose</option><option value="eta">more overpotential</option><option value="jlim">better transport (higher j_lim)</option></select><span class="fb" id="f3e"></span></div>
+ <div class="chk"><span>Extra voltage near j<sub>lim</sub> mostly goes to</span><select id="c3f"><option value="">choose</option><option value="side">side reactions such as H2</option><option value="cu">plating more Cu</option></select><span class="fb" id="f3f"></span></div>
+ <button data-check="3b">Check</button></div>
+</section>
+<section class="card" id="t4"><h2>Task 4 · Explain</h2>
+<div class="step" data-step="4a"><span class="tag e">EXPLAIN</span>Explain to a classmate why doubling η more than doubles j when kinetics limits, but adds only a few percent near the limiting current, and what you would change in a plating bath. Use numbers from this lab.
+ <textarea id="e5"></textarea><button data-save="4a">Save</button></div>
+</section>
+<section class="card" id="fin"><h2>Finish: Exit Ticket and feedback</h2>
+<div class="step" data-step="fin"><p>Copy your answers, open the Exit Ticket, choose <b>Class 12</b>, paste them in the Exit Ticket box, and answer the feedback questions. Choose "On my own" if you did this lab outside class.</p>
+<pre class="sum" id="sum"></pre>
+<button id="copy">Copy my answers</button><a id="exitlink" target="_blank" rel="noopener"><button class="ghost" type="button">Open Exit Ticket and feedback</button></a>
+<p class="note" id="copied"></p>
+<p class="note">Want the code? <a href="kinetics_lab.py">kinetics_lab.py</a> computes every value on this page; it runs in desktop Python, or open the slides and press D on any slide marked "D · Python".</p></div>
+<button class="ghost" id="reset">Clear my answers on this device</button>
+</section>
+<section class="card" id="handin"><h2>Hand in: your answer file for myCourseVille</h2>
+<p>Download your answers as a file and upload it to this lab's assignment in myCourseVille. You can download at any point, and again after more steps; upload the latest file. The file records the steps you finished, your answers, and the checks where the expected value was shown after two tries. It holds no name or student ID: myCourseVille records who uploaded it.</p>
+<button id="dlJson" type="button">Download my answer file (.json)</button>
+<p class="note" id="dlNote"></p></section>
+</main>
+<script>
+const R = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"f":38.92174449560911,"alpha":0.5,"tafel_mV":118.31869937144302,"eta":[-0.25,-0.24,-0.23,-0.22,-0.21,-0.2,-0.19,-0.18,-0.17,-0.16,-0.15,-0.14,-0.13,-0.12,-0.11,-0.1,-0.09,-0.08,-0.07,-0.06,-0.05,-0.04,-0.03,-0.02,-0.01,0.0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.15,0.16,0.17,0.18,0.19,0.2,0.21,0.22,0.23,0.24,0.25],"bv":{"0.1":[-12.96915,-10.67534,-8.78711,-7.23272,-5.95312,-4.8997,-4.03242,-3.31834,-2.73034,-2.24606,-1.84712,-1.51835,-1.24728,-1.02358,-0.83878,-0.68584,-0.55896,-0.45332,-0.36489,-0.29033,-0.22681,-0.17189,-0.12351,-0.07982,-0.03917,0.0,0.03917,0.07982,0.12351,0.17189,0.22681,0.29033,0.36489,0.45332,0.55896,0.68584,0.83878,1.02358,1.24728,1.51835,1.84712,2.24606,2.73034,3.31834,4.03242,4.8997,5.95312,7.23272,8.78711,10.67534,12.96915],"1.0":[-129.69151,-106.75341,-87.87111,-72.32724,-59.53123,-48.99696,-40.32418,-33.18341,-27.30335,-22.46061,-18.4712,-15.18355,-12.47275,-10.23583,-8.38778,-6.85841,-5.5896,-4.53315,-3.64893,-2.90334,-2.26805,-1.71894,-1.23513,-0.79824,-0.39168,0.0,0.39168,0.79824,1.23513,1.71894,2.26805,2.90334,3.64893,4.53315,5.5896,6.85841,8.38778,10.23583,12.47275,15.18355,18.4712,22.46061,27.30335,33.18341,40.32418,48.99696,59.53123,72.32724,87.87111,106.75341,129.69151],"10.0":[-1296.91508,-1067.53411,-878.71114,-723.27238,-595.31234,-489.96956,-403.24181,-331.83411,-273.03354,-224.60612,-184.71198,-151.83547,-124.72753,-102.35826,-83.87782,-68.58408,-55.896,-45.33154,-36.48932,-29.03341,-22.68055,-17.18937,-12.35125,-7.98239,-3.91679,0.0,3.91679,7.98239,12.35125,17.18937,22.68055,29.03341,36.48932,45.33154,55.896,68.58408,83.87782,102.35826,124.72753,151.83547,184.71198,224.60612,273.03354,331.83411,403.24181,489.96956,595.31234,723.27238,878.71114,1067.53411,1296.91508]},"pol":{"2":[-1.96963,-1.96322,-1.95549,-1.94618,-1.93499,-1.92156,-1.90549,-1.88631,-1.8635,-1.83647,-1.8046,-1.76722,-1.72362,-1.67309,-1.61493,-1.54845,-1.47296,-1.38774,-1.2919,-1.18423,-1.0628,-0.92442,-0.76357,-0.57053,-0.32753,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"6":[-5.73469,-5.68072,-5.6165,-5.54039,-5.45064,-5.34542,-5.22287,-5.08124,-4.91903,-4.73509,-4.52888,-4.30057,-4.05118,-3.78268,-3.49788,-3.20028,-2.89377,-2.58222,-2.26902,-1.95657,-1.64589,-1.33615,-1.02427,-0.70451,-0.36768,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"kin":[129.69151,106.75341,87.87111,72.32724,59.53123,48.99696,40.32418,33.18341,27.30335,22.46061,18.4712,15.18355,12.47275,10.23583,8.38778,6.85841,5.5896,4.53315,3.64893,2.90334,2.26805,1.71894,1.23513,0.79824,0.39168,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"jlim_cu":27.0158929936},"lab":{"j_m050":-2.268054560276795,"j_m100":-6.85840779126327,"ratio":3.023916580924872,"eta_slow":-0.1604987606170763,"jl2_m020":-1.9215639452142765,"jl2_m025":-1.969625983744738,"jl6_m025":-5.734692313679587,"gain_eta_pct":2.5011938140368395,"gain_jlim_pct":191.15641045598628,"f":38.92174449560911,"alpha":0.5,"j0":1.0}};
+const EXIT_URL = "https://soorathep.github.io/course-2182209/teaching/2182209/2027-draft/exit.html?s=12";
+const KEY="lab12-2027-v1";
+const ORDER=["1a", "1b", "2a", "2b", "3a", "3b", "4a"];
+const SAVES={"1a": {"radio": "p1"}, "4a": {"text": "e5"}};
+const RESTORE=["e5", "c1a", "c2a", "c2b", "c3a", "c3b", "c3c", "c3d", "c3e", "c3f"];
+
+const $=id=>document.getElementById(id);
+const fmt=(x,d=0)=>x==null||!isFinite(x)?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+let ST={};
+try{ST=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){ST={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}};
+const L=R.lab;
+function refresh(){let open=true;ORDER.forEach(id=>{const el=document.querySelector(`[data-step="${id}"]`),done=!!ST["done_"+id];el.classList.toggle("done",done);el.classList.toggle("locked",!done&&!open);if(!done&&open)open=false});
+ document.querySelector('[data-step="fin"]').classList.toggle("locked",!ORDER.every(id=>ST["done_"+id]));
+ const n=ORDER.filter(id=>ST["done_"+id]).length;$("pbar").style.width=(100*n/ORDER.length)+"%";$("ptext").textContent=`${n} of ${ORDER.length} steps done`;summary();save()}
+function need(id,msg){const st=document.querySelector(`[data-step="${id}"]`);let f=st.querySelector(".need");if(!f){f=document.createElement("div");f.className="fb bad need";st.appendChild(f)}f.textContent=msg;return false}
+function markDone(id){const nd=document.querySelector(`[data-step="${id}"] .need`);if(nd)nd.textContent="";ST["done_"+id]=true;refresh()}
+const radio=n=>{const r=document.querySelector(`input[name="${n}"]:checked`);return r?r.value:""};
+/* accepts 1.2e22, 1.2E22, 1.2×10^22, 1.2x10^22, 1.2*10^22, a leading + and a trailing % */
+const num=s=>{let t=String(s).trim().replace(/,/g,"").replace(/−/g,"-").replace(/\s/g,"").replace(/%$/,"");const m=t.match(/^([-+]?[\d.]+)(?:[x×*]10\^?([-+]?\d+))$/i);if(m)return parseFloat(m[1])*10**parseInt(m[2],10);return parseFloat(t)};
+function verdict(input,fb,ok,expected){ST["tries_"+input]=(ST["tries_"+input]||0)+(ok?0:1);const f=$(fb);f.className="fb "+(ok?"ok":"bad");
+ f.textContent=ok?"Correct":(ST["tries_"+input]>=2?`Not yet. Expected: ${expected}.`:"Not yet. Look again.");return ok||ST["tries_"+input]>=2}
+function checkNum(input,fb,target,rel,abs,shown){const v=num($(input).value);ST[input]=$(input).value;return verdict(input,fb,isFinite(v)&&Math.abs(v-target)<=Math.max(abs,rel*Math.abs(target)),shown)}
+function checkSel(input,fb,target,label){ST[input]=$(input).value;return verdict(input,fb,$(input).value===target,label||target)}
+
+const bv=(e,j0)=>j0*(Math.exp(L.alpha*L.f*e)-Math.exp(-L.alpha*L.f*e)),jc=(e,jl)=>{const k=-bv(e,1);return -1/(1/k+1/jl)};
+function drawE(){const e=+$("sE").value;$("sEv").textContent=e.toFixed(2);$("kj").textContent=bv(e,1).toFixed(3);ST.sE=$("sE").value;save()}
+function drawP(){const e=+$("sP").value;$("sPv").textContent=e.toFixed(2);$("k2").textContent=Math.abs(jc(e,2)).toFixed(3);$("k6").textContent=Math.abs(jc(e,6)).toFixed(3);ST.sP=$("sP").value;save()}
+$("sE").oninput=drawE;$("sP").oninput=drawP;
+function INIT(){if(ST.sE!=null)$("sE").value=ST.sE;if(ST.sP!=null)$("sP").value=ST.sP;drawE();drawP()}
+const CHECKS={
+ "1b":()=>[checkNum("c1a","f1a",L.j_m050,0.01,0,L.j_m050.toFixed(3))].every(Boolean),
+ "2a":()=>[checkNum("c2a","f2a",L.j_m100,0.01,0,L.j_m100.toFixed(3))].every(Boolean),
+ "2b":()=>[checkNum("c2b","f2b",L.eta_slow,0.01,0,L.eta_slow.toFixed(3))].every(Boolean),
+ "3a":()=>[checkNum("c3a","f3a",-L.jl2_m020,0.01,0,(-L.jl2_m020).toFixed(3)),checkNum("c3b","f3b",-L.jl2_m025,0.01,0,(-L.jl2_m025).toFixed(3)),checkNum("c3c","f3c",L.gain_eta_pct,0,0.3,L.gain_eta_pct.toFixed(1))].every(Boolean),
+ "3b":()=>[checkNum("c3d","f3d",-L.jl6_m025,0.01,0,(-L.jl6_m025).toFixed(3)),checkSel("c3e","f3e","jlim","better transport"),checkSel("c3f","f3f","side","side reactions such as H2")].every(Boolean)};
+const SUMMARY=(v,sel)=>[`Lab 12 answers`,
+ `1. Predicted on doubling eta: j ${sel("p1",{less:"less than doubles",double:"doubles",more:"more than doubles"})}. j(-0.050 V) = ${v("c1a")} mA/cm2`,
+ `2. j(-0.100 V) = ${v("c2a")} mA/cm2; slow electrode needs eta = ${v("c2b")} V`,
+ `3. j_lim 2: ${v("c3a")} and ${v("c3b")} mA/cm2, +${v("c3c")}%; j_lim 6: ${v("c3d")} mA/cm2; better: ${sel("c3e",{eta:"more eta",jlim:"better transport"})}; extra V goes to ${sel("c3f",{side:"side reactions",cu:"more Cu"})}`,`4. ${v("e5")}`];
+
+document.querySelectorAll("[data-save]").forEach(b=>b.onclick=()=>{const id=b.dataset.save,sv=SAVES[id];
+ if(sv.radio){if(!radio(sv.radio))return need(id,"Choose a prediction first.");ST[sv.radio]=radio(sv.radio)}
+ if(sv.text){if($(sv.text).value.trim().length<60)return need(id,"Write at least three sentences.");ST[sv.text]=$(sv.text).value}
+ markDone(id)});
+document.querySelectorAll("[data-check]").forEach(b=>b.onclick=()=>{const id=b.dataset.check;const ok=CHECKS[id]();if(ok)markDone(id);else save()});
+function summary(){const sel=(id,map)=>map[ST[id]]||ST[id]||"?",v=id=>ST[id]||"?";$("sum").textContent=SUMMARY(v,sel).join("\n")}
+$("copy").onclick=async()=>{try{await navigator.clipboard.writeText($("sum").textContent);$("copied").textContent="Copied. Paste it into the Exit Ticket box."}catch(e){$("copied").textContent="Copy did not work here. Select the text above and copy it."}};
+$("exitlink").href=EXIT_URL;
+$("reset").onclick=()=>{if(confirm("Clear all answers saved on this device?")){ST={};save();location.reload()}};
+Object.values(SAVES).forEach(sv=>{if(sv.radio&&ST[sv.radio]){const r=document.querySelector(`input[name="${sv.radio}"][value="${ST[sv.radio]}"]`);if(r)r.checked=true}});
+RESTORE.forEach(id=>{if(ST[id]!=null&&$(id))$(id).value=ST[id]});
+if(typeof INIT==="function")INIT();
+refresh();
+
+/* hand-in: an answer file for myCourseVille (no name or ID in it) */
+async function handin(){summary();const lab=parseInt((KEY.match(/lab(\d+)/)||[0,0])[1],10);
+ const core={course:"2182209",edition:"2027",lab,lab_key:KEY,saved:new Date().toISOString(),
+  steps_done:ORDER.filter(id=>ST["done_"+id]).length,steps_total:ORDER.length,
+  steps:Object.fromEntries(ORDER.map(id=>[id,!!ST["done_"+id]])),
+  expected_shown:Object.keys(ST).filter(k=>k.startsWith("tries_")&&ST[k]>=2).map(k=>k.slice(6)),
+  summary:$("sum").textContent,state:ST};
+ const data=JSON.stringify(core);let check="";
+ try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("2182209-lab-file-v1|"+data));check=[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){}
+ const file={lab,steps_done:core.steps_done,steps_total:core.steps_total,expected_shown:core.expected_shown.length,saved:core.saved,data,check};
+ const name=`2182209-lab${String(lab).padStart(2,"0")}-answers.json`,a=document.createElement("a");
+ a.href=URL.createObjectURL(new Blob([JSON.stringify(file,null,1)],{type:"application/json"}));a.download=name;document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+ $("dlNote").textContent=`Saved ${name}: ${core.steps_done} of ${core.steps_total} steps done. Upload it to Lab ${lab} in myCourseVille.`}
+$("dlJson").onclick=()=>{handin()};
+</script>
+</body>
+</html>
