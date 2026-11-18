@@ -139,6 +139,75 @@ function hbar(items,opt={}){ // items: {t,v,c}
   s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${h-20}" stroke="${C.graphite}" stroke-width="1.5"/>`;
   return s+"</svg>"}
 
+/* ---------- art3d: shared 3D-look illustrations (Teal-Amber palette), 2182209, 2027 ---------- */
+const A3 = (() => {
+ const EL = {Si: "#8E9AA3", O: "#5A91BE", H: "#E9E4DA", Cu: "#BE654C", Zn: "#0F6E6B", P: "#995A90", B: "#83A462", Li: "#83A462", Co: "#333F4A", Na: "#995A90", Cl: "#83A462", C: "#55616b", S: "#E2C14D", e: "#E29A2D"};
+ const hex = col => col.slice(1).toUpperCase();
+ const shade = (h, f) => {const n = parseInt(h.slice(1), 16); const m = v => Math.max(0, Math.min(255, Math.round(f < 1 ? v * f : v + (255 - v) * (f - 1)))); return `rgb(${m(n >> 16)},${m((n >> 8) & 255)},${m(n & 255)})`};
+ const txt = (x, y, t, c = "#1C242B", fs = 15, a = "middle", w = 400) => `<text x="${x}" y="${y}" font-size="${fs}" text-anchor="${a}" fill="${c}" font-weight="${w}">${t}</text>`;
+ const ballDef = col => `<radialGradient id="b${hex(col)}" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset=".28" stop-color="${col}"/><stop offset="1" stop-color="${shade(col, 0.62)}"/></radialGradient>`;
+ const cylDef = col => `<linearGradient id="c${hex(col)}" x1="0" x2="1"><stop offset="0" stop-color="${shade(col, 0.7)}"/><stop offset=".35" stop-color="${shade(col, 1.18)}"/><stop offset=".7" stop-color="${col}"/><stop offset="1" stop-color="${shade(col, 0.62)}"/></linearGradient>`;
+ /* gradients live in one always-rendered <svg> in the page, so pictures on hidden slides never own them */
+ const have = new Set();
+ const ensure = body => {if (typeof document === "undefined") return; let g = document.getElementById("a3defs");
+  if (!g){const host = document.createElementNS("http://www.w3.org/2000/svg", "svg"); host.setAttribute("width", "0"); host.setAttribute("height", "0"); host.setAttribute("aria-hidden", "true"); host.style.position = "absolute"; host.style.left = "-9999px";
+   host.innerHTML = '<defs id="a3defs"></defs>'; document.body.appendChild(host); g = document.getElementById("a3defs")}
+  const need = new Set(); body.replace(/url\(#([bc])([0-9A-Fa-f]{6})\)/g, (m, k, h) => need.add(h));
+  let add = ""; need.forEach(h => {if (!have.has(h)){have.add(h); add += ballDef("#" + h) + cylDef("#" + h)}}); if (add) g.insertAdjacentHTML("beforeend", add)};
+ const svg = (w, h, body) => {ensure(body); return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">${body}</svg>`};
+ const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
+  `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#b${hex(col)})"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "");
+ const eBall = (x, y, r = 12, sh = false) => ball(x, y, r, "#E29A2D", "e⁻", Math.round(r * 1.05), sh);
+ const head = (fx, fy, x2, y2, col, w) => {const a = Math.atan2(y2 - fy, x2 - fx), L = 7 + w * 2.2, q = t => `${(x2 - L * Math.cos(a + t)).toFixed(1)},${(y2 - L * Math.sin(a + t)).toFixed(1)}`; return `<polygon points="${x2},${y2} ${q(0.42)} ${q(-0.42)}" fill="${col}"/>`};
+ const arrow = (x1, y1, x2, y2, col = "#333F4A", w = 2.5, dash = "") => {const a = Math.atan2(y2 - y1, x2 - x1), k = 5 + w * 1.5; return `<line x1="${x1}" y1="${y1}" x2="${(x2 - k * Math.cos(a)).toFixed(1)}" y2="${(y2 - k * Math.sin(a)).toFixed(1)}" stroke="${col}" stroke-width="${w}" ${dash ? `stroke-dasharray="${dash}"` : ""}/>` + head(x1, y1, x2, y2, col, w)};
+ const curve = (x1, y1, cx, cy, x2, y2, col = "#E29A2D", w = 3, dash = "2 7") => `<path d="M${x1} ${y1} Q${cx} ${cy} ${x2} ${y2}" fill="none" stroke="${col}" stroke-width="${w}" stroke-linecap="round" ${dash ? `stroke-dasharray="${dash}"` : ""}/>` + head(cx, cy, x2, y2, col, w);
+ const bond = (x1, y1, x2, y2, w = 6) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#9aa4ab" stroke-width="${w}" stroke-linecap="round"/><line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#d5dadd" stroke-width="${w * 0.35}" stroke-linecap="round"/>`;
+ /* isometric projection: x right-front, y left-front, z up */
+ const iso = (x, y, z, o) => [o.x + (x - y) * 0.866 * o.s, o.y + (x + y) * 0.5 * o.s - z * o.s];
+ const poly = (pts, fill, o, st = "rgba(28,36,43,.35)") => `<polygon points="${pts.map(p => iso(...p, o).map(v => v.toFixed(1)).join(",")).join(" ")}" fill="${fill}" stroke="${st}" stroke-width="1"/>`;
+ const box = (x, y, z, dx, dy, dz, col, o, faces = "tfr") => (faces.includes("r") ? poly([[x + dx, y, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x + dx, y, z + dz]], shade(col, 0.72), o) : "") +
+  (faces.includes("f") ? poly([[x, y + dy, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 0.88), o) : "") +
+  (faces.includes("t") ? poly([[x, y, z + dz], [x + dx, y, z + dz], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 1.12), o) : "");
+ /* vertical cylinder seen slightly from above: top ellipse centre (cx, ty) */
+ const cyl = (cx, ty, rx, ry, h, col, op = 1) => `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
+ /* glass beaker with liquid; level 0..1 */
+ const beaker = (cx, by, rx, h, liquid, level = 0.65, liqOp = 0.55) => {const ry = rx * 0.28, lt = by - h * level;
+  return `<ellipse cx="${cx}" cy="${by + 8}" rx="${rx * 1.05}" ry="${ry * 0.6}" fill="#000" opacity=".1"/>` +
+   `<path d="M${cx - rx} ${lt} L${cx - rx} ${by} A${rx} ${ry} 0 0 0 ${cx + rx} ${by} L${cx + rx} ${lt} Z" fill="${liquid}" opacity="${liqOp}"/><ellipse cx="${cx}" cy="${lt}" rx="${rx}" ry="${ry}" fill="${shade(liquid, 1.25)}" opacity="${liqOp}"/>` +
+   `<path d="M${cx - rx} ${by - h} L${cx - rx} ${by} A${rx} ${ry} 0 0 0 ${cx + rx} ${by} L${cx + rx} ${by - h}" fill="none" stroke="#7d8a93" stroke-width="2.5"/><ellipse cx="${cx}" cy="${by - h}" rx="${rx}" ry="${ry}" fill="none" stroke="#7d8a93" stroke-width="2"/>` +
+   `<path d="M${cx - rx + 8} ${by - h + 12} L${cx - rx + 8} ${by - 10}" stroke="#fff" stroke-width="5" opacity=".55" stroke-linecap="round"/>`};
+ /* a chip as an isometric block: Si wafer, SiO2 and Cu lines; returns the svg body */
+ const chip = (o, {X = 7, Y = 5.2, zSi = 1.6, zOx = 1.3, cu = [1.0, 3.0, 5.0], labels = true, fs = 17} = {}) => {let s = box(0, 0, 0, X, Y, zSi, "#B9C1C6", o) + box(0, 0, zSi, X, Y, zOx, "#DFC98F", o);
+  cu.forEach(x => {s += box(x, 0, zSi + 0.35, 0.9, Y, zOx - 0.35 + 0.02, "#BE654C", o, "tf")});
+  if (labels){const rf = (y, z, t) => {const [a, b] = iso(X, y, z, o); return txt(a, b, t, "#1C242B", fs, "middle", 700)}; s += rf(Y / 2, zSi * 0.4, "Si") + rf(Y / 2, zSi + zOx * 0.35, "SiO₂");
+   const [cx, cy] = iso(cu[1] + 0.45, Y, zSi + 0.75, o); s += txt(cx, cy + 5, "Cu", "#fff", fs - 2, "middle", 700)}
+  return s};
+ /* a 3D atom: nucleus cluster and tilted electron orbits */
+ const atom = (cx, cy, R, {p = 3, n = 3, e = 3, label = ""} = {}) => {let s = "";
+  [0, 60, 120].forEach(rot => {s += `<ellipse cx="${cx}" cy="${cy}" rx="${R}" ry="${R * 0.32}" fill="none" stroke="#9aa4ab" stroke-width="1.6" transform="rotate(${rot} ${cx} ${cy})"/>`});
+  const nuc = []; const k = p + n; for (let i = 0; i < k; i++){const a = i * 2.39996, r = 7 * Math.sqrt(i); nuc.push([cx + r * Math.cos(a), cy + r * Math.sin(a), i % 2 === 0 && nuc.filter(q => q[2]).length < p || nuc.filter(q => !q[2]).length >= n])}
+  nuc.sort((a, b) => a[1] - b[1]).forEach(([x, y, isP]) => {s += ball(x, y, 9, isP ? "#BE654C" : "#8E9AA3", "", 0, false)});
+  for (let i = 0; i < e; i++){const rot = [0, 60, 120][i % 3] * Math.PI / 180, t = 0.7 + i * 2.1, ex = R * Math.cos(t), ey = R * 0.32 * Math.sin(t); s += eBall(cx + ex * Math.cos(rot) - ey * Math.sin(rot), cy + ex * Math.sin(rot) + ey * Math.cos(rot), 10)}
+  return s + (label ? txt(cx, cy + R + 30, label, "#1C242B", 18, "middle", 700) : "")};
+ /* a cubic cell with atoms at given fractional positions (sorted back to front) */
+ /* cubes use a tilted view (rotated 28°, seen 22° from above) so no two corners overlap */
+ const cp = (x, y, z, o) => {const a = 28 * Math.PI / 180, e = 22 * Math.PI / 180, X = x - 0.5, Y = y - 0.5, Z = z - 0.5, u = X * Math.cos(a) - Y * Math.sin(a), v = X * Math.sin(a) + Y * Math.cos(a); return [o.x + u * o.s, o.y + v * o.s * Math.sin(e) - Z * o.s * Math.cos(e)]};
+ const cell = (o, atoms, col = "#BE654C", r = 14, edges = true) => {let s = ""; const iso = cp;
+  const E = [[0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 0, 1], [1, 0, 0, 1, 1, 0], [1, 0, 0, 1, 0, 1], [0, 1, 0, 1, 1, 0], [0, 1, 0, 0, 1, 1], [0, 0, 1, 1, 0, 1], [0, 0, 1, 0, 1, 1], [1, 1, 0, 1, 1, 1], [1, 0, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1]];
+  if (edges) E.forEach(([a, b, c, d, e, f]) => {const [x1, y1] = iso(a, b, c, o), [x2, y2] = iso(d, e, f, o); s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#7d8a93" stroke-width="1.5" stroke-dasharray="${(b === 0 && e === 0) ? "4 4" : ""}"/>`});
+  atoms.map(a => ({a, k: (a[0] - 0.5) * Math.sin(28 * Math.PI / 180) + (a[1] - 0.5) * Math.cos(28 * Math.PI / 180)})).sort((p, q) => p.k - q.k).forEach(({a}) => {const [x, y] = iso(a[0], a[1], a[2], o); s += ball(x, y, a[3] || r, a[4] || col, a[5] || "", 0, false)});
+  return s};
+ /* cylindrical battery cell, standing */
+ const battery = (cx, ty, rx, h, label = "") => {const ry = rx * 0.3;
+  return cyl(cx, ty, rx, ry, h, "#333F4A") + `<rect x="${cx - rx}" y="${ty + h * 0.18}" width="${rx * 2}" height="${h * 0.62}" fill="url(#c0F6E6B)"/>` + cyl(cx, ty - 10, rx * 0.3, ry * 0.3, 10, "#B9C1C6") +
+   txt(cx, ty + h * 0.52, label, "#fff", 17, "middle", 700) + txt(cx, ty + h * 0.35, "+", "#fff", 20, "middle", 700)};
+ return {cp, EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
+})();
+/* place an illustration in a slide: fixed-height box that scales the SVG */
+const ART = (inner, h = 260, extra = "") => `<div class="art" style="height:${h}px;margin-top:10px;${extra}">${inner}</div>`;
+/* title layout: text on the left, picture on the right */
+const TITLE3 = (textHtml, pic) => `<div style="display:flex;align-items:center;gap:32px;height:100%"><div style="flex:1;min-width:0">${textHtml}</div><div style="flex:0 0 440px;height:440px">${pic}</div></div>`;
+
 /* ---------- Class 6 helpers ---------- */
 const foot = "2182209 Chemistry for Semiconductor Engineering · Class 6 · Electronic materials: bands and doping · draft for 2027";
 const LC = () => R.lecture;
@@ -156,10 +225,37 @@ const pye = (x, d = 3) => {let s = x.toExponential(d); return s.replace(/e([+-])
 function carriers(N, kind){const ni = LC().ni, q = LC().q; let n, p; if (N <= 0){n = p = ni} else {const maj = N / 2 + Math.sqrt(N * N / 4 + ni * ni), mi = ni * ni / maj; [n, p] = kind === "n" ? [maj, mi] : [mi, maj]}
  const sig = q * (n * LC().mu_n + p * LC().mu_p); return {n, p, sig, rho: 1 / sig}}
 
+/* ---------- class illustrations ---------- */
+function siLattice(o, N, dop = {}, r = 15){let s = ""; const P = (i, j, k) => A3.iso(i, j, k, o); const pts = [];
+ for (let k = 0; k < N[2]; k++) for (let i = 0; i < N[0]; i++) for (let j = 0; j < N[1]; j++) pts.push([i, j, k]);
+ pts.forEach(([i, j, k]) => {const [x, y] = P(i, j, k); [[1, 0, 0], [0, 1, 0], [0, 0, 1]].forEach(([a, b, c]) => {if (i + a < N[0] && j + b < N[1] && k + c < N[2]){const [x2, y2] = P(i + a, j + b, k + c); s += A3.bond(x, y, x2, y2, 4)}})});
+ pts.sort((p, q) => (p[0] + p[1]) - (q[0] + q[1]) || p[2] - q[2]).forEach(([i, j, k]) => {const key = `${i},${j},${k}`, d = dop[key]; const [x, y] = P(i, j, k); s += A3.ball(x, y, d ? r + 2 : r, d ? d[1] : "#8E9AA3", d ? d[0] : "", d ? 15 : 0, false)});
+ return s}
+function heroLattice(){const o = {x: 230, y: 150, s: 60}; let s = siLattice(o, [4, 4, 3], {"3,2,2": ["P", "#995A90"]}, 17);
+ const [x, y] = A3.iso(3, 2, 2, o); s += A3.curve(x + 16, y - 14, x + 40, y - 60, x + 62, y - 62, "#E29A2D", 2.5, "") + A3.eBall(x + 76, y - 64, 14);
+ return A3.svg(460, 440, s + A3.txt(230, 420, "one P atom in Si frees one electron", "#1C242B", 18, "middle", 700))}
+function picHole(){const xs = [60, 140, 220, 300, 380, 460]; let s = "";
+ xs.forEach((x, i) => {if (i < 5){s += A3.bond(x, 110, xs[i + 1], 110, 5); const m = (x + xs[i + 1]) / 2; if (i === 3) s += `<circle cx="${m - 8}" cy="110" r="8" fill="#fff" stroke="#E29A2D" stroke-width="2.5"/>` + A3.eBall(m + 8, 110, 8); else s += A3.eBall(m - 8, 110, 8) + A3.eBall(m + 8, 110, 8)}});
+ xs.forEach(x => s += A3.ball(x, 110, 20, "#8E9AA3", "Si", 14, false));
+ s += A3.curve(262, 92, 290, 50, 328, 96, "#E29A2D", 2.5, "") + A3.txt(300, 40, "an electron hops in", "#B7791F", 16, "middle", 700);
+ s += A3.arrow(330, 165, 230, 165, "#0F6E6B", 3) + A3.txt(280, 192, "so the hole (○) moves the other way", "#0F6E6B", 16, "middle", 700);
+ return A3.svg(520, 210, s)}
+function picNeutral(){let s = "", k = 0; const P = [[70, 80], [190, 60], [310, 90], [130, 160], [250, 170]];
+ P.forEach(([x, y]) => s += A3.ball(x, y, 22, "#995A90", "P⁺", 16));
+ [[120, 100], [240, 110], [360, 140], [60, 190], [190, 210]].forEach(([x, y]) => s += A3.eBall(x, y, 11));
+ s += A3.txt(450, 90, "5 P⁺: +5", "#995A90", 20, "middle", 700) + A3.txt(450, 130, "5 e⁻: −5", "#B7791F", 20, "middle", 700) + A3.txt(450, 175, "total: 0", "#1C242B", 22, "middle", 700);
+ return A3.svg(540, 240, s)}
+function picPpm(){const o = {x: 170, y: 40, s: 22}; let s = ""; const n = 6;
+ for (let k = 0; k < n; k++) for (let i = 0; i < n; i++) for (let j = 0; j < n; j++){} 
+ const pts = []; for (let k = 0; k < n; k++) for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) pts.push([i, j, k]);
+ pts.sort((p, q) => (p[0] + p[1]) - (q[0] + q[1]) || p[2] - q[2]).forEach(([i, j, k]) => {const [x, y] = A3.iso(i, j, n - k, o); const isP = i === 5 && j === 3 && k === 0; s += A3.ball(x, y, isP ? 9 : 7, isP ? "#995A90" : "#B9C1C6", "", 0, false)});
+ s += A3.txt(390, 90, "1 P atom among", "#1C242B", 19, "middle", 700) + A3.txt(390, 120, "about 5 000 000 Si atoms", "#995A90", 19, "middle", 700) + A3.txt(390, 160, "(this cube shows only 216)", "#66727C", 16);
+ return A3.svg(540, 250, s)}
+/* ---------- end illustrations ---------- */
 /* ---------- opening ---------- */
-S.push({cls:"title-slide", html:()=>`<p class="kicker">Class 6 · Lab 6</p><h1>Electronic materials: bands and doping</h1>
+S.push({cls:"title-slide", html:()=>TITLE3(`<p class="kicker">Class 6 · Lab 6</p><h1 style="font-size:54px">Electronic materials: bands and doping</h1>
 <div class="sub">Why Si is a semiconductor, what electrons and holes are, and how one atom in five million changes its resistivity a millionfold</div>
-<div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p>`,
+<div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p>`, heroLattice()),
 notes:"Class 2 said Si sits in between and that doping moves it; today is the why and the how much."});
 
 S.push({kicker:"Plan for today", title:"Ninety minutes, one activity, two checks and a lab", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:19px">
@@ -225,7 +321,7 @@ S.push({kicker:"Part 1 · Electrons and holes", title:"A hole is a missing elect
 <li>A neighboring bond electron can hop into the hole; the hole has then moved the other way. It behaves like a mobile +e charge</li>
 <li>So Si has two carriers: electrons (n per cm³) and holes (p per cm³)</li></ul></div>
 <div class="col"><div class="panel"><b style="color:${C.teal};font-size:19px">An analogy for the hole</b><div style="font-size:19px;line-height:1.5;margin-top:4px">A row of filled seats with one empty seat. When each person moves one seat toward the empty one, the empty seat moves the other way along the row.</div></div>
-<p class="note">Holes move about 3 times more slowly than electrons in Si: μ<sub>p</sub> = ${LC().mu_p} against μ<sub>n</sub> = ${LC().mu_n} cm²/(V·s).</p></div></div>`});
+<p class="note">Holes move about 3 times more slowly than electrons in Si: μ<sub>p</sub> = ${LC().mu_p} against μ<sub>n</sub> = ${LC().mu_n} cm²/(V·s).</p>${ART(picHole(), 200)}</div></div>`});
 
 S.push({kicker:"Part 1 · Pure (intrinsic) Si", title:"Pure Si has very few carriers", html:()=>{const i = LC().intrinsic; return `<div class="body"><div class="col w55"><div class="panel"><div class="math" style="font-size:20px;line-height:1.75">
 At 300 K: n = p = n<sub>i</sub> = ${sci(LC().ni)} cm<sup>−3</sup><br>Si atoms: ${sci(LC().atoms_si)} cm<sup>−3</sup><br>Fraction of atoms that give a free electron: <b>${sci(LC().frac_ni, 1)}</b><br>
@@ -299,13 +395,13 @@ S.push({kicker:"Part 2 · A common mistake", title:"“n-type Si is negatively c
 <div style="font-size:22px;line-height:1.45">“n-type means the wafer has extra electrons, so it carries a net negative charge.”</div></div>
 <div class="panel" style="margin-top:16px"><b style="color:${C.teal};font-size:19px">The correction</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
 Each P atom brings one extra electron and one extra proton. When the electron is freed, a fixed P<sup>+</sup> ion stays behind. A model with 5 donors: +5e from the ions, −5e from the free electrons: total 0. "n-type" names the majority carrier, not the charge.</div></div></div>
-<div class="col"><ul class="b sm"><li>The same idea as Class 4: every solution, and every piece of bulk material, is electrically neutral</li><li>Charge appears only where n- and p-type regions meet; that is how diodes and transistors work (later courses)</li></ul></div></div>`});
+<div class="col"><ul class="b sm"><li>The same idea as Class 4: every solution, and every piece of bulk material, is electrically neutral</li><li>Charge appears only where n- and p-type regions meet; that is how diodes and transistors work (later courses)</li></ul>${ART(picNeutral(), 210)}</div></div>`});
 
 S.push({kicker:"Part 2 · How little dopant", title:"Doping versus contamination: parts per billion matter", html:()=>`<div class="body"><div class="col w55"><div class="panel"><div class="math" style="font-size:20px;line-height:1.75">
 10<sup>16</sup> P atoms per cm³ ÷ ${sci(LC().atoms_si)} Si atoms per cm³<br>= <b>${sci(LC().frac_1e16, 1)}</b>: one P atom per about 5 million Si atoms</div></div>
 <p class="note">That 0.2 parts per million cut ρ about 500 000 times. Doping is added on purpose, in measured amounts and places.</p></div>
 <div class="col"><ul class="b sm"><li>If so little P changes Si this much, unwanted atoms do too</li><li>Metal atoms such as Cu, Fe and Na can ruin devices at parts per billion: this is why Cu wiring is sealed off from Si (Class 2), and why fabs rinse in ultrapure water (Class 4)</li>
-<li>Doping is intentional; contamination is not. The same chemistry, different control</li></ul></div></div>`});
+<li>Doping is intentional; contamination is not. The same chemistry, different control</li></ul>${ART(picPpm(), 220)}</div></div>`});
 
 S.push({kicker:"Check 2 · 5 minutes", title:"Check 2: doping", html:()=>CHECK(2,`${OL}
 <li>P and B replace Si. Which is a donor, which gives p-type, and what is the majority carrier in each?</li>

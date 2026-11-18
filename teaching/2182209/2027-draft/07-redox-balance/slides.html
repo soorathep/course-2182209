@@ -156,10 +156,76 @@ const CHECK = (n, q, a) => `<div class="body"><div class="col w55"><div class="a
 const OL = `<ol style="font-size:21px;line-height:1.5;margin:0;padding-left:26px">`;
 const E = `e<sup>−</sup>`;
 
+
+/* ---------- illustrations (original, Teal-Amber palette) ---------- */
+const TX = (x, y, t, c = C.ink, sz = 15, a = "middle", w = 400) => `<text x="${x}" y="${y}" font-size="${sz}" text-anchor="${a}" fill="${c}" font-weight="${w}">${t}</text>`;
+function eDot(x, y, r = 9){return `<circle cx="${x}" cy="${y}" r="${r}" fill="${C.amber}"/><text x="${x}" y="${y + r * 0.4}" font-size="${Math.round(r * 1.1)}" text-anchor="middle" fill="#fff" font-weight="700">e⁻</text>`}
+function atomGlyph(x, y, R, label, col, sub){let s = `<circle cx="${x}" cy="${y}" r="${R}" fill="${col}"/><circle cx="${x}" cy="${y}" r="${R + 22}" fill="none" stroke="${C.mist}" stroke-width="1.5" stroke-dasharray="4 5"/>`;
+ return s + TX(x, y + 9, label, "#fff", 28, "middle", 700) + (sub ? TX(x, y + R + 52, sub, C.slate, 16) : "")}
+/* oxidation-number ladder */
+function ladderON(){const w = 640, h = 170, x0 = 40, x1 = 600, px = v => x0 + (x1 - x0) * (v + 2) / 8; let s = `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:auto" font-family="Helvetica Neue,Arial,sans-serif">`;
+ s += `<defs><linearGradient id="ong" x1="0" x2="1"><stop offset="0" stop-color="${C.teal}"/><stop offset="1" stop-color="${C.amber}"/></linearGradient></defs>`;
+ s += `<rect x="${x0}" y="70" width="${x1 - x0}" height="10" rx="5" fill="url(#ong)"/>`;
+ for (let v = -2; v <= 6; v++) s += `<line x1="${px(v)}" x2="${px(v)}" y1="66" y2="84" stroke="#fff" stroke-width="2"/>` + TX(px(v), 106, v > 0 ? "+" + v : v < 0 ? "−" + (-v) : "0", C.ink, 16);
+ const pts = [[-1, "O in H₂O₂"], [0, "Cu, Si"], [1, "Cu in Cu₂O"], [2, "Cu²⁺, CuO"], [4, "Si in SiO₂"], [6, "S in SO₄²⁻"]];
+ pts.forEach(([v, t], i) => {const up = i % 2 === 0, y = up ? 50 : 142; s += `<line x1="${px(v)}" x2="${px(v)}" y1="${up ? 56 : 112}" y2="${up ? 66 : 124}" stroke="${C.graphite}"/>` + TX(px(v), y, t, C.graphite, 15)});
+ s += TX(x0, 18, "← reduction: number falls", C.teal, 16, "start", 700) + TX(x1, 18, "oxidation: number rises →", "#B7791F", 16, "end", 700);
+ return s + "</svg>"}
+/* misconception: three oxidations, only one with oxygen */
+function noOxygenSVG(){const rows = [["Zn → Zn²⁺ + 2e⁻", "Zn", "0", "+2", false], ["Si + O₂ → SiO₂", "Si", "0", "+4", true], ["Si + 2Cl₂ → SiCl₄", "Si", "0", "+4", false]];
+ let s = `<svg viewBox="0 0 460 330" style="width:100%;height:auto" font-family="Helvetica Neue,Arial,sans-serif">`;
+ rows.forEach(([eq, el, a, b, ox], i) => {const y = 12 + i * 106; s += `<rect x="4" y="${y}" width="452" height="94" rx="12" fill="${ox ? "#fdf3e3" : "#eef5f4"}" stroke="${ox ? C.amber : C.teal}" stroke-width="1.5"/>`;
+  s += TX(22, y + 32, eq, C.ink, 19, "start", 700) + TX(22, y + 70, `${el}: ${a}`, C.slate, 17, "start") + `<line x1="78" x2="150" y1="${y + 64}" y2="${y + 64}" stroke="${C.graphite}" stroke-width="2"/><polygon points="156,${y + 64} 146,${y + 59} 146,${y + 69}" fill="${C.graphite}"/>` + TX(162, y + 70, b, C.ink, 17, "start", 700);
+  s += `<rect x="300" y="${y + 50}" width="140" height="30" rx="15" fill="${ox ? C.amber : C.teal}"/>` + TX(370, y + 70, ox ? "uses oxygen" : "no oxygen", "#fff", 14, "middle", 700)});
+ return s + "</svg>"}
+
+
+/* ---------- 3D-look helpers ---------- */
+function shadeDefs(id, col){return `<radialGradient id="${id}" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset=".25" stop-color="${col}"/><stop offset="1" stop-color="${col}" stop-opacity="1"/></radialGradient><radialGradient id="${id}d" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#000" stop-opacity=".0"/><stop offset="1" stop-color="#000" stop-opacity=".28"/></radialGradient>`}
+function ball(x, y, r, id, label, fs){return `<ellipse cx="${x}" cy="${y + r + 14}" rx="${r * 0.85}" ry="${r * 0.18}" fill="#000" opacity=".14"/><circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id})"/><circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id}d)"/>` + (label ? TX(x, y + fs * 0.35, label, "#fff", fs, "middle", 700) : "")}
+function heroSVG(){let s = `<svg viewBox="0 0 520 420" style="width:100%;height:auto" font-family="Helvetica Neue,Arial,sans-serif"><defs>${shadeDefs("gZn", C.teal)}${shadeDefs("gCu", C.rust)}${shadeDefs("gE", C.amber)}
+<marker id="hm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="${C.amber}"/></marker></defs>`;
+ s += ball(120, 190, 70, "gZn", "Zn", 30) + ball(400, 190, 60, "gCu", "Cu²⁺", 26);
+ s += `<path d="M195 140 Q260 60 335 135" fill="none" stroke="${C.amber}" stroke-width="3.5" stroke-dasharray="2 7" stroke-linecap="round" marker-end="url(#hm)"/><path d="M195 240 Q260 320 335 245" fill="none" stroke="${C.amber}" stroke-width="3.5" stroke-dasharray="2 7" stroke-linecap="round" marker-end="url(#hm)"/>`;
+ s += ball(262, 86, 18, "gE", "e⁻", 15) + ball(262, 294, 18, "gE", "e⁻", 15);
+ s += TX(120, 316, "loses 2 e⁻", C.teal, 22, "middle", 700) + TX(120, 342, "oxidized → Zn²⁺", C.slate, 18);
+ s += TX(400, 316, "gains 2 e⁻", C.rust, 22, "middle", 700) + TX(400, 342, "reduced → Cu", C.slate, 18);
+ s += TX(260, 404, "Zn + Cu²⁺ → Zn²⁺ + Cu", C.ink, 23, "middle", 700);
+ return s + "</svg>"}
+/* isometric projection: x to the right-front, y to the left-front, z up */
+function isoP(x, y, z, o){const c = 0.866 * o.s, h = 0.5 * o.s; return [o.x + (x - y) * c, o.y + (x + y) * h - z * o.s]}
+function shadeHex(hex, f){const n = parseInt(hex.slice(1), 16); let r = n >> 16, g = (n >> 8) & 255, b = n & 255; const m = v => Math.max(0, Math.min(255, Math.round(f < 1 ? v * f : v + (255 - v) * (f - 1)))); return `rgb(${m(r)},${m(g)},${m(b)})`}
+function face(pts, fill, o, stroke = "rgba(28,36,43,.35)"){return `<polygon points="${pts.map(p => isoP(...p, o).map(v => v.toFixed(1)).join(",")).join(" ")}" fill="${fill}" stroke="${stroke}" stroke-width="1"/>`}
+function box(x, y, z, dx, dy, dz, col, o, faces = "tfr"){let s = "";
+ if (faces.includes("r")) s += face([[x + dx, y, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x + dx, y, z + dz]], shadeHex(col, 0.72), o);
+ if (faces.includes("f")) s += face([[x, y + dy, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shadeHex(col, 0.88), o);
+ if (faces.includes("t")) s += face([[x, y, z + dz], [x + dx, y, z + dz], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shadeHex(col, 1.12), o);
+ return s}
+function chipSVG(){const o = {x: 236, y: 190, s: 34}, X = 7, Y = 5.2, zSi = 1.6, zOx = 1.3, zt = zSi + zOx; let s = `<svg viewBox="0 0 520 460" style="width:100%;height:auto" font-family="Helvetica Neue,Arial,sans-serif">`;
+ s += `<defs>${shadeDefs("gIon", C.rust)}</defs>`;
+ s += box(0, 0, 0, X, Y, zSi, "#B9C1C6", o) + box(0, 0, zSi, X, Y, zOx, "#DFC98F", o);
+ [1.0, 3.0, 5.0].forEach(x => {s += box(x, 0, zSi + 0.35, 0.9, Y, zOx - 0.35 + 0.02, "#BE654C", o, "tf")});
+ /* labels on the right face (x = X) */
+ const rf = (y, z, t, c, fs) => {const [a, b] = isoP(X, y, z, o); return TX(a, b, t, c, fs, "middle", 700)};
+ s += rf(2.6, 0.62, "Si wafer", C.ink, 17) + rf(2.6, zSi + 0.5, "SiO₂", C.ink, 17);
+ /* Cu: leader to the front end of the middle line */
+ const [cx, cy] = isoP(3.45, Y, zSi + 0.6, o); s += `<line x1="${cx}" y1="${cy}" x2="${cx - 60}" y2="${cy + 70}" stroke="${C.ink}" stroke-width="1.2"/>` + TX(cx - 66, cy + 88, "Cu lines in SiO₂", C.rust, 16, "middle", 700);
+ /* plating ions above the back-left corner */
+ [[0.6, 0.4], [1.6, 0.2], [0.9, 1.4], [2.2, 1.0], [1.5, 2.2]].forEach(([x, y], i) => {const [a, b] = isoP(x, y, zt + 1.2 + (i % 2) * 0.5, o); s += ball(a, b, 11, "gIon", "", 0)});
+ const [ix, iy] = isoP(0.4, 1.6, zt + 2.4, o); s += TX(ix - 20, iy - 18, "Cu²⁺ from the plating bath", C.graphite, 15, "middle", 700);
+ /* polishing pad above the right part */
+ const [px, py] = isoP(5.4, 1.4, zt + 2.0, o); s += `<ellipse cx="${px}" cy="${py + 10}" rx="78" ry="24" fill="${C.graphite}"/><ellipse cx="${px}" cy="${py}" rx="78" ry="24" fill="#55616b"/>` + TX(px, py + 5, "polishing pad", "#fff", 15, "middle", 700);
+ s += `<path d="M${px - 56} ${py - 30} A66 16 0 0 1 ${px + 56} ${py - 30}" fill="none" stroke="${C.graphite}" stroke-width="2"/><polygon points="${px + 58},${py - 30} ${px + 47},${py - 37} ${px + 61},${py - 41}" fill="${C.graphite}"/>`;
+ /* numbered callouts */
+ const call = (n, x, y, tx, ty) => `<line x1="${x}" y1="${y}" x2="${tx}" y2="${ty}" stroke="${C.ink}" stroke-width="1.5"/><circle cx="${x}" cy="${y}" r="15" fill="${C.amber}"/>` + TX(x, y + 6, n, "#fff", 17, "middle", 700);
+ const [a1, b1] = isoP(X, 4.4, zSi, o), [a2, b2] = isoP(1.6, 0.9, zt + 1.2, o);
+ s += call("1", a1 + 50, b1 + 40, a1, b1) + call("2", a2 - 70, b2 + 40, a2 - 12, b2 + 4) + call("3", px + 100, py - 10, px + 78, py);
+ return s + "</svg>"}
+
 /* ---------- opening ---------- */
-S.push({cls:"title-slide", html:()=>`<p class="kicker">Class 7 · Lab 7</p><h1>Redox reactions and electron balance</h1>
+S.push({cls:"title-slide", html:()=>`<div style="display:flex;align-items:center;gap:36px"><div style="flex:1;min-width:0"><p class="kicker">Class 7 · Lab 7</p><h1 style="font-size:56px">Redox reactions and electron balance</h1>
 <div class="sub">Who loses electrons, who gains them, and how to make the count come out even</div>
-<div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p>`,
+<div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p></div><div style="flex:0 0 430px">${heroSVG()}</div></div>`,
 notes:"First class of the electrochemistry block. Class 6 moved electrons within a solid; today they move between species."});
 
 S.push({kicker:"Plan for today", title:"Ninety minutes, one activity, two checks and a lab", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:19px">
@@ -225,7 +291,7 @@ notes:"The blue color is from Cu2+(aq). Oxidation and reduction always happen to
 S.push({kicker:"Part 1 · Oxidation numbers", title:"Oxidation numbers keep track of electrons", html:()=>`<div class="body"><div class="col w55"><div class="panel" style="display:block"><b style="color:${C.teal};font-size:19px">Four rules</b>
 <ol style="font-size:19px;line-height:1.5;margin:6px 0 0;padding-left:24px"><li>An element on its own: 0 (Cu, Si, O<sub>2</sub>)</li><li>A single-atom ion: its charge (Cu<sup>2+</sup>: +2)</li>
 <li>O is usually −2, H usually +1, Cl usually −1</li><li>The oxidation numbers add up to the charge of the species</li></ol></div>
-<p class="note">Oxidation: the oxidation number rises. Reduction: it falls. Rule 3 says "usually": in H<sub>2</sub>O<sub>2</sub>, O is −1.</p></div>
+<div style="margin-top:14px">${ladderON()}</div><p class="note">Rule 3 says "usually": in H<sub>2</sub>O<sub>2</sub>, O is −1.</p></div>
 <div class="col"><table class="t" style="font-size:17px"><tr><th>Species</th><th>Atom</th><th class="n">Oxidation number</th></tr>
 ${LC().ons.map(o => `<tr><td>${fm(o.f)}</td><td>${o.atom}</td><td class="n">${onS(o.on)}</td></tr>`).join("")}</table>
 <p class="note">Example, SiO<sub>2</sub>: x + 2(−2) = 0, so x = +4. Cu<sub>2</sub>O and CuO return in Class 13.</p></div></div>`,
@@ -328,17 +394,17 @@ S.push({kicker:"Part 2 · A common mistake", title:"“Oxidation means adding ox
 <div style="font-size:22px;line-height:1.45">“A reaction is an oxidation only if oxygen is added.”</div></div>
 <div class="panel" style="margin-top:16px;display:block"><b style="color:${C.teal};font-size:19px">The correction</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
 Oxidation is the loss of electrons: the oxidation number rises. Zn → Zn<sup>2+</sup> + 2${E} has no oxygen in it. Si + 2 Cl<sub>2</sub> → SiCl<sub>4</sub> oxidizes Si from 0 to +4 exactly as Si + O<sub>2</sub> → SiO<sub>2</sub> does.</div></div></div>
-<div class="col"><ul class="b sm"><li>The name is historical: the first oxidations studied were reactions with oxygen</li><li>O<sub>2</sub> is a common oxidizing agent because O takes electrons readily, but it is one of many</li>
-<li>A second mistake: leaving electrons in the overall equation. They must cancel</li></ul></div></div>`});
+<div class="col">${noOxygenSVG()}<p class="note">The name is historical: the first oxidations studied used oxygen. A second mistake: leaving electrons in the overall equation; they must cancel.</p></div></div>`});
 
-S.push({kicker:"Part 2 · Redox in the fab", title:"Four redox reactions a chip goes through", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:17px">
-<tr><th>Process</th><th>Reaction</th><th>What changes</th><th>Class</th></tr>
-<tr><td>Dry thermal oxidation</td><td>Si + O<sub>2</sub> → SiO<sub>2</sub></td><td>Si 0 → +4 (${LC().si_ox_e} e<sup>−</sup> per Si); O 0 → −2</td><td>3</td></tr>
-<tr><td>Wet thermal oxidation</td><td>Si + 2 H<sub>2</sub>O → SiO<sub>2</sub> + 2 H<sub>2</sub></td><td>Si 0 → +4; H +1 → 0</td><td>3</td></tr>
-<tr><td>Cu electroplating</td><td>Cu<sup>2+</sup> + 2${E} → Cu</td><td>The wafer receives the electrons from a power supply</td><td>10</td></tr>
-<tr><td>Cu polishing (CMP)</td><td>H<sub>2</sub>O<sub>2</sub> in the slurry oxidizes the Cu surface</td><td>Cu 0 → +1 or +2; O −1 → −2</td><td>13</td></tr></table>
-<p class="note">In wet oxidation the oxidizing agent is H in water, not O: the oxidation number of O stays −2. CMP: chemical-mechanical planarization, which polishes the wafer flat.</p></div></div>`,
-notes:"Each line can be checked with the oxidation-number rules from Part 1."});
+S.push({kicker:"Part 2 · Redox in the fab", title:"Redox reactions a chip goes through", html:()=>`<div class="body"><div class="col w55"><table class="t" style="font-size:16px">
+<tr><th>#</th><th>Process</th><th>Reaction</th><th>What changes</th></tr>
+<tr><td><b style="color:${C.amber}">1</b></td><td>Dry thermal oxidation</td><td>Si + O<sub>2</sub> → SiO<sub>2</sub></td><td>Si 0 → +4 (${LC().si_ox_e} e<sup>−</sup> per Si); O 0 → −2</td></tr>
+<tr><td><b style="color:${C.amber}">1</b></td><td>Wet thermal oxidation</td><td>Si + 2H<sub>2</sub>O → SiO<sub>2</sub> + 2H<sub>2</sub></td><td>Si 0 → +4; H +1 → 0</td></tr>
+<tr><td><b style="color:${C.amber}">2</b></td><td>Cu electroplating</td><td>Cu<sup>2+</sup> + 2${E} → Cu</td><td>The wafer receives electrons from a power supply</td></tr>
+<tr><td><b style="color:${C.amber}">3</b></td><td>Cu polishing (CMP)</td><td>H<sub>2</sub>O<sub>2</sub> oxidizes the Cu surface</td><td>Cu 0 → +1 or +2; O −1 → −2</td></tr></table>
+<p class="note">In wet oxidation the oxidizing agent is H in water, not O. CMP: chemical-mechanical planarization, which polishes the wafer flat.</p></div>
+<div class="col"><div class="panel grow" style="justify-content:center">${chipSVG()}</div></div></div>`,
+notes:"Sketch, not to scale. 1: thermal oxide grows at the Si/SiO2 interface; 2: Cu fills the trenches from the plating bath; 3: the pad polishes the top flat."});
 
 S.push({kicker:"Check 2 · 5 minutes", title:"Check 2: electrons as a reactant", html:()=>CHECK(2,`${OL}
 <li>3 Cu<sup>2+</sup> ions receive 4 electrons. How many Cu atoms form, and what is left?</li>

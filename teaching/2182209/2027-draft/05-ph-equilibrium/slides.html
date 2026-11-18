@@ -139,6 +139,75 @@ function hbar(items,opt={}){ // items: {t,v,c}
   s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${h-20}" stroke="${C.graphite}" stroke-width="1.5"/>`;
   return s+"</svg>"}
 
+/* ---------- art3d: shared 3D-look illustrations (Teal-Amber palette), 2182209, 2027 ---------- */
+const A3 = (() => {
+ const EL = {Si: "#8E9AA3", O: "#5A91BE", H: "#E9E4DA", Cu: "#BE654C", Zn: "#0F6E6B", P: "#995A90", B: "#83A462", Li: "#83A462", Co: "#333F4A", Na: "#995A90", Cl: "#83A462", C: "#55616b", S: "#E2C14D", e: "#E29A2D"};
+ const hex = col => col.slice(1).toUpperCase();
+ const shade = (h, f) => {const n = parseInt(h.slice(1), 16); const m = v => Math.max(0, Math.min(255, Math.round(f < 1 ? v * f : v + (255 - v) * (f - 1)))); return `rgb(${m(n >> 16)},${m((n >> 8) & 255)},${m(n & 255)})`};
+ const txt = (x, y, t, c = "#1C242B", fs = 15, a = "middle", w = 400) => `<text x="${x}" y="${y}" font-size="${fs}" text-anchor="${a}" fill="${c}" font-weight="${w}">${t}</text>`;
+ const ballDef = col => `<radialGradient id="b${hex(col)}" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset=".28" stop-color="${col}"/><stop offset="1" stop-color="${shade(col, 0.62)}"/></radialGradient>`;
+ const cylDef = col => `<linearGradient id="c${hex(col)}" x1="0" x2="1"><stop offset="0" stop-color="${shade(col, 0.7)}"/><stop offset=".35" stop-color="${shade(col, 1.18)}"/><stop offset=".7" stop-color="${col}"/><stop offset="1" stop-color="${shade(col, 0.62)}"/></linearGradient>`;
+ /* gradients live in one always-rendered <svg> in the page, so pictures on hidden slides never own them */
+ const have = new Set();
+ const ensure = body => {if (typeof document === "undefined") return; let g = document.getElementById("a3defs");
+  if (!g){const host = document.createElementNS("http://www.w3.org/2000/svg", "svg"); host.setAttribute("width", "0"); host.setAttribute("height", "0"); host.setAttribute("aria-hidden", "true"); host.style.position = "absolute"; host.style.left = "-9999px";
+   host.innerHTML = '<defs id="a3defs"></defs>'; document.body.appendChild(host); g = document.getElementById("a3defs")}
+  const need = new Set(); body.replace(/url\(#([bc])([0-9A-Fa-f]{6})\)/g, (m, k, h) => need.add(h));
+  let add = ""; need.forEach(h => {if (!have.has(h)){have.add(h); add += ballDef("#" + h) + cylDef("#" + h)}}); if (add) g.insertAdjacentHTML("beforeend", add)};
+ const svg = (w, h, body) => {ensure(body); return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">${body}</svg>`};
+ const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
+  `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#b${hex(col)})"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "");
+ const eBall = (x, y, r = 12, sh = false) => ball(x, y, r, "#E29A2D", "e⁻", Math.round(r * 1.05), sh);
+ const head = (fx, fy, x2, y2, col, w) => {const a = Math.atan2(y2 - fy, x2 - fx), L = 7 + w * 2.2, q = t => `${(x2 - L * Math.cos(a + t)).toFixed(1)},${(y2 - L * Math.sin(a + t)).toFixed(1)}`; return `<polygon points="${x2},${y2} ${q(0.42)} ${q(-0.42)}" fill="${col}"/>`};
+ const arrow = (x1, y1, x2, y2, col = "#333F4A", w = 2.5, dash = "") => {const a = Math.atan2(y2 - y1, x2 - x1), k = 5 + w * 1.5; return `<line x1="${x1}" y1="${y1}" x2="${(x2 - k * Math.cos(a)).toFixed(1)}" y2="${(y2 - k * Math.sin(a)).toFixed(1)}" stroke="${col}" stroke-width="${w}" ${dash ? `stroke-dasharray="${dash}"` : ""}/>` + head(x1, y1, x2, y2, col, w)};
+ const curve = (x1, y1, cx, cy, x2, y2, col = "#E29A2D", w = 3, dash = "2 7") => `<path d="M${x1} ${y1} Q${cx} ${cy} ${x2} ${y2}" fill="none" stroke="${col}" stroke-width="${w}" stroke-linecap="round" ${dash ? `stroke-dasharray="${dash}"` : ""}/>` + head(cx, cy, x2, y2, col, w);
+ const bond = (x1, y1, x2, y2, w = 6) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#9aa4ab" stroke-width="${w}" stroke-linecap="round"/><line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#d5dadd" stroke-width="${w * 0.35}" stroke-linecap="round"/>`;
+ /* isometric projection: x right-front, y left-front, z up */
+ const iso = (x, y, z, o) => [o.x + (x - y) * 0.866 * o.s, o.y + (x + y) * 0.5 * o.s - z * o.s];
+ const poly = (pts, fill, o, st = "rgba(28,36,43,.35)") => `<polygon points="${pts.map(p => iso(...p, o).map(v => v.toFixed(1)).join(",")).join(" ")}" fill="${fill}" stroke="${st}" stroke-width="1"/>`;
+ const box = (x, y, z, dx, dy, dz, col, o, faces = "tfr") => (faces.includes("r") ? poly([[x + dx, y, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x + dx, y, z + dz]], shade(col, 0.72), o) : "") +
+  (faces.includes("f") ? poly([[x, y + dy, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 0.88), o) : "") +
+  (faces.includes("t") ? poly([[x, y, z + dz], [x + dx, y, z + dz], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 1.12), o) : "");
+ /* vertical cylinder seen slightly from above: top ellipse centre (cx, ty) */
+ const cyl = (cx, ty, rx, ry, h, col, op = 1) => `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
+ /* glass beaker with liquid; level 0..1 */
+ const beaker = (cx, by, rx, h, liquid, level = 0.65, liqOp = 0.55) => {const ry = rx * 0.28, lt = by - h * level;
+  return `<ellipse cx="${cx}" cy="${by + 8}" rx="${rx * 1.05}" ry="${ry * 0.6}" fill="#000" opacity=".1"/>` +
+   `<path d="M${cx - rx} ${lt} L${cx - rx} ${by} A${rx} ${ry} 0 0 0 ${cx + rx} ${by} L${cx + rx} ${lt} Z" fill="${liquid}" opacity="${liqOp}"/><ellipse cx="${cx}" cy="${lt}" rx="${rx}" ry="${ry}" fill="${shade(liquid, 1.25)}" opacity="${liqOp}"/>` +
+   `<path d="M${cx - rx} ${by - h} L${cx - rx} ${by} A${rx} ${ry} 0 0 0 ${cx + rx} ${by} L${cx + rx} ${by - h}" fill="none" stroke="#7d8a93" stroke-width="2.5"/><ellipse cx="${cx}" cy="${by - h}" rx="${rx}" ry="${ry}" fill="none" stroke="#7d8a93" stroke-width="2"/>` +
+   `<path d="M${cx - rx + 8} ${by - h + 12} L${cx - rx + 8} ${by - 10}" stroke="#fff" stroke-width="5" opacity=".55" stroke-linecap="round"/>`};
+ /* a chip as an isometric block: Si wafer, SiO2 and Cu lines; returns the svg body */
+ const chip = (o, {X = 7, Y = 5.2, zSi = 1.6, zOx = 1.3, cu = [1.0, 3.0, 5.0], labels = true, fs = 17} = {}) => {let s = box(0, 0, 0, X, Y, zSi, "#B9C1C6", o) + box(0, 0, zSi, X, Y, zOx, "#DFC98F", o);
+  cu.forEach(x => {s += box(x, 0, zSi + 0.35, 0.9, Y, zOx - 0.35 + 0.02, "#BE654C", o, "tf")});
+  if (labels){const rf = (y, z, t) => {const [a, b] = iso(X, y, z, o); return txt(a, b, t, "#1C242B", fs, "middle", 700)}; s += rf(Y / 2, zSi * 0.4, "Si") + rf(Y / 2, zSi + zOx * 0.35, "SiO₂");
+   const [cx, cy] = iso(cu[1] + 0.45, Y, zSi + 0.75, o); s += txt(cx, cy + 5, "Cu", "#fff", fs - 2, "middle", 700)}
+  return s};
+ /* a 3D atom: nucleus cluster and tilted electron orbits */
+ const atom = (cx, cy, R, {p = 3, n = 3, e = 3, label = ""} = {}) => {let s = "";
+  [0, 60, 120].forEach(rot => {s += `<ellipse cx="${cx}" cy="${cy}" rx="${R}" ry="${R * 0.32}" fill="none" stroke="#9aa4ab" stroke-width="1.6" transform="rotate(${rot} ${cx} ${cy})"/>`});
+  const nuc = []; const k = p + n; for (let i = 0; i < k; i++){const a = i * 2.39996, r = 7 * Math.sqrt(i); nuc.push([cx + r * Math.cos(a), cy + r * Math.sin(a), i % 2 === 0 && nuc.filter(q => q[2]).length < p || nuc.filter(q => !q[2]).length >= n])}
+  nuc.sort((a, b) => a[1] - b[1]).forEach(([x, y, isP]) => {s += ball(x, y, 9, isP ? "#BE654C" : "#8E9AA3", "", 0, false)});
+  for (let i = 0; i < e; i++){const rot = [0, 60, 120][i % 3] * Math.PI / 180, t = 0.7 + i * 2.1, ex = R * Math.cos(t), ey = R * 0.32 * Math.sin(t); s += eBall(cx + ex * Math.cos(rot) - ey * Math.sin(rot), cy + ex * Math.sin(rot) + ey * Math.cos(rot), 10)}
+  return s + (label ? txt(cx, cy + R + 30, label, "#1C242B", 18, "middle", 700) : "")};
+ /* a cubic cell with atoms at given fractional positions (sorted back to front) */
+ /* cubes use a tilted view (rotated 28°, seen 22° from above) so no two corners overlap */
+ const cp = (x, y, z, o) => {const a = 28 * Math.PI / 180, e = 22 * Math.PI / 180, X = x - 0.5, Y = y - 0.5, Z = z - 0.5, u = X * Math.cos(a) - Y * Math.sin(a), v = X * Math.sin(a) + Y * Math.cos(a); return [o.x + u * o.s, o.y + v * o.s * Math.sin(e) - Z * o.s * Math.cos(e)]};
+ const cell = (o, atoms, col = "#BE654C", r = 14, edges = true) => {let s = ""; const iso = cp;
+  const E = [[0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 0, 1], [1, 0, 0, 1, 1, 0], [1, 0, 0, 1, 0, 1], [0, 1, 0, 1, 1, 0], [0, 1, 0, 0, 1, 1], [0, 0, 1, 1, 0, 1], [0, 0, 1, 0, 1, 1], [1, 1, 0, 1, 1, 1], [1, 0, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1]];
+  if (edges) E.forEach(([a, b, c, d, e, f]) => {const [x1, y1] = iso(a, b, c, o), [x2, y2] = iso(d, e, f, o); s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#7d8a93" stroke-width="1.5" stroke-dasharray="${(b === 0 && e === 0) ? "4 4" : ""}"/>`});
+  atoms.map(a => ({a, k: (a[0] - 0.5) * Math.sin(28 * Math.PI / 180) + (a[1] - 0.5) * Math.cos(28 * Math.PI / 180)})).sort((p, q) => p.k - q.k).forEach(({a}) => {const [x, y] = iso(a[0], a[1], a[2], o); s += ball(x, y, a[3] || r, a[4] || col, a[5] || "", 0, false)});
+  return s};
+ /* cylindrical battery cell, standing */
+ const battery = (cx, ty, rx, h, label = "") => {const ry = rx * 0.3;
+  return cyl(cx, ty, rx, ry, h, "#333F4A") + `<rect x="${cx - rx}" y="${ty + h * 0.18}" width="${rx * 2}" height="${h * 0.62}" fill="url(#c0F6E6B)"/>` + cyl(cx, ty - 10, rx * 0.3, ry * 0.3, 10, "#B9C1C6") +
+   txt(cx, ty + h * 0.52, label, "#fff", 17, "middle", 700) + txt(cx, ty + h * 0.35, "+", "#fff", 20, "middle", 700)};
+ return {cp, EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
+})();
+/* place an illustration in a slide: fixed-height box that scales the SVG */
+const ART = (inner, h = 260, extra = "") => `<div class="art" style="height:${h}px;margin-top:10px;${extra}">${inner}</div>`;
+/* title layout: text on the left, picture on the right */
+const TITLE3 = (textHtml, pic) => `<div style="display:flex;align-items:center;gap:32px;height:100%"><div style="flex:1;min-width:0">${textHtml}</div><div style="flex:0 0 440px;height:440px">${pic}</div></div>`;
+
 /* ---------- Class 5 helpers ---------- */
 const foot = "2182209 Chemistry for Semiconductor Engineering · Class 5 · Acids, bases, pH and equilibrium · draft for 2027";
 const LC = () => R.lecture;
@@ -155,10 +224,31 @@ const sci = (x, d = 2) => {const e = Math.floor(Math.log10(x) + 1e-12), m = x / 
 /* same formulas as ph_lab */
 const KW = 1e-14, pHof = h => -Math.log10(h), strongH = c => c / 2 + Math.sqrt(c * c / 4 + KW);
 
+/* ---------- class illustrations ---------- */
+function water(x, y, r = 20, ang = 0){const d = r * 1.05, a1 = (ang - 52) * Math.PI / 180, a2 = (ang + 52) * Math.PI / 180;
+ return A3.ball(x + d * Math.sin(a1), y + d * Math.cos(a1), r * 0.6, "#E9E4DA", "", 0, false) + A3.ball(x + d * Math.sin(a2), y + d * Math.cos(a2), r * 0.6, "#E9E4DA", "", 0, false) + A3.ball(x, y, r, "#5A91BE", "", 0, false)}
+function hydronium(x, y, r = 20){return A3.ball(x - r, y + r * 0.7, r * 0.6, "#E9E4DA", "", 0, false) + A3.ball(x + r, y + r * 0.7, r * 0.6, "#E9E4DA", "", 0, false) + A3.ball(x, y - r * 1.05, r * 0.6, "#E2C14D", "", 0, false) + A3.ball(x, y, r, "#5A91BE", "", 0, false)}
+function hydroxide(x, y, r = 20){return A3.ball(x + r * 0.95, y + r * 0.6, r * 0.6, "#E9E4DA", "", 0, false) + A3.ball(x, y, r, "#5A91BE", "", 0, false)}
+function heroWater(){let s = ""; [[90, 90, 10], [210, 70, -20], [330, 110, 30], [140, 200, -40], [370, 220, 15], [100, 320, 25], [330, 330, -10]].forEach(([x, y, a]) => s += water(x, y, 26, a));
+ s += hydronium(240, 230, 28) + A3.txt(240, 290, "H₃O⁺", "#9a7b2c", 18, "middle", 700);
+ return A3.svg(460, 420, s + A3.txt(230, 405, "water: mostly H₂O, a very few H₃O⁺ and OH⁻", "#1C242B", 17, "middle", 700))}
+function picKw(){let s = water(60, 110, 24, 0) + A3.txt(108, 118, "+", "#1C242B", 30, "middle", 700) + water(160, 110, 24, 0) + A3.txt(245, 118, "⇌", "#1C242B", 36, "middle", 700);
+ s += hydronium(330, 110, 24) + A3.txt(390, 118, "+", "#1C242B", 30, "middle", 700) + hydroxide(450, 108, 24);
+ s += A3.txt(110, 190, "H₂O + H₂O", "#1C242B", 18, "middle", 700) + A3.txt(330, 190, "H₃O⁺", "#9a7b2c", 18, "middle", 700) + A3.txt(455, 190, "OH⁻", "#0F6E6B", 18, "middle", 700);
+ s += A3.txt(260, 228, "a proton (yellow) moves from one water molecule to another", "#66727C", 16);
+ return A3.svg(520, 240, s)}
+function picDynamic(){let s = `<rect x="20" y="40" width="200" height="160" rx="14" fill="#0F6E6B" opacity=".08" stroke="#0F6E6B"/><rect x="300" y="40" width="200" height="160" rx="14" fill="#E29A2D" opacity=".1" stroke="#E29A2D"/>`;
+ [[60, 80], [110, 70], [160, 90], [70, 140], [130, 130], [180, 160], [100, 175]].forEach(([x, y]) => s += A3.ball(x, y, 14, "#0F6E6B", "A", 13, false));
+ [[340, 90], [400, 80], [450, 140], [370, 160]].forEach(([x, y]) => s += A3.ball(x, y, 14, "#E29A2D", "B", 13, false));
+ s += A3.curve(220, 90, 260, 60, 298, 90, "#0F6E6B", 3, "") + A3.curve(298, 150, 260, 180, 222, 150, "#B7791F", 3, "");
+ s += A3.txt(260, 52, "A → B", "#0F6E6B", 15, "middle", 700) + A3.txt(260, 200, "B → A", "#B7791F", 15, "middle", 700);
+ s += A3.txt(260, 236, "both still run; at equilibrium their rates are equal", "#1C242B", 17, "middle", 700);
+ return A3.svg(520, 250, s)}
+/* ---------- end illustrations ---------- */
 /* ---------- opening ---------- */
-S.push({cls:"title-slide", html:()=>`<p class="kicker">Class 5 · Lab 5</p><h1>Acids, bases, pH and equilibrium</h1>
+S.push({cls:"title-slide", html:()=>TITLE3(`<p class="kicker">Class 5 · Lab 5</p><h1 style="font-size:54px">Acids, bases, pH and equilibrium</h1>
 <div class="sub">Reading the pH scale, why a factor of 10 hides in each unit, and what "at equilibrium" really means</div>
-<div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p>`,
+<div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p>`, heroWater()),
 notes:"pH is the x-axis of the Pourbaix diagram in Class 13; equilibrium returns in Class 9."});
 
 S.push({kicker:"Plan for today", title:"Ninety minutes, one activity, two checks and a lab", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:19px">
@@ -221,7 +311,7 @@ S.push({kicker:"Part 1 · Water", title:"Even pure water has ions: K<sub>w</sub>
 H<sub>2</sub>O ⇌ H<sup>+</sup> + OH<sup>−</sup><br>K<sub>w</sub> = [H<sup>+</sup>][OH<sup>−</sup>] = 1.0 × 10<sup>−14</sup> at 25 °C<br>Pure water: [H<sup>+</sup>] = [OH<sup>−</sup>] = 1.0 × 10<sup>−7</sup> mol/L → pH 7.00</div></div>
 <p class="note">K<sub>w</sub> changes with temperature, so neutral is pH 7 only at 25 °C.</p></div>
 <div class="col"><ul class="b sm"><li>Acidic: [H<sup>+</sup>] > [OH<sup>−</sup>], pH below 7. Basic: the reverse</li><li>Sample A, pH 2: [OH<sup>−</sup>] = 10<sup>−14</sup>/10<sup>−2</sup> = 10<sup>−12</sup> mol/L</li>
-<li>These 10<sup>−7</sup> mol/L of ions are why ultrapure water (Class 4) still conducts a little</li></ul></div></div>`});
+<li>These 10<sup>−7</sup> mol/L of ions are why ultrapure water (Class 4) still conducts a little</li></ul>${ART(picKw(), 210)}</div></div>`});
 
 S.push({kicker:"Part 1 · Acids and bases in a fab", title:"Where pH matters in making chips", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:18px">
 <tr><th>Solution</th><th>Acidic or basic</th><th>Why the pH matters</th></tr>
@@ -300,7 +390,7 @@ S.push({kicker:"Part 2 · A common mistake", title:"“At equilibrium the reacti
 <div style="font-size:22px;line-height:1.45">“At equilibrium nothing happens, and A and B are equal.”</div></div>
 <div class="panel" style="margin-top:16px"><b style="color:${C.teal};font-size:19px">The correction</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
 In the model at equilibrium, 2 units go each way every round: both reactions continue. The amounts stay at 8 and 4: constant, not equal. Only the net change is zero.</div></div></div>
-<div class="col"><ul class="b sm"><li>The same mistake appears with currents in Class 12: at equilibrium the net current is zero, but the exchange current is not</li></ul></div></div>`});
+<div class="col"><ul class="b sm"><li>The same mistake appears with currents in Class 12: at equilibrium the net current is zero, but the exchange current is not</li></ul>${ART(picDynamic(), 220)}</div></div>`});
 
 S.push({kicker:"Check 2 · 5 minutes", title:"Check 2: equilibrium", html:()=>CHECK(2,`${OL}
 <li>In the model, is A = 8, B = 4 at equilibrium? Show the two rates.</li>
