@@ -155,7 +155,9 @@ const A3 = (() => {
   const need = new Set(); body.replace(/url\(#([bc])([0-9A-Fa-f]{6})\)/g, (m, k, h) => need.add(h));
   let add = ""; need.forEach(h => {if (!have.has(h)){have.add(h); add += ballDef("#" + h) + cylDef("#" + h)}}); if (add) g.insertAdjacentHTML("beforeend", add)};
  const svg = (w, h, body) => {ensure(body); return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">${body}</svg>`};
- const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
+ let FLAT = false;
+ const flat = fn => {FLAT = true; try {return fn()} finally {FLAT = false}};
+ const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => FLAT ? `<circle cx="${x}" cy="${y}" r="${r}" fill="${col}" stroke="${shade(col, 0.7)}" stroke-width="1.5"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "") : (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
   `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#b${hex(col)})"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "");
  const eBall = (x, y, r = 12, sh = false) => ball(x, y, r, "#E29A2D", "e⁻", Math.round(r * 1.05), sh);
  const head = (fx, fy, x2, y2, col, w) => {const a = Math.atan2(y2 - fy, x2 - fx), L = 7 + w * 2.2, q = t => `${(x2 - L * Math.cos(a + t)).toFixed(1)},${(y2 - L * Math.sin(a + t)).toFixed(1)}`; return `<polygon points="${x2},${y2} ${q(0.42)} ${q(-0.42)}" fill="${col}"/>`};
@@ -169,7 +171,7 @@ const A3 = (() => {
   (faces.includes("f") ? poly([[x, y + dy, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 0.88), o) : "") +
   (faces.includes("t") ? poly([[x, y, z + dz], [x + dx, y, z + dz], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 1.12), o) : "");
  /* vertical cylinder seen slightly from above: top ellipse centre (cx, ty) */
- const cyl = (cx, ty, rx, ry, h, col, op = 1) => `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
+ const cyl = (cx, ty, rx, ry, h, col, op = 1) => FLAT ? `<rect x="${cx - rx}" y="${ty}" width="${2 * rx}" height="${h}" rx="3" fill="${col}" stroke="${shade(col, 0.7)}" stroke-width="1.5" opacity="${op}"/>` : `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
  /* glass beaker with liquid; level 0..1 */
  const beaker = (cx, by, rx, h, liquid, level = 0.65, liqOp = 0.55) => {const ry = rx * 0.28, lt = by - h * level;
   return `<ellipse cx="${cx}" cy="${by + 8}" rx="${rx * 1.05}" ry="${ry * 0.6}" fill="#000" opacity=".1"/>` +
@@ -201,12 +203,32 @@ const A3 = (() => {
  const battery = (cx, ty, rx, h, label = "") => {const ry = rx * 0.3;
   return cyl(cx, ty, rx, ry, h, "#333F4A") + `<rect x="${cx - rx}" y="${ty + h * 0.18}" width="${rx * 2}" height="${h * 0.62}" fill="url(#c0F6E6B)"/>` + cyl(cx, ty - 10, rx * 0.3, ry * 0.3, 10, "#B9C1C6") +
    txt(cx, ty + h * 0.52, label, "#fff", 17, "middle", 700) + txt(cx, ty + h * 0.35, "+", "#fff", 20, "middle", 700)};
- return {cp, EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
+ return {flat, cp, EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
 })();
 /* place an illustration in a slide: fixed-height box that scales the SVG */
 const ART = (inner, h = 260, extra = "") => `<div class="art" style="height:${h}px;margin-top:10px;${extra}">${inner}</div>`;
 /* title layout: text on the left, picture on the right */
 const TITLE3 = (textHtml, pic) => `<div style="display:flex;align-items:center;gap:32px;height:100%"><div style="flex:1;min-width:0">${textHtml}</div><div style="flex:0 0 440px;height:440px">${pic}</div></div>`;
+/* extra scene parts shared by the electrochemistry classes */
+const A3X = (() => {
+ const {txt, ball, eBall, arrow, cyl, beaker, box, iso} = A3;
+ const bar = (cx, ty, h, col, w = 15) => cyl(cx, ty, w, w * 0.32, h, col);
+ const wire = pts => `<polyline points="${pts.map(p => p.join(",")).join(" ")}" fill="none" stroke="#333F4A" stroke-width="3"/>`;
+ const bulb = (x, y, on = true) => (on ? `<circle cx="${x}" cy="${y}" r="30" fill="#E29A2D" opacity=".18"/>` : "") + `<circle cx="${x}" cy="${y}" r="17" fill="${on ? "#F7D78A" : "#fff"}" stroke="#333F4A" stroke-width="2"/>`;
+ const supply = (x, y) => `<rect x="${x - 34}" y="${y - 20}" width="68" height="40" rx="6" fill="#333F4A"/><rect x="${x - 28}" y="${y - 14}" width="56" height="16" rx="3" fill="#83A462"/>` + txt(x, y + 16, "supply", "#fff", 11, "middle", 700);
+ const meter = (x, y, v) => `<rect x="${x - 50}" y="${y - 28}" width="100" height="56" rx="10" fill="#333F4A"/><rect x="${x - 40}" y="${y - 18}" width="80" height="30" rx="4" fill="#cfe3c4"/>` + txt(x, y + 4, v, "#1C242B", 20, "middle", 700) + txt(x, y + 24, "voltmeter", "#fff", 10);
+ /* Daniell cell: returns svg body; mid = device between the wires */
+ const daniell = (x0, y0, {mid = "bulb", v = "1.10 V", labels = true} = {}) => {let s = "";
+  s += beaker(x0 + 90, y0 + 230, 72, 140, "#B9C1C6", 0.7, 0.45) + beaker(x0 + 330, y0 + 230, 72, 140, "#5A91BE", 0.7, 0.55);
+  s += `<path d="M${x0 + 130} ${y0 + 175} L${x0 + 130} ${y0 + 105} L${x0 + 290} ${y0 + 105} L${x0 + 290} ${y0 + 175}" fill="none" stroke="#DFC98F" stroke-width="20" stroke-linejoin="round"/>` + txt(x0 + 210, y0 + 98, "salt bridge", "#9a7b2c", 13, "middle", 700);
+  s += bar(x0 + 70, y0 + 60, 160, "#8E9AA3") + bar(x0 + 350, y0 + 60, 160, "#BE654C");
+  s += wire([[x0 + 70, y0 + 60], [x0 + 70, y0 + 20], [x0 + 350, y0 + 20], [x0 + 350, y0 + 60]]);
+  s += mid === "bulb" ? bulb(x0 + 210, y0 + 20) : mid === "meter" ? meter(x0 + 210, y0 + 20, v) : supply(x0 + 210, y0 + 20);
+  if (mid !== "meter") [x0 + 120, x0 + 150, x0 + 270, x0 + 300].forEach(x => s += eBall(x, y0 + 20, 8));
+  if (labels) s += txt(x0 + 90, y0 + 262, "Zn: anode (−)", "#0F6E6B", 15, "middle", 700) + txt(x0 + 330, y0 + 262, "Cu: cathode (+)", "#BE654C", 15, "middle", 700);
+  return s};
+ return {bar, wire, bulb, supply, meter, daniell};
+})();
 
 /* ---------- Class 3 helpers ---------- */
 const foot = "2182209 Chemistry for Semiconductor Engineering · Class 3 · Moles, units and stoichiometry · draft for 2027";
@@ -346,7 +368,7 @@ m(SiO<sub>2</sub>) = ${o.n_Si.toFixed(4)} × 60.1 = <b>${o.m_SiO2.toFixed(3)} g<
 <div class="col"><ul class="b xs"><li>Units at every step: mg → g, then g ÷ g/mol = mol</li>
 <li>The mole ratio from the equation carries you from Si to SiO<sub>2</sub> and O<sub>2</sub></li>
 <li>The mass check closes: mass of reactants = mass of product</li>
-<li>Excess O<sub>2</sub> and complete conversion are assumptions of the exercise</li></ul>${ART(picMassBars(), 220)}</div></div>`},
+<li>Excess O<sub>2</sub> and complete conversion are assumptions of the exercise</li></ul>${ART(A3.flat(picMassBars), 220)}</div></div>`},
 py:{title:"Complete oxidation of 562 mg of Si", sub:"stoich_lab.oxidation(0.562)", code:
 `from stoich_lab import oxidation, r6
 o = oxidation(0.562)
@@ -359,7 +381,7 @@ S.push({kicker:"Part 2 · A common mistake", title:"“The product is heavier, s
 <div class="panel" style="margin-top:16px"><b style="color:${C.teal};font-size:19px">The correction</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
 The O atoms came from the gas around the wafer: 0.640 g of O<sub>2</sub>. Count everything that enters: 0.562 + 0.640 = 1.202 g. Mass is conserved; it was the accounting that left something out.</div></div></div>
 <div class="col"><ul class="b sm"><li>A wafer gains mass when it is oxidized</li><li>For 100 nm of oxide on 1 cm², the gain is about ${(LC().layer100.gain_g * 1e6).toFixed(1)} µg: measurable on a microbalance</li>
-<li>Always ask: what crossed the boundary of my system?</li></ul>${ART(picBalance(), 220)}</div></div>`});
+<li>Always ask: what crossed the boundary of my system?</li></ul>${ART(A3.flat(picBalance), 220)}</div></div>`});
 
 S.push({kicker:"Part 2 · From the unit cell to the wafer", title:"The density of Si, from Class 2's unit cell", html:()=>{const d = LC().si_density; return `<div class="body"><div class="col w55"><div class="panel"><div class="math" style="font-size:20px;line-height:1.75">
 a = 0.5431 nm = 5.431 × 10<sup>−8</sup> cm<br>atoms per cm³ = 8 / a³ = <b>${sci(d.atoms_per_cm3)}</b><br>ρ = (atoms per cm³) × M / N<sub>A</sub><br>= ${sci(d.atoms_per_cm3)} × 28.0855 / 6.022 × 10<sup>23</sup> = <b>${d.rho.toFixed(3)} g/cm³</b></div></div></div>

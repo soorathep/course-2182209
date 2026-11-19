@@ -4,7 +4,7 @@
  "provider": "Microsoft Edge neural speech (edge-tts)",
  "synthetic_voice": true,
  "captions": "en",
- "total_seconds": 667.1,
+ "total_seconds": 666.6,
  "slides": [
   {
    "n": 1,
@@ -540,7 +540,7 @@
   {
    "n": 18,
    "file": "audio/slide-18.mp3",
-   "duration": 26.952,
+   "duration": 26.472,
    "hold": false,
    "cues": [
     {
@@ -550,17 +550,17 @@
     },
     {
      "s": 5.458,
-     "e": 11.087,
-     "en": "Read OpenStax Chemistry two e, section ten point five again on semiconductors."
+     "e": 15.896,
+     "en": "Read OpenStax University Physics volume three, section nine point five on the band theory of solids, and section nine point six on semiconductors and doping."
     },
     {
-     "s": 11.087,
-     "e": 19.211,
-     "en": "For more depth, OpenStax University Physics volume three, section nine point six covers semiconductors and doping."
+     "s": 15.896,
+     "e": 18.737,
+     "en": "Skip the parts that need quantum mechanics."
     },
     {
-     "s": 19.211,
-     "e": 26.882,
+     "s": 18.737,
+     "e": 26.408,
      "en": "Class 7 is about redox reactions and electron balance, where the copper two plus ion finally takes its two electrons."
     }
    ]

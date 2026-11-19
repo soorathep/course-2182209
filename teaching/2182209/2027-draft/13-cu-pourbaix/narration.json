@@ -4,7 +4,7 @@
  "provider": "Microsoft Edge neural speech (edge-tts)",
  "synthetic_voice": true,
  "captions": "en",
- "total_seconds": 557.6,
+ "total_seconds": 558.4,
  "slides": [
   {
    "n": 1,
@@ -416,7 +416,7 @@
   {
    "n": 15,
    "file": "audio/slide-15.mp3",
-   "duration": 22.344,
+   "duration": 23.184,
    "hold": false,
    "cues": [
     {
@@ -431,8 +431,8 @@
     },
     {
      "s": 13.368,
-     "e": 22.289,
-     "en": "In the second half of the course, semiconductors in solution and photoelectrochemistry build on today's diagram and on the band gaps of Class 6."
+     "e": 23.118,
+     "en": "In the second half of the course, copper plating, polishing and corrosion use today's diagram, and photoelectrochemistry uses the band gaps of Class 6."
     }
    ]
   },

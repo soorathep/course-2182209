@@ -106,9 +106,9 @@ footer{position:absolute;left:64px;right:64px;bottom:20px;border-top:1px solid v
 <audio id="narr" preload="none"></audio>
 <div id="help">← → move · P narration · C captions · D Python · F full screen · N notes</div>
 <script>
-const RECORDED = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"f":38.92174449560911,"alpha":0.5,"tafel_mV":118.31869937144302,"eta":[-0.25,-0.24,-0.23,-0.22,-0.21,-0.2,-0.19,-0.18,-0.17,-0.16,-0.15,-0.14,-0.13,-0.12,-0.11,-0.1,-0.09,-0.08,-0.07,-0.06,-0.05,-0.04,-0.03,-0.02,-0.01,0.0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.15,0.16,0.17,0.18,0.19,0.2,0.21,0.22,0.23,0.24,0.25],"bv":{"0.1":[-12.96915,-10.67534,-8.78711,-7.23272,-5.95312,-4.8997,-4.03242,-3.31834,-2.73034,-2.24606,-1.84712,-1.51835,-1.24728,-1.02358,-0.83878,-0.68584,-0.55896,-0.45332,-0.36489,-0.29033,-0.22681,-0.17189,-0.12351,-0.07982,-0.03917,0.0,0.03917,0.07982,0.12351,0.17189,0.22681,0.29033,0.36489,0.45332,0.55896,0.68584,0.83878,1.02358,1.24728,1.51835,1.84712,2.24606,2.73034,3.31834,4.03242,4.8997,5.95312,7.23272,8.78711,10.67534,12.96915],"1.0":[-129.69151,-106.75341,-87.87111,-72.32724,-59.53123,-48.99696,-40.32418,-33.18341,-27.30335,-22.46061,-18.4712,-15.18355,-12.47275,-10.23583,-8.38778,-6.85841,-5.5896,-4.53315,-3.64893,-2.90334,-2.26805,-1.71894,-1.23513,-0.79824,-0.39168,0.0,0.39168,0.79824,1.23513,1.71894,2.26805,2.90334,3.64893,4.53315,5.5896,6.85841,8.38778,10.23583,12.47275,15.18355,18.4712,22.46061,27.30335,33.18341,40.32418,48.99696,59.53123,72.32724,87.87111,106.75341,129.69151],"10.0":[-1296.91508,-1067.53411,-878.71114,-723.27238,-595.31234,-489.96956,-403.24181,-331.83411,-273.03354,-224.60612,-184.71198,-151.83547,-124.72753,-102.35826,-83.87782,-68.58408,-55.896,-45.33154,-36.48932,-29.03341,-22.68055,-17.18937,-12.35125,-7.98239,-3.91679,0.0,3.91679,7.98239,12.35125,17.18937,22.68055,29.03341,36.48932,45.33154,55.896,68.58408,83.87782,102.35826,124.72753,151.83547,184.71198,224.60612,273.03354,331.83411,403.24181,489.96956,595.31234,723.27238,878.71114,1067.53411,1296.91508]},"pol":{"2":[-1.96963,-1.96322,-1.95549,-1.94618,-1.93499,-1.92156,-1.90549,-1.88631,-1.8635,-1.83647,-1.8046,-1.76722,-1.72362,-1.67309,-1.61493,-1.54845,-1.47296,-1.38774,-1.2919,-1.18423,-1.0628,-0.92442,-0.76357,-0.57053,-0.32753,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"6":[-5.73469,-5.68072,-5.6165,-5.54039,-5.45064,-5.34542,-5.22287,-5.08124,-4.91903,-4.73509,-4.52888,-4.30057,-4.05118,-3.78268,-3.49788,-3.20028,-2.89377,-2.58222,-2.26902,-1.95657,-1.64589,-1.33615,-1.02427,-0.70451,-0.36768,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"kin":[129.69151,106.75341,87.87111,72.32724,59.53123,48.99696,40.32418,33.18341,27.30335,22.46061,18.4712,15.18355,12.47275,10.23583,8.38778,6.85841,5.5896,4.53315,3.64893,2.90334,2.26805,1.71894,1.23513,0.79824,0.39168,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"jlim_cu":27.0158929936},"lab":{"j_m050":-2.268054560276795,"j_m100":-6.85840779126327,"ratio":3.023916580924872,"eta_slow":-0.1604987606170763,"jl2_m020":-1.9215639452142765,"jl2_m025":-1.969625983744738,"jl6_m025":-5.734692313679587,"gain_eta_pct":2.5011938140368395,"gain_jlim_pct":191.15641045598628,"f":38.92174449560911,"alpha":0.5,"j0":1.0}};
-const LAB_FILE = "kinetics_lab.py?v=c12-67629074";
-const LAB_SRC = "\"\"\"Class 12 of 2182209 Chemistry for Semiconductor Engineering (2027 draft).\n\nElectrode kinetics (Butler-Volmer) and mass transport (limiting current). Every number on\nthe Class 12 slides and in Lab 12 comes from this module.\n\nRun `python kinetics_lab.py` for a printed summary, or `python kinetics_lab.py --json` to\nwrite kinetics-results.json.\n\nModel, stated: one-electron step (n = 1), symmetric (alpha = 0.5), 25 degC; cathodic current\nnegative. Kinetic current from Butler-Volmer, j_k = j0 [exp(alpha f eta) - exp(-alpha f eta)],\nf = F/(RT). With a limiting current, the cathodic current is combined as\n1/|j| = 1/|j_k| + 1/j_lim (kinetics and transport in series). Teaching parameters:\nj0 = 1.00 mA/cm2; j_lim = 2 and 6 mA/cm2. Order-of-magnitude example for Cu plating:\nD(Cu2+) = 7e-6 cm2/s, c = 0.10 M, diffusion layer 50 um, n = 2 (values of the usual order).\n\"\"\"\nimport json\nimport math\nimport sys\n\nimport numpy as np\nfrom scipy import constants as sc\n\nF = sc.physical_constants[\"Faraday constant\"][0]\nRGAS, T = sc.R, 298.15\nf = F / (RGAS * T)\nALPHA, J0 = 0.5, 1.00                      # -, mA/cm2\n\n\ndef j_bv(eta, j0=J0, a=ALPHA):\n    \"\"\"Butler-Volmer, mA/cm2; anodic positive.\"\"\"\n    return j0 * (np.exp(a * f * eta) - np.exp(-a * f * eta))\n\n\ndef j_cath(eta, j_lim, j0=J0):\n    \"\"\"Cathodic current with a transport limit, mA/cm2 (negative).\"\"\"\n    jk = -j_bv(eta, j0)                    # positive magnitude for eta < 0\n    return -1.0 / (1.0 / jk + 1.0 / j_lim)\n\n\ndef eta_for(j_target, j0):\n    \"\"\"Cathodic overpotential (V, negative) for a kinetic current magnitude j_target.\"\"\"\n    return -math.asinh(j_target / (2 * j0)) / (ALPHA * f)\n\n\ndef j_lim_est(n=2, D=7e-6, c_M=0.10, delta_cm=50e-4):\n    \"\"\"j_lim = n F D c / delta, mA/cm2 (c in mol/cm3).\"\"\"\n    return n * F * D * (c_M * 1e-3) / delta_cm * 1e3\n\n\ndef lab_results():\n    j05 = float(j_bv(-0.050))\n    return {\"j_m050\": j05, \"j_m100\": float(j_bv(-0.100)), \"ratio\": float(j_bv(-0.100) / j_bv(-0.050)),\n            \"eta_slow\": eta_for(abs(j05), 0.1),\n            \"jl2_m020\": float(j_cath(-0.20, 2)), \"jl2_m025\": float(j_cath(-0.25, 2)),\n            \"jl6_m025\": float(j_cath(-0.25, 6)),\n            \"gain_eta_pct\": float((j_cath(-0.25, 2) / j_cath(-0.20, 2) - 1) * 100),\n            \"gain_jlim_pct\": float((j_cath(-0.25, 6) / j_cath(-0.25, 2) - 1) * 100),\n            \"f\": f, \"alpha\": ALPHA, \"j0\": J0}\n\n\ndef classroom_results():\n    R = {\"meta\": {\"numpy\": np.__version__, \"scipy\": __import__(\"scipy\").__version__, \"python\": sys.version.split()[0]}}\n    eta = np.round(np.arange(-0.25, 0.2501, 0.01), 3)\n    R[\"lecture\"] = {\n        \"f\": f, \"alpha\": ALPHA, \"tafel_mV\": 1000 * math.log(10) / (ALPHA * f),\n        \"eta\": eta.tolist(),\n        \"bv\": {str(j0): [round(float(x), 5) for x in j_bv(eta, j0)] for j0 in (0.1, 1.0, 10.0)},\n        \"pol\": {str(jl): [round(float(j_cath(e, jl)), 5) if e < 0 else None for e in eta] for jl in (2, 6)},\n        \"kin\": [round(float(-j_bv(e)), 5) if e < 0 else None for e in eta],\n        \"jlim_cu\": j_lim_est(),\n    }\n    R[\"lab\"] = lab_results()\n    return R\n\n\nif __name__ == \"__main__\":\n    R = classroom_results()\n    if \"--json\" in sys.argv:\n        with open(\"kinetics-results.json\", \"w\") as fh:\n            json.dump(R, fh, indent=1)\n        print(\"wrote kinetics-results.json\"); sys.exit()\n    L = R[\"lab\"]\n    print(\"f = %.3f 1/V; Tafel slope %.1f mV/decade\" % (L[\"f\"], R[\"lecture\"][\"tafel_mV\"]))\n    print(\"j(-0.050) = %.3f, j(-0.100) = %.3f mA/cm2, ratio %.2f\" % (L[\"j_m050\"], L[\"j_m100\"], L[\"ratio\"]))\n    print(\"eta for the same current at j0 = 0.1: %.4f V\" % L[\"eta_slow\"])\n    print(\"j_lim 2: %.3f (-0.20 V), %.3f (-0.25 V), +%.1f%%\" % (L[\"jl2_m020\"], L[\"jl2_m025\"], L[\"gain_eta_pct\"]))\n    print(\"j_lim 6 at -0.25 V: %.3f (+%.0f%%)\" % (L[\"jl6_m025\"], L[\"gain_jlim_pct\"]))\n    print(\"Cu plating j_lim estimate: %.1f mA/cm2\" % R[\"lecture\"][\"jlim_cu\"])\n";   // embedded copy, so live Python also works when the file is opened locally
+const RECORDED = {"meta":{"numpy":"2.2.5","scipy":"1.14.1","python":"3.13.18"},"lecture":{"f":38.92174449560911,"alpha":0.5,"tafel_mV":118.31869937144302,"eta":[-0.25,-0.24,-0.23,-0.22,-0.21,-0.2,-0.19,-0.18,-0.17,-0.16,-0.15,-0.14,-0.13,-0.12,-0.11,-0.1,-0.09,-0.08,-0.07,-0.06,-0.05,-0.04,-0.03,-0.02,-0.01,0.0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.15,0.16,0.17,0.18,0.19,0.2,0.21,0.22,0.23,0.24,0.25],"bv":{"0.1":[-12.96915,-10.67534,-8.78711,-7.23272,-5.95312,-4.8997,-4.03242,-3.31834,-2.73034,-2.24606,-1.84712,-1.51835,-1.24728,-1.02358,-0.83878,-0.68584,-0.55896,-0.45332,-0.36489,-0.29033,-0.22681,-0.17189,-0.12351,-0.07982,-0.03917,0.0,0.03917,0.07982,0.12351,0.17189,0.22681,0.29033,0.36489,0.45332,0.55896,0.68584,0.83878,1.02358,1.24728,1.51835,1.84712,2.24606,2.73034,3.31834,4.03242,4.8997,5.95312,7.23272,8.78711,10.67534,12.96915],"1.0":[-129.69151,-106.75341,-87.87111,-72.32724,-59.53123,-48.99696,-40.32418,-33.18341,-27.30335,-22.46061,-18.4712,-15.18355,-12.47275,-10.23583,-8.38778,-6.85841,-5.5896,-4.53315,-3.64893,-2.90334,-2.26805,-1.71894,-1.23513,-0.79824,-0.39168,0.0,0.39168,0.79824,1.23513,1.71894,2.26805,2.90334,3.64893,4.53315,5.5896,6.85841,8.38778,10.23583,12.47275,15.18355,18.4712,22.46061,27.30335,33.18341,40.32418,48.99696,59.53123,72.32724,87.87111,106.75341,129.69151],"10.0":[-1296.91508,-1067.53411,-878.71114,-723.27238,-595.31234,-489.96956,-403.24181,-331.83411,-273.03354,-224.60612,-184.71198,-151.83547,-124.72753,-102.35826,-83.87782,-68.58408,-55.896,-45.33154,-36.48932,-29.03341,-22.68055,-17.18937,-12.35125,-7.98239,-3.91679,0.0,3.91679,7.98239,12.35125,17.18937,22.68055,29.03341,36.48932,45.33154,55.896,68.58408,83.87782,102.35826,124.72753,151.83547,184.71198,224.60612,273.03354,331.83411,403.24181,489.96956,595.31234,723.27238,878.71114,1067.53411,1296.91508]},"pol":{"2":[-1.96963,-1.96322,-1.95549,-1.94618,-1.93499,-1.92156,-1.90549,-1.88631,-1.8635,-1.83647,-1.8046,-1.76722,-1.72362,-1.67309,-1.61493,-1.54845,-1.47296,-1.38774,-1.2919,-1.18423,-1.0628,-0.92442,-0.76357,-0.57053,-0.32753,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"6":[-5.73469,-5.68072,-5.6165,-5.54039,-5.45064,-5.34542,-5.22287,-5.08124,-4.91903,-4.73509,-4.52888,-4.30057,-4.05118,-3.78268,-3.49788,-3.20028,-2.89377,-2.58222,-2.26902,-1.95657,-1.64589,-1.33615,-1.02427,-0.70451,-0.36768,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"kin":[129.69151,106.75341,87.87111,72.32724,59.53123,48.99696,40.32418,33.18341,27.30335,22.46061,18.4712,15.18355,12.47275,10.23583,8.38778,6.85841,5.5896,4.53315,3.64893,2.90334,2.26805,1.71894,1.23513,0.79824,0.39168,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"jlim_cu":162.0953579616},"lab":{"j_m050":-2.268054560276795,"j_m100":-6.85840779126327,"ratio":3.023916580924872,"eta_slow":-0.1604987606170763,"jl2_m020":-1.9215639452142765,"jl2_m025":-1.969625983744738,"jl6_m025":-5.734692313679587,"gain_eta_pct":2.5011938140368395,"gain_jlim_pct":191.15641045598628,"f":38.92174449560911,"alpha":0.5,"j0":1.0}};
+const LAB_FILE = "kinetics_lab.py?v=c12-d408e527";
+const LAB_SRC = "\"\"\"Class 12 of 2182209 Chemistry for Semiconductor Engineering (2027 draft).\n\nElectrode kinetics (Butler-Volmer) and mass transport (limiting current). Every number on\nthe Class 12 slides and in Lab 12 comes from this module.\n\nRun `python kinetics_lab.py` for a printed summary, or `python kinetics_lab.py --json` to\nwrite kinetics-results.json.\n\nModel, stated: one-electron step (n = 1), symmetric (alpha = 0.5), 25 degC; cathodic current\nnegative. Kinetic current from Butler-Volmer, j_k = j0 [exp(alpha f eta) - exp(-alpha f eta)],\nf = F/(RT). With a limiting current, the cathodic current is combined as\n1/|j| = 1/|j_k| + 1/j_lim (kinetics and transport in series). Teaching parameters:\nj0 = 1.00 mA/cm2; j_lim = 2 and 6 mA/cm2. Order-of-magnitude example for Cu plating:\nD(Cu2+) = 7e-6 cm2/s, c = 0.10 M, diffusion layer 50 um, n = 2 (values of the usual order).\n\"\"\"\nimport json\nimport math\nimport sys\n\nimport numpy as np\nfrom scipy import constants as sc\n\nF = sc.physical_constants[\"Faraday constant\"][0]\nRGAS, T = sc.R, 298.15\nf = F / (RGAS * T)\nALPHA, J0 = 0.5, 1.00                      # -, mA/cm2\n\n\ndef j_bv(eta, j0=J0, a=ALPHA):\n    \"\"\"Butler-Volmer, mA/cm2; anodic positive.\"\"\"\n    return j0 * (np.exp(a * f * eta) - np.exp(-a * f * eta))\n\n\ndef j_cath(eta, j_lim, j0=J0):\n    \"\"\"Cathodic current with a transport limit, mA/cm2 (negative).\"\"\"\n    jk = -j_bv(eta, j0)                    # positive magnitude for eta < 0\n    return -1.0 / (1.0 / jk + 1.0 / j_lim)\n\n\ndef eta_for(j_target, j0):\n    \"\"\"Cathodic overpotential (V, negative) for a kinetic current magnitude j_target.\"\"\"\n    return -math.asinh(j_target / (2 * j0)) / (ALPHA * f)\n\n\ndef j_lim_est(n=2, D=7e-6, c_M=0.6, delta_cm=50e-4):\n    \"\"\"j_lim = n F D c / delta, mA/cm2 (c in mol/cm3).\"\"\"\n    return n * F * D * (c_M * 1e-3) / delta_cm * 1e3\n\n\ndef lab_results():\n    j05 = float(j_bv(-0.050))\n    return {\"j_m050\": j05, \"j_m100\": float(j_bv(-0.100)), \"ratio\": float(j_bv(-0.100) / j_bv(-0.050)),\n            \"eta_slow\": eta_for(abs(j05), 0.1),\n            \"jl2_m020\": float(j_cath(-0.20, 2)), \"jl2_m025\": float(j_cath(-0.25, 2)),\n            \"jl6_m025\": float(j_cath(-0.25, 6)),\n            \"gain_eta_pct\": float((j_cath(-0.25, 2) / j_cath(-0.20, 2) - 1) * 100),\n            \"gain_jlim_pct\": float((j_cath(-0.25, 6) / j_cath(-0.25, 2) - 1) * 100),\n            \"f\": f, \"alpha\": ALPHA, \"j0\": J0}\n\n\ndef classroom_results():\n    R = {\"meta\": {\"numpy\": np.__version__, \"scipy\": __import__(\"scipy\").__version__, \"python\": sys.version.split()[0]}}\n    eta = np.round(np.arange(-0.25, 0.2501, 0.01), 3)\n    R[\"lecture\"] = {\n        \"f\": f, \"alpha\": ALPHA, \"tafel_mV\": 1000 * math.log(10) / (ALPHA * f),\n        \"eta\": eta.tolist(),\n        \"bv\": {str(j0): [round(float(x), 5) for x in j_bv(eta, j0)] for j0 in (0.1, 1.0, 10.0)},\n        \"pol\": {str(jl): [round(float(j_cath(e, jl)), 5) if e < 0 else None for e in eta] for jl in (2, 6)},\n        \"kin\": [round(float(-j_bv(e)), 5) if e < 0 else None for e in eta],\n        \"jlim_cu\": j_lim_est(),\n    }\n    R[\"lab\"] = lab_results()\n    return R\n\n\nif __name__ == \"__main__\":\n    R = classroom_results()\n    if \"--json\" in sys.argv:\n        with open(\"kinetics-results.json\", \"w\") as fh:\n            json.dump(R, fh, indent=1)\n        print(\"wrote kinetics-results.json\"); sys.exit()\n    L = R[\"lab\"]\n    print(\"f = %.3f 1/V; Tafel slope %.1f mV/decade\" % (L[\"f\"], R[\"lecture\"][\"tafel_mV\"]))\n    print(\"j(-0.050) = %.3f, j(-0.100) = %.3f mA/cm2, ratio %.2f\" % (L[\"j_m050\"], L[\"j_m100\"], L[\"ratio\"]))\n    print(\"eta for the same current at j0 = 0.1: %.4f V\" % L[\"eta_slow\"])\n    print(\"j_lim 2: %.3f (-0.20 V), %.3f (-0.25 V), +%.1f%%\" % (L[\"jl2_m020\"], L[\"jl2_m025\"], L[\"gain_eta_pct\"]))\n    print(\"j_lim 6 at -0.25 V: %.3f (+%.0f%%)\" % (L[\"jl6_m025\"], L[\"gain_jlim_pct\"]))\n    print(\"Cu plating j_lim estimate: %.1f mA/cm2\" % R[\"lecture\"][\"jlim_cu\"])\n";   // embedded copy, so live Python also works when the file is opened locally
 let R = RECORDED, MODE = "recorded";
 const C = {teal:"#0F6E6B",amber:"#E29A2D",rust:"#BE654C",sky:"#5A91BE",sage:"#83A462",plum:"#995A90",graphite:"#333F4A",sand:"#DFC98F",ink:"#1C242B",slate:"#66727C",mist:"#B9C1C6",paper:"#F3F0EB"};
 const fmt = (x,d=0)=>x==null?"–":Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -155,7 +155,9 @@ const A3 = (() => {
   const need = new Set(); body.replace(/url\(#([bc])([0-9A-Fa-f]{6})\)/g, (m, k, h) => need.add(h));
   let add = ""; need.forEach(h => {if (!have.has(h)){have.add(h); add += ballDef("#" + h) + cylDef("#" + h)}}); if (add) g.insertAdjacentHTML("beforeend", add)};
  const svg = (w, h, body) => {ensure(body); return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">${body}</svg>`};
- const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
+ let FLAT = false;
+ const flat = fn => {FLAT = true; try {return fn()} finally {FLAT = false}};
+ const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => FLAT ? `<circle cx="${x}" cy="${y}" r="${r}" fill="${col}" stroke="${shade(col, 0.7)}" stroke-width="1.5"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "") : (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
   `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#b${hex(col)})"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "");
  const eBall = (x, y, r = 12, sh = false) => ball(x, y, r, "#E29A2D", "e⁻", Math.round(r * 1.05), sh);
  const head = (fx, fy, x2, y2, col, w) => {const a = Math.atan2(y2 - fy, x2 - fx), L = 7 + w * 2.2, q = t => `${(x2 - L * Math.cos(a + t)).toFixed(1)},${(y2 - L * Math.sin(a + t)).toFixed(1)}`; return `<polygon points="${x2},${y2} ${q(0.42)} ${q(-0.42)}" fill="${col}"/>`};
@@ -169,7 +171,7 @@ const A3 = (() => {
   (faces.includes("f") ? poly([[x, y + dy, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 0.88), o) : "") +
   (faces.includes("t") ? poly([[x, y, z + dz], [x + dx, y, z + dz], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 1.12), o) : "");
  /* vertical cylinder seen slightly from above: top ellipse centre (cx, ty) */
- const cyl = (cx, ty, rx, ry, h, col, op = 1) => `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
+ const cyl = (cx, ty, rx, ry, h, col, op = 1) => FLAT ? `<rect x="${cx - rx}" y="${ty}" width="${2 * rx}" height="${h}" rx="3" fill="${col}" stroke="${shade(col, 0.7)}" stroke-width="1.5" opacity="${op}"/>` : `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
  /* glass beaker with liquid; level 0..1 */
  const beaker = (cx, by, rx, h, liquid, level = 0.65, liqOp = 0.55) => {const ry = rx * 0.28, lt = by - h * level;
   return `<ellipse cx="${cx}" cy="${by + 8}" rx="${rx * 1.05}" ry="${ry * 0.6}" fill="#000" opacity=".1"/>` +
@@ -201,7 +203,7 @@ const A3 = (() => {
  const battery = (cx, ty, rx, h, label = "") => {const ry = rx * 0.3;
   return cyl(cx, ty, rx, ry, h, "#333F4A") + `<rect x="${cx - rx}" y="${ty + h * 0.18}" width="${rx * 2}" height="${h * 0.62}" fill="url(#c0F6E6B)"/>` + cyl(cx, ty - 10, rx * 0.3, ry * 0.3, 10, "#B9C1C6") +
    txt(cx, ty + h * 0.52, label, "#fff", 17, "middle", 700) + txt(cx, ty + h * 0.35, "+", "#fff", 20, "middle", 700)};
- return {cp, EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
+ return {flat, cp, EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
 })();
 /* place an illustration in a slide: fixed-height box that scales the SVG */
 const ART = (inner, h = 260, extra = "") => `<div class="art" style="height:${h}px;margin-top:10px;${extra}">${inner}</div>`;
@@ -249,11 +251,12 @@ function axes(s, l, t, X, Y, px, py, xt, yt, xl, yl){for (const v of yt) s += `<
 const line = (xs, ys, px, py, c, dash = "", w = 3) => {const p = []; xs.forEach((x, i) => {if (ys[i] != null) p.push(`${px(x).toFixed(1)},${py(ys[i]).toFixed(1)}`)}); return `<polyline fill="none" stroke="${c}" stroke-width="${w}" ${dash ? `stroke-dasharray="${dash}"` : ""} points="${p.join(" ")}"/>`};
 
 /* ---------- class illustrations ---------- */
-function heroElectrode(){const o = {x: 120, y: 120, s: 46}; let s = `<defs><linearGradient id="dlg" x1="0" x2="1"><stop offset="0" stop-color="#DFC98F" stop-opacity=".9"/><stop offset="1" stop-color="#DFC98F" stop-opacity="0"/></linearGradient></defs>`;
- s += A3.box(0, 0, 0, 2, 5, 5, "#BE654C", o) + `<rect x="200" y="40" width="120" height="330" fill="url(#dlg)"/>`;
- [[260, 120], [300, 200], [380, 150], [420, 260], [350, 310], [270, 280]].forEach(([x, y], i) => s += A3.ball(x, y, 13, "#BE654C", "2+", 11, false) + (i < 4 ? A3.arrow(x - 16, y, x - 50, y, "#995A90", 2.5) : ""));
- s += A3.txt(260, 30, "diffusion layer", "#9a7b2c", 16, "middle", 700) + A3.txt(230, 410, "Cu²⁺ must reach the surface to be reduced", "#1C242B", 17, "middle", 700);
- return A3.svg(460, 425, s)}
+function heroElectrode(){let s = `<defs><linearGradient id="dlg" x1="0" x2="1"><stop offset="0" stop-color="#DFC98F" stop-opacity=".95"/><stop offset="1" stop-color="#DFC98F" stop-opacity="0"/></linearGradient></defs>`;
+ s += `<rect x="40" y="40" width="110" height="320" fill="#BE654C"/>` + A3.txt(95, 205, "Cu", "#fff", 22, "middle", 700) + `<rect x="150" y="40" width="130" height="320" fill="url(#dlg)"/>`;
+ s += `<line x1="150" x2="150" y1="40" y2="360" stroke="#333F4A" stroke-width="2"/>`;
+ [[200, 110], [240, 190], [330, 140], [380, 250], [300, 300], [210, 270]].forEach(([x, y], i) => s += A3.ball(x, y, 14, "#BE654C", "2+", 11, false) + (i < 4 ? A3.arrow(x - 18, y, x - 52, y, "#995A90", 2.5) : ""));
+ s += A3.eBall(132, 150, 11) + A3.eBall(132, 230, 11) + A3.txt(95, 385, "electrode", "#1C242B", 16, "middle", 700) + A3.txt(215, 30, "diffusion layer", "#9a7b2c", 16, "middle", 700) + A3.txt(380, 30, "bulk solution", "#66727C", 16, "middle", 700);
+ return A3.svg(460, 425, s + A3.txt(250, 415, "Cu²⁺ must reach the surface to take the electrons", "#1C242B", 16, "middle", 700))}
 function picTrench(){const o = {x: 250, y: 60, s: 28}; let s = A3.box(0, 0, 0, 9, 4, 1, "#B9C1C6", o) + A3.box(0, 0, 1, 3.5, 4, 3, "#DFC98F", o) + A3.box(5.5, 0, 1, 3.5, 4, 3, "#DFC98F", o) + A3.box(3.5, 0, 1, 2, 4, 1.4, "#BE654C", o, "tf");
  [[4.5, 2, 6.2], [3.8, 1, 5.6], [5.2, 3, 5.8]].forEach(([x, y, z]) => {const [a, b] = A3.iso(x, y, z, o), [c, d] = A3.iso(x, y, z - 1.2, o); s += A3.ball(a, b, 10, "#BE654C", "", 0, false) + A3.arrow(a, b + 12, c, d, "#995A90", 2.2)});
  s += A3.txt(260, 300, "additives slow growth at the top,", "#1C242B", 17, "middle", 700) + A3.txt(260, 324, "so the trench fills from the bottom", "#1C242B", 17, "middle", 700);
@@ -319,7 +322,7 @@ S.push({kicker:"Part 1 · Demo", title:"Butler-Volmer: current grows exponential
 <div class="panel grow"><div class="chart" id="bch"></div></div></div>
 <div class="col"><div class="panel" style="display:block"><div class="math" style="font-size:18px">j = j<sub>0</sub> [e<sup>αfη</sup> − e<sup>−αfη</sup>]</div></div>
 <div class="kpi"><div>j, mA/cm²<b class="a" id="bj"></b></div></div>
-<ul class="b xs" style="margin-top:10px"><li>At η = −0.050 V with j<sub>0</sub> = 1.00 mA/cm²: j = ${R.lab.j_m050.toFixed(3)} mA/cm²</li><li>Double η to −0.100 V: j = ${R.lab.j_m100.toFixed(3)}, ${R.lab.ratio.toFixed(1)} times more, not 2</li><li>Model: n = 1, α = 0.5, 25 °C</li></ul></div></div>`,
+<ul class="b xs" style="margin-top:10px"><li>At η = −0.050 V with j<sub>0</sub> = 1.00 mA/cm²: j = ${sgn(R.lab.j_m050)} mA/cm²</li><li>Double η to −0.100 V: j = ${sgn(R.lab.j_m100)}, ${R.lab.ratio.toFixed(1)} times more, not 2</li><li>Model: n = 1, α = 0.5, 25 °C</li></ul></div></div>`,
 draw:()=>{const J = [0.1, 1, 10]; let k = 1; const go = () => {const e = +document.getElementById("bE").value; J.forEach((_, i) => document.getElementById("bj" + i).classList.toggle("on", i === k));
  document.getElementById("bEv").textContent = sgn(e, 2); const j = jbv(e, J[k]); document.getElementById("bj").textContent = sgn(j, 3); document.getElementById("bch").innerHTML = bvSVG(e, J[k])};
  document.getElementById("bE").oninput = go; J.forEach((_, i) => document.getElementById("bj" + i).onclick = () => {k = i; go()}); go()},
@@ -336,7 +339,7 @@ S.push({kicker:"Part 1 · Fast and slow electrodes", title:"j<sub>0</sub> decide
 <tr><th>Electrode</th><th class="n">j<sub>0</sub>, mA/cm²</th><th class="n">η for |j| = ${Math.abs(R.lab.j_m050).toFixed(3)} mA/cm²</th></tr>
 <tr><td>Fast</td><td class="n">1.0</td><td class="n">−0.050 V</td></tr><tr><td>Slow</td><td class="n">0.1</td><td class="n"><b style="color:${C.amber}">${sgn(R.lab.eta_slow, 3)} V</b></td></tr></table>
 <p class="note">At large η one exponential wins: each tenfold rise in current costs about ${LC().tafel_mV.toFixed(0)} mV more (the Tafel slope, for α = 0.5 and n = 1).</p></div>
-<div class="col"><ul class="b sm"><li>A slow electrode needs about three times the overpotential for the same current here</li><li>A catalyst raises j<sub>0</sub>: it lowers the barrier both ways, as in Class 5 kinetics</li>
+<div class="col"><ul class="b sm"><li>A slow electrode needs about three times the overpotential for the same current here</li><li>A catalyst raises j<sub>0</sub>: it lowers the barrier both ways</li>
 <li>Overpotential is wasted voltage: in a battery it lowers the voltage you get; in plating it raises the voltage you pay</li></ul></div></div>`});
 
 S.push({kicker:"Check 1 · 5 minutes", title:"Check 1: kinetics", html:()=>CHECK(1,`${OL}
@@ -344,8 +347,8 @@ S.push({kicker:"Check 1 · 5 minutes", title:"Check 1: kinetics", html:()=>CHECK
 <li>Calculate j at η = −0.050 V with j<sub>0</sub> = 1.00 mA/cm², α = 0.5, f = 38.92 V<sup>−1</sup>.</li>
 <li>η doubles to −0.100 V. Does j double?</li>
 <li>Which needs more overpotential for the same current: j<sub>0</sub> = 1.0 or 0.1 mA/cm²?</li></ol>`,
-`<li>Yes, both ways at equal rates: j<sub>0</sub> each way, no net current</li><li>1.00 × (e<sup>−0.973</sup> − e<sup>0.973</sup>) = ${R.lab.j_m050.toFixed(3)} mA/cm²</li>
-<li>No: ${R.lab.j_m100.toFixed(3)} mA/cm², ${R.lab.ratio.toFixed(1)} times more</li><li>0.1: about ${sgn(R.lab.eta_slow, 2)} V instead of −0.05 V</li>`),
+`<li>Yes, both ways at equal rates: j<sub>0</sub> each way, no net current</li><li>1.00 × (e<sup>−0.973</sup> − e<sup>0.973</sup>) = ${sgn(R.lab.j_m050)} mA/cm²</li>
+<li>No: ${sgn(R.lab.j_m100)} mA/cm², ${R.lab.ratio.toFixed(1)} times more</li><li>0.1: about ${sgn(R.lab.eta_slow, 2)} V instead of −0.05 V</li>`),
 draw:()=>reveal("k1btn","k1ans")});
 
 /* ---------- Part 2 ---------- */
@@ -361,7 +364,7 @@ S.push({kicker:"Part 2 · Mass transport", title:"The ions have to get there", h
 <div class="col"><div class="panel" style="display:block"><div class="math" style="font-size:19px;line-height:1.7">j<sub>lim</sub> = n F D c / δ</div></div>
 <ul class="b xs" style="margin-top:10px"><li>Reduction uses up Cu<sup>2+</sup> at the surface; more must diffuse in across a thin layer δ</li>
 <li>When the surface concentration reaches zero, the current cannot rise further: the limiting current</li>
-<li>Cu plating, order of magnitude: n = 2, D = 7 × 10<sup>−6</sup> cm²/s, c = 0.10 M, δ = 50 µm gives j<sub>lim</sub> ≈ ${LC().jlim_cu.toFixed(0)} mA/cm²</li>
+<li>Cu plating, order of magnitude: n = 2, D = 7 × 10<sup>−6</sup> cm²/s, c = 0.6 M (a typical acid Cu bath), δ = 50 µm gives j<sub>lim</sub> ≈ ${Math.round(LC().jlim_cu / 10) * 10} mA/cm²</li>
 <li>Raise j<sub>lim</sub>: stir or spin (thinner δ), a more concentrated bath (larger c), warmer (larger D)</li></ul></div></div>`,
 notes:"Values for the estimate are of the usual order, not a specific bath."});
 
@@ -391,12 +394,12 @@ notes:"1/|j| = 1/|j_k| + 1/j_lim: the slower of the two steps controls the curre
 S.push({kicker:"Part 2 · A common mistake", title:"“More voltage always gives more current”", html:()=>`<div class="body"><div class="col w55"><div class="act" style="border-color:${C.rust};background:#fbf0ec"><span class="tag" style="background:${C.rust}">THE CLAIM</span>
 <div style="font-size:22px;line-height:1.45">“To plate faster, just turn up the voltage.”</div></div>
 <div class="panel" style="margin-top:16px;display:block"><b style="color:${C.teal};font-size:19px">The correction</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
-Near the limiting current, Cu<sup>2+</sup> cannot arrive any faster. The extra 0.05 V adds only ${R.lab.gain_eta_pct.toFixed(1)}% more Cu current; the rest of the push goes to side reactions such as H<sub>2</sub>, which lowers the current efficiency of Class 10. Better transport tripled the current instead.</div></div></div>
+Near the limiting current, Cu<sup>2+</sup> cannot arrive any faster. The extra 0.05 V adds only ${R.lab.gain_eta_pct.toFixed(1)}% more Cu current; the rest of the push goes to side reactions such as H<sub>2</sub>, which lowers the current efficiency of Class 10. Better transport nearly tripled the current instead.</div></div></div>
 <div class="col"><ul class="b sm"><li>Find which step limits: kinetics (raise η, or use a catalyst) or transport (stir, concentrate, heat)</li><li>Deposits made near j<sub>lim</sub> grow rough and powdery; platers call them burnt</li></ul></div></div>`});
 
 S.push({kicker:"Part 2 · In the fab and in your phone", title:"Rate limits in plating and in fast charging", html:()=>`<div class="body"><div class="col"><table class="t" style="font-size:17px">
 <tr><th>Where</th><th>What limits it, and what is done</th></tr>
-<tr><td>Cu plating of interconnects</td><td>Run well below j<sub>lim</sub>: the 10 mA/cm² of Class 10 against an estimated ${LC().jlim_cu.toFixed(0)} mA/cm². The wafer spins to thin the diffusion layer and keep it even across the wafer</td></tr>
+<tr><td>Cu plating of interconnects</td><td>Run well below j<sub>lim</sub>: the 10 mA/cm² of Class 10 against an estimated ${Math.round(LC().jlim_cu / 10) * 10} mA/cm². The wafer spins to thin the diffusion layer and keep it even across the wafer</td></tr>
 <tr><td>Filling narrow trenches</td><td>Cu<sup>2+</sup> reaches the top of a trench more easily than the bottom. Bath additives slow growth at the top so the trench fills from the bottom up, without voids</td></tr>
 <tr><td>Fast charging a Li-ion cell</td><td>At high current, overpotential and Li<sup>+</sup> transport limits cut the voltage you get and the charge you can store. Push too hard and Li metal plates on the graphite instead of entering it, a safety risk</td></tr></table>${ART(picTrench(), 220)}</div></div>`,
 notes:"The same two limits, kinetics and transport, in three settings."});
@@ -424,7 +427,7 @@ notes:"Early finishers: with j_lim = 6, what η gives |j| = 3 mA/cm²? (about �
 
 S.push({kicker:"Summary", title:"What to take from today", html:()=>`<div class="body"><div class="col w45"><table class="t" style="font-size:17px">
 <tr><th>Result (j<sub>0</sub> = 1.00 mA/cm²)</th><th class="n">Value</th></tr>
-<tr><td>j at −0.050 V</td><td class="n">${R.lab.j_m050.toFixed(3)} mA/cm²</td></tr><tr><td>j at −0.100 V</td><td class="n">${R.lab.j_m100.toFixed(3)} mA/cm²</td></tr>
+<tr><td>j at −0.050 V</td><td class="n">${sgn(R.lab.j_m050)} mA/cm²</td></tr><tr><td>j at −0.100 V</td><td class="n">${sgn(R.lab.j_m100)} mA/cm²</td></tr>
 <tr><td>η at j<sub>0</sub> = 0.1, same |j|</td><td class="n">${sgn(R.lab.eta_slow, 3)} V</td></tr><tr><td>j<sub>lim</sub> 2: −0.20 → −0.25 V</td><td class="n">+${R.lab.gain_eta_pct.toFixed(1)}%</td></tr>
 <tr><td>j<sub>lim</sub> 2 → 6 at −0.25 V</td><td class="n">${Math.abs(R.lab.jl2_m025).toFixed(3)} → ${Math.abs(R.lab.jl6_m025).toFixed(3)}</td></tr></table></div>
 <div class="col"><ul class="b xs"><li>Current density is a rate; overpotential is the push</li><li>j<sub>0</sub>: the current each way at equilibrium; a larger j<sub>0</sub> needs less η</li>
@@ -504,7 +507,7 @@ const NARR = {
  "provider": "Microsoft Edge neural speech (edge-tts)",
  "synthetic_voice": true,
  "captions": "en",
- "total_seconds": 596.8,
+ "total_seconds": 597.7,
  "slides": [
   {
    "n": 1,
@@ -771,7 +774,7 @@ const NARR = {
   {
    "n": 10,
    "file": "audio/slide-10.mp3",
-   "duration": 35.256,
+   "duration": 35.424,
    "hold": false,
    "cues": [
     {
@@ -791,12 +794,12 @@ const NARR = {
     },
     {
      "s": 20.092,
-     "e": 27.934,
-     "en": "For a Cu plating bath, with typical values, the limiting current is about 27 mA/cm²."
+     "e": 28.105,
+     "en": "For a Cu plating bath, with typical values, the limiting current is about 160 mA/cm²."
     },
     {
-     "s": 27.934,
-     "e": 35.197,
+     "s": 28.105,
+     "e": 35.368,
      "en": "To raise it, stir or spin to thin the diffusion layer, use a more concentrated bath, or warm it to speed diffusion."
     }
    ]
@@ -832,7 +835,7 @@ const NARR = {
   {
    "n": 12,
    "file": "audio/slide-12.mp3",
-   "duration": 41.208,
+   "duration": 41.52,
    "hold": false,
    "cues": [
     {
@@ -842,22 +845,22 @@ const NARR = {
     },
     {
      "s": 5.024,
-     "e": 14.757,
+     "e": 14.686,
      "en": "Near the limiting current, copper ions cannot arrive any faster. The extra fifty millivolts adds only two and a half percent more copper current."
     },
     {
-     "s": 14.757,
-     "e": 25.289,
-     "en": "The rest of the push goes to side reactions such as hydrogen, which lowers the current efficiency from Class 10. Better transport tripled the current instead."
+     "s": 14.686,
+     "e": 25.605,
+     "en": "The rest of the push goes to side reactions such as hydrogen, which lowers the current efficiency from Class 10. Better transport nearly tripled the current instead."
     },
     {
-     "s": 25.289,
-     "e": 35.07,
+     "s": 25.605,
+     "e": 35.386,
      "en": "So find which step limits: kinetics, where you raise the overpotential or use a catalyst, or transport, where you stir, concentrate, or heat."
     },
     {
-     "s": 35.07,
-     "e": 41.132,
+     "s": 35.386,
+     "e": 41.447,
      "en": "Deposits made near the limiting current grow rough and powdery. Platers call them burnt."
     }
    ]
@@ -865,7 +868,7 @@ const NARR = {
   {
    "n": 13,
    "file": "audio/slide-13.mp3",
-   "duration": 42.696,
+   "duration": 43.056,
    "hold": false,
    "cues": [
     {
@@ -875,27 +878,27 @@ const NARR = {
     },
     {
      "s": 3.458,
-     "e": 13.64,
-     "en": "In copper plating of interconnects, the process runs well below the limiting current: ten milliamps per square centimeter, against an estimate of about twenty seven."
+     "e": 13.983,
+     "en": "In copper plating of interconnects, the process runs well below the limiting current: ten milliamps per square centimeter, against an estimate of about one hundred sixty."
     },
     {
-     "s": 13.64,
-     "e": 17.382,
+     "s": 13.983,
+     "e": 17.737,
      "en": "The wafer spins to thin the diffusion layer and keep it even."
     },
     {
-     "s": 17.382,
-     "e": 28.25,
+     "s": 17.737,
+     "e": 28.605,
      "en": "In narrow trenches, copper ions reach the top more easily than the bottom. Bath additives slow growth at the top so the trench fills from the bottom up, without voids."
     },
     {
-     "s": 28.25,
-     "e": 36.191,
+     "s": 28.605,
+     "e": 36.546,
      "en": "And in fast charging a lithium-ion cell, overpotential and lithium ion transport cut the voltage and the charge you can store."
     },
     {
-     "s": 36.191,
-     "e": 42.632,
+     "s": 36.546,
+     "e": 42.987,
      "en": "Push too hard, and lithium metal plates on the graphite instead of entering it, which is a safety risk."
     }
    ]

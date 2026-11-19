@@ -155,7 +155,9 @@ const A3 = (() => {
   const need = new Set(); body.replace(/url\(#([bc])([0-9A-Fa-f]{6})\)/g, (m, k, h) => need.add(h));
   let add = ""; need.forEach(h => {if (!have.has(h)){have.add(h); add += ballDef("#" + h) + cylDef("#" + h)}}); if (add) g.insertAdjacentHTML("beforeend", add)};
  const svg = (w, h, body) => {ensure(body); return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">${body}</svg>`};
- const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
+ let FLAT = false;
+ const flat = fn => {FLAT = true; try {return fn()} finally {FLAT = false}};
+ const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => FLAT ? `<circle cx="${x}" cy="${y}" r="${r}" fill="${col}" stroke="${shade(col, 0.7)}" stroke-width="1.5"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "") : (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
   `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#b${hex(col)})"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "");
  const eBall = (x, y, r = 12, sh = false) => ball(x, y, r, "#E29A2D", "e⁻", Math.round(r * 1.05), sh);
  const head = (fx, fy, x2, y2, col, w) => {const a = Math.atan2(y2 - fy, x2 - fx), L = 7 + w * 2.2, q = t => `${(x2 - L * Math.cos(a + t)).toFixed(1)},${(y2 - L * Math.sin(a + t)).toFixed(1)}`; return `<polygon points="${x2},${y2} ${q(0.42)} ${q(-0.42)}" fill="${col}"/>`};
@@ -169,7 +171,7 @@ const A3 = (() => {
   (faces.includes("f") ? poly([[x, y + dy, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 0.88), o) : "") +
   (faces.includes("t") ? poly([[x, y, z + dz], [x + dx, y, z + dz], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 1.12), o) : "");
  /* vertical cylinder seen slightly from above: top ellipse centre (cx, ty) */
- const cyl = (cx, ty, rx, ry, h, col, op = 1) => `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
+ const cyl = (cx, ty, rx, ry, h, col, op = 1) => FLAT ? `<rect x="${cx - rx}" y="${ty}" width="${2 * rx}" height="${h}" rx="3" fill="${col}" stroke="${shade(col, 0.7)}" stroke-width="1.5" opacity="${op}"/>` : `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
  /* glass beaker with liquid; level 0..1 */
  const beaker = (cx, by, rx, h, liquid, level = 0.65, liqOp = 0.55) => {const ry = rx * 0.28, lt = by - h * level;
   return `<ellipse cx="${cx}" cy="${by + 8}" rx="${rx * 1.05}" ry="${ry * 0.6}" fill="#000" opacity=".1"/>` +
@@ -201,7 +203,7 @@ const A3 = (() => {
  const battery = (cx, ty, rx, h, label = "") => {const ry = rx * 0.3;
   return cyl(cx, ty, rx, ry, h, "#333F4A") + `<rect x="${cx - rx}" y="${ty + h * 0.18}" width="${rx * 2}" height="${h * 0.62}" fill="url(#c0F6E6B)"/>` + cyl(cx, ty - 10, rx * 0.3, ry * 0.3, 10, "#B9C1C6") +
    txt(cx, ty + h * 0.52, label, "#fff", 17, "middle", 700) + txt(cx, ty + h * 0.35, "+", "#fff", 20, "middle", 700)};
- return {cp, EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
+ return {flat, cp, EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
 })();
 /* place an illustration in a slide: fixed-height box that scales the SVG */
 const ART = (inner, h = 260, extra = "") => `<div class="art" style="height:${h}px;margin-top:10px;${extra}">${inner}</div>`;
@@ -374,7 +376,7 @@ for c in (1.0, 0.1, 0.01, 0.001):
     print("[Cu2+] = %-6g M: E = %.4f V" % (c, e_half("Cu", c)))
 print("per decade: %.4f V; per two decades: %.4f V" % (K / 2, K))`,
 out:()=>{const E_ = LC().E_cu; return ["1.0", "0.1", "0.01", "0.001"].map(c => `[Cu2+] = ${(String(+c)).padEnd(6)} M: E = ${E_[c].toFixed(4)} V`).join("\n") + `\nper decade: ${(LC().K / 2).toFixed(4)} V; per two decades: ${LC().K.toFixed(4)} V`}},
-notes:"The slider steps half a decade. In the JavaScript E is computed from the same K the Python recorded."});
+notes:"The slider steps half a decade. In the JavaScript E is computed from the same constants the Python recorded."});
 
 S.push({kicker:"Part 2 · Demo", title:"The Daniell cell away from 1 M", html:()=>`<div class="body"><div class="col w55"><div class="panel" style="display:block"><div class="math" style="font-size:21px;line-height:1.8">
 E<sub>cell</sub> = 1.10 − 0.0296 log<sub>10</sub>([Zn<sup>2+</sup>]/[Cu<sup>2+</sup>])</div></div>

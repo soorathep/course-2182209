@@ -155,7 +155,9 @@ const A3 = (() => {
   const need = new Set(); body.replace(/url\(#([bc])([0-9A-Fa-f]{6})\)/g, (m, k, h) => need.add(h));
   let add = ""; need.forEach(h => {if (!have.has(h)){have.add(h); add += ballDef("#" + h) + cylDef("#" + h)}}); if (add) g.insertAdjacentHTML("beforeend", add)};
  const svg = (w, h, body) => {ensure(body); return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">${body}</svg>`};
- const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
+ let FLAT = false;
+ const flat = fn => {FLAT = true; try {return fn()} finally {FLAT = false}};
+ const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => FLAT ? `<circle cx="${x}" cy="${y}" r="${r}" fill="${col}" stroke="${shade(col, 0.7)}" stroke-width="1.5"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "") : (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
   `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#b${hex(col)})"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "");
  const eBall = (x, y, r = 12, sh = false) => ball(x, y, r, "#E29A2D", "e⁻", Math.round(r * 1.05), sh);
  const head = (fx, fy, x2, y2, col, w) => {const a = Math.atan2(y2 - fy, x2 - fx), L = 7 + w * 2.2, q = t => `${(x2 - L * Math.cos(a + t)).toFixed(1)},${(y2 - L * Math.sin(a + t)).toFixed(1)}`; return `<polygon points="${x2},${y2} ${q(0.42)} ${q(-0.42)}" fill="${col}"/>`};
@@ -169,7 +171,7 @@ const A3 = (() => {
   (faces.includes("f") ? poly([[x, y + dy, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 0.88), o) : "") +
   (faces.includes("t") ? poly([[x, y, z + dz], [x + dx, y, z + dz], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 1.12), o) : "");
  /* vertical cylinder seen slightly from above: top ellipse centre (cx, ty) */
- const cyl = (cx, ty, rx, ry, h, col, op = 1) => `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
+ const cyl = (cx, ty, rx, ry, h, col, op = 1) => FLAT ? `<rect x="${cx - rx}" y="${ty}" width="${2 * rx}" height="${h}" rx="3" fill="${col}" stroke="${shade(col, 0.7)}" stroke-width="1.5" opacity="${op}"/>` : `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
  /* glass beaker with liquid; level 0..1 */
  const beaker = (cx, by, rx, h, liquid, level = 0.65, liqOp = 0.55) => {const ry = rx * 0.28, lt = by - h * level;
   return `<ellipse cx="${cx}" cy="${by + 8}" rx="${rx * 1.05}" ry="${ry * 0.6}" fill="#000" opacity=".1"/>` +
@@ -201,7 +203,7 @@ const A3 = (() => {
  const battery = (cx, ty, rx, h, label = "") => {const ry = rx * 0.3;
   return cyl(cx, ty, rx, ry, h, "#333F4A") + `<rect x="${cx - rx}" y="${ty + h * 0.18}" width="${rx * 2}" height="${h * 0.62}" fill="url(#c0F6E6B)"/>` + cyl(cx, ty - 10, rx * 0.3, ry * 0.3, 10, "#B9C1C6") +
    txt(cx, ty + h * 0.52, label, "#fff", 17, "middle", 700) + txt(cx, ty + h * 0.35, "+", "#fff", 20, "middle", 700)};
- return {cp, EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
+ return {flat, cp, EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
 })();
 /* place an illustration in a slide: fixed-height box that scales the SVG */
 const ART = (inner, h = 260, extra = "") => `<div class="art" style="height:${h}px;margin-top:10px;${extra}">${inner}</div>`;
@@ -326,7 +328,7 @@ S.push({kicker:"Part 1 · Why so much capacitance", title:"Tiny d, huge A", html
 C = ε A / d<br>Double layer: about ${LC().c_area_uF.toFixed(0)} µF per cm² of real surface<br>Activated carbon: about ${LC().area_m2g} m² per gram<br>
 ${LC().c_area_uF.toFixed(0)} µF/cm² × 10<sup>7</sup> cm²/g ≈ <b style="color:${C.amber}">${LC().F_per_g.toFixed(0)} F per gram</b></div></div>
 <p class="note">Order-of-magnitude values. Real carbons store less, because not all of the surface is reached by the ions.</p></div>
-<div class="col"><ul class="b sm"><li>d is set by the size of the ions, less than a nanometer: very small d</li><li>A porous carbon has the surface of a tennis court in a few grams: very large A</li>
+<div class="col"><ul class="b sm"><li>d is set by the size of the ions, less than a nanometer: very small d</li><li>One gram of porous carbon has the surface of about four tennis courts: very large A</li>
 <li>So a supercapacitor the size of a coin can hold farads, while ordinary capacitors in a circuit hold micro- or picofarads</li></ul></div></div>`});
 
 function vtSVG(which){const w = 520, h = 300, l = 60, r = 20, t = 20, b = 46, X = w - l - r, Y = h - t - b, px = v => l + X * v / 20, py = v => t + Y * (2.1 - v) / 2.1; let s = svgEl(w, h); const L = R.lab;
@@ -513,7 +515,7 @@ const NARR = {
  "provider": "Microsoft Edge neural speech (edge-tts)",
  "synthetic_voice": true,
  "captions": "en",
- "total_seconds": 638.4,
+ "total_seconds": 638.0,
  "slides": [
   {
    "n": 1,
@@ -701,7 +703,7 @@ const NARR = {
   {
    "n": 7,
    "file": "audio/slide-07.mp3",
-   "duration": 48.096,
+   "duration": 47.664,
    "hold": false,
    "cues": [
     {
@@ -716,22 +718,22 @@ const NARR = {
     },
     {
      "s": 17.947,
-     "e": 27.25,
-     "en": "Activated carbon is very porous. One gram has a surface of about one thousand square meters, like a tennis court in a few grams."
+     "e": 26.816,
+     "en": "Activated carbon is very porous. One gram has a surface of about one thousand square meters, about four tennis courts."
     },
     {
-     "s": 27.25,
-     "e": 35.275,
+     "s": 26.816,
+     "e": 34.841,
      "en": "Ten microfarads per square centimeter times ten million square centimeters per gram gives about one hundred farads per gram."
     },
     {
-     "s": 35.275,
-     "e": 40.026,
+     "s": 34.841,
+     "e": 39.592,
      "en": "Real carbons store less, because the ions do not reach all of the surface."
     },
     {
-     "s": 40.026,
-     "e": 48.039,
+     "s": 39.592,
+     "e": 47.605,
      "en": "So a supercapacitor the size of a coin can hold farads, while ordinary capacitors in a circuit hold micro or picofarads."
     }
    ]

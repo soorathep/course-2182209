@@ -155,7 +155,9 @@ const A3 = (() => {
   const need = new Set(); body.replace(/url\(#([bc])([0-9A-Fa-f]{6})\)/g, (m, k, h) => need.add(h));
   let add = ""; need.forEach(h => {if (!have.has(h)){have.add(h); add += ballDef("#" + h) + cylDef("#" + h)}}); if (add) g.insertAdjacentHTML("beforeend", add)};
  const svg = (w, h, body) => {ensure(body); return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">${body}</svg>`};
- const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
+ let FLAT = false;
+ const flat = fn => {FLAT = true; try {return fn()} finally {FLAT = false}};
+ const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => FLAT ? `<circle cx="${x}" cy="${y}" r="${r}" fill="${col}" stroke="${shade(col, 0.7)}" stroke-width="1.5"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "") : (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
   `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#b${hex(col)})"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "");
  const eBall = (x, y, r = 12, sh = false) => ball(x, y, r, "#E29A2D", "e⁻", Math.round(r * 1.05), sh);
  const head = (fx, fy, x2, y2, col, w) => {const a = Math.atan2(y2 - fy, x2 - fx), L = 7 + w * 2.2, q = t => `${(x2 - L * Math.cos(a + t)).toFixed(1)},${(y2 - L * Math.sin(a + t)).toFixed(1)}`; return `<polygon points="${x2},${y2} ${q(0.42)} ${q(-0.42)}" fill="${col}"/>`};
@@ -169,7 +171,7 @@ const A3 = (() => {
   (faces.includes("f") ? poly([[x, y + dy, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 0.88), o) : "") +
   (faces.includes("t") ? poly([[x, y, z + dz], [x + dx, y, z + dz], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 1.12), o) : "");
  /* vertical cylinder seen slightly from above: top ellipse centre (cx, ty) */
- const cyl = (cx, ty, rx, ry, h, col, op = 1) => `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
+ const cyl = (cx, ty, rx, ry, h, col, op = 1) => FLAT ? `<rect x="${cx - rx}" y="${ty}" width="${2 * rx}" height="${h}" rx="3" fill="${col}" stroke="${shade(col, 0.7)}" stroke-width="1.5" opacity="${op}"/>` : `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
  /* glass beaker with liquid; level 0..1 */
  const beaker = (cx, by, rx, h, liquid, level = 0.65, liqOp = 0.55) => {const ry = rx * 0.28, lt = by - h * level;
   return `<ellipse cx="${cx}" cy="${by + 8}" rx="${rx * 1.05}" ry="${ry * 0.6}" fill="#000" opacity=".1"/>` +
@@ -190,21 +192,43 @@ const A3 = (() => {
   for (let i = 0; i < e; i++){const rot = [0, 60, 120][i % 3] * Math.PI / 180, t = 0.7 + i * 2.1, ex = R * Math.cos(t), ey = R * 0.32 * Math.sin(t); s += eBall(cx + ex * Math.cos(rot) - ey * Math.sin(rot), cy + ex * Math.sin(rot) + ey * Math.cos(rot), 10)}
   return s + (label ? txt(cx, cy + R + 30, label, "#1C242B", 18, "middle", 700) : "")};
  /* a cubic cell with atoms at given fractional positions (sorted back to front) */
- const cell = (o, atoms, col = "#BE654C", r = 14, edges = true) => {let s = "";
+ /* cubes use a tilted view (rotated 28°, seen 22° from above) so no two corners overlap */
+ const cp = (x, y, z, o) => {const a = 28 * Math.PI / 180, e = 22 * Math.PI / 180, X = x - 0.5, Y = y - 0.5, Z = z - 0.5, u = X * Math.cos(a) - Y * Math.sin(a), v = X * Math.sin(a) + Y * Math.cos(a); return [o.x + u * o.s, o.y + v * o.s * Math.sin(e) - Z * o.s * Math.cos(e)]};
+ const cell = (o, atoms, col = "#BE654C", r = 14, edges = true) => {let s = ""; const iso = cp;
   const E = [[0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 0, 1], [1, 0, 0, 1, 1, 0], [1, 0, 0, 1, 0, 1], [0, 1, 0, 1, 1, 0], [0, 1, 0, 0, 1, 1], [0, 0, 1, 1, 0, 1], [0, 0, 1, 0, 1, 1], [1, 1, 0, 1, 1, 1], [1, 0, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1]];
-  if (edges) E.forEach(([a, b, c, d, e, f]) => {const [x1, y1] = iso(a, b, c, o), [x2, y2] = iso(d, e, f, o); s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#7d8a93" stroke-width="1.5" stroke-dasharray="${(a + b + c === 0 && (d + e + f === 1)) ? "4 4" : ""}"/>`});
-  atoms.map(a => ({a, k: a[0] + a[1] - a[2] * 0.01})).sort((p, q) => p.k - q.k).forEach(({a}) => {const [x, y] = iso(a[0], a[1], a[2], o); s += ball(x, y, a[3] || r, a[4] || col, a[5] || "", 0, false)});
+  if (edges) E.forEach(([a, b, c, d, e, f]) => {const [x1, y1] = iso(a, b, c, o), [x2, y2] = iso(d, e, f, o); s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#7d8a93" stroke-width="1.5" stroke-dasharray="${(b === 0 && e === 0) ? "4 4" : ""}"/>`});
+  atoms.map(a => ({a, k: (a[0] - 0.5) * Math.sin(28 * Math.PI / 180) + (a[1] - 0.5) * Math.cos(28 * Math.PI / 180)})).sort((p, q) => p.k - q.k).forEach(({a}) => {const [x, y] = iso(a[0], a[1], a[2], o); s += ball(x, y, a[3] || r, a[4] || col, a[5] || "", 0, false)});
   return s};
  /* cylindrical battery cell, standing */
  const battery = (cx, ty, rx, h, label = "") => {const ry = rx * 0.3;
   return cyl(cx, ty, rx, ry, h, "#333F4A") + `<rect x="${cx - rx}" y="${ty + h * 0.18}" width="${rx * 2}" height="${h * 0.62}" fill="url(#c0F6E6B)"/>` + cyl(cx, ty - 10, rx * 0.3, ry * 0.3, 10, "#B9C1C6") +
    txt(cx, ty + h * 0.52, label, "#fff", 17, "middle", 700) + txt(cx, ty + h * 0.35, "+", "#fff", 20, "middle", 700)};
- return {EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
+ return {flat, cp, EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
 })();
 /* place an illustration in a slide: fixed-height box that scales the SVG */
 const ART = (inner, h = 260, extra = "") => `<div class="art" style="height:${h}px;margin-top:10px;${extra}">${inner}</div>`;
 /* title layout: text on the left, picture on the right */
 const TITLE3 = (textHtml, pic) => `<div style="display:flex;align-items:center;gap:32px;height:100%"><div style="flex:1;min-width:0">${textHtml}</div><div style="flex:0 0 440px;height:440px">${pic}</div></div>`;
+/* extra scene parts shared by the electrochemistry classes */
+const A3X = (() => {
+ const {txt, ball, eBall, arrow, cyl, beaker, box, iso} = A3;
+ const bar = (cx, ty, h, col, w = 15) => cyl(cx, ty, w, w * 0.32, h, col);
+ const wire = pts => `<polyline points="${pts.map(p => p.join(",")).join(" ")}" fill="none" stroke="#333F4A" stroke-width="3"/>`;
+ const bulb = (x, y, on = true) => (on ? `<circle cx="${x}" cy="${y}" r="30" fill="#E29A2D" opacity=".18"/>` : "") + `<circle cx="${x}" cy="${y}" r="17" fill="${on ? "#F7D78A" : "#fff"}" stroke="#333F4A" stroke-width="2"/>`;
+ const supply = (x, y) => `<rect x="${x - 34}" y="${y - 20}" width="68" height="40" rx="6" fill="#333F4A"/><rect x="${x - 28}" y="${y - 14}" width="56" height="16" rx="3" fill="#83A462"/>` + txt(x, y + 16, "supply", "#fff", 11, "middle", 700);
+ const meter = (x, y, v) => `<rect x="${x - 50}" y="${y - 28}" width="100" height="56" rx="10" fill="#333F4A"/><rect x="${x - 40}" y="${y - 18}" width="80" height="30" rx="4" fill="#cfe3c4"/>` + txt(x, y + 4, v, "#1C242B", 20, "middle", 700) + txt(x, y + 24, "voltmeter", "#fff", 10);
+ /* Daniell cell: returns svg body; mid = device between the wires */
+ const daniell = (x0, y0, {mid = "bulb", v = "1.10 V", labels = true} = {}) => {let s = "";
+  s += beaker(x0 + 90, y0 + 230, 72, 140, "#B9C1C6", 0.7, 0.45) + beaker(x0 + 330, y0 + 230, 72, 140, "#5A91BE", 0.7, 0.55);
+  s += `<path d="M${x0 + 130} ${y0 + 175} L${x0 + 130} ${y0 + 105} L${x0 + 290} ${y0 + 105} L${x0 + 290} ${y0 + 175}" fill="none" stroke="#DFC98F" stroke-width="20" stroke-linejoin="round"/>` + txt(x0 + 210, y0 + 98, "salt bridge", "#9a7b2c", 13, "middle", 700);
+  s += bar(x0 + 70, y0 + 60, 160, "#8E9AA3") + bar(x0 + 350, y0 + 60, 160, "#BE654C");
+  s += wire([[x0 + 70, y0 + 60], [x0 + 70, y0 + 20], [x0 + 350, y0 + 20], [x0 + 350, y0 + 60]]);
+  s += mid === "bulb" ? bulb(x0 + 210, y0 + 20) : mid === "meter" ? meter(x0 + 210, y0 + 20, v) : supply(x0 + 210, y0 + 20);
+  if (mid !== "meter") [x0 + 120, x0 + 150, x0 + 270, x0 + 300].forEach(x => s += eBall(x, y0 + 20, 8));
+  if (labels) s += txt(x0 + 90, y0 + 262, "Zn: anode (−)", "#0F6E6B", 15, "middle", 700) + txt(x0 + 330, y0 + 262, "Cu: cathode (+)", "#BE654C", 15, "middle", 700);
+  return s};
+ return {bar, wire, bulb, supply, meter, daniell};
+})();
 
 /* ---------- Class 1 helpers ---------- */
 const foot = "2182209 Chemistry for Semiconductor Engineering · Class 1 · Atoms, ions and the materials of a chip · draft for 2027";
@@ -247,7 +271,7 @@ S.push({kicker:"Plan for today", title:"Ninety minutes, one activity, two checks
 <tr><td>Lab 1</td><td>Counting particles in chip and battery materials</td><td class="n">30</td></tr>
 <tr><td></td><td>Exit Ticket and feedback</td><td class="n">5</td></tr>
 <tr><td></td><td><b>Total</b></td><td class="n"><b>90</b></td></tr></table>
-<p class="note">Studying on your own: the narration takes about 20 minutes. Stop at the activity and at each check, then do Lab 1; the whole class takes about 90 minutes.</p></div></div>`});
+<p class="note">Studying on your own: the narration takes about 18 minutes. Stop at the activity and at each check, then do Lab 1; the whole class takes about 90 minutes.</p></div></div>`});
 
 S.push({kicker:"Activity 1 · 5 minutes · alone, then in pairs", title:"What do you already know?", html:()=>`<div class="body"><div class="col w55"><div class="act"><span class="tag">WRITE, THEN COMPARE</span>
 ${OL}<li>Name the three particles in an atom and give the charge of each.</li>
@@ -320,7 +344,7 @@ S.push({kicker:"Part 1 · Inside the atom", title:"Three particles, and only one
 <tr><td>Proton, p<sup>+</sup></td><td>+1</td><td class="n">1.0073</td><td>Nucleus</td></tr>
 <tr><td>Neutron, n</td><td>0</td><td class="n">1.0087</td><td>Nucleus</td></tr>
 <tr><td>Electron, e<sup>−</sup></td><td>−1</td><td class="n">0.00055</td><td>Around the nucleus</td></tr></table>
-${ART(picParticles(), 230)}</div>
+${ART(A3.flat(picParticles), 230)}</div>
 <div class="col"><ul class="b sm"><li>Z, the atomic number, is the number of protons. It fixes the element</li>
 <li>Net charge = protons − electrons, in units of e</li>
 <li>In chemical reactions, plating and batteries, only electrons are gained or lost. The nucleus does not change</li>
@@ -369,7 +393,7 @@ for p, n, e in [(3, 4, 3), (3, 4, 2)]:
 out:()=>LC().li_demo.map(a=>`${a.symbol} A ${a.A} charge ${a.charge} ${a.kind}`).join("\n")},
 notes:"Predict before each click: remove one electron from Li. What changes, what stays? Then move the proton slider by one and ask the same question."});
 
-S.push({kicker:"Part 1 · Counting ions", title:"An ion is an atom with electrons added or removed", html:()=>`<div class="body"><div class="col w55"><table class="t" style="font-size:15px" id="iontab"></table>${ART(picIon(), 165)}</div>
+S.push({kicker:"Part 1 · Counting ions", title:"An ion is an atom with electrons added or removed", html:()=>`<div class="body"><div class="col w55"><table class="t" style="font-size:15px" id="iontab"></table>${ART(A3.flat(picIon), 165)}</div>
 <div class="col"><div class="panel"><b style="color:${C.teal};font-size:19px">Worked example</b><div style="font-size:19px;line-height:1.5;margin-top:4px">
 Z(Cu) = 29. Find protons and electrons in Cu and Cu<sup>2+</sup>.<br>Cu: 29 protons, 29 electrons, charge 0<br>Cu<sup>2+</sup>: 29 protons; charge +2 = 29 − e, so e = 27<br>Cu has lost 2 electrons and is still copper</div></div>
 <ul class="b xs" style="margin-top:14px"><li>Cation: positive, fewer electrons than protons (metals: Li<sup>+</sup>, Na<sup>+</sup>, Cu<sup>2+</sup>)</li><li>Anion: negative, more electrons than protons (O<sup>2−</sup>, F<sup>−</sup>)</li><li>Electrons = Z − charge, for any monatomic ion</li></ul></div></div>`,
@@ -491,7 +515,7 @@ S.push({kicker:"Where this goes next", title:"Today's counts come back in every 
 <tr><th>Class</th><th>What today gives it</th></tr>
 <tr><td>2 · Bonding</td><td>Why Cu conducts, SiO<sub>2</sub> insulates and Si sits in between</td></tr>
 <tr><td>3 · Moles</td><td>63.546 u becomes 63.546 g/mol: from a mass of Cu to a number of atoms</td></tr>
-<tr><td>6 · Doping</td><td>B has 5 protons and P has 15: why one gives p-type Si and the other n-type</td></tr>
+<tr><td>6 · Doping</td><td>B has 3 valence electrons and P has 5: why one gives p-type Si and the other n-type</td></tr>
 <tr><td>7 · Redox</td><td>Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu: the two electrons Cu<sup>2+</sup> is missing</td></tr>
 <tr><td>10 · Faraday</td><td>Two electrons per Cu atom set how much Cu a current plates</td></tr>
 <tr><td>13 · Pourbaix</td><td>Cu, Cu<sub>2</sub>O, CuO and Cu<sup>2+</sup>: which one is stable, and where</td></tr></table></div></div>`});
@@ -599,7 +623,7 @@ const NARR = {
   {
    "n": 1,
    "file": "audio/slide-01.mp3",
-   "duration": 41.544,
+   "duration": 41.568,
    "hold": false,
    "cues": [
     {
@@ -619,8 +643,8 @@ const NARR = {
     },
     {
      "s": 32.0,
-     "e": 41.487,
-     "en": "If you are studying on your own, the narration takes about twenty minutes. The activity, two checks and the lab fill the rest of the ninety minutes."
+     "e": 41.513,
+     "en": "If you are studying on your own, the narration takes about eighteen minutes. The activity, two checks and the lab fill the rest of the ninety minutes."
     }
    ]
   },

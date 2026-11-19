@@ -4,7 +4,7 @@
  "provider": "Microsoft Edge neural speech (edge-tts)",
  "synthetic_voice": true,
  "captions": "en",
- "total_seconds": 585.1,
+ "total_seconds": 584.4,
  "slides": [
   {
    "n": 1,
@@ -70,7 +70,7 @@
   {
    "n": 3,
    "file": "audio/slide-03.mp3",
-   "duration": 26.064,
+   "duration": 25.368,
    "hold": true,
    "cues": [
     {
@@ -80,12 +80,12 @@
     },
     {
      "s": 6.671,
-     "e": 21.184,
-     "en": "Say what the Faraday constant means. Give the electrons one copper ion takes. Recall the molar mass and density of copper. And find the charge that passes when one amp flows for one second."
+     "e": 20.5,
+     "en": "Say what the Faraday constant means. Give the electrons one copper ion takes. Recall the molar mass of copper. And find the charge that passes when one amp flows for one second."
     },
     {
-     "s": 21.184,
-     "e": 25.987,
+     "s": 20.5,
+     "e": 25.303,
      "en": "Pause the narration now, write your answers, and then press Show answers."
     }
    ]

@@ -155,7 +155,9 @@ const A3 = (() => {
   const need = new Set(); body.replace(/url\(#([bc])([0-9A-Fa-f]{6})\)/g, (m, k, h) => need.add(h));
   let add = ""; need.forEach(h => {if (!have.has(h)){have.add(h); add += ballDef("#" + h) + cylDef("#" + h)}}); if (add) g.insertAdjacentHTML("beforeend", add)};
  const svg = (w, h, body) => {ensure(body); return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet" font-family="Helvetica Neue,Arial,sans-serif">${body}</svg>`};
- const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
+ let FLAT = false;
+ const flat = fn => {FLAT = true; try {return fn()} finally {FLAT = false}};
+ const ball = (x, y, r, col, label = "", fs = 0, sh = true, tc = "#fff") => FLAT ? `<circle cx="${x}" cy="${y}" r="${r}" fill="${col}" stroke="${shade(col, 0.7)}" stroke-width="1.5"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "") : (sh ? `<ellipse cx="${x}" cy="${y + r + Math.max(4, r * 0.25)}" rx="${r * 0.8}" ry="${Math.max(2, r * 0.16)}" fill="#000" opacity=".13"/>` : "") +
   `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#b${hex(col)})"/>` + (label ? txt(x, y + (fs || r * 0.7) * 0.36, label, tc, fs || Math.round(r * 0.7), "middle", 700) : "");
  const eBall = (x, y, r = 12, sh = false) => ball(x, y, r, "#E29A2D", "e⁻", Math.round(r * 1.05), sh);
  const head = (fx, fy, x2, y2, col, w) => {const a = Math.atan2(y2 - fy, x2 - fx), L = 7 + w * 2.2, q = t => `${(x2 - L * Math.cos(a + t)).toFixed(1)},${(y2 - L * Math.sin(a + t)).toFixed(1)}`; return `<polygon points="${x2},${y2} ${q(0.42)} ${q(-0.42)}" fill="${col}"/>`};
@@ -169,7 +171,7 @@ const A3 = (() => {
   (faces.includes("f") ? poly([[x, y + dy, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 0.88), o) : "") +
   (faces.includes("t") ? poly([[x, y, z + dz], [x + dx, y, z + dz], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], shade(col, 1.12), o) : "");
  /* vertical cylinder seen slightly from above: top ellipse centre (cx, ty) */
- const cyl = (cx, ty, rx, ry, h, col, op = 1) => `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
+ const cyl = (cx, ty, rx, ry, h, col, op = 1) => FLAT ? `<rect x="${cx - rx}" y="${ty}" width="${2 * rx}" height="${h}" rx="3" fill="${col}" stroke="${shade(col, 0.7)}" stroke-width="1.5" opacity="${op}"/>` : `<g opacity="${op}"><path d="M${cx - rx} ${ty} L${cx - rx} ${ty + h} A${rx} ${ry} 0 0 0 ${cx + rx} ${ty + h} L${cx + rx} ${ty} Z" fill="url(#c${hex(col)})"/><ellipse cx="${cx}" cy="${ty}" rx="${rx}" ry="${ry}" fill="${shade(col, 1.2)}" stroke="${shade(col, 0.8)}" stroke-width="1"/></g>`;
  /* glass beaker with liquid; level 0..1 */
  const beaker = (cx, by, rx, h, liquid, level = 0.65, liqOp = 0.55) => {const ry = rx * 0.28, lt = by - h * level;
   return `<ellipse cx="${cx}" cy="${by + 8}" rx="${rx * 1.05}" ry="${ry * 0.6}" fill="#000" opacity=".1"/>` +
@@ -201,7 +203,7 @@ const A3 = (() => {
  const battery = (cx, ty, rx, h, label = "") => {const ry = rx * 0.3;
   return cyl(cx, ty, rx, ry, h, "#333F4A") + `<rect x="${cx - rx}" y="${ty + h * 0.18}" width="${rx * 2}" height="${h * 0.62}" fill="url(#c0F6E6B)"/>` + cyl(cx, ty - 10, rx * 0.3, ry * 0.3, 10, "#B9C1C6") +
    txt(cx, ty + h * 0.52, label, "#fff", 17, "middle", 700) + txt(cx, ty + h * 0.35, "+", "#fff", 20, "middle", 700)};
- return {cp, EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
+ return {flat, cp, EL, shade, txt, svg, ball, eBall, arrow, curve, bond, iso, poly, box, cyl, beaker, chip, atom, cell, battery};
 })();
 /* place an illustration in a slide: fixed-height box that scales the SVG */
 const ART = (inner, h = 260, extra = "") => `<div class="art" style="height:${h}px;margin-top:10px;${extra}">${inner}</div>`;
@@ -251,7 +253,7 @@ function picBlocks(){let s = A3.atom(100, 100, 70, {p: 3, n: 3, e: 2}) + A3.beak
 /* ---------- end illustrations ---------- */
 /* ---------- opening ---------- */
 S.push({cls:"title-slide", html:()=>TITLE3(`<p class="kicker">Class 14 · Lab 14</p><h1 style="font-size:54px">Review: three stations</h1>
-<div class="sub">Materials and doping, Cu deposition, and a supercapacitor or a battery: Classes 1 to 13 in three problems</div>
+<div class="sub">The review before the midterm: materials and doping, Cu deposition, and a supercapacitor or a battery, Classes 1 to 13 in three problems</div>
 <div class="meta">2182209 Chemistry for Semiconductor Engineering<br>Soorathep Kheawhom, Ph.D., FRSC<br>Department of Chemical Engineering, Chulalongkorn University<br>Draft for the 2027 offering</div><p style="margin-top:28px;font-size:19px"><a href="?narrate=1">Studying on your own? Open the narrated version</a></p>`, heroReview()),
 notes:"Last class of this half. Today the Exit Ticket form also asks about the whole course, once."});
 
@@ -365,8 +367,9 @@ S.push({kicker:"Summary", title:"What to take from this half of the course", htm
 <li>Check every claim against a number, and every number against its source</li></ul></div></div>`});
 
 S.push({kicker:"What comes next", title:"The second half of the course", html:()=>`<div class="body"><div class="col"><ul class="b sm">
-<li>Classes 15 onward make up the second half of the course</li>
-<li>Band gaps (Class 6), potentials (Class 9) and the Pourbaix map (Class 13) return when semiconductors meet solutions</li>
+<li>The midterm comes next and covers Classes 1 to 13</li>
+<li>Classes 15 to 20: Cu electroplating, bath additives, damascene and CMP use Classes 9, 10, 12 and 13</li>
+<li>Classes 21 and 22: photoelectrochemistry uses the band gaps of Class 6; Classes 25 and 26: corrosion uses Classes 9, 12 and 13</li>
 <li>Keep your lab answer files: they hold the numbers you will need again</li></ul></div></div>`});
 
 S.push({kicker:"Exit Ticket and course feedback · 15 minutes", title:"Exit Ticket, and feedback on the whole course", html:()=>`<div class="body"><div class="col w55"><ul class="b sm">
@@ -438,27 +441,27 @@ const NARR = {
  "provider": "Microsoft Edge neural speech (edge-tts)",
  "synthetic_voice": true,
  "captions": "en",
- "total_seconds": 415.7,
+ "total_seconds": 430.3,
  "slides": [
   {
    "n": 1,
    "file": "audio/slide-01.mp3",
-   "duration": 20.88,
+   "duration": 21.768,
    "hold": false,
    "cues": [
     {
      "s": 0.1,
-     "e": 5.629,
-     "en": "Welcome to Class 14, the last class of this half: a review in three stations."
+     "e": 6.524,
+     "en": "Welcome to Class 14, the last class of this half: a review in three stations before the midterm."
     },
     {
-     "s": 5.629,
-     "e": 16.211,
+     "s": 6.524,
+     "e": 17.105,
      "en": "Today you use what you learned in Classes 1 to 13 on three problems: the materials and doping of a chip, copper deposition, and the choice between a supercapacitor and a battery."
     },
     {
-     "s": 16.211,
-     "e": 20.816,
+     "s": 17.105,
+     "e": 21.711,
      "en": "Today's Exit Ticket form also asks about the whole course, once."
     }
    ]
@@ -784,22 +787,27 @@ const NARR = {
   {
    "n": 13,
    "file": "audio/slide-13.mp3",
-   "duration": 18.264,
+   "duration": 31.992,
    "hold": false,
    "cues": [
     {
      "s": 0.1,
-     "e": 4.261,
-     "en": "Classes fifteen onward make up the second half of the course."
+     "e": 4.589,
+     "en": "The midterm comes next, and it covers Classes 1 to 13."
     },
     {
-     "s": 4.261,
-     "e": 12.724,
-     "en": "The band gaps of Class 6, the potentials of Class 9, and the Pourbaix map of Class 13 return when semiconductors meet solutions."
+     "s": 4.589,
+     "e": 15.303,
+     "en": "In the second half, Classes 15 to 20 cover copper electroplating, bath additives, damascene and polishing, which use Classes 9, 10, 12 and 13."
     },
     {
-     "s": 12.724,
-     "e": 18.211,
+     "s": 15.303,
+     "e": 26.434,
+     "en": "Photoelectrochemistry in Classes 21 and 22 uses the band gaps of Class 6, and corrosion in Classes 25 and 26 uses Classes 9, 12 and 13."
+    },
+    {
+     "s": 26.434,
+     "e": 31.921,
      "en": "Keep your lab answer files. They hold the numbers you will need again."
     }
    ]

@@ -42,7 +42,7 @@ def eta_for(j_target, j0):
     return -math.asinh(j_target / (2 * j0)) / (ALPHA * f)
 
 
-def j_lim_est(n=2, D=7e-6, c_M=0.10, delta_cm=50e-4):
+def j_lim_est(n=2, D=7e-6, c_M=0.6, delta_cm=50e-4):
     """j_lim = n F D c / delta, mA/cm2 (c in mol/cm3)."""
     return n * F * D * (c_M * 1e-3) / delta_cm * 1e3
 

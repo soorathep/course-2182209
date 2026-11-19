@@ -4,7 +4,7 @@
  "provider": "Microsoft Edge neural speech (edge-tts)",
  "synthetic_voice": true,
  "captions": "en",
- "total_seconds": 638.4,
+ "total_seconds": 638.0,
  "slides": [
   {
    "n": 1,
@@ -192,7 +192,7 @@
   {
    "n": 7,
    "file": "audio/slide-07.mp3",
-   "duration": 48.096,
+   "duration": 47.664,
    "hold": false,
    "cues": [
     {
@@ -207,22 +207,22 @@
     },
     {
      "s": 17.947,
-     "e": 27.25,
-     "en": "Activated carbon is very porous. One gram has a surface of about one thousand square meters, like a tennis court in a few grams."
+     "e": 26.816,
+     "en": "Activated carbon is very porous. One gram has a surface of about one thousand square meters, about four tennis courts."
     },
     {
-     "s": 27.25,
-     "e": 35.275,
+     "s": 26.816,
+     "e": 34.841,
      "en": "Ten microfarads per square centimeter times ten million square centimeters per gram gives about one hundred farads per gram."
     },
     {
-     "s": 35.275,
-     "e": 40.026,
+     "s": 34.841,
+     "e": 39.592,
      "en": "Real carbons store less, because the ions do not reach all of the surface."
     },
     {
-     "s": 40.026,
-     "e": 48.039,
+     "s": 39.592,
+     "e": 47.605,
      "en": "So a supercapacitor the size of a coin can hold farads, while ordinary capacitors in a circuit hold micro or picofarads."
     }
    ]

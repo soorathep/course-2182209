@@ -4,12 +4,12 @@
  "provider": "Microsoft Edge neural speech (edge-tts)",
  "synthetic_voice": true,
  "captions": "en",
- "total_seconds": 843.8,
+ "total_seconds": 850.0,
  "slides": [
   {
    "n": 1,
    "file": "audio/slide-01.mp3",
-   "duration": 30.216,
+   "duration": 30.312,
    "hold": false,
    "cues": [
     {
@@ -29,8 +29,8 @@
     },
     {
      "s": 21.053,
-     "e": 30.158,
-     "en": "If you are studying on your own, the narration takes about fifteen minutes. Stop at the activity and at each check, then do Lab 2."
+     "e": 30.25,
+     "en": "If you are studying on your own, the narration takes about fourteen minutes. Stop at the activity and at each check, then do Lab 2."
     }
    ]
   },
@@ -585,7 +585,7 @@
   {
    "n": 18,
    "file": "audio/slide-18.mp3",
-   "duration": 28.056,
+   "duration": 34.176,
    "hold": false,
    "cues": [
     {
@@ -610,8 +610,13 @@
     },
     {
      "s": 22.316,
-     "e": 27.987,
-     "en": "And Class 10 calculates how much copper must be plated to build the wires you sized today."
+     "e": 27.789,
+     "en": "Class 10 calculates how much copper must be plated to build the wires you sized today."
+    },
+    {
+     "s": 27.789,
+     "e": 34.118,
+     "en": "And Class 13 shows which form of copper, the metal, an oxide or the ion, forms on a wire."
     }
    ]
   },

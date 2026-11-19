@@ -4,12 +4,12 @@
  "provider": "Microsoft Edge neural speech (edge-tts)",
  "synthetic_voice": true,
  "captions": "en",
- "total_seconds": 649.1,
+ "total_seconds": 652.8,
  "slides": [
   {
    "n": 1,
    "file": "audio/slide-01.mp3",
-   "duration": 30.336,
+   "duration": 30.432,
    "hold": false,
    "cues": [
     {
@@ -29,8 +29,8 @@
     },
     {
      "s": 21.211,
-     "e": 30.263,
-     "en": "If you are studying on your own, the narration takes about ten minutes. Stop at the activity and at each check, then do Lab 5."
+     "e": 30.368,
+     "en": "If you are studying on your own, the narration takes about eleven minutes. Stop at the activity and at each check, then do Lab 5."
     }
    ]
   },
@@ -380,7 +380,7 @@
   {
    "n": 13,
    "file": "audio/slide-13.mp3",
-   "duration": 33.84,
+   "duration": 36.648,
    "hold": false,
    "cues": [
     {
@@ -405,8 +405,8 @@
     },
     {
      "s": 23.632,
-     "e": 33.776,
-     "en": "K w is the same idea for water. Class 9 links K to the voltage of a cell, and Class 13 uses equilibrium to draw the Pourbaix map."
+     "e": 36.592,
+     "en": "K w is the same idea for water. Class 9 puts the same ratio, written Q, into the Nernst equation for the voltage of a cell, and Class 13 uses equilibrium to draw the Pourbaix map."
     }
    ]
   },
@@ -464,7 +464,7 @@
   {
    "n": 16,
    "file": "audio/slide-16.mp3",
-   "duration": 23.424,
+   "duration": 24.192,
    "hold": false,
    "cues": [
     {
@@ -474,12 +474,12 @@
     },
     {
      "s": 3.142,
-     "e": 13.934,
-     "en": "Class 7 writes half reactions in acid, where hydrogen ions appear in the equation. Class 9 writes equilibrium as a voltage, with a log of concentration."
+     "e": 14.697,
+     "en": "Class 7 asks which metals the hydrogen ions in an acid can dissolve, giving hydrogen gas. Class 9 writes equilibrium as a voltage, with a log of concentration."
     },
     {
-     "s": 13.934,
-     "e": 23.368,
+     "s": 14.697,
+     "e": 24.132,
      "en": "Class 12 meets zero net current at equilibrium. And Class 13 uses pH as the horizontal axis of copper's stability map."
     }
    ]

@@ -4,7 +4,7 @@
  "provider": "Microsoft Edge neural speech (edge-tts)",
  "synthetic_voice": true,
  "captions": "en",
- "total_seconds": 596.8,
+ "total_seconds": 597.7,
  "slides": [
   {
    "n": 1,
@@ -271,7 +271,7 @@
   {
    "n": 10,
    "file": "audio/slide-10.mp3",
-   "duration": 35.256,
+   "duration": 35.424,
    "hold": false,
    "cues": [
     {
@@ -291,12 +291,12 @@
     },
     {
      "s": 20.092,
-     "e": 27.934,
-     "en": "For a Cu plating bath, with typical values, the limiting current is about 27 mA/cm²."
+     "e": 28.105,
+     "en": "For a Cu plating bath, with typical values, the limiting current is about 160 mA/cm²."
     },
     {
-     "s": 27.934,
-     "e": 35.197,
+     "s": 28.105,
+     "e": 35.368,
      "en": "To raise it, stir or spin to thin the diffusion layer, use a more concentrated bath, or warm it to speed diffusion."
     }
    ]
@@ -332,7 +332,7 @@
   {
    "n": 12,
    "file": "audio/slide-12.mp3",
-   "duration": 41.208,
+   "duration": 41.52,
    "hold": false,
    "cues": [
     {
@@ -342,22 +342,22 @@
     },
     {
      "s": 5.024,
-     "e": 14.757,
+     "e": 14.686,
      "en": "Near the limiting current, copper ions cannot arrive any faster. The extra fifty millivolts adds only two and a half percent more copper current."
     },
     {
-     "s": 14.757,
-     "e": 25.289,
-     "en": "The rest of the push goes to side reactions such as hydrogen, which lowers the current efficiency from Class 10. Better transport tripled the current instead."
+     "s": 14.686,
+     "e": 25.605,
+     "en": "The rest of the push goes to side reactions such as hydrogen, which lowers the current efficiency from Class 10. Better transport nearly tripled the current instead."
     },
     {
-     "s": 25.289,
-     "e": 35.07,
+     "s": 25.605,
+     "e": 35.386,
      "en": "So find which step limits: kinetics, where you raise the overpotential or use a catalyst, or transport, where you stir, concentrate, or heat."
     },
     {
-     "s": 35.07,
-     "e": 41.132,
+     "s": 35.386,
+     "e": 41.447,
      "en": "Deposits made near the limiting current grow rough and powdery. Platers call them burnt."
     }
    ]
@@ -365,7 +365,7 @@
   {
    "n": 13,
    "file": "audio/slide-13.mp3",
-   "duration": 42.696,
+   "duration": 43.056,
    "hold": false,
    "cues": [
     {
@@ -375,27 +375,27 @@
     },
     {
      "s": 3.458,
-     "e": 13.64,
-     "en": "In copper plating of interconnects, the process runs well below the limiting current: ten milliamps per square centimeter, against an estimate of about twenty seven."
+     "e": 13.983,
+     "en": "In copper plating of interconnects, the process runs well below the limiting current: ten milliamps per square centimeter, against an estimate of about one hundred sixty."
     },
     {
-     "s": 13.64,
-     "e": 17.382,
+     "s": 13.983,
+     "e": 17.737,
      "en": "The wafer spins to thin the diffusion layer and keep it even."
     },
     {
-     "s": 17.382,
-     "e": 28.25,
+     "s": 17.737,
+     "e": 28.605,
      "en": "In narrow trenches, copper ions reach the top more easily than the bottom. Bath additives slow growth at the top so the trench fills from the bottom up, without voids."
     },
     {
-     "s": 28.25,
-     "e": 36.191,
+     "s": 28.605,
+     "e": 36.546,
      "en": "And in fast charging a lithium-ion cell, overpotential and lithium ion transport cut the voltage and the charge you can store."
     },
     {
-     "s": 36.191,
-     "e": 42.632,
+     "s": 36.546,
+     "e": 42.987,
      "en": "Push too hard, and lithium metal plates on the graphite instead of entering it, which is a safety risk."
     }
    ]

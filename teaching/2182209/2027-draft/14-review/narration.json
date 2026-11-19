@@ -4,27 +4,27 @@
  "provider": "Microsoft Edge neural speech (edge-tts)",
  "synthetic_voice": true,
  "captions": "en",
- "total_seconds": 415.7,
+ "total_seconds": 430.3,
  "slides": [
   {
    "n": 1,
    "file": "audio/slide-01.mp3",
-   "duration": 20.88,
+   "duration": 21.768,
    "hold": false,
    "cues": [
     {
      "s": 0.1,
-     "e": 5.629,
-     "en": "Welcome to Class 14, the last class of this half: a review in three stations."
+     "e": 6.524,
+     "en": "Welcome to Class 14, the last class of this half: a review in three stations before the midterm."
     },
     {
-     "s": 5.629,
-     "e": 16.211,
+     "s": 6.524,
+     "e": 17.105,
      "en": "Today you use what you learned in Classes 1 to 13 on three problems: the materials and doping of a chip, copper deposition, and the choice between a supercapacitor and a battery."
     },
     {
-     "s": 16.211,
-     "e": 20.816,
+     "s": 17.105,
+     "e": 21.711,
      "en": "Today's Exit Ticket form also asks about the whole course, once."
     }
    ]
@@ -350,22 +350,27 @@
   {
    "n": 13,
    "file": "audio/slide-13.mp3",
-   "duration": 18.264,
+   "duration": 31.992,
    "hold": false,
    "cues": [
     {
      "s": 0.1,
-     "e": 4.261,
-     "en": "Classes fifteen onward make up the second half of the course."
+     "e": 4.589,
+     "en": "The midterm comes next, and it covers Classes 1 to 13."
     },
     {
-     "s": 4.261,
-     "e": 12.724,
-     "en": "The band gaps of Class 6, the potentials of Class 9, and the Pourbaix map of Class 13 return when semiconductors meet solutions."
+     "s": 4.589,
+     "e": 15.303,
+     "en": "In the second half, Classes 15 to 20 cover copper electroplating, bath additives, damascene and polishing, which use Classes 9, 10, 12 and 13."
     },
     {
-     "s": 12.724,
-     "e": 18.211,
+     "s": 15.303,
+     "e": 26.434,
+     "en": "Photoelectrochemistry in Classes 21 and 22 uses the band gaps of Class 6, and corrosion in Classes 25 and 26 uses Classes 9, 12 and 13."
+    },
+    {
+     "s": 26.434,
+     "e": 31.921,
      "en": "Keep your lab answer files. They hold the numbers you will need again."
     }
    ]

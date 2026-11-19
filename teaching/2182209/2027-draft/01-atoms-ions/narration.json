@@ -9,7 +9,7 @@
   {
    "n": 1,
    "file": "audio/slide-01.mp3",
-   "duration": 41.544,
+   "duration": 41.568,
    "hold": false,
    "cues": [
     {
@@ -29,8 +29,8 @@
     },
     {
      "s": 32.0,
-     "e": 41.487,
-     "en": "If you are studying on your own, the narration takes about twenty minutes. The activity, two checks and the lab fill the rest of the ninety minutes."
+     "e": 41.513,
+     "en": "If you are studying on your own, the narration takes about eighteen minutes. The activity, two checks and the lab fill the rest of the ninety minutes."
     }
    ]
   },
