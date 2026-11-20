@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>2182209 · Class 11 · After class · The double layer and supercapacitors</title><style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--graphite:#333F4A;--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--sand:#DFC98F;--ok:#0F6E6B;--bad:#BE654C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Helvetica Neue",Helvetica,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:18px 16px 80px}
+header h1{color:var(--teal);font-size:30px;margin:4px 0 2px}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+.sub{color:var(--slate);font-size:15px}
+.prog{position:sticky;top:0;background:var(--paper);padding:10px 0;z-index:3}
+.bar{height:8px;background:#e2ddd4;border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.prog span{font-size:13px;color:var(--slate)}
+.card{background:#fff;border-radius:14px;padding:18px 18px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:21px;margin:0 0 4px;color:var(--teal)}
+.card h3{font-size:17px;margin:16px 0 6px}
+.step{border-left:4px solid var(--mist);padding:2px 0 2px 14px;margin:14px 0}
+.step.done{border-color:var(--teal)}.step.locked{opacity:.45;pointer-events:none}
+.step.locked .chart,.step.locked .kpi,.step.locked .chk,.step.locked input[type=range],.step.locked .row{display:none}
+.step.locked::after{content:"Finish the step above to open this one.";display:block;font-size:13px;color:var(--slate)}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;border-radius:6px;padding:2px 8px;margin-right:6px;color:#fff;background:var(--slate)}
+.tag.p{background:var(--amber)}.tag.r{background:var(--teal)}.tag.c{background:var(--graphite)}.tag.e{background:var(--rust)}
+textarea,input[type=text],select{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--mist);border-radius:8px;padding:8px 10px;background:#fff}
+textarea{min-height:70px}
+button{font:inherit;font-size:15px;padding:8px 14px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer;margin:8px 8px 0 0}
+button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row label{flex:1 1 240px}
+.chk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.chk input{width:150px}
+.fb{font-size:15px}.fb.ok{color:var(--ok);font-weight:700}.fb.bad{color:var(--bad)}
+.choices label{display:block;margin:4px 0}
+.kpi{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}.kpi div{background:var(--paper);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--slate)}.kpi b{display:block;font-size:20px;color:var(--ink)}
+.chart{background:var(--paper);border-radius:12px;padding:6px;margin:8px 0}
+svg{width:100%;height:auto;display:block}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.note{font-size:14px;color:var(--slate)}
+.hidden{display:none}
+pre.sum{white-space:pre-wrap;background:var(--paper);border-radius:10px;padding:12px;font-size:14px}
+a{color:var(--teal)}
+</style>
+<style>
+.card p{margin:8px 0}.card ul,.card ol{margin:6px 0 8px;padding-left:22px}.card li{margin:3px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}th,td{border-bottom:1px solid #e2ddd4;padding:5px 8px;text-align:left}
+th{color:var(--slate);font-weight:600}td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+details{background:var(--paper);border-radius:10px;padding:8px 12px;margin:8px 0}summary{cursor:pointer;font-weight:600;color:var(--teal)}
+.q{margin:12px 0 4px;font-weight:600}.key{background:#fdf6e9;border-left:4px solid var(--amber);border-radius:6px;padding:8px 12px;margin:10px 0}
+.time{float:right;font-size:13px;color:var(--slate);font-weight:400}.nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;font-size:15px}
+.answers-note{font-size:14px;color:var(--slate)}
+@page{size:A4;margin:14mm 12mm}
+@media print{.card{margin:8px 0}h2,h3{break-after:avoid}table,.key,li{break-inside:avoid}.card.ans{break-before:page}.hd{break-inside:avoid}details{display:block}details>*{display:block}.prog,.nav{display:none}body{background:#fff}.card{box-shadow:none;border:1px solid #ddd}}
+</style></head>
+<body><main><header><div class="kicker">2182209 · Class 11 · After class</div><h1>The double layer and supercapacitors</h1><div class="sub">Read it after Class 11. The practice questions go one step beyond the slides and the lab; answers are folded under each.</div><div class="nav"><a href="class11-after.pdf" download><b>Download PDF</b></a><a href="slides.html">Slides</a><a href="lab.html">Lab</a><a href="before.html">Before class</a></div></header>
+<section class="card"><div class="hd"><h2>You should now be able to</h2><ul><li>Describe the electric double layer, and say how it stores charge without a reaction</li>
+<li>Explain with C = εA/d why a double layer on porous carbon holds so much charge</li>
+<li>Find a capacitance from constant-current data, C = I Δt / ΔV</li>
+<li>Calculate Q = CV and E = ½CV², and predict what changing C or V does</li>
+<li>Compare a supercapacitor with a battery, and give an example of a capacitor on a chip</li></ul>
+<p>If any line is not yet true for you, go back to that part of the narrated slides before the next class.</p></div></section><section class="card"><div class="hd"><h2>Key results from Class 11</h2><table><tr><th>Result</th><th class="n">Value</th></tr>
+<tr><td>C<sub>A</sub>, C<sub>B</sub> from the slope at 0.010 A</td><td class="n">0.200, 0.100 F</td></tr>
+<tr><td>A at 1.0 V: Q, E</td><td class="n">0.200 C, 0.100 J</td></tr>
+<tr><td>Same charge on 0.400 F: V, E</td><td class="n">0.500 V, 0.050 J</td></tr>
+<tr><td>Porous carbon</td><td class="n">about 100 F/g</td></tr>
+<tr><td>DRAM bit, 20 fF at 1 V</td><td class="n">about 1.2 × 10<sup>5</sup> electrons</td></tr></table></div></section><section class="card"><div class="hd"><h2>Two more worked examples</h2><p><b>1. A coin-size supercapacitor.</b> A 10 F cell is charged at 0.50 A. The voltage rises at 0.050 V/s, which confirms C = I / (ΔV/Δt) = 0.50 / 0.050 = 10 F. At its rated 2.7 V it holds Q = 10 × 2.7 = 27 C and E = ½ × 10 × 2.7² = 36 J. In water it could run only to about 1.0 V, storing 5 J: 2.7² = 7.3 times less.</p>
+<p><b>2. A transistor gate as a capacitor.</b> A gate of 1 µm × 1 µm sits on 2.0 nm of SiO<sub>2</sub> (ε = 3.9 × 8.854 × 10<sup>−12</sup> F/m):</p></div>
+<p>C = εA/d = 3.9 × 8.854 × 10<sup>−12</sup> × 1.0 × 10<sup>−12</sup> / 2.0 × 10<sup>−9</sup> = 1.7 × 10<sup>−14</sup> F = 17 fF</p>
+<p>Chip makers replaced SiO<sub>2</sub> with HfO<sub>2</sub> (Class 1 practice), whose ε is about 6 times larger, to keep C high without making the oxide so thin that electrons leak through.</p></section><section class="card"><div class="hd"><h2>Three mistakes to avoid</h2><ol><li><b>"A supercapacitor is a battery that charges fast."</b> An EDLC stores charge by ions at a surface; nothing reacts, so Faraday's law does not give its capacity.</li>
+<li><b>Using V/t at one point.</b> The step at t = 0 comes from internal resistance. Use the slope of the straight part.</li>
+<li><b>Forgetting the square.</b> E = ½CV²: doubling V gives four times the energy.</li></ol></div></section><section class="card"><div class="hd"><h2>Practice</h2><p>Work on paper. The first four repeat the class; the rest go one step further. e = 1.602 × 10<sup>−19</sup> C.</p>
+<p class="q">1. At 0.010 A, V rises at 0.050 V/s. Find C.</p></div><details><summary>Answer</summary>0.010 / 0.050 = 0.200 F.</details>
+<p class="q">2. Capacitor A (0.200 F) is charged to 1.0 V. Find Q and E.</p><details><summary>Answer</summary>0.200 C; 0.100 J.</details>
+<p class="q">3. The same charge sits on 0.400 F. Find V and E.</p><details><summary>Answer</summary>0.500 V; 0.050 J.</details>
+<p class="q">4. During discharge, which keeps a nearly constant voltage: a battery or an EDLC?</p><details><summary>Answer</summary>A battery. An EDLC's V falls in a straight line, V = Q/C.</details>
+<p class="q">5. A 10 F cell charges at 0.50 A. How long to reach 2.7 V from 0? (Ignore the resistance step.)</p><details><summary>Answer</summary>Q = 27 C; t = Q / I = 54 s.</details>
+<p class="q">6. What voltage gives capacitor B (0.100 F) the same energy as A at 1.0 V?</p><details><summary>Answer</summary>½ × 0.100 × V² = 0.100 J, so V = 1.414 V.</details>
+<p class="q">7. A DRAM cell is 25 fF at 1.1 V. How many electrons does it hold?</p><details><summary>Answer</summary>Q = 2.75 × 10<sup>−14</sup> C; ÷ e = 1.7 × 10<sup>5</sup> electrons.</details>
+<p class="q">8. Find C for a 1 µm × 1 µm gate on 2.0 nm SiO<sub>2</sub>. What happens to C if the oxide is made 1.0 nm?</p><details><summary>Answer</summary>17 fF; halving d doubles C, to 35 fF.</details></section><section class="card"><div class="hd"><h2>Next: Class 12, kinetics and transport</h2><p>Class 12 returns to reactions in which electrons do cross: how fast they go, why more speed costs extra voltage, and why, past a point, more voltage hardly helps.</p>
+<p>Before Class 12, read the before-class notes for Class 12. Finish Lab 11 and upload your answer file to myCourseVille if you have not yet. For more depth, read OpenStax <i>University Physics</i> Volume 2, Section 8.3 (Energy stored in a capacitor).</p></div></section>
+<p class="note">2182209 Chemistry for Semiconductor Engineering · Soorathep Kheawhom, Department of Chemical Engineering, Chulalongkorn University · draft for 2027</p>
+</main></body></html>

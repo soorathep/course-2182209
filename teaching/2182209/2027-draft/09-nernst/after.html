@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>2182209 · Class 9 · After class · Cell potentials and the Nernst equation</title><style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--graphite:#333F4A;--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--sand:#DFC98F;--ok:#0F6E6B;--bad:#BE654C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Helvetica Neue",Helvetica,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:18px 16px 80px}
+header h1{color:var(--teal);font-size:30px;margin:4px 0 2px}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+.sub{color:var(--slate);font-size:15px}
+.prog{position:sticky;top:0;background:var(--paper);padding:10px 0;z-index:3}
+.bar{height:8px;background:#e2ddd4;border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.prog span{font-size:13px;color:var(--slate)}
+.card{background:#fff;border-radius:14px;padding:18px 18px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:21px;margin:0 0 4px;color:var(--teal)}
+.card h3{font-size:17px;margin:16px 0 6px}
+.step{border-left:4px solid var(--mist);padding:2px 0 2px 14px;margin:14px 0}
+.step.done{border-color:var(--teal)}.step.locked{opacity:.45;pointer-events:none}
+.step.locked .chart,.step.locked .kpi,.step.locked .chk,.step.locked input[type=range],.step.locked .row{display:none}
+.step.locked::after{content:"Finish the step above to open this one.";display:block;font-size:13px;color:var(--slate)}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;border-radius:6px;padding:2px 8px;margin-right:6px;color:#fff;background:var(--slate)}
+.tag.p{background:var(--amber)}.tag.r{background:var(--teal)}.tag.c{background:var(--graphite)}.tag.e{background:var(--rust)}
+textarea,input[type=text],select{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--mist);border-radius:8px;padding:8px 10px;background:#fff}
+textarea{min-height:70px}
+button{font:inherit;font-size:15px;padding:8px 14px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer;margin:8px 8px 0 0}
+button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row label{flex:1 1 240px}
+.chk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.chk input{width:150px}
+.fb{font-size:15px}.fb.ok{color:var(--ok);font-weight:700}.fb.bad{color:var(--bad)}
+.choices label{display:block;margin:4px 0}
+.kpi{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}.kpi div{background:var(--paper);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--slate)}.kpi b{display:block;font-size:20px;color:var(--ink)}
+.chart{background:var(--paper);border-radius:12px;padding:6px;margin:8px 0}
+svg{width:100%;height:auto;display:block}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.note{font-size:14px;color:var(--slate)}
+.hidden{display:none}
+pre.sum{white-space:pre-wrap;background:var(--paper);border-radius:10px;padding:12px;font-size:14px}
+a{color:var(--teal)}
+</style>
+<style>
+.card p{margin:8px 0}.card ul,.card ol{margin:6px 0 8px;padding-left:22px}.card li{margin:3px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}th,td{border-bottom:1px solid #e2ddd4;padding:5px 8px;text-align:left}
+th{color:var(--slate);font-weight:600}td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+details{background:var(--paper);border-radius:10px;padding:8px 12px;margin:8px 0}summary{cursor:pointer;font-weight:600;color:var(--teal)}
+.q{margin:12px 0 4px;font-weight:600}.key{background:#fdf6e9;border-left:4px solid var(--amber);border-radius:6px;padding:8px 12px;margin:10px 0}
+.time{float:right;font-size:13px;color:var(--slate);font-weight:400}.nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;font-size:15px}
+.answers-note{font-size:14px;color:var(--slate)}
+@page{size:A4;margin:14mm 12mm}
+@media print{.card{margin:8px 0}h2,h3{break-after:avoid}table,.key,li{break-inside:avoid}.card.ans{break-before:page}.hd{break-inside:avoid}details{display:block}details>*{display:block}.prog,.nav{display:none}body{background:#fff}.card{box-shadow:none;border:1px solid #ddd}}
+</style></head>
+<body><main><header><div class="kicker">2182209 · Class 9 · After class</div><h1>Cell potentials and the Nernst equation</h1><div class="sub">Read it after Class 9. The practice questions go one step beyond the slides and the lab; answers are folded under each.</div><div class="nav"><a href="class09-after.pdf" download><b>Download PDF</b></a><a href="slides.html">Slides</a><a href="lab.html">Lab</a><a href="before.html">Before class</a></div></header>
+<section class="card"><div class="hd"><h2>You should now be able to</h2><ul><li>Read a table of standard reduction potentials, and say what the hydrogen reference means</li>
+<li>Calculate E°<sub>cell</sub> = E°<sub>cathode</sub> − E°<sub>anode</sub>, and say whether a reaction goes</li>
+<li>Calculate ΔG° = −nFE°<sub>cell</sub>, and explain why E° does not change when an equation is multiplied</li>
+<li>Use the Nernst equation for Cu<sup>2+</sup>/Cu at 25 °C</li>
+<li>Calculate the potential of a Daniell cell away from 1 M</li></ul>
+<p>If any line is not yet true for you, go back to that part of the narrated slides before the next class.</p></div></section><section class="card"><div class="hd"><h2>Key results from Class 9</h2><table><tr><th>Result (25 °C)</th><th class="n">Value</th></tr>
+<tr><td>E°<sub>cell</sub>, Daniell</td><td class="n">1.10 V</td></tr>
+<tr><td>ΔG°, Daniell</td><td class="n">−212.3 kJ/mol</td></tr>
+<tr><td>E(Cu<sup>2+</sup>/Cu) at 0.010 M</td><td class="n">0.2808 V</td></tr>
+<tr><td>Shift per tenfold change, n = 2</td><td class="n">0.0296 V</td></tr>
+<tr><td>E°<sub>cell</sub>, Al with Cu<sup>2+</sup></td><td class="n">2.00 V</td></tr></table></div></section><section class="card"><div class="hd"><h2>Two more worked examples</h2><p><b>1. A Cu–Ag cell.</b> Cu | Cu<sup>2+</sup> || Ag<sup>+</sup> | Ag. Ag<sup>+</sup> has the higher E°, so it is reduced at the cathode.</p>
+<p>E°<sub>cell</sub> = 0.80 − 0.34 = 0.46 V. The reaction Cu + 2 Ag<sup>+</sup> → Cu<sup>2+</sup> + 2 Ag moves n = 2 electrons, so ΔG° = −2 × 96 485 × 0.46 = −88.8 kJ/mol. Note that E°(Ag<sup>+</sup>/Ag) is not doubled although the equation has 2 Ag<sup>+</sup>.</p></div>
+<p><b>2. A one-electron couple.</b> For Ag<sup>+</sup> + e<sup>−</sup> → Ag, n = 1, so E shifts 0.0592 V per tenfold change. At [Ag<sup>+</sup>] = 0.010 M:</p>
+<p>E = 0.80 + 0.0592 × log<sub>10</sub>(0.010) = 0.80 − 0.118 = 0.682 V</p>
+<p>The shift is twice that of Cu<sup>2+</sup>/Cu for the same dilution, because n is half as large.</p></section><section class="card"><div class="hd"><h2>Three mistakes to avoid</h2><ol><li><b>"Multiply the equation, multiply E°."</b> E° is energy per charge and does not scale; ΔG° does.</li>
+<li><b>Subtracting in the wrong order.</b> E°<sub>cell</sub> = E°<sub>cathode</sub> − E°<sub>anode</sub>, with both written as reductions.</li>
+<li><b>Getting the sign of the shift wrong.</b> Less Cu<sup>2+</sup> means less drive to take electrons: E(Cu<sup>2+</sup>/Cu) falls on dilution.</li></ol></div></section><section class="card"><div class="hd"><h2>Practice</h2><p>Work on paper. The first four repeat the class; the rest go one step further. Use the E° table above; F = 96 485 C/mol; 0.0592/n V per decade at 25 °C.</p>
+<p class="q">1. Find E°<sub>cell</sub> for Fe | Fe<sup>2+</sup> || Cu<sup>2+</sup> | Cu.</p></div><details><summary>Answer</summary>0.34 − (−0.44) = 0.78 V.</details>
+<p class="q">2. A cell has E°<sub>cell</sub> = −0.40 V as written. Is ΔG° positive or negative? Does it go?</p><details><summary>Answer</summary>ΔG° > 0: it does not go as written; the reverse does.</details>
+<p class="q">3. Find E(Cu<sup>2+</sup>/Cu) at 0.010 M.</p><details><summary>Answer</summary>0.34 + 0.0296 × (−2) = 0.2808 V.</details>
+<p class="q">4. What is E°<sub>cell</sub> for 2 Al + 3 Cu<sup>2+</sup> → 2 Al<sup>3+</sup> + 3 Cu?</p><details><summary>Answer</summary>0.34 − (−1.66) = 2.00 V. E° is not multiplied.</details>
+<p class="q">5. Find E°<sub>cell</sub> and ΔG° for Cu | Cu<sup>2+</sup> || Ag<sup>+</sup> | Ag.</p><details><summary>Answer</summary>0.46 V; ΔG° = −2 × 96 485 × 0.46 = −88.8 kJ/mol.</details>
+<p class="q">6. Find E°<sub>cell</sub> and ΔG° for Zn | Zn<sup>2+</sup> || Ag<sup>+</sup> | Ag.</p><details><summary>Answer</summary>0.80 − (−0.76) = 1.56 V; Zn + 2 Ag<sup>+</sup>, n = 2; ΔG° = −301 kJ/mol.</details>
+<p class="q">7. A plating bath drops to [Cu<sup>2+</sup>] = 1.0 × 10<sup>−4</sup> M near the wafer. Find E(Cu<sup>2+</sup>/Cu) there.</p><details><summary>Answer</summary>0.34 + 0.0296 × (−4) = 0.222 V.</details>
+<p class="q">8. A Daniell cell has [Zn<sup>2+</sup>] = 0.10 M and [Cu<sup>2+</sup>] = 1.0 M. Find E<sub>cell</sub>. Is it above or below 1.10 V, and why?</p><details><summary>Answer</summary>E = 1.10 − 0.0296 log<sub>10</sub>(0.10/1.0) = 1.10 + 0.0296 = 1.13 V. Above, because there is more Cu<sup>2+</sup> to reduce and less Zn<sup>2+</sup> product.</details></section><section class="card"><div class="hd"><h2>Next: Class 10, Faraday's law and capacity</h2><p>Class 10 uses F to count electrons as charge: how much Cu a current plates, how thick it grows, and what Ah and Wh on a battery mean.</p>
+<p>Before Class 10, read the before-class notes for Class 10. Finish Lab 9 and upload your answer file to myCourseVille if you have not yet. For more depth, read OpenStax <i>Chemistry 2e</i>, Section 17.4 (Potential, free energy and equilibrium).</p></div></section>
+<p class="note">2182209 Chemistry for Semiconductor Engineering · Soorathep Kheawhom, Department of Chemical Engineering, Chulalongkorn University · draft for 2027</p>
+</main></body></html>

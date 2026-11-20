@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>2182209 · Class 13 · Before class · The Cu Pourbaix diagram</title><style>
+:root{--teal:#0F6E6B;--amber:#E29A2D;--rust:#BE654C;--graphite:#333F4A;--ink:#1C242B;--slate:#66727C;--mist:#B9C1C6;--paper:#F3F0EB;--sand:#DFC98F;--ok:#0F6E6B;--bad:#BE654C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Helvetica Neue",Helvetica,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:18px 16px 80px}
+header h1{color:var(--teal);font-size:30px;margin:4px 0 2px}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+.sub{color:var(--slate);font-size:15px}
+.prog{position:sticky;top:0;background:var(--paper);padding:10px 0;z-index:3}
+.bar{height:8px;background:#e2ddd4;border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.prog span{font-size:13px;color:var(--slate)}
+.card{background:#fff;border-radius:14px;padding:18px 18px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:21px;margin:0 0 4px;color:var(--teal)}
+.card h3{font-size:17px;margin:16px 0 6px}
+.step{border-left:4px solid var(--mist);padding:2px 0 2px 14px;margin:14px 0}
+.step.done{border-color:var(--teal)}.step.locked{opacity:.45;pointer-events:none}
+.step.locked .chart,.step.locked .kpi,.step.locked .chk,.step.locked input[type=range],.step.locked .row{display:none}
+.step.locked::after{content:"Finish the step above to open this one.";display:block;font-size:13px;color:var(--slate)}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;border-radius:6px;padding:2px 8px;margin-right:6px;color:#fff;background:var(--slate)}
+.tag.p{background:var(--amber)}.tag.r{background:var(--teal)}.tag.c{background:var(--graphite)}.tag.e{background:var(--rust)}
+textarea,input[type=text],select{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--mist);border-radius:8px;padding:8px 10px;background:#fff}
+textarea{min-height:70px}
+button{font:inherit;font-size:15px;padding:8px 14px;border-radius:8px;border:none;background:var(--teal);color:#fff;cursor:pointer;margin:8px 8px 0 0}
+button.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row label{flex:1 1 240px}
+.chk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.chk input{width:150px}
+.fb{font-size:15px}.fb.ok{color:var(--ok);font-weight:700}.fb.bad{color:var(--bad)}
+.choices label{display:block;margin:4px 0}
+.kpi{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}.kpi div{background:var(--paper);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--slate)}.kpi b{display:block;font-size:20px;color:var(--ink)}
+.chart{background:var(--paper);border-radius:12px;padding:6px;margin:8px 0}
+svg{width:100%;height:auto;display:block}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.note{font-size:14px;color:var(--slate)}
+.hidden{display:none}
+pre.sum{white-space:pre-wrap;background:var(--paper);border-radius:10px;padding:12px;font-size:14px}
+a{color:var(--teal)}
+</style>
+<style>
+.card p{margin:8px 0}.card ul,.card ol{margin:6px 0 8px;padding-left:22px}.card li{margin:3px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}th,td{border-bottom:1px solid #e2ddd4;padding:5px 8px;text-align:left}
+th{color:var(--slate);font-weight:600}td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+details{background:var(--paper);border-radius:10px;padding:8px 12px;margin:8px 0}summary{cursor:pointer;font-weight:600;color:var(--teal)}
+.q{margin:12px 0 4px;font-weight:600}.key{background:#fdf6e9;border-left:4px solid var(--amber);border-radius:6px;padding:8px 12px;margin:10px 0}
+.time{float:right;font-size:13px;color:var(--slate);font-weight:400}.nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;font-size:15px}
+.answers-note{font-size:14px;color:var(--slate)}
+@page{size:A4;margin:14mm 12mm}
+@media print{.card{margin:8px 0}h2,h3{break-after:avoid}table,.key,li{break-inside:avoid}.card.ans{break-before:page}.hd{break-inside:avoid}details{display:block}details>*{display:block}.prog,.nav{display:none}body{background:#fff}.card{box-shadow:none;border:1px solid #ddd}}
+</style></head>
+<body><main><header><div class="kicker">2182209 · Class 13 · Before class</div><h1>The Cu Pourbaix diagram</h1><div class="sub">About 30 minutes. Read it before Class 13, try the questions, and bring what is still unclear.</div><div class="nav"><a href="class13-before.pdf" download><b>Download PDF</b></a><a href="slides.html">Slides</a><a href="lab.html">Lab</a><a href="after.html">After class</a></div></header>
+<section class="card"><div class="hd"><h2>The question for Class 13 <span class='time'>3 min</span></h2><p>A Cu wire meets many liquids during chip making: an acid plating bath, rinse water with air in it, an alkaline polishing slurry. In each one, Cu might stay as metal, dissolve as Cu<sup>2+</sup>, or grow an oxide. Class 13 puts all of these cases on one map, drawn from the Nernst equation of Class 9 with pH from Class 5.</p></div></section><section class="card"><div class="hd"><h2>The four forms of Cu <span class='time'>5 min</span></h2><table><tr><th>Form</th><th>Oxidation number of Cu (Class 7)</th><th>State</th></tr>
+<tr><td>Cu</td><td>0</td><td>metal</td></tr>
+<tr><td>Cu<sub>2</sub>O</td><td>+1</td><td>solid oxide (red-brown)</td></tr>
+<tr><td>CuO</td><td>+2</td><td>solid oxide (black)</td></tr>
+<tr><td>Cu<sup>2+</sup>(aq)</td><td>+2</td><td>dissolved ion (blue)</td></tr></table>
+<p>Going from Cu to Cu<sub>2</sub>O or CuO is an oxidation, so it happens at higher potentials. Going from CuO to Cu<sup>2+</sup> keeps the oxidation number at +2; it is dissolution by acid, which depends on pH.</p></div></section><section class="card"><div class="hd"><h2>Two axes: potential and pH <span class='time'>7 min</span></h2><p>A <b>Pourbaix diagram</b> plots potential E (vertical, against the SHE) against pH (horizontal). Up means more oxidizing; right means more alkaline. Each region shows the form of Cu that is most stable there.</p>
+<p>The boundaries come in three kinds:</p></div>
+<ul><li><b>Horizontal</b>: only electrons take part, so pH does not matter. Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu.</li>
+<li><b>Vertical</b>: only H<sup>+</sup> takes part, so E does not matter. CuO + 2H<sup>+</sup> → Cu<sup>2+</sup> + H<sub>2</sub>O.</li>
+<li><b>Sloped</b>: both take part. When the numbers of H<sup>+</sup> and e<sup>−</sup> are equal, E falls 0.0592 V per pH unit.</li></ul></section><section class="card"><div class="hd"><h2>Warm-up with numbers you know <span class='time'>5 min</span></h2><p>From Class 9: E(Cu<sup>2+</sup>/Cu) = 0.34 + 0.0296 log<sub>10</sub>[Cu<sup>2+</sup>]. The diagram is drawn for dissolved Cu at 10<sup>−6</sup> M, a common choice for corrosion:</p>
+<p>E = 0.34 + 0.0296 × (−6) = 0.162 V. This is the horizontal line between Cu and Cu<sup>2+</sup>.</p></div>
+<p>From Class 5: pH = −log<sub>10</sub>[H<sup>+</sup>]; [H<sup>+</sup>] = 10<sup>−9</sup> M is pH 9, alkaline, like a polishing slurry.</p></section><section class="card"><div class="hd"><h2>Check yourself <span class='time'>5 min</span></h2><p>Write your answers first, then open each one.</p>
+<p class="q">1. Oxidation number of Cu in Cu<sub>2</sub>O and in CuO?</p></div><details><summary>Answer</summary>+1 and +2.</details>
+<p class="q">2. [H<sup>+</sup>] = 10<sup>−9</sup> M. What is the pH?</p><details><summary>Answer</summary>9.</details>
+<p class="q">3. Find E(Cu<sup>2+</sup>/Cu) at 10<sup>−6</sup> M.</p><details><summary>Answer</summary>0.162 V.</details>
+<p class="q">4. Why is the Cu<sup>2+</sup>/Cu line horizontal?</p><details><summary>Answer</summary>Only electrons take part, no H<sup>+</sup>, so pH does not change it.</details>
+<p class="q">5. On the diagram, is "up" more oxidizing or more reducing?</p><details><summary>Answer</summary>More oxidizing (higher E).</details>
+<p class="q">6. Does a negative ΔG tell you how fast a reaction goes? (Classes 9 and 12)</p><details><summary>Answer</summary>No: it says whether, not how fast. The same will hold for the diagram.</details>
+<p>If you got 5 or 6 right, you are ready. If not, reread the section on the two axes.</p></section><section class="card"><div class="hd"><h2>Words to know</h2><p><b>Pourbaix diagram</b> · <b>stability region</b> · <b>water lines</b> (H<sub>2</sub> and O<sub>2</sub>) · <b>immunity, corrosion, passivation</b> · <b>CMP</b> (chemical-mechanical planarization).</p>
+<p>Want more? OpenStax <i>Chemistry 2e</i>, Section 17.6 (Corrosion), free online.</p></div></section>
+<p class="note">2182209 Chemistry for Semiconductor Engineering · Soorathep Kheawhom, Department of Chemical Engineering, Chulalongkorn University · draft for 2027</p>
+</main></body></html>
